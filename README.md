@@ -1,5 +1,6 @@
 # csharp
 Work In Progress
+Currently only supported on Linux 
 
 # Generating the client code
 
