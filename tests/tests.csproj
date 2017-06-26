@@ -11,6 +11,9 @@
     <PackageReference Include="YamlDotNet.NetCore" Version="1.0.0" />    
   </ItemGroup>
   <ItemGroup>
+    <None Include="assets/*" CopyToOutputDirectory="Always" />
+  </ItemGroup>    
+  <ItemGroup>
     <ProjectReference Include="..\src\KubernetesClient.csproj" />
   </ItemGroup>
 </Project>
