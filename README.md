@@ -27,3 +27,15 @@ npm install autorest
 cd ${REPO_DIR}/csharp/src
 ${GEN_DIR}/openapi/csharp.sh generated csharp.settings
 ```
+
+# Testing
+
+The project uses [XUnit](https://xunit.github.io) as unit testing framework.
+
+To run the tests you need to:
+
+```bash
+cd tests
+dotnet restore
+dotnet xunit
+```
