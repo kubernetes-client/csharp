@@ -36,7 +36,22 @@ namespace k8s.Tests
         /// <summary>
         /// Sample configuration file with incorrect cluster/server structure on purpose
         /// </summary>
-        private static readonly string kubeConfigNoCluster = "assets/kubeconfig.no-cluster.yml";        
+        private static readonly string kubeConfigNoCluster = "assets/kubeconfig.no-cluster.yml";
+
+        /// <summary>
+        /// Sample configuration file with incorrect match in cluster name
+        /// </summary>
+        private static readonly string kubeConfigClusterMissmatch = "assets/kubeconfig.cluster-missmatch.yml";
+
+        /// <summary>
+        /// Sample configuration file with incorrect TLS configuration in cluster section
+        /// </summary>
+        private static readonly string kubeConfigTlsNoSkipError = "assets/kubeconfig.tls-no-skip-error.yml";
+
+                /// <summary>
+        /// Sample configuration file with incorrect TLS configuration in cluster section
+        /// </summary>
+        private static readonly string kubeConfigTlsSkip = "assets/kubeconfig.tls-skip.yml";
 
         /// <summary>
         /// The configuration file is not present. An KubeConfigException should be thrown
@@ -175,6 +190,39 @@ namespace k8s.Tests
         {
             var fi = new FileInfo(kubeConfigNoCluster);
             Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi)); 
+        }  
+        
+        /// <summary>
+        /// Checks that a KubeConfigException is thrown when the cluster defined in clusters and contexts do not match
+        /// </summary>
+        [Fact]
+        public void ClusterNameMissmatch()
+        {
+            var fi = new FileInfo(kubeConfigClusterMissmatch);
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi)); 
+        }
+
+        /// <summary>
+        /// Checks that a KubeConfigException is thrown when no certificate-authority-data is set and user do not require tls skip 
+        /// </summary>
+        [Fact]
+        public void CheckClusterTlsCorrectness()
+        {
+            var fi = new FileInfo(kubeConfigTlsNoSkipError);
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi)); 
+        }
+
+        /// <summary>
+        /// Checks that a KubeConfigException is thrown when no certificate-authority-data is set and user do not require tls skip 
+        /// </summary>
+        [Fact]
+        public void CheckClusterTlsSkipCorrectness()
+        {
+            var fi = new FileInfo(kubeConfigTlsSkip);
+            var cfg = new KubernetesClientConfiguration(fi);            
+            Assert.NotNull(cfg.Host);
+            Assert.Null(cfg.SslCaCert);
+            Assert.True(cfg.SkipTlsVerify);
         }        
 
         // /// <summary>
