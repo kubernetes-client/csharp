@@ -128,6 +128,11 @@ namespace k8s
                 this.CurrentContext = activeContext.Name;
             }
 
+            if (k8SConfig.Clusters == null)
+            {
+                throw new KubeConfigException($"clusters not found for current-context :{activeContext} in kubeconfig");
+            }
+
             var clusterDetails = k8SConfig.Clusters.FirstOrDefault(c => c.Name.Equals(activeContext.ContextDetails.Cluster, StringComparison.OrdinalIgnoreCase));
             if (clusterDetails?.ClusterEndpoint != null)
             {
