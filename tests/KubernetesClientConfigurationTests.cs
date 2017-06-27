@@ -34,6 +34,11 @@ namespace k8s.Tests
         private static readonly string kubeConfigNoServer = "assets/kubeconfig.no-server.yml";
 
         /// <summary>
+        /// Sample configuration file with incorrect cluster/server structure on purpose
+        /// </summary>
+        private static readonly string kubeConfigNoCluster = "assets/kubeconfig.no-cluster.yml";        
+
+        /// <summary>
         /// The configuration file is not present. An KubeConfigException should be thrown
         /// </summary>
         [Fact]
@@ -161,6 +166,16 @@ namespace k8s.Tests
             var fi = new FileInfo(kubeConfigNoServer);
             Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi)); 
         }
+
+        /// <summary>
+        /// Checks that a KubeConfigException is thrown when the clusters section is missing
+        /// </summary>
+        [Fact]
+        public void ClusterNotFound()
+        {
+            var fi = new FileInfo(kubeConfigNoCluster);
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi)); 
+        }        
 
         // /// <summary>
         // /// Checks if the are pods
