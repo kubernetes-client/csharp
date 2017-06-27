@@ -3,7 +3,7 @@
     using YamlDotNet.RepresentationModel;
     using YamlDotNet.Serialization;
 
-    public class UserCrednetials
+    public class UserCredentials
     {
         [YamlMember(Alias = "client-certificate-data")]
         public string ClientCertificateData { get; set; }
@@ -14,7 +14,7 @@
         [YamlMember(Alias = "token")]
         public string Token { get; set; }
 
-        [YamlMember(Alias = "userName")]
+        [YamlMember(Alias = "username")]
         public string UserName { get; set; }
 
         [YamlMember(Alias = "password")]
