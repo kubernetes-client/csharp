@@ -24,6 +24,16 @@ namespace k8s.Tests
         private static readonly string kubeConfigUserPassword = "assets/kubeconfig.user-pass.yml";
 
         /// <summary>
+        /// The configuration file is not present. An KubeConfigException should be thrown
+        /// </summary>
+        [Fact]
+        public void ConfigurationFileNotFound()
+        {
+            var fi = new FileInfo("/path/to/nowhere");
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi));         
+        }
+
+        /// <summary>
         /// Checks Host is loaded from the default configuration file
         /// </summary>
         [Fact]
