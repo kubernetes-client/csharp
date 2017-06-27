@@ -13,7 +13,15 @@ namespace k8s.Tests
         /// </summary>
         private static readonly string kubeConfigFileName = "assets/kubeconfig.yml";
 
+        /// <summary>
+        /// Invalid test file with no context on purpose
+        /// </summary>
         private static readonly string kubeConfigNoContexts = "assets/kubeconfig-no-context.yml";
+
+        /// <summary>
+        /// Sample configuration file with user/password authentication
+        /// </summary>
+        private static readonly string kubeConfigUserPassword = "assets/kubeconfig.user-pass.yml";
 
         /// <summary>
         /// Checks Host is loaded from the default configuration file
@@ -100,7 +108,19 @@ namespace k8s.Tests
         {
             var fi = new FileInfo(kubeConfigNoContexts);
             Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi, "context"));         
-        }               
+        }
+
+        /// <summary>
+        /// Checks user/password authentication information is read properly
+        /// </summary>
+        [Fact]
+        public void UserPasswordAuthentication()
+        {
+            var fi = new FileInfo(kubeConfigUserPassword);
+            var cfg = new KubernetesClientConfiguration(fi);
+            Assert.Equal("admin", cfg.Username);
+            Assert.Equal("secret", cfg.Password);
+        }
 
         // /// <summary>
         // /// Checks if the are pods
