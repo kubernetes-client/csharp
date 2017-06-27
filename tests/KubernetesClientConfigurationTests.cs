@@ -69,6 +69,7 @@ namespace k8s.Tests
             var fi = new FileInfo(kubeConfigFileName);            
             var cfg = new KubernetesClientConfiguration(fi, context);     
             Assert.Equal(context, cfg.CurrentContext);
+            Assert.Null(cfg.Username);
             Assert.Equal(token, cfg.AccessToken);                 
         }
 
