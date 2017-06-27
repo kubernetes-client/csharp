@@ -63,13 +63,12 @@ namespace k8s.Tests
         /// <param name="username"></param>
         /// <param name="token"></param>
         [Theory]
-        [InlineData("queen-anne-context", "black-user" ,"black-token")]
-        public void ContextUserTokenTest(string context, string username, string token)
+        [InlineData("queen-anne-context", "black-token")]
+        public void ContextUserTokenTest(string context, string token)
         {
             var fi = new FileInfo(kubeConfigFileName);            
             var cfg = new KubernetesClientConfiguration(fi, context);     
             Assert.Equal(context, cfg.CurrentContext);
-            Assert.Equal(username, cfg.Username);
             Assert.Equal(token, cfg.AccessToken);                 
         }
 
