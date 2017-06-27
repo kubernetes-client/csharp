@@ -24,6 +24,16 @@ namespace k8s.Tests
         private static readonly string kubeConfigUserPassword = "assets/kubeconfig.user-pass.yml";
 
         /// <summary>
+        /// Sample configuration file with incorrect user credentials structures on purpose
+        /// </summary>
+        private static readonly string kubeConfigNoCredentials = "assets/kubeconfig.no-credentials.yml";
+
+        /// <summary>
+        /// Sample configuration file with incorrect cluster/server structure on purpose
+        /// </summary>
+        private static readonly string kubeConfigNoServer = "assets/kubeconfig.no-server.yml";
+
+        /// <summary>
         /// The configuration file is not present. An KubeConfigException should be thrown
         /// </summary>
         [Fact]
@@ -130,6 +140,26 @@ namespace k8s.Tests
             var cfg = new KubernetesClientConfiguration(fi);
             Assert.Equal("admin", cfg.Username);
             Assert.Equal("secret", cfg.Password);
+        }
+
+        /// <summary>
+        /// Checks that a KubeConfigException is thrown when incomplete user credentials
+        /// </summary>
+        [Fact]
+        public void IncompleteUserCredentials()
+        {
+            var fi = new FileInfo(kubeConfigNoCredentials);
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi)); 
+        }
+
+        /// <summary>
+        /// Checks that a KubeConfigException is thrown when the server property is not set in cluster
+        /// </summary>
+        [Fact]
+        public void ServerNotFound()
+        {
+            var fi = new FileInfo(kubeConfigNoServer);
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi)); 
         }
 
         // /// <summary>
