@@ -6,6 +6,7 @@ namespace k8s
     using k8s.Exceptions;
     using k8s.KubeConfigModels;
     using YamlDotNet.Serialization;
+    using System.Runtime.InteropServices;
 
     /// <summary>
     /// Represents a set of kubernetes client configuration settings
@@ -31,7 +32,9 @@ namespace k8s
         /// <summary>
         /// kubeconfig Default Location
         /// </summary>
-        private static readonly string KubeConfigDefaultLocation = Path.Combine(Environment.GetEnvironmentVariable("HOME"), ".kube/config");
+        private static readonly string KubeConfigDefaultLocation = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ?
+            Path.Combine(Environment.GetEnvironmentVariable("USERPROFILE"), @".kube\config") :
+            Path.Combine(Environment.GetEnvironmentVariable("HOME"), ".kube/config");
 
         /// <summary>
         /// Gets CurrentContext
