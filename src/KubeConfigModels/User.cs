@@ -6,7 +6,7 @@
     public class User
     {
         [YamlMember(Alias = "user")]
-        public UserCrednetials UserCredentials { get; set; }
+        public UserCredentials UserCredentials { get; set; }
 
         [YamlMember(Alias = "name")]
         public string Name { get; set; }

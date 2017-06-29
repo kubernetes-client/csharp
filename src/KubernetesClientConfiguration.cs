@@ -96,13 +96,14 @@ namespace k8s
         {
             Context activeContext;
 
+            if (k8SConfig.Contexts == null)
+            {
+                throw new KubeConfigException("No contexts found in kubeconfig");
+            }            
+
             // set the currentCOntext to passed context if not null
             if (!string.IsNullOrWhiteSpace(currentContext))
             {
-                if (k8SConfig.Contexts == null)
-                {
-                    throw new KubeConfigException("No contexts found in kubeconfig");
-                }
 
                 activeContext = k8SConfig.Contexts.FirstOrDefault(c => c.Name.Equals(currentContext, StringComparison.OrdinalIgnoreCase));
                 if (activeContext != null)
@@ -125,6 +126,11 @@ namespace k8s
                 }
 
                 this.CurrentContext = activeContext.Name;
+            }
+
+            if (k8SConfig.Clusters == null)
+            {
+                throw new KubeConfigException($"clusters not found for current-context :{activeContext} in kubeconfig");
             }
 
             var clusterDetails = k8SConfig.Clusters.FirstOrDefault(c => c.Name.Equals(activeContext.ContextDetails.Cluster, StringComparison.OrdinalIgnoreCase));
