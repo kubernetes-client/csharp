@@ -4,6 +4,7 @@
     using System.Diagnostics;
     using System.Globalization;
     using System.IO;
+    using System.Runtime.InteropServices;
     using System.Text;
     using System.Threading.Tasks;
 
@@ -37,7 +38,10 @@
         /// TODO: kabhishek8260 Remplace the method with X509 Certificate with private key(in dotnet 2.0)
         public static async Task<string> GeneratePfxAsync(KubernetesClientConfiguration config)
         {
-            var userHomeDir = Environment.GetEnvironmentVariable("HOME");
+            var userHomeDir = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ?
+                Environment.GetEnvironmentVariable("USERPROFILE") :
+                Environment.GetEnvironmentVariable("HOME");
+
             var certDirPath = Path.Combine(userHomeDir, ".k8scerts");
             Directory.CreateDirectory(certDirPath);
 
@@ -61,13 +65,8 @@
             var process = new Process();
             process.StartInfo = new ProcessStartInfo()
             {
-                FileName = @"/bin/bash",
-                Arguments = string.Format(
-                    CultureInfo.InvariantCulture,
-                    "-c \"openssl pkcs12 -export -out {0} -inkey {1} -in {2} -passout pass:\"",
-                    pfxFilePath,
-                    keyFilePath,
-                    certFilePath),
+                FileName = @"openssl",
+                Arguments = $"pkcs12 -export -out {pfxFilePath} -inkey {keyFilePath} -in {certFilePath} -passout pass:",
                 CreateNoWindow = true,
                 RedirectStandardError = true,
                 RedirectStandardOutput = true
