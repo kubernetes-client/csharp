@@ -1,5 +1,4 @@
 language: csharp
-solution: tests/tests.csproj
 sudo: required
 matrix:
   include:
