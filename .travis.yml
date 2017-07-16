@@ -1,0 +1,11 @@
+language: csharp
+solution: tests/tests.csproj
+sudo: required
+matrix:
+  include:
+    - dotnet: 1.0.4
+      mono: none
+      dist: trusty
+
+script:
+  - ./ci.sh
