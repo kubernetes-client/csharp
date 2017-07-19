@@ -1,0 +1,10 @@
+language: csharp
+sudo: required
+matrix:
+  include:
+    - dotnet: 1.0.4
+      mono: none
+      dist: trusty
+
+script:
+  - ./ci.sh
