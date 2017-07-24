@@ -8,6 +8,11 @@ namespace k8s.Tests
     public class KubernetesClientConfigurationTests
     {
 
+        public static string readLine(string fileName) {
+            StreamReader reader = new StreamReader(new FileStream(fileName,  FileMode.Open, FileAccess.Read));
+            return reader.ReadLine();
+        }
+
         /// <summary>
         /// This file contains a sample kubeconfig file
         /// </summary>
@@ -110,15 +115,32 @@ namespace k8s.Tests
         /// <param name="clientCertData">'client-certificate-data' node content</param>
         /// <param name="clientCertKey">'client-key-data' content</param>
         [Theory]
-        [InlineData("federal-context", "path/to/my/client/cert" ,"path/to/my/client/key")]
-        public void ContextCertificateTest(string context, string clientCertData, string clientCertKey)
+        [InlineData("federal-context", "assets/client.crt" ,"assets/client.key")]
+        public void ContextCertificateTest(string context, string clientCert, string clientCertKey)
         {
             var fi = new FileInfo(kubeConfigFileName);
             var cfg = new KubernetesClientConfiguration(fi, context);
             Assert.Equal(context, cfg.CurrentContext);
-            Assert.Equal(cfg.ClientCertificateData, clientCertData);
-            Assert.Equal(cfg.ClientCertificateKey, clientCertKey);
+            Assert.Equal(cfg.ClientCertificate, clientCert);
+            Assert.Equal(cfg.ClientKey, clientCertKey);
         }
+
+        /// <summary>
+        /// Checks if certificate-based authentication is loaded properly from the config file, per context
+        /// </summary>
+        /// <param name="context">Context to retreive the configuration</param>
+        [Theory]
+        [InlineData("victorian-context")]
+        public void ClientDataTest(string context)
+        {
+            var fi = new FileInfo(kubeConfigFileName);
+            var cfg = new KubernetesClientConfiguration(fi, context);
+            Assert.Equal(context, cfg.CurrentContext);
+            Assert.NotNull(cfg.SslCaCert);
+            Assert.Equal(readLine("assets/client-certificate-data.txt"), cfg.ClientCertificateData);
+            Assert.Equal(readLine("assets/client-key-data.txt"), cfg.ClientCertificateKey);
+        }
+
 
         /// <summary>
         /// Test that an Exception is thrown when initializating a KubernetClientConfiguration whose config file Context is not present

@@ -21,7 +21,7 @@
         {
             this.Initialize();
 
-            this.CaCert = Utils.Base64Decode(config.SslCaCert);
+            this.CaCert = config.SslCaCert;
             this.BaseUri = new Uri(config.Host);
 
             // ssl cert validation
@@ -45,7 +45,7 @@
             this.InitializeHttpClient(handler);
         }
 
-        private string CaCert { get; set; }
+        private X509Certificate2 CaCert { get; set; }
 
         /// <summary>
         /// Set credentials for the Client
@@ -65,7 +65,10 @@
                 this.Credentials = new KubernetesClientCredentials(config.Username, config.Password);
             }
             // othwerwise set handler for clinet cert based auth
-            else if (!string.IsNullOrWhiteSpace(config.ClientCertificateData) && !string.IsNullOrWhiteSpace(config.ClientCertificateKey))
+            else if ((!string.IsNullOrWhiteSpace(config.ClientCertificateData) ||
+                      !string.IsNullOrWhiteSpace(config.ClientCertificate)) &&
+                     (!string.IsNullOrWhiteSpace(config.ClientCertificateKey) ||
+                      !string.IsNullOrWhiteSpace(config.ClientKey)))
             {
                 var pfxFilePath = await Utils.GeneratePfxAsync(config).ConfigureAwait(false);
                 if (string.IsNullOrWhiteSpace(pfxFilePath))
@@ -110,7 +113,7 @@
                 chain0.ChainPolicy.RevocationMode = X509RevocationMode.NoCheck;
 
                 // add all your extra certificate chain
-                chain0.ChainPolicy.ExtraStore.Add(new X509Certificate2(System.Text.Encoding.UTF8.GetBytes(this.CaCert)));
+                chain0.ChainPolicy.ExtraStore.Add(this.CaCert);
                 chain0.ChainPolicy.VerificationFlags = X509VerificationFlags.AllowUnknownCertificateAuthority;
                 var isValid = chain0.Build((X509Certificate2)certificate);
                 return isValid;

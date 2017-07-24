@@ -8,6 +8,9 @@
     /// </summary>
     public class K8SConfiguration
     {
+        [YamlMember(Alias = "preferences")]
+        public IDictionary<string, object> preferences{ get; set; }
+
         [YamlMember(Alias = "apiVersion")]
         public string ApiVersion { get; set; }
 
