@@ -48,7 +48,7 @@ namespace k8s.Tests
         /// </summary>
         private static readonly string kubeConfigTlsNoSkipError = "assets/kubeconfig.tls-no-skip-error.yml";
 
-                /// <summary>
+        /// <summary>
         /// Sample configuration file with incorrect TLS configuration in cluster section
         /// </summary>
         private static readonly string kubeConfigTlsSkip = "assets/kubeconfig.tls-skip.yml";
@@ -69,7 +69,7 @@ namespace k8s.Tests
         [Fact]
         public void DefaultConfigurationLoaded()
         {
-            var cfg = new KubernetesClientConfiguration();
+            var cfg = new KubernetesClientConfiguration(new FileInfo(kubeConfigFileName));
             Assert.NotNull(cfg.Host);
         } 
         

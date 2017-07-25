@@ -1,6 +1,8 @@
 # csharp
 Work In Progress
-Currently only supported on Linux 
+Currently only supported on Linux
+
+[![Travis](https://img.shields.io/travis/kubernetes-client/csharp.svg)](https://travis-ci.org/kubernetes-client/csharp)
 
 # Generating the client code
 

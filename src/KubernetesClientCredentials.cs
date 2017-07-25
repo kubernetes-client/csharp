@@ -32,7 +32,7 @@
                 throw new ArgumentNullException(nameof(userName));
             }
 
-            if (string.IsNullOrWhiteSpace(userName))
+            if (string.IsNullOrWhiteSpace(password))
             {
                 throw new ArgumentNullException(nameof(password));
             }
