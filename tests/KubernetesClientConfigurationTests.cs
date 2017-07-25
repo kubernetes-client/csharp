@@ -69,7 +69,7 @@ namespace k8s.Tests
         [Fact]
         public void DefaultConfigurationLoaded()
         {
-            var cfg = new KubernetesClientConfiguration();
+            var cfg = new KubernetesClientConfiguration(new FileInfo(kubeConfigFileName));
             Assert.NotNull(cfg.Host);
         } 
         
