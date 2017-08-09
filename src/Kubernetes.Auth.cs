@@ -71,10 +71,6 @@
                       !string.IsNullOrWhiteSpace(config.ClientKey)))
             {
                 var pfxFilePath = await Utils.GeneratePfxAsync(config).ConfigureAwait(false);
-                if (string.IsNullOrWhiteSpace(pfxFilePath))
-                {
-                    throw new KubernetesClientException("Failed to generate pfx file");
-                }
 
                 var cert = new X509Certificate2(pfxFilePath, string.Empty, X509KeyStorageFlags.PersistKeySet);
                 handler.ClientCertificates.Add(cert);
