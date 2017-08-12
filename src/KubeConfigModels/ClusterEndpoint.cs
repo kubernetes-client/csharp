@@ -4,6 +4,9 @@
 
     public class ClusterEndpoint
     {
+        [YamlMember(Alias = "certificate-authority")]
+        public string CertificateAuthority {get; set; }
+
         [YamlMember(Alias = "certificate-authority-data")]
         public string CertificateAuthorityData { get; set; }
 

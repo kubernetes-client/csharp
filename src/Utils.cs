@@ -45,23 +45,35 @@
             var certDirPath = Path.Combine(userHomeDir, ".k8scerts");
             Directory.CreateDirectory(certDirPath);
 
+            var keyFilePath = "";
+            var certFilePath = "";
+
             var filePrefix = config.CurrentContext;
-            var keyFilePath = Path.Combine(certDirPath, filePrefix + "key");
-            var certFilePath = Path.Combine(certDirPath, filePrefix + "cert");
             var pfxFilePath = Path.Combine(certDirPath, filePrefix + "pfx");
-
-            using (FileStream fs = File.Create(keyFilePath))
-            {
-                byte[] info = Convert.FromBase64String(config.ClientCertificateKey);
-                await fs.WriteAsync(info, 0, info.Length).ConfigureAwait(false);
+            if (!string.IsNullOrWhiteSpace(config.ClientCertificateKey)) {
+                keyFilePath = Path.Combine(certDirPath, filePrefix + "key");
+                using (FileStream fs = File.Create(keyFilePath))
+                {
+                    byte[] info = Convert.FromBase64String(config.ClientCertificateKey);
+                    await fs.WriteAsync(info, 0, info.Length).ConfigureAwait(false);
+                }
+            }
+            if (!string.IsNullOrWhiteSpace(config.ClientKey)) {
+                keyFilePath = config.ClientKey;
             }
 
-            using (FileStream fs = File.Create(certFilePath))
-            {
-                byte[] info = Convert.FromBase64String(config.ClientCertificateData);
-                await fs.WriteAsync(info, 0, info.Length).ConfigureAwait(false);
+            if (!string.IsNullOrWhiteSpace(config.ClientCertificateData)) {
+                certFilePath = Path.Combine(certDirPath, filePrefix + "cert");
+    
+                using (FileStream fs = File.Create(certFilePath))
+                {
+                    byte[] info = Convert.FromBase64String(config.ClientCertificateData);
+                    await fs.WriteAsync(info, 0, info.Length).ConfigureAwait(false);
+                }
             }
-
+            if (!string.IsNullOrWhiteSpace(config.ClientCertificate)) {
+                certFilePath = config.ClientCertificate;
+            }
             var process = new Process();
             process.StartInfo = new ProcessStartInfo()
             {

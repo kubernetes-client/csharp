@@ -3,6 +3,7 @@ namespace k8s
     using System;
     using System.IO;
     using System.Linq;
+    using System.Security.Cryptography.X509Certificates;
     using k8s.Exceptions;
     using k8s.KubeConfigModels;
     using YamlDotNet.Serialization;
@@ -49,7 +50,7 @@ namespace k8s
         /// <summary>
         /// Gets SslCaCert
         /// </summary>
-        public string SslCaCert { get; private set; }
+        public X509Certificate2 SslCaCert { get; private set; }
 
         /// <summary>
         /// Gets ClientCertificateData
@@ -60,6 +61,16 @@ namespace k8s
         /// Gets ClientCertificate Key
         /// </summary>
         public string ClientCertificateKey { get; private set; }
+
+        /// <summary>
+        /// Gets ClientCertificate filename
+        /// </summary>
+        public string ClientCertificate { get; private set; }
+
+        /// <summary>
+        /// Gets ClientCertificate Key filename
+        /// </summary>
+        public string ClientKey { get; private set; }
 
         /// <summary>
         /// Gets a value indicating whether to skip ssl server cert validation
@@ -145,13 +156,20 @@ namespace k8s
                 }
 
                 if (!clusterDetails.ClusterEndpoint.SkipTlsVerify &&
-                    string.IsNullOrWhiteSpace(clusterDetails.ClusterEndpoint.CertificateAuthorityData))
+                    string.IsNullOrWhiteSpace(clusterDetails.ClusterEndpoint.CertificateAuthorityData) &&
+                    string.IsNullOrWhiteSpace(clusterDetails.ClusterEndpoint.CertificateAuthority))
                 {
-                    throw new KubeConfigException($"certificate-authority-data not found for current-context :{activeContext} in kubeconfig");
+                    throw new KubeConfigException($"neither certificate-authority-data nor certificate-authority not found for current-context :{activeContext} in kubeconfig");
                 }
 
                 this.Host = clusterDetails.ClusterEndpoint.Server;
-                this.SslCaCert = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
+                if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthorityData)) {
+                    string data = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
+                    this.SslCaCert = new X509Certificate2(System.Text.Encoding.UTF8.GetBytes(Utils.Base64Decode(data)));
+                }
+                else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority)) {
+                    this.SslCaCert = new X509Certificate2(clusterDetails.ClusterEndpoint.CertificateAuthority, null);
+                }
                 this.SkipTlsVerify = clusterDetails.ClusterEndpoint.SkipTlsVerify;
             }
             else
@@ -199,6 +217,13 @@ namespace k8s
             {
                 this.ClientCertificateData = userDetails.UserCredentials.ClientCertificateData;
                 this.ClientCertificateKey = userDetails.UserCredentials.ClientKeyData;
+                userCredentialsFound = true;
+            }
+
+            if (!string.IsNullOrWhiteSpace(userDetails.UserCredentials.ClientCertificate) &&
+                !string.IsNullOrWhiteSpace(userDetails.UserCredentials.ClientKey)) {
+                this.ClientCertificate = userDetails.UserCredentials.ClientCertificate;
+                this.ClientKey = userDetails.UserCredentials.ClientKey;
                 userCredentialsFound = true;
             }
 
