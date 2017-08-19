@@ -1,6 +1,4 @@
-﻿using System;
-using Xunit;
-using k8s;
+﻿using Xunit;
 using System.IO;
 
 namespace k8s.Tests

@@ -16,17 +16,12 @@ namespace k8s
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="KubernetesClientConfiguration"/> class.
-        /// Initializes a new instance of the ClientConfiguration class
         /// </summary>
         /// <param name="kubeconfig">kubeconfig file info</param>
         /// <param name="currentContext">Context to use from kube config</param>
         public KubernetesClientConfiguration(FileInfo kubeconfig = null, string currentContext = null)
         {
-            if (kubeconfig == null)
-            {
-                kubeconfig = new FileInfo(KubeConfigDefaultLocation);
-            }
-            var k8SConfig = this.LoadKubeConfig(kubeconfig);
+            var k8SConfig = this.LoadKubeConfig(kubeconfig ?? new FileInfo(KubeConfigDefaultLocation));
             this.Initialize(k8SConfig, currentContext);
         }
 
@@ -108,86 +103,73 @@ namespace k8s
         /// <param name="currentContext">Current Context</param>
         private void Initialize(K8SConfiguration k8SConfig, string currentContext = null)
         {
-            Context activeContext;
-
             if (k8SConfig.Contexts == null)
             {
                 throw new KubeConfigException("No contexts found in kubeconfig");
-            }            
-
-            // set the currentCOntext to passed context if not null
-            if (!string.IsNullOrWhiteSpace(currentContext))
-            {
-
-                activeContext = k8SConfig.Contexts.FirstOrDefault(c => c.Name.Equals(currentContext, StringComparison.OrdinalIgnoreCase));
-                if (activeContext != null)
-                {
-                    this.CurrentContext = activeContext.Name;
-                }
-                else
-                {
-                    throw new KubeConfigException($"CurrentContext: {0} not found in contexts in kubeconfig");
-                }
-            }
-            // otherwise set current context from kubeconfig
-            else
-            {
-                activeContext = k8SConfig.Contexts.FirstOrDefault(c => c.Name.Equals(k8SConfig.CurrentContext, StringComparison.OrdinalIgnoreCase));
-
-                if (activeContext == null)
-                {
-                    throw new KubeConfigException($"CurrentContext: {currentContext} not found in contexts in kubeconfig");
-                }
-
-                this.CurrentContext = activeContext.Name;
             }
 
             if (k8SConfig.Clusters == null)
             {
-                throw new KubeConfigException($"clusters not found for current-context :{activeContext} in kubeconfig");
+                throw new KubeConfigException($"No clusters found in kubeconfig");
             }
-
-            var clusterDetails = k8SConfig.Clusters.FirstOrDefault(c => c.Name.Equals(activeContext.ContextDetails.Cluster, StringComparison.OrdinalIgnoreCase));
-            if (clusterDetails?.ClusterEndpoint != null)
+            
+            if (k8SConfig.Users == null)
             {
-                if (string.IsNullOrWhiteSpace(clusterDetails.ClusterEndpoint.Server))
-                {
-                    throw new KubeConfigException($"server not found for current-context :{activeContext} in kubeconfig");
-                }
-
-                if (!clusterDetails.ClusterEndpoint.SkipTlsVerify &&
-                    string.IsNullOrWhiteSpace(clusterDetails.ClusterEndpoint.CertificateAuthorityData) &&
-                    string.IsNullOrWhiteSpace(clusterDetails.ClusterEndpoint.CertificateAuthority))
-                {
-                    throw new KubeConfigException($"neither certificate-authority-data nor certificate-authority not found for current-context :{activeContext} in kubeconfig");
-                }
-
-                this.Host = clusterDetails.ClusterEndpoint.Server;
-                if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthorityData)) {
-                    string data = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
-                    this.SslCaCert = new X509Certificate2(System.Text.Encoding.UTF8.GetBytes(Utils.Base64Decode(data)));
-                }
-                else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority)) {
-                    this.SslCaCert = new X509Certificate2(clusterDetails.ClusterEndpoint.CertificateAuthority, null);
-                }
-                this.SkipTlsVerify = clusterDetails.ClusterEndpoint.SkipTlsVerify;
+                throw new KubeConfigException($"No users found in kubeconfig");
             }
-            else
+
+            // current context
+            currentContext = currentContext ?? k8SConfig.CurrentContext;
+            Context activeContext = k8SConfig.Contexts.FirstOrDefault(c => c.Name.Equals(currentContext, StringComparison.OrdinalIgnoreCase));
+            if (activeContext == null)
             {
-                throw new KubeConfigException($"Cluster details not found for current-context: {activeContext} in kubeconfig");
+                throw new KubeConfigException($"CurrentContext: {currentContext} not found in contexts in kubeconfig");
             }
 
-            // set user details from kubeconfig
-            var userDetails = k8SConfig.Users.FirstOrDefault(c => c.Name.Equals(activeContext.ContextDetails.User, StringComparison.OrdinalIgnoreCase));
+            this.CurrentContext = activeContext.Name;
 
-            this.SetUserDetails(userDetails);
+            // cluster
+            var clusterDetails  = k8SConfig.Clusters.FirstOrDefault(c => c.Name.Equals(activeContext.ContextDetails.Cluster, StringComparison.OrdinalIgnoreCase));
+            if (clusterDetails?.ClusterEndpoint == null)
+            {
+                throw new KubeConfigException($"Cluster not found for context {activeContext} in kubeconfig");
+            }
+
+            if (string.IsNullOrWhiteSpace(clusterDetails.ClusterEndpoint.Server))
+            {
+                throw new KubeConfigException($"Server not found for current-context {activeContext} in kubeconfig");
+            }
+
+            if (!clusterDetails.ClusterEndpoint.SkipTlsVerify &&
+                string.IsNullOrWhiteSpace(clusterDetails.ClusterEndpoint.CertificateAuthorityData) &&
+                string.IsNullOrWhiteSpace(clusterDetails.ClusterEndpoint.CertificateAuthority))
+            {
+                throw new KubeConfigException($"neither certificate-authority-data nor certificate-authority not found for current-context :{activeContext} in kubeconfig");
+            }
+
+            this.Host = clusterDetails.ClusterEndpoint.Server;
+            if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthorityData))
+            {
+                string data = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
+                this.SslCaCert = new X509Certificate2(System.Text.Encoding.UTF8.GetBytes(Utils.Base64Decode(data)));
+            }
+            else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
+            {
+                this.SslCaCert = new X509Certificate2(clusterDetails.ClusterEndpoint.CertificateAuthority, null);
+            }
+            this.SkipTlsVerify = clusterDetails.ClusterEndpoint.SkipTlsVerify;
+
+            // user
+            this.SetUserDetails(k8SConfig, activeContext);
         }
 
-        private void SetUserDetails(User userDetails)
+        private void SetUserDetails(K8SConfiguration k8SConfig, Context activeContext)
         {
+            var userDetails = k8SConfig.Users.FirstOrDefault(c => c.Name.Equals(activeContext.ContextDetails.User, StringComparison.OrdinalIgnoreCase));
+
             if (userDetails == null)
             {
-                throw new KubeConfigException("User not found for the current context in kubeconfig");
+                throw new KubeConfigException("User not found for context {activeContext.Name} in kubeconfig");
             }
 
             if (userDetails.UserCredentials == null)
@@ -229,7 +211,7 @@ namespace k8s
 
             if (!userCredentialsFound)
             {
-                throw new KubeConfigException($"User: {userDetails.Name} does not have appropriate auth credentials in kube config");
+                throw new KubeConfigException($"User: {userDetails.Name} does not have appropriate auth credentials in kubeconfig");
             }
         }
 

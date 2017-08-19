@@ -1,8 +1,9 @@
 ﻿namespace k8s
 {
+    using k8s.Exceptions;
     using System;
+    using System.ComponentModel;
     using System.Diagnostics;
-    using System.Globalization;
     using System.IO;
     using System.Runtime.InteropServices;
     using System.Text;
@@ -50,7 +51,8 @@
 
             var filePrefix = config.CurrentContext;
             var pfxFilePath = Path.Combine(certDirPath, filePrefix + "pfx");
-            if (!string.IsNullOrWhiteSpace(config.ClientCertificateKey)) {
+            if (!string.IsNullOrWhiteSpace(config.ClientCertificateKey))
+            {
                 keyFilePath = Path.Combine(certDirPath, filePrefix + "key");
                 using (FileStream fs = File.Create(keyFilePath))
                 {
@@ -58,24 +60,27 @@
                     await fs.WriteAsync(info, 0, info.Length).ConfigureAwait(false);
                 }
             }
-            if (!string.IsNullOrWhiteSpace(config.ClientKey)) {
+            if (!string.IsNullOrWhiteSpace(config.ClientKey))
+            {
                 keyFilePath = config.ClientKey;
             }
 
-            if (!string.IsNullOrWhiteSpace(config.ClientCertificateData)) {
+            if (!string.IsNullOrWhiteSpace(config.ClientCertificateData))
+            {
                 certFilePath = Path.Combine(certDirPath, filePrefix + "cert");
-    
+
                 using (FileStream fs = File.Create(certFilePath))
                 {
                     byte[] info = Convert.FromBase64String(config.ClientCertificateData);
                     await fs.WriteAsync(info, 0, info.Length).ConfigureAwait(false);
                 }
             }
-            if (!string.IsNullOrWhiteSpace(config.ClientCertificate)) {
+            if (!string.IsNullOrWhiteSpace(config.ClientCertificate))
+            {
                 certFilePath = config.ClientCertificate;
             }
-            var process = new Process();
-            process.StartInfo = new ProcessStartInfo()
+
+            var processStartInfo = new ProcessStartInfo
             {
                 FileName = @"openssl",
                 Arguments = $"pkcs12 -export -out {pfxFilePath} -inkey {keyFilePath} -in {certFilePath} -passout pass:",
@@ -84,14 +89,23 @@
                 RedirectStandardOutput = true
             };
 
-            process.Start();
-            process.WaitForExit();
-            if (process.ExitCode == 0)
+            try
             {
-                return pfxFilePath;
+                using (Process process = Process.Start(processStartInfo))
+                {
+                    process.WaitForExit();
+                    if (process.ExitCode != 0)
+                    {
+                        throw new KubernetesClientException($"Failed to generate pfx file with openssl. ExitCode = {process.ExitCode}.");
+                    }
+                }
+            }
+            catch (Win32Exception e)
+            {
+                throw new KubernetesClientException("Failed to generate pfx file with openssl.", e);
             }
 
-            return null;
+            return pfxFilePath;
         }
     }
 }
