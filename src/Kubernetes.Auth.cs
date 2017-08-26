@@ -105,13 +105,12 @@
             // If there are errors in the certificate chain, look at each error to determine the cause.
             if ((sslPolicyErrors & SslPolicyErrors.RemoteCertificateChainErrors) != 0)
             {
-                X509Chain chain0 = new X509Chain();
-                chain0.ChainPolicy.RevocationMode = X509RevocationMode.NoCheck;
+                chain.ChainPolicy.RevocationMode = X509RevocationMode.NoCheck;
 
                 // add all your extra certificate chain
-                chain0.ChainPolicy.ExtraStore.Add(this.CaCert);
-                chain0.ChainPolicy.VerificationFlags = X509VerificationFlags.AllowUnknownCertificateAuthority;
-                var isValid = chain0.Build((X509Certificate2)certificate);
+                chain.ChainPolicy.ExtraStore.Add(this.CaCert);
+                chain.ChainPolicy.VerificationFlags = X509VerificationFlags.AllowUnknownCertificateAuthority;
+                var isValid = chain.Build((X509Certificate2)certificate);
                 return isValid;
             }
             else
