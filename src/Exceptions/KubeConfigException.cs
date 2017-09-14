@@ -1,4 +1,4 @@
-﻿namespace k8s.Exceptions
+namespace k8s.Exceptions
 {
     using System;
 
