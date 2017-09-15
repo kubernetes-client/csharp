@@ -1,4 +1,4 @@
-﻿namespace k8s
+namespace k8s
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
@@ -8,7 +8,7 @@
     using System.Threading.Tasks;
     using k8s.Exceptions;
     using Microsoft.Rest;
-    
+
     public partial class Kubernetes : ServiceClient<Kubernetes>, IKubernetes
     {
         /// <summary>

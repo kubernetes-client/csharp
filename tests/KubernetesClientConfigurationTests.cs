@@ -1,4 +1,4 @@
-﻿using Xunit;
+using Xunit;
 using System.IO;
 
 namespace k8s.Tests
@@ -6,8 +6,9 @@ namespace k8s.Tests
     public class KubernetesClientConfigurationTests
     {
 
-        public static string readLine(string fileName) {
-            StreamReader reader = new StreamReader(new FileStream(fileName,  FileMode.Open, FileAccess.Read));
+        public static string readLine(string fileName)
+        {
+            StreamReader reader = new StreamReader(new FileStream(fileName, FileMode.Open, FileAccess.Read));
             return reader.ReadLine();
         }
 
@@ -63,7 +64,7 @@ namespace k8s.Tests
         public void ConfigurationFileNotFound()
         {
             var fi = new FileInfo("/path/to/nowhere");
-            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi));         
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi));
         }
 
         /// <summary>
@@ -74,8 +75,8 @@ namespace k8s.Tests
         {
             var cfg = new KubernetesClientConfiguration(new FileInfo(kubeConfigFileName));
             Assert.NotNull(cfg.Host);
-        } 
-        
+        }
+
         /// <summary>
         /// Check if host is properly loaded, per context
         /// </summary>
@@ -83,8 +84,8 @@ namespace k8s.Tests
         [InlineData("federal-context", "https://horse.org:4443")]
         [InlineData("queen-anne-context", "https://pig.org:443")]
         public void ContextHostTest(string context, string host)
-        {            
-            var fi = new FileInfo(kubeConfigFileName);            
+        {
+            var fi = new FileInfo(kubeConfigFileName);
             var cfg = new KubernetesClientConfiguration(fi, context);
             Assert.Equal(host, cfg.Host);
         }
@@ -99,11 +100,11 @@ namespace k8s.Tests
         [InlineData("queen-anne-context", "black-token")]
         public void ContextUserTokenTest(string context, string token)
         {
-            var fi = new FileInfo(kubeConfigFileName);            
-            var cfg = new KubernetesClientConfiguration(fi, context);     
+            var fi = new FileInfo(kubeConfigFileName);
+            var cfg = new KubernetesClientConfiguration(fi, context);
             Assert.Equal(context, cfg.CurrentContext);
             Assert.Null(cfg.Username);
-            Assert.Equal(token, cfg.AccessToken);                 
+            Assert.Equal(token, cfg.AccessToken);
         }
 
         /// <summary>
@@ -113,7 +114,7 @@ namespace k8s.Tests
         /// <param name="clientCertData">'client-certificate-data' node content</param>
         /// <param name="clientCertKey">'client-key-data' content</param>
         [Theory]
-        [InlineData("federal-context", "assets/client.crt" ,"assets/client.key")]
+        [InlineData("federal-context", "assets/client.crt", "assets/client.key")]
         public void ContextCertificateTest(string context, string clientCert, string clientCertKey)
         {
             var fi = new FileInfo(kubeConfigFileName);
@@ -147,7 +148,7 @@ namespace k8s.Tests
         public void ContextNotFoundTest()
         {
             var fi = new FileInfo(kubeConfigFileName);
-            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi, "context-not-found"));         
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi, "context-not-found"));
         }
 
         /// <summary>
@@ -157,8 +158,8 @@ namespace k8s.Tests
         public void NoContexts()
         {
             var fi = new FileInfo(kubeConfigNoContexts);
-            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi));         
-        }  
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi));
+        }
 
         /// <summary>
         /// Test if KubeConfigException is thrown when no Contexts are set and we specify a concrete context name
@@ -167,7 +168,7 @@ namespace k8s.Tests
         public void NoContextsExplicit()
         {
             var fi = new FileInfo(kubeConfigNoContexts);
-            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi, "context"));         
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi, "context"));
         }
 
         /// <summary>
@@ -189,7 +190,7 @@ namespace k8s.Tests
         public void IncompleteUserCredentials()
         {
             var fi = new FileInfo(kubeConfigNoCredentials);
-            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi)); 
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi));
         }
 
         /// <summary>
@@ -199,7 +200,7 @@ namespace k8s.Tests
         public void ServerNotFound()
         {
             var fi = new FileInfo(kubeConfigNoServer);
-            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi)); 
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi));
         }
 
         /// <summary>
@@ -209,9 +210,9 @@ namespace k8s.Tests
         public void ClusterNotFound()
         {
             var fi = new FileInfo(kubeConfigNoCluster);
-            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi)); 
-        }  
-        
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi));
+        }
+
         /// <summary>
         /// Checks that a KubeConfigException is thrown when the cluster defined in clusters and contexts do not match
         /// </summary>
@@ -219,7 +220,7 @@ namespace k8s.Tests
         public void ClusterNameMissmatch()
         {
             var fi = new FileInfo(kubeConfigClusterMissmatch);
-            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi)); 
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi));
         }
 
         /// <summary>
@@ -229,7 +230,7 @@ namespace k8s.Tests
         public void CheckClusterTlsCorrectness()
         {
             var fi = new FileInfo(kubeConfigTlsNoSkipError);
-            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi)); 
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi));
         }
 
         /// <summary>
@@ -239,11 +240,11 @@ namespace k8s.Tests
         public void CheckClusterTlsSkipCorrectness()
         {
             var fi = new FileInfo(kubeConfigTlsSkip);
-            var cfg = new KubernetesClientConfiguration(fi);            
+            var cfg = new KubernetesClientConfiguration(fi);
             Assert.NotNull(cfg.Host);
             Assert.Null(cfg.SslCaCert);
             Assert.True(cfg.SkipTlsVerify);
-        }        
+        }
 
         // /// <summary>
         // /// Checks if the are pods

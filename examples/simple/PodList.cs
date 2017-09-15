@@ -1,4 +1,4 @@
-﻿namespace simple
+namespace simple
 {
     using System;
     using System.IO;

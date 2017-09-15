@@ -1,4 +1,4 @@
-﻿namespace k8s
+namespace k8s
 {
     using System;
     using System.Globalization;

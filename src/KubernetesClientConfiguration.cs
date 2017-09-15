@@ -155,7 +155,7 @@ namespace k8s
             }
             else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
             {
-                this.SslCaCert = new X509Certificate2(clusterDetails.ClusterEndpoint.CertificateAuthority, null);
+                this.SslCaCert = new X509Certificate2(clusterDetails.ClusterEndpoint.CertificateAuthority);
             }
             this.SkipTlsVerify = clusterDetails.ClusterEndpoint.SkipTlsVerify;
 
