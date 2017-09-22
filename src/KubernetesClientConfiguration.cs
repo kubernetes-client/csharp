@@ -25,6 +25,15 @@ namespace k8s
             this.Initialize(k8SConfig, currentContext);
         }
 
+        public static KubernetesClientConfiguration defaultConfiguration() {
+            var kubeConfig = Environment.GetEnvironmentVariable("KUBECONFIG");
+            if (kubeConfig != null) {
+                return new KubernetesClientConfiguration(new FileInfo(kubeConfig));
+            }
+            return new KubernetesClientConfiguration();
+        }
+
+
         /// <summary>
         /// kubeconfig Default Location
         /// </summary>
@@ -120,6 +129,10 @@ namespace k8s
 
             // current context
             currentContext = currentContext ?? k8SConfig.CurrentContext;
+            if (string.IsNullOrEmpty(currentContext)) {
+                // Nothing more to do...
+                return;
+            }
             Context activeContext = k8SConfig.Contexts.FirstOrDefault(c => c.Name.Equals(currentContext, StringComparison.OrdinalIgnoreCase));
             if (activeContext == null)
             {
