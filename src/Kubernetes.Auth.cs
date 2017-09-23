@@ -70,9 +70,7 @@ namespace k8s
                      (!string.IsNullOrWhiteSpace(config.ClientCertificateKey) ||
                       !string.IsNullOrWhiteSpace(config.ClientKey)))
             {
-                var pfxFilePath = await Utils.GeneratePfxAsync(config).ConfigureAwait(false);
-
-                var cert = new X509Certificate2(pfxFilePath, string.Empty, X509KeyStorageFlags.PersistKeySet);
+                var cert = await Utils.GeneratePfxAsync(config).ConfigureAwait(false);
                 handler.ClientCertificates.Add(cert);
             }
             else
