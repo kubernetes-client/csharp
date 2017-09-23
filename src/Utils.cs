@@ -1,13 +1,19 @@
-namespace k8s
+﻿namespace k8s
 {
-    using k8s.Exceptions;
     using System;
-    using System.ComponentModel;
     using System.Diagnostics;
+    using System.Globalization;
     using System.IO;
     using System.Runtime.InteropServices;
+    using System.Security.Cryptography;
+    using System.Security.Cryptography.X509Certificates;
     using System.Text;
     using System.Threading.Tasks;
+
+    using Org.BouncyCastle.Crypto;
+    using Org.BouncyCastle.Crypto.Parameters;
+    using Org.BouncyCastle.Security;
+    using Org.BouncyCastle.OpenSsl;
 
     public static class Utils
     {
@@ -37,75 +43,43 @@ namespace k8s
         /// <param name="config">Kuberentes Client Configuration</param>
         /// <returns>Generated Pfx Path</returns>
         /// TODO: kabhishek8260 Remplace the method with X509 Certificate with private key(in dotnet 2.0)
-        public static async Task<string> GeneratePfxAsync(KubernetesClientConfiguration config)
+        public static async Task<X509Certificate2> GeneratePfxAsync(KubernetesClientConfiguration config)
         {
-            var userHomeDir = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ?
-                Environment.GetEnvironmentVariable("USERPROFILE") :
-                Environment.GetEnvironmentVariable("HOME");
-
-            var certDirPath = Path.Combine(userHomeDir, ".k8scerts");
-            Directory.CreateDirectory(certDirPath);
-
-            var keyFilePath = "";
-            var certFilePath = "";
+            var keyData = new byte[]{};
+            var certData = new byte[]{};
 
             var filePrefix = config.CurrentContext;
-            var pfxFilePath = Path.Combine(certDirPath, filePrefix + "pfx");
             if (!string.IsNullOrWhiteSpace(config.ClientCertificateKey))
             {
-                keyFilePath = Path.Combine(certDirPath, filePrefix + "key");
-                using (FileStream fs = File.Create(keyFilePath))
-                {
-                    byte[] info = Convert.FromBase64String(config.ClientCertificateKey);
-                    await fs.WriteAsync(info, 0, info.Length).ConfigureAwait(false);
-                }
+                keyData = Convert.FromBase64String(config.ClientCertificateKey);
             }
             if (!string.IsNullOrWhiteSpace(config.ClientKey))
             {
-                keyFilePath = config.ClientKey;
+                keyData = File.ReadAllBytes(config.ClientKey);
             }
 
             if (!string.IsNullOrWhiteSpace(config.ClientCertificateData))
             {
-                certFilePath = Path.Combine(certDirPath, filePrefix + "cert");
-
-                using (FileStream fs = File.Create(certFilePath))
-                {
-                    byte[] info = Convert.FromBase64String(config.ClientCertificateData);
-                    await fs.WriteAsync(info, 0, info.Length).ConfigureAwait(false);
-                }
+                certData = Convert.FromBase64String(config.ClientCertificateData);
             }
             if (!string.IsNullOrWhiteSpace(config.ClientCertificate))
             {
-                certFilePath = config.ClientCertificate;
+                certData = File.ReadAllBytes(config.ClientCertificate);
             }
 
-            var processStartInfo = new ProcessStartInfo
-            {
-                FileName = @"openssl",
-                Arguments = $"pkcs12 -export -out {pfxFilePath} -inkey {keyFilePath} -in {certFilePath} -passout pass:",
-                CreateNoWindow = true,
-                RedirectStandardError = true,
-                RedirectStandardOutput = true
-            };
+            var cert = new X509Certificate2(certData);
+            return addPrivateKey(cert, keyData);
+        }
 
-            try
+        public static X509Certificate2 addPrivateKey(X509Certificate2 cert, byte[] keyData)
+        {
+            using (var reader = new StreamReader(new MemoryStream(keyData)))
             {
-                using (Process process = Process.Start(processStartInfo))
-                {
-                    process.WaitForExit();
-                    if (process.ExitCode != 0)
-                    {
-                        throw new KubernetesClientException($"Failed to generate pfx file with openssl. ExitCode = {process.ExitCode}.");
-                    }
-                }
+                var cipherKey = (AsymmetricCipherKeyPair)new PemReader(reader).ReadObject();
+                var rsaKeyParams = (RsaPrivateCrtKeyParameters)cipherKey.Private;
+                var rsaKey = RSA.Create(DotNetUtilities.ToRSAParameters(rsaKeyParams));
+                return cert.CopyWithPrivateKey(rsaKey);
             }
-            catch (Win32Exception e)
-            {
-                throw new KubernetesClientException("Failed to generate pfx file with openssl.", e);
-            }
-
-            return pfxFilePath;
         }
     }
 }
