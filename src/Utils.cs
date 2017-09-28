@@ -42,8 +42,7 @@
         /// </summary>
         /// <param name="config">Kuberentes Client Configuration</param>
         /// <returns>Generated Pfx Path</returns>
-        /// TODO: kabhishek8260 Remplace the method with X509 Certificate with private key(in dotnet 2.0)
-        public static async Task<X509Certificate2> GeneratePfxAsync(KubernetesClientConfiguration config)
+        public static X509Certificate2 GeneratePfx(KubernetesClientConfiguration config)
         {
             var keyData = new byte[]{};
             var certData = new byte[]{};
@@ -75,8 +74,12 @@
         {
             using (var reader = new StreamReader(new MemoryStream(keyData)))
             {
-                var cipherKey = (AsymmetricCipherKeyPair)new PemReader(reader).ReadObject();
-                var rsaKeyParams = (RsaPrivateCrtKeyParameters)cipherKey.Private;
+                var obj = new PemReader(reader).ReadObject();
+                if (obj is AsymmetricCipherKeyPair) {
+                    var cipherKey = (AsymmetricCipherKeyPair)obj;
+                    obj = cipherKey.Private;
+                }
+                var rsaKeyParams = (RsaPrivateCrtKeyParameters)obj;
                 var rsaKey = RSA.Create(DotNetUtilities.ToRSAParameters(rsaKeyParams));
                 return cert.CopyWithPrivateKey(rsaKey);
             }

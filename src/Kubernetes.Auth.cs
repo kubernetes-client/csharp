@@ -41,7 +41,7 @@ namespace k8s
             };
 
             // set credentails for the kubernernet client
-            this.SetCredentialsAsync(config, handler).Wait();
+            this.SetCredentials(config, handler);
             this.InitializeHttpClient(handler);
         }
 
@@ -53,7 +53,7 @@ namespace k8s
         /// <param name="config">k8s client configuration</param>
         /// <param name="handler">http client handler for the rest client</param>
         /// <returns>Task</returns>
-        private async Task SetCredentialsAsync(KubernetesClientConfiguration config, HttpClientHandler handler)
+        private void SetCredentials(KubernetesClientConfiguration config, HttpClientHandler handler)
         {
             // set the Credentails for token based auth
             if (!string.IsNullOrWhiteSpace(config.AccessToken))
@@ -70,7 +70,7 @@ namespace k8s
                      (!string.IsNullOrWhiteSpace(config.ClientCertificateKey) ||
                       !string.IsNullOrWhiteSpace(config.ClientKey)))
             {
-                var cert = await Utils.GeneratePfxAsync(config).ConfigureAwait(false);
+                var cert = Utils.GeneratePfx(config);
                 handler.ClientCertificates.Add(cert);
             }
             else
