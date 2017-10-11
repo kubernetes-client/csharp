@@ -6,4 +6,4 @@ set -e
 # Execute Unit tests
 cd tests
 dotnet restore
-dotnet xunit
+dotnet test
