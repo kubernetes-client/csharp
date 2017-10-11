@@ -35,7 +35,23 @@ namespace k8s
         }
 
         /// <summary>
-        ///     Generates pfx from client configuration
+        /// Load pem encoded cert file
+        /// </summary>
+        /// <param name="file">Path to pem encoded cert file</param>
+        /// <returns>x509 instance.</returns>
+        public static X509Certificate2 LoadPemFileCert(string file)
+        {
+            var certdata = File.ReadAllText(file)
+                .Replace("-----BEGIN CERTIFICATE-----", "")
+                .Replace("-----END CERTIFICATE-----", "")
+                .Replace("\r", "")
+                .Replace("\n", "");
+
+            return new X509Certificate2(Convert.FromBase64String(certdata));
+        }
+
+        /// <summary>
+        /// Generates pfx from client configuration
         /// </summary>
         /// <param name="config">Kuberentes Client Configuration</param>
         /// <returns>Generated Pfx Path</returns>
