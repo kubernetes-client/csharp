@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <RootNamespace>k8s</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="GlobalSuppressions.cs" />
