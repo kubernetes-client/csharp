@@ -185,7 +185,7 @@ namespace k8s.Tests
                     {
                         Host = server.Uri.ToString(),
                         ClientCertificateData = clientCertificateData,
-                        ClientCertificateKey = clientCertificateKeyData,
+                        ClientCertificateKeyData = clientCertificateKeyData,
                         SslCaCert = serverCertificate,
                         SkipTlsVerify = false
                     });
@@ -203,7 +203,7 @@ namespace k8s.Tests
                     {
                         Host = server.Uri.ToString(),
                         ClientCertificateData = clientCertificateData,
-                        ClientCertificateKey = clientCertificateKeyData,
+                        ClientCertificateKeyData = clientCertificateKeyData,
                         SkipTlsVerify = true
                     });
 
@@ -219,8 +219,8 @@ namespace k8s.Tests
                     var client = new Kubernetes(new KubernetesClientConfiguration
                     {
                         Host = server.Uri.ToString(),
-                        ClientCertificate = "assets/client.crt", // TODO amazoning why client.crt != client-data.txt
-                        ClientKey = "assets/client.key", // TODO  bad naming param
+                        ClientCertificateFilePath = "assets/client.crt", // TODO amazoning why client.crt != client-data.txt
+                        ClientKeyFilePath = "assets/client.key",
                         SkipTlsVerify = true
                     });
 

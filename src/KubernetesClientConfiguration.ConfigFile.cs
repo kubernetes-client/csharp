@@ -178,15 +178,15 @@ namespace k8s
                 !string.IsNullOrWhiteSpace(userDetails.UserCredentials.ClientKeyData))
             {
                 this.ClientCertificateData = userDetails.UserCredentials.ClientCertificateData;
-                this.ClientCertificateKey = userDetails.UserCredentials.ClientKeyData;
+                this.ClientCertificateKeyData = userDetails.UserCredentials.ClientKeyData;
                 userCredentialsFound = true;
             }
 
             if (!string.IsNullOrWhiteSpace(userDetails.UserCredentials.ClientCertificate) &&
                 !string.IsNullOrWhiteSpace(userDetails.UserCredentials.ClientKey))
             {
-                this.ClientCertificate = userDetails.UserCredentials.ClientCertificate;
-                this.ClientKey = userDetails.UserCredentials.ClientKey;
+                this.ClientCertificateFilePath = userDetails.UserCredentials.ClientCertificate;
+                this.ClientKeyFilePath = userDetails.UserCredentials.ClientKey;
                 userCredentialsFound = true;
             }
 

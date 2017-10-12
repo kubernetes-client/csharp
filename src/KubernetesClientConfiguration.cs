@@ -36,17 +36,17 @@ namespace k8s
         /// <summary>
         /// Gets ClientCertificate Key
         /// </summary>
-        public string ClientCertificateKey { get; set; }
+        public string ClientCertificateKeyData { get; set; }
 
         /// <summary>
         /// Gets ClientCertificate filename
         /// </summary>
-        public string ClientCertificate { get; set; }
+        public string ClientCertificateFilePath { get; set; }
 
         /// <summary>
         /// Gets ClientCertificate Key filename
         /// </summary>
-        public string ClientKey { get; set; }
+        public string ClientKeyFilePath { get; set; }
 
         /// <summary>
         /// Gets a value indicating whether to skip ssl server cert validation
