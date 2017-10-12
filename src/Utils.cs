@@ -93,7 +93,7 @@ namespace k8s
 
             using (var pkcs = new MemoryStream())
             {
-                store.Save(pkcs, null, new SecureRandom());
+                store.Save(pkcs, new char[0], new SecureRandom());
                 return new X509Certificate2(pkcs.ToArray());
             }
         }
