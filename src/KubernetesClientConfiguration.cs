@@ -14,45 +14,44 @@ namespace k8s
     /// </summary>
     public partial class KubernetesClientConfiguration
     {
-        private KubernetesClientConfiguration()
+        public KubernetesClientConfiguration()
         {
-            
         }
 
         /// <summary>
         /// Gets Host
         /// </summary>
-        public string Host { get; private set; }
+        public string Host { get; set; }
 
         /// <summary>
         /// Gets SslCaCert
         /// </summary>
-        public X509Certificate2 SslCaCert { get; private set; }
+        public X509Certificate2 SslCaCert { get; set; }
 
         /// <summary>
         /// Gets ClientCertificateData
         /// </summary>
-        public string ClientCertificateData { get; private set; }
+        public string ClientCertificateData { get; set; }
 
         /// <summary>
         /// Gets ClientCertificate Key
         /// </summary>
-        public string ClientCertificateKey { get; private set; }
+        public string ClientCertificateKey { get; set; }
 
         /// <summary>
         /// Gets ClientCertificate filename
         /// </summary>
-        public string ClientCertificate { get; private set; }
+        public string ClientCertificate { get; set; }
 
         /// <summary>
         /// Gets ClientCertificate Key filename
         /// </summary>
-        public string ClientKey { get; private set; }
+        public string ClientKey { get; set; }
 
         /// <summary>
         /// Gets a value indicating whether to skip ssl server cert validation
         /// </summary>
-        public bool SkipTlsVerify { get; private set; }
+        public bool SkipTlsVerify { get; set; }
 
         /// <summary>
         /// Gets or sets the HTTP user agent.

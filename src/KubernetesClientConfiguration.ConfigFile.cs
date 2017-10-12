@@ -40,10 +40,25 @@ namespace k8s
         /// </summary>
         /// <param name="masterUrl">kube api server endpoint</param>
         /// <param name="kubeconfigPath">kubeconfig filepath</param>
-        /// <returns></returns>
         public static KubernetesClientConfiguration BuildConfigFromConfigFile(string masterUrl = null, string kubeconfigPath = null)
         {
-            var k8SConfig = LoadKubeConfig(new FileInfo(kubeconfigPath ?? KubeConfigDefaultLocation));
+            return BuildConfigFromConfigFile(new FileInfo(kubeconfigPath ?? KubeConfigDefaultLocation), null, masterUrl);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="kubeconfig">Fileinfo of the kubeconfig, cannot be null</param>
+        /// <param name="currentContext">override the context in config file, set null if do not want to override</param>
+        /// <param name="masterUrl">overrider kube api server endpoint, set null if do not want to override</param>
+        public static KubernetesClientConfiguration BuildConfigFromConfigFile(FileInfo kubeconfig, string currentContext = null, string masterUrl = null)
+        {
+            if (kubeconfig == null)
+            {
+                throw new NullReferenceException(nameof(kubeconfig));
+            }
+
+            var k8SConfig = LoadKubeConfig(kubeconfig);
             var k8SConfiguration = new KubernetesClientConfiguration();
             k8SConfiguration.Initialize(k8SConfig);
 
@@ -53,6 +68,7 @@ namespace k8s
             }
             return k8SConfiguration;
         }
+            
 
         /// <summary>
         /// Validates and Intializes Client Configuration
