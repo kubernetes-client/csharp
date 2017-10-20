@@ -1,4 +1,4 @@
-# csharp
+# Kubernetes C# Client
 Work In Progress
 
 [![Travis](https://img.shields.io/travis/kubernetes-client/csharp.svg)](https://travis-ci.org/kubernetes-client/csharp)
@@ -38,16 +38,6 @@ ${GEN_DIR}/openapi/csharp.sh generated csharp.settings
 
 # Usage
 
-## Prerequisities
-
-* [OpenSSL](https://www.openssl.org/)
-* For Linux/Mac:
-    * LibCurl built with OpenSSL (Mac: `brew install curl --with-nghttp2`)
-* For Windows:
-    * The easiest option is to use [choco](https://chocolatey.org)  `choco install openssl.light`
-
-Make sure that the `openssl` executable is in your path, by running `openssl` before trying to use the library.
-
 ## Running the Examples
 
 ```bash
@@ -65,5 +55,5 @@ To run the tests
 ```bash
 cd csharp\tests
 dotnet restore
-dotnet xunit
+dotnet test
 ```
