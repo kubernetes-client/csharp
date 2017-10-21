@@ -4,7 +4,7 @@ Work In Progress
 [![Travis](https://img.shields.io/travis/kubernetes-client/csharp.svg)](https://travis-ci.org/kubernetes-client/csharp)
 
 # Usage
-[Nuget Package](https://www.nuget.org/packages/KubernetesClient/0.1.0-beta)
+[Nuget Package](https://www.nuget.org/packages/KubernetesClient/)
 
 ```sh
 dotnet add package KubernetesClient
