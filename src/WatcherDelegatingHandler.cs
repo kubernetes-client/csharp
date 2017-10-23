@@ -1,8 +1,10 @@
 ﻿using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.WebUtilities;
 
 namespace k8s
 {
@@ -19,7 +21,9 @@ namespace k8s
 
             if (originResponse.IsSuccessStatusCode)
             {
-                if ($"{request.RequestUri.Query}".Contains("watch=true"))
+                var query = QueryHelpers.ParseQuery(request.RequestUri.Query);
+
+                if (query.TryGetValue("watch", out var values) && values.Any(v => v == "true"))
                 {
                     originResponse.Content = new LineSeparatedHttpContent(originResponse.Content);
                 }
