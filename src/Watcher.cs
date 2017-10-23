@@ -22,12 +22,15 @@ namespace k8s
 
     public class Watcher<T> : IDisposable
     {
+        /// <summary>
+        /// indicate if the watch object is alive
+        /// </summary>
         public bool Watching { get; private set; }
 
         private readonly CancellationTokenSource _cts;
         private readonly StreamReader _streamReader;
 
-        public Watcher(StreamReader streamReader, Action<WatchEventType, T> onEvent, Action<Exception> onError)
+        internal Watcher(StreamReader streamReader, Action<WatchEventType, T> onEvent, Action<Exception> onError)
         {
             _streamReader = streamReader;
             OnEvent += onEvent;
@@ -82,7 +85,14 @@ namespace k8s
             _streamReader.Dispose();
         }
 
+        /// <summary>
+        /// add/remove callbacks when any event raised from api server
+        /// </summary>
         public event Action<WatchEventType, T> OnEvent;
+
+        /// <summary>
+        /// add/remove callbacks when any exception was caught during watching
+        /// </summary>
         public event Action<Exception> OnError;
 
         public class WatchEvent
@@ -95,6 +105,14 @@ namespace k8s
 
     public static class WatcherExt
     {
+        /// <summary>
+        /// create a watch object from a call to api server with watch=true
+        /// </summary>
+        /// <typeparam name="T">type of the event object</typeparam>
+        /// <param name="response">the api response</param>
+        /// <param name="onEvent">a callback when any event raised from api server</param>
+        /// <param name="onError">a callbak when any exception was caught during watching</param>
+        /// <returns>a watch object</returns>
         public static Watcher<T> Watch<T>(this HttpOperationResponse response,
             Action<WatchEventType, T> onEvent,
             Action<Exception> onError = null)
@@ -107,6 +125,14 @@ namespace k8s
             return new Watcher<T>(content.StreamReader, onEvent, onError);
         }
 
+        /// <summary>
+        /// create a watch object from a call to api server with watch=true
+        /// </summary>
+        /// <typeparam name="T">type of the event object</typeparam>
+        /// <param name="response">the api response</param>
+        /// <param name="onEvent">a callback when any event raised from api server</param>
+        /// <param name="onError">a callbak when any exception was caught during watching</param>
+        /// <returns>a watch object</returns>
         public static Watcher<T> Watch<T>(this HttpOperationResponse<T> response,
             Action<WatchEventType, T> onEvent,
             Action<Exception> onError = null)

@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace k8s
 {
+    /// <summary>
+    /// This HttpDelegatingHandler is to rewrite the response and return first line to autorest client
+    /// then use WatchExt to create a watch object which interact with the replaced http response to get watch works.
+    /// </summary>
     internal class WatcherDelegatingHandler : DelegatingHandler
     {
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
