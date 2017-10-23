@@ -24,21 +24,24 @@ namespace k8s
             this.CaCert = config.SslCaCert;
             this.BaseUri = new Uri(config.Host);
 
-            // ssl cert validation
-            Func<object, X509Certificate, X509Chain, SslPolicyErrors, bool> sslCertValidationFunc;
-            if (config.SkipTlsVerify)
-            {
-                sslCertValidationFunc = (sender, certificate, chain, sslPolicyErrors) => true;
-            }
-            else
-            {
-                sslCertValidationFunc = this.CertificateValidationCallBack;
-            }
+            var handler = new HttpClientHandler();
 
-            var handler = new HttpClientHandler
+            if (BaseUri.Scheme == "https")
             {
-                ServerCertificateCustomValidationCallback = sslCertValidationFunc
-            };
+                if (config.SkipTlsVerify)
+                {
+                    handler.ServerCertificateCustomValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
+                }
+                else
+                {
+                    if (CaCert == null)
+                    {
+                        throw new KubeConfigException("a CA must be set when SkipTlsVerify === false");
+                    }
+
+                    handler.ServerCertificateCustomValidationCallback = CertificateValidationCallBack;
+                }
+            }
 
             // set credentails for the kubernernet client
             this.SetCredentials(config, handler);
@@ -58,11 +61,15 @@ namespace k8s
             // set the Credentails for token based auth
             if (!string.IsNullOrWhiteSpace(config.AccessToken))
             {
-                this.Credentials = new KubernetesClientCredentials(config.AccessToken);
+                Credentials = new TokenCredentials(config.AccessToken);
             }
             else if (!string.IsNullOrWhiteSpace(config.Username) && !string.IsNullOrWhiteSpace(config.Password))
             {
-                this.Credentials = new KubernetesClientCredentials(config.Username, config.Password);
+                Credentials = new BasicAuthenticationCredentials
+                {
+                    UserName = config.Username,
+                    Password = config.Password
+                };
             }
             // othwerwise set handler for clinet cert based auth
             else if ((!string.IsNullOrWhiteSpace(config.ClientCertificateData) ||
@@ -72,10 +79,6 @@ namespace k8s
             {
                 var cert = Utils.GeneratePfx(config);
                 handler.ClientCertificates.Add(cert);
-            }
-            else
-            {
-                throw new KubeConfigException("Configuration does not have appropriate auth credentials");
             }
         }
 
