@@ -22,8 +22,10 @@ namespace k8s
 
     public class Watcher<T> : IDisposable
     {
-        private readonly StreamReader _streamReader;
+        public bool Watching { get; private set; }
+
         private readonly CancellationTokenSource _cts;
+        private readonly StreamReader _streamReader;
 
         public Watcher(StreamReader streamReader, Action<WatchEventType, T> onEvent, Action<Exception> onError)
         {
@@ -37,24 +39,39 @@ namespace k8s
 
             Task.Run(async () =>
             {
-                while (!streamReader.EndOfStream)
+                try
                 {
-                    if (token.IsCancellationRequested)
-                    {
-                        return;
-                    }
+                    Watching = true;
 
-                    try
+                    while (!streamReader.EndOfStream)
                     {
+                        if (token.IsCancellationRequested)
+                        {
+                            return;
+                        }
+
                         var line = await streamReader.ReadLineAsync();
-                        var @event = SafeJsonConvert.DeserializeObject<WatchEvent>(line);
 
-                        OnEvent?.Invoke(@event.Type, @event.Object);
+                        try
+                        {
+                            var @event = SafeJsonConvert.DeserializeObject<WatchEvent>(line);
+                            OnEvent?.Invoke(@event.Type, @event.Object);
+                        }
+                        catch (Exception e)
+                        {
+                            // error if deserialized failed or onevent throws
+                            OnError?.Invoke(e);
+                        }
                     }
-                    catch (Exception e)
-                    {
-                        OnError?.Invoke(e);
-                    }
+                }
+                catch (Exception e)
+                {
+                    // error when transport error, IOException ect
+                    OnError?.Invoke(e);
+                }
+                finally
+                {
+                    Watching = false;
                 }
             }, token);
         }

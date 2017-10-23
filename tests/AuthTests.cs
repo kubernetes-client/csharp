@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 using k8s.Models;
 using k8s.Tests.Mock;
 using Microsoft.AspNetCore.Hosting;
@@ -39,7 +40,7 @@ namespace k8s.Tests
             using (var server = new MockKubeApiServer(cxt =>
             {
                 cxt.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
-                return false;
+                return Task.FromResult(false);
             }))
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration
@@ -69,10 +70,10 @@ namespace k8s.Tests
                 if (header != expect)
                 {
                     cxt.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
-                    return false;
+                    return Task.FromResult(false);
                 }
 
-                return true;
+                return Task.FromResult(true);
             }))
             {
                 {
@@ -256,10 +257,10 @@ namespace k8s.Tests
                 if (header != expect)
                 {
                     cxt.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
-                    return false;
+                    return Task.FromResult(false);
                 }
 
-                return true;
+                return Task.FromResult(true);
             }))
             {
                 {
