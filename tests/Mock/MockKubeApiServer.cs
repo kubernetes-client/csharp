@@ -20,21 +20,19 @@ namespace k8s.Tests.Mock
 
         private readonly IWebHost _webHost;
 
-        public MockKubeApiServer(Func<HttpContext, bool> shouldNext = null, Action<ListenOptions> listenConfigure = null,
+        public MockKubeApiServer(Func<HttpContext, Task<bool>> shouldNext = null, Action<ListenOptions> listenConfigure = null,
             string resp = MockPodResponse)
         {
-            shouldNext = shouldNext ?? (_ => true);
+            shouldNext = shouldNext ?? (_ => Task.FromResult(true));
             listenConfigure = listenConfigure ?? (_ => { });
 
             _webHost = WebHost.CreateDefaultBuilder()
-                .Configure(app => app.Run(httpContext =>
+                .Configure(app => app.Run(async httpContext =>
                 {
-                    if (shouldNext(httpContext))
+                    if (await shouldNext(httpContext))
                     {
-                        httpContext.Response.WriteAsync(resp);
+                        await httpContext.Response.WriteAsync(resp);
                     }
-
-                    return Task.Delay(0);
                 }))
                 .UseKestrel(options => { options.Listen(IPAddress.Loopback, 0, listenConfigure); })
                 .Build();

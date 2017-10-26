@@ -45,7 +45,7 @@ namespace k8s
 
             // set credentails for the kubernernet client
             this.SetCredentials(config, handler);
-            this.InitializeHttpClient(handler);
+            this.InitializeHttpClient(handler, new DelegatingHandler[]{new WatcherDelegatingHandler()});
         }
 
         private X509Certificate2 CaCert { get; set; }
@@ -78,6 +78,7 @@ namespace k8s
                       !string.IsNullOrWhiteSpace(config.ClientKeyFilePath)))
             {
                 var cert = Utils.GeneratePfx(config);
+
                 handler.ClientCertificates.Add(cert);
             }
         }
