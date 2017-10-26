@@ -60,13 +60,13 @@ namespace k8s
             byte[] keyData = null;
             byte[] certData = null;
 
-            if (!string.IsNullOrWhiteSpace(config.ClientCertificateKey))
+            if (!string.IsNullOrWhiteSpace(config.ClientCertificateKeyData))
             {
-                keyData = Convert.FromBase64String(config.ClientCertificateKey);
+                keyData = Convert.FromBase64String(config.ClientCertificateKeyData);
             }
-            if (!string.IsNullOrWhiteSpace(config.ClientKey))
+            if (!string.IsNullOrWhiteSpace(config.ClientKeyFilePath))
             {
-                keyData = File.ReadAllBytes(config.ClientKey);
+                keyData = File.ReadAllBytes(config.ClientKeyFilePath);
             }
 
             if (keyData == null)
@@ -78,9 +78,9 @@ namespace k8s
             {
                 certData = Convert.FromBase64String(config.ClientCertificateData);
             }
-            if (!string.IsNullOrWhiteSpace(config.ClientCertificate))
+            if (!string.IsNullOrWhiteSpace(config.ClientCertificateFilePath))
             {
-                certData = File.ReadAllBytes(config.ClientCertificate);
+                certData = File.ReadAllBytes(config.ClientCertificateFilePath);
             }
 
             if (certData == null)

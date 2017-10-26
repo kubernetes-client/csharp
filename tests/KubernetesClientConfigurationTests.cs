@@ -120,8 +120,8 @@ namespace k8s.Tests
             var fi = new FileInfo(kubeConfigFileName);
             var cfg = new KubernetesClientConfiguration(fi, context);
             Assert.Equal(context, cfg.CurrentContext);
-            Assert.Equal(cfg.ClientCertificate, clientCert);
-            Assert.Equal(cfg.ClientKey, clientCertKey);
+            Assert.Equal(cfg.ClientCertificateFilePath, clientCert);
+            Assert.Equal(cfg.ClientKeyFilePath, clientCertKey);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace k8s.Tests
             Assert.Equal(context, cfg.CurrentContext);
             Assert.NotNull(cfg.SslCaCert);
             Assert.Equal(readLine("assets/client-certificate-data.txt"), cfg.ClientCertificateData);
-            Assert.Equal(readLine("assets/client-key-data.txt"), cfg.ClientCertificateKey);
+            Assert.Equal(readLine("assets/client-key-data.txt"), cfg.ClientCertificateKeyData);
         }
 
 
