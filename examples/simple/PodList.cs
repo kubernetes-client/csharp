@@ -8,7 +8,7 @@ namespace simple
     {
         static void Main(string[] args)
         {
-            var k8sClientConfig = new KubernetesClientConfiguration();
+            var k8sClientConfig = KubernetesClientConfiguration.BuildConfigFromConfigFile();
             IKubernetes client = new Kubernetes(k8sClientConfig);
             Console.WriteLine("Starting Request!");
             var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default").Result;
