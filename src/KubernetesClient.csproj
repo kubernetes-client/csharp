@@ -1,5 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <PackageVersion>0.2.0-beta</PackageVersion>
+    <Authors>The Kubernetes Project Authors</Authors>
+    <Copyright>2017 The Kubernetes Project Authors</Copyright>
+    <Description>Client library for the Kubernetes open source container orchestrator.</Description>
+    
+    <PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/kubernetes-client/csharp</PackageProjectUrl>
+    <PackageTags>kubernetes;docker;containers;</PackageTags>
+
     <TargetFramework>netstandard1.3</TargetFramework>
     <RootNamespace>k8s</RootNamespace>
   </PropertyGroup>
