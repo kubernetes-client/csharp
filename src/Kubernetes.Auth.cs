@@ -1,3 +1,5 @@
+using k8s.Models;
+
 namespace k8s
 {
     using System;
@@ -46,6 +48,8 @@ namespace k8s
             // set credentails for the kubernernet client
             this.SetCredentials(config, handler);
             this.InitializeHttpClient(handler, new DelegatingHandler[]{new WatcherDelegatingHandler()});
+
+            DeserializationSettings.Converters.Add(new V1Status.V1StatusObjectViewConverter());
         }
 
         private X509Certificate2 CaCert { get; set; }
