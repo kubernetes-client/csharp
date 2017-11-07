@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using k8s.Exceptions;
@@ -269,6 +270,63 @@ namespace k8s.Tests
 
             Assert.False(watcher.Watching);
             Assert.IsType<IOException>(exceptionCatched);
+        }
+
+        private class DummyHandler : DelegatingHandler
+        {
+            internal bool Called { get; private set; }
+
+            protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
+                CancellationToken cancellationToken)
+            {
+                Called = true;
+                return base.SendAsync(request, cancellationToken);
+            }
+        }
+
+        [Fact]
+        public void TestWatchWithHandlers()
+        {
+            using (var server = new MockKubeApiServer(async httpContext =>
+            {
+                await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse);
+                await Task.Delay(TimeSpan.FromMilliseconds(100));
+
+                await WriteStreamLine(httpContext, MockAddedEventStreamLine);
+                await Task.Delay(TimeSpan.FromMilliseconds(100));
+
+                // make server alive, cannot set to int.max as of it would block response
+                await Task.Delay(TimeSpan.FromDays(1));
+                return false;
+            }))
+            {
+                var handler1 = new DummyHandler();
+                var handler2 = new DummyHandler();
+
+                var client = new Kubernetes(new KubernetesClientConfiguration
+                {
+                    Host = server.Uri.ToString()
+                }, handler1, handler2);
+
+                Assert.False(handler1.Called);
+                Assert.False(handler2.Called);
+
+                var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).Result;
+
+                var events = new HashSet<WatchEventType>();
+
+                var watcher = listTask.Watch<Corev1Pod>(
+                    (type, item) => { events.Add(type); }
+                );
+
+                // wait server yields all events
+                Thread.Sleep(TimeSpan.FromMilliseconds(500));
+
+                Assert.Contains(WatchEventType.Added, events);
+
+                Assert.True(handler1.Called);
+                Assert.True(handler2.Called);
+            }
         }
     }
 }
