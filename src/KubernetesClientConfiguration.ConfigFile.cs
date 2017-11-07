@@ -25,17 +25,6 @@ namespace k8s
                 : Path.Combine(Environment.GetEnvironmentVariable("HOME"), ".kube/config");
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="KubernetesClientConfiguration"/> class.
-        /// </summary>
-        /// <param name="kubeconfig">kubeconfig file info</param>
-        /// <param name="currentContext">Context to use from kube config</param>
-        public KubernetesClientConfiguration(FileInfo kubeconfig = null, string currentContext = null)
-        {
-            var k8SConfig = LoadKubeConfig(kubeconfig ?? new FileInfo(KubeConfigDefaultLocation));
-            this.Initialize(k8SConfig, currentContext);
-        }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="KubernetesClientConfiguration"/> from config file
         /// </summary>
         /// <param name="masterUrl">kube api server endpoint</param>
@@ -60,7 +49,7 @@ namespace k8s
 
             var k8SConfig = LoadKubeConfig(kubeconfig);
             var k8SConfiguration = new KubernetesClientConfiguration();
-            k8SConfiguration.Initialize(k8SConfig);
+            k8SConfiguration.Initialize(k8SConfig, currentContext);
 
             if (!string.IsNullOrWhiteSpace(masterUrl))
             {
@@ -200,7 +189,7 @@ namespace k8s
         /// <summary>
         /// Loads Kube Config
         /// </summary>
-        /// <param name="config">Kube config file contents</param>
+        /// <param name="kubeconfig">Kube config file contents</param>
         /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
         private static K8SConfiguration LoadKubeConfig(FileInfo kubeconfig)
         {

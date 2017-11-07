@@ -64,7 +64,7 @@ namespace k8s.Tests
         public void ConfigurationFileNotFound()
         {
             var fi = new FileInfo("/path/to/nowhere");
-            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi));
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => KubernetesClientConfiguration.BuildConfigFromConfigFile(fi));
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace k8s.Tests
         [Fact]
         public void DefaultConfigurationLoaded()
         {
-            var cfg = new KubernetesClientConfiguration(new FileInfo(kubeConfigFileName));
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(new FileInfo(kubeConfigFileName));
             Assert.NotNull(cfg.Host);
         }
 
@@ -86,7 +86,7 @@ namespace k8s.Tests
         public void ContextHost(string context, string host)
         {
             var fi = new FileInfo(kubeConfigFileName);
-            var cfg = new KubernetesClientConfiguration(fi, context);
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, context);
             Assert.Equal(host, cfg.Host);
         }
 
@@ -100,7 +100,7 @@ namespace k8s.Tests
         public void ContextUserToken(string context, string token)
         {
             var fi = new FileInfo(kubeConfigFileName);
-            var cfg = new KubernetesClientConfiguration(fi, context);
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, context);
             Assert.Equal(context, cfg.CurrentContext);
             Assert.Null(cfg.Username);
             Assert.Equal(token, cfg.AccessToken);
@@ -117,7 +117,7 @@ namespace k8s.Tests
         public void ContextCertificateTest(string context, string clientCert, string clientCertKey)
         {
             var fi = new FileInfo(kubeConfigFileName);
-            var cfg = new KubernetesClientConfiguration(fi, context);
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, context);
             Assert.Equal(context, cfg.CurrentContext);
             Assert.Equal(cfg.ClientCertificateFilePath, clientCert);
             Assert.Equal(cfg.ClientKeyFilePath, clientCertKey);
@@ -132,7 +132,7 @@ namespace k8s.Tests
         public void ClientDataTest(string context)
         {
             var fi = new FileInfo(kubeConfigFileName);
-            var cfg = new KubernetesClientConfiguration(fi, context);
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, context);
             Assert.Equal(context, cfg.CurrentContext);
             Assert.NotNull(cfg.SslCaCert);
             Assert.Equal(readLine("assets/client-certificate-data.txt"), cfg.ClientCertificateData);
@@ -147,7 +147,7 @@ namespace k8s.Tests
         public void ContextNotFound()
         {
             var fi = new FileInfo(kubeConfigFileName);
-            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi, "context-not-found"));
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, "context-not-found"));
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace k8s.Tests
         public void NoContexts()
         {
             var fi = new FileInfo(kubeConfigNoContexts);
-            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi));
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => KubernetesClientConfiguration.BuildConfigFromConfigFile(fi));
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace k8s.Tests
         public void NoContextsExplicit()
         {
             var fi = new FileInfo(kubeConfigNoContexts);
-            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi, "context"));
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, "context"));
         }
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace k8s.Tests
         public void UserPasswordAuthentication()
         {
             var fi = new FileInfo(kubeConfigUserPassword);
-            var cfg = new KubernetesClientConfiguration(fi);
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi);
             Assert.Equal("admin", cfg.Username);
             Assert.Equal("secret", cfg.Password);
         }
@@ -189,7 +189,7 @@ namespace k8s.Tests
         public void IncompleteUserCredentials()
         {
             var fi = new FileInfo(kubeConfigNoCredentials);
-            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi));
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => KubernetesClientConfiguration.BuildConfigFromConfigFile(fi));
         }
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace k8s.Tests
         public void ServerNotFound()
         {
             var fi = new FileInfo(kubeConfigNoServer);
-            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi));
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => KubernetesClientConfiguration.BuildConfigFromConfigFile(fi));
         }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace k8s.Tests
         public void ClusterNotFound()
         {
             var fi = new FileInfo(kubeConfigNoCluster);
-            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi));
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => KubernetesClientConfiguration.BuildConfigFromConfigFile(fi));
         }
 
         /// <summary>
@@ -219,7 +219,7 @@ namespace k8s.Tests
         public void ClusterNameMissmatch()
         {
             var fi = new FileInfo(kubeConfigClusterMissmatch);
-            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi));
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => KubernetesClientConfiguration.BuildConfigFromConfigFile(fi));
         }
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace k8s.Tests
         public void CheckClusterTlsCorrectness()
         {
             var fi = new FileInfo(kubeConfigTlsNoSkipError);
-            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi));
+            Assert.Throws<k8s.Exceptions.KubeConfigException>(() => KubernetesClientConfiguration.BuildConfigFromConfigFile(fi));
         }
 
         /// <summary>
@@ -239,7 +239,7 @@ namespace k8s.Tests
         public void CheckClusterTlsSkipCorrectness()
         {
             var fi = new FileInfo(kubeConfigTlsSkip);
-            var cfg = new KubernetesClientConfiguration(fi);
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi);
             Assert.NotNull(cfg.Host);
             Assert.Null(cfg.SslCaCert);
             Assert.True(cfg.SkipTlsVerify);
@@ -251,7 +251,7 @@ namespace k8s.Tests
         // [Fact]
         // public void ListDefaultNamespacedPod()
         // {
-        //     var k8sClientConfig = new KubernetesClientConfiguration();
+        //     var k8sClientConfig = KubernetesClientConfiguration.BuildConfigFromConfigFile();
         //     IKubernetes client = new Kubernetes(k8sClientConfig);
         //     var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default").Result;
         //     var list = listTask.Body;
