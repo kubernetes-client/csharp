@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -163,7 +163,7 @@ namespace k8s.Tests
                 );
 
                 // wait at least an event
-                Thread.Sleep(TimeSpan.FromMilliseconds(300));
+                Thread.Sleep(TimeSpan.FromMilliseconds(500));
 
                 Assert.NotEmpty(events);
                 Assert.True(watcher.Watching);
@@ -173,7 +173,7 @@ namespace k8s.Tests
                 events.Clear();
 
                 // make sure wait event called
-                Thread.Sleep(TimeSpan.FromMilliseconds(300));
+                Thread.Sleep(TimeSpan.FromMilliseconds(500));
                 Assert.Empty(events);
                 Assert.False(watcher.Watching);
                 
