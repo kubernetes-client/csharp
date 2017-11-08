@@ -130,7 +130,7 @@ namespace k8s
             if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthorityData))
             {
                 string data = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
-                this.SslCaCert = new X509Certificate2(System.Text.Encoding.UTF8.GetBytes(Utils.Base64Decode(data)));
+                this.SslCaCert = new X509Certificate2(Convert.FromBase64String(data));
             }
             else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
             {

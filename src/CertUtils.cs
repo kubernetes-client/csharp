@@ -12,28 +12,8 @@ using Org.BouncyCastle.X509;
 
 namespace k8s
 {
-    public static class Utils
+    public static class CertUtils
     {
-        /// <summary>
-        ///     Encode string in base64 format.
-        /// </summary>
-        /// <param name="text">string to be encoded.</param>
-        /// <returns>Encoded string.</returns>
-        public static string Base64Encode(string text)
-        {
-            return Convert.ToBase64String(Encoding.UTF8.GetBytes(text));
-        }
-
-        /// <summary>
-        ///     Encode string in base64 format.
-        /// </summary>
-        /// <param name="text">string to be encoded.</param>
-        /// <returns>Encoded string.</returns>
-        public static string Base64Decode(string text)
-        {
-            return Encoding.UTF8.GetString(Convert.FromBase64String(text));
-        }
-
         /// <summary>
         /// Load pem encoded cert file
         /// </summary>

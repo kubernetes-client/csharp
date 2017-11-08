@@ -42,7 +42,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void TestCannotWatch()
+        public void CannotWatch()
         {
             using (var server = new MockKubeApiServer())
             {
@@ -74,7 +74,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void TestSuriveBadLine()
+        public void SuriveBadLine()
         {
             using (var server = new MockKubeApiServer(async httpContext =>
             {
@@ -133,7 +133,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void TestDisposeWatch()
+        public void DisposeWatch()
         {
             using (var server = new MockKubeApiServer(async httpContext =>
             {
@@ -181,7 +181,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void TestWatchAllEvents()
+        public void WatchAllEvents()
         {
             using (var server = new MockKubeApiServer(async httpContext =>
             {
@@ -237,7 +237,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void TestWatchServerDisconnect()
+        public void WatchServerDisconnect()
         {
             Watcher<Corev1Pod> watcher;
             Exception exceptionCatched = null;

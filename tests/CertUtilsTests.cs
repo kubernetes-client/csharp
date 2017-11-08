@@ -5,7 +5,7 @@ using System.IO;
 
 namespace k8s.Tests
 {
-    public class UtilsTests
+    public class CertUtilsTests
     {
         /// <summary>
         /// This file contains a sample kubeconfig file
@@ -22,7 +22,7 @@ namespace k8s.Tests
             var cfg = new KubernetesClientConfiguration(fi, "federal-context");
 
             // Just validate that this doesn't throw and private key is non-null
-            var cert = Utils.GeneratePfx(cfg);
+            var cert = CertUtils.GeneratePfx(cfg);
             Assert.NotNull(cert.PrivateKey);
         }
 
@@ -36,7 +36,7 @@ namespace k8s.Tests
             var cfg = new KubernetesClientConfiguration(fi, "victorian-context");
 
             // Just validate that this doesn't throw and private key is non-null
-            var cert = Utils.GeneratePfx(cfg);
+            var cert = CertUtils.GeneratePfx(cfg);
             Assert.NotNull(cert.PrivateKey);
         }
     }

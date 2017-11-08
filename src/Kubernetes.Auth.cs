@@ -77,7 +77,7 @@ namespace k8s
                      (!string.IsNullOrWhiteSpace(config.ClientCertificateKeyData) ||
                       !string.IsNullOrWhiteSpace(config.ClientKeyFilePath)))
             {
-                var cert = Utils.GeneratePfx(config);
+                var cert = CertUtils.GeneratePfx(config);
 
                 handler.ClientCertificates.Add(cert);
             }
