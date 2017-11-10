@@ -83,7 +83,7 @@ namespace k8s.Tests
         [Theory]
         [InlineData("federal-context", "https://horse.org:4443")]
         [InlineData("queen-anne-context", "https://pig.org:443")]
-        public void ContextHostTest(string context, string host)
+        public void ContextHost(string context, string host)
         {
             var fi = new FileInfo(kubeConfigFileName);
             var cfg = new KubernetesClientConfiguration(fi, context);
@@ -94,11 +94,10 @@ namespace k8s.Tests
         /// Checks if user-based token is loaded properly from the config file, per context
         /// </summary>
         /// <param name="context"></param>
-        /// <param name="username"></param>
         /// <param name="token"></param>
         [Theory]
         [InlineData("queen-anne-context", "black-token")]
-        public void ContextUserTokenTest(string context, string token)
+        public void ContextUserToken(string context, string token)
         {
             var fi = new FileInfo(kubeConfigFileName);
             var cfg = new KubernetesClientConfiguration(fi, context);
@@ -145,7 +144,7 @@ namespace k8s.Tests
         /// Test that an Exception is thrown when initializating a KubernetClientConfiguration whose config file Context is not present
         /// </summary>
         [Fact]
-        public void ContextNotFoundTest()
+        public void ContextNotFound()
         {
             var fi = new FileInfo(kubeConfigFileName);
             Assert.Throws<k8s.Exceptions.KubeConfigException>(() => new KubernetesClientConfiguration(fi, "context-not-found"));

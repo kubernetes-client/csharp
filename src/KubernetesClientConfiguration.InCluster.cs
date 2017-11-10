@@ -28,7 +28,7 @@ namespace k8s
             {
                 Host = new UriBuilder("https", host, Convert.ToInt32(port)).ToString(),
                 AccessToken = token,
-                SslCaCert = Utils.LoadPemFileCert(rootCAFile)
+                SslCaCert = CertUtils.LoadPemFileCert(rootCAFile)
             };
         }
     }

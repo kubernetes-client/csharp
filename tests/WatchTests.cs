@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -42,7 +42,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void TestCannotWatch()
+        public void CannotWatch()
         {
             using (var server = new MockKubeApiServer())
             {
@@ -74,7 +74,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void TestSuriveBadLine()
+        public void SuriveBadLine()
         {
             using (var server = new MockKubeApiServer(async httpContext =>
             {
@@ -133,7 +133,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void TestDisposeWatch()
+        public void DisposeWatch()
         {
             using (var server = new MockKubeApiServer(async httpContext =>
             {
@@ -163,7 +163,7 @@ namespace k8s.Tests
                 );
 
                 // wait at least an event
-                Thread.Sleep(TimeSpan.FromMilliseconds(300));
+                Thread.Sleep(TimeSpan.FromMilliseconds(500));
 
                 Assert.NotEmpty(events);
                 Assert.True(watcher.Watching);
@@ -173,7 +173,7 @@ namespace k8s.Tests
                 events.Clear();
 
                 // make sure wait event called
-                Thread.Sleep(TimeSpan.FromMilliseconds(300));
+                Thread.Sleep(TimeSpan.FromMilliseconds(500));
                 Assert.Empty(events);
                 Assert.False(watcher.Watching);
                 
@@ -181,7 +181,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void TestWatchAllEvents()
+        public void WatchAllEvents()
         {
             using (var server = new MockKubeApiServer(async httpContext =>
             {
@@ -237,7 +237,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void TestWatchServerDisconnect()
+        public void WatchServerDisconnect()
         {
             Watcher<Corev1Pod> watcher;
             Exception exceptionCatched = null;

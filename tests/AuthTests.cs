@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using System.Threading.Tasks;
 using k8s.Models;
 using k8s.Tests.Mock;
@@ -22,7 +23,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void TestAnonymous()
+        public void Anonymous()
         {
             using (var server = new MockKubeApiServer())
             {
@@ -55,7 +56,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void TestBasicAuth()
+        public void BasicAuth()
         {
             const string testName = "test_name";
             const string testPassword = "test_password";
@@ -64,7 +65,7 @@ namespace k8s.Tests
             {
                 var header = cxt.Request.Headers["Authorization"].FirstOrDefault();
 
-                var expect = new AuthenticationHeaderValue("Basic", Utils.Base64Encode($"{testName}:{testPassword}"))
+                var expect = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{testName}:{testPassword}")))
                     .ToString();
 
                 if (header != expect)
@@ -154,7 +155,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void TestCert()
+        public void Cert()
         {
             var serverCertificateData = File.ReadAllText("assets/apiserver-pfx-data.txt");
 
@@ -244,7 +245,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void TestToken()
+        public void Token()
         {
             const string token = "testingtoken";
 
