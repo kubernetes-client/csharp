@@ -129,7 +129,7 @@ namespace k8s.Tests
         /// <param name="context">Context to retreive the configuration</param>
         [Theory]
         [InlineData("victorian-context")]
-        public void ClientDataTest(string context)
+        public void ClientData(string context)
         {
             var fi = new FileInfo(kubeConfigFileName);
             var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, context);

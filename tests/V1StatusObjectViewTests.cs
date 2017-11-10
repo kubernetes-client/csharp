@@ -8,7 +8,7 @@ namespace k8s.Tests
     public class V1StatusObjectViewTests
     {
         [Fact]
-        public void TestReturnStatus()
+        public void ReturnStatus()
         {
             var v1Status = new V1Status
             {
@@ -32,7 +32,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void TestReturnObject()
+        public void ReturnObject()
         {
             var corev1Namespace = new Corev1Namespace()
             {
