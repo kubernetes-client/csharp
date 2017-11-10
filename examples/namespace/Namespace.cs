@@ -1,17 +1,15 @@
-namespace simple
-{
-    using System;
-    using System.IO;
-    using System.Net;
-    using System.Threading.Tasks;
-    using k8s;
-    using k8s.Models;
+using System;
+using System.Net;
+using System.Threading.Tasks;
+using k8s;
+using k8s.Models;
 
+namespace @namespace
+{
     class NamespaceExample
     {
         static void ListNamespaces(IKubernetes client) {
-            var listTask = client.ListNamespaceWithHttpMessagesAsync().Result;
-            var list = listTask.Body;
+            var list = client.ListNamespace();
             foreach (var item in list.Items) {
                 Console.WriteLine(item.Metadata.Name);
             }
@@ -20,13 +18,12 @@ namespace simple
             }
         }
 
-        static async Task asyncAwaitDelete(IKubernetes client, string name, int delayMillis) {
+        static async Task DeleteAsync(IKubernetes client, string name, int delayMillis) {
             while (true) {
                 await Task.Delay(delayMillis);
-                try {
-                    var result = await client.ReadNamespaceWithHttpMessagesAsync(name);
-                    var ns = result.Body;
-                    Console.WriteLine(ns);
+                try
+                {
+                    await client.ReadNamespaceAsync(name);
                 } catch (AggregateException ex) {
                     foreach (var innerEx in ex.InnerExceptions) {
                         if (innerEx is Microsoft.Rest.HttpOperationException) {
@@ -46,34 +43,44 @@ namespace simple
             }
         }
 
-        static void awaitDelete(IKubernetes client, string name, int delayMillis) {
-            asyncAwaitDelete(client, name, delayMillis).Wait();
+        static void Delete(IKubernetes client, string name, int delayMillis) {
+            DeleteAsync(client, name, delayMillis).Wait();
         }
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            var k8sClientConfig = KubernetesClientConfiguration.BuildConfigFromConfigFile();
-            IKubernetes client = new Kubernetes(k8sClientConfig);
+            var k8SClientConfig = KubernetesClientConfiguration.BuildConfigFromConfigFile();
+            IKubernetes client = new Kubernetes(k8SClientConfig);
             
             ListNamespaces(client);
 
-            var ns = new Corev1Namespace();
-            ns.Metadata = new V1ObjectMeta();
-            ns.Metadata.Name = "test";
+            var ns = new Corev1Namespace
+            {
+                Metadata = new V1ObjectMeta
+                {
+                    Name = "test"
+                }
+            };
 
-            var result = client.CreateNamespaceWithHttpMessagesAsync(ns).Result;
+            var result = client.CreateNamespace(ns);
             Console.WriteLine(result);
 
             ListNamespaces(client);
 
-            var task = client.DeleteNamespaceWithHttpMessagesAsync(new V1DeleteOptions(), ns.Metadata.Name);
-            var obj = ObjectOrStatus<Corev1Namespace>.ReadObjectOrStatus(task);
-            
-            if (obj.Status != null) {
-                Console.WriteLine(obj.Status);
-            } else {
-                awaitDelete(client, ns.Metadata.Name, 3 * 1000);
+            var status = client.DeleteNamespace(new V1DeleteOptions(), ns.Metadata.Name);
+
+            if (status.HasObject)
+            {
+                var obj = status.ObjectView<Corev1Namespace>();
+                Console.WriteLine(obj.Status.Phase);
+
+                Delete(client, ns.Metadata.Name, 3 * 1000);
             }
+            else
+            {
+                Console.WriteLine(status.Message);
+            }
+
             ListNamespaces(client);
         }
     }
