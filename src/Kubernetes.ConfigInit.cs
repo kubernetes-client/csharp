@@ -1,10 +1,10 @@
-using k8s.Models;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using k8s.Exceptions;
+using k8s.Models;
 using Microsoft.Rest;
 
 namespace k8s
@@ -22,8 +22,21 @@ namespace k8s
         /// </param>
         public Kubernetes(KubernetesClientConfiguration config, params DelegatingHandler[] handlers) : this(handlers)
         {
+            if (string.IsNullOrWhiteSpace(config.Host))
+            {
+                throw new KubeConfigException("Host url must be set");
+            }
+
+            try
+            {
+                BaseUri = new Uri(config.Host);
+            }
+            catch (UriFormatException e)
+            {
+                throw new KubeConfigException("Bad host url", e);
+            }
+
             CaCert = config.SslCaCert;
-            BaseUri = new Uri(config.Host);
 
             if (BaseUri.Scheme == "https")
             {
