@@ -51,12 +51,25 @@ namespace k8s
 
             var k8SConfig = LoadKubeConfig(kubeconfig);
             var k8SConfiguration = new KubernetesClientConfiguration();
-            k8SConfiguration.Initialize(k8SConfig, currentContext);
+
+            currentContext = currentContext ?? k8SConfig.CurrentContext;
+
+            // only init context if context if set
+            if (currentContext != null)
+            {
+                k8SConfiguration.InitializeContext(k8SConfig, currentContext);
+            }
 
             if (!string.IsNullOrWhiteSpace(masterUrl))
             {
                 k8SConfiguration.Host = masterUrl;
             }
+
+            if (string.IsNullOrWhiteSpace(k8SConfiguration.Host))
+            {
+                throw new KubeConfigException("Cannot infer server host url either from context or masterUrl");
+            }
+
             return k8SConfiguration;
         }
 
@@ -65,11 +78,9 @@ namespace k8s
         /// </summary>
         /// <param name="k8SConfig">Kubernetes Configuration</param>
         /// <param name="currentContext">Current Context</param>
-        private void Initialize(K8SConfiguration k8SConfig, string currentContext = null)
+        private void InitializeContext(K8SConfiguration k8SConfig, string currentContext)
         {
             // current context
-            currentContext = currentContext ?? k8SConfig.CurrentContext;
-
             var activeContext =
                 k8SConfig.Contexts.FirstOrDefault(
                     c => c.Name.Equals(currentContext, StringComparison.OrdinalIgnoreCase));
