@@ -12,12 +12,7 @@ namespace k8s
     public partial class KubernetesClientConfiguration
     {
         /// <summary>
-        /// Gets CurrentContext
-        /// </summary>
-        public string CurrentContext { get; private set; }
-
-        /// <summary>
-        /// kubeconfig Default Location
+        ///     kubeconfig Default Location
         /// </summary>
         private static readonly string KubeConfigDefaultLocation =
             RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
@@ -25,22 +20,29 @@ namespace k8s
                 : Path.Combine(Environment.GetEnvironmentVariable("HOME"), ".kube/config");
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="KubernetesClientConfiguration"/> from config file
+        ///     Gets CurrentContext
+        /// </summary>
+        public string CurrentContext { get; private set; }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
         /// </summary>
         /// <param name="masterUrl">kube api server endpoint</param>
         /// <param name="kubeconfigPath">kubeconfig filepath</param>
-        public static KubernetesClientConfiguration BuildConfigFromConfigFile(string masterUrl = null, string kubeconfigPath = null)
+        public static KubernetesClientConfiguration BuildConfigFromConfigFile(string masterUrl = null,
+            string kubeconfigPath = null)
         {
-            return BuildConfigFromConfigFile(new FileInfo(kubeconfigPath ?? KubeConfigDefaultLocation), null, masterUrl);
+            return BuildConfigFromConfigFile(new FileInfo(kubeconfigPath ?? KubeConfigDefaultLocation), null,
+                masterUrl);
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="kubeconfig">Fileinfo of the kubeconfig, cannot be null</param>
         /// <param name="currentContext">override the context in config file, set null if do not want to override</param>
         /// <param name="masterUrl">overrider kube api server endpoint, set null if do not want to override</param>
-        public static KubernetesClientConfiguration BuildConfigFromConfigFile(FileInfo kubeconfig, string currentContext = null, string masterUrl = null)
+        public static KubernetesClientConfiguration BuildConfigFromConfigFile(FileInfo kubeconfig,
+            string currentContext = null, string masterUrl = null)
         {
             if (kubeconfig == null)
             {
@@ -49,41 +51,37 @@ namespace k8s
 
             var k8SConfig = LoadKubeConfig(kubeconfig);
             var k8SConfiguration = new KubernetesClientConfiguration();
-            k8SConfiguration.Initialize(k8SConfig, currentContext);
+
+            currentContext = currentContext ?? k8SConfig.CurrentContext;
+
+            // only init context if context if set
+            if (currentContext != null)
+            {
+                k8SConfiguration.InitializeContext(k8SConfig, currentContext);
+            }
 
             if (!string.IsNullOrWhiteSpace(masterUrl))
             {
                 k8SConfiguration.Host = masterUrl;
             }
+
+            if (string.IsNullOrWhiteSpace(k8SConfiguration.Host))
+            {
+                throw new KubeConfigException("Cannot infer server host url either from context or masterUrl");
+            }
+
             return k8SConfiguration;
         }
-            
 
         /// <summary>
-        /// Validates and Intializes Client Configuration
+        ///     Validates and Intializes Client Configuration
         /// </summary>
         /// <param name="k8SConfig">Kubernetes Configuration</param>
         /// <param name="currentContext">Current Context</param>
-        private void Initialize(K8SConfiguration k8SConfig, string currentContext = null)
+        private void InitializeContext(K8SConfiguration k8SConfig, string currentContext)
         {
-            if (k8SConfig.Contexts == null)
-            {
-                throw new KubeConfigException("No contexts found in kubeconfig");
-            }
-
-            if (k8SConfig.Clusters == null)
-            {
-                throw new KubeConfigException($"No clusters found in kubeconfig");
-            }
-
-            if (k8SConfig.Users == null)
-            {
-                throw new KubeConfigException($"No users found in kubeconfig");
-            }
-
             // current context
-            currentContext = currentContext ?? k8SConfig.CurrentContext;
-            Context activeContext =
+            var activeContext =
                 k8SConfig.Contexts.FirstOrDefault(
                     c => c.Name.Equals(currentContext, StringComparison.OrdinalIgnoreCase));
             if (activeContext == null)
@@ -91,12 +89,21 @@ namespace k8s
                 throw new KubeConfigException($"CurrentContext: {currentContext} not found in contexts in kubeconfig");
             }
 
-            this.CurrentContext = activeContext.Name;
+            CurrentContext = activeContext.Name;
 
             // cluster
+            SetClusterDetails(k8SConfig, activeContext);
+
+            // user
+            SetUserDetails(k8SConfig, activeContext);
+        }
+
+        private void SetClusterDetails(K8SConfiguration k8SConfig, Context activeContext)
+        {
             var clusterDetails =
                 k8SConfig.Clusters.FirstOrDefault(c => c.Name.Equals(activeContext.ContextDetails.Cluster,
                     StringComparison.OrdinalIgnoreCase));
+
             if (clusterDetails?.ClusterEndpoint == null)
             {
                 throw new KubeConfigException($"Cluster not found for context {activeContext} in kubeconfig");
@@ -106,33 +113,49 @@ namespace k8s
             {
                 throw new KubeConfigException($"Server not found for current-context {activeContext} in kubeconfig");
             }
+            Host = clusterDetails.ClusterEndpoint.Server;
 
-            if (!clusterDetails.ClusterEndpoint.SkipTlsVerify &&
-                string.IsNullOrWhiteSpace(clusterDetails.ClusterEndpoint.CertificateAuthorityData) &&
-                string.IsNullOrWhiteSpace(clusterDetails.ClusterEndpoint.CertificateAuthority))
-            {
-                throw new KubeConfigException(
-                    $"neither certificate-authority-data nor certificate-authority not found for current-context :{activeContext} in kubeconfig");
-            }
+            SkipTlsVerify = clusterDetails.ClusterEndpoint.SkipTlsVerify;
 
-            this.Host = clusterDetails.ClusterEndpoint.Server;
-            if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthorityData))
+            try
             {
-                string data = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
-                this.SslCaCert = new X509Certificate2(Convert.FromBase64String(data));
-            }
-            else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
-            {
-                this.SslCaCert = new X509Certificate2(clusterDetails.ClusterEndpoint.CertificateAuthority);
-            }
-            this.SkipTlsVerify = clusterDetails.ClusterEndpoint.SkipTlsVerify;
+                var uri = new Uri(Host);
+                if (uri.Scheme == "https")
+                {
 
-            // user
-            this.SetUserDetails(k8SConfig, activeContext);
+                    // check certificate for https
+                    if (!clusterDetails.ClusterEndpoint.SkipTlsVerify &&
+                        string.IsNullOrWhiteSpace(clusterDetails.ClusterEndpoint.CertificateAuthorityData) &&
+                        string.IsNullOrWhiteSpace(clusterDetails.ClusterEndpoint.CertificateAuthority))
+                    {
+                        throw new KubeConfigException(
+                            $"neither certificate-authority-data nor certificate-authority not found for current-context :{activeContext} in kubeconfig");
+                    }
+
+                    if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthorityData))
+                    {
+                        var data = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
+                        SslCaCert = new X509Certificate2(Convert.FromBase64String(data));
+                    }
+                    else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
+                    {
+                        SslCaCert = new X509Certificate2(clusterDetails.ClusterEndpoint.CertificateAuthority);
+                    }
+                }
+            }
+            catch (UriFormatException e)
+            {
+                throw new KubeConfigException("Bad Server host url", e);
+            }
         }
 
         private void SetUserDetails(K8SConfiguration k8SConfig, Context activeContext)
         {
+            if (string.IsNullOrWhiteSpace(activeContext.ContextDetails.User))
+            {
+                return;
+            }
+
             var userDetails = k8SConfig.Users.FirstOrDefault(c => c.Name.Equals(activeContext.ContextDetails.User,
                 StringComparison.OrdinalIgnoreCase));
 
@@ -151,14 +174,14 @@ namespace k8s
             // Basic and bearer tokens are mutually exclusive
             if (!string.IsNullOrWhiteSpace(userDetails.UserCredentials.Token))
             {
-                this.AccessToken = userDetails.UserCredentials.Token;
+                AccessToken = userDetails.UserCredentials.Token;
                 userCredentialsFound = true;
             }
             else if (!string.IsNullOrWhiteSpace(userDetails.UserCredentials.UserName) &&
                      !string.IsNullOrWhiteSpace(userDetails.UserCredentials.Password))
             {
-                this.Username = userDetails.UserCredentials.UserName;
-                this.Password = userDetails.UserCredentials.Password;
+                Username = userDetails.UserCredentials.UserName;
+                Password = userDetails.UserCredentials.Password;
                 userCredentialsFound = true;
             }
 
@@ -166,16 +189,16 @@ namespace k8s
             if (!string.IsNullOrWhiteSpace(userDetails.UserCredentials.ClientCertificateData) &&
                 !string.IsNullOrWhiteSpace(userDetails.UserCredentials.ClientKeyData))
             {
-                this.ClientCertificateData = userDetails.UserCredentials.ClientCertificateData;
-                this.ClientCertificateKeyData = userDetails.UserCredentials.ClientKeyData;
+                ClientCertificateData = userDetails.UserCredentials.ClientCertificateData;
+                ClientCertificateKeyData = userDetails.UserCredentials.ClientKeyData;
                 userCredentialsFound = true;
             }
 
             if (!string.IsNullOrWhiteSpace(userDetails.UserCredentials.ClientCertificate) &&
                 !string.IsNullOrWhiteSpace(userDetails.UserCredentials.ClientKey))
             {
-                this.ClientCertificateFilePath = userDetails.UserCredentials.ClientCertificate;
-                this.ClientKeyFilePath = userDetails.UserCredentials.ClientKey;
+                ClientCertificateFilePath = userDetails.UserCredentials.ClientCertificate;
+                ClientKeyFilePath = userDetails.UserCredentials.ClientKey;
                 userCredentialsFound = true;
             }
 
@@ -187,7 +210,7 @@ namespace k8s
         }
 
         /// <summary>
-        /// Loads Kube Config
+        ///     Loads Kube Config
         /// </summary>
         /// <param name="kubeconfig">Kube config file contents</param>
         /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
@@ -197,11 +220,10 @@ namespace k8s
             {
                 throw new KubeConfigException($"kubeconfig file not found at {kubeconfig.FullName}");
             }
-            var kubeconfigContent = File.ReadAllText(kubeconfig.FullName);
 
             var deserializeBuilder = new DeserializerBuilder();
             var deserializer = deserializeBuilder.Build();
-            return deserializer.Deserialize<K8SConfiguration>(kubeconfigContent);
+            return deserializer.Deserialize<K8SConfiguration>(kubeconfig.OpenText());
         }
     }
 }

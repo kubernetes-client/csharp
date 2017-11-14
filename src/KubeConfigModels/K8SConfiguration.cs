@@ -1,4 +1,4 @@
-﻿namespace k8s.KubeConfigModels
+namespace k8s.KubeConfigModels
 {
     using System.Collections.Generic;
     using YamlDotNet.Serialization;
@@ -9,7 +9,7 @@
     public class K8SConfiguration
     {
         [YamlMember(Alias = "preferences")]
-        public IDictionary<string, object> preferences{ get; set; }
+        public IDictionary<string, object> Preferences{ get; set; }
 
         [YamlMember(Alias = "apiVersion")]
         public string ApiVersion { get; set; }
@@ -21,12 +21,12 @@
         public string CurrentContext { get; set; }
 
         [YamlMember(Alias = "contexts")]
-        public IEnumerable<Context> Contexts { get; set; }
+        public IEnumerable<Context> Contexts { get; set; } = new Context[0];
 
         [YamlMember(Alias = "clusters")]
-        public IEnumerable<Cluster> Clusters { get; set; }
+        public IEnumerable<Cluster> Clusters { get; set; } = new Cluster[0];
 
         [YamlMember(Alias = "users")]
-        public IEnumerable<User> Users { get; set; }
+        public IEnumerable<User> Users { get; set; } = new User[0];
     }
 }
