@@ -49,7 +49,7 @@ namespace k8s.Models
         /// scaling up the new RC, ensuring that the total number of pods
         /// available at all times during the update is at least 70% of desired
         /// pods.</param>
-        public Apiextensionsv1beta1RollingUpdateDeployment(string maxSurge = default(string), string maxUnavailable = default(string))
+        public Apiextensionsv1beta1RollingUpdateDeployment(IntOrString maxSurge = default(IntOrString), IntOrString maxUnavailable = default(IntOrString))
         {
             MaxSurge = maxSurge;
             MaxUnavailable = maxUnavailable;
@@ -75,7 +75,7 @@ namespace k8s.Models
         /// of desired pods.
         /// </summary>
         [JsonProperty(PropertyName = "maxSurge")]
-        public string MaxSurge { get; set; }
+        public IntOrString MaxSurge { get; set; }
 
         /// <summary>
         /// Gets or sets the maximum number of pods that can be unavailable
@@ -90,7 +90,7 @@ namespace k8s.Models
         /// times during the update is at least 70% of desired pods.
         /// </summary>
         [JsonProperty(PropertyName = "maxUnavailable")]
-        public string MaxUnavailable { get; set; }
+        public IntOrString MaxUnavailable { get; set; }
 
     }
 }
