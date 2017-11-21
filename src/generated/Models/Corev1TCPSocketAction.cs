@@ -31,7 +31,7 @@ namespace k8s.Models
         /// IANA_SVC_NAME.</param>
         /// <param name="host">Optional: Host name to connect to, defaults to
         /// the pod IP.</param>
-        public Corev1TCPSocketAction(string port, string host = default(string))
+        public Corev1TCPSocketAction(IntOrString port, string host = default(string))
         {
             Host = host;
             Port = port;
@@ -56,7 +56,7 @@ namespace k8s.Models
         /// IANA_SVC_NAME.
         /// </summary>
         [JsonProperty(PropertyName = "port")]
-        public string Port { get; set; }
+        public IntOrString Port { get; set; }
 
         /// <summary>
         /// Validate the object.

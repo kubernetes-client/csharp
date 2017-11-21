@@ -32,7 +32,7 @@ namespace k8s.Models
         /// <param name="protocol">Optional.  The protocol (TCP or UDP) which
         /// traffic must match. If not specified, this field defaults to
         /// TCP.</param>
-        public Apiextensionsv1beta1NetworkPolicyPort(string port = default(string), string protocol = default(string))
+        public Apiextensionsv1beta1NetworkPolicyPort(IntOrString port = default(IntOrString), string protocol = default(string))
         {
             Port = port;
             Protocol = protocol;
@@ -51,7 +51,7 @@ namespace k8s.Models
         /// only traffic on the specified protocol AND port will be matched.
         /// </summary>
         [JsonProperty(PropertyName = "port")]
-        public string Port { get; set; }
+        public IntOrString Port { get; set; }
 
         /// <summary>
         /// Gets or sets optional.  The protocol (TCP or UDP) which traffic

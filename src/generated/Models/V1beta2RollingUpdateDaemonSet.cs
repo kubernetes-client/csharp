@@ -41,7 +41,7 @@ namespace k8s.Models
         /// other DaemonSet pods, thus ensuring that at least 70% of original
         /// number of DaemonSet pods are available at all times during the
         /// update.</param>
-        public V1beta2RollingUpdateDaemonSet(string maxUnavailable = default(string))
+        public V1beta2RollingUpdateDaemonSet(IntOrString maxUnavailable = default(IntOrString))
         {
             MaxUnavailable = maxUnavailable;
             CustomInit();
@@ -69,7 +69,7 @@ namespace k8s.Models
         /// update.
         /// </summary>
         [JsonProperty(PropertyName = "maxUnavailable")]
-        public string MaxUnavailable { get; set; }
+        public IntOrString MaxUnavailable { get; set; }
 
     }
 }

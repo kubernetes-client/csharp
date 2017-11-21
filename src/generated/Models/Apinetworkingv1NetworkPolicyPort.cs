@@ -32,7 +32,7 @@ namespace k8s.Models
         /// provided, this matches all port names and numbers.</param>
         /// <param name="protocol">The protocol (TCP or UDP) which traffic must
         /// match. If not specified, this field defaults to TCP.</param>
-        public Apinetworkingv1NetworkPolicyPort(string port = default(string), string protocol = default(string))
+        public Apinetworkingv1NetworkPolicyPort(IntOrString port = default(IntOrString), string protocol = default(string))
         {
             Port = port;
             Protocol = protocol;
@@ -50,7 +50,7 @@ namespace k8s.Models
         /// this matches all port names and numbers.
         /// </summary>
         [JsonProperty(PropertyName = "port")]
-        public string Port { get; set; }
+        public IntOrString Port { get; set; }
 
         /// <summary>
         /// Gets or sets the protocol (TCP or UDP) which traffic must match. If

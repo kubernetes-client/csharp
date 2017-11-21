@@ -32,7 +32,7 @@ namespace k8s.Models
         /// service.</param>
         /// <param name="servicePort">Specifies the port of the referenced
         /// service.</param>
-        public Apiextensionsv1beta1IngressBackend(string serviceName, string servicePort)
+        public Apiextensionsv1beta1IngressBackend(string serviceName, IntOrString servicePort)
         {
             ServiceName = serviceName;
             ServicePort = servicePort;
@@ -54,7 +54,7 @@ namespace k8s.Models
         /// Gets or sets specifies the port of the referenced service.
         /// </summary>
         [JsonProperty(PropertyName = "servicePort")]
-        public string ServicePort { get; set; }
+        public IntOrString ServicePort { get; set; }
 
         /// <summary>
         /// Validate the object.
