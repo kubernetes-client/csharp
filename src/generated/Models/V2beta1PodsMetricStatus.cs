@@ -33,7 +33,7 @@ namespace k8s.Models
         /// (as a quantity)</param>
         /// <param name="metricName">metricName is the name of the metric in
         /// question</param>
-        public V2beta1PodsMetricStatus(string currentAverageValue, string metricName)
+        public V2beta1PodsMetricStatus(ResourceQuantity currentAverageValue, string metricName)
         {
             CurrentAverageValue = currentAverageValue;
             MetricName = metricName;
@@ -50,7 +50,7 @@ namespace k8s.Models
         /// average of the metric across all relevant pods (as a quantity)
         /// </summary>
         [JsonProperty(PropertyName = "currentAverageValue")]
-        public string CurrentAverageValue { get; set; }
+        public ResourceQuantity CurrentAverageValue { get; set; }
 
         /// <summary>
         /// Gets or sets metricName is the name of the metric in question

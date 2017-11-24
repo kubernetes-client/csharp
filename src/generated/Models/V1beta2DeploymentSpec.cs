@@ -53,7 +53,7 @@ namespace k8s.Models
         /// affected by this deployment.</param>
         /// <param name="strategy">The deployment strategy to use to replace
         /// existing pods with new ones.</param>
-        public V1beta2DeploymentSpec(Corev1PodTemplateSpec template, int? minReadySeconds = default(int?), bool? paused = default(bool?), int? progressDeadlineSeconds = default(int?), int? replicas = default(int?), int? revisionHistoryLimit = default(int?), V1LabelSelector selector = default(V1LabelSelector), V1beta2DeploymentStrategy strategy = default(V1beta2DeploymentStrategy))
+        public V1beta2DeploymentSpec(V1PodTemplateSpec template, int? minReadySeconds = default(int?), bool? paused = default(bool?), int? progressDeadlineSeconds = default(int?), int? replicas = default(int?), int? revisionHistoryLimit = default(int?), V1LabelSelector selector = default(V1LabelSelector), V1beta2DeploymentStrategy strategy = default(V1beta2DeploymentStrategy))
         {
             MinReadySeconds = minReadySeconds;
             Paused = paused;
@@ -131,7 +131,7 @@ namespace k8s.Models
         /// Gets or sets template describes the pods that will be created.
         /// </summary>
         [JsonProperty(PropertyName = "template")]
-        public Corev1PodTemplateSpec Template { get; set; }
+        public V1PodTemplateSpec Template { get; set; }
 
         /// <summary>
         /// Validate the object.

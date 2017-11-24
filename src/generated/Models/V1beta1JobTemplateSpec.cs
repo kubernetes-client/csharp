@@ -32,7 +32,7 @@ namespace k8s.Models
         /// <param name="spec">Specification of the desired behavior of the
         /// job. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status</param>
-        public V1beta1JobTemplateSpec(V1ObjectMeta metadata = default(V1ObjectMeta), Apibatchv1JobSpec spec = default(Apibatchv1JobSpec))
+        public V1beta1JobTemplateSpec(V1ObjectMeta metadata = default(V1ObjectMeta), V1JobSpec spec = default(V1JobSpec))
         {
             Metadata = metadata;
             Spec = spec;
@@ -58,7 +58,7 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
         /// </summary>
         [JsonProperty(PropertyName = "spec")]
-        public Apibatchv1JobSpec Spec { get; set; }
+        public V1JobSpec Spec { get; set; }
 
         /// <summary>
         /// Validate the object.

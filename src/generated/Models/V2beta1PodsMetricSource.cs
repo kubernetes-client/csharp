@@ -34,7 +34,7 @@ namespace k8s.Models
         /// <param name="targetAverageValue">targetAverageValue is the target
         /// value of the average of the metric across all relevant pods (as a
         /// quantity)</param>
-        public V2beta1PodsMetricSource(string metricName, string targetAverageValue)
+        public V2beta1PodsMetricSource(string metricName, ResourceQuantity targetAverageValue)
         {
             MetricName = metricName;
             TargetAverageValue = targetAverageValue;
@@ -57,7 +57,7 @@ namespace k8s.Models
         /// of the metric across all relevant pods (as a quantity)
         /// </summary>
         [JsonProperty(PropertyName = "targetAverageValue")]
-        public string TargetAverageValue { get; set; }
+        public ResourceQuantity TargetAverageValue { get; set; }
 
         /// <summary>
         /// Validate the object.

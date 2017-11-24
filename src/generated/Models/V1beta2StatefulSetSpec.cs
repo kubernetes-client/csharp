@@ -73,7 +73,7 @@ namespace k8s.Models
         /// list must have at least one matching (by name) volumeMount in one
         /// container in the template. A claim in this list takes precedence
         /// over any volumes in the template, with the same name.</param>
-        public V1beta2StatefulSetSpec(string serviceName, Corev1PodTemplateSpec template, string podManagementPolicy = default(string), int? replicas = default(int?), int? revisionHistoryLimit = default(int?), V1LabelSelector selector = default(V1LabelSelector), V1beta2StatefulSetUpdateStrategy updateStrategy = default(V1beta2StatefulSetUpdateStrategy), IList<Corev1PersistentVolumeClaim> volumeClaimTemplates = default(IList<Corev1PersistentVolumeClaim>))
+        public V1beta2StatefulSetSpec(string serviceName, V1PodTemplateSpec template, string podManagementPolicy = default(string), int? replicas = default(int?), int? revisionHistoryLimit = default(int?), V1LabelSelector selector = default(V1LabelSelector), V1beta2StatefulSetUpdateStrategy updateStrategy = default(V1beta2StatefulSetUpdateStrategy), IList<V1PersistentVolumeClaim> volumeClaimTemplates = default(IList<V1PersistentVolumeClaim>))
         {
             PodManagementPolicy = podManagementPolicy;
             Replicas = replicas;
@@ -151,7 +151,7 @@ namespace k8s.Models
         /// a unique identity from the rest of the StatefulSet.
         /// </summary>
         [JsonProperty(PropertyName = "template")]
-        public Corev1PodTemplateSpec Template { get; set; }
+        public V1PodTemplateSpec Template { get; set; }
 
         /// <summary>
         /// Gets or sets updateStrategy indicates the StatefulSetUpdateStrategy
@@ -171,7 +171,7 @@ namespace k8s.Models
         /// template, with the same name.
         /// </summary>
         [JsonProperty(PropertyName = "volumeClaimTemplates")]
-        public IList<Corev1PersistentVolumeClaim> VolumeClaimTemplates { get; set; }
+        public IList<V1PersistentVolumeClaim> VolumeClaimTemplates { get; set; }
 
         /// <summary>
         /// Validate the object.

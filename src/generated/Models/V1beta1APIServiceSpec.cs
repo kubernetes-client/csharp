@@ -33,7 +33,7 @@ namespace k8s.Models
         /// certificate.</param>
         /// <param name="groupPriorityMinimum">GroupPriorityMininum is the
         /// priority this group should have at least. Higher priority means
-        /// that the group is preferred by clients over lower priority ones.
+        /// that the group is prefered by clients over lower priority ones.
         /// Note that other versions of this group might specify even higher
         /// GroupPriorityMininum values such that the whole group gets a higher
         /// priority. The primary sort is based on GroupPriorityMinimum,
@@ -94,7 +94,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets groupPriorityMininum is the priority this group should
-        /// have at least. Higher priority means that the group is preferred by
+        /// have at least. Higher priority means that the group is prefered by
         /// clients over lower priority ones. Note that other versions of this
         /// group might specify even higher GroupPriorityMininum values such
         /// that the whole group gets a higher priority. The primary sort is

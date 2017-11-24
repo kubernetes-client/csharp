@@ -48,7 +48,7 @@ namespace k8s.Models
         /// be scaled down further, followed by scaling up the new RC, ensuring
         /// that the total number of pods available at all times during the
         /// update is at least 70% of desired pods.</param>
-        public V1beta2RollingUpdateDeployment(IntOrString maxSurge = default(IntOrString), IntOrString maxUnavailable = default(IntOrString))
+        public V1beta2RollingUpdateDeployment(IntstrIntOrString maxSurge = default(IntstrIntOrString), IntstrIntOrString maxUnavailable = default(IntstrIntOrString))
         {
             MaxSurge = maxSurge;
             MaxUnavailable = maxUnavailable;
@@ -74,7 +74,7 @@ namespace k8s.Models
         /// pods.
         /// </summary>
         [JsonProperty(PropertyName = "maxSurge")]
-        public IntOrString MaxSurge { get; set; }
+        public IntstrIntOrString MaxSurge { get; set; }
 
         /// <summary>
         /// Gets or sets the maximum number of pods that can be unavailable
@@ -89,7 +89,7 @@ namespace k8s.Models
         /// update is at least 70% of desired pods.
         /// </summary>
         [JsonProperty(PropertyName = "maxUnavailable")]
-        public IntOrString MaxUnavailable { get; set; }
+        public IntstrIntOrString MaxUnavailable { get; set; }
 
     }
 }

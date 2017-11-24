@@ -42,7 +42,7 @@ namespace k8s.Models
         /// If this field is present and contains at least one item, this rule
         /// allows traffic only if the traffic matches at least one item in the
         /// to list.</param>
-        public V1NetworkPolicyEgressRule(IList<Apinetworkingv1NetworkPolicyPort> ports = default(IList<Apinetworkingv1NetworkPolicyPort>), IList<Apinetworkingv1NetworkPolicyPeer> to = default(IList<Apinetworkingv1NetworkPolicyPeer>))
+        public V1NetworkPolicyEgressRule(IList<V1NetworkPolicyPort> ports = default(IList<V1NetworkPolicyPort>), IList<V1NetworkPolicyPeer> to = default(IList<V1NetworkPolicyPeer>))
         {
             Ports = ports;
             To = to;
@@ -63,7 +63,7 @@ namespace k8s.Models
         /// at least one port in the list.
         /// </summary>
         [JsonProperty(PropertyName = "ports")]
-        public IList<Apinetworkingv1NetworkPolicyPort> Ports { get; set; }
+        public IList<V1NetworkPolicyPort> Ports { get; set; }
 
         /// <summary>
         /// Gets or sets list of destinations for outgoing traffic of pods
@@ -75,7 +75,7 @@ namespace k8s.Models
         /// to list.
         /// </summary>
         [JsonProperty(PropertyName = "to")]
-        public IList<Apinetworkingv1NetworkPolicyPeer> To { get; set; }
+        public IList<V1NetworkPolicyPeer> To { get; set; }
 
     }
 }

@@ -45,7 +45,7 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors</param>
         /// <param name="updateStrategy">An update strategy to replace existing
         /// DaemonSet pods with new pods.</param>
-        public V1beta2DaemonSetSpec(Corev1PodTemplateSpec template, int? minReadySeconds = default(int?), int? revisionHistoryLimit = default(int?), V1LabelSelector selector = default(V1LabelSelector), V1beta2DaemonSetUpdateStrategy updateStrategy = default(V1beta2DaemonSetUpdateStrategy))
+        public V1beta2DaemonSetSpec(V1PodTemplateSpec template, int? minReadySeconds = default(int?), int? revisionHistoryLimit = default(int?), V1LabelSelector selector = default(V1LabelSelector), V1beta2DaemonSetUpdateStrategy updateStrategy = default(V1beta2DaemonSetUpdateStrategy))
         {
             MinReadySeconds = minReadySeconds;
             RevisionHistoryLimit = revisionHistoryLimit;
@@ -94,7 +94,7 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template
         /// </summary>
         [JsonProperty(PropertyName = "template")]
-        public Corev1PodTemplateSpec Template { get; set; }
+        public V1PodTemplateSpec Template { get; set; }
 
         /// <summary>
         /// Gets or sets an update strategy to replace existing DaemonSet pods
