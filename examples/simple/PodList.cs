@@ -1,22 +1,23 @@
+using System;
+using k8s;
+
 namespace simple
 {
-    using System;
-    using System.IO;
-    using k8s;
-
-    class PodList
+    internal class PodList
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            var k8sClientConfig = KubernetesClientConfiguration.BuildConfigFromConfigFile();
-            IKubernetes client = new Kubernetes(k8sClientConfig);
+            var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
+            IKubernetes client = new Kubernetes(config);
             Console.WriteLine("Starting Request!");
-            var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default").Result;
-            var list = listTask.Body;
-            foreach (var item in list.Items) {
+
+            var list = client.ListNamespacedPod("default");
+            foreach (var item in list.Items)
+            {
                 Console.WriteLine(item.Metadata.Name);
             }
-            if (list.Items.Count == 0) {
+            if (list.Items.Count == 0)
+            {
                 Console.WriteLine("Empty!");
             }
         }

@@ -34,13 +34,13 @@ namespace k8s.Tests
         [Fact]
         public void ReturnObject()
         {
-            var corev1Namespace = new Corev1Namespace()
+            var corev1Namespace = new V1Namespace()
             {
                 Metadata = new V1ObjectMeta()
                 {
                     Name = "test name"
                 },
-                Status = new Corev1NamespaceStatus()
+                Status = new V1NamespaceStatus()
                 {
                     Phase = "test termating"
                 }
@@ -57,7 +57,7 @@ namespace k8s.Tests
 
                 Assert.True(status.HasObject);
 
-                var obj = status.ObjectView<Corev1Namespace>();
+                var obj = status.ObjectView<V1Namespace>();
 
                 Assert.Equal(obj.Metadata.Name, corev1Namespace.Metadata.Name);
                 Assert.Equal(obj.Status.Phase, corev1Namespace.Status.Phase);

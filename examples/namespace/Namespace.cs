@@ -54,7 +54,7 @@ namespace @namespace
             
             ListNamespaces(client);
 
-            var ns = new Corev1Namespace
+            var ns = new V1Namespace
             {
                 Metadata = new V1ObjectMeta
                 {
@@ -71,7 +71,7 @@ namespace @namespace
 
             if (status.HasObject)
             {
-                var obj = status.ObjectView<Corev1Namespace>();
+                var obj = status.ObjectView<V1Namespace>();
                 Console.WriteLine(obj.Status.Phase);
 
                 Delete(client, ns.Metadata.Name, 3 * 1000);

@@ -7,7 +7,7 @@ namespace k8s.Models
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            var s = (value as IntOrString)?.Value;
+            var s = (value as IntstrIntOrString)?.Value;
 
             if (int.TryParse(s, out var intv))
             {
@@ -21,7 +21,7 @@ namespace k8s.Models
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
             JsonSerializer serializer)
         {
-            return (IntOrString) serializer.Deserialize<string>(reader);
+            return (IntstrIntOrString) serializer.Deserialize<string>(reader);
         }
 
         public override bool CanConvert(Type objectType)
@@ -31,26 +31,26 @@ namespace k8s.Models
     }
 
     [JsonConverter(typeof(IntOrStringConverter))]
-    public partial class IntOrString
+    public partial class IntstrIntOrString
     {
-        public static implicit operator int(IntOrString v)
+        public static implicit operator int(IntstrIntOrString v)
         {
             return int.Parse(v.Value);
         }
 
-        public static implicit operator IntOrString(int v)
+        public static implicit operator IntstrIntOrString(int v)
         {
-            return new IntOrString(Convert.ToString(v));
+            return new IntstrIntOrString(Convert.ToString(v));
         }
 
-        public static implicit operator string(IntOrString v)
+        public static implicit operator string(IntstrIntOrString v)
         {
             return v.Value;
         }
 
-        public static implicit operator IntOrString(string v)
+        public static implicit operator IntstrIntOrString(string v)
         {
-            return new IntOrString(v);
+            return new IntstrIntOrString(v);
         }
     }
 }
