@@ -1,5 +1,6 @@
 using System;
 using k8s.Models;
+using Newtonsoft.Json;
 using Xunit;
 using static k8s.Models.ResourceQuantity.SuffixFormat;
 
@@ -7,6 +8,15 @@ namespace k8s.Tests
 {
     public class QuantityValueTests
     {
+        [Fact]
+        public void Deserialize()
+        {
+            {
+                var q = JsonConvert.DeserializeObject<ResourceQuantity>("\"12k\"");
+                Assert.Equal(new ResourceQuantity(12000, 0, DecimalSI), q);
+            }
+        }
+
         [Fact]
         public void Parse()
         {
@@ -213,6 +223,15 @@ namespace k8s.Tests
                 }
 
                 Assert.Equal(expect, new ResourceQuantity(alternate).ToString());
+            }
+        }
+
+        [Fact]
+        public void Serialize()
+        {
+            {
+                ResourceQuantity quantity = 12000;
+                Assert.Equal("\"12e3\"", JsonConvert.SerializeObject(quantity));
             }
         }
     }
