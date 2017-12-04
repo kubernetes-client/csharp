@@ -36,7 +36,7 @@ namespace k8s.Models
         /// endpoint the client submits requests to. Cannot be updated. In
         /// CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
-        public V1NodeConfigSource(string apiVersion = default(string), Corev1ObjectReference configMapRef = default(Corev1ObjectReference), string kind = default(string))
+        public V1NodeConfigSource(string apiVersion = default(string), V1ObjectReference configMapRef = default(V1ObjectReference), string kind = default(string))
         {
             ApiVersion = apiVersion;
             ConfigMapRef = configMapRef;
@@ -62,7 +62,7 @@ namespace k8s.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "configMapRef")]
-        public Corev1ObjectReference ConfigMapRef { get; set; }
+        public V1ObjectReference ConfigMapRef { get; set; }
 
         /// <summary>
         /// Gets or sets kind is a string value representing the REST resource

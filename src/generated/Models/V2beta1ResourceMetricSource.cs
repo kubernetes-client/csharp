@@ -44,7 +44,7 @@ namespace k8s.Models
         /// value of the average of the resource metric across all relevant
         /// pods, as a raw value (instead of as a percentage of the request),
         /// similar to the "pods" metric source type.</param>
-        public V2beta1ResourceMetricSource(string name, int? targetAverageUtilization = default(int?), string targetAverageValue = default(string))
+        public V2beta1ResourceMetricSource(string name, int? targetAverageUtilization = default(int?), ResourceQuantity targetAverageValue = default(ResourceQuantity))
         {
             Name = name;
             TargetAverageUtilization = targetAverageUtilization;
@@ -79,7 +79,7 @@ namespace k8s.Models
         /// metric source type.
         /// </summary>
         [JsonProperty(PropertyName = "targetAverageValue")]
-        public string TargetAverageValue { get; set; }
+        public ResourceQuantity TargetAverageValue { get; set; }
 
         /// <summary>
         /// Validate the object.

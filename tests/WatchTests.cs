@@ -26,8 +26,8 @@ namespace k8s.Tests
 
         private static string BuildWatchEventStreamLine(WatchEventType eventType)
         {
-            var corev1PodList = JsonConvert.DeserializeObject<Corev1PodList>(MockKubeApiServer.MockPodResponse);
-            return JsonConvert.SerializeObject(new Watcher<Corev1Pod>.WatchEvent
+            var corev1PodList = JsonConvert.DeserializeObject<V1PodList>(MockKubeApiServer.MockPodResponse);
+            return JsonConvert.SerializeObject(new Watcher<V1Pod>.WatchEvent
             {
                 Type = eventType,
                 Object = corev1PodList.Items.First()
@@ -57,7 +57,7 @@ namespace k8s.Tests
                     var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default").Result;
                     Assert.ThrowsAny<KubernetesClientException>(() =>
                     {
-                        listTask.Watch<Corev1Pod>((type, item) => { });
+                        listTask.Watch<V1Pod>((type, item) => { });
                     });
                 }
 
@@ -113,7 +113,7 @@ namespace k8s.Tests
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
 
-                var watcher = listTask.Watch<Corev1Pod>(
+                var watcher = listTask.Watch<V1Pod>(
                     (type, item) => { events.Add(type); },
                     e => { errors += 1; }
                 );
@@ -159,7 +159,7 @@ namespace k8s.Tests
 
                 var events = new HashSet<WatchEventType>();
 
-                var watcher = listTask.Watch<Corev1Pod>(
+                var watcher = listTask.Watch<V1Pod>(
                     (type, item) => { events.Add(type); }
                 );
 
@@ -217,7 +217,7 @@ namespace k8s.Tests
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
 
-                var watcher = listTask.Watch<Corev1Pod>(
+                var watcher = listTask.Watch<V1Pod>(
                     (type, item) => { events.Add(type); },
                     e => { errors += 1; }
                 );
@@ -240,7 +240,7 @@ namespace k8s.Tests
         [Fact]
         public void WatchServerDisconnect()
         {
-            Watcher<Corev1Pod> watcher;
+            Watcher<V1Pod> watcher;
             Exception exceptionCatched = null;
 
             using (var server = new MockKubeApiServer(async httpContext =>
@@ -260,7 +260,7 @@ namespace k8s.Tests
 
                 var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).Result;
 
-                watcher = listTask.Watch<Corev1Pod>(
+                watcher = listTask.Watch<V1Pod>(
                     (type, item) => { },
                     e => { exceptionCatched = e; });
             }
@@ -315,7 +315,7 @@ namespace k8s.Tests
 
                 var events = new HashSet<WatchEventType>();
 
-                var watcher = listTask.Watch<Corev1Pod>(
+                var watcher = listTask.Watch<V1Pod>(
                     (type, item) => { events.Add(type); }
                 );
 

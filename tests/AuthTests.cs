@@ -17,7 +17,7 @@ namespace k8s.Tests
 {
     public class AuthTests
     {
-        private static HttpOperationResponse<Corev1PodList> ExecuteListPods(IKubernetes client)
+        private static HttpOperationResponse<V1PodList> ExecuteListPods(IKubernetes client)
         {
             return client.ListNamespacedPodWithHttpMessagesAsync("default").Result;
         }

@@ -47,7 +47,7 @@ namespace k8s.Models
         /// value of the resource for the pods.  It will only be present if
         /// `targetAverageValue` was set in the corresponding metric
         /// specification.</param>
-        public V2beta1ResourceMetricStatus(string currentAverageValue, string name, int? currentAverageUtilization = default(int?))
+        public V2beta1ResourceMetricStatus(ResourceQuantity currentAverageValue, string name, int? currentAverageUtilization = default(int?))
         {
             CurrentAverageUtilization = currentAverageUtilization;
             CurrentAverageValue = currentAverageValue;
@@ -78,7 +78,7 @@ namespace k8s.Models
         /// corresponding metric specification.
         /// </summary>
         [JsonProperty(PropertyName = "currentAverageValue")]
-        public string CurrentAverageValue { get; set; }
+        public ResourceQuantity CurrentAverageValue { get; set; }
 
         /// <summary>
         /// Gets or sets name is the name of the resource in question.

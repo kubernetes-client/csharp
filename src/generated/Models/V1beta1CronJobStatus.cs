@@ -31,7 +31,7 @@ namespace k8s.Models
         /// jobs.</param>
         /// <param name="lastScheduleTime">Information when was the last time
         /// the job was successfully scheduled.</param>
-        public V1beta1CronJobStatus(IList<Corev1ObjectReference> active = default(IList<Corev1ObjectReference>), System.DateTime? lastScheduleTime = default(System.DateTime?))
+        public V1beta1CronJobStatus(IList<V1ObjectReference> active = default(IList<V1ObjectReference>), System.DateTime? lastScheduleTime = default(System.DateTime?))
         {
             Active = active;
             LastScheduleTime = lastScheduleTime;
@@ -47,7 +47,7 @@ namespace k8s.Models
         /// Gets or sets a list of pointers to currently running jobs.
         /// </summary>
         [JsonProperty(PropertyName = "active")]
-        public IList<Corev1ObjectReference> Active { get; set; }
+        public IList<V1ObjectReference> Active { get; set; }
 
         /// <summary>
         /// Gets or sets information when was the last time the job was

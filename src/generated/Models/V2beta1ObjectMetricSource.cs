@@ -33,7 +33,7 @@ namespace k8s.Models
         /// object.</param>
         /// <param name="targetValue">targetValue is the target value of the
         /// metric (as a quantity).</param>
-        public V2beta1ObjectMetricSource(string metricName, V2beta1CrossVersionObjectReference target, string targetValue)
+        public V2beta1ObjectMetricSource(string metricName, V2beta1CrossVersionObjectReference target, ResourceQuantity targetValue)
         {
             MetricName = metricName;
             Target = target;
@@ -63,7 +63,7 @@ namespace k8s.Models
         /// quantity).
         /// </summary>
         [JsonProperty(PropertyName = "targetValue")]
-        public string TargetValue { get; set; }
+        public ResourceQuantity TargetValue { get; set; }
 
         /// <summary>
         /// Validate the object.

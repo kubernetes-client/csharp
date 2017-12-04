@@ -43,7 +43,7 @@ namespace k8s.Models
         /// pod that will be created if insufficient replicas are detected.
         /// More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template</param>
-        public V1beta2ReplicaSetSpec(int? minReadySeconds = default(int?), int? replicas = default(int?), V1LabelSelector selector = default(V1LabelSelector), Corev1PodTemplateSpec template = default(Corev1PodTemplateSpec))
+        public V1beta2ReplicaSetSpec(int? minReadySeconds = default(int?), int? replicas = default(int?), V1LabelSelector selector = default(V1LabelSelector), V1PodTemplateSpec template = default(V1PodTemplateSpec))
         {
             MinReadySeconds = minReadySeconds;
             Replicas = replicas;
@@ -91,7 +91,7 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template
         /// </summary>
         [JsonProperty(PropertyName = "template")]
-        public Corev1PodTemplateSpec Template { get; set; }
+        public V1PodTemplateSpec Template { get; set; }
 
         /// <summary>
         /// Validate the object.

@@ -10,8 +10,7 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// ReplicaSet ensures that a specified number of pod replicas are running
-    /// at any given time.
+    /// ReplicaSet represents the configuration of a ReplicaSet.
     /// </summary>
     public partial class V1beta2ReplicaSet
     {

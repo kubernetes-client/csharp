@@ -14,7 +14,7 @@ namespace watch
             IKubernetes client = new Kubernetes(config);
 
             var podlistResp = client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).Result;
-            using (podlistResp.Watch<Corev1Pod>((type, item) =>
+            using (podlistResp.Watch<V1Pod>((type, item) =>
             {
                 Console.WriteLine("==on watch event==");
                 Console.WriteLine(type);

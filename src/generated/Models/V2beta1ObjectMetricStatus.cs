@@ -33,7 +33,7 @@ namespace k8s.Models
         /// question.</param>
         /// <param name="target">target is the described Kubernetes
         /// object.</param>
-        public V2beta1ObjectMetricStatus(string currentValue, string metricName, V2beta1CrossVersionObjectReference target)
+        public V2beta1ObjectMetricStatus(ResourceQuantity currentValue, string metricName, V2beta1CrossVersionObjectReference target)
         {
             CurrentValue = currentValue;
             MetricName = metricName;
@@ -51,7 +51,7 @@ namespace k8s.Models
         /// quantity).
         /// </summary>
         [JsonProperty(PropertyName = "currentValue")]
-        public string CurrentValue { get; set; }
+        public ResourceQuantity CurrentValue { get; set; }
 
         /// <summary>
         /// Gets or sets metricName is the name of the metric in question.
