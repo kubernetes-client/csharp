@@ -17,7 +17,7 @@ namespace k8s
         public Func<WebSocketBuilder> CreateWebSocketBuilder { get; set; } = () => new WebSocketBuilder();
 
         /// <inheritdoc/>
-        public Task<WebSocket> WebSocketNamespacedPodExecWithHttpMessagesAsync(string name, string @namespace = "default", string command = "/bin/sh", string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", string command = "/bin/sh", string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (name == null)
             {
@@ -50,7 +50,7 @@ namespace k8s
                 tracingParameters.Add("stdout", stdout);
                 tracingParameters.Add("tty", tty);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, nameof(WebSocketNamespacedPodExecWithHttpMessagesAsync), tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, nameof(WebSocketNamespacedPodExecAsync), tracingParameters);
             }
 
             // Construct URL
@@ -80,6 +80,57 @@ namespace k8s
             uriBuilder.Query = string.Join("&", _queryParameters);
 
             return this.StreamConnectAsync(uriBuilder.Uri, _invocationId, customHeaders, cancellationToken);
+        }
+
+        /// <inheritdoc/>
+        public Task<WebSocket> WebSocketNamespacedPodPortForwardAsync(string name, string @namespace, IEnumerable<int> ports, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (name == null)
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
+
+            if (@namespace == null)
+            {
+                throw new ArgumentNullException(nameof(@namespace));
+            }
+
+            if (ports == null)
+            {
+                throw new ArgumentNullException(nameof(ports));
+            }
+
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("name", name);
+                tracingParameters.Add("@namespace", @namespace);
+                tracingParameters.Add("ports", ports);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, nameof(WebSocketNamespacedPodPortForwardAsync), tracingParameters);
+            }
+
+            // Construct URL
+            var uriBuilder = new UriBuilder(this.BaseUri);
+            uriBuilder.Scheme = this.BaseUri.Scheme == "https" ? "wss" : "ws";
+
+            if (!uriBuilder.Path.EndsWith("/"))
+            {
+                uriBuilder.Path += "/";
+            }
+
+            uriBuilder.Path += $"api/v1/namespaces/{@namespace}/pods/{name}/portforward";
+
+            foreach (var port in ports)
+            {
+                uriBuilder.Query += $"ports={port}&";
+            }
+
+            return StreamConnectAsync(uriBuilder.Uri, _invocationId, customHeaders, cancellationToken);
         }
 
         protected async Task<WebSocket> StreamConnectAsync(Uri uri, string invocationId = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
