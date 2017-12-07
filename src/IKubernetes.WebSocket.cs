@@ -73,5 +73,58 @@ namespace k8s
         /// The cancellation token.
         /// </param>
         Task<WebSocket> WebSocketNamespacedPodPortForwardAsync(string name, string @namespace, IEnumerable<int> ports, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// connect GET requests to attach of Pod
+        /// </summary>
+        /// <param name='name'>
+        /// name of the Pod
+        /// </param>
+        /// <param name='namespace'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='container'>
+        /// The container in which to execute the command. Defaults to only container
+        /// if there is only one container in the pod.
+        /// </param>
+        /// <param name='stderr'>
+        /// Stderr if true indicates that stderr is to be redirected for the attach
+        /// call. Defaults to true.
+        /// </param>
+        /// <param name='stdin'>
+        /// Stdin if true, redirects the standard input stream of the pod for this
+        /// call. Defaults to false.
+        /// </param>
+        /// <param name='stdout'>
+        /// Stdout if true indicates that stdout is to be redirected for the attach
+        /// call. Defaults to true.
+        /// </param>
+        /// <param name='tty'>
+        /// TTY if true indicates that a tty will be allocated for the attach call.
+        /// This is passed through the container runtime so the tty is allocated on the
+        /// worker node by the container runtime. Defaults to false.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="HttpOperationException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        Task<WebSocket> WebSocketNamespacedPodAttachAsync(string name, string @namespace, string container = default(string), bool stderr = true, bool stdin = false, bool stdout = true, bool tty = false, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

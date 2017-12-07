@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Rest;
 using System;
 using System.Collections.Generic;
@@ -129,6 +130,60 @@ namespace k8s
             {
                 uriBuilder.Query += $"ports={port}&";
             }
+
+            return StreamConnectAsync(uriBuilder.Uri, _invocationId, customHeaders, cancellationToken);
+        }
+
+        /// <inheritdoc/>
+        public Task<WebSocket> WebSocketNamespacedPodAttachAsync(string name, string @namespace, string container = default(string), bool stderr = true, bool stdin = false, bool stdout = true, bool tty = false, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (name == null)
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
+
+            if (@namespace == null)
+            {
+                throw new ArgumentNullException(nameof(@namespace));
+            }
+
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("container", container);
+                tracingParameters.Add("name", name);
+                tracingParameters.Add("namespace", @namespace);
+                tracingParameters.Add("stderr", stderr);
+                tracingParameters.Add("stdin", stdin);
+                tracingParameters.Add("stdout", stdout);
+                tracingParameters.Add("tty", tty);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, nameof(WebSocketNamespacedPodAttachAsync), tracingParameters);
+            }
+
+            // Construct URL
+            var uriBuilder = new UriBuilder(this.BaseUri);
+            uriBuilder.Scheme = this.BaseUri.Scheme == "https" ? "wss" : "ws";
+
+            if (!uriBuilder.Path.EndsWith("/"))
+            {
+                uriBuilder.Path += "/";
+            }
+
+            uriBuilder.Path += $"api/v1/namespaces/{@namespace}/pods/{name}/portforward";
+
+            uriBuilder.Query = QueryHelpers.AddQueryString(string.Empty, new Dictionary<string, string>
+            {
+                { "container", container},
+                { "stderr", stderr ? "1": "0"},
+                { "stdin", stdin ? "1": "0"},
+                { "stdout", stdout ? "1": "0"},
+                { "tty", tty ? "1": "0"}
+            });
 
             return StreamConnectAsync(uriBuilder.Uri, _invocationId, customHeaders, cancellationToken);
         }
