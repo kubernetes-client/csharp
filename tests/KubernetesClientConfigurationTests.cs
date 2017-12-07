@@ -259,5 +259,31 @@ namespace k8s.Tests
             var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, masterUrl: "http://test.server");
             Assert.Equal("http://test.server", cfg.Host);
         }
+
+        /// <summary>
+        ///     Checks that loading a configuration from a file leaves no outstanding handles to the file.
+        /// </summary>
+        /// <remarks>
+        ///     This test fails only on Windows.
+        /// </remarks>
+        [Fact]
+        public void DeletedConfigurationFile()
+        {
+            var assetFileInfo = new FileInfo("assets/kubeconfig.yml");
+            var tempFileInfo = new FileInfo(Path.GetTempFileName());
+            
+            File.Copy(assetFileInfo.FullName, tempFileInfo.FullName, /* overwrite: */ true);
+
+            KubernetesClientConfiguration config;
+
+            try
+            {
+                config = KubernetesClientConfiguration.BuildConfigFromConfigFile(tempFileInfo);
+            }
+            finally
+            {
+                File.Delete(tempFileInfo.FullName);
+            }
+        }
     }
 }
