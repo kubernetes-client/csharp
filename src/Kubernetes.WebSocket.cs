@@ -65,20 +65,16 @@ namespace k8s
 
             uriBuilder.Path += $"api/v1/namespaces/{@namespace}/pods/{name}/exec";
 
-            List<string> _queryParameters = new List<string>();
-            _queryParameters.Add(string.Format("command={0}", Uri.EscapeDataString(command)));
 
-            if (container != null)
+            uriBuilder.Query = QueryHelpers.AddQueryString(string.Empty, new Dictionary<string, string>
             {
-                _queryParameters.Add(string.Format("container={0}", Uri.EscapeDataString(container)));
-            }
-
-            _queryParameters.Add(string.Format("stderr={0}", stderr ? 1 : 0));
-            _queryParameters.Add(string.Format("stdin={0}", stdin ? 1 : 0));
-            _queryParameters.Add(string.Format("stdout={0}", stdout ? 1 : 0));
-            _queryParameters.Add(string.Format("tty={0}", tty ? 1 : 0));
-
-            uriBuilder.Query = string.Join("&", _queryParameters);
+                { "command", command},
+                { "container", container},
+                { "stderr", stderr ? "1": "0"},
+                { "stdin", stdin ? "1": "0"},
+                { "stdout", stdout ? "1": "0"},
+                { "tty", tty ? "1": "0"}
+            });
 
             return this.StreamConnectAsync(uriBuilder.Uri, _invocationId, customHeaders, cancellationToken);
         }
