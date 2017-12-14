@@ -53,13 +53,11 @@ namespace k8s
             var k8SConfiguration = new KubernetesClientConfiguration();
 
             currentContext = currentContext ?? k8SConfig.CurrentContext;
-
             // only init context if context if set
             if (currentContext != null)
             {
                 k8SConfiguration.InitializeContext(k8SConfig, currentContext);
             }
-
             if (!string.IsNullOrWhiteSpace(masterUrl))
             {
                 k8SConfiguration.Host = masterUrl;
@@ -96,6 +94,9 @@ namespace k8s
 
             // user
             SetUserDetails(k8SConfig, activeContext);
+
+            // namespace
+            Namespace = activeContext.Namespace;
         }
 
         private void SetClusterDetails(K8SConfiguration k8SConfig, Context activeContext)
@@ -122,7 +123,6 @@ namespace k8s
                 var uri = new Uri(Host);
                 if (uri.Scheme == "https")
                 {
-
                     // check certificate for https
                     if (!clusterDetails.ClusterEndpoint.SkipTlsVerify &&
                         string.IsNullOrWhiteSpace(clusterDetails.ClusterEndpoint.CertificateAuthorityData) &&
