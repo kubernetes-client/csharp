@@ -9,5 +9,8 @@
 
         [YamlMember(Alias = "name")]
         public string Name { get; set; }
+
+        [YamlMember(Alias = "namespace")]
+        public string Namespace { get; set; }
     }
 }

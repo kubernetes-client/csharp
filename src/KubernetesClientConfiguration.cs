@@ -8,6 +8,11 @@ namespace k8s
     public partial class KubernetesClientConfiguration
     {
         /// <summary>
+        ///     Gets current namespace
+        /// </summary>
+        public string Namespace { get; set; }
+
+        /// <summary>
         ///     Gets Host
         /// </summary>
         public string Host { get; set; }
