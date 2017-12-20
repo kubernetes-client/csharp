@@ -4,7 +4,7 @@
     <Authors>The Kubernetes Project Authors</Authors>
     <Copyright>2017 The Kubernetes Project Authors</Copyright>
     <Description>Client library for the Kubernetes open source container orchestrator.</Description>
-    
+
     <PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/kubernetes-client/csharp</PackageProjectUrl>
     <PackageTags>kubernetes;docker;containers;</PackageTags>
@@ -23,5 +23,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
     <PackageReference Include="System.ValueTuple" Version="4.4.0" />
     <PackageReference Include="YamlDotNet.NetCore" Version="1.0.0" />
+    <PackageReference Include="System.Net.WebSockets.Client" Version="4.3.2"/>
   </ItemGroup>
 </Project>

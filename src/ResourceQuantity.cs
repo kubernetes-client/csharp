@@ -324,13 +324,10 @@ namespace k8s.Models
                         return $"{(decimal) lastv}e{minE}";
                     }
 
-                        break;
                     case SuffixFormat.BinarySI:
                         return AppendMaxSuffix(value, BinSuffixes);
-                        break;
                     case SuffixFormat.DecimalSI:
                         return AppendMaxSuffix(value, DecSuffixes);
-                        break;
                     default:
                         throw new ArgumentOutOfRangeException(nameof(format), format, null);
                 }
