@@ -223,7 +223,10 @@ namespace k8s
 
             var deserializeBuilder = new DeserializerBuilder();
             var deserializer = deserializeBuilder.Build();
-            return deserializer.Deserialize<K8SConfiguration>(kubeconfig.OpenText());
+            using (var kubeConfigTextStream = kubeconfig.OpenText())
+            {
+                return deserializer.Deserialize<K8SConfiguration>(kubeConfigTextStream);
+            }
         }
     }
 }
