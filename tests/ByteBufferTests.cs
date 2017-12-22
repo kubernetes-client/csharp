@@ -183,8 +183,8 @@ namespace k8s.tests
             Assert.Equal(0x20, buffer.Size);
             Assert.Equal(0x14, buffer.AvailableReadableBytes); // 2 * 0x0A = 0x14
             Assert.Equal(0x0C, buffer.AvailableWritableBytes); // 0x20 - 0x14 = 0x0C
-            Assert.Equal(0x0A, buffer.ReadWaterMark);
-            Assert.Equal(0x1E, buffer.WriteWaterMark);
+            Assert.Equal(0x1A, buffer.ReadWaterMark);
+            Assert.Equal(0x0E, buffer.WriteWaterMark);
 
             // Read data, and verify the read data
             read = buffer.Read(readData, 0, 0x14);
