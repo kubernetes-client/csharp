@@ -7,6 +7,7 @@
 namespace k8s
 {
     using Models;
+    using System.IO;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -5504,7 +5505,7 @@ namespace k8s
             /// If true, add an RFC3339 or RFC3339Nano timestamp at the beginning of every
             /// line of log output. Defaults to false.
             /// </param>
-            public static string ReadNamespacedPodLog(this IKubernetes operations, string name, string namespaceParameter, string container = default(string), bool? follow = default(bool?), int? limitBytes = default(int?), string pretty = default(string), bool? previous = default(bool?), int? sinceSeconds = default(int?), int? tailLines = default(int?), bool? timestamps = default(bool?))
+            public static Stream ReadNamespacedPodLog(this IKubernetes operations, string name, string namespaceParameter, string container = default(string), bool? follow = default(bool?), int? limitBytes = default(int?), string pretty = default(string), bool? previous = default(bool?), int? sinceSeconds = default(int?), int? tailLines = default(int?), bool? timestamps = default(bool?))
             {
                 return operations.ReadNamespacedPodLogAsync(name, namespaceParameter, container, follow, limitBytes, pretty, previous, sinceSeconds, tailLines, timestamps).GetAwaiter().GetResult();
             }
@@ -5557,12 +5558,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ReadNamespacedPodLogAsync(this IKubernetes operations, string name, string namespaceParameter, string container = default(string), bool? follow = default(bool?), int? limitBytes = default(int?), string pretty = default(string), bool? previous = default(bool?), int? sinceSeconds = default(int?), int? tailLines = default(int?), bool? timestamps = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ReadNamespacedPodLogAsync(this IKubernetes operations, string name, string namespaceParameter, string container = default(string), bool? follow = default(bool?), int? limitBytes = default(int?), string pretty = default(string), bool? previous = default(bool?), int? sinceSeconds = default(int?), int? tailLines = default(int?), bool? timestamps = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ReadNamespacedPodLogWithHttpMessagesAsync(name, namespaceParameter, container, follow, limitBytes, pretty, previous, sinceSeconds, tailLines, timestamps, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ReadNamespacedPodLogWithHttpMessagesAsync(name, namespaceParameter, container, follow, limitBytes, pretty, previous, sinceSeconds, tailLines, timestamps, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>

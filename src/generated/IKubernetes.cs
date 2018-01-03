@@ -11,6 +11,7 @@ namespace k8s
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
+    using System.IO;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -2742,7 +2743,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ReadNamespacedPodLogWithHttpMessagesAsync(string name, string namespaceParameter, string container = default(string), bool? follow = default(bool?), int? limitBytes = default(int?), string pretty = default(string), bool? previous = default(bool?), int? sinceSeconds = default(int?), int? tailLines = default(int?), bool? timestamps = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ReadNamespacedPodLogWithHttpMessagesAsync(string name, string namespaceParameter, string container = default(string), bool? follow = default(bool?), int? limitBytes = default(int?), string pretty = default(string), bool? previous = default(bool?), int? sinceSeconds = default(int?), int? tailLines = default(int?), bool? timestamps = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect GET requests to portforward of Pod
