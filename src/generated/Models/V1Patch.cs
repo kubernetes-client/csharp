@@ -36,7 +36,7 @@ namespace k8s.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "content")]
-        public object Content { get; set; }
+        public object Content { get; private set; }
 
     }
 }
