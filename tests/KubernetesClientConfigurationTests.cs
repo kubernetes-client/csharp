@@ -285,5 +285,31 @@ namespace k8s.Tests
                 File.Delete(tempFileInfo.FullName);
             }
         }
+
+        /// <summary>
+        ///     Checks Host is loaded from the default configuration file as string
+        /// </summary>
+        [Fact]
+        public void DefaultConfigurationAsStringLoaded()
+        {
+            var txt = File.ReadAllText("assets/kubeconfig.yml");
+
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(txt, null, null);
+            Assert.NotNull(cfg.Host);
+        }
+
+
+        /// <summary>
+        ///     Checks Host is loaded from the default configuration file as stream
+        /// </summary>
+        [Fact]
+        public void DefaultConfigurationAsStreamLoaded()
+        {
+            using (var stream = File.OpenRead("assets/kubeconfig.yml"))
+            {
+                var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(stream);
+                Assert.NotNull(cfg.Host);
+            }
+        }
     }
 }
