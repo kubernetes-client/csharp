@@ -91,7 +91,7 @@ namespace k8s.tests
             };
 
             Assert.Equal(mockWebSocketBuilder.PublicWebSocket, webSocket); // Did the method return the correct web socket?
-            Assert.Equal(new Uri("ws://localhost/api/v1/namespaces/mynamespace/pods/mypod/portforward?ports=80&ports=8080&"), mockWebSocketBuilder.Uri); // Did we connect to the correct URL?
+            Assert.Equal(new Uri("ws://localhost/api/v1/namespaces/mynamespace/pods/mypod/portforward?ports=80&ports=8080"), mockWebSocketBuilder.Uri); // Did we connect to the correct URL?
             Assert.Empty(mockWebSocketBuilder.Certificates); // No certificates were used in this test
             Assert.Equal(expectedHeaders, mockWebSocketBuilder.RequestHeaders); // Did we use the expected headers
         }
