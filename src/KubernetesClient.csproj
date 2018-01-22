@@ -10,6 +10,7 @@
     <PackageTags>kubernetes;docker;containers;</PackageTags>
 
     <TargetFrameworks>netstandard1.4;net452</TargetFrameworks>
+    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard1.4</TargetFrameworks>
     <RootNamespace>k8s</RootNamespace>
   </PropertyGroup>
 
