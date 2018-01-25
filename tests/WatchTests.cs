@@ -164,7 +164,7 @@ namespace k8s.Tests
                 );
 
                 // wait at least an event
-                Thread.Sleep(TimeSpan.FromMilliseconds(500));
+                Thread.Sleep(TimeSpan.FromMilliseconds(1000));
 
                 Assert.NotEmpty(events);
                 Assert.True(watcher.Watching);
@@ -174,7 +174,7 @@ namespace k8s.Tests
                 events.Clear();
 
                 // make sure wait event called
-                Thread.Sleep(TimeSpan.FromMilliseconds(500));
+                Thread.Sleep(TimeSpan.FromMilliseconds(1000));
                 Assert.Empty(events);
                 Assert.False(watcher.Watching);
                 
@@ -223,7 +223,7 @@ namespace k8s.Tests
                 );
 
                 // wait server yields all events
-                Thread.Sleep(TimeSpan.FromMilliseconds(750));
+                Thread.Sleep(TimeSpan.FromMilliseconds(1000));
 
                 Assert.Contains(WatchEventType.Added, events);
                 Assert.Contains(WatchEventType.Deleted, events);
@@ -266,7 +266,7 @@ namespace k8s.Tests
             }
 
             // wait server down
-            Thread.Sleep(TimeSpan.FromMilliseconds(500));
+            Thread.Sleep(TimeSpan.FromMilliseconds(1000));
 
             Assert.False(watcher.Watching);
             Assert.IsType<IOException>(exceptionCatched);
