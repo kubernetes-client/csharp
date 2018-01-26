@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Net;
 using System.Net.Http;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
@@ -42,8 +43,13 @@ namespace k8s
             {
                 if (config.SkipTlsVerify)
                 {
+#if NET452
+                    ((WebRequestHandler) HttpClientHandler).ServerCertificateValidationCallback =
+                        (sender, certificate, chain, sslPolicyErrors) => true;
+#else
                     HttpClientHandler.ServerCertificateCustomValidationCallback =
                         (sender, certificate, chain, sslPolicyErrors) => true;
+#endif
                 }
                 else
                 {
@@ -52,7 +58,12 @@ namespace k8s
                         throw new KubeConfigException("a CA must be set when SkipTlsVerify === false");
                     }
 
+#if NET452
+                    ((WebRequestHandler) HttpClientHandler).ServerCertificateValidationCallback =
+                        CertificateValidationCallBack;
+#else
                     HttpClientHandler.ServerCertificateCustomValidationCallback = CertificateValidationCallBack;
+#endif
                 }
             }
 
@@ -64,6 +75,9 @@ namespace k8s
 
         partial void CustomInitialize()
         {
+#if NET452
+            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
+#endif
             AppendDelegatingHandler<WatcherDelegatingHandler>();
             DeserializationSettings.Converters.Add(new V1Status.V1StatusObjectViewConverter());
         }
@@ -120,7 +134,11 @@ namespace k8s
             {
                 var cert = CertUtils.GeneratePfx(config);
 
+#if NET452
+                ((WebRequestHandler) handler).ClientCertificates.Add(cert);
+#else
                 handler.ClientCertificates.Add(cert);
+#endif
             }
         }
 
@@ -156,6 +174,7 @@ namespace k8s
                 var isValid = chain.Build((X509Certificate2) certificate);
                 return isValid;
             }
+
             // In all other cases, return false.
             return false;
         }

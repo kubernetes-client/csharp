@@ -74,7 +74,7 @@ namespace k8s
                 { "stdin", stdin ? "1": "0"},
                 { "stdout", stdout ? "1": "0"},
                 { "tty", tty ? "1": "0"}
-            });
+            }).TrimStart('?');
 
             return this.StreamConnectAsync(uriBuilder.Uri, _invocationId, customHeaders, cancellationToken);
         }
@@ -122,10 +122,14 @@ namespace k8s
 
             uriBuilder.Path += $"api/v1/namespaces/{@namespace}/pods/{name}/portforward";
 
+            var q = "";
             foreach (var port in ports)
             {
-                uriBuilder.Query += $"ports={port}&";
+                q = QueryHelpers.AddQueryString(q, "ports", $"{port}");
             }
+            uriBuilder.Query = q.TrimStart('?');
+
+
 
             return StreamConnectAsync(uriBuilder.Uri, _invocationId, customHeaders, cancellationToken);
         }
@@ -179,7 +183,7 @@ namespace k8s
                 { "stdin", stdin ? "1": "0"},
                 { "stdout", stdout ? "1": "0"},
                 { "tty", tty ? "1": "0"}
-            });
+            }).TrimStart('?');
 
             return StreamConnectAsync(uriBuilder.Uri, _invocationId, customHeaders, cancellationToken);
         }
@@ -200,8 +204,12 @@ namespace k8s
                 }
             }
 
-            // Set Credentials
+                // Set Credentials
+#if NET452
+            foreach (var cert in ((WebRequestHandler)this.HttpClientHandler).ClientCertificates)
+#else
             foreach (var cert in this.HttpClientHandler.ClientCertificates)
+#endif
             {
                 webSocketBuilder.AddClientCertificate(cert);
             }
