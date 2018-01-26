@@ -33,7 +33,7 @@ namespace k8s.Models
         /// allowable labels that may be set.</param>
         /// <param name="seLinuxOptions">seLinuxOptions required to run as;
         /// required for MustRunAs More info:
-        /// https://git.k8s.io/community/contributors/design-proposals/security_context.md</param>
+        /// https://kubernetes.io/docs/tasks/configure-pod-container/security-context/</param>
         public V1beta1SELinuxStrategyOptions(string rule, V1SELinuxOptions seLinuxOptions = default(V1SELinuxOptions))
         {
             Rule = rule;
@@ -56,7 +56,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets seLinuxOptions required to run as; required for
         /// MustRunAs More info:
-        /// https://git.k8s.io/community/contributors/design-proposals/security_context.md
+        /// https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
         /// </summary>
         [JsonProperty(PropertyName = "seLinuxOptions")]
         public V1SELinuxOptions SeLinuxOptions { get; set; }

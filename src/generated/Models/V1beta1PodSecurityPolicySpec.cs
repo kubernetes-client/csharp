@@ -47,13 +47,19 @@ namespace k8s.Models
         /// Capabilities in this field may be added at the pod author's
         /// discretion. You must not list a capability in both
         /// AllowedCapabilities and RequiredDropCapabilities.</param>
+        /// <param name="allowedFlexVolumes">AllowedFlexVolumes is a whitelist
+        /// of allowed Flexvolumes.  Empty or nil indicates that all
+        /// Flexvolumes may be used.  This parameter is effective only when the
+        /// usage of the Flexvolumes is allowed in the "Volumes" field.</param>
         /// <param name="allowedHostPaths">is a white list of allowed host
         /// paths. Empty indicates that all host paths may be used.</param>
         /// <param name="defaultAddCapabilities">DefaultAddCapabilities is the
         /// default set of capabilities that will be added to the container
         /// unless the pod spec specifically drops the capability.  You may not
-        /// list a capabiility in both DefaultAddCapabilities and
-        /// RequiredDropCapabilities.</param>
+        /// list a capability in both DefaultAddCapabilities and
+        /// RequiredDropCapabilities. Capabilities added here are implicitly
+        /// allowed, and need not be included in the AllowedCapabilities
+        /// list.</param>
         /// <param
         /// name="defaultAllowPrivilegeEscalation">DefaultAllowPrivilegeEscalation
         /// controls the default setting for whether a process can gain more
@@ -79,10 +85,11 @@ namespace k8s.Models
         /// are required to be dropped and cannot be added.</param>
         /// <param name="volumes">volumes is a white list of allowed volume
         /// plugins.  Empty indicates that all plugins may be used.</param>
-        public V1beta1PodSecurityPolicySpec(V1beta1FSGroupStrategyOptions fsGroup, V1beta1RunAsUserStrategyOptions runAsUser, V1beta1SELinuxStrategyOptions seLinux, V1beta1SupplementalGroupsStrategyOptions supplementalGroups, bool? allowPrivilegeEscalation = default(bool?), IList<string> allowedCapabilities = default(IList<string>), IList<V1beta1AllowedHostPath> allowedHostPaths = default(IList<V1beta1AllowedHostPath>), IList<string> defaultAddCapabilities = default(IList<string>), bool? defaultAllowPrivilegeEscalation = default(bool?), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), IList<V1beta1HostPortRange> hostPorts = default(IList<V1beta1HostPortRange>), bool? privileged = default(bool?), bool? readOnlyRootFilesystem = default(bool?), IList<string> requiredDropCapabilities = default(IList<string>), IList<string> volumes = default(IList<string>))
+        public V1beta1PodSecurityPolicySpec(V1beta1FSGroupStrategyOptions fsGroup, V1beta1RunAsUserStrategyOptions runAsUser, V1beta1SELinuxStrategyOptions seLinux, V1beta1SupplementalGroupsStrategyOptions supplementalGroups, bool? allowPrivilegeEscalation = default(bool?), IList<string> allowedCapabilities = default(IList<string>), IList<V1beta1AllowedFlexVolume> allowedFlexVolumes = default(IList<V1beta1AllowedFlexVolume>), IList<V1beta1AllowedHostPath> allowedHostPaths = default(IList<V1beta1AllowedHostPath>), IList<string> defaultAddCapabilities = default(IList<string>), bool? defaultAllowPrivilegeEscalation = default(bool?), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), IList<V1beta1HostPortRange> hostPorts = default(IList<V1beta1HostPortRange>), bool? privileged = default(bool?), bool? readOnlyRootFilesystem = default(bool?), IList<string> requiredDropCapabilities = default(IList<string>), IList<string> volumes = default(IList<string>))
         {
             AllowPrivilegeEscalation = allowPrivilegeEscalation;
             AllowedCapabilities = allowedCapabilities;
+            AllowedFlexVolumes = allowedFlexVolumes;
             AllowedHostPaths = allowedHostPaths;
             DefaultAddCapabilities = defaultAddCapabilities;
             DefaultAllowPrivilegeEscalation = defaultAllowPrivilegeEscalation;
@@ -125,6 +132,15 @@ namespace k8s.Models
         public IList<string> AllowedCapabilities { get; set; }
 
         /// <summary>
+        /// Gets or sets allowedFlexVolumes is a whitelist of allowed
+        /// Flexvolumes.  Empty or nil indicates that all Flexvolumes may be
+        /// used.  This parameter is effective only when the usage of the
+        /// Flexvolumes is allowed in the "Volumes" field.
+        /// </summary>
+        [JsonProperty(PropertyName = "allowedFlexVolumes")]
+        public IList<V1beta1AllowedFlexVolume> AllowedFlexVolumes { get; set; }
+
+        /// <summary>
         /// Gets or sets is a white list of allowed host paths. Empty indicates
         /// that all host paths may be used.
         /// </summary>
@@ -135,8 +151,9 @@ namespace k8s.Models
         /// Gets or sets defaultAddCapabilities is the default set of
         /// capabilities that will be added to the container unless the pod
         /// spec specifically drops the capability.  You may not list a
-        /// capabiility in both DefaultAddCapabilities and
-        /// RequiredDropCapabilities.
+        /// capability in both DefaultAddCapabilities and
+        /// RequiredDropCapabilities. Capabilities added here are implicitly
+        /// allowed, and need not be included in the AllowedCapabilities list.
         /// </summary>
         [JsonProperty(PropertyName = "defaultAddCapabilities")]
         public IList<string> DefaultAddCapabilities { get; set; }
@@ -262,13 +279,23 @@ namespace k8s.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "SupplementalGroups");
             }
-            if (HostPorts != null)
+            if (AllowedFlexVolumes != null)
             {
-                foreach (var element in HostPorts)
+                foreach (var element in AllowedFlexVolumes)
                 {
                     if (element != null)
                     {
                         element.Validate();
+                    }
+                }
+            }
+            if (HostPorts != null)
+            {
+                foreach (var element1 in HostPorts)
+                {
+                    if (element1 != null)
+                    {
+                        element1.Validate();
                     }
                 }
             }

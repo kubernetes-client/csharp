@@ -45,8 +45,9 @@ namespace k8s.Models
         /// of the Kubernetes system.</param>
         /// <param name="externalName">externalName is the external reference
         /// that kubedns or equivalent will return as a CNAME record for this
-        /// service. No proxying will be involved. Must be a valid DNS name and
-        /// requires Type to be ExternalName.</param>
+        /// service. No proxying will be involved. Must be a valid RFC-1123
+        /// hostname (https://tools.ietf.org/html/rfc1123) and requires Type to
+        /// be ExternalName.</param>
         /// <param name="externalTrafficPolicy">externalTrafficPolicy denotes
         /// if this Service desires to route external traffic to node-local or
         /// cluster-wide endpoints. "Local" preserves the client source IP and
@@ -164,8 +165,9 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets externalName is the external reference that kubedns or
         /// equivalent will return as a CNAME record for this service. No
-        /// proxying will be involved. Must be a valid DNS name and requires
-        /// Type to be ExternalName.
+        /// proxying will be involved. Must be a valid RFC-1123 hostname
+        /// (https://tools.ietf.org/html/rfc1123) and requires Type to be
+        /// ExternalName.
         /// </summary>
         [JsonProperty(PropertyName = "externalName")]
         public string ExternalName { get; set; }

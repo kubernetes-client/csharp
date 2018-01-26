@@ -48,7 +48,9 @@ namespace k8s.Models
         /// of names that the rule applies to.  An empty set means that
         /// everything is allowed.</param>
         /// <param name="resources">Resources is a list of resources this rule
-        /// applies to.  ResourceAll represents all resources.</param>
+        /// applies to.  '*' represents all resources in the specified
+        /// apiGroups. '*/foo' represents the subresource 'foo' for all
+        /// resources in the specified apiGroups.</param>
         public V1beta1PolicyRule(IList<string> verbs, IList<string> apiGroups = default(IList<string>), IList<string> nonResourceURLs = default(IList<string>), IList<string> resourceNames = default(IList<string>), IList<string> resources = default(IList<string>))
         {
             ApiGroups = apiGroups;
@@ -95,7 +97,9 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets resources is a list of resources this rule applies to.
-        /// ResourceAll represents all resources.
+        /// '*' represents all resources in the specified apiGroups. '*/foo'
+        /// represents the subresource 'foo' for all resources in the specified
+        /// apiGroups.
         /// </summary>
         [JsonProperty(PropertyName = "resources")]
         public IList<string> Resources { get; set; }

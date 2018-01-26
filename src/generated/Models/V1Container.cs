@@ -92,7 +92,7 @@ namespace k8s.Models
         /// with. More info:
         /// https://kubernetes.io/docs/concepts/policy/security-context/ More
         /// info:
-        /// https://git.k8s.io/community/contributors/design-proposals/security_context.md</param>
+        /// https://kubernetes.io/docs/tasks/configure-pod-container/security-context/</param>
         /// <param name="stdin">Whether this container should allocate a buffer
         /// for stdin in the container runtime. If this is not set, reads from
         /// stdin in the container will always result in EOF. Default is
@@ -124,13 +124,16 @@ namespace k8s.Models
         /// to File. Cannot be updated.</param>
         /// <param name="tty">Whether this container should allocate a TTY for
         /// itself, also requires 'stdin' to be true. Default is false.</param>
+        /// <param name="volumeDevices">volumeDevices is the list of block
+        /// devices to be used by the container. This is an alpha feature and
+        /// may change in the future.</param>
         /// <param name="volumeMounts">Pod volumes to mount into the
         /// container's filesystem. Cannot be updated.</param>
         /// <param name="workingDir">Container's working directory. If not
         /// specified, the container runtime's default will be used, which
         /// might be configured in the container image. Cannot be
         /// updated.</param>
-        public V1Container(string name, IList<string> args = default(IList<string>), IList<string> command = default(IList<string>), IList<V1EnvVar> env = default(IList<V1EnvVar>), IList<V1EnvFromSource> envFrom = default(IList<V1EnvFromSource>), string image = default(string), string imagePullPolicy = default(string), V1Lifecycle lifecycle = default(V1Lifecycle), V1Probe livenessProbe = default(V1Probe), IList<V1ContainerPort> ports = default(IList<V1ContainerPort>), V1Probe readinessProbe = default(V1Probe), V1ResourceRequirements resources = default(V1ResourceRequirements), V1SecurityContext securityContext = default(V1SecurityContext), bool? stdin = default(bool?), bool? stdinOnce = default(bool?), string terminationMessagePath = default(string), string terminationMessagePolicy = default(string), bool? tty = default(bool?), IList<V1VolumeMount> volumeMounts = default(IList<V1VolumeMount>), string workingDir = default(string))
+        public V1Container(string name, IList<string> args = default(IList<string>), IList<string> command = default(IList<string>), IList<V1EnvVar> env = default(IList<V1EnvVar>), IList<V1EnvFromSource> envFrom = default(IList<V1EnvFromSource>), string image = default(string), string imagePullPolicy = default(string), V1Lifecycle lifecycle = default(V1Lifecycle), V1Probe livenessProbe = default(V1Probe), IList<V1ContainerPort> ports = default(IList<V1ContainerPort>), V1Probe readinessProbe = default(V1Probe), V1ResourceRequirements resources = default(V1ResourceRequirements), V1SecurityContext securityContext = default(V1SecurityContext), bool? stdin = default(bool?), bool? stdinOnce = default(bool?), string terminationMessagePath = default(string), string terminationMessagePolicy = default(string), bool? tty = default(bool?), IList<V1VolumeDevice> volumeDevices = default(IList<V1VolumeDevice>), IList<V1VolumeMount> volumeMounts = default(IList<V1VolumeMount>), string workingDir = default(string))
         {
             Args = args;
             Command = command;
@@ -150,6 +153,7 @@ namespace k8s.Models
             TerminationMessagePath = terminationMessagePath;
             TerminationMessagePolicy = terminationMessagePolicy;
             Tty = tty;
+            VolumeDevices = volumeDevices;
             VolumeMounts = volumeMounts;
             WorkingDir = workingDir;
             CustomInit();
@@ -282,7 +286,7 @@ namespace k8s.Models
         /// Gets or sets security options the pod should run with. More info:
         /// https://kubernetes.io/docs/concepts/policy/security-context/ More
         /// info:
-        /// https://git.k8s.io/community/contributors/design-proposals/security_context.md
+        /// https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
         /// </summary>
         [JsonProperty(PropertyName = "securityContext")]
         public V1SecurityContext SecurityContext { get; set; }
@@ -339,6 +343,14 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "tty")]
         public bool? Tty { get; set; }
+
+        /// <summary>
+        /// Gets or sets volumeDevices is the list of block devices to be used
+        /// by the container. This is an alpha feature and may change in the
+        /// future.
+        /// </summary>
+        [JsonProperty(PropertyName = "volumeDevices")]
+        public IList<V1VolumeDevice> VolumeDevices { get; set; }
 
         /// <summary>
         /// Gets or sets pod volumes to mount into the container's filesystem.
@@ -399,13 +411,23 @@ namespace k8s.Models
             {
                 ReadinessProbe.Validate();
             }
-            if (VolumeMounts != null)
+            if (VolumeDevices != null)
             {
-                foreach (var element2 in VolumeMounts)
+                foreach (var element2 in VolumeDevices)
                 {
                     if (element2 != null)
                     {
                         element2.Validate();
+                    }
+                }
+            }
+            if (VolumeMounts != null)
+            {
+                foreach (var element3 in VolumeMounts)
+                {
+                    if (element3 != null)
+                    {
+                        element3.Validate();
                     }
                 }
             }

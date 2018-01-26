@@ -15,18 +15,18 @@ namespace k8s.Models
     /// RuleWithOperations is a tuple of Operations and Resources. It is
     /// recommended to make sure that all the tuple expansions are valid.
     /// </summary>
-    public partial class V1alpha1RuleWithOperations
+    public partial class V1beta1RuleWithOperations
     {
         /// <summary>
-        /// Initializes a new instance of the V1alpha1RuleWithOperations class.
+        /// Initializes a new instance of the V1beta1RuleWithOperations class.
         /// </summary>
-        public V1alpha1RuleWithOperations()
+        public V1beta1RuleWithOperations()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the V1alpha1RuleWithOperations class.
+        /// Initializes a new instance of the V1beta1RuleWithOperations class.
         /// </summary>
         /// <param name="apiGroups">APIGroups is the API groups the resources
         /// belong to. '*' is all groups. If '*' is present, the length of the
@@ -50,7 +50,7 @@ namespace k8s.Models
         ///
         /// Depending on the enclosing object, subresources might not be
         /// allowed. Required.</param>
-        public V1alpha1RuleWithOperations(IList<string> apiGroups = default(IList<string>), IList<string> apiVersions = default(IList<string>), IList<string> operations = default(IList<string>), IList<string> resources = default(IList<string>))
+        public V1beta1RuleWithOperations(IList<string> apiGroups = default(IList<string>), IList<string> apiVersions = default(IList<string>), IList<string> operations = default(IList<string>), IList<string> resources = default(IList<string>))
         {
             ApiGroups = apiGroups;
             ApiVersions = apiVersions;

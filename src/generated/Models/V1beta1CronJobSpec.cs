@@ -32,7 +32,11 @@ namespace k8s.Models
         /// <param name="schedule">The schedule in Cron format, see
         /// https://en.wikipedia.org/wiki/Cron.</param>
         /// <param name="concurrencyPolicy">Specifies how to treat concurrent
-        /// executions of a Job. Defaults to Allow.</param>
+        /// executions of a Job. Valid values are: - "Allow" (default): allows
+        /// CronJobs to run concurrently; - "Forbid": forbids concurrent runs,
+        /// skipping next run if previous run hasn't finished yet; - "Replace":
+        /// cancels currently running job and replaces it with a new
+        /// one</param>
         /// <param name="failedJobsHistoryLimit">The number of failed finished
         /// jobs to retain. This is a pointer to distinguish between explicit
         /// zero and not specified. Defaults to 1.</param>
@@ -64,7 +68,10 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets specifies how to treat concurrent executions of a Job.
-        /// Defaults to Allow.
+        /// Valid values are: - "Allow" (default): allows CronJobs to run
+        /// concurrently; - "Forbid": forbids concurrent runs, skipping next
+        /// run if previous run hasn't finished yet; - "Replace": cancels
+        /// currently running job and replaces it with a new one
         /// </summary>
         [JsonProperty(PropertyName = "concurrencyPolicy")]
         public string ConcurrencyPolicy { get; set; }

@@ -58,7 +58,12 @@ namespace k8s.Models
         /// <param name="reclaimPolicy">Dynamically provisioned
         /// PersistentVolumes of this storage class are created with this
         /// reclaimPolicy. Defaults to Delete.</param>
-        public V1StorageClass(string provisioner, bool? allowVolumeExpansion = default(bool?), string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), IList<string> mountOptions = default(IList<string>), IDictionary<string, string> parameters = default(IDictionary<string, string>), string reclaimPolicy = default(string))
+        /// <param name="volumeBindingMode">VolumeBindingMode indicates how
+        /// PersistentVolumeClaims should be provisioned and bound.  When
+        /// unset, VolumeBindingImmediate is used. This field is alpha-level
+        /// and is only honored by servers that enable the VolumeScheduling
+        /// feature.</param>
+        public V1StorageClass(string provisioner, bool? allowVolumeExpansion = default(bool?), string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), IList<string> mountOptions = default(IList<string>), IDictionary<string, string> parameters = default(IDictionary<string, string>), string reclaimPolicy = default(string), string volumeBindingMode = default(string))
         {
             AllowVolumeExpansion = allowVolumeExpansion;
             ApiVersion = apiVersion;
@@ -68,6 +73,7 @@ namespace k8s.Models
             Parameters = parameters;
             Provisioner = provisioner;
             ReclaimPolicy = reclaimPolicy;
+            VolumeBindingMode = volumeBindingMode;
             CustomInit();
         }
 
@@ -139,6 +145,15 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "reclaimPolicy")]
         public string ReclaimPolicy { get; set; }
+
+        /// <summary>
+        /// Gets or sets volumeBindingMode indicates how PersistentVolumeClaims
+        /// should be provisioned and bound.  When unset,
+        /// VolumeBindingImmediate is used. This field is alpha-level and is
+        /// only honored by servers that enable the VolumeScheduling feature.
+        /// </summary>
+        [JsonProperty(PropertyName = "volumeBindingMode")]
+        public string VolumeBindingMode { get; set; }
 
         /// <summary>
         /// Validate the object.

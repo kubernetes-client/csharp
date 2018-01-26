@@ -13,7 +13,9 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// Network Policy List is a list of NetworkPolicy objects.
+    /// DEPRECATED 1.9 - This group version of NetworkPolicyList is deprecated
+    /// by networking/v1/NetworkPolicyList. Network Policy List is a list of
+    /// NetworkPolicy objects.
     /// </summary>
     public partial class V1beta1NetworkPolicyList
     {

@@ -31,6 +31,10 @@ namespace k8s.Models
         /// </summary>
         /// <param name="rules">Rules holds all the PolicyRules for this
         /// ClusterRole</param>
+        /// <param name="aggregationRule">AggregationRule is an optional field
+        /// that describes how to build the Rules for this ClusterRole. If
+        /// AggregationRule is set, then the Rules are controller managed and
+        /// direct changes to Rules will be stomped by the controller.</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
@@ -42,8 +46,9 @@ namespace k8s.Models
         /// CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
         /// <param name="metadata">Standard object's metadata.</param>
-        public V1alpha1ClusterRole(IList<V1alpha1PolicyRule> rules, string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta))
+        public V1alpha1ClusterRole(IList<V1alpha1PolicyRule> rules, V1alpha1AggregationRule aggregationRule = default(V1alpha1AggregationRule), string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta))
         {
+            AggregationRule = aggregationRule;
             ApiVersion = apiVersion;
             Kind = kind;
             Metadata = metadata;
@@ -55,6 +60,15 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets aggregationRule is an optional field that describes
+        /// how to build the Rules for this ClusterRole. If AggregationRule is
+        /// set, then the Rules are controller managed and direct changes to
+        /// Rules will be stomped by the controller.
+        /// </summary>
+        [JsonProperty(PropertyName = "aggregationRule")]
+        public V1alpha1AggregationRule AggregationRule { get; set; }
 
         /// <summary>
         /// Gets or sets aPIVersion defines the versioned schema of this

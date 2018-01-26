@@ -10,6 +10,8 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
+    /// DEPRECATED - This group version of ControllerRevision is deprecated by
+    /// apps/v1/ControllerRevision. See the release notes for more information.
     /// ControllerRevision implements an immutable snapshot of state data.
     /// Clients are responsible for serializing and deserializing the objects
     /// that contain their internal state. Once a ControllerRevision has been

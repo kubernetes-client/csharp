@@ -51,12 +51,14 @@ namespace k8s.Models
         /// non-nil when bound. claim.VolumeName is the authoritative bind
         /// between PV and PVC. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#binding</param>
+        /// <param name="csi">CSI represents storage that handled by an
+        /// external CSI driver</param>
         /// <param name="fc">FC represents a Fibre Channel resource that is
         /// attached to a kubelet's host machine and then exposed to the
         /// pod.</param>
         /// <param name="flexVolume">FlexVolume represents a generic volume
-        /// resource that is provisioned/attached using an exec based plugin.
-        /// This is an alpha feature and may change in future.</param>
+        /// resource that is provisioned/attached using an exec based
+        /// plugin.</param>
         /// <param name="flocker">Flocker represents a Flocker volume attached
         /// to a kubelet's host machine and exposed to the pod for its usage.
         /// This depends on the Flocker control service being running</param>
@@ -110,9 +112,13 @@ namespace k8s.Models
         /// that is attached to the kubelet's host machine and mounted into the
         /// pod More info:
         /// https://releases.k8s.io/HEAD/examples/volumes/storageos/README.md</param>
+        /// <param name="volumeMode">volumeMode defines if a volume is intended
+        /// to be used with a formatted filesystem or to remain in raw block
+        /// state. Value of Filesystem is implied when not included in spec.
+        /// This is an alpha feature and may change in the future.</param>
         /// <param name="vsphereVolume">VsphereVolume represents a vSphere
         /// volume attached and mounted on kubelets host machine</param>
-        public V1PersistentVolumeSpec(IList<string> accessModes = default(IList<string>), V1AWSElasticBlockStoreVolumeSource awsElasticBlockStore = default(V1AWSElasticBlockStoreVolumeSource), V1AzureDiskVolumeSource azureDisk = default(V1AzureDiskVolumeSource), V1AzureFilePersistentVolumeSource azureFile = default(V1AzureFilePersistentVolumeSource), IDictionary<string, ResourceQuantity> capacity = default(IDictionary<string, ResourceQuantity>), V1CephFSPersistentVolumeSource cephfs = default(V1CephFSPersistentVolumeSource), V1CinderVolumeSource cinder = default(V1CinderVolumeSource), V1ObjectReference claimRef = default(V1ObjectReference), V1FCVolumeSource fc = default(V1FCVolumeSource), V1FlexVolumeSource flexVolume = default(V1FlexVolumeSource), V1FlockerVolumeSource flocker = default(V1FlockerVolumeSource), V1GCEPersistentDiskVolumeSource gcePersistentDisk = default(V1GCEPersistentDiskVolumeSource), V1GlusterfsVolumeSource glusterfs = default(V1GlusterfsVolumeSource), V1HostPathVolumeSource hostPath = default(V1HostPathVolumeSource), V1ISCSIVolumeSource iscsi = default(V1ISCSIVolumeSource), V1LocalVolumeSource local = default(V1LocalVolumeSource), IList<string> mountOptions = default(IList<string>), V1NFSVolumeSource nfs = default(V1NFSVolumeSource), string persistentVolumeReclaimPolicy = default(string), V1PhotonPersistentDiskVolumeSource photonPersistentDisk = default(V1PhotonPersistentDiskVolumeSource), V1PortworxVolumeSource portworxVolume = default(V1PortworxVolumeSource), V1QuobyteVolumeSource quobyte = default(V1QuobyteVolumeSource), V1RBDVolumeSource rbd = default(V1RBDVolumeSource), V1ScaleIOPersistentVolumeSource scaleIO = default(V1ScaleIOPersistentVolumeSource), string storageClassName = default(string), V1StorageOSPersistentVolumeSource storageos = default(V1StorageOSPersistentVolumeSource), V1VsphereVirtualDiskVolumeSource vsphereVolume = default(V1VsphereVirtualDiskVolumeSource))
+        public V1PersistentVolumeSpec(IList<string> accessModes = default(IList<string>), V1AWSElasticBlockStoreVolumeSource awsElasticBlockStore = default(V1AWSElasticBlockStoreVolumeSource), V1AzureDiskVolumeSource azureDisk = default(V1AzureDiskVolumeSource), V1AzureFilePersistentVolumeSource azureFile = default(V1AzureFilePersistentVolumeSource), IDictionary<string, ResourceQuantity> capacity = default(IDictionary<string, ResourceQuantity>), V1CephFSPersistentVolumeSource cephfs = default(V1CephFSPersistentVolumeSource), V1CinderVolumeSource cinder = default(V1CinderVolumeSource), V1ObjectReference claimRef = default(V1ObjectReference), V1CSIPersistentVolumeSource csi = default(V1CSIPersistentVolumeSource), V1FCVolumeSource fc = default(V1FCVolumeSource), V1FlexVolumeSource flexVolume = default(V1FlexVolumeSource), V1FlockerVolumeSource flocker = default(V1FlockerVolumeSource), V1GCEPersistentDiskVolumeSource gcePersistentDisk = default(V1GCEPersistentDiskVolumeSource), V1GlusterfsVolumeSource glusterfs = default(V1GlusterfsVolumeSource), V1HostPathVolumeSource hostPath = default(V1HostPathVolumeSource), V1ISCSIPersistentVolumeSource iscsi = default(V1ISCSIPersistentVolumeSource), V1LocalVolumeSource local = default(V1LocalVolumeSource), IList<string> mountOptions = default(IList<string>), V1NFSVolumeSource nfs = default(V1NFSVolumeSource), string persistentVolumeReclaimPolicy = default(string), V1PhotonPersistentDiskVolumeSource photonPersistentDisk = default(V1PhotonPersistentDiskVolumeSource), V1PortworxVolumeSource portworxVolume = default(V1PortworxVolumeSource), V1QuobyteVolumeSource quobyte = default(V1QuobyteVolumeSource), V1RBDPersistentVolumeSource rbd = default(V1RBDPersistentVolumeSource), V1ScaleIOPersistentVolumeSource scaleIO = default(V1ScaleIOPersistentVolumeSource), string storageClassName = default(string), V1StorageOSPersistentVolumeSource storageos = default(V1StorageOSPersistentVolumeSource), string volumeMode = default(string), V1VsphereVirtualDiskVolumeSource vsphereVolume = default(V1VsphereVirtualDiskVolumeSource))
         {
             AccessModes = accessModes;
             AwsElasticBlockStore = awsElasticBlockStore;
@@ -122,6 +128,7 @@ namespace k8s.Models
             Cephfs = cephfs;
             Cinder = cinder;
             ClaimRef = claimRef;
+            Csi = csi;
             Fc = fc;
             FlexVolume = flexVolume;
             Flocker = flocker;
@@ -140,6 +147,7 @@ namespace k8s.Models
             ScaleIO = scaleIO;
             StorageClassName = storageClassName;
             Storageos = storageos;
+            VolumeMode = volumeMode;
             VsphereVolume = vsphereVolume;
             CustomInit();
         }
@@ -214,6 +222,13 @@ namespace k8s.Models
         public V1ObjectReference ClaimRef { get; set; }
 
         /// <summary>
+        /// Gets or sets CSI represents storage that handled by an external CSI
+        /// driver
+        /// </summary>
+        [JsonProperty(PropertyName = "csi")]
+        public V1CSIPersistentVolumeSource Csi { get; set; }
+
+        /// <summary>
         /// Gets or sets FC represents a Fibre Channel resource that is
         /// attached to a kubelet's host machine and then exposed to the pod.
         /// </summary>
@@ -222,8 +237,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets flexVolume represents a generic volume resource that
-        /// is provisioned/attached using an exec based plugin. This is an
-        /// alpha feature and may change in future.
+        /// is provisioned/attached using an exec based plugin.
         /// </summary>
         [JsonProperty(PropertyName = "flexVolume")]
         public V1FlexVolumeSource FlexVolume { get; set; }
@@ -271,7 +285,7 @@ namespace k8s.Models
         /// Provisioned by an admin.
         /// </summary>
         [JsonProperty(PropertyName = "iscsi")]
-        public V1ISCSIVolumeSource Iscsi { get; set; }
+        public V1ISCSIPersistentVolumeSource Iscsi { get; set; }
 
         /// <summary>
         /// Gets or sets local represents directly-attached storage with node
@@ -333,7 +347,7 @@ namespace k8s.Models
         /// https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md
         /// </summary>
         [JsonProperty(PropertyName = "rbd")]
-        public V1RBDVolumeSource Rbd { get; set; }
+        public V1RBDPersistentVolumeSource Rbd { get; set; }
 
         /// <summary>
         /// Gets or sets scaleIO represents a ScaleIO persistent volume
@@ -358,6 +372,15 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "storageos")]
         public V1StorageOSPersistentVolumeSource Storageos { get; set; }
+
+        /// <summary>
+        /// Gets or sets volumeMode defines if a volume is intended to be used
+        /// with a formatted filesystem or to remain in raw block state. Value
+        /// of Filesystem is implied when not included in spec. This is an
+        /// alpha feature and may change in the future.
+        /// </summary>
+        [JsonProperty(PropertyName = "volumeMode")]
+        public string VolumeMode { get; set; }
 
         /// <summary>
         /// Gets or sets vsphereVolume represents a vSphere volume attached and
@@ -393,6 +416,10 @@ namespace k8s.Models
             if (Cinder != null)
             {
                 Cinder.Validate();
+            }
+            if (Csi != null)
+            {
+                Csi.Validate();
             }
             if (FlexVolume != null)
             {

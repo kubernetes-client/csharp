@@ -10,6 +10,8 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
+    /// DEPRECATED - This group version of DaemonSet is deprecated by
+    /// apps/v1/DaemonSet. See the release notes for more information.
     /// DaemonSet represents the configuration of a daemon set.
     /// </summary>
     public partial class V1beta2DaemonSet

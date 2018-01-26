@@ -10,8 +10,9 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// NetworkPolicy describes what network traffic is allowed for a set of
-    /// Pods
+    /// DEPRECATED 1.9 - This group version of NetworkPolicy is deprecated by
+    /// networking/v1/NetworkPolicy. NetworkPolicy describes what network
+    /// traffic is allowed for a set of Pods
     /// </summary>
     public partial class V1beta1NetworkPolicy
     {

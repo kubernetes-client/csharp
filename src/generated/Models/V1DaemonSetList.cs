@@ -6,49 +6,45 @@
 
 namespace k8s.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// ExternalAdmissionHookConfiguration describes the configuration of
-    /// initializers.
+    /// DaemonSetList is a collection of daemon sets.
     /// </summary>
-    public partial class V1alpha1ExternalAdmissionHookConfiguration
+    public partial class V1DaemonSetList
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// V1alpha1ExternalAdmissionHookConfiguration class.
+        /// Initializes a new instance of the V1DaemonSetList class.
         /// </summary>
-        public V1alpha1ExternalAdmissionHookConfiguration()
+        public V1DaemonSetList()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// V1alpha1ExternalAdmissionHookConfiguration class.
+        /// Initializes a new instance of the V1DaemonSetList class.
         /// </summary>
+        /// <param name="items">A list of daemon sets.</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
         /// values. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#resources</param>
-        /// <param name="externalAdmissionHooks">ExternalAdmissionHooks is a
-        /// list of external admission webhooks and the affected resources and
-        /// operations.</param>
         /// <param name="kind">Kind is a string value representing the REST
         /// resource this object represents. Servers may infer this from the
         /// endpoint the client submits requests to. Cannot be updated. In
         /// CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
-        /// <param name="metadata">Standard object metadata; More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata.</param>
-        public V1alpha1ExternalAdmissionHookConfiguration(string apiVersion = default(string), IList<V1alpha1ExternalAdmissionHook> externalAdmissionHooks = default(IList<V1alpha1ExternalAdmissionHook>), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta))
+        /// <param name="metadata">Standard list metadata. More info:
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</param>
+        public V1DaemonSetList(IList<V1DaemonSet> items, string apiVersion = default(string), string kind = default(string), V1ListMeta metadata = default(V1ListMeta))
         {
             ApiVersion = apiVersion;
-            ExternalAdmissionHooks = externalAdmissionHooks;
+            Items = items;
             Kind = kind;
             Metadata = metadata;
             CustomInit();
@@ -70,11 +66,10 @@ namespace k8s.Models
         public string ApiVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets externalAdmissionHooks is a list of external admission
-        /// webhooks and the affected resources and operations.
+        /// Gets or sets a list of daemon sets.
         /// </summary>
-        [JsonProperty(PropertyName = "externalAdmissionHooks")]
-        public IList<V1alpha1ExternalAdmissionHook> ExternalAdmissionHooks { get; set; }
+        [JsonProperty(PropertyName = "items")]
+        public IList<V1DaemonSet> Items { get; set; }
 
         /// <summary>
         /// Gets or sets kind is a string value representing the REST resource
@@ -87,33 +82,33 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// Gets or sets standard object metadata; More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata.
+        /// Gets or sets standard list metadata. More info:
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
-        public V1ObjectMeta Metadata { get; set; }
+        public V1ListMeta Metadata { get; set; }
 
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (ExternalAdmissionHooks != null)
+            if (Items == null)
             {
-                foreach (var element in ExternalAdmissionHooks)
+                throw new ValidationException(ValidationRules.CannotBeNull, "Items");
+            }
+            if (Items != null)
+            {
+                foreach (var element in Items)
                 {
                     if (element != null)
                     {
                         element.Validate();
                     }
                 }
-            }
-            if (Metadata != null)
-            {
-                Metadata.Validate();
             }
         }
     }

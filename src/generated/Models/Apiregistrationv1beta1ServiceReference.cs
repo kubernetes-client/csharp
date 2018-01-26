@@ -6,30 +6,31 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// ServiceReference holds a reference to Service.legacy.k8s.io
     /// </summary>
-    public partial class V1alpha1ServiceReference
+    public partial class Apiregistrationv1beta1ServiceReference
     {
         /// <summary>
-        /// Initializes a new instance of the V1alpha1ServiceReference class.
+        /// Initializes a new instance of the
+        /// Apiregistrationv1beta1ServiceReference class.
         /// </summary>
-        public V1alpha1ServiceReference()
+        public Apiregistrationv1beta1ServiceReference()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the V1alpha1ServiceReference class.
+        /// Initializes a new instance of the
+        /// Apiregistrationv1beta1ServiceReference class.
         /// </summary>
-        /// <param name="name">Name is the name of the service Required</param>
+        /// <param name="name">Name is the name of the service</param>
         /// <param name="namespaceProperty">Namespace is the namespace of the
-        /// service Required</param>
-        public V1alpha1ServiceReference(string name, string namespaceProperty)
+        /// service</param>
+        public Apiregistrationv1beta1ServiceReference(string name = default(string), string namespaceProperty = default(string))
         {
             Name = name;
             NamespaceProperty = namespaceProperty;
@@ -42,33 +43,16 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name is the name of the service Required
+        /// Gets or sets name is the name of the service
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets namespace is the namespace of the service Required
+        /// Gets or sets namespace is the namespace of the service
         /// </summary>
         [JsonProperty(PropertyName = "namespace")]
         public string NamespaceProperty { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");
-            }
-            if (NamespaceProperty == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "NamespaceProperty");
-            }
-        }
     }
 }

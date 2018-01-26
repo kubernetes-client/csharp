@@ -12,6 +12,10 @@ namespace k8s.Models
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// DEPRECATED 1.9 - This group version of NetworkPolicySpec is deprecated
+    /// by networking/v1/NetworkPolicySpec.
+    /// </summary>
     public partial class V1beta1NetworkPolicySpec
     {
         /// <summary>

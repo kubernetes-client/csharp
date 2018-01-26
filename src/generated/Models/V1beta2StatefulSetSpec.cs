@@ -28,6 +28,10 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1beta2StatefulSetSpec class.
         /// </summary>
+        /// <param name="selector">selector is a label query over pods that
+        /// should match the replica count. It must match the pod template's
+        /// labels. More info:
+        /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors</param>
         /// <param name="serviceName">serviceName is the name of the service
         /// that governs this StatefulSet. This service must exist before the
         /// StatefulSet, and is responsible for the network identity of the
@@ -59,10 +63,6 @@ namespace k8s.Models
         /// StatefulSet's revision history. The revision history consists of
         /// all revisions not represented by a currently applied
         /// StatefulSetSpec version. The default value is 10.</param>
-        /// <param name="selector">selector is a label query over pods that
-        /// should match the replica count. If empty, defaulted to labels on
-        /// the pod template. More info:
-        /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors</param>
         /// <param name="updateStrategy">updateStrategy indicates the
         /// StatefulSetUpdateStrategy that will be employed to update Pods in
         /// the StatefulSet when a revision is made to Template.</param>
@@ -73,7 +73,7 @@ namespace k8s.Models
         /// list must have at least one matching (by name) volumeMount in one
         /// container in the template. A claim in this list takes precedence
         /// over any volumes in the template, with the same name.</param>
-        public V1beta2StatefulSetSpec(string serviceName, V1PodTemplateSpec template, string podManagementPolicy = default(string), int? replicas = default(int?), int? revisionHistoryLimit = default(int?), V1LabelSelector selector = default(V1LabelSelector), V1beta2StatefulSetUpdateStrategy updateStrategy = default(V1beta2StatefulSetUpdateStrategy), IList<V1PersistentVolumeClaim> volumeClaimTemplates = default(IList<V1PersistentVolumeClaim>))
+        public V1beta2StatefulSetSpec(V1LabelSelector selector, string serviceName, V1PodTemplateSpec template, string podManagementPolicy = default(string), int? replicas = default(int?), int? revisionHistoryLimit = default(int?), V1beta2StatefulSetUpdateStrategy updateStrategy = default(V1beta2StatefulSetUpdateStrategy), IList<V1PersistentVolumeClaim> volumeClaimTemplates = default(IList<V1PersistentVolumeClaim>))
         {
             PodManagementPolicy = podManagementPolicy;
             Replicas = replicas;
@@ -126,8 +126,8 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets selector is a label query over pods that should match
-        /// the replica count. If empty, defaulted to labels on the pod
-        /// template. More info:
+        /// the replica count. It must match the pod template's labels. More
+        /// info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
         /// </summary>
         [JsonProperty(PropertyName = "selector")]
@@ -181,6 +181,10 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
+            if (Selector == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Selector");
+            }
             if (ServiceName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "ServiceName");

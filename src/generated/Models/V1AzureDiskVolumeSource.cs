@@ -36,7 +36,7 @@ namespace k8s.Models
         /// <param name="fsType">Filesystem type to mount. Must be a filesystem
         /// type supported by the host operating system. Ex. "ext4", "xfs",
         /// "ntfs". Implicitly inferred to be "ext4" if unspecified.</param>
-        /// <param name="kind">Expected values Shared: mulitple blob disks per
+        /// <param name="kind">Expected values Shared: multiple blob disks per
         /// storage account  Dedicated: single blob disk per storage account
         /// Managed: azure managed data disk (only in managed availability
         /// set). defaults to shared</param>
@@ -86,7 +86,7 @@ namespace k8s.Models
         public string FsType { get; set; }
 
         /// <summary>
-        /// Gets or sets expected values Shared: mulitple blob disks per
+        /// Gets or sets expected values Shared: multiple blob disks per
         /// storage account  Dedicated: single blob disk per storage account
         /// Managed: azure managed data disk (only in managed availability
         /// set). defaults to shared

@@ -38,9 +38,7 @@ namespace k8s.Models
         /// <param name="version">Version is the version this resource belongs
         /// in</param>
         /// <param name="validation">Validation describes the validation
-        /// methods for CustomResources This field is alpha-level and should
-        /// only be sent to servers that enable the CustomResourceValidation
-        /// feature.</param>
+        /// methods for CustomResources</param>
         public V1beta1CustomResourceDefinitionSpec(string group, V1beta1CustomResourceDefinitionNames names, string scope, string version, V1beta1CustomResourceValidation validation = default(V1beta1CustomResourceValidation))
         {
             Group = group;
@@ -78,8 +76,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets validation describes the validation methods for
-        /// CustomResources This field is alpha-level and should only be sent
-        /// to servers that enable the CustomResourceValidation feature.
+        /// CustomResources
         /// </summary>
         [JsonProperty(PropertyName = "validation")]
         public V1beta1CustomResourceValidation Validation { get; set; }

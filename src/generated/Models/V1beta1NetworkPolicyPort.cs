@@ -9,6 +9,10 @@ namespace k8s.Models
     using Newtonsoft.Json;
     using System.Linq;
 
+    /// <summary>
+    /// DEPRECATED 1.9 - This group version of NetworkPolicyPort is deprecated
+    /// by networking/v1/NetworkPolicyPort.
+    /// </summary>
     public partial class V1beta1NetworkPolicyPort
     {
         /// <summary>

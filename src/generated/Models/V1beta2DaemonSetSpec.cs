@@ -26,6 +26,10 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1beta2DaemonSetSpec class.
         /// </summary>
+        /// <param name="selector">A label query over pods that are managed by
+        /// the daemon set. Must match in order to be controlled. It must match
+        /// the pod template's labels. More info:
+        /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors</param>
         /// <param name="template">An object that describes the pod that will
         /// be created. The DaemonSet will create exactly one copy of this pod
         /// on every node that matches the template's node selector (or on
@@ -39,13 +43,9 @@ namespace k8s.Models
         /// <param name="revisionHistoryLimit">The number of old history to
         /// retain to allow rollback. This is a pointer to distinguish between
         /// explicit zero and not specified. Defaults to 10.</param>
-        /// <param name="selector">A label query over pods that are managed by
-        /// the daemon set. Must match in order to be controlled. If empty,
-        /// defaulted to labels on Pod template. More info:
-        /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors</param>
         /// <param name="updateStrategy">An update strategy to replace existing
         /// DaemonSet pods with new pods.</param>
-        public V1beta2DaemonSetSpec(V1PodTemplateSpec template, int? minReadySeconds = default(int?), int? revisionHistoryLimit = default(int?), V1LabelSelector selector = default(V1LabelSelector), V1beta2DaemonSetUpdateStrategy updateStrategy = default(V1beta2DaemonSetUpdateStrategy))
+        public V1beta2DaemonSetSpec(V1LabelSelector selector, V1PodTemplateSpec template, int? minReadySeconds = default(int?), int? revisionHistoryLimit = default(int?), V1beta2DaemonSetUpdateStrategy updateStrategy = default(V1beta2DaemonSetUpdateStrategy))
         {
             MinReadySeconds = minReadySeconds;
             RevisionHistoryLimit = revisionHistoryLimit;
@@ -79,8 +79,8 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets a label query over pods that are managed by the daemon
-        /// set. Must match in order to be controlled. If empty, defaulted to
-        /// labels on Pod template. More info:
+        /// set. Must match in order to be controlled. It must match the pod
+        /// template's labels. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
         /// </summary>
         [JsonProperty(PropertyName = "selector")]
@@ -111,6 +111,10 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
+            if (Selector == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Selector");
+            }
             if (Template == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Template");

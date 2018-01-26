@@ -10,28 +10,26 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// ServiceReference holds a reference to Service.legacy.k8s.io
+    /// PodDNSConfigOption defines DNS resolver options of a pod.
     /// </summary>
-    public partial class V1beta1ServiceReference
+    public partial class V1PodDNSConfigOption
     {
         /// <summary>
-        /// Initializes a new instance of the V1beta1ServiceReference class.
+        /// Initializes a new instance of the V1PodDNSConfigOption class.
         /// </summary>
-        public V1beta1ServiceReference()
+        public V1PodDNSConfigOption()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the V1beta1ServiceReference class.
+        /// Initializes a new instance of the V1PodDNSConfigOption class.
         /// </summary>
-        /// <param name="name">Name is the name of the service</param>
-        /// <param name="namespaceProperty">Namespace is the namespace of the
-        /// service</param>
-        public V1beta1ServiceReference(string name = default(string), string namespaceProperty = default(string))
+        /// <param name="name">Required.</param>
+        public V1PodDNSConfigOption(string name = default(string), string value = default(string))
         {
             Name = name;
-            NamespaceProperty = namespaceProperty;
+            Value = value;
             CustomInit();
         }
 
@@ -41,16 +39,15 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets name is the name of the service
+        /// Gets or sets required.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets namespace is the namespace of the service
         /// </summary>
-        [JsonProperty(PropertyName = "namespace")]
-        public string NamespaceProperty { get; set; }
+        [JsonProperty(PropertyName = "value")]
+        public string Value { get; set; }
 
     }
 }

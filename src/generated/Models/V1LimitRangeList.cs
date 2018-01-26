@@ -30,7 +30,7 @@ namespace k8s.Models
         /// </summary>
         /// <param name="items">Items is a list of LimitRange objects. More
         /// info:
-        /// https://git.k8s.io/community/contributors/design-proposals/admission_control_limit_range.md</param>
+        /// https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
@@ -69,7 +69,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets items is a list of LimitRange objects. More info:
-        /// https://git.k8s.io/community/contributors/design-proposals/admission_control_limit_range.md
+        /// https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
         /// </summary>
         [JsonProperty(PropertyName = "items")]
         public IList<V1LimitRange> Items { get; set; }

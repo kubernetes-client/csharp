@@ -41,11 +41,19 @@ namespace k8s.Models
         /// name="automountServiceAccountToken">AutomountServiceAccountToken
         /// indicates whether a service account token should be automatically
         /// mounted.</param>
-        /// <param name="dnsPolicy">Set DNS policy for containers within the
-        /// pod. One of 'ClusterFirstWithHostNet', 'ClusterFirst' or 'Default'.
-        /// Defaults to "ClusterFirst". To have DNS options set along with
-        /// hostNetwork, you have to specify DNS policy explicitly to
-        /// 'ClusterFirstWithHostNet'.</param>
+        /// <param name="dnsConfig">Specifies the DNS parameters of a pod.
+        /// Parameters specified here will be merged to the generated DNS
+        /// configuration based on DNSPolicy. This is an alpha feature
+        /// introduced in v1.9 and CustomPodDNS feature gate must be enabled to
+        /// use it.</param>
+        /// <param name="dnsPolicy">Set DNS policy for the pod. Defaults to
+        /// "ClusterFirst". Valid values are 'ClusterFirstWithHostNet',
+        /// 'ClusterFirst', 'Default' or 'None'. DNS parameters given in
+        /// DNSConfig will be merged with the policy selected with DNSPolicy.
+        /// To have DNS options set along with hostNetwork, you have to specify
+        /// DNS policy explicitly to 'ClusterFirstWithHostNet'. Note that
+        /// 'None' policy is an alpha feature introduced in v1.9 and
+        /// CustomPodDNS feature gate must be enabled to use it.</param>
         /// <param name="hostAliases">HostAliases is an optional list of hosts
         /// and IPs that will be injected into the pod's hosts file if
         /// specified. This is only valid for non-hostNetwork pods.</param>
@@ -134,12 +142,13 @@ namespace k8s.Models
         /// <param name="volumes">List of volumes that can be mounted by
         /// containers belonging to the pod. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes</param>
-        public V1PodSpec(IList<V1Container> containers, long? activeDeadlineSeconds = default(long?), V1Affinity affinity = default(V1Affinity), bool? automountServiceAccountToken = default(bool?), string dnsPolicy = default(string), IList<V1HostAlias> hostAliases = default(IList<V1HostAlias>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), string hostname = default(string), IList<V1LocalObjectReference> imagePullSecrets = default(IList<V1LocalObjectReference>), IList<V1Container> initContainers = default(IList<V1Container>), string nodeName = default(string), IDictionary<string, string> nodeSelector = default(IDictionary<string, string>), int? priority = default(int?), string priorityClassName = default(string), string restartPolicy = default(string), string schedulerName = default(string), V1PodSecurityContext securityContext = default(V1PodSecurityContext), string serviceAccount = default(string), string serviceAccountName = default(string), string subdomain = default(string), long? terminationGracePeriodSeconds = default(long?), IList<V1Toleration> tolerations = default(IList<V1Toleration>), IList<V1Volume> volumes = default(IList<V1Volume>))
+        public V1PodSpec(IList<V1Container> containers, long? activeDeadlineSeconds = default(long?), V1Affinity affinity = default(V1Affinity), bool? automountServiceAccountToken = default(bool?), V1PodDNSConfig dnsConfig = default(V1PodDNSConfig), string dnsPolicy = default(string), IList<V1HostAlias> hostAliases = default(IList<V1HostAlias>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), string hostname = default(string), IList<V1LocalObjectReference> imagePullSecrets = default(IList<V1LocalObjectReference>), IList<V1Container> initContainers = default(IList<V1Container>), string nodeName = default(string), IDictionary<string, string> nodeSelector = default(IDictionary<string, string>), int? priority = default(int?), string priorityClassName = default(string), string restartPolicy = default(string), string schedulerName = default(string), V1PodSecurityContext securityContext = default(V1PodSecurityContext), string serviceAccount = default(string), string serviceAccountName = default(string), string subdomain = default(string), long? terminationGracePeriodSeconds = default(long?), IList<V1Toleration> tolerations = default(IList<V1Toleration>), IList<V1Volume> volumes = default(IList<V1Volume>))
         {
             ActiveDeadlineSeconds = activeDeadlineSeconds;
             Affinity = affinity;
             AutomountServiceAccountToken = automountServiceAccountToken;
             Containers = containers;
+            DnsConfig = dnsConfig;
             DnsPolicy = dnsPolicy;
             HostAliases = hostAliases;
             HostIPC = hostIPC;
@@ -200,10 +209,23 @@ namespace k8s.Models
         public IList<V1Container> Containers { get; set; }
 
         /// <summary>
-        /// Gets or sets set DNS policy for containers within the pod. One of
-        /// 'ClusterFirstWithHostNet', 'ClusterFirst' or 'Default'. Defaults to
-        /// "ClusterFirst". To have DNS options set along with hostNetwork, you
-        /// have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'.
+        /// Gets or sets specifies the DNS parameters of a pod. Parameters
+        /// specified here will be merged to the generated DNS configuration
+        /// based on DNSPolicy. This is an alpha feature introduced in v1.9 and
+        /// CustomPodDNS feature gate must be enabled to use it.
+        /// </summary>
+        [JsonProperty(PropertyName = "dnsConfig")]
+        public V1PodDNSConfig DnsConfig { get; set; }
+
+        /// <summary>
+        /// Gets or sets set DNS policy for the pod. Defaults to
+        /// "ClusterFirst". Valid values are 'ClusterFirstWithHostNet',
+        /// 'ClusterFirst', 'Default' or 'None'. DNS parameters given in
+        /// DNSConfig will be merged with the policy selected with DNSPolicy.
+        /// To have DNS options set along with hostNetwork, you have to specify
+        /// DNS policy explicitly to 'ClusterFirstWithHostNet'. Note that
+        /// 'None' policy is an alpha feature introduced in v1.9 and
+        /// CustomPodDNS feature gate must be enabled to use it.
         /// </summary>
         [JsonProperty(PropertyName = "dnsPolicy")]
         public string DnsPolicy { get; set; }

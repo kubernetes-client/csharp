@@ -31,8 +31,8 @@ namespace k8s.Models
         /// Initializes a new instance of the V1ISCSIVolumeSource class.
         /// </summary>
         /// <param name="iqn">Target iSCSI Qualified Name.</param>
-        /// <param name="lun">iSCSI target lun number.</param>
-        /// <param name="targetPortal">iSCSI target portal. The portal is
+        /// <param name="lun">iSCSI Target Lun number.</param>
+        /// <param name="targetPortal">iSCSI Target Portal. The Portal is
         /// either an IP or ip_addr:port if the port is other than default
         /// (typically TCP ports 860 and 3260).</param>
         /// <param name="chapAuthDiscovery">whether support iSCSI Discovery
@@ -44,18 +44,18 @@ namespace k8s.Models
         /// host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly
         /// inferred to be "ext4" if unspecified. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#iscsi</param>
-        /// <param name="initiatorName">Custom iSCSI initiator name. If
+        /// <param name="initiatorName">Custom iSCSI Initiator Name. If
         /// initiatorName is specified with iscsiInterface simultaneously, new
         /// iSCSI interface &lt;target portal&gt;:&lt;volume name&gt; will be
         /// created for the connection.</param>
-        /// <param name="iscsiInterface">Optional: Defaults to 'default' (tcp).
-        /// iSCSI interface name that uses an iSCSI transport.</param>
-        /// <param name="portals">iSCSI target portal List. The portal is
+        /// <param name="iscsiInterface">iSCSI Interface Name that uses an
+        /// iSCSI transport. Defaults to 'default' (tcp).</param>
+        /// <param name="portals">iSCSI Target Portal List. The portal is
         /// either an IP or ip_addr:port if the port is other than default
         /// (typically TCP ports 860 and 3260).</param>
         /// <param name="readOnlyProperty">ReadOnly here will force the
         /// ReadOnly setting in VolumeMounts. Defaults to false.</param>
-        /// <param name="secretRef">CHAP secret for iSCSI target and initiator
+        /// <param name="secretRef">CHAP Secret for iSCSI target and initiator
         /// authentication</param>
         public V1ISCSIVolumeSource(string iqn, int lun, string targetPortal, bool? chapAuthDiscovery = default(bool?), bool? chapAuthSession = default(bool?), string fsType = default(string), string initiatorName = default(string), string iscsiInterface = default(string), IList<string> portals = default(IList<string>), bool? readOnlyProperty = default(bool?), V1LocalObjectReference secretRef = default(V1LocalObjectReference))
         {
@@ -101,7 +101,7 @@ namespace k8s.Models
         public string FsType { get; set; }
 
         /// <summary>
-        /// Gets or sets custom iSCSI initiator name. If initiatorName is
+        /// Gets or sets custom iSCSI Initiator Name. If initiatorName is
         /// specified with iscsiInterface simultaneously, new iSCSI interface
         /// &amp;lt;target portal&amp;gt;:&amp;lt;volume name&amp;gt; will be
         /// created for the connection.
@@ -116,20 +116,20 @@ namespace k8s.Models
         public string Iqn { get; set; }
 
         /// <summary>
-        /// Gets or sets optional: Defaults to 'default' (tcp). iSCSI interface
-        /// name that uses an iSCSI transport.
+        /// Gets or sets iSCSI Interface Name that uses an iSCSI transport.
+        /// Defaults to 'default' (tcp).
         /// </summary>
         [JsonProperty(PropertyName = "iscsiInterface")]
         public string IscsiInterface { get; set; }
 
         /// <summary>
-        /// Gets or sets iSCSI target lun number.
+        /// Gets or sets iSCSI Target Lun number.
         /// </summary>
         [JsonProperty(PropertyName = "lun")]
         public int Lun { get; set; }
 
         /// <summary>
-        /// Gets or sets iSCSI target portal List. The portal is either an IP
+        /// Gets or sets iSCSI Target Portal List. The portal is either an IP
         /// or ip_addr:port if the port is other than default (typically TCP
         /// ports 860 and 3260).
         /// </summary>
@@ -144,14 +144,14 @@ namespace k8s.Models
         public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>
-        /// Gets or sets CHAP secret for iSCSI target and initiator
+        /// Gets or sets CHAP Secret for iSCSI target and initiator
         /// authentication
         /// </summary>
         [JsonProperty(PropertyName = "secretRef")]
         public V1LocalObjectReference SecretRef { get; set; }
 
         /// <summary>
-        /// Gets or sets iSCSI target portal. The portal is either an IP or
+        /// Gets or sets iSCSI Target Portal. The Portal is either an IP or
         /// ip_addr:port if the port is other than default (typically TCP ports
         /// 860 and 3260).
         /// </summary>

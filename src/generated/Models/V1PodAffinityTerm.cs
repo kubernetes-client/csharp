@@ -6,6 +6,7 @@
 
 namespace k8s.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -16,8 +17,8 @@ namespace k8s.Models
     /// to the given namespace(s)) that this pod should be co-located
     /// (affinity) or not co-located (anti-affinity) with, where co-located is
     /// defined as running on a node whose value of the label with key
-    /// &lt;topologyKey&gt; tches that of any node on which a pod of the set of
-    /// pods is running
+    /// &lt;topologyKey&gt; matches that of any node on which a pod of the set
+    /// of pods is running
     /// </summary>
     public partial class V1PodAffinityTerm
     {
@@ -32,23 +33,18 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1PodAffinityTerm class.
         /// </summary>
-        /// <param name="labelSelector">A label query over a set of resources,
-        /// in this case pods.</param>
-        /// <param name="namespaces">namespaces specifies which namespaces the
-        /// labelSelector applies to (matches against); null or empty list
-        /// means "this pod's namespace"</param>
         /// <param name="topologyKey">This pod should be co-located (affinity)
         /// or not co-located (anti-affinity) with the pods matching the
         /// labelSelector in the specified namespaces, where co-located is
         /// defined as running on a node whose value of the label with key
         /// topologyKey matches that of any node on which any of the selected
-        /// pods is running. For PreferredDuringScheduling pod anti-affinity,
-        /// empty topologyKey is interpreted as "all topologies" ("all
-        /// topologies" here means all the topologyKeys indicated by scheduler
-        /// command-line argument --failure-domains); for affinity and for
-        /// RequiredDuringScheduling pod anti-affinity, empty topologyKey is
-        /// not allowed.</param>
-        public V1PodAffinityTerm(V1LabelSelector labelSelector = default(V1LabelSelector), IList<string> namespaces = default(IList<string>), string topologyKey = default(string))
+        /// pods is running. Empty topologyKey is not allowed.</param>
+        /// <param name="labelSelector">A label query over a set of resources,
+        /// in this case pods.</param>
+        /// <param name="namespaces">namespaces specifies which namespaces the
+        /// labelSelector applies to (matches against); null or empty list
+        /// means "this pod's namespace"</param>
+        public V1PodAffinityTerm(string topologyKey, V1LabelSelector labelSelector = default(V1LabelSelector), IList<string> namespaces = default(IList<string>))
         {
             LabelSelector = labelSelector;
             Namespaces = namespaces;
@@ -81,15 +77,24 @@ namespace k8s.Models
         /// co-located (anti-affinity) with the pods matching the labelSelector
         /// in the specified namespaces, where co-located is defined as running
         /// on a node whose value of the label with key topologyKey matches
-        /// that of any node on which any of the selected pods is running. For
-        /// PreferredDuringScheduling pod anti-affinity, empty topologyKey is
-        /// interpreted as "all topologies" ("all topologies" here means all
-        /// the topologyKeys indicated by scheduler command-line argument
-        /// --failure-domains); for affinity and for RequiredDuringScheduling
-        /// pod anti-affinity, empty topologyKey is not allowed.
+        /// that of any node on which any of the selected pods is running.
+        /// Empty topologyKey is not allowed.
         /// </summary>
         [JsonProperty(PropertyName = "topologyKey")]
         public string TopologyKey { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (TopologyKey == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "TopologyKey");
+            }
+        }
     }
 }
