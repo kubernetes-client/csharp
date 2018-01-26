@@ -14001,7 +14001,7 @@ namespace k8s
             /// <param name='namespaceParameter'>
             /// object name and auth scope, such as for teams and projects
             /// </param>
-            public static string ProxyGETNamespacedPod(this IKubernetes operations, string name, string namespaceParameter)
+            public static Stream ProxyGETNamespacedPod(this IKubernetes operations, string name, string namespaceParameter)
             {
                 return operations.ProxyGETNamespacedPodAsync(name, namespaceParameter).GetAwaiter().GetResult();
             }
@@ -14021,12 +14021,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyGETNamespacedPodAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyGETNamespacedPodAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyGETNamespacedPodWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyGETNamespacedPodWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14041,7 +14040,7 @@ namespace k8s
             /// <param name='namespaceParameter'>
             /// object name and auth scope, such as for teams and projects
             /// </param>
-            public static string ProxyPUTNamespacedPod(this IKubernetes operations, string name, string namespaceParameter)
+            public static Stream ProxyPUTNamespacedPod(this IKubernetes operations, string name, string namespaceParameter)
             {
                 return operations.ProxyPUTNamespacedPodAsync(name, namespaceParameter).GetAwaiter().GetResult();
             }
@@ -14061,12 +14060,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyPUTNamespacedPodAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyPUTNamespacedPodAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyPUTNamespacedPodWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyPUTNamespacedPodWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14081,7 +14079,7 @@ namespace k8s
             /// <param name='namespaceParameter'>
             /// object name and auth scope, such as for teams and projects
             /// </param>
-            public static string ProxyPOSTNamespacedPod(this IKubernetes operations, string name, string namespaceParameter)
+            public static Stream ProxyPOSTNamespacedPod(this IKubernetes operations, string name, string namespaceParameter)
             {
                 return operations.ProxyPOSTNamespacedPodAsync(name, namespaceParameter).GetAwaiter().GetResult();
             }
@@ -14101,12 +14099,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyPOSTNamespacedPodAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyPOSTNamespacedPodAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyPOSTNamespacedPodWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyPOSTNamespacedPodWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14121,7 +14118,7 @@ namespace k8s
             /// <param name='namespaceParameter'>
             /// object name and auth scope, such as for teams and projects
             /// </param>
-            public static string ProxyDELETENamespacedPod(this IKubernetes operations, string name, string namespaceParameter)
+            public static Stream ProxyDELETENamespacedPod(this IKubernetes operations, string name, string namespaceParameter)
             {
                 return operations.ProxyDELETENamespacedPodAsync(name, namespaceParameter).GetAwaiter().GetResult();
             }
@@ -14141,12 +14138,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyDELETENamespacedPodAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyDELETENamespacedPodAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyDELETENamespacedPodWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyDELETENamespacedPodWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14161,7 +14157,7 @@ namespace k8s
             /// <param name='namespaceParameter'>
             /// object name and auth scope, such as for teams and projects
             /// </param>
-            public static string ProxyHEADNamespacedPod(this IKubernetes operations, string name, string namespaceParameter)
+            public static Stream ProxyHEADNamespacedPod(this IKubernetes operations, string name, string namespaceParameter)
             {
                 return operations.ProxyHEADNamespacedPodAsync(name, namespaceParameter).GetAwaiter().GetResult();
             }
@@ -14181,12 +14177,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyHEADNamespacedPodAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyHEADNamespacedPodAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyHEADNamespacedPodWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyHEADNamespacedPodWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14201,7 +14196,7 @@ namespace k8s
             /// <param name='namespaceParameter'>
             /// object name and auth scope, such as for teams and projects
             /// </param>
-            public static string ProxyPATCHNamespacedPod(this IKubernetes operations, string name, string namespaceParameter)
+            public static Stream ProxyPATCHNamespacedPod(this IKubernetes operations, string name, string namespaceParameter)
             {
                 return operations.ProxyPATCHNamespacedPodAsync(name, namespaceParameter).GetAwaiter().GetResult();
             }
@@ -14221,12 +14216,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyPATCHNamespacedPodAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyPATCHNamespacedPodAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyPATCHNamespacedPodWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyPATCHNamespacedPodWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14244,7 +14238,7 @@ namespace k8s
             /// <param name='path'>
             /// path to the resource
             /// </param>
-            public static string ProxyGETNamespacedPodWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
+            public static Stream ProxyGETNamespacedPodWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
             {
                 return operations.ProxyGETNamespacedPodWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
             }
@@ -14267,12 +14261,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyGETNamespacedPodWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyGETNamespacedPodWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyGETNamespacedPodWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyGETNamespacedPodWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14290,7 +14283,7 @@ namespace k8s
             /// <param name='path'>
             /// path to the resource
             /// </param>
-            public static string ProxyPUTNamespacedPodWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
+            public static Stream ProxyPUTNamespacedPodWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
             {
                 return operations.ProxyPUTNamespacedPodWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
             }
@@ -14313,12 +14306,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyPUTNamespacedPodWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyPUTNamespacedPodWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyPUTNamespacedPodWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyPUTNamespacedPodWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14336,7 +14328,7 @@ namespace k8s
             /// <param name='path'>
             /// path to the resource
             /// </param>
-            public static string ProxyPOSTNamespacedPodWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
+            public static Stream ProxyPOSTNamespacedPodWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
             {
                 return operations.ProxyPOSTNamespacedPodWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
             }
@@ -14359,12 +14351,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyPOSTNamespacedPodWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyPOSTNamespacedPodWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyPOSTNamespacedPodWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyPOSTNamespacedPodWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14382,7 +14373,7 @@ namespace k8s
             /// <param name='path'>
             /// path to the resource
             /// </param>
-            public static string ProxyDELETENamespacedPodWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
+            public static Stream ProxyDELETENamespacedPodWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
             {
                 return operations.ProxyDELETENamespacedPodWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
             }
@@ -14405,12 +14396,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyDELETENamespacedPodWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyDELETENamespacedPodWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyDELETENamespacedPodWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyDELETENamespacedPodWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14428,7 +14418,7 @@ namespace k8s
             /// <param name='path'>
             /// path to the resource
             /// </param>
-            public static string ProxyHEADNamespacedPodWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
+            public static Stream ProxyHEADNamespacedPodWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
             {
                 return operations.ProxyHEADNamespacedPodWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
             }
@@ -14451,12 +14441,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyHEADNamespacedPodWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyHEADNamespacedPodWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyHEADNamespacedPodWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyHEADNamespacedPodWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14474,7 +14463,7 @@ namespace k8s
             /// <param name='path'>
             /// path to the resource
             /// </param>
-            public static string ProxyPATCHNamespacedPodWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
+            public static Stream ProxyPATCHNamespacedPodWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
             {
                 return operations.ProxyPATCHNamespacedPodWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
             }
@@ -14497,12 +14486,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyPATCHNamespacedPodWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyPATCHNamespacedPodWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyPATCHNamespacedPodWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyPATCHNamespacedPodWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14517,7 +14505,7 @@ namespace k8s
             /// <param name='namespaceParameter'>
             /// object name and auth scope, such as for teams and projects
             /// </param>
-            public static string ProxyGETNamespacedService(this IKubernetes operations, string name, string namespaceParameter)
+            public static Stream ProxyGETNamespacedService(this IKubernetes operations, string name, string namespaceParameter)
             {
                 return operations.ProxyGETNamespacedServiceAsync(name, namespaceParameter).GetAwaiter().GetResult();
             }
@@ -14537,12 +14525,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyGETNamespacedServiceAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyGETNamespacedServiceAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyGETNamespacedServiceWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyGETNamespacedServiceWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14557,7 +14544,7 @@ namespace k8s
             /// <param name='namespaceParameter'>
             /// object name and auth scope, such as for teams and projects
             /// </param>
-            public static string ProxyPUTNamespacedService(this IKubernetes operations, string name, string namespaceParameter)
+            public static Stream ProxyPUTNamespacedService(this IKubernetes operations, string name, string namespaceParameter)
             {
                 return operations.ProxyPUTNamespacedServiceAsync(name, namespaceParameter).GetAwaiter().GetResult();
             }
@@ -14577,12 +14564,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyPUTNamespacedServiceAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyPUTNamespacedServiceAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyPUTNamespacedServiceWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyPUTNamespacedServiceWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14597,7 +14583,7 @@ namespace k8s
             /// <param name='namespaceParameter'>
             /// object name and auth scope, such as for teams and projects
             /// </param>
-            public static string ProxyPOSTNamespacedService(this IKubernetes operations, string name, string namespaceParameter)
+            public static Stream ProxyPOSTNamespacedService(this IKubernetes operations, string name, string namespaceParameter)
             {
                 return operations.ProxyPOSTNamespacedServiceAsync(name, namespaceParameter).GetAwaiter().GetResult();
             }
@@ -14617,12 +14603,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyPOSTNamespacedServiceAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyPOSTNamespacedServiceAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyPOSTNamespacedServiceWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyPOSTNamespacedServiceWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14637,7 +14622,7 @@ namespace k8s
             /// <param name='namespaceParameter'>
             /// object name and auth scope, such as for teams and projects
             /// </param>
-            public static string ProxyDELETENamespacedService(this IKubernetes operations, string name, string namespaceParameter)
+            public static Stream ProxyDELETENamespacedService(this IKubernetes operations, string name, string namespaceParameter)
             {
                 return operations.ProxyDELETENamespacedServiceAsync(name, namespaceParameter).GetAwaiter().GetResult();
             }
@@ -14657,12 +14642,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyDELETENamespacedServiceAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyDELETENamespacedServiceAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyDELETENamespacedServiceWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyDELETENamespacedServiceWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14677,7 +14661,7 @@ namespace k8s
             /// <param name='namespaceParameter'>
             /// object name and auth scope, such as for teams and projects
             /// </param>
-            public static string ProxyHEADNamespacedService(this IKubernetes operations, string name, string namespaceParameter)
+            public static Stream ProxyHEADNamespacedService(this IKubernetes operations, string name, string namespaceParameter)
             {
                 return operations.ProxyHEADNamespacedServiceAsync(name, namespaceParameter).GetAwaiter().GetResult();
             }
@@ -14697,12 +14681,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyHEADNamespacedServiceAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyHEADNamespacedServiceAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyHEADNamespacedServiceWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyHEADNamespacedServiceWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14717,7 +14700,7 @@ namespace k8s
             /// <param name='namespaceParameter'>
             /// object name and auth scope, such as for teams and projects
             /// </param>
-            public static string ProxyPATCHNamespacedService(this IKubernetes operations, string name, string namespaceParameter)
+            public static Stream ProxyPATCHNamespacedService(this IKubernetes operations, string name, string namespaceParameter)
             {
                 return operations.ProxyPATCHNamespacedServiceAsync(name, namespaceParameter).GetAwaiter().GetResult();
             }
@@ -14737,12 +14720,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyPATCHNamespacedServiceAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyPATCHNamespacedServiceAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyPATCHNamespacedServiceWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyPATCHNamespacedServiceWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14760,7 +14742,7 @@ namespace k8s
             /// <param name='path'>
             /// path to the resource
             /// </param>
-            public static string ProxyGETNamespacedServiceWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
+            public static Stream ProxyGETNamespacedServiceWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
             {
                 return operations.ProxyGETNamespacedServiceWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
             }
@@ -14783,12 +14765,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyGETNamespacedServiceWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyGETNamespacedServiceWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyGETNamespacedServiceWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyGETNamespacedServiceWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14806,7 +14787,7 @@ namespace k8s
             /// <param name='path'>
             /// path to the resource
             /// </param>
-            public static string ProxyPUTNamespacedServiceWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
+            public static Stream ProxyPUTNamespacedServiceWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
             {
                 return operations.ProxyPUTNamespacedServiceWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
             }
@@ -14829,12 +14810,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyPUTNamespacedServiceWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyPUTNamespacedServiceWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyPUTNamespacedServiceWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyPUTNamespacedServiceWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14852,7 +14832,7 @@ namespace k8s
             /// <param name='path'>
             /// path to the resource
             /// </param>
-            public static string ProxyPOSTNamespacedServiceWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
+            public static Stream ProxyPOSTNamespacedServiceWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
             {
                 return operations.ProxyPOSTNamespacedServiceWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
             }
@@ -14875,12 +14855,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyPOSTNamespacedServiceWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyPOSTNamespacedServiceWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyPOSTNamespacedServiceWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyPOSTNamespacedServiceWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14898,7 +14877,7 @@ namespace k8s
             /// <param name='path'>
             /// path to the resource
             /// </param>
-            public static string ProxyDELETENamespacedServiceWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
+            public static Stream ProxyDELETENamespacedServiceWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
             {
                 return operations.ProxyDELETENamespacedServiceWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
             }
@@ -14921,12 +14900,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyDELETENamespacedServiceWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyDELETENamespacedServiceWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyDELETENamespacedServiceWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyDELETENamespacedServiceWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14944,7 +14922,7 @@ namespace k8s
             /// <param name='path'>
             /// path to the resource
             /// </param>
-            public static string ProxyHEADNamespacedServiceWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
+            public static Stream ProxyHEADNamespacedServiceWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
             {
                 return operations.ProxyHEADNamespacedServiceWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
             }
@@ -14967,12 +14945,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyHEADNamespacedServiceWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyHEADNamespacedServiceWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyHEADNamespacedServiceWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyHEADNamespacedServiceWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -14990,7 +14967,7 @@ namespace k8s
             /// <param name='path'>
             /// path to the resource
             /// </param>
-            public static string ProxyPATCHNamespacedServiceWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
+            public static Stream ProxyPATCHNamespacedServiceWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
             {
                 return operations.ProxyPATCHNamespacedServiceWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
             }
@@ -15013,12 +14990,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyPATCHNamespacedServiceWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyPATCHNamespacedServiceWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyPATCHNamespacedServiceWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyPATCHNamespacedServiceWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -15030,7 +15006,7 @@ namespace k8s
             /// <param name='name'>
             /// name of the Node
             /// </param>
-            public static string ProxyGETNode(this IKubernetes operations, string name)
+            public static Stream ProxyGETNode(this IKubernetes operations, string name)
             {
                 return operations.ProxyGETNodeAsync(name).GetAwaiter().GetResult();
             }
@@ -15047,12 +15023,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyGETNodeAsync(this IKubernetes operations, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyGETNodeAsync(this IKubernetes operations, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyGETNodeWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyGETNodeWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -15064,7 +15039,7 @@ namespace k8s
             /// <param name='name'>
             /// name of the Node
             /// </param>
-            public static string ProxyPUTNode(this IKubernetes operations, string name)
+            public static Stream ProxyPUTNode(this IKubernetes operations, string name)
             {
                 return operations.ProxyPUTNodeAsync(name).GetAwaiter().GetResult();
             }
@@ -15081,12 +15056,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyPUTNodeAsync(this IKubernetes operations, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyPUTNodeAsync(this IKubernetes operations, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyPUTNodeWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyPUTNodeWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -15098,7 +15072,7 @@ namespace k8s
             /// <param name='name'>
             /// name of the Node
             /// </param>
-            public static string ProxyPOSTNode(this IKubernetes operations, string name)
+            public static Stream ProxyPOSTNode(this IKubernetes operations, string name)
             {
                 return operations.ProxyPOSTNodeAsync(name).GetAwaiter().GetResult();
             }
@@ -15115,12 +15089,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyPOSTNodeAsync(this IKubernetes operations, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyPOSTNodeAsync(this IKubernetes operations, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyPOSTNodeWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyPOSTNodeWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -15132,7 +15105,7 @@ namespace k8s
             /// <param name='name'>
             /// name of the Node
             /// </param>
-            public static string ProxyDELETENode(this IKubernetes operations, string name)
+            public static Stream ProxyDELETENode(this IKubernetes operations, string name)
             {
                 return operations.ProxyDELETENodeAsync(name).GetAwaiter().GetResult();
             }
@@ -15149,12 +15122,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyDELETENodeAsync(this IKubernetes operations, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyDELETENodeAsync(this IKubernetes operations, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyDELETENodeWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyDELETENodeWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -15166,7 +15138,7 @@ namespace k8s
             /// <param name='name'>
             /// name of the Node
             /// </param>
-            public static string ProxyHEADNode(this IKubernetes operations, string name)
+            public static Stream ProxyHEADNode(this IKubernetes operations, string name)
             {
                 return operations.ProxyHEADNodeAsync(name).GetAwaiter().GetResult();
             }
@@ -15183,12 +15155,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyHEADNodeAsync(this IKubernetes operations, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyHEADNodeAsync(this IKubernetes operations, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyHEADNodeWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyHEADNodeWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -15200,7 +15171,7 @@ namespace k8s
             /// <param name='name'>
             /// name of the Node
             /// </param>
-            public static string ProxyPATCHNode(this IKubernetes operations, string name)
+            public static Stream ProxyPATCHNode(this IKubernetes operations, string name)
             {
                 return operations.ProxyPATCHNodeAsync(name).GetAwaiter().GetResult();
             }
@@ -15217,12 +15188,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyPATCHNodeAsync(this IKubernetes operations, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyPATCHNodeAsync(this IKubernetes operations, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyPATCHNodeWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyPATCHNodeWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -15237,7 +15207,7 @@ namespace k8s
             /// <param name='path'>
             /// path to the resource
             /// </param>
-            public static string ProxyGETNodeWithPath(this IKubernetes operations, string name, string path)
+            public static Stream ProxyGETNodeWithPath(this IKubernetes operations, string name, string path)
             {
                 return operations.ProxyGETNodeWithPathAsync(name, path).GetAwaiter().GetResult();
             }
@@ -15257,12 +15227,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyGETNodeWithPathAsync(this IKubernetes operations, string name, string path, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyGETNodeWithPathAsync(this IKubernetes operations, string name, string path, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyGETNodeWithPathWithHttpMessagesAsync(name, path, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyGETNodeWithPathWithHttpMessagesAsync(name, path, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -15277,7 +15246,7 @@ namespace k8s
             /// <param name='path'>
             /// path to the resource
             /// </param>
-            public static string ProxyPUTNodeWithPath(this IKubernetes operations, string name, string path)
+            public static Stream ProxyPUTNodeWithPath(this IKubernetes operations, string name, string path)
             {
                 return operations.ProxyPUTNodeWithPathAsync(name, path).GetAwaiter().GetResult();
             }
@@ -15297,12 +15266,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyPUTNodeWithPathAsync(this IKubernetes operations, string name, string path, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyPUTNodeWithPathAsync(this IKubernetes operations, string name, string path, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyPUTNodeWithPathWithHttpMessagesAsync(name, path, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyPUTNodeWithPathWithHttpMessagesAsync(name, path, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -15317,7 +15285,7 @@ namespace k8s
             /// <param name='path'>
             /// path to the resource
             /// </param>
-            public static string ProxyPOSTNodeWithPath(this IKubernetes operations, string name, string path)
+            public static Stream ProxyPOSTNodeWithPath(this IKubernetes operations, string name, string path)
             {
                 return operations.ProxyPOSTNodeWithPathAsync(name, path).GetAwaiter().GetResult();
             }
@@ -15337,12 +15305,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyPOSTNodeWithPathAsync(this IKubernetes operations, string name, string path, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyPOSTNodeWithPathAsync(this IKubernetes operations, string name, string path, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyPOSTNodeWithPathWithHttpMessagesAsync(name, path, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyPOSTNodeWithPathWithHttpMessagesAsync(name, path, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -15357,7 +15324,7 @@ namespace k8s
             /// <param name='path'>
             /// path to the resource
             /// </param>
-            public static string ProxyDELETENodeWithPath(this IKubernetes operations, string name, string path)
+            public static Stream ProxyDELETENodeWithPath(this IKubernetes operations, string name, string path)
             {
                 return operations.ProxyDELETENodeWithPathAsync(name, path).GetAwaiter().GetResult();
             }
@@ -15377,12 +15344,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyDELETENodeWithPathAsync(this IKubernetes operations, string name, string path, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyDELETENodeWithPathAsync(this IKubernetes operations, string name, string path, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyDELETENodeWithPathWithHttpMessagesAsync(name, path, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyDELETENodeWithPathWithHttpMessagesAsync(name, path, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -15397,7 +15363,7 @@ namespace k8s
             /// <param name='path'>
             /// path to the resource
             /// </param>
-            public static string ProxyHEADNodeWithPath(this IKubernetes operations, string name, string path)
+            public static Stream ProxyHEADNodeWithPath(this IKubernetes operations, string name, string path)
             {
                 return operations.ProxyHEADNodeWithPathAsync(name, path).GetAwaiter().GetResult();
             }
@@ -15417,12 +15383,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyHEADNodeWithPathAsync(this IKubernetes operations, string name, string path, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyHEADNodeWithPathAsync(this IKubernetes operations, string name, string path, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyHEADNodeWithPathWithHttpMessagesAsync(name, path, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyHEADNodeWithPathWithHttpMessagesAsync(name, path, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>
@@ -15437,7 +15402,7 @@ namespace k8s
             /// <param name='path'>
             /// path to the resource
             /// </param>
-            public static string ProxyPATCHNodeWithPath(this IKubernetes operations, string name, string path)
+            public static Stream ProxyPATCHNodeWithPath(this IKubernetes operations, string name, string path)
             {
                 return operations.ProxyPATCHNodeWithPathAsync(name, path).GetAwaiter().GetResult();
             }
@@ -15457,12 +15422,11 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> ProxyPATCHNodeWithPathAsync(this IKubernetes operations, string name, string path, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Stream> ProxyPATCHNodeWithPathAsync(this IKubernetes operations, string name, string path, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ProxyPATCHNodeWithPathWithHttpMessagesAsync(name, path, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                var _result = await operations.ProxyPATCHNodeWithPathWithHttpMessagesAsync(name, path, null, cancellationToken).ConfigureAwait(false);
+                _result.Request.Dispose();
+                return _result.Body;
             }
 
             /// <summary>

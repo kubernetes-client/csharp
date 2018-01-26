@@ -6713,7 +6713,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyGETNamespacedPodWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyGETNamespacedPodWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy PUT requests to Pod
@@ -6730,7 +6730,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyPUTNamespacedPodWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyPUTNamespacedPodWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy POST requests to Pod
@@ -6747,7 +6747,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyPOSTNamespacedPodWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyPOSTNamespacedPodWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy DELETE requests to Pod
@@ -6764,7 +6764,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyDELETENamespacedPodWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyDELETENamespacedPodWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy HEAD requests to Pod
@@ -6781,7 +6781,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyHEADNamespacedPodWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyHEADNamespacedPodWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy PATCH requests to Pod
@@ -6798,7 +6798,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyPATCHNamespacedPodWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyPATCHNamespacedPodWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy GET requests to Pod
@@ -6818,7 +6818,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyGETNamespacedPodWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyGETNamespacedPodWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy PUT requests to Pod
@@ -6838,7 +6838,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyPUTNamespacedPodWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyPUTNamespacedPodWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy POST requests to Pod
@@ -6858,7 +6858,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyPOSTNamespacedPodWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyPOSTNamespacedPodWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy DELETE requests to Pod
@@ -6878,7 +6878,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyDELETENamespacedPodWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyDELETENamespacedPodWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy HEAD requests to Pod
@@ -6898,7 +6898,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyHEADNamespacedPodWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyHEADNamespacedPodWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy PATCH requests to Pod
@@ -6918,7 +6918,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyPATCHNamespacedPodWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyPATCHNamespacedPodWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy GET requests to Service
@@ -6935,7 +6935,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyGETNamespacedServiceWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyGETNamespacedServiceWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy PUT requests to Service
@@ -6952,7 +6952,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyPUTNamespacedServiceWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyPUTNamespacedServiceWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy POST requests to Service
@@ -6969,7 +6969,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyPOSTNamespacedServiceWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyPOSTNamespacedServiceWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy DELETE requests to Service
@@ -6986,7 +6986,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyDELETENamespacedServiceWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyDELETENamespacedServiceWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy HEAD requests to Service
@@ -7003,7 +7003,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyHEADNamespacedServiceWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyHEADNamespacedServiceWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy PATCH requests to Service
@@ -7020,7 +7020,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyPATCHNamespacedServiceWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyPATCHNamespacedServiceWithHttpMessagesAsync(string name, string namespaceParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy GET requests to Service
@@ -7040,7 +7040,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyGETNamespacedServiceWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyGETNamespacedServiceWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy PUT requests to Service
@@ -7060,7 +7060,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyPUTNamespacedServiceWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyPUTNamespacedServiceWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy POST requests to Service
@@ -7080,7 +7080,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyPOSTNamespacedServiceWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyPOSTNamespacedServiceWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy DELETE requests to Service
@@ -7100,7 +7100,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyDELETENamespacedServiceWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyDELETENamespacedServiceWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy HEAD requests to Service
@@ -7120,7 +7120,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyHEADNamespacedServiceWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyHEADNamespacedServiceWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy PATCH requests to Service
@@ -7140,7 +7140,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyPATCHNamespacedServiceWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyPATCHNamespacedServiceWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy GET requests to Node
@@ -7154,7 +7154,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyGETNodeWithHttpMessagesAsync(string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyGETNodeWithHttpMessagesAsync(string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy PUT requests to Node
@@ -7168,7 +7168,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyPUTNodeWithHttpMessagesAsync(string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyPUTNodeWithHttpMessagesAsync(string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy POST requests to Node
@@ -7182,7 +7182,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyPOSTNodeWithHttpMessagesAsync(string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyPOSTNodeWithHttpMessagesAsync(string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy DELETE requests to Node
@@ -7196,7 +7196,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyDELETENodeWithHttpMessagesAsync(string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyDELETENodeWithHttpMessagesAsync(string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy HEAD requests to Node
@@ -7210,7 +7210,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyHEADNodeWithHttpMessagesAsync(string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyHEADNodeWithHttpMessagesAsync(string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy PATCH requests to Node
@@ -7224,7 +7224,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyPATCHNodeWithHttpMessagesAsync(string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyPATCHNodeWithHttpMessagesAsync(string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy GET requests to Node
@@ -7241,7 +7241,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyGETNodeWithPathWithHttpMessagesAsync(string name, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyGETNodeWithPathWithHttpMessagesAsync(string name, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy PUT requests to Node
@@ -7258,7 +7258,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyPUTNodeWithPathWithHttpMessagesAsync(string name, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyPUTNodeWithPathWithHttpMessagesAsync(string name, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy POST requests to Node
@@ -7275,7 +7275,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyPOSTNodeWithPathWithHttpMessagesAsync(string name, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyPOSTNodeWithPathWithHttpMessagesAsync(string name, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy DELETE requests to Node
@@ -7292,7 +7292,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyDELETENodeWithPathWithHttpMessagesAsync(string name, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyDELETENodeWithPathWithHttpMessagesAsync(string name, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy HEAD requests to Node
@@ -7309,7 +7309,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyHEADNodeWithPathWithHttpMessagesAsync(string name, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyHEADNodeWithPathWithHttpMessagesAsync(string name, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// proxy PATCH requests to Node
@@ -7326,7 +7326,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ProxyPATCHNodeWithPathWithHttpMessagesAsync(string name, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ProxyPATCHNodeWithPathWithHttpMessagesAsync(string name, string path, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ReplicationController
