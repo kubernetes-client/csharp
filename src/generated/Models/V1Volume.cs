@@ -54,8 +54,8 @@ namespace k8s.Models
         /// attached to a kubelet's host machine and then exposed to the
         /// pod.</param>
         /// <param name="flexVolume">FlexVolume represents a generic volume
-        /// resource that is provisioned/attached using an exec based plugin.
-        /// This is an alpha feature and may change in future.</param>
+        /// resource that is provisioned/attached using an exec based
+        /// plugin.</param>
         /// <param name="flocker">Flocker represents a Flocker volume attached
         /// to a kubelet's host machine. This depends on the Flocker control
         /// service being running</param>
@@ -214,8 +214,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets flexVolume represents a generic volume resource that
-        /// is provisioned/attached using an exec based plugin. This is an
-        /// alpha feature and may change in future.
+        /// is provisioned/attached using an exec based plugin.
         /// </summary>
         [JsonProperty(PropertyName = "flexVolume")]
         public V1FlexVolumeSource FlexVolume { get; set; }

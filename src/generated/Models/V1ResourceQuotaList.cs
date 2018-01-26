@@ -30,7 +30,7 @@ namespace k8s.Models
         /// </summary>
         /// <param name="items">Items is a list of ResourceQuota objects. More
         /// info:
-        /// https://git.k8s.io/community/contributors/design-proposals/admission_control_resource_quota.md</param>
+        /// https://kubernetes.io/docs/concepts/policy/resource-quotas/</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
@@ -69,7 +69,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets items is a list of ResourceQuota objects. More info:
-        /// https://git.k8s.io/community/contributors/design-proposals/admission_control_resource_quota.md
+        /// https://kubernetes.io/docs/concepts/policy/resource-quotas/
         /// </summary>
         [JsonProperty(PropertyName = "items")]
         public IList<V1ResourceQuota> Items { get; set; }

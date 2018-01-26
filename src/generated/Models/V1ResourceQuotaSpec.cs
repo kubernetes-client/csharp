@@ -29,7 +29,7 @@ namespace k8s.Models
         /// </summary>
         /// <param name="hard">Hard is the set of desired hard limits for each
         /// named resource. More info:
-        /// https://git.k8s.io/community/contributors/design-proposals/admission_control_resource_quota.md</param>
+        /// https://kubernetes.io/docs/concepts/policy/resource-quotas/</param>
         /// <param name="scopes">A collection of filters that must match each
         /// object tracked by a quota. If not specified, the quota matches all
         /// objects.</param>
@@ -48,7 +48,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets hard is the set of desired hard limits for each named
         /// resource. More info:
-        /// https://git.k8s.io/community/contributors/design-proposals/admission_control_resource_quota.md
+        /// https://kubernetes.io/docs/concepts/policy/resource-quotas/
         /// </summary>
         [JsonProperty(PropertyName = "hard")]
         public IDictionary<string, ResourceQuantity> Hard { get; set; }

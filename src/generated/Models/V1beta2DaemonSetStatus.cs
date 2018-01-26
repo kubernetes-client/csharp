@@ -7,6 +7,8 @@
 namespace k8s.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -44,6 +46,8 @@ namespace k8s.Models
         /// DaemonSet. The DaemonSet controller uses this field as a collision
         /// avoidance mechanism when it needs to create the name for the newest
         /// ControllerRevision.</param>
+        /// <param name="conditions">Represents the latest available
+        /// observations of a DaemonSet's current state.</param>
         /// <param name="numberAvailable">The number of nodes that should be
         /// running the daemon pod and have one or more of the daemon pod
         /// running and available (ready for at least
@@ -55,9 +59,10 @@ namespace k8s.Models
         /// observed by the daemon set controller.</param>
         /// <param name="updatedNumberScheduled">The total number of nodes that
         /// are running updated daemon pod</param>
-        public V1beta2DaemonSetStatus(int currentNumberScheduled, int desiredNumberScheduled, int numberMisscheduled, int numberReady, int? collisionCount = default(int?), int? numberAvailable = default(int?), int? numberUnavailable = default(int?), long? observedGeneration = default(long?), int? updatedNumberScheduled = default(int?))
+        public V1beta2DaemonSetStatus(int currentNumberScheduled, int desiredNumberScheduled, int numberMisscheduled, int numberReady, int? collisionCount = default(int?), IList<V1beta2DaemonSetCondition> conditions = default(IList<V1beta2DaemonSetCondition>), int? numberAvailable = default(int?), int? numberUnavailable = default(int?), long? observedGeneration = default(long?), int? updatedNumberScheduled = default(int?))
         {
             CollisionCount = collisionCount;
+            Conditions = conditions;
             CurrentNumberScheduled = currentNumberScheduled;
             DesiredNumberScheduled = desiredNumberScheduled;
             NumberAvailable = numberAvailable;
@@ -82,6 +87,13 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "collisionCount")]
         public int? CollisionCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets represents the latest available observations of a
+        /// DaemonSet's current state.
+        /// </summary>
+        [JsonProperty(PropertyName = "conditions")]
+        public IList<V1beta2DaemonSetCondition> Conditions { get; set; }
 
         /// <summary>
         /// Gets or sets the number of nodes that are running at least 1 daemon
@@ -153,7 +165,16 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            //Nothing to validate
+            if (Conditions != null)
+            {
+                foreach (var element in Conditions)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
         }
     }
 }

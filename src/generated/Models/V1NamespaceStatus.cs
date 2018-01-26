@@ -27,7 +27,7 @@ namespace k8s.Models
         /// </summary>
         /// <param name="phase">Phase is the current lifecycle phase of the
         /// namespace. More info:
-        /// https://git.k8s.io/community/contributors/design-proposals/namespaces.md#phases</param>
+        /// https://kubernetes.io/docs/tasks/administer-cluster/namespaces/</param>
         public V1NamespaceStatus(string phase = default(string))
         {
             Phase = phase;
@@ -42,7 +42,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets phase is the current lifecycle phase of the namespace.
         /// More info:
-        /// https://git.k8s.io/community/contributors/design-proposals/namespaces.md#phases
+        /// https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
         /// </summary>
         [JsonProperty(PropertyName = "phase")]
         public string Phase { get; set; }

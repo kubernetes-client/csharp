@@ -12,6 +12,8 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
+    /// DEPRECATED 1.9 - This group version of NetworkPolicyEgressRule is
+    /// deprecated by networking/v1/NetworkPolicyEgressRule.
     /// NetworkPolicyEgressRule describes a particular set of traffic that is
     /// allowed out of pods matched by a NetworkPolicySpec's podSelector. The
     /// traffic must match both ports and to. This type is beta-level in 1.8

@@ -33,7 +33,7 @@ namespace k8s.Models
         /// certificate.</param>
         /// <param name="groupPriorityMinimum">GroupPriorityMininum is the
         /// priority this group should have at least. Higher priority means
-        /// that the group is prefered by clients over lower priority ones.
+        /// that the group is preferred by clients over lower priority ones.
         /// Note that other versions of this group might specify even higher
         /// GroupPriorityMininum values such that the whole group gets a higher
         /// priority. The primary sort is based on GroupPriorityMinimum,
@@ -62,7 +62,7 @@ namespace k8s.Models
         /// instead.</param>
         /// <param name="version">Version is the API version this server hosts.
         /// For example, "v1"</param>
-        public V1beta1APIServiceSpec(byte[] caBundle, int groupPriorityMinimum, V1beta1ServiceReference service, int versionPriority, string group = default(string), bool? insecureSkipTLSVerify = default(bool?), string version = default(string))
+        public V1beta1APIServiceSpec(byte[] caBundle, int groupPriorityMinimum, Apiregistrationv1beta1ServiceReference service, int versionPriority, string group = default(string), bool? insecureSkipTLSVerify = default(bool?), string version = default(string))
         {
             CaBundle = caBundle;
             Group = group;
@@ -94,7 +94,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets groupPriorityMininum is the priority this group should
-        /// have at least. Higher priority means that the group is prefered by
+        /// have at least. Higher priority means that the group is preferred by
         /// clients over lower priority ones. Note that other versions of this
         /// group might specify even higher GroupPriorityMininum values such
         /// that the whole group gets a higher priority. The primary sort is
@@ -123,7 +123,7 @@ namespace k8s.Models
         /// chain to be fulfilled.
         /// </summary>
         [JsonProperty(PropertyName = "service")]
-        public V1beta1ServiceReference Service { get; set; }
+        public Apiregistrationv1beta1ServiceReference Service { get; set; }
 
         /// <summary>
         /// Gets or sets version is the API version this server hosts.  For

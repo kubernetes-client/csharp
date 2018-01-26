@@ -9,6 +9,10 @@ namespace k8s.Models
     using Newtonsoft.Json;
     using System.Linq;
 
+    /// <summary>
+    /// DEPRECATED 1.9 - This group version of NetworkPolicyPeer is deprecated
+    /// by networking/v1/NetworkPolicyPeer.
+    /// </summary>
     public partial class V1beta1NetworkPolicyPeer
     {
         /// <summary>

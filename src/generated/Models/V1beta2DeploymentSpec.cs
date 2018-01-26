@@ -27,6 +27,10 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1beta2DeploymentSpec class.
         /// </summary>
+        /// <param name="selector">Label selector for pods. Existing
+        /// ReplicaSets whose pods are selected by this will be the ones
+        /// affected by this deployment. It must match the pod template's
+        /// labels.</param>
         /// <param name="template">Template describes the pods that will be
         /// created.</param>
         /// <param name="minReadySeconds">Minimum number of seconds for which a
@@ -48,12 +52,9 @@ namespace k8s.Models
         /// <param name="revisionHistoryLimit">The number of old ReplicaSets to
         /// retain to allow rollback. This is a pointer to distinguish between
         /// explicit zero and not specified. Defaults to 10.</param>
-        /// <param name="selector">Label selector for pods. Existing
-        /// ReplicaSets whose pods are selected by this will be the ones
-        /// affected by this deployment.</param>
         /// <param name="strategy">The deployment strategy to use to replace
         /// existing pods with new ones.</param>
-        public V1beta2DeploymentSpec(V1PodTemplateSpec template, int? minReadySeconds = default(int?), bool? paused = default(bool?), int? progressDeadlineSeconds = default(int?), int? replicas = default(int?), int? revisionHistoryLimit = default(int?), V1LabelSelector selector = default(V1LabelSelector), V1beta2DeploymentStrategy strategy = default(V1beta2DeploymentStrategy))
+        public V1beta2DeploymentSpec(V1LabelSelector selector, V1PodTemplateSpec template, int? minReadySeconds = default(int?), bool? paused = default(bool?), int? progressDeadlineSeconds = default(int?), int? replicas = default(int?), int? revisionHistoryLimit = default(int?), V1beta2DeploymentStrategy strategy = default(V1beta2DeploymentStrategy))
         {
             MinReadySeconds = minReadySeconds;
             Paused = paused;
@@ -115,7 +116,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets label selector for pods. Existing ReplicaSets whose
         /// pods are selected by this will be the ones affected by this
-        /// deployment.
+        /// deployment. It must match the pod template's labels.
         /// </summary>
         [JsonProperty(PropertyName = "selector")]
         public V1LabelSelector Selector { get; set; }
@@ -141,6 +142,10 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
+            if (Selector == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Selector");
+            }
             if (Template == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Template");

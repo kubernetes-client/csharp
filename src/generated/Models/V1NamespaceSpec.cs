@@ -30,7 +30,7 @@ namespace k8s.Models
         /// <param name="finalizers">Finalizers is an opaque list of values
         /// that must be empty to permanently remove object from storage. More
         /// info:
-        /// https://git.k8s.io/community/contributors/design-proposals/namespaces.md#finalizers</param>
+        /// https://kubernetes.io/docs/tasks/administer-cluster/namespaces/</param>
         public V1NamespaceSpec(IList<string> finalizers = default(IList<string>))
         {
             Finalizers = finalizers;
@@ -45,7 +45,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets finalizers is an opaque list of values that must be
         /// empty to permanently remove object from storage. More info:
-        /// https://git.k8s.io/community/contributors/design-proposals/namespaces.md#finalizers
+        /// https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
         /// </summary>
         [JsonProperty(PropertyName = "finalizers")]
         public IList<string> Finalizers { get; set; }

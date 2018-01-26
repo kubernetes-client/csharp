@@ -30,6 +30,8 @@ namespace k8s.Models
         /// about.</param>
         /// <param name="metadata">Standard object's metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</param>
+        /// <param name="action">What action was taken/failed regarding to the
+        /// Regarding object.</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
@@ -37,6 +39,8 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#resources</param>
         /// <param name="count">The number of times this event has
         /// occurred.</param>
+        /// <param name="eventTime">Time when this Event was first
+        /// observed.</param>
         /// <param name="firstTimestamp">The time at which the event was first
         /// recorded. (Time of server receipt is in TypeMeta.)</param>
         /// <param name="kind">Kind is a string value representing the REST
@@ -51,14 +55,24 @@ namespace k8s.Models
         /// <param name="reason">This should be a short, machine understandable
         /// string that gives the reason for the transition into the object's
         /// current status.</param>
+        /// <param name="related">Optional secondary object for more complex
+        /// actions.</param>
+        /// <param name="reportingComponent">Name of the controller that
+        /// emitted this Event, e.g. `kubernetes.io/kubelet`.</param>
+        /// <param name="reportingInstance">ID of the controller instance, e.g.
+        /// `kubelet-xyzf`.</param>
+        /// <param name="series">Data about the Event series this event
+        /// represents or nil if it's a singleton Event.</param>
         /// <param name="source">The component reporting this event. Should be
         /// a short machine understandable string.</param>
         /// <param name="type">Type of this event (Normal, Warning), new types
         /// could be added in the future</param>
-        public V1Event(V1ObjectReference involvedObject, V1ObjectMeta metadata, string apiVersion = default(string), int? count = default(int?), System.DateTime? firstTimestamp = default(System.DateTime?), string kind = default(string), System.DateTime? lastTimestamp = default(System.DateTime?), string message = default(string), string reason = default(string), V1EventSource source = default(V1EventSource), string type = default(string))
+        public V1Event(V1ObjectReference involvedObject, V1ObjectMeta metadata, string action = default(string), string apiVersion = default(string), int? count = default(int?), System.DateTime? eventTime = default(System.DateTime?), System.DateTime? firstTimestamp = default(System.DateTime?), string kind = default(string), System.DateTime? lastTimestamp = default(System.DateTime?), string message = default(string), string reason = default(string), V1ObjectReference related = default(V1ObjectReference), string reportingComponent = default(string), string reportingInstance = default(string), V1EventSeries series = default(V1EventSeries), V1EventSource source = default(V1EventSource), string type = default(string))
         {
+            Action = action;
             ApiVersion = apiVersion;
             Count = count;
+            EventTime = eventTime;
             FirstTimestamp = firstTimestamp;
             InvolvedObject = involvedObject;
             Kind = kind;
@@ -66,6 +80,10 @@ namespace k8s.Models
             Message = message;
             Metadata = metadata;
             Reason = reason;
+            Related = related;
+            ReportingComponent = reportingComponent;
+            ReportingInstance = reportingInstance;
+            Series = series;
             Source = source;
             Type = type;
             CustomInit();
@@ -75,6 +93,13 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets what action was taken/failed regarding to the
+        /// Regarding object.
+        /// </summary>
+        [JsonProperty(PropertyName = "action")]
+        public string Action { get; set; }
 
         /// <summary>
         /// Gets or sets aPIVersion defines the versioned schema of this
@@ -91,6 +116,12 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "count")]
         public int? Count { get; set; }
+
+        /// <summary>
+        /// Gets or sets time when this Event was first observed.
+        /// </summary>
+        [JsonProperty(PropertyName = "eventTime")]
+        public System.DateTime? EventTime { get; set; }
 
         /// <summary>
         /// Gets or sets the time at which the event was first recorded. (Time
@@ -143,6 +174,32 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "reason")]
         public string Reason { get; set; }
+
+        /// <summary>
+        /// Gets or sets optional secondary object for more complex actions.
+        /// </summary>
+        [JsonProperty(PropertyName = "related")]
+        public V1ObjectReference Related { get; set; }
+
+        /// <summary>
+        /// Gets or sets name of the controller that emitted this Event, e.g.
+        /// `kubernetes.io/kubelet`.
+        /// </summary>
+        [JsonProperty(PropertyName = "reportingComponent")]
+        public string ReportingComponent { get; set; }
+
+        /// <summary>
+        /// Gets or sets ID of the controller instance, e.g. `kubelet-xyzf`.
+        /// </summary>
+        [JsonProperty(PropertyName = "reportingInstance")]
+        public string ReportingInstance { get; set; }
+
+        /// <summary>
+        /// Gets or sets data about the Event series this event represents or
+        /// nil if it's a singleton Event.
+        /// </summary>
+        [JsonProperty(PropertyName = "series")]
+        public V1EventSeries Series { get; set; }
 
         /// <summary>
         /// Gets or sets the component reporting this event. Should be a short

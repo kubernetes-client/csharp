@@ -51,7 +51,7 @@ namespace k8s.Models
         /// may cause this and other jobs to not function correctly.  However,
         /// You may see `manualSelector=true` in jobs that were created with
         /// the old `extensions/v1beta1` API. More info:
-        /// https://git.k8s.io/community/contributors/design-proposals/selector-generation.md</param>
+        /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/#specifying-your-own-pod-selector</param>
         /// <param name="parallelism">Specifies the maximum desired number of
         /// pods the job should run at any given time. The actual number of
         /// pods running in steady state will be less than this number when
@@ -117,7 +117,7 @@ namespace k8s.Models
         /// this and other jobs to not function correctly.  However, You may
         /// see `manualSelector=true` in jobs that were created with the old
         /// `extensions/v1beta1` API. More info:
-        /// https://git.k8s.io/community/contributors/design-proposals/selector-generation.md
+        /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/#specifying-your-own-pod-selector
         /// </summary>
         [JsonProperty(PropertyName = "manualSelector")]
         public bool? ManualSelector { get; set; }

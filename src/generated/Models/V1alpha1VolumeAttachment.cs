@@ -8,31 +8,29 @@ namespace k8s.Models
 {
     using Microsoft.Rest;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// ExternalAdmissionHookConfigurationList is a list of
-    /// ExternalAdmissionHookConfiguration.
+    /// VolumeAttachment captures the intent to attach or detach the specified
+    /// volume to/from the specified node.
+    ///
+    /// VolumeAttachment objects are non-namespaced.
     /// </summary>
-    public partial class V1alpha1ExternalAdmissionHookConfigurationList
+    public partial class V1alpha1VolumeAttachment
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// V1alpha1ExternalAdmissionHookConfigurationList class.
+        /// Initializes a new instance of the V1alpha1VolumeAttachment class.
         /// </summary>
-        public V1alpha1ExternalAdmissionHookConfigurationList()
+        public V1alpha1VolumeAttachment()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// V1alpha1ExternalAdmissionHookConfigurationList class.
+        /// Initializes a new instance of the V1alpha1VolumeAttachment class.
         /// </summary>
-        /// <param name="items">List of
-        /// ExternalAdmissionHookConfiguration.</param>
+        /// <param name="spec">Specification of the desired attach/detach
+        /// volume behavior. Populated by the Kubernetes system.</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
@@ -43,14 +41,18 @@ namespace k8s.Models
         /// endpoint the client submits requests to. Cannot be updated. In
         /// CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
-        /// <param name="metadata">Standard list metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
-        public V1alpha1ExternalAdmissionHookConfigurationList(IList<V1alpha1ExternalAdmissionHookConfiguration> items, string apiVersion = default(string), string kind = default(string), V1ListMeta metadata = default(V1ListMeta))
+        /// <param name="metadata">Standard object metadata. More info:
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</param>
+        /// <param name="status">Status of the VolumeAttachment request.
+        /// Populated by the entity completing the attach or detach operation,
+        /// i.e. the external-attacher.</param>
+        public V1alpha1VolumeAttachment(V1alpha1VolumeAttachmentSpec spec, string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), V1alpha1VolumeAttachmentStatus status = default(V1alpha1VolumeAttachmentStatus))
         {
             ApiVersion = apiVersion;
-            Items = items;
             Kind = kind;
             Metadata = metadata;
+            Spec = spec;
+            Status = status;
             CustomInit();
         }
 
@@ -70,12 +72,6 @@ namespace k8s.Models
         public string ApiVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets list of ExternalAdmissionHookConfiguration.
-        /// </summary>
-        [JsonProperty(PropertyName = "items")]
-        public IList<V1alpha1ExternalAdmissionHookConfiguration> Items { get; set; }
-
-        /// <summary>
         /// Gets or sets kind is a string value representing the REST resource
         /// this object represents. Servers may infer this from the endpoint
         /// the client submits requests to. Cannot be updated. In CamelCase.
@@ -86,11 +82,26 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// Gets or sets standard list metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+        /// Gets or sets standard object metadata. More info:
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
-        public V1ListMeta Metadata { get; set; }
+        public V1ObjectMeta Metadata { get; set; }
+
+        /// <summary>
+        /// Gets or sets specification of the desired attach/detach volume
+        /// behavior. Populated by the Kubernetes system.
+        /// </summary>
+        [JsonProperty(PropertyName = "spec")]
+        public V1alpha1VolumeAttachmentSpec Spec { get; set; }
+
+        /// <summary>
+        /// Gets or sets status of the VolumeAttachment request. Populated by
+        /// the entity completing the attach or detach operation, i.e. the
+        /// external-attacher.
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public V1alpha1VolumeAttachmentStatus Status { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -100,19 +111,21 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Items == null)
+            if (Spec == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Items");
+                throw new ValidationException(ValidationRules.CannotBeNull, "Spec");
             }
-            if (Items != null)
+            if (Metadata != null)
             {
-                foreach (var element in Items)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
+                Metadata.Validate();
+            }
+            if (Spec != null)
+            {
+                Spec.Validate();
+            }
+            if (Status != null)
+            {
+                Status.Validate();
             }
         }
     }

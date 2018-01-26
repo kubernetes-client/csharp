@@ -10,6 +10,8 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
+    /// DEPRECATED - This group version of StatefulSet is deprecated by
+    /// apps/v1/StatefulSet. See the release notes for more information.
     /// StatefulSet represents a set of pods with consistent identities.
     /// Identities are defined as:
     /// - Network: A single stable DNS and hostname.

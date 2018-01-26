@@ -7,6 +7,8 @@
 namespace k8s.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -31,6 +33,8 @@ namespace k8s.Models
         /// collisions for the StatefulSet. The StatefulSet controller uses
         /// this field as a collision avoidance mechanism when it needs to
         /// create the name for the newest ControllerRevision.</param>
+        /// <param name="conditions">Represents the latest available
+        /// observations of a statefulset's current state.</param>
         /// <param name="currentReplicas">currentReplicas is the number of Pods
         /// created by the StatefulSet controller from the StatefulSet version
         /// indicated by currentRevision.</param>
@@ -50,9 +54,10 @@ namespace k8s.Models
         /// <param name="updatedReplicas">updatedReplicas is the number of Pods
         /// created by the StatefulSet controller from the StatefulSet version
         /// indicated by updateRevision.</param>
-        public V1beta1StatefulSetStatus(int replicas, int? collisionCount = default(int?), int? currentReplicas = default(int?), string currentRevision = default(string), long? observedGeneration = default(long?), int? readyReplicas = default(int?), string updateRevision = default(string), int? updatedReplicas = default(int?))
+        public V1beta1StatefulSetStatus(int replicas, int? collisionCount = default(int?), IList<V1beta1StatefulSetCondition> conditions = default(IList<V1beta1StatefulSetCondition>), int? currentReplicas = default(int?), string currentRevision = default(string), long? observedGeneration = default(long?), int? readyReplicas = default(int?), string updateRevision = default(string), int? updatedReplicas = default(int?))
         {
             CollisionCount = collisionCount;
+            Conditions = conditions;
             CurrentReplicas = currentReplicas;
             CurrentRevision = currentRevision;
             ObservedGeneration = observedGeneration;
@@ -76,6 +81,13 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "collisionCount")]
         public int? CollisionCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets represents the latest available observations of a
+        /// statefulset's current state.
+        /// </summary>
+        [JsonProperty(PropertyName = "conditions")]
+        public IList<V1beta1StatefulSetCondition> Conditions { get; set; }
 
         /// <summary>
         /// Gets or sets currentReplicas is the number of Pods created by the
@@ -139,7 +151,16 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            //Nothing to validate
+            if (Conditions != null)
+            {
+                foreach (var element in Conditions)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
         }
     }
 }
