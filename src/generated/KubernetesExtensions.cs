@@ -1731,7 +1731,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1ConfigMap PatchNamespacedConfigMap(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1ConfigMap PatchNamespacedConfigMap(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedConfigMapAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -1756,7 +1756,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1ConfigMap> PatchNamespacedConfigMapAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1ConfigMap> PatchNamespacedConfigMapAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedConfigMapWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -2353,7 +2353,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1Endpoints PatchNamespacedEndpoints(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1Endpoints PatchNamespacedEndpoints(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedEndpointsAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -2378,7 +2378,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1Endpoints> PatchNamespacedEndpointsAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1Endpoints> PatchNamespacedEndpointsAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedEndpointsWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -2975,7 +2975,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1Event PatchNamespacedEvent(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1Event PatchNamespacedEvent(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedEventAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -3000,7 +3000,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1Event> PatchNamespacedEventAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1Event> PatchNamespacedEventAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedEventWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -3597,7 +3597,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1LimitRange PatchNamespacedLimitRange(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1LimitRange PatchNamespacedLimitRange(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedLimitRangeAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -3622,7 +3622,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1LimitRange> PatchNamespacedLimitRangeAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1LimitRange> PatchNamespacedLimitRangeAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedLimitRangeWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -4219,7 +4219,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1PersistentVolumeClaim PatchNamespacedPersistentVolumeClaim(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1PersistentVolumeClaim PatchNamespacedPersistentVolumeClaim(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedPersistentVolumeClaimAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -4244,7 +4244,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1PersistentVolumeClaim> PatchNamespacedPersistentVolumeClaimAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1PersistentVolumeClaim> PatchNamespacedPersistentVolumeClaimAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedPersistentVolumeClaimWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -4365,7 +4365,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1PersistentVolumeClaim PatchNamespacedPersistentVolumeClaimStatus(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1PersistentVolumeClaim PatchNamespacedPersistentVolumeClaimStatus(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedPersistentVolumeClaimStatusAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -4390,7 +4390,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1PersistentVolumeClaim> PatchNamespacedPersistentVolumeClaimStatusAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1PersistentVolumeClaim> PatchNamespacedPersistentVolumeClaimStatusAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedPersistentVolumeClaimStatusWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -4987,7 +4987,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1Pod PatchNamespacedPod(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1Pod PatchNamespacedPod(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedPodAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -5012,7 +5012,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1Pod> PatchNamespacedPodAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1Pod> PatchNamespacedPodAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedPodWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -6358,7 +6358,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1Pod PatchNamespacedPodStatus(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1Pod PatchNamespacedPodStatus(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedPodStatusAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -6383,7 +6383,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1Pod> PatchNamespacedPodStatusAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1Pod> PatchNamespacedPodStatusAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedPodStatusWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -6980,7 +6980,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1PodTemplate PatchNamespacedPodTemplate(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1PodTemplate PatchNamespacedPodTemplate(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedPodTemplateAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -7005,7 +7005,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1PodTemplate> PatchNamespacedPodTemplateAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1PodTemplate> PatchNamespacedPodTemplateAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedPodTemplateWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -7602,7 +7602,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1ReplicationController PatchNamespacedReplicationController(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1ReplicationController PatchNamespacedReplicationController(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedReplicationControllerAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -7627,7 +7627,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1ReplicationController> PatchNamespacedReplicationControllerAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1ReplicationController> PatchNamespacedReplicationControllerAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedReplicationControllerWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -7748,7 +7748,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1Scale PatchNamespacedReplicationControllerScale(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1Scale PatchNamespacedReplicationControllerScale(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedReplicationControllerScaleAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -7773,7 +7773,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1Scale> PatchNamespacedReplicationControllerScaleAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1Scale> PatchNamespacedReplicationControllerScaleAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedReplicationControllerScaleWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -7894,7 +7894,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1ReplicationController PatchNamespacedReplicationControllerStatus(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1ReplicationController PatchNamespacedReplicationControllerStatus(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedReplicationControllerStatusAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -7919,7 +7919,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1ReplicationController> PatchNamespacedReplicationControllerStatusAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1ReplicationController> PatchNamespacedReplicationControllerStatusAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedReplicationControllerStatusWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -8516,7 +8516,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1ResourceQuota PatchNamespacedResourceQuota(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1ResourceQuota PatchNamespacedResourceQuota(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedResourceQuotaAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -8541,7 +8541,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1ResourceQuota> PatchNamespacedResourceQuotaAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1ResourceQuota> PatchNamespacedResourceQuotaAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedResourceQuotaWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -8662,7 +8662,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1ResourceQuota PatchNamespacedResourceQuotaStatus(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1ResourceQuota PatchNamespacedResourceQuotaStatus(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedResourceQuotaStatusAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -8687,7 +8687,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1ResourceQuota> PatchNamespacedResourceQuotaStatusAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1ResourceQuota> PatchNamespacedResourceQuotaStatusAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedResourceQuotaStatusWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -9284,7 +9284,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1Secret PatchNamespacedSecret(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1Secret PatchNamespacedSecret(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedSecretAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -9309,7 +9309,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1Secret> PatchNamespacedSecretAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1Secret> PatchNamespacedSecretAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedSecretWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -9906,7 +9906,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1ServiceAccount PatchNamespacedServiceAccount(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1ServiceAccount PatchNamespacedServiceAccount(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedServiceAccountAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -9931,7 +9931,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1ServiceAccount> PatchNamespacedServiceAccountAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1ServiceAccount> PatchNamespacedServiceAccountAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedServiceAccountWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -10322,7 +10322,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1Service PatchNamespacedService(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1Service PatchNamespacedService(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedServiceAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -10347,7 +10347,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1Service> PatchNamespacedServiceAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1Service> PatchNamespacedServiceAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedServiceWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -11152,7 +11152,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1Service PatchNamespacedServiceStatus(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1Service PatchNamespacedServiceStatus(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedServiceStatusAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -11177,7 +11177,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1Service> PatchNamespacedServiceStatusAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1Service> PatchNamespacedServiceStatusAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedServiceStatusWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -11381,7 +11381,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1Namespace PatchNamespace(this IKubernetes operations, object body, string name, string pretty = default(string))
+            public static V1Namespace PatchNamespace(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchNamespaceAsync(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -11403,7 +11403,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1Namespace> PatchNamespaceAsync(this IKubernetes operations, object body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1Namespace> PatchNamespaceAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespaceWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -11553,7 +11553,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1Namespace PatchNamespaceStatus(this IKubernetes operations, object body, string name, string pretty = default(string))
+            public static V1Namespace PatchNamespaceStatus(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchNamespaceStatusAsync(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -11575,7 +11575,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1Namespace> PatchNamespaceStatusAsync(this IKubernetes operations, object body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1Namespace> PatchNamespaceStatusAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespaceStatusWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -12133,7 +12133,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1Node PatchNode(this IKubernetes operations, object body, string name, string pretty = default(string))
+            public static V1Node PatchNode(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchNodeAsync(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -12155,7 +12155,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1Node> PatchNodeAsync(this IKubernetes operations, object body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1Node> PatchNodeAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNodeWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -12777,7 +12777,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1Node PatchNodeStatus(this IKubernetes operations, object body, string name, string pretty = default(string))
+            public static V1Node PatchNodeStatus(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchNodeStatusAsync(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -12799,7 +12799,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1Node> PatchNodeStatusAsync(this IKubernetes operations, object body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1Node> PatchNodeStatusAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNodeStatusWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -13515,7 +13515,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1PersistentVolume PatchPersistentVolume(this IKubernetes operations, object body, string name, string pretty = default(string))
+            public static V1PersistentVolume PatchPersistentVolume(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchPersistentVolumeAsync(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -13537,7 +13537,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1PersistentVolume> PatchPersistentVolumeAsync(this IKubernetes operations, object body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1PersistentVolume> PatchPersistentVolumeAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchPersistentVolumeWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -13643,7 +13643,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1PersistentVolume PatchPersistentVolumeStatus(this IKubernetes operations, object body, string name, string pretty = default(string))
+            public static V1PersistentVolume PatchPersistentVolumeStatus(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchPersistentVolumeStatusAsync(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -13665,7 +13665,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1PersistentVolume> PatchPersistentVolumeStatusAsync(this IKubernetes operations, object body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1PersistentVolume> PatchPersistentVolumeStatusAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchPersistentVolumeStatusWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -16889,7 +16889,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1alpha1ExternalAdmissionHookConfiguration PatchExternalAdmissionHookConfiguration(this IKubernetes operations, object body, string name, string pretty = default(string))
+            public static V1alpha1ExternalAdmissionHookConfiguration PatchExternalAdmissionHookConfiguration(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchExternalAdmissionHookConfigurationAsync(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -16911,7 +16911,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1alpha1ExternalAdmissionHookConfiguration> PatchExternalAdmissionHookConfigurationAsync(this IKubernetes operations, object body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1alpha1ExternalAdmissionHookConfiguration> PatchExternalAdmissionHookConfigurationAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchExternalAdmissionHookConfigurationWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -17469,7 +17469,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1alpha1InitializerConfiguration PatchInitializerConfiguration(this IKubernetes operations, object body, string name, string pretty = default(string))
+            public static V1alpha1InitializerConfiguration PatchInitializerConfiguration(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchInitializerConfigurationAsync(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -17491,7 +17491,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1alpha1InitializerConfiguration> PatchInitializerConfigurationAsync(this IKubernetes operations, object body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1alpha1InitializerConfiguration> PatchInitializerConfigurationAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchInitializerConfigurationWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -18105,7 +18105,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1CustomResourceDefinition PatchCustomResourceDefinition(this IKubernetes operations, object body, string name, string pretty = default(string))
+            public static V1beta1CustomResourceDefinition PatchCustomResourceDefinition(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchCustomResourceDefinitionAsync(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -18127,7 +18127,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1CustomResourceDefinition> PatchCustomResourceDefinitionAsync(this IKubernetes operations, object body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1CustomResourceDefinition> PatchCustomResourceDefinitionAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchCustomResourceDefinitionWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -18785,7 +18785,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1APIService PatchAPIService(this IKubernetes operations, object body, string name, string pretty = default(string))
+            public static V1beta1APIService PatchAPIService(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchAPIServiceAsync(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -18807,7 +18807,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1APIService> PatchAPIServiceAsync(this IKubernetes operations, object body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1APIService> PatchAPIServiceAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchAPIServiceWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -19820,7 +19820,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1ControllerRevision PatchNamespacedControllerRevision(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta1ControllerRevision PatchNamespacedControllerRevision(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedControllerRevisionAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -19845,7 +19845,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1ControllerRevision> PatchNamespacedControllerRevisionAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1ControllerRevision> PatchNamespacedControllerRevisionAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedControllerRevisionWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -20442,7 +20442,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static Appsv1beta1Deployment PatchNamespacedDeployment(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static Appsv1beta1Deployment PatchNamespacedDeployment(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedDeploymentAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -20467,7 +20467,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Appsv1beta1Deployment> PatchNamespacedDeploymentAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Appsv1beta1Deployment> PatchNamespacedDeploymentAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedDeploymentWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -20638,7 +20638,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static Appsv1beta1Scale PatchNamespacedDeploymentScale(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static Appsv1beta1Scale PatchNamespacedDeploymentScale(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedDeploymentScaleAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -20663,7 +20663,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Appsv1beta1Scale> PatchNamespacedDeploymentScaleAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Appsv1beta1Scale> PatchNamespacedDeploymentScaleAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedDeploymentScaleWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -20784,7 +20784,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static Appsv1beta1Deployment PatchNamespacedDeploymentStatus(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static Appsv1beta1Deployment PatchNamespacedDeploymentStatus(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedDeploymentStatusAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -20809,7 +20809,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Appsv1beta1Deployment> PatchNamespacedDeploymentStatusAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Appsv1beta1Deployment> PatchNamespacedDeploymentStatusAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedDeploymentStatusWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -21406,7 +21406,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1StatefulSet PatchNamespacedStatefulSet(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta1StatefulSet PatchNamespacedStatefulSet(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedStatefulSetAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -21431,7 +21431,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1StatefulSet> PatchNamespacedStatefulSetAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1StatefulSet> PatchNamespacedStatefulSetAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedStatefulSetWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -21552,7 +21552,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static Appsv1beta1Scale PatchNamespacedStatefulSetScale(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static Appsv1beta1Scale PatchNamespacedStatefulSetScale(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedStatefulSetScaleAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -21577,7 +21577,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Appsv1beta1Scale> PatchNamespacedStatefulSetScaleAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Appsv1beta1Scale> PatchNamespacedStatefulSetScaleAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedStatefulSetScaleWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -21698,7 +21698,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1StatefulSet PatchNamespacedStatefulSetStatus(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta1StatefulSet PatchNamespacedStatefulSetStatus(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedStatefulSetStatusAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -21723,7 +21723,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1StatefulSet> PatchNamespacedStatefulSetStatusAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1StatefulSet> PatchNamespacedStatefulSetStatusAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedStatefulSetStatusWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -22980,7 +22980,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta2ControllerRevision PatchNamespacedControllerRevision1(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta2ControllerRevision PatchNamespacedControllerRevision1(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedControllerRevision1Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -23005,7 +23005,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta2ControllerRevision> PatchNamespacedControllerRevision1Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta2ControllerRevision> PatchNamespacedControllerRevision1Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedControllerRevision1WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -23602,7 +23602,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta2DaemonSet PatchNamespacedDaemonSet(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta2DaemonSet PatchNamespacedDaemonSet(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedDaemonSetAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -23627,7 +23627,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta2DaemonSet> PatchNamespacedDaemonSetAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta2DaemonSet> PatchNamespacedDaemonSetAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedDaemonSetWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -23748,7 +23748,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta2DaemonSet PatchNamespacedDaemonSetStatus(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta2DaemonSet PatchNamespacedDaemonSetStatus(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedDaemonSetStatusAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -23773,7 +23773,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta2DaemonSet> PatchNamespacedDaemonSetStatusAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta2DaemonSet> PatchNamespacedDaemonSetStatusAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedDaemonSetStatusWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -24370,7 +24370,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta2Deployment PatchNamespacedDeployment1(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta2Deployment PatchNamespacedDeployment1(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedDeployment1Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -24395,7 +24395,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta2Deployment> PatchNamespacedDeployment1Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta2Deployment> PatchNamespacedDeployment1Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedDeployment1WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -24516,7 +24516,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta2Scale PatchNamespacedDeploymentScale1(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta2Scale PatchNamespacedDeploymentScale1(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedDeploymentScale1Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -24541,7 +24541,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta2Scale> PatchNamespacedDeploymentScale1Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta2Scale> PatchNamespacedDeploymentScale1Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedDeploymentScale1WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -24662,7 +24662,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta2Deployment PatchNamespacedDeploymentStatus1(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta2Deployment PatchNamespacedDeploymentStatus1(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedDeploymentStatus1Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -24687,7 +24687,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta2Deployment> PatchNamespacedDeploymentStatus1Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta2Deployment> PatchNamespacedDeploymentStatus1Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedDeploymentStatus1WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -25284,7 +25284,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta2ReplicaSet PatchNamespacedReplicaSet(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta2ReplicaSet PatchNamespacedReplicaSet(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedReplicaSetAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -25309,7 +25309,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta2ReplicaSet> PatchNamespacedReplicaSetAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta2ReplicaSet> PatchNamespacedReplicaSetAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedReplicaSetWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -25430,7 +25430,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta2Scale PatchNamespacedReplicaSetScale(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta2Scale PatchNamespacedReplicaSetScale(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedReplicaSetScaleAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -25455,7 +25455,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta2Scale> PatchNamespacedReplicaSetScaleAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta2Scale> PatchNamespacedReplicaSetScaleAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedReplicaSetScaleWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -25576,7 +25576,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta2ReplicaSet PatchNamespacedReplicaSetStatus(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta2ReplicaSet PatchNamespacedReplicaSetStatus(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedReplicaSetStatusAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -25601,7 +25601,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta2ReplicaSet> PatchNamespacedReplicaSetStatusAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta2ReplicaSet> PatchNamespacedReplicaSetStatusAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedReplicaSetStatusWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -26198,7 +26198,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta2StatefulSet PatchNamespacedStatefulSet1(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta2StatefulSet PatchNamespacedStatefulSet1(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedStatefulSet1Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -26223,7 +26223,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta2StatefulSet> PatchNamespacedStatefulSet1Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta2StatefulSet> PatchNamespacedStatefulSet1Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedStatefulSet1WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -26344,7 +26344,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta2Scale PatchNamespacedStatefulSetScale1(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta2Scale PatchNamespacedStatefulSetScale1(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedStatefulSetScale1Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -26369,7 +26369,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta2Scale> PatchNamespacedStatefulSetScale1Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta2Scale> PatchNamespacedStatefulSetScale1Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedStatefulSetScale1WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -26490,7 +26490,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta2StatefulSet PatchNamespacedStatefulSetStatus1(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta2StatefulSet PatchNamespacedStatefulSetStatus1(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedStatefulSetStatus1Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -26515,7 +26515,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta2StatefulSet> PatchNamespacedStatefulSetStatus1Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta2StatefulSet> PatchNamespacedStatefulSetStatus1Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedStatefulSetStatus1WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -28202,7 +28202,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1HorizontalPodAutoscaler PatchNamespacedHorizontalPodAutoscaler(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1HorizontalPodAutoscaler PatchNamespacedHorizontalPodAutoscaler(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedHorizontalPodAutoscalerAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -28227,7 +28227,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1HorizontalPodAutoscaler> PatchNamespacedHorizontalPodAutoscalerAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1HorizontalPodAutoscaler> PatchNamespacedHorizontalPodAutoscalerAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -28348,7 +28348,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1HorizontalPodAutoscaler PatchNamespacedHorizontalPodAutoscalerStatus(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1HorizontalPodAutoscaler PatchNamespacedHorizontalPodAutoscalerStatus(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedHorizontalPodAutoscalerStatusAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -28373,7 +28373,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1HorizontalPodAutoscaler> PatchNamespacedHorizontalPodAutoscalerStatusAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1HorizontalPodAutoscaler> PatchNamespacedHorizontalPodAutoscalerStatusAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedHorizontalPodAutoscalerStatusWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -29156,7 +29156,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V2beta1HorizontalPodAutoscaler PatchNamespacedHorizontalPodAutoscaler1(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V2beta1HorizontalPodAutoscaler PatchNamespacedHorizontalPodAutoscaler1(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedHorizontalPodAutoscaler1Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -29181,7 +29181,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V2beta1HorizontalPodAutoscaler> PatchNamespacedHorizontalPodAutoscaler1Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V2beta1HorizontalPodAutoscaler> PatchNamespacedHorizontalPodAutoscaler1Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -29302,7 +29302,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V2beta1HorizontalPodAutoscaler PatchNamespacedHorizontalPodAutoscalerStatus1(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V2beta1HorizontalPodAutoscaler PatchNamespacedHorizontalPodAutoscalerStatus1(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedHorizontalPodAutoscalerStatus1Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -29327,7 +29327,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V2beta1HorizontalPodAutoscaler> PatchNamespacedHorizontalPodAutoscalerStatus1Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V2beta1HorizontalPodAutoscaler> PatchNamespacedHorizontalPodAutoscalerStatus1Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedHorizontalPodAutoscalerStatus1WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -30138,7 +30138,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1Job PatchNamespacedJob(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1Job PatchNamespacedJob(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedJobAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -30163,7 +30163,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1Job> PatchNamespacedJobAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1Job> PatchNamespacedJobAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedJobWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -30284,7 +30284,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1Job PatchNamespacedJobStatus(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1Job PatchNamespacedJobStatus(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedJobStatusAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -30309,7 +30309,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1Job> PatchNamespacedJobStatusAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1Job> PatchNamespacedJobStatusAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedJobStatusWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -31092,7 +31092,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1CronJob PatchNamespacedCronJob(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta1CronJob PatchNamespacedCronJob(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedCronJobAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -31117,7 +31117,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1CronJob> PatchNamespacedCronJobAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1CronJob> PatchNamespacedCronJobAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedCronJobWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -31238,7 +31238,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1CronJob PatchNamespacedCronJobStatus(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta1CronJob PatchNamespacedCronJobStatus(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedCronJobStatusAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -31263,7 +31263,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1CronJob> PatchNamespacedCronJobStatusAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1CronJob> PatchNamespacedCronJobStatusAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedCronJobStatusWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -32046,7 +32046,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V2alpha1CronJob PatchNamespacedCronJob1(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V2alpha1CronJob PatchNamespacedCronJob1(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedCronJob1Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -32071,7 +32071,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V2alpha1CronJob> PatchNamespacedCronJob1Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V2alpha1CronJob> PatchNamespacedCronJob1Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedCronJob1WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -32192,7 +32192,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V2alpha1CronJob PatchNamespacedCronJobStatus1(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V2alpha1CronJob PatchNamespacedCronJobStatus1(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedCronJobStatus1Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -32217,7 +32217,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V2alpha1CronJob> PatchNamespacedCronJobStatus1Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V2alpha1CronJob> PatchNamespacedCronJobStatus1Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedCronJobStatus1WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -32831,7 +32831,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1CertificateSigningRequest PatchCertificateSigningRequest(this IKubernetes operations, object body, string name, string pretty = default(string))
+            public static V1beta1CertificateSigningRequest PatchCertificateSigningRequest(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchCertificateSigningRequestAsync(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -32853,7 +32853,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1CertificateSigningRequest> PatchCertificateSigningRequestAsync(this IKubernetes operations, object body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1CertificateSigningRequest> PatchCertificateSigningRequestAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchCertificateSigningRequestWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -34068,7 +34068,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1DaemonSet PatchNamespacedDaemonSet1(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta1DaemonSet PatchNamespacedDaemonSet1(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedDaemonSet1Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -34093,7 +34093,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1DaemonSet> PatchNamespacedDaemonSet1Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1DaemonSet> PatchNamespacedDaemonSet1Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedDaemonSet1WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -34214,7 +34214,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1DaemonSet PatchNamespacedDaemonSetStatus1(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta1DaemonSet PatchNamespacedDaemonSetStatus1(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedDaemonSetStatus1Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -34239,7 +34239,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1DaemonSet> PatchNamespacedDaemonSetStatus1Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1DaemonSet> PatchNamespacedDaemonSetStatus1Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedDaemonSetStatus1WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -34836,7 +34836,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static Extensionsv1beta1Deployment PatchNamespacedDeployment2(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static Extensionsv1beta1Deployment PatchNamespacedDeployment2(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedDeployment2Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -34861,7 +34861,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Extensionsv1beta1Deployment> PatchNamespacedDeployment2Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Extensionsv1beta1Deployment> PatchNamespacedDeployment2Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedDeployment2WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -35032,7 +35032,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static Extensionsv1beta1Scale PatchNamespacedDeploymentScale2(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static Extensionsv1beta1Scale PatchNamespacedDeploymentScale2(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedDeploymentScale2Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -35057,7 +35057,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Extensionsv1beta1Scale> PatchNamespacedDeploymentScale2Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Extensionsv1beta1Scale> PatchNamespacedDeploymentScale2Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedDeploymentScale2WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -35178,7 +35178,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static Extensionsv1beta1Deployment PatchNamespacedDeploymentStatus2(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static Extensionsv1beta1Deployment PatchNamespacedDeploymentStatus2(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedDeploymentStatus2Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -35203,7 +35203,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Extensionsv1beta1Deployment> PatchNamespacedDeploymentStatus2Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Extensionsv1beta1Deployment> PatchNamespacedDeploymentStatus2Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedDeploymentStatus2WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -35800,7 +35800,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1Ingress PatchNamespacedIngress(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta1Ingress PatchNamespacedIngress(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedIngressAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -35825,7 +35825,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1Ingress> PatchNamespacedIngressAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1Ingress> PatchNamespacedIngressAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedIngressWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -35946,7 +35946,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1Ingress PatchNamespacedIngressStatus(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta1Ingress PatchNamespacedIngressStatus(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedIngressStatusAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -35971,7 +35971,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1Ingress> PatchNamespacedIngressStatusAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1Ingress> PatchNamespacedIngressStatusAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedIngressStatusWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -36568,7 +36568,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1NetworkPolicy PatchNamespacedNetworkPolicy(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta1NetworkPolicy PatchNamespacedNetworkPolicy(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedNetworkPolicyAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -36593,7 +36593,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1NetworkPolicy> PatchNamespacedNetworkPolicyAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1NetworkPolicy> PatchNamespacedNetworkPolicyAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedNetworkPolicyWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -37190,7 +37190,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1ReplicaSet PatchNamespacedReplicaSet1(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta1ReplicaSet PatchNamespacedReplicaSet1(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedReplicaSet1Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -37215,7 +37215,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1ReplicaSet> PatchNamespacedReplicaSet1Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1ReplicaSet> PatchNamespacedReplicaSet1Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedReplicaSet1WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -37336,7 +37336,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static Extensionsv1beta1Scale PatchNamespacedReplicaSetScale1(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static Extensionsv1beta1Scale PatchNamespacedReplicaSetScale1(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedReplicaSetScale1Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -37361,7 +37361,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Extensionsv1beta1Scale> PatchNamespacedReplicaSetScale1Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Extensionsv1beta1Scale> PatchNamespacedReplicaSetScale1Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedReplicaSetScale1WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -37482,7 +37482,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1ReplicaSet PatchNamespacedReplicaSetStatus1(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta1ReplicaSet PatchNamespacedReplicaSetStatus1(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedReplicaSetStatus1Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -37507,7 +37507,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1ReplicaSet> PatchNamespacedReplicaSetStatus1Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1ReplicaSet> PatchNamespacedReplicaSetStatus1Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedReplicaSetStatus1WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -37628,7 +37628,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static Extensionsv1beta1Scale PatchNamespacedReplicationControllerDummyScale(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static Extensionsv1beta1Scale PatchNamespacedReplicationControllerDummyScale(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedReplicationControllerDummyScaleAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -37653,7 +37653,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Extensionsv1beta1Scale> PatchNamespacedReplicationControllerDummyScaleAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Extensionsv1beta1Scale> PatchNamespacedReplicationControllerDummyScaleAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedReplicationControllerDummyScaleWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -38369,7 +38369,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1PodSecurityPolicy PatchPodSecurityPolicy(this IKubernetes operations, object body, string name, string pretty = default(string))
+            public static V1beta1PodSecurityPolicy PatchPodSecurityPolicy(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchPodSecurityPolicyAsync(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -38391,7 +38391,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1PodSecurityPolicy> PatchPodSecurityPolicyAsync(this IKubernetes operations, object body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1PodSecurityPolicy> PatchPodSecurityPolicyAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchPodSecurityPolicyWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -39202,7 +39202,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1NetworkPolicy PatchNamespacedNetworkPolicy1(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1NetworkPolicy PatchNamespacedNetworkPolicy1(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedNetworkPolicy1Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -39227,7 +39227,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1NetworkPolicy> PatchNamespacedNetworkPolicy1Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1NetworkPolicy> PatchNamespacedNetworkPolicy1Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedNetworkPolicy1WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -40038,7 +40038,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1PodDisruptionBudget PatchNamespacedPodDisruptionBudget(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta1PodDisruptionBudget PatchNamespacedPodDisruptionBudget(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedPodDisruptionBudgetAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -40063,7 +40063,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1PodDisruptionBudget> PatchNamespacedPodDisruptionBudgetAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1PodDisruptionBudget> PatchNamespacedPodDisruptionBudgetAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedPodDisruptionBudgetWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -40184,7 +40184,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1PodDisruptionBudget PatchNamespacedPodDisruptionBudgetStatus(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta1PodDisruptionBudget PatchNamespacedPodDisruptionBudgetStatus(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedPodDisruptionBudgetStatusAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -40209,7 +40209,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1PodDisruptionBudget> PatchNamespacedPodDisruptionBudgetStatusAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1PodDisruptionBudget> PatchNamespacedPodDisruptionBudgetStatusAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedPodDisruptionBudgetStatusWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -40965,7 +40965,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1ClusterRoleBinding PatchClusterRoleBinding(this IKubernetes operations, object body, string name, string pretty = default(string))
+            public static V1ClusterRoleBinding PatchClusterRoleBinding(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchClusterRoleBindingAsync(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -40987,7 +40987,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1ClusterRoleBinding> PatchClusterRoleBindingAsync(this IKubernetes operations, object body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1ClusterRoleBinding> PatchClusterRoleBindingAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchClusterRoleBindingWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -41529,7 +41529,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1ClusterRole PatchClusterRole(this IKubernetes operations, object body, string name, string pretty = default(string))
+            public static V1ClusterRole PatchClusterRole(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchClusterRoleAsync(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -41551,7 +41551,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1ClusterRole> PatchClusterRoleAsync(this IKubernetes operations, object body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1ClusterRole> PatchClusterRoleAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchClusterRoleWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -42132,7 +42132,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1RoleBinding PatchNamespacedRoleBinding(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1RoleBinding PatchNamespacedRoleBinding(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedRoleBindingAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -42157,7 +42157,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1RoleBinding> PatchNamespacedRoleBindingAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1RoleBinding> PatchNamespacedRoleBindingAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedRoleBindingWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -42738,7 +42738,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1Role PatchNamespacedRole(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1Role PatchNamespacedRole(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedRoleAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -42763,7 +42763,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1Role> PatchNamespacedRoleAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1Role> PatchNamespacedRoleAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedRoleWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -43649,7 +43649,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1alpha1ClusterRoleBinding PatchClusterRoleBinding1(this IKubernetes operations, object body, string name, string pretty = default(string))
+            public static V1alpha1ClusterRoleBinding PatchClusterRoleBinding1(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchClusterRoleBinding1Async(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -43671,7 +43671,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1alpha1ClusterRoleBinding> PatchClusterRoleBinding1Async(this IKubernetes operations, object body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1alpha1ClusterRoleBinding> PatchClusterRoleBinding1Async(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchClusterRoleBinding1WithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -44213,7 +44213,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1alpha1ClusterRole PatchClusterRole1(this IKubernetes operations, object body, string name, string pretty = default(string))
+            public static V1alpha1ClusterRole PatchClusterRole1(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchClusterRole1Async(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -44235,7 +44235,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1alpha1ClusterRole> PatchClusterRole1Async(this IKubernetes operations, object body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1alpha1ClusterRole> PatchClusterRole1Async(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchClusterRole1WithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -44816,7 +44816,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1alpha1RoleBinding PatchNamespacedRoleBinding1(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1alpha1RoleBinding PatchNamespacedRoleBinding1(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedRoleBinding1Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -44841,7 +44841,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1alpha1RoleBinding> PatchNamespacedRoleBinding1Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1alpha1RoleBinding> PatchNamespacedRoleBinding1Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedRoleBinding1WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -45422,7 +45422,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1alpha1Role PatchNamespacedRole1(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1alpha1Role PatchNamespacedRole1(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedRole1Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -45447,7 +45447,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1alpha1Role> PatchNamespacedRole1Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1alpha1Role> PatchNamespacedRole1Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedRole1WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -46333,7 +46333,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1ClusterRoleBinding PatchClusterRoleBinding2(this IKubernetes operations, object body, string name, string pretty = default(string))
+            public static V1beta1ClusterRoleBinding PatchClusterRoleBinding2(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchClusterRoleBinding2Async(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -46355,7 +46355,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1ClusterRoleBinding> PatchClusterRoleBinding2Async(this IKubernetes operations, object body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1ClusterRoleBinding> PatchClusterRoleBinding2Async(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchClusterRoleBinding2WithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -46897,7 +46897,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1ClusterRole PatchClusterRole2(this IKubernetes operations, object body, string name, string pretty = default(string))
+            public static V1beta1ClusterRole PatchClusterRole2(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchClusterRole2Async(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -46919,7 +46919,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1ClusterRole> PatchClusterRole2Async(this IKubernetes operations, object body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1ClusterRole> PatchClusterRole2Async(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchClusterRole2WithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -47500,7 +47500,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1RoleBinding PatchNamespacedRoleBinding2(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta1RoleBinding PatchNamespacedRoleBinding2(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedRoleBinding2Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -47525,7 +47525,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1RoleBinding> PatchNamespacedRoleBinding2Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1RoleBinding> PatchNamespacedRoleBinding2Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedRoleBinding2WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -48106,7 +48106,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1Role PatchNamespacedRole2(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1beta1Role PatchNamespacedRole2(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedRole2Async(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -48131,7 +48131,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1Role> PatchNamespacedRole2Async(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1Role> PatchNamespacedRole2Async(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedRole2WithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -49061,7 +49061,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1alpha1PriorityClass PatchPriorityClass(this IKubernetes operations, object body, string name, string pretty = default(string))
+            public static V1alpha1PriorityClass PatchPriorityClass(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchPriorityClassAsync(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -49083,7 +49083,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1alpha1PriorityClass> PatchPriorityClassAsync(this IKubernetes operations, object body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1alpha1PriorityClass> PatchPriorityClassAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchPriorityClassWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -49736,7 +49736,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1alpha1PodPreset PatchNamespacedPodPreset(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string))
+            public static V1alpha1PodPreset PatchNamespacedPodPreset(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string))
             {
                 return operations.PatchNamespacedPodPresetAsync(body, name, namespaceParameter, pretty).GetAwaiter().GetResult();
             }
@@ -49761,7 +49761,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1alpha1PodPreset> PatchNamespacedPodPresetAsync(this IKubernetes operations, object body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1alpha1PodPreset> PatchNamespacedPodPresetAsync(this IKubernetes operations, V1Patch body, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchNamespacedPodPresetWithHttpMessagesAsync(body, name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -50533,7 +50533,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1StorageClass PatchStorageClass(this IKubernetes operations, object body, string name, string pretty = default(string))
+            public static V1StorageClass PatchStorageClass(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchStorageClassAsync(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -50555,7 +50555,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1StorageClass> PatchStorageClassAsync(this IKubernetes operations, object body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1StorageClass> PatchStorageClassAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchStorageClassWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -51141,7 +51141,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1StorageClass PatchStorageClass1(this IKubernetes operations, object body, string name, string pretty = default(string))
+            public static V1beta1StorageClass PatchStorageClass1(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchStorageClass1Async(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -51163,7 +51163,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1StorageClass> PatchStorageClass1Async(this IKubernetes operations, object body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1beta1StorageClass> PatchStorageClass1Async(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchStorageClass1WithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {

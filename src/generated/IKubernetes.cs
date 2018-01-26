@@ -908,7 +908,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ConfigMap>> PatchNamespacedConfigMapWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ConfigMap>> PatchNamespacedConfigMapWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Endpoints
@@ -1211,7 +1211,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Endpoints>> PatchNamespacedEndpointsWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Endpoints>> PatchNamespacedEndpointsWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Event
@@ -1514,7 +1514,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Event>> PatchNamespacedEventWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Event>> PatchNamespacedEventWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind LimitRange
@@ -1817,7 +1817,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1LimitRange>> PatchNamespacedLimitRangeWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1LimitRange>> PatchNamespacedLimitRangeWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PersistentVolumeClaim
@@ -2120,7 +2120,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PersistentVolumeClaim>> PatchNamespacedPersistentVolumeClaimWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PersistentVolumeClaim>> PatchNamespacedPersistentVolumeClaimWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified PersistentVolumeClaim
@@ -2184,7 +2184,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PersistentVolumeClaim>> PatchNamespacedPersistentVolumeClaimStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PersistentVolumeClaim>> PatchNamespacedPersistentVolumeClaimStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Pod
@@ -2487,7 +2487,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Pod>> PatchNamespacedPodWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Pod>> PatchNamespacedPodWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect GET requests to attach of Pod
@@ -3105,7 +3105,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Pod>> PatchNamespacedPodStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Pod>> PatchNamespacedPodStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodTemplate
@@ -3408,7 +3408,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PodTemplate>> PatchNamespacedPodTemplateWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PodTemplate>> PatchNamespacedPodTemplateWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ReplicationController
@@ -3711,7 +3711,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ReplicationController>> PatchNamespacedReplicationControllerWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ReplicationController>> PatchNamespacedReplicationControllerWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read scale of the specified ReplicationController
@@ -3775,7 +3775,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Scale>> PatchNamespacedReplicationControllerScaleWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Scale>> PatchNamespacedReplicationControllerScaleWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified ReplicationController
@@ -3839,7 +3839,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ReplicationController>> PatchNamespacedReplicationControllerStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ReplicationController>> PatchNamespacedReplicationControllerStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ResourceQuota
@@ -4142,7 +4142,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ResourceQuota>> PatchNamespacedResourceQuotaWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ResourceQuota>> PatchNamespacedResourceQuotaWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified ResourceQuota
@@ -4206,7 +4206,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ResourceQuota>> PatchNamespacedResourceQuotaStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ResourceQuota>> PatchNamespacedResourceQuotaStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Secret
@@ -4509,7 +4509,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Secret>> PatchNamespacedSecretWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Secret>> PatchNamespacedSecretWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ServiceAccount
@@ -4812,7 +4812,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ServiceAccount>> PatchNamespacedServiceAccountWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ServiceAccount>> PatchNamespacedServiceAccountWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Service
@@ -5008,7 +5008,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Service>> PatchNamespacedServiceWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Service>> PatchNamespacedServiceWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect GET requests to proxy of Service
@@ -5378,7 +5378,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Service>> PatchNamespacedServiceStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Service>> PatchNamespacedServiceStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read the specified Namespace
@@ -5480,7 +5480,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Namespace>> PatchNamespaceWithHttpMessagesAsync(object body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Namespace>> PatchNamespaceWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace finalize of the specified Namespace
@@ -5554,7 +5554,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Namespace>> PatchNamespaceStatusWithHttpMessagesAsync(object body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Namespace>> PatchNamespaceStatusWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Node
@@ -5836,7 +5836,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Node>> PatchNodeWithHttpMessagesAsync(object body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Node>> PatchNodeWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect GET requests to proxy of Node
@@ -6113,7 +6113,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Node>> PatchNodeStatusWithHttpMessagesAsync(object body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Node>> PatchNodeStatusWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PersistentVolumeClaim
@@ -6477,7 +6477,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PersistentVolume>> PatchPersistentVolumeWithHttpMessagesAsync(object body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PersistentVolume>> PatchPersistentVolumeWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified PersistentVolume
@@ -6532,7 +6532,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PersistentVolume>> PatchPersistentVolumeStatusWithHttpMessagesAsync(object body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PersistentVolume>> PatchPersistentVolumeStatusWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Pod
@@ -8051,7 +8051,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1ExternalAdmissionHookConfiguration>> PatchExternalAdmissionHookConfigurationWithHttpMessagesAsync(object body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1ExternalAdmissionHookConfiguration>> PatchExternalAdmissionHookConfigurationWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind InitializerConfiguration
@@ -8333,7 +8333,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1InitializerConfiguration>> PatchInitializerConfigurationWithHttpMessagesAsync(object body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1InitializerConfiguration>> PatchInitializerConfigurationWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get information of a group
@@ -8637,7 +8637,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CustomResourceDefinition>> PatchCustomResourceDefinitionWithHttpMessagesAsync(object body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CustomResourceDefinition>> PatchCustomResourceDefinitionWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified CustomResourceDefinition
@@ -8960,7 +8960,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1APIService>> PatchAPIServiceWithHttpMessagesAsync(object body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1APIService>> PatchAPIServiceWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified APIService
@@ -9468,7 +9468,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1ControllerRevision>> PatchNamespacedControllerRevisionWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1ControllerRevision>> PatchNamespacedControllerRevisionWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Deployment
@@ -9771,7 +9771,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Appsv1beta1Deployment>> PatchNamespacedDeploymentWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Appsv1beta1Deployment>> PatchNamespacedDeploymentWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create rollback of a Deployment
@@ -9857,7 +9857,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Appsv1beta1Scale>> PatchNamespacedDeploymentScaleWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Appsv1beta1Scale>> PatchNamespacedDeploymentScaleWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified Deployment
@@ -9921,7 +9921,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Appsv1beta1Deployment>> PatchNamespacedDeploymentStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Appsv1beta1Deployment>> PatchNamespacedDeploymentStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind StatefulSet
@@ -10224,7 +10224,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1StatefulSet>> PatchNamespacedStatefulSetWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1StatefulSet>> PatchNamespacedStatefulSetWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read scale of the specified StatefulSet
@@ -10288,7 +10288,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Appsv1beta1Scale>> PatchNamespacedStatefulSetScaleWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Appsv1beta1Scale>> PatchNamespacedStatefulSetScaleWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified StatefulSet
@@ -10352,7 +10352,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1StatefulSet>> PatchNamespacedStatefulSetStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1StatefulSet>> PatchNamespacedStatefulSetStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind StatefulSet
@@ -10994,7 +10994,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2ControllerRevision>> PatchNamespacedControllerRevision1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2ControllerRevision>> PatchNamespacedControllerRevision1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind DaemonSet
@@ -11297,7 +11297,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2DaemonSet>> PatchNamespacedDaemonSetWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2DaemonSet>> PatchNamespacedDaemonSetWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified DaemonSet
@@ -11361,7 +11361,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2DaemonSet>> PatchNamespacedDaemonSetStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2DaemonSet>> PatchNamespacedDaemonSetStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Deployment
@@ -11664,7 +11664,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2Deployment>> PatchNamespacedDeployment1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2Deployment>> PatchNamespacedDeployment1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read scale of the specified Deployment
@@ -11728,7 +11728,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2Scale>> PatchNamespacedDeploymentScale1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2Scale>> PatchNamespacedDeploymentScale1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified Deployment
@@ -11792,7 +11792,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2Deployment>> PatchNamespacedDeploymentStatus1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2Deployment>> PatchNamespacedDeploymentStatus1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ReplicaSet
@@ -12095,7 +12095,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2ReplicaSet>> PatchNamespacedReplicaSetWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2ReplicaSet>> PatchNamespacedReplicaSetWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read scale of the specified ReplicaSet
@@ -12159,7 +12159,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2Scale>> PatchNamespacedReplicaSetScaleWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2Scale>> PatchNamespacedReplicaSetScaleWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified ReplicaSet
@@ -12223,7 +12223,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2ReplicaSet>> PatchNamespacedReplicaSetStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2ReplicaSet>> PatchNamespacedReplicaSetStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind StatefulSet
@@ -12526,7 +12526,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2StatefulSet>> PatchNamespacedStatefulSet1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2StatefulSet>> PatchNamespacedStatefulSet1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read scale of the specified StatefulSet
@@ -12590,7 +12590,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2Scale>> PatchNamespacedStatefulSetScale1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2Scale>> PatchNamespacedStatefulSetScale1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified StatefulSet
@@ -12654,7 +12654,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2StatefulSet>> PatchNamespacedStatefulSetStatus1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2StatefulSet>> PatchNamespacedStatefulSetStatus1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ReplicaSet
@@ -13457,7 +13457,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified HorizontalPodAutoscaler
@@ -13521,7 +13521,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -13917,7 +13917,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified HorizontalPodAutoscaler
@@ -13981,7 +13981,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerStatus1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerStatus1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get information of a group
@@ -14388,7 +14388,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Job>> PatchNamespacedJobWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Job>> PatchNamespacedJobWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified Job
@@ -14452,7 +14452,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Job>> PatchNamespacedJobStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Job>> PatchNamespacedJobStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -14848,7 +14848,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CronJob>> PatchNamespacedCronJobWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CronJob>> PatchNamespacedCronJobWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified CronJob
@@ -14912,7 +14912,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CronJob>> PatchNamespacedCronJobStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CronJob>> PatchNamespacedCronJobStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -15308,7 +15308,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2alpha1CronJob>> PatchNamespacedCronJob1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2alpha1CronJob>> PatchNamespacedCronJob1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified CronJob
@@ -15372,7 +15372,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2alpha1CronJob>> PatchNamespacedCronJobStatus1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2alpha1CronJob>> PatchNamespacedCronJobStatus1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get information of a group
@@ -15676,7 +15676,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> PatchCertificateSigningRequestWithHttpMessagesAsync(object body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> PatchCertificateSigningRequestWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace approval of the specified CertificateSigningRequest
@@ -16285,7 +16285,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1DaemonSet>> PatchNamespacedDaemonSet1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1DaemonSet>> PatchNamespacedDaemonSet1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified DaemonSet
@@ -16349,7 +16349,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1DaemonSet>> PatchNamespacedDaemonSetStatus1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1DaemonSet>> PatchNamespacedDaemonSetStatus1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Deployment
@@ -16652,7 +16652,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Deployment>> PatchNamespacedDeployment2WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Extensionsv1beta1Deployment>> PatchNamespacedDeployment2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create rollback of a Deployment
@@ -16738,7 +16738,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Scale>> PatchNamespacedDeploymentScale2WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Extensionsv1beta1Scale>> PatchNamespacedDeploymentScale2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified Deployment
@@ -16802,7 +16802,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Deployment>> PatchNamespacedDeploymentStatus2WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Extensionsv1beta1Deployment>> PatchNamespacedDeploymentStatus2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Ingress
@@ -17105,7 +17105,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1Ingress>> PatchNamespacedIngressWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1Ingress>> PatchNamespacedIngressWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified Ingress
@@ -17169,7 +17169,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1Ingress>> PatchNamespacedIngressStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1Ingress>> PatchNamespacedIngressStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind NetworkPolicy
@@ -17472,7 +17472,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1NetworkPolicy>> PatchNamespacedNetworkPolicyWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1NetworkPolicy>> PatchNamespacedNetworkPolicyWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ReplicaSet
@@ -17775,7 +17775,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1ReplicaSet>> PatchNamespacedReplicaSet1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1ReplicaSet>> PatchNamespacedReplicaSet1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read scale of the specified ReplicaSet
@@ -17839,7 +17839,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Scale>> PatchNamespacedReplicaSetScale1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Extensionsv1beta1Scale>> PatchNamespacedReplicaSetScale1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified ReplicaSet
@@ -17903,7 +17903,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1ReplicaSet>> PatchNamespacedReplicaSetStatus1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1ReplicaSet>> PatchNamespacedReplicaSetStatus1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read scale of the specified ReplicationControllerDummy
@@ -17967,7 +17967,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Scale>> PatchNamespacedReplicationControllerDummyScaleWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Extensionsv1beta1Scale>> PatchNamespacedReplicationControllerDummyScaleWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind NetworkPolicy
@@ -18331,7 +18331,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1PodSecurityPolicy>> PatchPodSecurityPolicyWithHttpMessagesAsync(object body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1PodSecurityPolicy>> PatchPodSecurityPolicyWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ReplicaSet
@@ -18738,7 +18738,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1NetworkPolicy>> PatchNamespacedNetworkPolicy1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1NetworkPolicy>> PatchNamespacedNetworkPolicy1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind NetworkPolicy
@@ -19145,7 +19145,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1PodDisruptionBudget>> PatchNamespacedPodDisruptionBudgetWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1PodDisruptionBudget>> PatchNamespacedPodDisruptionBudgetWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified PodDisruptionBudget
@@ -19209,7 +19209,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1PodDisruptionBudget>> PatchNamespacedPodDisruptionBudgetStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1PodDisruptionBudget>> PatchNamespacedPodDisruptionBudgetStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodDisruptionBudget
@@ -19587,7 +19587,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ClusterRoleBinding>> PatchClusterRoleBindingWithHttpMessagesAsync(object body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ClusterRoleBinding>> PatchClusterRoleBindingWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRole
@@ -19861,7 +19861,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ClusterRole>> PatchClusterRoleWithHttpMessagesAsync(object body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ClusterRole>> PatchClusterRoleWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind RoleBinding
@@ -20156,7 +20156,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1RoleBinding>> PatchNamespacedRoleBindingWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1RoleBinding>> PatchNamespacedRoleBindingWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Role
@@ -20451,7 +20451,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Role>> PatchNamespacedRoleWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Role>> PatchNamespacedRoleWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind RoleBinding
@@ -20900,7 +20900,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1ClusterRoleBinding>> PatchClusterRoleBinding1WithHttpMessagesAsync(object body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1ClusterRoleBinding>> PatchClusterRoleBinding1WithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRole
@@ -21174,7 +21174,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1ClusterRole>> PatchClusterRole1WithHttpMessagesAsync(object body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1ClusterRole>> PatchClusterRole1WithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind RoleBinding
@@ -21469,7 +21469,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1RoleBinding>> PatchNamespacedRoleBinding1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1RoleBinding>> PatchNamespacedRoleBinding1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Role
@@ -21764,7 +21764,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1Role>> PatchNamespacedRole1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1Role>> PatchNamespacedRole1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind RoleBinding
@@ -22213,7 +22213,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1ClusterRoleBinding>> PatchClusterRoleBinding2WithHttpMessagesAsync(object body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1ClusterRoleBinding>> PatchClusterRoleBinding2WithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRole
@@ -22487,7 +22487,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1ClusterRole>> PatchClusterRole2WithHttpMessagesAsync(object body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1ClusterRole>> PatchClusterRole2WithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind RoleBinding
@@ -22782,7 +22782,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1RoleBinding>> PatchNamespacedRoleBinding2WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1RoleBinding>> PatchNamespacedRoleBinding2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Role
@@ -23077,7 +23077,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1Role>> PatchNamespacedRole2WithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1Role>> PatchNamespacedRole2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind RoleBinding
@@ -23545,7 +23545,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1PriorityClass>> PatchPriorityClassWithHttpMessagesAsync(object body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1PriorityClass>> PatchPriorityClassWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get information of a group
@@ -23870,7 +23870,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1PodPreset>> PatchNamespacedPodPresetWithHttpMessagesAsync(object body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1PodPreset>> PatchNamespacedPodPresetWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodPreset
@@ -24256,7 +24256,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1StorageClass>> PatchStorageClassWithHttpMessagesAsync(object body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1StorageClass>> PatchStorageClassWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -24549,7 +24549,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1StorageClass>> PatchStorageClass1WithHttpMessagesAsync(object body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1StorageClass>> PatchStorageClass1WithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

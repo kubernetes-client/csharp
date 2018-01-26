@@ -1300,8 +1300,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -1789,8 +1788,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -2278,8 +2276,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -2767,8 +2764,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -3256,8 +3252,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -3411,8 +3406,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -3900,8 +3894,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -5177,8 +5170,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -5666,8 +5658,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -6155,8 +6146,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -6310,8 +6300,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -6465,8 +6454,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -6954,8 +6942,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -7109,8 +7096,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -7598,8 +7584,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -8087,8 +8072,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -8452,8 +8436,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -9131,8 +9114,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -9368,8 +9350,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -9579,8 +9560,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -10052,8 +10032,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -10707,8 +10686,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -11284,8 +11262,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -11431,8 +11408,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -17371,8 +17347,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -17844,8 +17819,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -18667,8 +18641,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -19412,8 +19385,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -20373,8 +20345,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -20862,8 +20833,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -21089,8 +21059,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -21244,8 +21213,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -21733,8 +21701,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -21888,8 +21855,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -22043,8 +22009,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -23656,8 +23621,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -24145,8 +24109,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -24300,8 +24263,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -24789,8 +24751,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -24944,8 +24905,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -25099,8 +25059,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -25588,8 +25547,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -25743,8 +25701,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -25898,8 +25855,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -26387,8 +26343,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -26542,8 +26497,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -26697,8 +26651,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -29463,8 +29416,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -29618,8 +29570,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -30469,8 +30420,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -30624,8 +30574,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -31508,8 +31457,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -31663,8 +31611,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -32514,8 +32461,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -32669,8 +32615,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -33520,8 +33465,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -33675,8 +33619,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -34447,8 +34390,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -35576,8 +35518,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -35731,8 +35672,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -36220,8 +36160,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -36447,8 +36386,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -36602,8 +36540,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -37091,8 +37028,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -37246,8 +37182,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -37735,8 +37670,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -38224,8 +38158,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -38379,8 +38312,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -38534,8 +38466,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -38689,8 +38620,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -39274,8 +39204,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -41192,8 +41121,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -42076,8 +42004,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -42231,8 +42158,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -43091,8 +43017,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -43548,8 +43473,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -44013,8 +43937,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -44486,8 +44409,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -45926,8 +45848,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -46383,8 +46304,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -46848,8 +46768,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -47321,8 +47240,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -48761,8 +48679,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -49218,8 +49135,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -49683,8 +49599,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -50156,8 +50071,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -51645,8 +51559,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -52334,8 +52247,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -53210,8 +53122,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -53858,8 +53769,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.",
-              "type": "object"
+              "$ref": "#/definitions/v1.Patch"
             }
           }
         ],
@@ -65666,6 +65576,9 @@
           "version": "v1alpha1"
         }
       ]
+    },
+    "v1.Patch": {
+      "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body."
     },
     "v1.SecretVolumeSource": {
       "description": "Adapts a Secret into a volume.\n\nThe contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names. Secret volumes support ownership management and SELinux relabeling.",
