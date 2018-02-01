@@ -50,6 +50,58 @@ namespace k8s
             }
 
             var k8SConfig = LoadKubeConfig(kubeconfig);
+            var k8SConfiguration = GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig);
+
+            return k8SConfiguration;
+        }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="kubeconfig">Fileinfo of the kubeconfig, cannot be null, whitespaced or empty</param>
+        /// <param name="currentContext">override the context in config file, set null if do not want to override</param>
+        /// <param name="masterUrl">overrider kube api server endpoint, set null if do not want to override</param>
+        public static KubernetesClientConfiguration BuildConfigFromConfigFile(string kubeconfig,
+            string currentContext = null, string masterUrl = null)
+        {
+            if (string.IsNullOrWhiteSpace(kubeconfig))
+            {
+                throw new NullReferenceException(nameof(kubeconfig));
+            }
+
+            var k8SConfig = LoadKubeConfig(kubeconfig);
+            var k8SConfiguration = GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig);
+
+            return k8SConfiguration;
+        }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="kubeconfig">Fileinfo of the kubeconfig, cannot be null, whitespaced or empty</param>
+        /// <param name="currentContext">override the context in config file, set null if do not want to override</param>
+        /// <param name="masterUrl">overrider kube api server endpoint, set null if do not want to override</param>
+        public static KubernetesClientConfiguration BuildConfigFromConfigFile(Stream kubeconfig,
+            string currentContext = null, string masterUrl = null)
+        {
+            if (kubeconfig == null)
+            {
+                throw new NullReferenceException(nameof(kubeconfig));
+            }
+
+            if (!kubeconfig.CanSeek)
+            {
+                throw new Exception("Stream don't support seeking!");
+            }
+
+            kubeconfig.Position = 0;
+
+            var k8SConfig = LoadKubeConfig(kubeconfig);
+            var k8SConfiguration = GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig);
+
+            return k8SConfiguration;
+        }
+
+        private static KubernetesClientConfiguration GetKubernetesClientConfiguration(string currentContext, string masterUrl, K8SConfiguration k8SConfig)
+        {
             var k8SConfiguration = new KubernetesClientConfiguration();
 
             currentContext = currentContext ?? k8SConfig.CurrentContext;
@@ -226,6 +278,33 @@ namespace k8s
             using (var kubeConfigTextStream = kubeconfig.OpenText())
             {
                 return deserializer.Deserialize<K8SConfiguration>(kubeConfigTextStream);
+            }
+        }
+
+        /// <summary>
+        ///     Loads Kube Config from string
+        /// </summary>
+        /// <param name="kubeconfig">Kube config file contents</param>
+        /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
+        private static K8SConfiguration LoadKubeConfig(string kubeconfig)
+        {
+
+            var deserializeBuilder = new DeserializerBuilder();
+            var deserializer = deserializeBuilder.Build();
+            return deserializer.Deserialize<K8SConfiguration>(kubeconfig);
+        }
+
+        /// <summary>
+        ///     Loads Kube Config from stream.
+        /// </summary>
+        /// <param name="kubeconfig">Kube config file contents</param>
+        /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
+        private static K8SConfiguration LoadKubeConfig(Stream kubeconfig)
+        {
+            using (var sr = new StreamReader(kubeconfig))
+            {               
+                var strKubeConfig = sr.ReadToEnd();
+                return LoadKubeConfig(strKubeConfig);
             }
         }
     }
