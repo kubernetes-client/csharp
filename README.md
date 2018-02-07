@@ -46,6 +46,21 @@ cd csharp\examples\simple
 dotnet run
 ```
 
+## Connecting to GCP GKE from local machine
+
+Start proxy to access kubernetes cluster:
+
+```bash
+$ kubectl proxy
+Starting to serve on 127.0.0.1:8001
+```
+
+In code use following config:
+
+```csharp
+var config = new KubernetesClientConfiguration {  Host = "http://127.0.0.1:8001" };
+```
+
 ## Testing
 
 The project uses [XUnit](https://xunit.github.io) as unit testing framework.
