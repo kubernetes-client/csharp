@@ -46,16 +46,23 @@ cd csharp\examples\simple
 dotnet run
 ```
 
-## Connecting to GCP GKE from local machine
+## Connecting to a cluster from a local machine
 
-Start proxy to access kubernetes cluster:
+Preferred way of connecting to a cluster:
+
+```
+var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
+var client = new Kubernetes(config);
+```
+
+Not all auth providers are supported at moment [#91](https://github.com/kubernetes-client/csharp/issues/91#issuecomment-362920478), but you still can connect to cluster by starting proxy:
 
 ```bash
 $ kubectl proxy
 Starting to serve on 127.0.0.1:8001
 ```
 
-In code use following config:
+and changing config:
 
 ```csharp
 var config = new KubernetesClientConfiguration {  Host = "http://127.0.0.1:8001" };
