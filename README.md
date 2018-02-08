@@ -46,9 +46,9 @@ cd csharp\examples\simple
 dotnet run
 ```
 
-## Connecting to a cluster from a local machine
+## Known issues
 
-Preferred way of connecting to a cluster:
+While preferred way of connecting to a remote cluster from local machine is:
 
 ```
 var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
@@ -67,6 +67,8 @@ and changing config:
 ```csharp
 var config = new KubernetesClientConfiguration {  Host = "http://127.0.0.1:8001" };
 ```
+
+Notice that this is a workaround and is not recommended for production use
 
 ## Testing
 
