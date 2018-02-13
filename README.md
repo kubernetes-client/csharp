@@ -46,6 +46,30 @@ cd csharp\examples\simple
 dotnet run
 ```
 
+## Known issues
+
+While preferred way of connecting to a remote cluster from local machine is:
+
+```
+var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
+var client = new Kubernetes(config);
+```
+
+Not all auth providers are supported at moment [#91](https://github.com/kubernetes-client/csharp/issues/91#issuecomment-362920478), but you still can connect to cluster by starting proxy:
+
+```bash
+$ kubectl proxy
+Starting to serve on 127.0.0.1:8001
+```
+
+and changing config:
+
+```csharp
+var config = new KubernetesClientConfiguration {  Host = "http://127.0.0.1:8001" };
+```
+
+Notice that this is a workaround and is not recommended for production use
+
 ## Testing
 
 The project uses [XUnit](https://xunit.github.io) as unit testing framework.
