@@ -14,8 +14,7 @@ dotnet add package KubernetesClient
 
 ## Prerequisites
 
-The client code is generated using [AutoRest](https://github.com/azure/autorest).
-You'll need a Linux machine and [node.js](https://nodejs.org/en/) 7.10.0 or greater.
+You'll need a Linux machine with Docker.
 
 The generated code works on all platforms supported by .NET or .NET Core.
 
@@ -25,12 +24,6 @@ Check out the generator project into some other directory
 ```bash
 cd $GEN_DIR/..
 git clone https://github.com/kubernetes-client/gen
-```
-
-Install the [`autorest` tool](https://github.com/azure/autorest):
-
-```bash
-npm install autorest
 ```
 
 ## Generating code
