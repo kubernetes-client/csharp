@@ -311,5 +311,17 @@ namespace k8s.Tests
                 Assert.NotNull(cfg.Host);
             }
         }
+
+        /// <summary>
+        ///     Checks users.as-user-extra is loaded correctly from a configuration file.
+        /// </summary>
+        [Fact]
+        public void AsUserExtra()
+        {
+            var txt = File.ReadAllText("assets/kubeconfig.as-user-extra.yml");
+
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(txt, null, null);
+            Assert.NotNull(cfg.Host);
+        }
     }
 }
