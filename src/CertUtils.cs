@@ -33,7 +33,7 @@ namespace k8s
         /// <summary>
         /// Generates pfx from client configuration
         /// </summary>
-        /// <param name="config">Kuberentes Client Configuration</param>
+        /// <param name="config">Kubernetes Client Configuration</param>
         /// <returns>Generated Pfx Path</returns>
         public static X509Certificate2 GeneratePfx(KubernetesClientConfiguration config)
         {
