@@ -1,3 +1,5 @@
+#if !NETCOREAPP2_1
+
 using System;
 using System.Net.WebSockets;
 using System.Security.Cryptography.X509Certificates;
@@ -19,7 +21,6 @@ namespace k8s
 
         public WebSocketBuilder()
         {
-            this.WebSocket = new ClientWebSocket();
         }
 
         public virtual WebSocketBuilder SetRequestHeader(string headerName, string headerValue)
@@ -28,7 +29,7 @@ namespace k8s
             return this;
         }
 
-        public virtual WebSocketBuilder AddClientCertificate(X509Certificate certificate)
+        public virtual WebSocketBuilder AddClientCertificate(X509Certificate2 certificate)
         {
             this.WebSocket.Options.ClientCertificates.Add(certificate);
             return this;
@@ -41,3 +42,5 @@ namespace k8s
         }
     }
 }
+
+#endif // !NETCOREAPP2_1
