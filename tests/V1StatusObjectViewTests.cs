@@ -2,11 +2,17 @@ using k8s.Models;
 using k8s.Tests.Mock;
 using Newtonsoft.Json;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace k8s.Tests
 {
     public class V1StatusObjectViewTests
+        : TestBase
     {
+        public V1StatusObjectViewTests(ITestOutputHelper testOutput) : base(testOutput)
+        {
+        }
+
         [Fact]
         public void ReturnStatus()
         {
@@ -16,7 +22,7 @@ namespace k8s.Tests
                 Status = "test status"
             };
 
-            using (var server = new MockKubeApiServer(resp: JsonConvert.SerializeObject(v1Status)))
+            using (var server = new MockKubeApiServer(TestOutput, resp: JsonConvert.SerializeObject(v1Status)))
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration
                 {
@@ -46,7 +52,7 @@ namespace k8s.Tests
                 }
             };
 
-            using (var server = new MockKubeApiServer(resp: JsonConvert.SerializeObject(corev1Namespace)))
+            using (var server = new MockKubeApiServer(TestOutput, resp: JsonConvert.SerializeObject(corev1Namespace)))
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration
                 {

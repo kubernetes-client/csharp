@@ -12,11 +12,17 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Https;
 using Microsoft.Rest;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace k8s.Tests
 {
     public class AuthTests
+        : TestBase
     {
+        public AuthTests(ITestOutputHelper testOutput) : base(testOutput)
+        {
+        }
+
         private static HttpOperationResponse<V1PodList> ExecuteListPods(IKubernetes client)
         {
             return client.ListNamespacedPodWithHttpMessagesAsync("default").Result;
@@ -25,7 +31,7 @@ namespace k8s.Tests
         [Fact]
         public void Anonymous()
         {
-            using (var server = new MockKubeApiServer())
+            using (var server = new MockKubeApiServer(TestOutput))
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration
                 {
@@ -38,7 +44,7 @@ namespace k8s.Tests
                 Assert.Equal(1, listTask.Body.Items.Count);
             }
 
-            using (var server = new MockKubeApiServer(cxt =>
+            using (var server = new MockKubeApiServer(TestOutput, cxt =>
             {
                 cxt.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
                 return Task.FromResult(false);
@@ -61,7 +67,7 @@ namespace k8s.Tests
             const string testName = "test_name";
             const string testPassword = "test_password";
 
-            using (var server = new MockKubeApiServer(cxt =>
+            using (var server = new MockKubeApiServer(TestOutput, cxt =>
             {
                 var header = cxt.Request.Headers["Authorization"].FirstOrDefault();
 
@@ -167,7 +173,7 @@ namespace k8s.Tests
 
             var clientCertificateValidationCalled = false;
 
-            using (var server = new MockKubeApiServer(listenConfigure: options =>
+            using (var server = new MockKubeApiServer(TestOutput, listenConfigure: options =>
             {
                 options.UseHttps(new HttpsConnectionAdapterOptions
                 {
@@ -249,7 +255,7 @@ namespace k8s.Tests
         {
             const string token = "testingtoken";
 
-            using (var server = new MockKubeApiServer(cxt =>
+            using (var server = new MockKubeApiServer(TestOutput, cxt =>
             {
                 var header = cxt.Request.Headers["Authorization"].FirstOrDefault();
 

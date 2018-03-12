@@ -35,7 +35,7 @@ namespace CoreFX
     {
         /// <summary>
         ///     GUID appended by the server as part of the security key response.
-        /// 
+        ///
         ///     Defined in the RFC.
         /// </summary>
         const string WSServerGuid = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
@@ -289,17 +289,20 @@ namespace CoreFX
                 if (String.Equals(HttpKnownHeaderNames.SecWebSocketProtocol, headerName, StringComparison.OrdinalIgnoreCase) &&
                     !String.IsNullOrWhiteSpace(headerValue))
                 {
-                    string newSubprotocol = options.RequestedSubProtocols.Find(requested => String.Equals(requested, headerValue, StringComparison.OrdinalIgnoreCase));
-                    if (newSubprotocol == null || subprotocol != null)
+                    if (options.RequestedSubProtocols.Count > 0)
                     {
-                        throw new WebSocketException(
-                            String.Format("Unsupported sub-protocol '{0}' (expected one of [{1}]).",
-                                subprotocol,
-                                String.Join(", ", options.RequestedSubProtocols)
-                            )
-                        );
+                        string newSubprotocol = options.RequestedSubProtocols.Find(requested => String.Equals(requested, headerValue, StringComparison.OrdinalIgnoreCase));
+                        if (newSubprotocol == null || subprotocol != null)
+                        {
+                            throw new WebSocketException(
+                                String.Format("Unsupported sub-protocol '{0}' (expected one of [{1}]).",
+                                    newSubprotocol,
+                                    String.Join(", ", options.RequestedSubProtocols)
+                                )
+                            );
+                        }
+                        subprotocol = newSubprotocol;
                     }
-                    subprotocol = newSubprotocol;
                 }
             }
             if (!foundUpgrade || !foundConnection || !foundSecWebSocketAccept)
@@ -360,7 +363,7 @@ namespace CoreFX
                 // is that if we read multiple bytes, we could end up reading bytes post-headers
                 // that are part of messages meant to be read by the managed websocket after
                 // the connection.  The likely solution here is to wrap the stream in a BufferedStream,
-                // though a) that comes at the expense of an extra set of virtual calls, b) 
+                // though a) that comes at the expense of an extra set of virtual calls, b)
                 // it adds a buffer when the managed websocket will already be using a buffer, and
                 // c) it's not exposed on the version of the System.IO contract we're currently using.
                 while (await stream.ReadAsync(arr, 0, 1, cancellationToken).ConfigureAwait(false) == 1)

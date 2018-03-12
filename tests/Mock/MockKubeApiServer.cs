@@ -1,13 +1,16 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using k8s.Tests.Logging;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
+using Microsoft.Extensions.Logging;
+using Xunit.Abstractions;
 
 namespace k8s.Tests.Mock
 {
@@ -20,7 +23,7 @@ namespace k8s.Tests.Mock
 
         private readonly IWebHost _webHost;
 
-        public MockKubeApiServer(Func<HttpContext, Task<bool>> shouldNext = null, Action<ListenOptions> listenConfigure = null,
+        public MockKubeApiServer(ITestOutputHelper testOutput, Func<HttpContext, Task<bool>> shouldNext = null, Action<ListenOptions> listenConfigure = null,
             string resp = MockPodResponse)
         {
             shouldNext = shouldNext ?? (_ => Task.FromResult(true));
@@ -35,6 +38,13 @@ namespace k8s.Tests.Mock
                     }
                 }))
                 .UseKestrel(options => { options.Listen(IPAddress.Loopback, 0, listenConfigure); })
+                .ConfigureLogging(logging =>
+                {
+                    logging.ClearProviders();
+
+                    if (testOutput != null)
+                        logging.AddTestOutput(testOutput);
+                })
                 .Build();
 
             _webHost.Start();

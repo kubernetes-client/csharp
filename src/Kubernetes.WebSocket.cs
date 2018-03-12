@@ -229,6 +229,8 @@ namespace k8s
                 webSocketBuilder.ExpectServerCertificate(this.CaCert);
             else
                 webSocketBuilder.SkipServerCertificateValidation();
+
+            webSocketBuilder.Options.RequestedSubProtocols.Add(K8sProtocol.ChannelV1);
 #endif // NETCOREAPP2_1
 
             // Send Request
