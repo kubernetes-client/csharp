@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace k8s.tests
+namespace k8s.Tests
 {
     /// <summary>
     /// Tests the <see cref="ByteBuffer"/> class.
@@ -242,7 +242,7 @@ namespace k8s.tests
         /// sure the call blocks until data is available.
         /// </summary>
         [Fact]
-        public void ReadBlocksUntilDataAvailableTest()
+        public async Task ReadBlocksUntilDataAvailableTest()
         {
             // Makes sure that the Read method does not return until data is available.
             var buffer = new ByteBuffer();
@@ -251,15 +251,16 @@ namespace k8s.tests
 
             // Kick off a read operation
             var readTask = Task.Run(() => read = buffer.Read(readData, 0, readData.Length));
-            Thread.Sleep(250);
-            Assert.False(readTask.IsCompleted);
+            await Task.Delay(250);
+            Assert.False(readTask.IsCompleted, "Read task completed before data was available.");
 
             // Write data to the buffer
             buffer.Write(this.writeData, 0, 0x03);
 
-            Thread.Sleep(250);
-
-            Assert.True(readTask.IsCompleted);
+            await TaskAssert.Completed(readTask,
+                timeout: TimeSpan.FromMilliseconds(1000),
+                message: "Timed out waiting for read task to complete."
+            );
 
             Assert.Equal(3, read);
             Assert.Equal(0xF0, readData[0]);
