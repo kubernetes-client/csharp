@@ -2,8 +2,10 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Rest;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Net.WebSockets;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -204,11 +206,11 @@ namespace k8s
                 }
             }
 
-                // Set Credentials
+            // Set Credentials
 #if NET452
-            foreach (var cert in ((WebRequestHandler)this.HttpClientHandler).ClientCertificates)
+            foreach (var cert in ((WebRequestHandler)this.HttpClientHandler).ClientCertificates.OfType<X509Certificate2>())
 #else
-            foreach (var cert in this.HttpClientHandler.ClientCertificates)
+            foreach (var cert in this.HttpClientHandler.ClientCertificates.OfType<X509Certificate2>())
 #endif
             {
                 webSocketBuilder.AddClientCertificate(cert);
@@ -221,6 +223,15 @@ namespace k8s
             {
                 webSocketBuilder.SetRequestHeader(_header.Key, string.Join(" ", _header.Value));
             }
+
+#if NETCOREAPP2_1
+            if (this.CaCert != null)
+                webSocketBuilder.ExpectServerCertificate(this.CaCert);
+            else
+                webSocketBuilder.SkipServerCertificateValidation();
+
+            webSocketBuilder.Options.RequestedSubProtocols.Add(K8sProtocol.ChannelV1);
+#endif // NETCOREAPP2_1
 
             // Send Request
             cancellationToken.ThrowIfCancellationRequested();

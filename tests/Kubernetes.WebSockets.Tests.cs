@@ -1,3 +1,7 @@
+/*
+ * These tests are only for the netstandard version of the client (there are separate tests for netcoreapp that connect to a local test-hosted server).
+ */
+
 using k8s.tests.Mock;
 using Microsoft.Rest;
 using System;

@@ -4,9 +4,12 @@
 set -e
 
 # Ensure no compile errors in all projects
-find . -name *.csproj -exec dotnet build {} \;
+dotnet restore
+dotnet build --no-restore
 
 # Execute Unit tests
 cd tests
-dotnet restore
-dotnet test
+dotnet test --no-restore --no-build
+if [[ $? != 0 ]]; then
+    exit 1
+fi
