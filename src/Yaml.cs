@@ -17,7 +17,7 @@ namespace k8s
         }
 
         public static async Task<T> LoadFromFileAsync<T> (string file) {
-            using (FileStream fs = File.Open(file, FileMode.Open, FileAccess.Write, FileShare.None)) { 
+            using (FileStream fs = File.OpenRead(file)) { 
                 return await LoadFromStreamAsync<T>(fs);
             }
         }
