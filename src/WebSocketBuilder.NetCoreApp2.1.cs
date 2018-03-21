@@ -42,7 +42,9 @@ namespace k8s
             Options.ServerCertificateCustomValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
             {
                 if (sslPolicyErrors != SslPolicyErrors.RemoteCertificateChainErrors)
+                {
                     return false;
+                }
 
                 try
                 {
