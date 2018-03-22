@@ -176,7 +176,7 @@ namespace k8s
                 uriBuilder.Path += "/";
             }
 
-            uriBuilder.Path += $"api/v1/namespaces/{@namespace}/pods/{name}/portforward";
+            uriBuilder.Path += $"api/v1/namespaces/{@namespace}/pods/{name}/attach";
 
             uriBuilder.Query = QueryHelpers.AddQueryString(string.Empty, new Dictionary<string, string>
             {
