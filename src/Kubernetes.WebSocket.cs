@@ -226,10 +226,13 @@ namespace k8s
 
 #if NETCOREAPP2_1
             if (this.CaCert != null)
+            {
                 webSocketBuilder.ExpectServerCertificate(this.CaCert);
-            else
+            }
+            if (this.SkipTlsVerify)
+            {
                 webSocketBuilder.SkipServerCertificateValidation();
-
+            }
             webSocketBuilder.Options.RequestedSubProtocols.Add(K8sProtocol.ChannelV1);
 #endif // NETCOREAPP2_1
 
@@ -237,7 +240,6 @@ namespace k8s
             cancellationToken.ThrowIfCancellationRequested();
 
             WebSocket webSocket = null;
-
             try
             {
                 webSocket = await webSocketBuilder.BuildAndConnectAsync(uri, CancellationToken.None).ConfigureAwait(false);
@@ -258,7 +260,6 @@ namespace k8s
                     ServiceClientTracing.Exit(invocationId, null);
                 }
             }
-
             return webSocket;
         }
     }
