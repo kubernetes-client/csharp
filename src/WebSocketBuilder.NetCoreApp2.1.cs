@@ -39,34 +39,10 @@ namespace k8s
 
         public WebSocketBuilder ExpectServerCertificate(X509Certificate2 serverCertificate)
         {
-            Options.ServerCertificateCustomValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
+            Options.ServerCertificateCustomValidationCallback = (sender, certificate, chain, sslPolicyErrors) => 
             {
-                if (sslPolicyErrors != SslPolicyErrors.RemoteCertificateChainErrors)
-                {
-                    return false;
-                }
-
-                try
-                {
-                    using (X509Chain certificateChain = new X509Chain())
-                    {
-                        certificateChain.ChainPolicy.ExtraStore.Add(serverCertificate);
-                        certificateChain.ChainPolicy.VerificationFlags = X509VerificationFlags.AllowUnknownCertificateAuthority;
-                        certificateChain.ChainPolicy.RevocationMode = X509RevocationMode.NoCheck;
-
-                        return certificateChain.Build(
-                            (X509Certificate2)certificate
-                        );
-                    }
-                }
-                catch (Exception chainException)
-                {
-                    Debug.WriteLine(chainException);
-
-                    return false;
-                }
+                return Kubernetes.CertificateValidationCallBack(sender, serverCertificate, certificate, chain, sslPolicyErrors);
             };
-
             return this;
         }
 

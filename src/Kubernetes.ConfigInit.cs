@@ -38,6 +38,7 @@ namespace k8s
             }
 
             CaCert = config.SslCaCert;
+            SkipTlsVerify = config.SkipTlsVerify;
 
             if (BaseUri.Scheme == "https")
             {
@@ -59,10 +60,15 @@ namespace k8s
                     }
 
 #if NET452
-                    ((WebRequestHandler) HttpClientHandler).ServerCertificateValidationCallback =
-                        CertificateValidationCallBack;
+                    ((WebRequestHandler) HttpClientHandler).ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
+                    {
+                        return Kubernetes.CertificateValidationCallBack(sender, CaCert, certificate, chain, sslPolicyErrors);
+                    };
 #else
-                    HttpClientHandler.ServerCertificateCustomValidationCallback = CertificateValidationCallBack;
+                    HttpClientHandler.ServerCertificateCustomValidationCallback = (sender, certificate, chain, sslPolicyErrors) => 
+                    {
+                        return Kubernetes.CertificateValidationCallBack(sender, CaCert, certificate, chain, sslPolicyErrors);
+                    };
 #endif
                 }
             }
@@ -72,6 +78,8 @@ namespace k8s
         }
 
         private X509Certificate2 CaCert { get; }
+
+        private bool SkipTlsVerify { get; }
 
         partial void CustomInitialize()
         {
@@ -151,8 +159,9 @@ namespace k8s
         /// <param name="sslPolicyErrors">ssl policy errors</param>
         /// <returns>true if valid cert</returns>
         [SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", Justification = "Unused by design")]
-        private bool CertificateValidationCallBack(
+        public static bool CertificateValidationCallBack(
             object sender,
+            X509Certificate2 caCert,
             X509Certificate certificate,
             X509Chain chain,
             SslPolicyErrors sslPolicyErrors)
@@ -169,7 +178,7 @@ namespace k8s
                 chain.ChainPolicy.RevocationMode = X509RevocationMode.NoCheck;
 
                 // add all your extra certificate chain
-                chain.ChainPolicy.ExtraStore.Add(CaCert);
+                chain.ChainPolicy.ExtraStore.Add(caCert);
                 chain.ChainPolicy.VerificationFlags = X509VerificationFlags.AllowUnknownCertificateAuthority;
                 var isValid = chain.Build((X509Certificate2) certificate);
                 return isValid;
