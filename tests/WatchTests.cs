@@ -359,7 +359,7 @@ namespace k8s.Tests
                 );
 
                 // wait server yields all events
-                Thread.Sleep(TimeSpan.FromMilliseconds(500));
+                Thread.Sleep(TimeSpan.FromMilliseconds(2000));
 
                 Assert.Contains(WatchEventType.Added, events);
 
