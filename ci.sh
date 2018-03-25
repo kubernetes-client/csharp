@@ -9,7 +9,7 @@ dotnet build --no-restore
 
 # Execute Unit tests
 cd tests
-dotnet test --no-restore --no-build /p:CollectCoverage=true
+dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=./lcov.info
 if [[ $? != 0 ]]; then
     exit 1
 fi
