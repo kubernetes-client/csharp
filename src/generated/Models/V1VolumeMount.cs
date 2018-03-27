@@ -32,8 +32,7 @@ namespace k8s.Models
         /// <param name="mountPropagation">mountPropagation determines how
         /// mounts are propagated from the host to container and the other way
         /// around. When not set, MountPropagationHostToContainer is used. This
-        /// field is alpha in 1.8 and can be reworked or removed in a future
-        /// release.</param>
+        /// field is beta in 1.10.</param>
         /// <param name="readOnlyProperty">Mounted read-only if true,
         /// read-write otherwise (false or unspecified). Defaults to
         /// false.</param>
@@ -65,8 +64,8 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets mountPropagation determines how mounts are propagated
         /// from the host to container and the other way around. When not set,
-        /// MountPropagationHostToContainer is used. This field is alpha in 1.8
-        /// and can be reworked or removed in a future release.
+        /// MountPropagationHostToContainer is used. This field is beta in
+        /// 1.10.
         /// </summary>
         [JsonProperty(PropertyName = "mountPropagation")]
         public string MountPropagation { get; set; }

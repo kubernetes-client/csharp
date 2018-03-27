@@ -29,7 +29,7 @@ namespace k8s.Models
         /// Initializes a new instance of the V1ContainerImage class.
         /// </summary>
         /// <param name="names">Names by which this image is known. e.g.
-        /// ["gcr.io/google_containers/hyperkube:v1.0.7",
+        /// ["k8s.gcr.io/hyperkube:v1.0.7",
         /// "dockerhub.io/google_containers/hyperkube:v1.0.7"]</param>
         /// <param name="sizeBytes">The size of the image in bytes.</param>
         public V1ContainerImage(IList<string> names, long? sizeBytes = default(long?))
@@ -46,7 +46,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets names by which this image is known. e.g.
-        /// ["gcr.io/google_containers/hyperkube:v1.0.7",
+        /// ["k8s.gcr.io/hyperkube:v1.0.7",
         /// "dockerhub.io/google_containers/hyperkube:v1.0.7"]
         /// </summary>
         [JsonProperty(PropertyName = "names")]

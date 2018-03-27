@@ -11,7 +11,7 @@ namespace k8s.Models
 
     /// <summary>
     /// EventSeries contain information on series of events, i.e. thing that
-    /// was/is happening continously for some time.
+    /// was/is happening continuously for some time.
     /// </summary>
     public partial class V1EventSeries
     {
@@ -28,7 +28,7 @@ namespace k8s.Models
         /// </summary>
         /// <param name="count">Number of occurrences in this series up to the
         /// last heartbeat time</param>
-        /// <param name="lastObservedTime">Time of the last occurence
+        /// <param name="lastObservedTime">Time of the last occurrence
         /// observed</param>
         /// <param name="state">State of this Series: Ongoing or
         /// Finished</param>
@@ -53,7 +53,7 @@ namespace k8s.Models
         public int? Count { get; set; }
 
         /// <summary>
-        /// Gets or sets time of the last occurence observed
+        /// Gets or sets time of the last occurrence observed
         /// </summary>
         [JsonProperty(PropertyName = "lastObservedTime")]
         public System.DateTime? LastObservedTime { get; set; }

@@ -35,7 +35,7 @@ namespace k8s.Models
         /// number of old and new pods do not exceed 130% of desired pods. Once
         /// old pods have been killed, new RC can be scaled up further,
         /// ensuring that total number of pods running at any time during the
-        /// update is atmost 130% of desired pods.</param>
+        /// update is at most 130% of desired pods.</param>
         /// <param name="maxUnavailable">The maximum number of pods that can be
         /// unavailable during the update. Value can be an absolute number (ex:
         /// 5) or a percentage of desired pods (ex: 10%). Absolute number is
@@ -68,7 +68,7 @@ namespace k8s.Models
         /// starts, such that the total number of old and new pods do not
         /// exceed 130% of desired pods. Once old pods have been killed, new RC
         /// can be scaled up further, ensuring that total number of pods
-        /// running at any time during the update is atmost 130% of desired
+        /// running at any time during the update is at most 130% of desired
         /// pods.
         /// </summary>
         [JsonProperty(PropertyName = "maxSurge")]

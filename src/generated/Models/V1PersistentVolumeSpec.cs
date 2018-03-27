@@ -52,7 +52,7 @@ namespace k8s.Models
         /// between PV and PVC. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#binding</param>
         /// <param name="csi">CSI represents storage that handled by an
-        /// external CSI driver</param>
+        /// external CSI driver (Beta feature).</param>
         /// <param name="fc">FC represents a Fibre Channel resource that is
         /// attached to a kubelet's host machine and then exposed to the
         /// pod.</param>
@@ -88,10 +88,15 @@ namespace k8s.Models
         /// <param name="nfs">NFS represents an NFS mount on the host.
         /// Provisioned by an admin. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#nfs</param>
+        /// <param name="nodeAffinity">NodeAffinity defines constraints that
+        /// limit what nodes this volume can be accessed from. This field
+        /// influences the scheduling of pods that use this volume.</param>
         /// <param name="persistentVolumeReclaimPolicy">What happens to a
         /// persistent volume when released from its claim. Valid options are
-        /// Retain (default) and Recycle. Recycling must be supported by the
-        /// volume plugin underlying this persistent volume. More info:
+        /// Retain (default for manually created PersistentVolumes), Delete
+        /// (default for dynamically provisioned PersistentVolumes), and
+        /// Recycle (deprecated). Recycle must be supported by the volume
+        /// plugin underlying this PersistentVolume. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming</param>
         /// <param name="photonPersistentDisk">PhotonPersistentDisk represents
         /// a PhotonController persistent disk attached and mounted on kubelets
@@ -118,7 +123,7 @@ namespace k8s.Models
         /// This is an alpha feature and may change in the future.</param>
         /// <param name="vsphereVolume">VsphereVolume represents a vSphere
         /// volume attached and mounted on kubelets host machine</param>
-        public V1PersistentVolumeSpec(IList<string> accessModes = default(IList<string>), V1AWSElasticBlockStoreVolumeSource awsElasticBlockStore = default(V1AWSElasticBlockStoreVolumeSource), V1AzureDiskVolumeSource azureDisk = default(V1AzureDiskVolumeSource), V1AzureFilePersistentVolumeSource azureFile = default(V1AzureFilePersistentVolumeSource), IDictionary<string, ResourceQuantity> capacity = default(IDictionary<string, ResourceQuantity>), V1CephFSPersistentVolumeSource cephfs = default(V1CephFSPersistentVolumeSource), V1CinderVolumeSource cinder = default(V1CinderVolumeSource), V1ObjectReference claimRef = default(V1ObjectReference), V1CSIPersistentVolumeSource csi = default(V1CSIPersistentVolumeSource), V1FCVolumeSource fc = default(V1FCVolumeSource), V1FlexVolumeSource flexVolume = default(V1FlexVolumeSource), V1FlockerVolumeSource flocker = default(V1FlockerVolumeSource), V1GCEPersistentDiskVolumeSource gcePersistentDisk = default(V1GCEPersistentDiskVolumeSource), V1GlusterfsVolumeSource glusterfs = default(V1GlusterfsVolumeSource), V1HostPathVolumeSource hostPath = default(V1HostPathVolumeSource), V1ISCSIPersistentVolumeSource iscsi = default(V1ISCSIPersistentVolumeSource), V1LocalVolumeSource local = default(V1LocalVolumeSource), IList<string> mountOptions = default(IList<string>), V1NFSVolumeSource nfs = default(V1NFSVolumeSource), string persistentVolumeReclaimPolicy = default(string), V1PhotonPersistentDiskVolumeSource photonPersistentDisk = default(V1PhotonPersistentDiskVolumeSource), V1PortworxVolumeSource portworxVolume = default(V1PortworxVolumeSource), V1QuobyteVolumeSource quobyte = default(V1QuobyteVolumeSource), V1RBDPersistentVolumeSource rbd = default(V1RBDPersistentVolumeSource), V1ScaleIOPersistentVolumeSource scaleIO = default(V1ScaleIOPersistentVolumeSource), string storageClassName = default(string), V1StorageOSPersistentVolumeSource storageos = default(V1StorageOSPersistentVolumeSource), string volumeMode = default(string), V1VsphereVirtualDiskVolumeSource vsphereVolume = default(V1VsphereVirtualDiskVolumeSource))
+        public V1PersistentVolumeSpec(IList<string> accessModes = default(IList<string>), V1AWSElasticBlockStoreVolumeSource awsElasticBlockStore = default(V1AWSElasticBlockStoreVolumeSource), V1AzureDiskVolumeSource azureDisk = default(V1AzureDiskVolumeSource), V1AzureFilePersistentVolumeSource azureFile = default(V1AzureFilePersistentVolumeSource), IDictionary<string, ResourceQuantity> capacity = default(IDictionary<string, ResourceQuantity>), V1CephFSPersistentVolumeSource cephfs = default(V1CephFSPersistentVolumeSource), V1CinderVolumeSource cinder = default(V1CinderVolumeSource), V1ObjectReference claimRef = default(V1ObjectReference), V1CSIPersistentVolumeSource csi = default(V1CSIPersistentVolumeSource), V1FCVolumeSource fc = default(V1FCVolumeSource), V1FlexPersistentVolumeSource flexVolume = default(V1FlexPersistentVolumeSource), V1FlockerVolumeSource flocker = default(V1FlockerVolumeSource), V1GCEPersistentDiskVolumeSource gcePersistentDisk = default(V1GCEPersistentDiskVolumeSource), V1GlusterfsVolumeSource glusterfs = default(V1GlusterfsVolumeSource), V1HostPathVolumeSource hostPath = default(V1HostPathVolumeSource), V1ISCSIPersistentVolumeSource iscsi = default(V1ISCSIPersistentVolumeSource), V1LocalVolumeSource local = default(V1LocalVolumeSource), IList<string> mountOptions = default(IList<string>), V1NFSVolumeSource nfs = default(V1NFSVolumeSource), V1VolumeNodeAffinity nodeAffinity = default(V1VolumeNodeAffinity), string persistentVolumeReclaimPolicy = default(string), V1PhotonPersistentDiskVolumeSource photonPersistentDisk = default(V1PhotonPersistentDiskVolumeSource), V1PortworxVolumeSource portworxVolume = default(V1PortworxVolumeSource), V1QuobyteVolumeSource quobyte = default(V1QuobyteVolumeSource), V1RBDPersistentVolumeSource rbd = default(V1RBDPersistentVolumeSource), V1ScaleIOPersistentVolumeSource scaleIO = default(V1ScaleIOPersistentVolumeSource), string storageClassName = default(string), V1StorageOSPersistentVolumeSource storageos = default(V1StorageOSPersistentVolumeSource), string volumeMode = default(string), V1VsphereVirtualDiskVolumeSource vsphereVolume = default(V1VsphereVirtualDiskVolumeSource))
         {
             AccessModes = accessModes;
             AwsElasticBlockStore = awsElasticBlockStore;
@@ -139,6 +144,7 @@ namespace k8s.Models
             Local = local;
             MountOptions = mountOptions;
             Nfs = nfs;
+            NodeAffinity = nodeAffinity;
             PersistentVolumeReclaimPolicy = persistentVolumeReclaimPolicy;
             PhotonPersistentDisk = photonPersistentDisk;
             PortworxVolume = portworxVolume;
@@ -223,7 +229,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets CSI represents storage that handled by an external CSI
-        /// driver
+        /// driver (Beta feature).
         /// </summary>
         [JsonProperty(PropertyName = "csi")]
         public V1CSIPersistentVolumeSource Csi { get; set; }
@@ -240,7 +246,7 @@ namespace k8s.Models
         /// is provisioned/attached using an exec based plugin.
         /// </summary>
         [JsonProperty(PropertyName = "flexVolume")]
-        public V1FlexVolumeSource FlexVolume { get; set; }
+        public V1FlexPersistentVolumeSource FlexVolume { get; set; }
 
         /// <summary>
         /// Gets or sets flocker represents a Flocker volume attached to a
@@ -311,10 +317,20 @@ namespace k8s.Models
         public V1NFSVolumeSource Nfs { get; set; }
 
         /// <summary>
+        /// Gets or sets nodeAffinity defines constraints that limit what nodes
+        /// this volume can be accessed from. This field influences the
+        /// scheduling of pods that use this volume.
+        /// </summary>
+        [JsonProperty(PropertyName = "nodeAffinity")]
+        public V1VolumeNodeAffinity NodeAffinity { get; set; }
+
+        /// <summary>
         /// Gets or sets what happens to a persistent volume when released from
-        /// its claim. Valid options are Retain (default) and Recycle.
-        /// Recycling must be supported by the volume plugin underlying this
-        /// persistent volume. More info:
+        /// its claim. Valid options are Retain (default for manually created
+        /// PersistentVolumes), Delete (default for dynamically provisioned
+        /// PersistentVolumes), and Recycle (deprecated). Recycle must be
+        /// supported by the volume plugin underlying this PersistentVolume.
+        /// More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming
         /// </summary>
         [JsonProperty(PropertyName = "persistentVolumeReclaimPolicy")]
@@ -448,6 +464,10 @@ namespace k8s.Models
             if (Nfs != null)
             {
                 Nfs.Validate();
+            }
+            if (NodeAffinity != null)
+            {
+                NodeAffinity.Validate();
             }
             if (PhotonPersistentDisk != null)
             {

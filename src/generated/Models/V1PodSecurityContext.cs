@@ -40,6 +40,11 @@ namespace k8s.Models
         ///
         /// If unset, the Kubelet will not modify the ownership and permissions
         /// of any volume.</param>
+        /// <param name="runAsGroup">The GID to run the entrypoint of the
+        /// container process. Uses runtime default if unset. May also be set
+        /// in SecurityContext.  If set in both SecurityContext and
+        /// PodSecurityContext, the value specified in SecurityContext takes
+        /// precedence for that container.</param>
         /// <param name="runAsNonRoot">Indicates that the container must run as
         /// a non-root user. If true, the Kubelet will validate the image at
         /// runtime to ensure that it does not run as UID 0 (root) and fail to
@@ -62,9 +67,10 @@ namespace k8s.Models
         /// first process run in each container, in addition to the container's
         /// primary GID.  If unspecified, no groups will be added to any
         /// container.</param>
-        public V1PodSecurityContext(long? fsGroup = default(long?), bool? runAsNonRoot = default(bool?), long? runAsUser = default(long?), V1SELinuxOptions seLinuxOptions = default(V1SELinuxOptions), IList<long?> supplementalGroups = default(IList<long?>))
+        public V1PodSecurityContext(long? fsGroup = default(long?), long? runAsGroup = default(long?), bool? runAsNonRoot = default(bool?), long? runAsUser = default(long?), V1SELinuxOptions seLinuxOptions = default(V1SELinuxOptions), IList<long?> supplementalGroups = default(IList<long?>))
         {
             FsGroup = fsGroup;
+            RunAsGroup = runAsGroup;
             RunAsNonRoot = runAsNonRoot;
             RunAsUser = runAsUser;
             SeLinuxOptions = seLinuxOptions;
@@ -91,6 +97,16 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "fsGroup")]
         public long? FsGroup { get; set; }
+
+        /// <summary>
+        /// Gets or sets the GID to run the entrypoint of the container
+        /// process. Uses runtime default if unset. May also be set in
+        /// SecurityContext.  If set in both SecurityContext and
+        /// PodSecurityContext, the value specified in SecurityContext takes
+        /// precedence for that container.
+        /// </summary>
+        [JsonProperty(PropertyName = "runAsGroup")]
+        public long? RunAsGroup { get; set; }
 
         /// <summary>
         /// Gets or sets indicates that the container must run as a non-root

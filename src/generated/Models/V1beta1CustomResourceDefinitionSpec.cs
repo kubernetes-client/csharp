@@ -37,13 +37,18 @@ namespace k8s.Models
         /// cluster or namespace scoped.  Default is namespaced</param>
         /// <param name="version">Version is the version this resource belongs
         /// in</param>
+        /// <param name="subresources">Subresources describes the subresources
+        /// for CustomResources This field is alpha-level and should only be
+        /// sent to servers that enable subresources via the
+        /// CustomResourceSubresources feature gate.</param>
         /// <param name="validation">Validation describes the validation
         /// methods for CustomResources</param>
-        public V1beta1CustomResourceDefinitionSpec(string group, V1beta1CustomResourceDefinitionNames names, string scope, string version, V1beta1CustomResourceValidation validation = default(V1beta1CustomResourceValidation))
+        public V1beta1CustomResourceDefinitionSpec(string group, V1beta1CustomResourceDefinitionNames names, string scope, string version, V1beta1CustomResourceSubresources subresources = default(V1beta1CustomResourceSubresources), V1beta1CustomResourceValidation validation = default(V1beta1CustomResourceValidation))
         {
             Group = group;
             Names = names;
             Scope = scope;
+            Subresources = subresources;
             Validation = validation;
             Version = version;
             CustomInit();
@@ -73,6 +78,15 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "scope")]
         public string Scope { get; set; }
+
+        /// <summary>
+        /// Gets or sets subresources describes the subresources for
+        /// CustomResources This field is alpha-level and should only be sent
+        /// to servers that enable subresources via the
+        /// CustomResourceSubresources feature gate.
+        /// </summary>
+        [JsonProperty(PropertyName = "subresources")]
+        public V1beta1CustomResourceSubresources Subresources { get; set; }
 
         /// <summary>
         /// Gets or sets validation describes the validation methods for
@@ -114,6 +128,10 @@ namespace k8s.Models
             if (Names != null)
             {
                 Names.Validate();
+            }
+            if (Subresources != null)
+            {
+                Subresources.Validate();
             }
             if (Validation != null)
             {

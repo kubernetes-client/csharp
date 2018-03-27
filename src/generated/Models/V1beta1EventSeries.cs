@@ -12,7 +12,7 @@ namespace k8s.Models
 
     /// <summary>
     /// EventSeries contain information on series of events, i.e. thing that
-    /// was/is happening continously for some time.
+    /// was/is happening continuously for some time.
     /// </summary>
     public partial class V1beta1EventSeries
     {

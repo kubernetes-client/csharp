@@ -42,6 +42,11 @@ namespace k8s.Models
         /// root on the host. Defaults to false.</param>
         /// <param name="readOnlyRootFilesystem">Whether this container has a
         /// read-only root filesystem. Default is false.</param>
+        /// <param name="runAsGroup">The GID to run the entrypoint of the
+        /// container process. Uses runtime default if unset. May also be set
+        /// in PodSecurityContext.  If set in both SecurityContext and
+        /// PodSecurityContext, the value specified in SecurityContext takes
+        /// precedence.</param>
         /// <param name="runAsNonRoot">Indicates that the container must run as
         /// a non-root user. If true, the Kubelet will validate the image at
         /// runtime to ensure that it does not run as UID 0 (root) and fail to
@@ -61,12 +66,13 @@ namespace k8s.Models
         /// PodSecurityContext.  If set in both SecurityContext and
         /// PodSecurityContext, the value specified in SecurityContext takes
         /// precedence.</param>
-        public V1SecurityContext(bool? allowPrivilegeEscalation = default(bool?), V1Capabilities capabilities = default(V1Capabilities), bool? privileged = default(bool?), bool? readOnlyRootFilesystem = default(bool?), bool? runAsNonRoot = default(bool?), long? runAsUser = default(long?), V1SELinuxOptions seLinuxOptions = default(V1SELinuxOptions))
+        public V1SecurityContext(bool? allowPrivilegeEscalation = default(bool?), V1Capabilities capabilities = default(V1Capabilities), bool? privileged = default(bool?), bool? readOnlyRootFilesystem = default(bool?), long? runAsGroup = default(long?), bool? runAsNonRoot = default(bool?), long? runAsUser = default(long?), V1SELinuxOptions seLinuxOptions = default(V1SELinuxOptions))
         {
             AllowPrivilegeEscalation = allowPrivilegeEscalation;
             Capabilities = capabilities;
             Privileged = privileged;
             ReadOnlyRootFilesystem = readOnlyRootFilesystem;
+            RunAsGroup = runAsGroup;
             RunAsNonRoot = runAsNonRoot;
             RunAsUser = runAsUser;
             SeLinuxOptions = seLinuxOptions;
@@ -110,6 +116,16 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "readOnlyRootFilesystem")]
         public bool? ReadOnlyRootFilesystem { get; set; }
+
+        /// <summary>
+        /// Gets or sets the GID to run the entrypoint of the container
+        /// process. Uses runtime default if unset. May also be set in
+        /// PodSecurityContext.  If set in both SecurityContext and
+        /// PodSecurityContext, the value specified in SecurityContext takes
+        /// precedence.
+        /// </summary>
+        [JsonProperty(PropertyName = "runAsGroup")]
+        public long? RunAsGroup { get; set; }
 
         /// <summary>
         /// Gets or sets indicates that the container must run as a non-root

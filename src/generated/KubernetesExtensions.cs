@@ -137,7 +137,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -213,7 +214,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -335,7 +337,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -411,7 +414,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -493,7 +497,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -569,7 +574,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -651,7 +657,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -727,7 +734,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -809,7 +817,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -885,7 +894,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -964,7 +974,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -1040,7 +1051,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -1207,7 +1219,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -1286,7 +1299,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -1415,7 +1429,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -1494,7 +1509,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -1835,7 +1851,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -1914,7 +1931,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -2043,7 +2061,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -2122,7 +2141,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -2463,7 +2483,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -2542,7 +2563,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -2671,7 +2693,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -2750,7 +2773,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -3091,7 +3115,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -3170,7 +3195,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -3299,7 +3325,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -3378,7 +3405,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -3719,7 +3747,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -3798,7 +3827,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -3927,7 +3957,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -4006,7 +4037,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -4493,7 +4525,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -4572,7 +4605,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -4701,7 +4735,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -4780,7 +4815,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -6492,7 +6528,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -6571,7 +6608,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -6700,7 +6738,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -6779,7 +6818,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -7120,7 +7160,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -7199,7 +7240,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -7328,7 +7370,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -7407,7 +7450,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -8040,7 +8084,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -8119,7 +8164,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -8248,7 +8294,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -8327,7 +8374,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -8814,7 +8862,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -8893,7 +8942,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -9022,7 +9072,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -9101,7 +9152,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -9442,7 +9494,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -9521,7 +9574,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -9650,7 +9704,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -9729,7 +9784,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -10070,7 +10126,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -10149,7 +10206,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -10331,18 +10389,42 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='body'>
+            /// </param>
             /// <param name='name'>
             /// name of the Service
             /// </param>
             /// <param name='namespaceParameter'>
             /// object name and auth scope, such as for teams and projects
             /// </param>
+            /// <param name='gracePeriodSeconds'>
+            /// The duration in seconds before the object should be deleted. Value must be
+            /// non-negative integer. The value zero indicates delete immediately. If this
+            /// value is nil, the default grace period for the specified type will be used.
+            /// Defaults to a per object value if not specified. zero means delete
+            /// immediately.
+            /// </param>
+            /// <param name='orphanDependents'>
+            /// Deprecated: please use the PropagationPolicy, this field will be deprecated
+            /// in 1.7. Should the dependent objects be orphaned. If true/false, the
+            /// "orphan" finalizer will be added to/removed from the object's finalizers
+            /// list. Either this field or PropagationPolicy may be set, but not both.
+            /// </param>
+            /// <param name='propagationPolicy'>
+            /// Whether and how garbage collection will be performed. Either this field or
+            /// OrphanDependents may be set, but not both. The default policy is decided by
+            /// the existing finalizer set in the metadata.finalizers and the
+            /// resource-specific default policy. Acceptable values are: 'Orphan' - orphan
+            /// the dependents; 'Background' - allow the garbage collector to delete the
+            /// dependents in the background; 'Foreground' - a cascading policy that
+            /// deletes all dependents in the foreground.
+            /// </param>
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1Status DeleteNamespacedService(this IKubernetes operations, string name, string namespaceParameter, string pretty = default(string))
+            public static V1Status DeleteNamespacedService(this IKubernetes operations, V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string))
             {
-                return operations.DeleteNamespacedServiceAsync(name, namespaceParameter, pretty).GetAwaiter().GetResult();
+                return operations.DeleteNamespacedServiceAsync(body, name, namespaceParameter, gracePeriodSeconds, orphanDependents, propagationPolicy, pretty).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -10351,11 +10433,35 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='body'>
+            /// </param>
             /// <param name='name'>
             /// name of the Service
             /// </param>
             /// <param name='namespaceParameter'>
             /// object name and auth scope, such as for teams and projects
+            /// </param>
+            /// <param name='gracePeriodSeconds'>
+            /// The duration in seconds before the object should be deleted. Value must be
+            /// non-negative integer. The value zero indicates delete immediately. If this
+            /// value is nil, the default grace period for the specified type will be used.
+            /// Defaults to a per object value if not specified. zero means delete
+            /// immediately.
+            /// </param>
+            /// <param name='orphanDependents'>
+            /// Deprecated: please use the PropagationPolicy, this field will be deprecated
+            /// in 1.7. Should the dependent objects be orphaned. If true/false, the
+            /// "orphan" finalizer will be added to/removed from the object's finalizers
+            /// list. Either this field or PropagationPolicy may be set, but not both.
+            /// </param>
+            /// <param name='propagationPolicy'>
+            /// Whether and how garbage collection will be performed. Either this field or
+            /// OrphanDependents may be set, but not both. The default policy is decided by
+            /// the existing finalizer set in the metadata.finalizers and the
+            /// resource-specific default policy. Acceptable values are: 'Orphan' - orphan
+            /// the dependents; 'Background' - allow the garbage collector to delete the
+            /// dependents in the background; 'Foreground' - a cascading policy that
+            /// deletes all dependents in the foreground.
             /// </param>
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
@@ -10363,9 +10469,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1Status> DeleteNamespacedServiceAsync(this IKubernetes operations, string name, string namespaceParameter, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1Status> DeleteNamespacedServiceAsync(this IKubernetes operations, V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DeleteNamespacedServiceWithHttpMessagesAsync(name, namespaceParameter, pretty, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.DeleteNamespacedServiceWithHttpMessagesAsync(body, name, namespaceParameter, gracePeriodSeconds, orphanDependents, propagationPolicy, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -11717,7 +11823,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -11793,7 +11900,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -11913,7 +12021,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -11989,7 +12098,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -12950,7 +13060,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -13026,7 +13137,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -13105,7 +13217,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -13181,7 +13294,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -13301,7 +13415,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -13377,7 +13492,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -13822,7 +13938,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -13898,7 +14015,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -13980,7 +14098,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -14056,7 +14175,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -14071,1446 +14191,6 @@ namespace k8s
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// proxy GET requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            public static Stream ProxyGETNamespacedPod(this IKubernetes operations, string name, string namespaceParameter)
-            {
-                return operations.ProxyGETNamespacedPodAsync(name, namespaceParameter).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy GET requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyGETNamespacedPodAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyGETNamespacedPodWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy PUT requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            public static Stream ProxyPUTNamespacedPod(this IKubernetes operations, string name, string namespaceParameter)
-            {
-                return operations.ProxyPUTNamespacedPodAsync(name, namespaceParameter).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy PUT requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyPUTNamespacedPodAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyPUTNamespacedPodWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy POST requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            public static Stream ProxyPOSTNamespacedPod(this IKubernetes operations, string name, string namespaceParameter)
-            {
-                return operations.ProxyPOSTNamespacedPodAsync(name, namespaceParameter).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy POST requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyPOSTNamespacedPodAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyPOSTNamespacedPodWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy DELETE requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            public static Stream ProxyDELETENamespacedPod(this IKubernetes operations, string name, string namespaceParameter)
-            {
-                return operations.ProxyDELETENamespacedPodAsync(name, namespaceParameter).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy DELETE requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyDELETENamespacedPodAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyDELETENamespacedPodWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy HEAD requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            public static Stream ProxyHEADNamespacedPod(this IKubernetes operations, string name, string namespaceParameter)
-            {
-                return operations.ProxyHEADNamespacedPodAsync(name, namespaceParameter).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy HEAD requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyHEADNamespacedPodAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyHEADNamespacedPodWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy PATCH requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            public static Stream ProxyPATCHNamespacedPod(this IKubernetes operations, string name, string namespaceParameter)
-            {
-                return operations.ProxyPATCHNamespacedPodAsync(name, namespaceParameter).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy PATCH requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyPATCHNamespacedPodAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyPATCHNamespacedPodWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy GET requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            public static Stream ProxyGETNamespacedPodWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
-            {
-                return operations.ProxyGETNamespacedPodWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy GET requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyGETNamespacedPodWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyGETNamespacedPodWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy PUT requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            public static Stream ProxyPUTNamespacedPodWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
-            {
-                return operations.ProxyPUTNamespacedPodWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy PUT requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyPUTNamespacedPodWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyPUTNamespacedPodWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy POST requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            public static Stream ProxyPOSTNamespacedPodWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
-            {
-                return operations.ProxyPOSTNamespacedPodWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy POST requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyPOSTNamespacedPodWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyPOSTNamespacedPodWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy DELETE requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            public static Stream ProxyDELETENamespacedPodWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
-            {
-                return operations.ProxyDELETENamespacedPodWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy DELETE requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyDELETENamespacedPodWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyDELETENamespacedPodWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy HEAD requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            public static Stream ProxyHEADNamespacedPodWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
-            {
-                return operations.ProxyHEADNamespacedPodWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy HEAD requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyHEADNamespacedPodWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyHEADNamespacedPodWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy PATCH requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            public static Stream ProxyPATCHNamespacedPodWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
-            {
-                return operations.ProxyPATCHNamespacedPodWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy PATCH requests to Pod
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Pod
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyPATCHNamespacedPodWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyPATCHNamespacedPodWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy GET requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            public static Stream ProxyGETNamespacedService(this IKubernetes operations, string name, string namespaceParameter)
-            {
-                return operations.ProxyGETNamespacedServiceAsync(name, namespaceParameter).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy GET requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyGETNamespacedServiceAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyGETNamespacedServiceWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy PUT requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            public static Stream ProxyPUTNamespacedService(this IKubernetes operations, string name, string namespaceParameter)
-            {
-                return operations.ProxyPUTNamespacedServiceAsync(name, namespaceParameter).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy PUT requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyPUTNamespacedServiceAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyPUTNamespacedServiceWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy POST requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            public static Stream ProxyPOSTNamespacedService(this IKubernetes operations, string name, string namespaceParameter)
-            {
-                return operations.ProxyPOSTNamespacedServiceAsync(name, namespaceParameter).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy POST requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyPOSTNamespacedServiceAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyPOSTNamespacedServiceWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy DELETE requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            public static Stream ProxyDELETENamespacedService(this IKubernetes operations, string name, string namespaceParameter)
-            {
-                return operations.ProxyDELETENamespacedServiceAsync(name, namespaceParameter).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy DELETE requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyDELETENamespacedServiceAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyDELETENamespacedServiceWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy HEAD requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            public static Stream ProxyHEADNamespacedService(this IKubernetes operations, string name, string namespaceParameter)
-            {
-                return operations.ProxyHEADNamespacedServiceAsync(name, namespaceParameter).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy HEAD requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyHEADNamespacedServiceAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyHEADNamespacedServiceWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy PATCH requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            public static Stream ProxyPATCHNamespacedService(this IKubernetes operations, string name, string namespaceParameter)
-            {
-                return operations.ProxyPATCHNamespacedServiceAsync(name, namespaceParameter).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy PATCH requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyPATCHNamespacedServiceAsync(this IKubernetes operations, string name, string namespaceParameter, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyPATCHNamespacedServiceWithHttpMessagesAsync(name, namespaceParameter, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy GET requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            public static Stream ProxyGETNamespacedServiceWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
-            {
-                return operations.ProxyGETNamespacedServiceWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy GET requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyGETNamespacedServiceWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyGETNamespacedServiceWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy PUT requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            public static Stream ProxyPUTNamespacedServiceWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
-            {
-                return operations.ProxyPUTNamespacedServiceWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy PUT requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyPUTNamespacedServiceWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyPUTNamespacedServiceWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy POST requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            public static Stream ProxyPOSTNamespacedServiceWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
-            {
-                return operations.ProxyPOSTNamespacedServiceWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy POST requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyPOSTNamespacedServiceWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyPOSTNamespacedServiceWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy DELETE requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            public static Stream ProxyDELETENamespacedServiceWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
-            {
-                return operations.ProxyDELETENamespacedServiceWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy DELETE requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyDELETENamespacedServiceWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyDELETENamespacedServiceWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy HEAD requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            public static Stream ProxyHEADNamespacedServiceWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
-            {
-                return operations.ProxyHEADNamespacedServiceWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy HEAD requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyHEADNamespacedServiceWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyHEADNamespacedServiceWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy PATCH requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            public static Stream ProxyPATCHNamespacedServiceWithPath(this IKubernetes operations, string name, string namespaceParameter, string path)
-            {
-                return operations.ProxyPATCHNamespacedServiceWithPathAsync(name, namespaceParameter, path).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy PATCH requests to Service
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Service
-            /// </param>
-            /// <param name='namespaceParameter'>
-            /// object name and auth scope, such as for teams and projects
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyPATCHNamespacedServiceWithPathAsync(this IKubernetes operations, string name, string namespaceParameter, string path, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyPATCHNamespacedServiceWithPathWithHttpMessagesAsync(name, namespaceParameter, path, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy GET requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            public static Stream ProxyGETNode(this IKubernetes operations, string name)
-            {
-                return operations.ProxyGETNodeAsync(name).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy GET requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyGETNodeAsync(this IKubernetes operations, string name, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyGETNodeWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy PUT requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            public static Stream ProxyPUTNode(this IKubernetes operations, string name)
-            {
-                return operations.ProxyPUTNodeAsync(name).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy PUT requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyPUTNodeAsync(this IKubernetes operations, string name, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyPUTNodeWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy POST requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            public static Stream ProxyPOSTNode(this IKubernetes operations, string name)
-            {
-                return operations.ProxyPOSTNodeAsync(name).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy POST requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyPOSTNodeAsync(this IKubernetes operations, string name, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyPOSTNodeWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy DELETE requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            public static Stream ProxyDELETENode(this IKubernetes operations, string name)
-            {
-                return operations.ProxyDELETENodeAsync(name).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy DELETE requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyDELETENodeAsync(this IKubernetes operations, string name, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyDELETENodeWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy HEAD requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            public static Stream ProxyHEADNode(this IKubernetes operations, string name)
-            {
-                return operations.ProxyHEADNodeAsync(name).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy HEAD requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyHEADNodeAsync(this IKubernetes operations, string name, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyHEADNodeWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy PATCH requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            public static Stream ProxyPATCHNode(this IKubernetes operations, string name)
-            {
-                return operations.ProxyPATCHNodeAsync(name).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy PATCH requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyPATCHNodeAsync(this IKubernetes operations, string name, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyPATCHNodeWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy GET requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            public static Stream ProxyGETNodeWithPath(this IKubernetes operations, string name, string path)
-            {
-                return operations.ProxyGETNodeWithPathAsync(name, path).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy GET requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyGETNodeWithPathAsync(this IKubernetes operations, string name, string path, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyGETNodeWithPathWithHttpMessagesAsync(name, path, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy PUT requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            public static Stream ProxyPUTNodeWithPath(this IKubernetes operations, string name, string path)
-            {
-                return operations.ProxyPUTNodeWithPathAsync(name, path).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy PUT requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyPUTNodeWithPathAsync(this IKubernetes operations, string name, string path, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyPUTNodeWithPathWithHttpMessagesAsync(name, path, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy POST requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            public static Stream ProxyPOSTNodeWithPath(this IKubernetes operations, string name, string path)
-            {
-                return operations.ProxyPOSTNodeWithPathAsync(name, path).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy POST requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyPOSTNodeWithPathAsync(this IKubernetes operations, string name, string path, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyPOSTNodeWithPathWithHttpMessagesAsync(name, path, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy DELETE requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            public static Stream ProxyDELETENodeWithPath(this IKubernetes operations, string name, string path)
-            {
-                return operations.ProxyDELETENodeWithPathAsync(name, path).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy DELETE requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyDELETENodeWithPathAsync(this IKubernetes operations, string name, string path, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyDELETENodeWithPathWithHttpMessagesAsync(name, path, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy HEAD requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            public static Stream ProxyHEADNodeWithPath(this IKubernetes operations, string name, string path)
-            {
-                return operations.ProxyHEADNodeWithPathAsync(name, path).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy HEAD requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyHEADNodeWithPathAsync(this IKubernetes operations, string name, string path, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyHEADNodeWithPathWithHttpMessagesAsync(name, path, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
-            }
-
-            /// <summary>
-            /// proxy PATCH requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            public static Stream ProxyPATCHNodeWithPath(this IKubernetes operations, string name, string path)
-            {
-                return operations.ProxyPATCHNodeWithPathAsync(name, path).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// proxy PATCH requests to Node
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// name of the Node
-            /// </param>
-            /// <param name='path'>
-            /// path to the resource
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Stream> ProxyPATCHNodeWithPathAsync(this IKubernetes operations, string name, string path, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                var _result = await operations.ProxyPATCHNodeWithPathWithHttpMessagesAsync(name, path, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
             }
 
             /// <summary>
@@ -15578,7 +14258,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -15654,7 +14335,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -15736,7 +14418,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -15812,7 +14495,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -15894,7 +14578,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -15970,7 +14655,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -16052,7 +14738,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -16128,7 +14815,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -16210,7 +14898,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -16286,7 +14975,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -16449,7 +15139,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -16525,7 +15216,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -16645,7 +15337,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -16721,7 +15414,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -17063,7 +15757,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -17139,7 +15834,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -17259,7 +15955,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -17335,7 +16032,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -17649,7 +16347,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -17725,7 +16424,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -17845,7 +16545,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -17921,7 +16622,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -18291,7 +16993,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -18367,7 +17070,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -18487,7 +17191,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -18563,7 +17268,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -18977,7 +17683,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -18986,7 +17693,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1APIServiceList ListAPIService(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string))
+            public static V1APIServiceList ListAPIService(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string))
             {
                 return operations.ListAPIServiceAsync(continueParameter, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch, pretty).GetAwaiter().GetResult();
             }
@@ -19053,7 +17760,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -19065,7 +17773,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1APIServiceList> ListAPIServiceAsync(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIServiceList> ListAPIServiceAsync(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListAPIServiceWithHttpMessagesAsync(continueParameter, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -19084,7 +17792,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1APIService CreateAPIService(this IKubernetes operations, V1beta1APIService body, string pretty = default(string))
+            public static V1APIService CreateAPIService(this IKubernetes operations, V1APIService body, string pretty = default(string))
             {
                 return operations.CreateAPIServiceAsync(body, pretty).GetAwaiter().GetResult();
             }
@@ -19103,7 +17811,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1APIService> CreateAPIServiceAsync(this IKubernetes operations, V1beta1APIService body, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIService> CreateAPIServiceAsync(this IKubernetes operations, V1APIService body, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateAPIServiceWithHttpMessagesAsync(body, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -19173,7 +17881,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -19249,7 +17958,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -19289,7 +17999,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1APIService ReadAPIService(this IKubernetes operations, string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string))
+            public static V1APIService ReadAPIService(this IKubernetes operations, string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string))
             {
                 return operations.ReadAPIServiceAsync(name, exact, export, pretty).GetAwaiter().GetResult();
             }
@@ -19317,7 +18027,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1APIService> ReadAPIServiceAsync(this IKubernetes operations, string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIService> ReadAPIServiceAsync(this IKubernetes operations, string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ReadAPIServiceWithHttpMessagesAsync(name, exact, export, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -19339,7 +18049,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1APIService ReplaceAPIService(this IKubernetes operations, V1beta1APIService body, string name, string pretty = default(string))
+            public static V1APIService ReplaceAPIService(this IKubernetes operations, V1APIService body, string name, string pretty = default(string))
             {
                 return operations.ReplaceAPIServiceAsync(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -19361,7 +18071,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1APIService> ReplaceAPIServiceAsync(this IKubernetes operations, V1beta1APIService body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIService> ReplaceAPIServiceAsync(this IKubernetes operations, V1APIService body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ReplaceAPIServiceWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -19471,7 +18181,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1APIService PatchAPIService(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
+            public static V1APIService PatchAPIService(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchAPIServiceAsync(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -19493,7 +18203,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1APIService> PatchAPIServiceAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIService> PatchAPIServiceAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchAPIServiceWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -19515,7 +18225,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1APIService ReplaceAPIServiceStatus(this IKubernetes operations, V1beta1APIService body, string name, string pretty = default(string))
+            public static V1APIService ReplaceAPIServiceStatus(this IKubernetes operations, V1APIService body, string name, string pretty = default(string))
             {
                 return operations.ReplaceAPIServiceStatusAsync(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -19537,9 +18247,671 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1APIService> ReplaceAPIServiceStatusAsync(this IKubernetes operations, V1beta1APIService body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIService> ReplaceAPIServiceStatusAsync(this IKubernetes operations, V1APIService body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ReplaceAPIServiceStatusWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// get available resources
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            public static V1APIResourceList GetAPIResources5(this IKubernetes operations)
+            {
+                return operations.GetAPIResources5Async().GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// get available resources
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1APIResourceList> GetAPIResources5Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetAPIResources5WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// list or watch objects of kind APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='continueParameter'>
+            /// The continue option should be set when retrieving more results from the
+            /// server. Since this value is server defined, clients may only use the
+            /// continue value from a previous query result with identical query parameters
+            /// (except for the value of continue) and the server may reject a continue
+            /// value it does not recognize. If the specified continue value is no longer
+            /// valid whether due to expiration (generally five to fifteen minutes) or a
+            /// configuration change on the server the server will respond with a 410
+            /// ResourceExpired error indicating the client must restart their list without
+            /// the continue field. This field is not supported when watch is true. Clients
+            /// may start a watch from the last resourceVersion value returned by the
+            /// server and not miss any modifications.
+            /// </param>
+            /// <param name='fieldSelector'>
+            /// A selector to restrict the list of returned objects by their fields.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='includeUninitialized'>
+            /// If true, partially initialized resources are included in the response.
+            /// </param>
+            /// <param name='labelSelector'>
+            /// A selector to restrict the list of returned objects by their labels.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='limit'>
+            /// limit is a maximum number of responses to return for a list call. If more
+            /// items exist, the server will set the `continue` field on the list metadata
+            /// to a value that can be used with the same initial query to retrieve the
+            /// next set of results. Setting a limit may return fewer than the requested
+            /// amount of items (up to zero items) in the event all requested objects are
+            /// filtered out and clients should only use the presence of the continue field
+            /// to determine whether more results are available. Servers may choose not to
+            /// support the limit argument and will return all of the available results. If
+            /// limit is specified and the continue field is empty, clients may assume that
+            /// no more results are available. This field is not supported if watch is
+            /// true.
+            ///
+            /// The server guarantees that the objects returned when using continue will be
+            /// identical to issuing a single list call without a limit - that is, no
+            /// objects created, modified, or deleted after the first request is issued
+            /// will be included in any subsequent continued requests. This is sometimes
+            /// referred to as a consistent snapshot, and ensures that a client that is
+            /// using limit to receive smaller chunks of a very large result can ensure
+            /// they see all possible objects. If objects are updated during a chunked list
+            /// the version of the object that was present at the time the first list
+            /// result was calculated is returned.
+            /// </param>
+            /// <param name='resourceVersion'>
+            /// When specified with a watch call, shows changes that occur after that
+            /// particular version of a resource. Defaults to changes from the beginning of
+            /// history. When specified for list: - if unset, then the result is returned
+            /// from remote storage based on quorum-read flag; - if it's 0, then we simply
+            /// return what we currently have in cache, no guarantee; - if set to non zero,
+            /// then the result is at least as fresh as given rv.
+            /// </param>
+            /// <param name='timeoutSeconds'>
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
+            /// </param>
+            /// <param name='watch'>
+            /// Watch for changes to the described resources and return them as a stream of
+            /// add, update, and remove notifications. Specify resourceVersion.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1APIServiceList ListAPIService1(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string))
+            {
+                return operations.ListAPIService1Async(continueParameter, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// list or watch objects of kind APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='continueParameter'>
+            /// The continue option should be set when retrieving more results from the
+            /// server. Since this value is server defined, clients may only use the
+            /// continue value from a previous query result with identical query parameters
+            /// (except for the value of continue) and the server may reject a continue
+            /// value it does not recognize. If the specified continue value is no longer
+            /// valid whether due to expiration (generally five to fifteen minutes) or a
+            /// configuration change on the server the server will respond with a 410
+            /// ResourceExpired error indicating the client must restart their list without
+            /// the continue field. This field is not supported when watch is true. Clients
+            /// may start a watch from the last resourceVersion value returned by the
+            /// server and not miss any modifications.
+            /// </param>
+            /// <param name='fieldSelector'>
+            /// A selector to restrict the list of returned objects by their fields.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='includeUninitialized'>
+            /// If true, partially initialized resources are included in the response.
+            /// </param>
+            /// <param name='labelSelector'>
+            /// A selector to restrict the list of returned objects by their labels.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='limit'>
+            /// limit is a maximum number of responses to return for a list call. If more
+            /// items exist, the server will set the `continue` field on the list metadata
+            /// to a value that can be used with the same initial query to retrieve the
+            /// next set of results. Setting a limit may return fewer than the requested
+            /// amount of items (up to zero items) in the event all requested objects are
+            /// filtered out and clients should only use the presence of the continue field
+            /// to determine whether more results are available. Servers may choose not to
+            /// support the limit argument and will return all of the available results. If
+            /// limit is specified and the continue field is empty, clients may assume that
+            /// no more results are available. This field is not supported if watch is
+            /// true.
+            ///
+            /// The server guarantees that the objects returned when using continue will be
+            /// identical to issuing a single list call without a limit - that is, no
+            /// objects created, modified, or deleted after the first request is issued
+            /// will be included in any subsequent continued requests. This is sometimes
+            /// referred to as a consistent snapshot, and ensures that a client that is
+            /// using limit to receive smaller chunks of a very large result can ensure
+            /// they see all possible objects. If objects are updated during a chunked list
+            /// the version of the object that was present at the time the first list
+            /// result was calculated is returned.
+            /// </param>
+            /// <param name='resourceVersion'>
+            /// When specified with a watch call, shows changes that occur after that
+            /// particular version of a resource. Defaults to changes from the beginning of
+            /// history. When specified for list: - if unset, then the result is returned
+            /// from remote storage based on quorum-read flag; - if it's 0, then we simply
+            /// return what we currently have in cache, no guarantee; - if set to non zero,
+            /// then the result is at least as fresh as given rv.
+            /// </param>
+            /// <param name='timeoutSeconds'>
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
+            /// </param>
+            /// <param name='watch'>
+            /// Watch for changes to the described resources and return them as a stream of
+            /// add, update, and remove notifications. Specify resourceVersion.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1APIServiceList> ListAPIService1Async(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListAPIService1WithHttpMessagesAsync(continueParameter, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// create an APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1APIService CreateAPIService1(this IKubernetes operations, V1beta1APIService body, string pretty = default(string))
+            {
+                return operations.CreateAPIService1Async(body, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// create an APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1APIService> CreateAPIService1Async(this IKubernetes operations, V1beta1APIService body, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateAPIService1WithHttpMessagesAsync(body, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// delete collection of APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='continueParameter'>
+            /// The continue option should be set when retrieving more results from the
+            /// server. Since this value is server defined, clients may only use the
+            /// continue value from a previous query result with identical query parameters
+            /// (except for the value of continue) and the server may reject a continue
+            /// value it does not recognize. If the specified continue value is no longer
+            /// valid whether due to expiration (generally five to fifteen minutes) or a
+            /// configuration change on the server the server will respond with a 410
+            /// ResourceExpired error indicating the client must restart their list without
+            /// the continue field. This field is not supported when watch is true. Clients
+            /// may start a watch from the last resourceVersion value returned by the
+            /// server and not miss any modifications.
+            /// </param>
+            /// <param name='fieldSelector'>
+            /// A selector to restrict the list of returned objects by their fields.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='includeUninitialized'>
+            /// If true, partially initialized resources are included in the response.
+            /// </param>
+            /// <param name='labelSelector'>
+            /// A selector to restrict the list of returned objects by their labels.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='limit'>
+            /// limit is a maximum number of responses to return for a list call. If more
+            /// items exist, the server will set the `continue` field on the list metadata
+            /// to a value that can be used with the same initial query to retrieve the
+            /// next set of results. Setting a limit may return fewer than the requested
+            /// amount of items (up to zero items) in the event all requested objects are
+            /// filtered out and clients should only use the presence of the continue field
+            /// to determine whether more results are available. Servers may choose not to
+            /// support the limit argument and will return all of the available results. If
+            /// limit is specified and the continue field is empty, clients may assume that
+            /// no more results are available. This field is not supported if watch is
+            /// true.
+            ///
+            /// The server guarantees that the objects returned when using continue will be
+            /// identical to issuing a single list call without a limit - that is, no
+            /// objects created, modified, or deleted after the first request is issued
+            /// will be included in any subsequent continued requests. This is sometimes
+            /// referred to as a consistent snapshot, and ensures that a client that is
+            /// using limit to receive smaller chunks of a very large result can ensure
+            /// they see all possible objects. If objects are updated during a chunked list
+            /// the version of the object that was present at the time the first list
+            /// result was calculated is returned.
+            /// </param>
+            /// <param name='resourceVersion'>
+            /// When specified with a watch call, shows changes that occur after that
+            /// particular version of a resource. Defaults to changes from the beginning of
+            /// history. When specified for list: - if unset, then the result is returned
+            /// from remote storage based on quorum-read flag; - if it's 0, then we simply
+            /// return what we currently have in cache, no guarantee; - if set to non zero,
+            /// then the result is at least as fresh as given rv.
+            /// </param>
+            /// <param name='timeoutSeconds'>
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
+            /// </param>
+            /// <param name='watch'>
+            /// Watch for changes to the described resources and return them as a stream of
+            /// add, update, and remove notifications. Specify resourceVersion.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1Status DeleteCollectionAPIService1(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string))
+            {
+                return operations.DeleteCollectionAPIService1Async(continueParameter, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// delete collection of APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='continueParameter'>
+            /// The continue option should be set when retrieving more results from the
+            /// server. Since this value is server defined, clients may only use the
+            /// continue value from a previous query result with identical query parameters
+            /// (except for the value of continue) and the server may reject a continue
+            /// value it does not recognize. If the specified continue value is no longer
+            /// valid whether due to expiration (generally five to fifteen minutes) or a
+            /// configuration change on the server the server will respond with a 410
+            /// ResourceExpired error indicating the client must restart their list without
+            /// the continue field. This field is not supported when watch is true. Clients
+            /// may start a watch from the last resourceVersion value returned by the
+            /// server and not miss any modifications.
+            /// </param>
+            /// <param name='fieldSelector'>
+            /// A selector to restrict the list of returned objects by their fields.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='includeUninitialized'>
+            /// If true, partially initialized resources are included in the response.
+            /// </param>
+            /// <param name='labelSelector'>
+            /// A selector to restrict the list of returned objects by their labels.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='limit'>
+            /// limit is a maximum number of responses to return for a list call. If more
+            /// items exist, the server will set the `continue` field on the list metadata
+            /// to a value that can be used with the same initial query to retrieve the
+            /// next set of results. Setting a limit may return fewer than the requested
+            /// amount of items (up to zero items) in the event all requested objects are
+            /// filtered out and clients should only use the presence of the continue field
+            /// to determine whether more results are available. Servers may choose not to
+            /// support the limit argument and will return all of the available results. If
+            /// limit is specified and the continue field is empty, clients may assume that
+            /// no more results are available. This field is not supported if watch is
+            /// true.
+            ///
+            /// The server guarantees that the objects returned when using continue will be
+            /// identical to issuing a single list call without a limit - that is, no
+            /// objects created, modified, or deleted after the first request is issued
+            /// will be included in any subsequent continued requests. This is sometimes
+            /// referred to as a consistent snapshot, and ensures that a client that is
+            /// using limit to receive smaller chunks of a very large result can ensure
+            /// they see all possible objects. If objects are updated during a chunked list
+            /// the version of the object that was present at the time the first list
+            /// result was calculated is returned.
+            /// </param>
+            /// <param name='resourceVersion'>
+            /// When specified with a watch call, shows changes that occur after that
+            /// particular version of a resource. Defaults to changes from the beginning of
+            /// history. When specified for list: - if unset, then the result is returned
+            /// from remote storage based on quorum-read flag; - if it's 0, then we simply
+            /// return what we currently have in cache, no guarantee; - if set to non zero,
+            /// then the result is at least as fresh as given rv.
+            /// </param>
+            /// <param name='timeoutSeconds'>
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
+            /// </param>
+            /// <param name='watch'>
+            /// Watch for changes to the described resources and return them as a stream of
+            /// add, update, and remove notifications. Specify resourceVersion.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1Status> DeleteCollectionAPIService1Async(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeleteCollectionAPIService1WithHttpMessagesAsync(continueParameter, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// read the specified APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='name'>
+            /// name of the APIService
+            /// </param>
+            /// <param name='exact'>
+            /// Should the export be exact.  Exact export maintains cluster-specific fields
+            /// like 'Namespace'.
+            /// </param>
+            /// <param name='export'>
+            /// Should this value be exported.  Export strips fields that a user can not
+            /// specify.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1APIService ReadAPIService1(this IKubernetes operations, string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string))
+            {
+                return operations.ReadAPIService1Async(name, exact, export, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// read the specified APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='name'>
+            /// name of the APIService
+            /// </param>
+            /// <param name='exact'>
+            /// Should the export be exact.  Exact export maintains cluster-specific fields
+            /// like 'Namespace'.
+            /// </param>
+            /// <param name='export'>
+            /// Should this value be exported.  Export strips fields that a user can not
+            /// specify.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1APIService> ReadAPIService1Async(this IKubernetes operations, string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ReadAPIService1WithHttpMessagesAsync(name, exact, export, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// replace the specified APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the APIService
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1APIService ReplaceAPIService1(this IKubernetes operations, V1beta1APIService body, string name, string pretty = default(string))
+            {
+                return operations.ReplaceAPIService1Async(body, name, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// replace the specified APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the APIService
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1APIService> ReplaceAPIService1Async(this IKubernetes operations, V1beta1APIService body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ReplaceAPIService1WithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// delete an APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the APIService
+            /// </param>
+            /// <param name='gracePeriodSeconds'>
+            /// The duration in seconds before the object should be deleted. Value must be
+            /// non-negative integer. The value zero indicates delete immediately. If this
+            /// value is nil, the default grace period for the specified type will be used.
+            /// Defaults to a per object value if not specified. zero means delete
+            /// immediately.
+            /// </param>
+            /// <param name='orphanDependents'>
+            /// Deprecated: please use the PropagationPolicy, this field will be deprecated
+            /// in 1.7. Should the dependent objects be orphaned. If true/false, the
+            /// "orphan" finalizer will be added to/removed from the object's finalizers
+            /// list. Either this field or PropagationPolicy may be set, but not both.
+            /// </param>
+            /// <param name='propagationPolicy'>
+            /// Whether and how garbage collection will be performed. Either this field or
+            /// OrphanDependents may be set, but not both. The default policy is decided by
+            /// the existing finalizer set in the metadata.finalizers and the
+            /// resource-specific default policy. Acceptable values are: 'Orphan' - orphan
+            /// the dependents; 'Background' - allow the garbage collector to delete the
+            /// dependents in the background; 'Foreground' - a cascading policy that
+            /// deletes all dependents in the foreground.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1Status DeleteAPIService1(this IKubernetes operations, V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string))
+            {
+                return operations.DeleteAPIService1Async(body, name, gracePeriodSeconds, orphanDependents, propagationPolicy, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// delete an APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the APIService
+            /// </param>
+            /// <param name='gracePeriodSeconds'>
+            /// The duration in seconds before the object should be deleted. Value must be
+            /// non-negative integer. The value zero indicates delete immediately. If this
+            /// value is nil, the default grace period for the specified type will be used.
+            /// Defaults to a per object value if not specified. zero means delete
+            /// immediately.
+            /// </param>
+            /// <param name='orphanDependents'>
+            /// Deprecated: please use the PropagationPolicy, this field will be deprecated
+            /// in 1.7. Should the dependent objects be orphaned. If true/false, the
+            /// "orphan" finalizer will be added to/removed from the object's finalizers
+            /// list. Either this field or PropagationPolicy may be set, but not both.
+            /// </param>
+            /// <param name='propagationPolicy'>
+            /// Whether and how garbage collection will be performed. Either this field or
+            /// OrphanDependents may be set, but not both. The default policy is decided by
+            /// the existing finalizer set in the metadata.finalizers and the
+            /// resource-specific default policy. Acceptable values are: 'Orphan' - orphan
+            /// the dependents; 'Background' - allow the garbage collector to delete the
+            /// dependents in the background; 'Foreground' - a cascading policy that
+            /// deletes all dependents in the foreground.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1Status> DeleteAPIService1Async(this IKubernetes operations, V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeleteAPIService1WithHttpMessagesAsync(body, name, gracePeriodSeconds, orphanDependents, propagationPolicy, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// partially update the specified APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the APIService
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1APIService PatchAPIService1(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
+            {
+                return operations.PatchAPIService1Async(body, name, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// partially update the specified APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the APIService
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1APIService> PatchAPIService1Async(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.PatchAPIService1WithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// replace status of the specified APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the APIService
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1APIService ReplaceAPIServiceStatus1(this IKubernetes operations, V1beta1APIService body, string name, string pretty = default(string))
+            {
+                return operations.ReplaceAPIServiceStatus1Async(body, name, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// replace status of the specified APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the APIService
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1APIService> ReplaceAPIServiceStatus1Async(this IKubernetes operations, V1beta1APIService body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ReplaceAPIServiceStatus1WithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -19579,9 +18951,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources5(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources6(this IKubernetes operations)
             {
-                return operations.GetAPIResources5Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources6Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -19593,9 +18965,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources5Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources6Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources5WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources6WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -19666,7 +19038,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -19742,7 +19115,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -19824,7 +19198,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -19900,7 +19275,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -19982,7 +19358,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -20058,7 +19435,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -20140,7 +19518,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -20219,7 +19598,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -20348,7 +19728,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -20427,7 +19808,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -20768,7 +20150,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -20847,7 +20230,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -20976,7 +20360,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -21055,7 +20440,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -21542,7 +20928,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -21621,7 +21008,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -21750,7 +21138,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -21829,7 +21218,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -22462,7 +21852,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -22541,7 +21932,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -22670,7 +22062,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -22749,7 +22142,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -23382,7 +22776,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -23461,7 +22856,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -23590,7 +22986,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -23669,7 +23066,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -24302,7 +23700,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -24378,7 +23777,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -24460,7 +23860,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -24536,7 +23937,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -24559,9 +23961,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources6(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources7(this IKubernetes operations)
             {
-                return operations.GetAPIResources6Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources7Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -24573,9 +23975,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources6Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources7Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources6WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources7WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -24646,7 +24048,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -24722,7 +24125,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -24804,7 +24208,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -24880,7 +24285,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -24962,7 +24368,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -25041,7 +24448,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -25170,7 +24578,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -25249,7 +24658,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -25590,7 +25000,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -25669,7 +25080,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -25798,7 +25210,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -25877,7 +25290,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -26560,7 +25974,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -26639,7 +26054,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -26768,7 +26184,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -26847,7 +26264,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -27480,7 +26898,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -27556,7 +26975,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -27579,9 +26999,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources7(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources8(this IKubernetes operations)
             {
-                return operations.GetAPIResources7Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources8Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -27593,9 +27013,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources7Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources8Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources7WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources8WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -27666,7 +27086,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -27742,7 +27163,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -27824,7 +27246,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -27900,7 +27323,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -27982,7 +27406,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -28058,7 +27483,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -28140,7 +27566,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -28219,7 +27646,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -28348,7 +27776,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -28427,7 +27856,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -28768,7 +28198,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -28847,7 +28278,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -28976,7 +28408,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -29055,7 +28488,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -29542,7 +28976,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -29621,7 +29056,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -29750,7 +29186,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -29829,7 +29266,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -30462,7 +29900,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -30541,7 +29980,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -30670,7 +30110,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -30749,7 +30190,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -31382,7 +30824,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -31461,7 +30904,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -31590,7 +31034,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -31669,7 +31114,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -32302,7 +31748,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -32378,7 +31825,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -32460,7 +31908,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -32536,7 +31985,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -32587,9 +32037,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources8(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources9(this IKubernetes operations)
             {
-                return operations.GetAPIResources8Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources9Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -32601,9 +32051,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources8Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources9Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources8WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources9WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -32653,9 +32103,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources9(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources10(this IKubernetes operations)
             {
-                return operations.GetAPIResources9Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources10Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -32667,9 +32117,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources9Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources10Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources9WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources10WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -32747,9 +32197,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources10(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources11(this IKubernetes operations)
             {
-                return operations.GetAPIResources10Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources11Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -32761,9 +32211,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources10Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources11Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources10WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources11WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -32933,9 +32383,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources11(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources12(this IKubernetes operations)
             {
-                return operations.GetAPIResources11Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources12Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -32947,9 +32397,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources11Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources12Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources11WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources12WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -33147,9 +32597,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources12(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources13(this IKubernetes operations)
             {
-                return operations.GetAPIResources12Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources13Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -33161,9 +32611,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources12Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources13Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources12WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources13WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -33234,7 +32684,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -33310,7 +32761,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -33392,7 +32844,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -33471,7 +32924,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -33600,7 +33054,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -33679,7 +33134,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -34107,9 +33563,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources13(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources14(this IKubernetes operations)
             {
-                return operations.GetAPIResources13Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources14Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -34121,9 +33577,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources13Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources14Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources13WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources14WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -34194,7 +33650,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -34270,7 +33727,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -34352,7 +33810,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -34431,7 +33890,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -34560,7 +34020,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -34639,7 +34100,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -35095,9 +34557,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources14(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources15(this IKubernetes operations)
             {
-                return operations.GetAPIResources14Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources15Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -35109,9 +34571,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources14Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources15Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources14WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources15WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -35182,7 +34644,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -35258,7 +34721,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -35340,7 +34804,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -35419,7 +34884,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -35548,7 +35014,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -35627,7 +35094,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -36055,9 +35523,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources15(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources16(this IKubernetes operations)
             {
-                return operations.GetAPIResources15Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources16Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -36069,9 +35537,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources15Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources16Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources15WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources16WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -36142,7 +35610,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -36218,7 +35687,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -36300,7 +35770,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -36379,7 +35850,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -36508,7 +35980,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -36587,7 +36060,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -37015,9 +36489,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources16(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources17(this IKubernetes operations)
             {
-                return operations.GetAPIResources16Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources17Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -37029,9 +36503,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources16Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources17Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources16WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources17WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -37102,7 +36576,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -37178,7 +36653,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -37260,7 +36736,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -37339,7 +36816,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -37468,7 +36946,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -37547,7 +37026,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -38003,9 +37483,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources17(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources18(this IKubernetes operations)
             {
-                return operations.GetAPIResources17Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources18Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -38017,9 +37497,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources17Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources18Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources17WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources18WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -38087,7 +37567,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -38163,7 +37644,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -38283,7 +37765,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -38359,7 +37842,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -38733,9 +38217,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources18(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources19(this IKubernetes operations)
             {
-                return operations.GetAPIResources18Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources19Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -38747,9 +38231,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources18Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources19Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources18WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources19WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -38820,7 +38304,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -38896,7 +38381,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -38978,7 +38464,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -39057,7 +38544,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -39186,7 +38674,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -39265,7 +38754,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -39575,9 +39065,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources19(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources20(this IKubernetes operations)
             {
-                return operations.GetAPIResources19Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources20Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -39589,9 +39079,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources19Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources20Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources19WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources20WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -39662,7 +39152,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -39738,7 +39229,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -39820,7 +39312,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -39896,7 +39389,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -39978,7 +39472,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -40054,7 +39549,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -40136,7 +39632,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -40215,7 +39712,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -40344,7 +39842,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -40423,7 +39922,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -40910,7 +40410,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -40989,7 +40490,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -41118,7 +40620,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -41197,7 +40700,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -41880,7 +41384,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -41959,7 +41464,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -42088,7 +41594,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -42167,7 +41674,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -42654,7 +42162,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -42733,7 +42242,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -42862,7 +42372,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -42941,7 +42452,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -43282,7 +42794,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -43361,7 +42874,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -43490,7 +43004,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -43569,7 +43084,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -44348,7 +43864,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -44424,7 +43941,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -44503,7 +44021,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -44512,7 +44031,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1PodSecurityPolicyList ListPodSecurityPolicy(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string))
+            public static Extensionsv1beta1PodSecurityPolicyList ListPodSecurityPolicy(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string))
             {
                 return operations.ListPodSecurityPolicyAsync(continueParameter, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch, pretty).GetAwaiter().GetResult();
             }
@@ -44579,7 +44098,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -44591,7 +44111,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1PodSecurityPolicyList> ListPodSecurityPolicyAsync(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Extensionsv1beta1PodSecurityPolicyList> ListPodSecurityPolicyAsync(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListPodSecurityPolicyWithHttpMessagesAsync(continueParameter, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -44610,7 +44130,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1PodSecurityPolicy CreatePodSecurityPolicy(this IKubernetes operations, V1beta1PodSecurityPolicy body, string pretty = default(string))
+            public static Extensionsv1beta1PodSecurityPolicy CreatePodSecurityPolicy(this IKubernetes operations, Extensionsv1beta1PodSecurityPolicy body, string pretty = default(string))
             {
                 return operations.CreatePodSecurityPolicyAsync(body, pretty).GetAwaiter().GetResult();
             }
@@ -44629,7 +44149,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1PodSecurityPolicy> CreatePodSecurityPolicyAsync(this IKubernetes operations, V1beta1PodSecurityPolicy body, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Extensionsv1beta1PodSecurityPolicy> CreatePodSecurityPolicyAsync(this IKubernetes operations, Extensionsv1beta1PodSecurityPolicy body, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreatePodSecurityPolicyWithHttpMessagesAsync(body, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -44699,7 +44219,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -44775,7 +44296,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -44815,7 +44337,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1PodSecurityPolicy ReadPodSecurityPolicy(this IKubernetes operations, string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string))
+            public static Extensionsv1beta1PodSecurityPolicy ReadPodSecurityPolicy(this IKubernetes operations, string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string))
             {
                 return operations.ReadPodSecurityPolicyAsync(name, exact, export, pretty).GetAwaiter().GetResult();
             }
@@ -44843,7 +44365,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1PodSecurityPolicy> ReadPodSecurityPolicyAsync(this IKubernetes operations, string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Extensionsv1beta1PodSecurityPolicy> ReadPodSecurityPolicyAsync(this IKubernetes operations, string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ReadPodSecurityPolicyWithHttpMessagesAsync(name, exact, export, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -44865,7 +44387,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1PodSecurityPolicy ReplacePodSecurityPolicy(this IKubernetes operations, V1beta1PodSecurityPolicy body, string name, string pretty = default(string))
+            public static Extensionsv1beta1PodSecurityPolicy ReplacePodSecurityPolicy(this IKubernetes operations, Extensionsv1beta1PodSecurityPolicy body, string name, string pretty = default(string))
             {
                 return operations.ReplacePodSecurityPolicyAsync(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -44887,7 +44409,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1PodSecurityPolicy> ReplacePodSecurityPolicyAsync(this IKubernetes operations, V1beta1PodSecurityPolicy body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Extensionsv1beta1PodSecurityPolicy> ReplacePodSecurityPolicyAsync(this IKubernetes operations, Extensionsv1beta1PodSecurityPolicy body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ReplacePodSecurityPolicyWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -44997,7 +44519,7 @@ namespace k8s
             /// <param name='pretty'>
             /// If 'true', then the output is pretty printed.
             /// </param>
-            public static V1beta1PodSecurityPolicy PatchPodSecurityPolicy(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
+            public static Extensionsv1beta1PodSecurityPolicy PatchPodSecurityPolicy(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
             {
                 return operations.PatchPodSecurityPolicyAsync(body, name, pretty).GetAwaiter().GetResult();
             }
@@ -45019,7 +44541,7 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1beta1PodSecurityPolicy> PatchPodSecurityPolicyAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Extensionsv1beta1PodSecurityPolicy> PatchPodSecurityPolicyAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchPodSecurityPolicyWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -45092,7 +44614,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -45168,7 +44691,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -45219,9 +44743,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources20(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources21(this IKubernetes operations)
             {
-                return operations.GetAPIResources20Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources21Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -45233,9 +44757,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources20Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources21Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources20WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources21WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -45306,7 +44830,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -45385,7 +44910,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -45514,7 +45040,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -45593,7 +45120,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -45934,7 +45462,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -46010,7 +45539,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -46061,9 +45591,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources21(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources22(this IKubernetes operations)
             {
-                return operations.GetAPIResources21Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources22Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -46075,9 +45605,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources21Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources22Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources21WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources22WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -46148,7 +45678,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -46227,7 +45758,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -46356,7 +45888,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -46435,7 +45968,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -46922,7 +46456,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -46998,7 +46533,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -47010,6 +46546,596 @@ namespace k8s
             public static async Task<V1beta1PodDisruptionBudgetList> ListPodDisruptionBudgetForAllNamespacesAsync(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListPodDisruptionBudgetForAllNamespacesWithHttpMessagesAsync(continueParameter, fieldSelector, includeUninitialized, labelSelector, limit, pretty, resourceVersion, timeoutSeconds, watch, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// list or watch objects of kind PodSecurityPolicy
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='continueParameter'>
+            /// The continue option should be set when retrieving more results from the
+            /// server. Since this value is server defined, clients may only use the
+            /// continue value from a previous query result with identical query parameters
+            /// (except for the value of continue) and the server may reject a continue
+            /// value it does not recognize. If the specified continue value is no longer
+            /// valid whether due to expiration (generally five to fifteen minutes) or a
+            /// configuration change on the server the server will respond with a 410
+            /// ResourceExpired error indicating the client must restart their list without
+            /// the continue field. This field is not supported when watch is true. Clients
+            /// may start a watch from the last resourceVersion value returned by the
+            /// server and not miss any modifications.
+            /// </param>
+            /// <param name='fieldSelector'>
+            /// A selector to restrict the list of returned objects by their fields.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='includeUninitialized'>
+            /// If true, partially initialized resources are included in the response.
+            /// </param>
+            /// <param name='labelSelector'>
+            /// A selector to restrict the list of returned objects by their labels.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='limit'>
+            /// limit is a maximum number of responses to return for a list call. If more
+            /// items exist, the server will set the `continue` field on the list metadata
+            /// to a value that can be used with the same initial query to retrieve the
+            /// next set of results. Setting a limit may return fewer than the requested
+            /// amount of items (up to zero items) in the event all requested objects are
+            /// filtered out and clients should only use the presence of the continue field
+            /// to determine whether more results are available. Servers may choose not to
+            /// support the limit argument and will return all of the available results. If
+            /// limit is specified and the continue field is empty, clients may assume that
+            /// no more results are available. This field is not supported if watch is
+            /// true.
+            ///
+            /// The server guarantees that the objects returned when using continue will be
+            /// identical to issuing a single list call without a limit - that is, no
+            /// objects created, modified, or deleted after the first request is issued
+            /// will be included in any subsequent continued requests. This is sometimes
+            /// referred to as a consistent snapshot, and ensures that a client that is
+            /// using limit to receive smaller chunks of a very large result can ensure
+            /// they see all possible objects. If objects are updated during a chunked list
+            /// the version of the object that was present at the time the first list
+            /// result was calculated is returned.
+            /// </param>
+            /// <param name='resourceVersion'>
+            /// When specified with a watch call, shows changes that occur after that
+            /// particular version of a resource. Defaults to changes from the beginning of
+            /// history. When specified for list: - if unset, then the result is returned
+            /// from remote storage based on quorum-read flag; - if it's 0, then we simply
+            /// return what we currently have in cache, no guarantee; - if set to non zero,
+            /// then the result is at least as fresh as given rv.
+            /// </param>
+            /// <param name='timeoutSeconds'>
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
+            /// </param>
+            /// <param name='watch'>
+            /// Watch for changes to the described resources and return them as a stream of
+            /// add, update, and remove notifications. Specify resourceVersion.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static Policyv1beta1PodSecurityPolicyList ListPodSecurityPolicy1(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string))
+            {
+                return operations.ListPodSecurityPolicy1Async(continueParameter, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// list or watch objects of kind PodSecurityPolicy
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='continueParameter'>
+            /// The continue option should be set when retrieving more results from the
+            /// server. Since this value is server defined, clients may only use the
+            /// continue value from a previous query result with identical query parameters
+            /// (except for the value of continue) and the server may reject a continue
+            /// value it does not recognize. If the specified continue value is no longer
+            /// valid whether due to expiration (generally five to fifteen minutes) or a
+            /// configuration change on the server the server will respond with a 410
+            /// ResourceExpired error indicating the client must restart their list without
+            /// the continue field. This field is not supported when watch is true. Clients
+            /// may start a watch from the last resourceVersion value returned by the
+            /// server and not miss any modifications.
+            /// </param>
+            /// <param name='fieldSelector'>
+            /// A selector to restrict the list of returned objects by their fields.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='includeUninitialized'>
+            /// If true, partially initialized resources are included in the response.
+            /// </param>
+            /// <param name='labelSelector'>
+            /// A selector to restrict the list of returned objects by their labels.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='limit'>
+            /// limit is a maximum number of responses to return for a list call. If more
+            /// items exist, the server will set the `continue` field on the list metadata
+            /// to a value that can be used with the same initial query to retrieve the
+            /// next set of results. Setting a limit may return fewer than the requested
+            /// amount of items (up to zero items) in the event all requested objects are
+            /// filtered out and clients should only use the presence of the continue field
+            /// to determine whether more results are available. Servers may choose not to
+            /// support the limit argument and will return all of the available results. If
+            /// limit is specified and the continue field is empty, clients may assume that
+            /// no more results are available. This field is not supported if watch is
+            /// true.
+            ///
+            /// The server guarantees that the objects returned when using continue will be
+            /// identical to issuing a single list call without a limit - that is, no
+            /// objects created, modified, or deleted after the first request is issued
+            /// will be included in any subsequent continued requests. This is sometimes
+            /// referred to as a consistent snapshot, and ensures that a client that is
+            /// using limit to receive smaller chunks of a very large result can ensure
+            /// they see all possible objects. If objects are updated during a chunked list
+            /// the version of the object that was present at the time the first list
+            /// result was calculated is returned.
+            /// </param>
+            /// <param name='resourceVersion'>
+            /// When specified with a watch call, shows changes that occur after that
+            /// particular version of a resource. Defaults to changes from the beginning of
+            /// history. When specified for list: - if unset, then the result is returned
+            /// from remote storage based on quorum-read flag; - if it's 0, then we simply
+            /// return what we currently have in cache, no guarantee; - if set to non zero,
+            /// then the result is at least as fresh as given rv.
+            /// </param>
+            /// <param name='timeoutSeconds'>
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
+            /// </param>
+            /// <param name='watch'>
+            /// Watch for changes to the described resources and return them as a stream of
+            /// add, update, and remove notifications. Specify resourceVersion.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Policyv1beta1PodSecurityPolicyList> ListPodSecurityPolicy1Async(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListPodSecurityPolicy1WithHttpMessagesAsync(continueParameter, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// create a PodSecurityPolicy
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static Policyv1beta1PodSecurityPolicy CreatePodSecurityPolicy1(this IKubernetes operations, Policyv1beta1PodSecurityPolicy body, string pretty = default(string))
+            {
+                return operations.CreatePodSecurityPolicy1Async(body, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// create a PodSecurityPolicy
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Policyv1beta1PodSecurityPolicy> CreatePodSecurityPolicy1Async(this IKubernetes operations, Policyv1beta1PodSecurityPolicy body, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreatePodSecurityPolicy1WithHttpMessagesAsync(body, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// delete collection of PodSecurityPolicy
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='continueParameter'>
+            /// The continue option should be set when retrieving more results from the
+            /// server. Since this value is server defined, clients may only use the
+            /// continue value from a previous query result with identical query parameters
+            /// (except for the value of continue) and the server may reject a continue
+            /// value it does not recognize. If the specified continue value is no longer
+            /// valid whether due to expiration (generally five to fifteen minutes) or a
+            /// configuration change on the server the server will respond with a 410
+            /// ResourceExpired error indicating the client must restart their list without
+            /// the continue field. This field is not supported when watch is true. Clients
+            /// may start a watch from the last resourceVersion value returned by the
+            /// server and not miss any modifications.
+            /// </param>
+            /// <param name='fieldSelector'>
+            /// A selector to restrict the list of returned objects by their fields.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='includeUninitialized'>
+            /// If true, partially initialized resources are included in the response.
+            /// </param>
+            /// <param name='labelSelector'>
+            /// A selector to restrict the list of returned objects by their labels.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='limit'>
+            /// limit is a maximum number of responses to return for a list call. If more
+            /// items exist, the server will set the `continue` field on the list metadata
+            /// to a value that can be used with the same initial query to retrieve the
+            /// next set of results. Setting a limit may return fewer than the requested
+            /// amount of items (up to zero items) in the event all requested objects are
+            /// filtered out and clients should only use the presence of the continue field
+            /// to determine whether more results are available. Servers may choose not to
+            /// support the limit argument and will return all of the available results. If
+            /// limit is specified and the continue field is empty, clients may assume that
+            /// no more results are available. This field is not supported if watch is
+            /// true.
+            ///
+            /// The server guarantees that the objects returned when using continue will be
+            /// identical to issuing a single list call without a limit - that is, no
+            /// objects created, modified, or deleted after the first request is issued
+            /// will be included in any subsequent continued requests. This is sometimes
+            /// referred to as a consistent snapshot, and ensures that a client that is
+            /// using limit to receive smaller chunks of a very large result can ensure
+            /// they see all possible objects. If objects are updated during a chunked list
+            /// the version of the object that was present at the time the first list
+            /// result was calculated is returned.
+            /// </param>
+            /// <param name='resourceVersion'>
+            /// When specified with a watch call, shows changes that occur after that
+            /// particular version of a resource. Defaults to changes from the beginning of
+            /// history. When specified for list: - if unset, then the result is returned
+            /// from remote storage based on quorum-read flag; - if it's 0, then we simply
+            /// return what we currently have in cache, no guarantee; - if set to non zero,
+            /// then the result is at least as fresh as given rv.
+            /// </param>
+            /// <param name='timeoutSeconds'>
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
+            /// </param>
+            /// <param name='watch'>
+            /// Watch for changes to the described resources and return them as a stream of
+            /// add, update, and remove notifications. Specify resourceVersion.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1Status DeleteCollectionPodSecurityPolicy1(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string))
+            {
+                return operations.DeleteCollectionPodSecurityPolicy1Async(continueParameter, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// delete collection of PodSecurityPolicy
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='continueParameter'>
+            /// The continue option should be set when retrieving more results from the
+            /// server. Since this value is server defined, clients may only use the
+            /// continue value from a previous query result with identical query parameters
+            /// (except for the value of continue) and the server may reject a continue
+            /// value it does not recognize. If the specified continue value is no longer
+            /// valid whether due to expiration (generally five to fifteen minutes) or a
+            /// configuration change on the server the server will respond with a 410
+            /// ResourceExpired error indicating the client must restart their list without
+            /// the continue field. This field is not supported when watch is true. Clients
+            /// may start a watch from the last resourceVersion value returned by the
+            /// server and not miss any modifications.
+            /// </param>
+            /// <param name='fieldSelector'>
+            /// A selector to restrict the list of returned objects by their fields.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='includeUninitialized'>
+            /// If true, partially initialized resources are included in the response.
+            /// </param>
+            /// <param name='labelSelector'>
+            /// A selector to restrict the list of returned objects by their labels.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='limit'>
+            /// limit is a maximum number of responses to return for a list call. If more
+            /// items exist, the server will set the `continue` field on the list metadata
+            /// to a value that can be used with the same initial query to retrieve the
+            /// next set of results. Setting a limit may return fewer than the requested
+            /// amount of items (up to zero items) in the event all requested objects are
+            /// filtered out and clients should only use the presence of the continue field
+            /// to determine whether more results are available. Servers may choose not to
+            /// support the limit argument and will return all of the available results. If
+            /// limit is specified and the continue field is empty, clients may assume that
+            /// no more results are available. This field is not supported if watch is
+            /// true.
+            ///
+            /// The server guarantees that the objects returned when using continue will be
+            /// identical to issuing a single list call without a limit - that is, no
+            /// objects created, modified, or deleted after the first request is issued
+            /// will be included in any subsequent continued requests. This is sometimes
+            /// referred to as a consistent snapshot, and ensures that a client that is
+            /// using limit to receive smaller chunks of a very large result can ensure
+            /// they see all possible objects. If objects are updated during a chunked list
+            /// the version of the object that was present at the time the first list
+            /// result was calculated is returned.
+            /// </param>
+            /// <param name='resourceVersion'>
+            /// When specified with a watch call, shows changes that occur after that
+            /// particular version of a resource. Defaults to changes from the beginning of
+            /// history. When specified for list: - if unset, then the result is returned
+            /// from remote storage based on quorum-read flag; - if it's 0, then we simply
+            /// return what we currently have in cache, no guarantee; - if set to non zero,
+            /// then the result is at least as fresh as given rv.
+            /// </param>
+            /// <param name='timeoutSeconds'>
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
+            /// </param>
+            /// <param name='watch'>
+            /// Watch for changes to the described resources and return them as a stream of
+            /// add, update, and remove notifications. Specify resourceVersion.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1Status> DeleteCollectionPodSecurityPolicy1Async(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeleteCollectionPodSecurityPolicy1WithHttpMessagesAsync(continueParameter, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// read the specified PodSecurityPolicy
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='name'>
+            /// name of the PodSecurityPolicy
+            /// </param>
+            /// <param name='exact'>
+            /// Should the export be exact.  Exact export maintains cluster-specific fields
+            /// like 'Namespace'.
+            /// </param>
+            /// <param name='export'>
+            /// Should this value be exported.  Export strips fields that a user can not
+            /// specify.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static Policyv1beta1PodSecurityPolicy ReadPodSecurityPolicy1(this IKubernetes operations, string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string))
+            {
+                return operations.ReadPodSecurityPolicy1Async(name, exact, export, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// read the specified PodSecurityPolicy
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='name'>
+            /// name of the PodSecurityPolicy
+            /// </param>
+            /// <param name='exact'>
+            /// Should the export be exact.  Exact export maintains cluster-specific fields
+            /// like 'Namespace'.
+            /// </param>
+            /// <param name='export'>
+            /// Should this value be exported.  Export strips fields that a user can not
+            /// specify.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Policyv1beta1PodSecurityPolicy> ReadPodSecurityPolicy1Async(this IKubernetes operations, string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ReadPodSecurityPolicy1WithHttpMessagesAsync(name, exact, export, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// replace the specified PodSecurityPolicy
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the PodSecurityPolicy
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static Policyv1beta1PodSecurityPolicy ReplacePodSecurityPolicy1(this IKubernetes operations, Policyv1beta1PodSecurityPolicy body, string name, string pretty = default(string))
+            {
+                return operations.ReplacePodSecurityPolicy1Async(body, name, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// replace the specified PodSecurityPolicy
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the PodSecurityPolicy
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Policyv1beta1PodSecurityPolicy> ReplacePodSecurityPolicy1Async(this IKubernetes operations, Policyv1beta1PodSecurityPolicy body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ReplacePodSecurityPolicy1WithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// delete a PodSecurityPolicy
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the PodSecurityPolicy
+            /// </param>
+            /// <param name='gracePeriodSeconds'>
+            /// The duration in seconds before the object should be deleted. Value must be
+            /// non-negative integer. The value zero indicates delete immediately. If this
+            /// value is nil, the default grace period for the specified type will be used.
+            /// Defaults to a per object value if not specified. zero means delete
+            /// immediately.
+            /// </param>
+            /// <param name='orphanDependents'>
+            /// Deprecated: please use the PropagationPolicy, this field will be deprecated
+            /// in 1.7. Should the dependent objects be orphaned. If true/false, the
+            /// "orphan" finalizer will be added to/removed from the object's finalizers
+            /// list. Either this field or PropagationPolicy may be set, but not both.
+            /// </param>
+            /// <param name='propagationPolicy'>
+            /// Whether and how garbage collection will be performed. Either this field or
+            /// OrphanDependents may be set, but not both. The default policy is decided by
+            /// the existing finalizer set in the metadata.finalizers and the
+            /// resource-specific default policy. Acceptable values are: 'Orphan' - orphan
+            /// the dependents; 'Background' - allow the garbage collector to delete the
+            /// dependents in the background; 'Foreground' - a cascading policy that
+            /// deletes all dependents in the foreground.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1Status DeletePodSecurityPolicy1(this IKubernetes operations, V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string))
+            {
+                return operations.DeletePodSecurityPolicy1Async(body, name, gracePeriodSeconds, orphanDependents, propagationPolicy, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// delete a PodSecurityPolicy
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the PodSecurityPolicy
+            /// </param>
+            /// <param name='gracePeriodSeconds'>
+            /// The duration in seconds before the object should be deleted. Value must be
+            /// non-negative integer. The value zero indicates delete immediately. If this
+            /// value is nil, the default grace period for the specified type will be used.
+            /// Defaults to a per object value if not specified. zero means delete
+            /// immediately.
+            /// </param>
+            /// <param name='orphanDependents'>
+            /// Deprecated: please use the PropagationPolicy, this field will be deprecated
+            /// in 1.7. Should the dependent objects be orphaned. If true/false, the
+            /// "orphan" finalizer will be added to/removed from the object's finalizers
+            /// list. Either this field or PropagationPolicy may be set, but not both.
+            /// </param>
+            /// <param name='propagationPolicy'>
+            /// Whether and how garbage collection will be performed. Either this field or
+            /// OrphanDependents may be set, but not both. The default policy is decided by
+            /// the existing finalizer set in the metadata.finalizers and the
+            /// resource-specific default policy. Acceptable values are: 'Orphan' - orphan
+            /// the dependents; 'Background' - allow the garbage collector to delete the
+            /// dependents in the background; 'Foreground' - a cascading policy that
+            /// deletes all dependents in the foreground.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1Status> DeletePodSecurityPolicy1Async(this IKubernetes operations, V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeletePodSecurityPolicy1WithHttpMessagesAsync(body, name, gracePeriodSeconds, orphanDependents, propagationPolicy, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// partially update the specified PodSecurityPolicy
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the PodSecurityPolicy
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static Policyv1beta1PodSecurityPolicy PatchPodSecurityPolicy1(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
+            {
+                return operations.PatchPodSecurityPolicy1Async(body, name, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// partially update the specified PodSecurityPolicy
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the PodSecurityPolicy
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Policyv1beta1PodSecurityPolicy> PatchPodSecurityPolicy1Async(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.PatchPodSecurityPolicy1WithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -47049,9 +47175,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources22(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources23(this IKubernetes operations)
             {
-                return operations.GetAPIResources22Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources23Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -47063,9 +47189,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources22Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources23Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources22WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources23WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -47133,7 +47259,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -47209,7 +47336,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -47329,7 +47457,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -47405,7 +47534,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -47703,7 +47833,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -47779,7 +47910,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -47899,7 +48031,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -47975,7 +48108,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -48276,7 +48410,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -48355,7 +48490,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -48484,7 +48620,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -48563,7 +48700,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -48888,7 +49026,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -48967,7 +49106,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -49096,7 +49236,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -49175,7 +49316,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -49500,7 +49642,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -49576,7 +49719,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -49658,7 +49802,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -49734,7 +49879,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -49757,9 +49903,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources23(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources24(this IKubernetes operations)
             {
-                return operations.GetAPIResources23Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources24Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -49771,9 +49917,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources23Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources24Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources23WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources24WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -49841,7 +49987,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -49917,7 +50064,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -50037,7 +50185,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -50113,7 +50262,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -50411,7 +50561,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -50487,7 +50638,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -50607,7 +50759,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -50683,7 +50836,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -50984,7 +51138,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -51063,7 +51218,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -51192,7 +51348,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -51271,7 +51428,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -51596,7 +51754,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -51675,7 +51834,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -51804,7 +51964,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -51883,7 +52044,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -52208,7 +52370,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -52284,7 +52447,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -52366,7 +52530,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -52442,7 +52607,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -52465,9 +52631,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources24(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources25(this IKubernetes operations)
             {
-                return operations.GetAPIResources24Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources25Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -52479,9 +52645,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources24Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources25Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources24WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources25WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -52549,7 +52715,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -52625,7 +52792,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -52745,7 +52913,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -52821,7 +52990,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -53119,7 +53289,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -53195,7 +53366,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -53315,7 +53487,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -53391,7 +53564,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -53692,7 +53866,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -53771,7 +53946,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -53900,7 +54076,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -53979,7 +54156,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -54304,7 +54482,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -54383,7 +54562,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -54512,7 +54692,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -54591,7 +54772,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -54916,7 +55098,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -54992,7 +55175,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -55074,7 +55258,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -55150,7 +55335,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -55201,9 +55387,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources25(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources26(this IKubernetes operations)
             {
-                return operations.GetAPIResources25Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources26Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -55215,9 +55401,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources25Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources26Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources25WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources26WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -55285,7 +55471,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -55361,7 +55548,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -55481,7 +55669,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -55557,7 +55746,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -55843,9 +56033,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources26(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources27(this IKubernetes operations)
             {
-                return operations.GetAPIResources26Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources27Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -55857,9 +56047,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources26Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources27Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources26WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources27WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -55930,7 +56120,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -56009,7 +56200,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -56138,7 +56330,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -56217,7 +56410,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -56558,7 +56752,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -56634,7 +56829,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -56685,9 +56881,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources27(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources28(this IKubernetes operations)
             {
-                return operations.GetAPIResources27Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources28Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -56699,9 +56895,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources27Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources28Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources27WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources28WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -56769,7 +56965,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -56845,7 +57042,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -56965,7 +57163,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -57041,7 +57240,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -57299,9 +57499,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources28(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources29(this IKubernetes operations)
             {
-                return operations.GetAPIResources28Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources29Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -57313,9 +57513,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources28Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources29Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources28WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources29WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -57383,7 +57583,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -57459,7 +57660,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -57579,7 +57781,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -57655,7 +57858,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -57913,9 +58117,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources29(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources30(this IKubernetes operations)
             {
-                return operations.GetAPIResources29Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources30Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -57927,9 +58131,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources29Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources30Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources29WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources30WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -57997,7 +58201,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -58073,7 +58278,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -58193,7 +58399,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -58269,7 +58476,8 @@ namespace k8s
             /// then the result is at least as fresh as given rv.
             /// </param>
             /// <param name='timeoutSeconds'>
-            /// Timeout for the list/watch call.
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
             /// </param>
             /// <param name='watch'>
             /// Watch for changes to the described resources and return them as a stream of
@@ -58516,6 +58724,596 @@ namespace k8s
             public static async Task<V1beta1StorageClass> PatchStorageClass1Async(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.PatchStorageClass1WithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// list or watch objects of kind VolumeAttachment
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='continueParameter'>
+            /// The continue option should be set when retrieving more results from the
+            /// server. Since this value is server defined, clients may only use the
+            /// continue value from a previous query result with identical query parameters
+            /// (except for the value of continue) and the server may reject a continue
+            /// value it does not recognize. If the specified continue value is no longer
+            /// valid whether due to expiration (generally five to fifteen minutes) or a
+            /// configuration change on the server the server will respond with a 410
+            /// ResourceExpired error indicating the client must restart their list without
+            /// the continue field. This field is not supported when watch is true. Clients
+            /// may start a watch from the last resourceVersion value returned by the
+            /// server and not miss any modifications.
+            /// </param>
+            /// <param name='fieldSelector'>
+            /// A selector to restrict the list of returned objects by their fields.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='includeUninitialized'>
+            /// If true, partially initialized resources are included in the response.
+            /// </param>
+            /// <param name='labelSelector'>
+            /// A selector to restrict the list of returned objects by their labels.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='limit'>
+            /// limit is a maximum number of responses to return for a list call. If more
+            /// items exist, the server will set the `continue` field on the list metadata
+            /// to a value that can be used with the same initial query to retrieve the
+            /// next set of results. Setting a limit may return fewer than the requested
+            /// amount of items (up to zero items) in the event all requested objects are
+            /// filtered out and clients should only use the presence of the continue field
+            /// to determine whether more results are available. Servers may choose not to
+            /// support the limit argument and will return all of the available results. If
+            /// limit is specified and the continue field is empty, clients may assume that
+            /// no more results are available. This field is not supported if watch is
+            /// true.
+            ///
+            /// The server guarantees that the objects returned when using continue will be
+            /// identical to issuing a single list call without a limit - that is, no
+            /// objects created, modified, or deleted after the first request is issued
+            /// will be included in any subsequent continued requests. This is sometimes
+            /// referred to as a consistent snapshot, and ensures that a client that is
+            /// using limit to receive smaller chunks of a very large result can ensure
+            /// they see all possible objects. If objects are updated during a chunked list
+            /// the version of the object that was present at the time the first list
+            /// result was calculated is returned.
+            /// </param>
+            /// <param name='resourceVersion'>
+            /// When specified with a watch call, shows changes that occur after that
+            /// particular version of a resource. Defaults to changes from the beginning of
+            /// history. When specified for list: - if unset, then the result is returned
+            /// from remote storage based on quorum-read flag; - if it's 0, then we simply
+            /// return what we currently have in cache, no guarantee; - if set to non zero,
+            /// then the result is at least as fresh as given rv.
+            /// </param>
+            /// <param name='timeoutSeconds'>
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
+            /// </param>
+            /// <param name='watch'>
+            /// Watch for changes to the described resources and return them as a stream of
+            /// add, update, and remove notifications. Specify resourceVersion.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1VolumeAttachmentList ListVolumeAttachment1(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string))
+            {
+                return operations.ListVolumeAttachment1Async(continueParameter, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// list or watch objects of kind VolumeAttachment
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='continueParameter'>
+            /// The continue option should be set when retrieving more results from the
+            /// server. Since this value is server defined, clients may only use the
+            /// continue value from a previous query result with identical query parameters
+            /// (except for the value of continue) and the server may reject a continue
+            /// value it does not recognize. If the specified continue value is no longer
+            /// valid whether due to expiration (generally five to fifteen minutes) or a
+            /// configuration change on the server the server will respond with a 410
+            /// ResourceExpired error indicating the client must restart their list without
+            /// the continue field. This field is not supported when watch is true. Clients
+            /// may start a watch from the last resourceVersion value returned by the
+            /// server and not miss any modifications.
+            /// </param>
+            /// <param name='fieldSelector'>
+            /// A selector to restrict the list of returned objects by their fields.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='includeUninitialized'>
+            /// If true, partially initialized resources are included in the response.
+            /// </param>
+            /// <param name='labelSelector'>
+            /// A selector to restrict the list of returned objects by their labels.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='limit'>
+            /// limit is a maximum number of responses to return for a list call. If more
+            /// items exist, the server will set the `continue` field on the list metadata
+            /// to a value that can be used with the same initial query to retrieve the
+            /// next set of results. Setting a limit may return fewer than the requested
+            /// amount of items (up to zero items) in the event all requested objects are
+            /// filtered out and clients should only use the presence of the continue field
+            /// to determine whether more results are available. Servers may choose not to
+            /// support the limit argument and will return all of the available results. If
+            /// limit is specified and the continue field is empty, clients may assume that
+            /// no more results are available. This field is not supported if watch is
+            /// true.
+            ///
+            /// The server guarantees that the objects returned when using continue will be
+            /// identical to issuing a single list call without a limit - that is, no
+            /// objects created, modified, or deleted after the first request is issued
+            /// will be included in any subsequent continued requests. This is sometimes
+            /// referred to as a consistent snapshot, and ensures that a client that is
+            /// using limit to receive smaller chunks of a very large result can ensure
+            /// they see all possible objects. If objects are updated during a chunked list
+            /// the version of the object that was present at the time the first list
+            /// result was calculated is returned.
+            /// </param>
+            /// <param name='resourceVersion'>
+            /// When specified with a watch call, shows changes that occur after that
+            /// particular version of a resource. Defaults to changes from the beginning of
+            /// history. When specified for list: - if unset, then the result is returned
+            /// from remote storage based on quorum-read flag; - if it's 0, then we simply
+            /// return what we currently have in cache, no guarantee; - if set to non zero,
+            /// then the result is at least as fresh as given rv.
+            /// </param>
+            /// <param name='timeoutSeconds'>
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
+            /// </param>
+            /// <param name='watch'>
+            /// Watch for changes to the described resources and return them as a stream of
+            /// add, update, and remove notifications. Specify resourceVersion.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1VolumeAttachmentList> ListVolumeAttachment1Async(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListVolumeAttachment1WithHttpMessagesAsync(continueParameter, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// create a VolumeAttachment
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1VolumeAttachment CreateVolumeAttachment1(this IKubernetes operations, V1beta1VolumeAttachment body, string pretty = default(string))
+            {
+                return operations.CreateVolumeAttachment1Async(body, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// create a VolumeAttachment
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1VolumeAttachment> CreateVolumeAttachment1Async(this IKubernetes operations, V1beta1VolumeAttachment body, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateVolumeAttachment1WithHttpMessagesAsync(body, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// delete collection of VolumeAttachment
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='continueParameter'>
+            /// The continue option should be set when retrieving more results from the
+            /// server. Since this value is server defined, clients may only use the
+            /// continue value from a previous query result with identical query parameters
+            /// (except for the value of continue) and the server may reject a continue
+            /// value it does not recognize. If the specified continue value is no longer
+            /// valid whether due to expiration (generally five to fifteen minutes) or a
+            /// configuration change on the server the server will respond with a 410
+            /// ResourceExpired error indicating the client must restart their list without
+            /// the continue field. This field is not supported when watch is true. Clients
+            /// may start a watch from the last resourceVersion value returned by the
+            /// server and not miss any modifications.
+            /// </param>
+            /// <param name='fieldSelector'>
+            /// A selector to restrict the list of returned objects by their fields.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='includeUninitialized'>
+            /// If true, partially initialized resources are included in the response.
+            /// </param>
+            /// <param name='labelSelector'>
+            /// A selector to restrict the list of returned objects by their labels.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='limit'>
+            /// limit is a maximum number of responses to return for a list call. If more
+            /// items exist, the server will set the `continue` field on the list metadata
+            /// to a value that can be used with the same initial query to retrieve the
+            /// next set of results. Setting a limit may return fewer than the requested
+            /// amount of items (up to zero items) in the event all requested objects are
+            /// filtered out and clients should only use the presence of the continue field
+            /// to determine whether more results are available. Servers may choose not to
+            /// support the limit argument and will return all of the available results. If
+            /// limit is specified and the continue field is empty, clients may assume that
+            /// no more results are available. This field is not supported if watch is
+            /// true.
+            ///
+            /// The server guarantees that the objects returned when using continue will be
+            /// identical to issuing a single list call without a limit - that is, no
+            /// objects created, modified, or deleted after the first request is issued
+            /// will be included in any subsequent continued requests. This is sometimes
+            /// referred to as a consistent snapshot, and ensures that a client that is
+            /// using limit to receive smaller chunks of a very large result can ensure
+            /// they see all possible objects. If objects are updated during a chunked list
+            /// the version of the object that was present at the time the first list
+            /// result was calculated is returned.
+            /// </param>
+            /// <param name='resourceVersion'>
+            /// When specified with a watch call, shows changes that occur after that
+            /// particular version of a resource. Defaults to changes from the beginning of
+            /// history. When specified for list: - if unset, then the result is returned
+            /// from remote storage based on quorum-read flag; - if it's 0, then we simply
+            /// return what we currently have in cache, no guarantee; - if set to non zero,
+            /// then the result is at least as fresh as given rv.
+            /// </param>
+            /// <param name='timeoutSeconds'>
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
+            /// </param>
+            /// <param name='watch'>
+            /// Watch for changes to the described resources and return them as a stream of
+            /// add, update, and remove notifications. Specify resourceVersion.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1Status DeleteCollectionVolumeAttachment1(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string))
+            {
+                return operations.DeleteCollectionVolumeAttachment1Async(continueParameter, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// delete collection of VolumeAttachment
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='continueParameter'>
+            /// The continue option should be set when retrieving more results from the
+            /// server. Since this value is server defined, clients may only use the
+            /// continue value from a previous query result with identical query parameters
+            /// (except for the value of continue) and the server may reject a continue
+            /// value it does not recognize. If the specified continue value is no longer
+            /// valid whether due to expiration (generally five to fifteen minutes) or a
+            /// configuration change on the server the server will respond with a 410
+            /// ResourceExpired error indicating the client must restart their list without
+            /// the continue field. This field is not supported when watch is true. Clients
+            /// may start a watch from the last resourceVersion value returned by the
+            /// server and not miss any modifications.
+            /// </param>
+            /// <param name='fieldSelector'>
+            /// A selector to restrict the list of returned objects by their fields.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='includeUninitialized'>
+            /// If true, partially initialized resources are included in the response.
+            /// </param>
+            /// <param name='labelSelector'>
+            /// A selector to restrict the list of returned objects by their labels.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='limit'>
+            /// limit is a maximum number of responses to return for a list call. If more
+            /// items exist, the server will set the `continue` field on the list metadata
+            /// to a value that can be used with the same initial query to retrieve the
+            /// next set of results. Setting a limit may return fewer than the requested
+            /// amount of items (up to zero items) in the event all requested objects are
+            /// filtered out and clients should only use the presence of the continue field
+            /// to determine whether more results are available. Servers may choose not to
+            /// support the limit argument and will return all of the available results. If
+            /// limit is specified and the continue field is empty, clients may assume that
+            /// no more results are available. This field is not supported if watch is
+            /// true.
+            ///
+            /// The server guarantees that the objects returned when using continue will be
+            /// identical to issuing a single list call without a limit - that is, no
+            /// objects created, modified, or deleted after the first request is issued
+            /// will be included in any subsequent continued requests. This is sometimes
+            /// referred to as a consistent snapshot, and ensures that a client that is
+            /// using limit to receive smaller chunks of a very large result can ensure
+            /// they see all possible objects. If objects are updated during a chunked list
+            /// the version of the object that was present at the time the first list
+            /// result was calculated is returned.
+            /// </param>
+            /// <param name='resourceVersion'>
+            /// When specified with a watch call, shows changes that occur after that
+            /// particular version of a resource. Defaults to changes from the beginning of
+            /// history. When specified for list: - if unset, then the result is returned
+            /// from remote storage based on quorum-read flag; - if it's 0, then we simply
+            /// return what we currently have in cache, no guarantee; - if set to non zero,
+            /// then the result is at least as fresh as given rv.
+            /// </param>
+            /// <param name='timeoutSeconds'>
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
+            /// </param>
+            /// <param name='watch'>
+            /// Watch for changes to the described resources and return them as a stream of
+            /// add, update, and remove notifications. Specify resourceVersion.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1Status> DeleteCollectionVolumeAttachment1Async(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeleteCollectionVolumeAttachment1WithHttpMessagesAsync(continueParameter, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// read the specified VolumeAttachment
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='name'>
+            /// name of the VolumeAttachment
+            /// </param>
+            /// <param name='exact'>
+            /// Should the export be exact.  Exact export maintains cluster-specific fields
+            /// like 'Namespace'.
+            /// </param>
+            /// <param name='export'>
+            /// Should this value be exported.  Export strips fields that a user can not
+            /// specify.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1VolumeAttachment ReadVolumeAttachment1(this IKubernetes operations, string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string))
+            {
+                return operations.ReadVolumeAttachment1Async(name, exact, export, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// read the specified VolumeAttachment
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='name'>
+            /// name of the VolumeAttachment
+            /// </param>
+            /// <param name='exact'>
+            /// Should the export be exact.  Exact export maintains cluster-specific fields
+            /// like 'Namespace'.
+            /// </param>
+            /// <param name='export'>
+            /// Should this value be exported.  Export strips fields that a user can not
+            /// specify.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1VolumeAttachment> ReadVolumeAttachment1Async(this IKubernetes operations, string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ReadVolumeAttachment1WithHttpMessagesAsync(name, exact, export, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// replace the specified VolumeAttachment
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the VolumeAttachment
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1VolumeAttachment ReplaceVolumeAttachment1(this IKubernetes operations, V1beta1VolumeAttachment body, string name, string pretty = default(string))
+            {
+                return operations.ReplaceVolumeAttachment1Async(body, name, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// replace the specified VolumeAttachment
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the VolumeAttachment
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1VolumeAttachment> ReplaceVolumeAttachment1Async(this IKubernetes operations, V1beta1VolumeAttachment body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ReplaceVolumeAttachment1WithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// delete a VolumeAttachment
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the VolumeAttachment
+            /// </param>
+            /// <param name='gracePeriodSeconds'>
+            /// The duration in seconds before the object should be deleted. Value must be
+            /// non-negative integer. The value zero indicates delete immediately. If this
+            /// value is nil, the default grace period for the specified type will be used.
+            /// Defaults to a per object value if not specified. zero means delete
+            /// immediately.
+            /// </param>
+            /// <param name='orphanDependents'>
+            /// Deprecated: please use the PropagationPolicy, this field will be deprecated
+            /// in 1.7. Should the dependent objects be orphaned. If true/false, the
+            /// "orphan" finalizer will be added to/removed from the object's finalizers
+            /// list. Either this field or PropagationPolicy may be set, but not both.
+            /// </param>
+            /// <param name='propagationPolicy'>
+            /// Whether and how garbage collection will be performed. Either this field or
+            /// OrphanDependents may be set, but not both. The default policy is decided by
+            /// the existing finalizer set in the metadata.finalizers and the
+            /// resource-specific default policy. Acceptable values are: 'Orphan' - orphan
+            /// the dependents; 'Background' - allow the garbage collector to delete the
+            /// dependents in the background; 'Foreground' - a cascading policy that
+            /// deletes all dependents in the foreground.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1Status DeleteVolumeAttachment1(this IKubernetes operations, V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string))
+            {
+                return operations.DeleteVolumeAttachment1Async(body, name, gracePeriodSeconds, orphanDependents, propagationPolicy, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// delete a VolumeAttachment
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the VolumeAttachment
+            /// </param>
+            /// <param name='gracePeriodSeconds'>
+            /// The duration in seconds before the object should be deleted. Value must be
+            /// non-negative integer. The value zero indicates delete immediately. If this
+            /// value is nil, the default grace period for the specified type will be used.
+            /// Defaults to a per object value if not specified. zero means delete
+            /// immediately.
+            /// </param>
+            /// <param name='orphanDependents'>
+            /// Deprecated: please use the PropagationPolicy, this field will be deprecated
+            /// in 1.7. Should the dependent objects be orphaned. If true/false, the
+            /// "orphan" finalizer will be added to/removed from the object's finalizers
+            /// list. Either this field or PropagationPolicy may be set, but not both.
+            /// </param>
+            /// <param name='propagationPolicy'>
+            /// Whether and how garbage collection will be performed. Either this field or
+            /// OrphanDependents may be set, but not both. The default policy is decided by
+            /// the existing finalizer set in the metadata.finalizers and the
+            /// resource-specific default policy. Acceptable values are: 'Orphan' - orphan
+            /// the dependents; 'Background' - allow the garbage collector to delete the
+            /// dependents in the background; 'Foreground' - a cascading policy that
+            /// deletes all dependents in the foreground.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1Status> DeleteVolumeAttachment1Async(this IKubernetes operations, V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeleteVolumeAttachment1WithHttpMessagesAsync(body, name, gracePeriodSeconds, orphanDependents, propagationPolicy, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// partially update the specified VolumeAttachment
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the VolumeAttachment
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1VolumeAttachment PatchVolumeAttachment1(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
+            {
+                return operations.PatchVolumeAttachment1Async(body, name, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// partially update the specified VolumeAttachment
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the VolumeAttachment
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1VolumeAttachment> PatchVolumeAttachment1Async(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.PatchVolumeAttachment1WithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -58958,6 +59756,66 @@ namespace k8s
             }
 
             /// <summary>
+            /// patch the specified cluster scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// The JSON schema of the Resource to patch.
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='plural'>
+            /// the custom object's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            public static object PatchClusterCustomObject(this IKubernetes operations, object body, string group, string version, string plural, string name)
+            {
+                return operations.PatchClusterCustomObjectAsync(body, group, version, plural, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// patch the specified cluster scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// The JSON schema of the Resource to patch.
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='plural'>
+            /// the custom object's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<object> PatchClusterCustomObjectAsync(this IKubernetes operations, object body, string group, string version, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.PatchClusterCustomObjectWithHttpMessagesAsync(body, group, version, plural, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Deletes the specified cluster scoped custom object
             /// </summary>
             /// <param name='operations'>
@@ -59168,6 +60026,72 @@ namespace k8s
             public static async Task<object> ReplaceNamespacedCustomObjectAsync(this IKubernetes operations, object body, string group, string version, string namespaceParameter, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ReplaceNamespacedCustomObjectWithHttpMessagesAsync(body, group, version, namespaceParameter, plural, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// patch the specified namespace scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// The JSON schema of the Resource to patch.
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='namespaceParameter'>
+            /// The custom resource's namespace
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            public static object PatchNamespacedCustomObject(this IKubernetes operations, object body, string group, string version, string namespaceParameter, string plural, string name)
+            {
+                return operations.PatchNamespacedCustomObjectAsync(body, group, version, namespaceParameter, plural, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// patch the specified namespace scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// The JSON schema of the Resource to patch.
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='namespaceParameter'>
+            /// The custom resource's namespace
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<object> PatchNamespacedCustomObjectAsync(this IKubernetes operations, object body, string group, string version, string namespaceParameter, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.PatchNamespacedCustomObjectWithHttpMessagesAsync(body, group, version, namespaceParameter, plural, name, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
