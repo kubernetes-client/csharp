@@ -37,7 +37,7 @@ namespace k8s
                 throw new ArgumentNullException(nameof(command));
             }
 
-            if (command.Count() == 0)
+            if (!command.Any())
             {
                 throw new ArgumentOutOfRangeException(nameof(command));
             }
@@ -72,24 +72,27 @@ namespace k8s
 
             uriBuilder.Path += $"api/v1/namespaces/{@namespace}/pods/{name}/exec";
 
-            List<string> queryParameters = new List<string>();
+            var query = string.Empty;
 
             foreach (var c in command)
             {
-                queryParameters.Add(string.Format("command={0}", Uri.EscapeDataString(c)));
+                query = QueryHelpers.AddQueryString(query, "command", c);
             }
 
             if (container != null)
             {
-                queryParameters.Add(string.Format("container={0}", Uri.EscapeDataString(container)));
+                query = QueryHelpers.AddQueryString(query, "container", Uri.EscapeDataString(container));
             }
 
-            queryParameters.Add(string.Format("stderr={0}", stderr ? 1 : 0));
-            queryParameters.Add(string.Format("stdin={0}", stdin ? 1 : 0));
-            queryParameters.Add(string.Format("stdout={0}", stdout ? 1 : 0));
-            queryParameters.Add(string.Format("tty={0}", tty ? 1 : 0));
+            query = QueryHelpers.AddQueryString(query, new Dictionary<string, string>
+            {
+                {"stderr", stderr ? "1" : "0"},
+                {"stdin", stdin ? "1" : "0"},
+                {"stdout", stdout ? "1" : "0"},
+                {"tty", tty ? "1" : "0"}
+            });
 
-            uriBuilder.Query = string.Join("&", queryParameters);
+            uriBuilder.Query = query;
 
             return this.StreamConnectAsync(uriBuilder.Uri, _invocationId, customHeaders, cancellationToken);
         }

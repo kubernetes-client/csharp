@@ -58,7 +58,7 @@ namespace k8s.tests
             };
 
             Assert.Equal(mockWebSocketBuilder.PublicWebSocket, webSocket); // Did the method return the correct web socket?
-            Assert.Equal(new Uri("ws://localhost/api/v1/namespaces/mynamespace/pods/mypod/exec?command=%2Fbin%2Fbash&command=-c&command=echo%20Hello%2C%20World%21%0Aexit%200%0A&container=mycontainer&stderr=1&stdin=1&stdout=1&tty=1"), mockWebSocketBuilder.Uri); // Did we connect to the correct URL?
+            Assert.Equal(new Uri("ws://localhost/api/v1/namespaces/mynamespace/pods/mypod/exec?command=%2Fbin%2Fbash&command=-c&command=echo%20Hello,%20World%21%0Aexit%200%0A&container=mycontainer&stderr=1&stdin=1&stdout=1&tty=1"), mockWebSocketBuilder.Uri); // Did we connect to the correct URL?
             Assert.Empty(mockWebSocketBuilder.Certificates); // No certificates were used in this test
             Assert.Equal(expectedHeaders, mockWebSocketBuilder.RequestHeaders); // Did we use the expected headers
         }
