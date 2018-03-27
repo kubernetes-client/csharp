@@ -52,7 +52,7 @@ namespace k8s
         /// <return>
         /// A <see cref="ClientWebSocket"/> which can be used to communicate with the process running in the pod.
         /// </return>
-        Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", string command = "/bin/bash", string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", IEnumerable<string> command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Start port forwarding one or more ports of a pod.
