@@ -27,8 +27,14 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V2beta1MetricSpec class.
         /// </summary>
-        /// <param name="type">type is the type of metric source.  It should
-        /// match one of the fields below.</param>
+        /// <param name="type">type is the type of metric source.  It should be
+        /// one of "Object", "Pods" or "Resource", each mapping to a matching
+        /// field in the object.</param>
+        /// <param name="external">external refers to a global metric that is
+        /// not associated with any Kubernetes object. It allows autoscaling
+        /// based on information coming from components running outside of
+        /// cluster (for example length of queue in cloud messaging service, or
+        /// QPS from loadbalancer running outside of cluster).</param>
         /// <param name="objectProperty">object refers to a metric describing a
         /// single kubernetes object (for example, hits-per-second on an
         /// Ingress object).</param>
@@ -42,8 +48,9 @@ namespace k8s.Models
         /// memory). Such metrics are built in to Kubernetes, and have special
         /// scaling options on top of those available to normal per-pod metrics
         /// using the "pods" source.</param>
-        public V2beta1MetricSpec(string type, V2beta1ObjectMetricSource objectProperty = default(V2beta1ObjectMetricSource), V2beta1PodsMetricSource pods = default(V2beta1PodsMetricSource), V2beta1ResourceMetricSource resource = default(V2beta1ResourceMetricSource))
+        public V2beta1MetricSpec(string type, V2beta1ExternalMetricSource external = default(V2beta1ExternalMetricSource), V2beta1ObjectMetricSource objectProperty = default(V2beta1ObjectMetricSource), V2beta1PodsMetricSource pods = default(V2beta1PodsMetricSource), V2beta1ResourceMetricSource resource = default(V2beta1ResourceMetricSource))
         {
+            External = external;
             ObjectProperty = objectProperty;
             Pods = pods;
             Resource = resource;
@@ -55,6 +62,16 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets external refers to a global metric that is not
+        /// associated with any Kubernetes object. It allows autoscaling based
+        /// on information coming from components running outside of cluster
+        /// (for example length of queue in cloud messaging service, or QPS
+        /// from loadbalancer running outside of cluster).
+        /// </summary>
+        [JsonProperty(PropertyName = "external")]
+        public V2beta1ExternalMetricSource External { get; set; }
 
         /// <summary>
         /// Gets or sets object refers to a metric describing a single
@@ -85,8 +102,9 @@ namespace k8s.Models
         public V2beta1ResourceMetricSource Resource { get; set; }
 
         /// <summary>
-        /// Gets or sets type is the type of metric source.  It should match
-        /// one of the fields below.
+        /// Gets or sets type is the type of metric source.  It should be one
+        /// of "Object", "Pods" or "Resource", each mapping to a matching field
+        /// in the object.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
@@ -102,6 +120,10 @@ namespace k8s.Models
             if (Type == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Type");
+            }
+            if (External != null)
+            {
+                External.Validate();
             }
             if (ObjectProperty != null)
             {

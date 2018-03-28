@@ -26,7 +26,7 @@ namespace k8s.Models
         /// Initializes a new instance of the V1EnvFromSource class.
         /// </summary>
         /// <param name="configMapRef">The ConfigMap to select from</param>
-        /// <param name="prefix">An optional identifer to prepend to each key
+        /// <param name="prefix">An optional identifier to prepend to each key
         /// in the ConfigMap. Must be a C_IDENTIFIER.</param>
         /// <param name="secretRef">The Secret to select from</param>
         public V1EnvFromSource(V1ConfigMapEnvSource configMapRef = default(V1ConfigMapEnvSource), string prefix = default(string), V1SecretEnvSource secretRef = default(V1SecretEnvSource))
@@ -49,7 +49,7 @@ namespace k8s.Models
         public V1ConfigMapEnvSource ConfigMapRef { get; set; }
 
         /// <summary>
-        /// Gets or sets an optional identifer to prepend to each key in the
+        /// Gets or sets an optional identifier to prepend to each key in the
         /// ConfigMap. Must be a C_IDENTIFIER.
         /// </summary>
         [JsonProperty(PropertyName = "prefix")]

@@ -8,10 +8,13 @@ namespace k8s.Models
 {
     using Microsoft.Rest;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// Represents storage that is managed by an external CSI volume driver
+    /// (Beta feature)
     /// </summary>
     public partial class V1CSIPersistentVolumeSource
     {
@@ -33,13 +36,43 @@ namespace k8s.Models
         /// <param name="volumeHandle">VolumeHandle is the unique volume name
         /// returned by the CSI volume plugin’s CreateVolume to refer to the
         /// volume on all subsequent calls. Required.</param>
+        /// <param name="controllerPublishSecretRef">ControllerPublishSecretRef
+        /// is a reference to the secret object containing sensitive
+        /// information to pass to the CSI driver to complete the CSI
+        /// ControllerPublishVolume and ControllerUnpublishVolume calls. This
+        /// field is optional, and  may be empty if no secret is required. If
+        /// the secret object contains more than one secret, all secrets are
+        /// passed.</param>
+        /// <param name="fsType">Filesystem type to mount. Must be a filesystem
+        /// type supported by the host operating system. Ex. "ext4", "xfs",
+        /// "ntfs". Implicitly inferred to be "ext4" if unspecified.</param>
+        /// <param name="nodePublishSecretRef">NodePublishSecretRef is a
+        /// reference to the secret object containing sensitive information to
+        /// pass to the CSI driver to complete the CSI NodePublishVolume and
+        /// NodeUnpublishVolume calls. This field is optional, and  may be
+        /// empty if no secret is required. If the secret object contains more
+        /// than one secret, all secrets are passed.</param>
+        /// <param name="nodeStageSecretRef">NodeStageSecretRef is a reference
+        /// to the secret object containing sensitive information to pass to
+        /// the CSI driver to complete the CSI NodeStageVolume and
+        /// NodeStageVolume and NodeUnstageVolume calls. This field is
+        /// optional, and  may be empty if no secret is required. If the secret
+        /// object contains more than one secret, all secrets are
+        /// passed.</param>
         /// <param name="readOnlyProperty">Optional: The value to pass to
         /// ControllerPublishVolumeRequest. Defaults to false
         /// (read/write).</param>
-        public V1CSIPersistentVolumeSource(string driver, string volumeHandle, bool? readOnlyProperty = default(bool?))
+        /// <param name="volumeAttributes">Attributes of the volume to
+        /// publish.</param>
+        public V1CSIPersistentVolumeSource(string driver, string volumeHandle, V1SecretReference controllerPublishSecretRef = default(V1SecretReference), string fsType = default(string), V1SecretReference nodePublishSecretRef = default(V1SecretReference), V1SecretReference nodeStageSecretRef = default(V1SecretReference), bool? readOnlyProperty = default(bool?), IDictionary<string, string> volumeAttributes = default(IDictionary<string, string>))
         {
+            ControllerPublishSecretRef = controllerPublishSecretRef;
             Driver = driver;
+            FsType = fsType;
+            NodePublishSecretRef = nodePublishSecretRef;
+            NodeStageSecretRef = nodeStageSecretRef;
             ReadOnlyProperty = readOnlyProperty;
+            VolumeAttributes = volumeAttributes;
             VolumeHandle = volumeHandle;
             CustomInit();
         }
@@ -50,6 +83,17 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets controllerPublishSecretRef is a reference to the
+        /// secret object containing sensitive information to pass to the CSI
+        /// driver to complete the CSI ControllerPublishVolume and
+        /// ControllerUnpublishVolume calls. This field is optional, and  may
+        /// be empty if no secret is required. If the secret object contains
+        /// more than one secret, all secrets are passed.
+        /// </summary>
+        [JsonProperty(PropertyName = "controllerPublishSecretRef")]
+        public V1SecretReference ControllerPublishSecretRef { get; set; }
+
+        /// <summary>
         /// Gets or sets driver is the name of the driver to use for this
         /// volume. Required.
         /// </summary>
@@ -57,11 +101,47 @@ namespace k8s.Models
         public string Driver { get; set; }
 
         /// <summary>
+        /// Gets or sets filesystem type to mount. Must be a filesystem type
+        /// supported by the host operating system. Ex. "ext4", "xfs", "ntfs".
+        /// Implicitly inferred to be "ext4" if unspecified.
+        /// </summary>
+        [JsonProperty(PropertyName = "fsType")]
+        public string FsType { get; set; }
+
+        /// <summary>
+        /// Gets or sets nodePublishSecretRef is a reference to the secret
+        /// object containing sensitive information to pass to the CSI driver
+        /// to complete the CSI NodePublishVolume and NodeUnpublishVolume
+        /// calls. This field is optional, and  may be empty if no secret is
+        /// required. If the secret object contains more than one secret, all
+        /// secrets are passed.
+        /// </summary>
+        [JsonProperty(PropertyName = "nodePublishSecretRef")]
+        public V1SecretReference NodePublishSecretRef { get; set; }
+
+        /// <summary>
+        /// Gets or sets nodeStageSecretRef is a reference to the secret object
+        /// containing sensitive information to pass to the CSI driver to
+        /// complete the CSI NodeStageVolume and NodeStageVolume and
+        /// NodeUnstageVolume calls. This field is optional, and  may be empty
+        /// if no secret is required. If the secret object contains more than
+        /// one secret, all secrets are passed.
+        /// </summary>
+        [JsonProperty(PropertyName = "nodeStageSecretRef")]
+        public V1SecretReference NodeStageSecretRef { get; set; }
+
+        /// <summary>
         /// Gets or sets optional: The value to pass to
         /// ControllerPublishVolumeRequest. Defaults to false (read/write).
         /// </summary>
         [JsonProperty(PropertyName = "readOnly")]
         public bool? ReadOnlyProperty { get; set; }
+
+        /// <summary>
+        /// Gets or sets attributes of the volume to publish.
+        /// </summary>
+        [JsonProperty(PropertyName = "volumeAttributes")]
+        public IDictionary<string, string> VolumeAttributes { get; set; }
 
         /// <summary>
         /// Gets or sets volumeHandle is the unique volume name returned by the

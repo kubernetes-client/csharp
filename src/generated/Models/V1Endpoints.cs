@@ -6,7 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -40,14 +39,6 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1Endpoints class.
         /// </summary>
-        /// <param name="subsets">The set of all endpoints is the union of all
-        /// subsets. Addresses are placed into subsets according to the IPs
-        /// they share. A single address with multiple ports, some of which are
-        /// ready and some of which are not (because they come from different
-        /// containers) will result in the address being displayed in different
-        /// subsets for the different ports. No address will appear in both
-        /// Addresses and NotReadyAddresses in the same subset. Sets of
-        /// addresses and ports that comprise a service.</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
@@ -60,7 +51,15 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
         /// <param name="metadata">Standard object's metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</param>
-        public V1Endpoints(IList<V1EndpointSubset> subsets, string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta))
+        /// <param name="subsets">The set of all endpoints is the union of all
+        /// subsets. Addresses are placed into subsets according to the IPs
+        /// they share. A single address with multiple ports, some of which are
+        /// ready and some of which are not (because they come from different
+        /// containers) will result in the address being displayed in different
+        /// subsets for the different ports. No address will appear in both
+        /// Addresses and NotReadyAddresses in the same subset. Sets of
+        /// addresses and ports that comprise a service.</param>
+        public V1Endpoints(string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), IList<V1EndpointSubset> subsets = default(IList<V1EndpointSubset>))
         {
             ApiVersion = apiVersion;
             Kind = kind;
@@ -117,15 +116,11 @@ namespace k8s.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (Subsets == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Subsets");
-            }
             if (Metadata != null)
             {
                 Metadata.Validate();

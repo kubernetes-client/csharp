@@ -37,6 +37,8 @@ namespace k8s.Models
         /// serve.  It must match the name of the
         /// CustomResourceDefinition-registration too: plural.group and it must
         /// be all lowercase.</param>
+        /// <param name="categories">Categories is a list of grouped resources
+        /// custom resources belong to (e.g. 'all')</param>
         /// <param name="listKind">ListKind is the serialized kind of the list
         /// for this resource.  Defaults to &lt;kind&gt;List.</param>
         /// <param name="shortNames">ShortNames are short names for the
@@ -44,8 +46,9 @@ namespace k8s.Models
         /// <param name="singular">Singular is the singular name of the
         /// resource.  It must be all lowercase  Defaults to lowercased
         /// &lt;kind&gt;</param>
-        public V1beta1CustomResourceDefinitionNames(string kind, string plural, string listKind = default(string), IList<string> shortNames = default(IList<string>), string singular = default(string))
+        public V1beta1CustomResourceDefinitionNames(string kind, string plural, IList<string> categories = default(IList<string>), string listKind = default(string), IList<string> shortNames = default(IList<string>), string singular = default(string))
         {
+            Categories = categories;
             Kind = kind;
             ListKind = listKind;
             Plural = plural;
@@ -58,6 +61,13 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets categories is a list of grouped resources custom
+        /// resources belong to (e.g. 'all')
+        /// </summary>
+        [JsonProperty(PropertyName = "categories")]
+        public IList<string> Categories { get; set; }
 
         /// <summary>
         /// Gets or sets kind is the serialized kind of the resource.  It is

@@ -42,8 +42,8 @@ namespace k8s.Models
         /// to run the webhook on an object based on whether the namespace for
         /// that object matches the selector. If the object itself is a
         /// namespace, the matching is performed on object.metadata.labels. If
-        /// the object is other cluster scoped resource, it is not subjected to
-        /// the webhook.
+        /// the object is another cluster scoped resource, it never skips the
+        /// webhook.
         ///
         /// For example, to run the webhook on any objects whose namespace is
         /// not associated with "runlevel" of "0" or "1";  you will set the
@@ -84,7 +84,13 @@ namespace k8s.Models
         /// everything.</param>
         /// <param name="rules">Rules describes what operations on what
         /// resources/subresources the webhook cares about. The webhook cares
-        /// about an operation if it matches _any_ Rule.</param>
+        /// about an operation if it matches _any_ Rule. However, in order to
+        /// prevent ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks
+        /// from putting the cluster in a state which cannot be recovered from
+        /// without completely disabling the plugin,
+        /// ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks are never
+        /// called on admission requests for ValidatingWebhookConfiguration and
+        /// MutatingWebhookConfiguration objects.</param>
         public V1beta1Webhook(V1beta1WebhookClientConfig clientConfig, string name, string failurePolicy = default(string), V1LabelSelector namespaceSelector = default(V1LabelSelector), IList<V1beta1RuleWithOperations> rules = default(IList<V1beta1RuleWithOperations>))
         {
             ClientConfig = clientConfig;
@@ -128,8 +134,8 @@ namespace k8s.Models
         /// Gets or sets namespaceSelector decides whether to run the webhook
         /// on an object based on whether the namespace for that object matches
         /// the selector. If the object itself is a namespace, the matching is
-        /// performed on object.metadata.labels. If the object is other cluster
-        /// scoped resource, it is not subjected to the webhook.
+        /// performed on object.metadata.labels. If the object is another
+        /// cluster scoped resource, it never skips the webhook.
         ///
         /// For example, to run the webhook on any objects whose namespace is
         /// not associated with "runlevel" of "0" or "1";  you will set the
@@ -174,7 +180,13 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets rules describes what operations on what
         /// resources/subresources the webhook cares about. The webhook cares
-        /// about an operation if it matches _any_ Rule.
+        /// about an operation if it matches _any_ Rule. However, in order to
+        /// prevent ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks
+        /// from putting the cluster in a state which cannot be recovered from
+        /// without completely disabling the plugin,
+        /// ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks are never
+        /// called on admission requests for ValidatingWebhookConfiguration and
+        /// MutatingWebhookConfiguration objects.
         /// </summary>
         [JsonProperty(PropertyName = "rules")]
         public IList<V1beta1RuleWithOperations> Rules { get; set; }

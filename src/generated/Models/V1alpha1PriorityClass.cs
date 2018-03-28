@@ -39,14 +39,18 @@ namespace k8s.Models
         /// used.</param>
         /// <param name="globalDefault">globalDefault specifies whether this
         /// PriorityClass should be considered as the default priority for pods
-        /// that do not have any priority class.</param>
+        /// that do not have any priority class. Only one PriorityClass can be
+        /// marked as `globalDefault`. However, if more than one
+        /// PriorityClasses exists with their `globalDefault` field set to
+        /// true, the smallest value of such global default PriorityClasses
+        /// will be used as the default priority.</param>
         /// <param name="kind">Kind is a string value representing the REST
         /// resource this object represents. Servers may infer this from the
         /// endpoint the client submits requests to. Cannot be updated. In
         /// CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
         /// <param name="metadata">Standard object's metadata. More info:
-        /// http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata</param>
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</param>
         public V1alpha1PriorityClass(int value, string apiVersion = default(string), string description = default(string), bool? globalDefault = default(bool?), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta))
         {
             ApiVersion = apiVersion;
@@ -83,7 +87,11 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets globalDefault specifies whether this PriorityClass
         /// should be considered as the default priority for pods that do not
-        /// have any priority class.
+        /// have any priority class. Only one PriorityClass can be marked as
+        /// `globalDefault`. However, if more than one PriorityClasses exists
+        /// with their `globalDefault` field set to true, the smallest value of
+        /// such global default PriorityClasses will be used as the default
+        /// priority.
         /// </summary>
         [JsonProperty(PropertyName = "globalDefault")]
         public bool? GlobalDefault { get; set; }
@@ -100,7 +108,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets standard object's metadata. More info:
-        /// http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ObjectMeta Metadata { get; set; }
