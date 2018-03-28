@@ -20,6 +20,12 @@ namespace k8s
         public Func<WebSocketBuilder> CreateWebSocketBuilder { get; set; } = () => new WebSocketBuilder();
 
         /// <inheritdoc/>
+        public Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", string command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return WebSocketNamespacedPodExecAsync(name, @namespace, new string[] { command }, container, stderr, stdin, stdout, tty, customHeaders, cancellationToken);
+        }
+
+        /// <inheritdoc/>
         public Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", IEnumerable<string> command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (name == null)
@@ -90,7 +96,7 @@ namespace k8s
                 {"stdin", stdin ? "1" : "0"},
                 {"stdout", stdout ? "1" : "0"},
                 {"tty", tty ? "1" : "0"}
-            });
+            }).TrimStart('?');
 
             uriBuilder.Query = query;
 
