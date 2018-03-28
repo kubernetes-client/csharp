@@ -168,8 +168,8 @@ namespace k8s.Tests
             var clientCertificateKeyData = File.ReadAllText("assets/client-key-data.txt");
             var clientCertificateData = File.ReadAllText("assets/client-certificate-data.txt");
 
-            var serverCertificate = new X509Certificate2(Convert.FromBase64String(serverCertificateData));
-            var clientCertificate = new X509Certificate2(Convert.FromBase64String(clientCertificateData));
+            var serverCertificate = new X509Certificate2(Convert.FromBase64String(serverCertificateData), "");
+            var clientCertificate = new X509Certificate2(Convert.FromBase64String(clientCertificateData), "");
 
             var clientCertificateValidationCalled = false;
 
