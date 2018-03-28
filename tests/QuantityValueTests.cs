@@ -166,6 +166,12 @@ namespace k8s.Tests
         }
 
         [Fact]
+        public void ConstructorTest()
+        {
+            Assert.Throws<FormatException>(() => new ResourceQuantity(string.Empty));
+        }
+
+        [Fact]
         public void QuantityString()
         {
             foreach (var (input, expect, alternate) in new[]
@@ -246,7 +252,7 @@ namespace k8s.Tests
         public void SerializeYaml()
         {
             var value = Yaml.SaveToString(new ResourceQuantity(1, -1, DecimalSI));
-            Assert.Equal("100m\r\n...\r\n", value);
+            Assert.Equal("100m", value);
         }
     }
 }
