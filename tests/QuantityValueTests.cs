@@ -234,5 +234,19 @@ namespace k8s.Tests
                 Assert.Equal("\"12e3\"", JsonConvert.SerializeObject(quantity));
             }
         }
+
+        [Fact]
+        public void DeserializeYaml()
+        {
+            var value = Yaml.LoadFromString<ResourceQuantity>("\"1\"");
+            Assert.Equal(new ResourceQuantity(1, 0, DecimalSI), value);
+        }
+
+        [Fact]
+        public void SerializeYaml()
+        {
+            var value = Yaml.SaveToString(new ResourceQuantity(1, -1, DecimalSI));
+            Assert.Equal("100m\r\n...\r\n", value);
+        }
     }
 }

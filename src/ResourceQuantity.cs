@@ -4,6 +4,9 @@ using System.Linq;
 using System.Numerics;
 using Fractions;
 using Newtonsoft.Json;
+using YamlDotNet.Core;
+using YamlDotNet.Core.Events;
+using YamlDotNet.Serialization;
 
 namespace k8s.Models
 {
@@ -11,7 +14,7 @@ namespace k8s.Models
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            var q = (ResourceQuantity) value;
+            var q = (ResourceQuantity)value;
 
             if (q != null)
             {
@@ -84,7 +87,7 @@ namespace k8s.Models
     ///     cause implementors to also use a fixed point implementation.
     /// </summary>
     [JsonConverter(typeof(QuantityConverter))]
-    public partial class ResourceQuantity
+    public partial class ResourceQuantity : IYamlConvertible
     {
         public enum SuffixFormat
         {
@@ -176,7 +179,15 @@ namespace k8s.Models
         // ctor
         partial void CustomInit()
         {
-            var value = (Value ?? "").Trim();
+            if (Value == null)
+            {
+                // No value has been defined, initialize to 0.
+                _unitlessValue = new Fraction(0);
+                Format = SuffixFormat.BinarySI;
+                return;
+            }
+
+            var value = Value.Trim();
 
             var si = value.IndexOfAny(SuffixChars);
             if (si == -1)
@@ -204,6 +215,28 @@ namespace k8s.Models
             }
 
             return BigInteger.Remainder(value.Numerator, value.Denominator) > 0;
+        }
+
+        /// <inheritdoc/>
+        public void Read(IParser parser, Type expectedType, ObjectDeserializer nestedObjectDeserializer)
+        {
+            if (expectedType != typeof(ResourceQuantity))
+            {
+                throw new ArgumentOutOfRangeException(nameof(expectedType));
+            }
+
+            if (parser.Current is Scalar)
+            {
+                Value = ((Scalar)parser.Current).Value;
+                parser.MoveNext();
+                CustomInit();
+            }
+        }
+
+        /// <inheritdoc/>
+        public void Write(IEmitter emitter, ObjectSerializer nestedObjectSerializer)
+        {
+            emitter.Emit(new Scalar(this.ToString()));
         }
 
         public static implicit operator decimal(ResourceQuantity v)
@@ -299,30 +332,30 @@ namespace k8s.Models
                 switch (format)
                 {
                     case SuffixFormat.DecimalExponent:
-                    {
-                        var minE = -9;
-                        var lastv = Roundup(value * Fraction.Pow(10, -minE));
-
-                        for (var exp = minE;; exp += 3)
                         {
-                            var v = value * Fraction.Pow(10, -exp);
-                            if (HasMantissa(v))
+                            var minE = -9;
+                            var lastv = Roundup(value * Fraction.Pow(10, -minE));
+
+                            for (var exp = minE;; exp += 3)
                             {
-                                break;
+                                var v = value * Fraction.Pow(10, -exp);
+                                if (HasMantissa(v))
+                                {
+                                    break;
+                                }
+
+                                minE = exp;
+                                lastv = v;
                             }
 
-                            minE = exp;
-                            lastv = v;
+
+                            if (minE == 0)
+                            {
+                                return $"{(decimal) lastv}";
+                            }
+
+                            return $"{(decimal) lastv}e{minE}";
                         }
-
-
-                        if (minE == 0)
-                        {
-                            return $"{(decimal) lastv}";
-                        }
-
-                        return $"{(decimal) lastv}e{minE}";
-                    }
 
                     case SuffixFormat.BinarySI:
                         return AppendMaxSuffix(value, BinSuffixes);

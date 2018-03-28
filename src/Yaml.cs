@@ -30,5 +30,15 @@ namespace k8s
             var obj = deserializer.Deserialize<T>(content);
             return obj;
         }
+
+        public static string SaveToString<T>(T value)
+        {
+            var serializer =
+                new SerializerBuilder()
+                .WithNamingConvention(new CamelCaseNamingConvention())
+                .Build();
+            var obj = serializer.Serialize(value);
+            return obj;
+        }
     }
 }
