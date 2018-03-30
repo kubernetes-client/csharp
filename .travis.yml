@@ -8,7 +8,7 @@ os:
 language: csharp
 mono: none
 env:
-  - DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 DOTNET_CLI_TELEMETRY_OPTOUT=1
+  - DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 DOTNET_CLI_TELEMETRY_OPTOUT=1 COMPlus_UseManagedHttpClientHandler=true
 
 # We need the .NET Core 2.1 (preview 1) SDK to build. Travis doesn't know how to install this yet.
 before_install:
