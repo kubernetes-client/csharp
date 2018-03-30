@@ -216,12 +216,16 @@ namespace k8s
                 webSocketBuilder.AddClientCertificate(cert);
             }
 
-            HttpRequestMessage message = new HttpRequestMessage();
-            await this.Credentials.ProcessHttpRequestAsync(message, cancellationToken);
-
-            foreach (var _header in message.Headers)
+            if (this.Credentials != null)
             {
-                webSocketBuilder.SetRequestHeader(_header.Key, string.Join(" ", _header.Value));
+                // Copy the default (credential-related) request headers from the HttpClient to the WebSocket
+                HttpRequestMessage message = new HttpRequestMessage();
+                await this.Credentials.ProcessHttpRequestAsync(message, cancellationToken);
+
+                foreach (var _header in message.Headers)
+                {
+                    webSocketBuilder.SetRequestHeader(_header.Key, string.Join(" ", _header.Value));
+                }
             }
 
 #if NETCOREAPP2_1
