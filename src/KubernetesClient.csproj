@@ -7,6 +7,7 @@
 
     <PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/kubernetes-client/csharp</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.png</PackageIconUrl>
     <PackageTags>kubernetes;docker;containers;</PackageTags>
 
     <TargetFrameworks>netstandard1.4;net452;netcoreapp2.1</TargetFrameworks>

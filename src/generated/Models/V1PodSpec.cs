@@ -43,17 +43,13 @@ namespace k8s.Models
         /// mounted.</param>
         /// <param name="dnsConfig">Specifies the DNS parameters of a pod.
         /// Parameters specified here will be merged to the generated DNS
-        /// configuration based on DNSPolicy. This is an alpha feature
-        /// introduced in v1.9 and CustomPodDNS feature gate must be enabled to
-        /// use it.</param>
+        /// configuration based on DNSPolicy.</param>
         /// <param name="dnsPolicy">Set DNS policy for the pod. Defaults to
         /// "ClusterFirst". Valid values are 'ClusterFirstWithHostNet',
         /// 'ClusterFirst', 'Default' or 'None'. DNS parameters given in
         /// DNSConfig will be merged with the policy selected with DNSPolicy.
         /// To have DNS options set along with hostNetwork, you have to specify
-        /// DNS policy explicitly to 'ClusterFirstWithHostNet'. Note that
-        /// 'None' policy is an alpha feature introduced in v1.9 and
-        /// CustomPodDNS feature gate must be enabled to use it.</param>
+        /// DNS policy explicitly to 'ClusterFirstWithHostNet'.</param>
         /// <param name="hostAliases">HostAliases is an optional list of hosts
         /// and IPs that will be injected into the pod's hosts file if
         /// specified. This is only valid for non-hostNetwork pods.</param>
@@ -103,10 +99,12 @@ namespace k8s.Models
         /// from PriorityClassName. The higher the value, the higher the
         /// priority.</param>
         /// <param name="priorityClassName">If specified, indicates the pod's
-        /// priority. "SYSTEM" is a special keyword which indicates the highest
-        /// priority. Any other name must be defined by creating a
-        /// PriorityClass object with that name. If not specified, the pod
-        /// priority will be default or zero if there is no default.</param>
+        /// priority. "system-node-critical" and "system-cluster-critical" are
+        /// two special keywords which indicate the highest priorities with the
+        /// former being the highest priority. Any other name must be defined
+        /// by creating a PriorityClass object with that name. If not
+        /// specified, the pod priority will be default or zero if there is no
+        /// default.</param>
         /// <param name="restartPolicy">Restart policy for all containers
         /// within the pod. One of Always, OnFailure, Never. Default to Always.
         /// More info:
@@ -124,6 +122,14 @@ namespace k8s.Models
         /// <param name="serviceAccountName">ServiceAccountName is the name of
         /// the ServiceAccount to use to run this pod. More info:
         /// https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/</param>
+        /// <param name="shareProcessNamespace">Share a single process
+        /// namespace between all of the containers in a pod. When this is set
+        /// containers will be able to view and signal processes from other
+        /// containers in the same pod, and the first process in each container
+        /// will not be assigned PID 1. HostPID and ShareProcessNamespace
+        /// cannot both be set. Optional: Default to false. This field is
+        /// alpha-level and is honored only by servers that enable the
+        /// PodShareProcessNamespace feature.</param>
         /// <param name="subdomain">If specified, the fully qualified Pod
         /// hostname will be "&lt;hostname&gt;.&lt;subdomain&gt;.&lt;pod
         /// namespace&gt;.svc.&lt;cluster domain&gt;". If not specified, the
@@ -142,7 +148,7 @@ namespace k8s.Models
         /// <param name="volumes">List of volumes that can be mounted by
         /// containers belonging to the pod. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes</param>
-        public V1PodSpec(IList<V1Container> containers, long? activeDeadlineSeconds = default(long?), V1Affinity affinity = default(V1Affinity), bool? automountServiceAccountToken = default(bool?), V1PodDNSConfig dnsConfig = default(V1PodDNSConfig), string dnsPolicy = default(string), IList<V1HostAlias> hostAliases = default(IList<V1HostAlias>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), string hostname = default(string), IList<V1LocalObjectReference> imagePullSecrets = default(IList<V1LocalObjectReference>), IList<V1Container> initContainers = default(IList<V1Container>), string nodeName = default(string), IDictionary<string, string> nodeSelector = default(IDictionary<string, string>), int? priority = default(int?), string priorityClassName = default(string), string restartPolicy = default(string), string schedulerName = default(string), V1PodSecurityContext securityContext = default(V1PodSecurityContext), string serviceAccount = default(string), string serviceAccountName = default(string), string subdomain = default(string), long? terminationGracePeriodSeconds = default(long?), IList<V1Toleration> tolerations = default(IList<V1Toleration>), IList<V1Volume> volumes = default(IList<V1Volume>))
+        public V1PodSpec(IList<V1Container> containers, long? activeDeadlineSeconds = default(long?), V1Affinity affinity = default(V1Affinity), bool? automountServiceAccountToken = default(bool?), V1PodDNSConfig dnsConfig = default(V1PodDNSConfig), string dnsPolicy = default(string), IList<V1HostAlias> hostAliases = default(IList<V1HostAlias>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), string hostname = default(string), IList<V1LocalObjectReference> imagePullSecrets = default(IList<V1LocalObjectReference>), IList<V1Container> initContainers = default(IList<V1Container>), string nodeName = default(string), IDictionary<string, string> nodeSelector = default(IDictionary<string, string>), int? priority = default(int?), string priorityClassName = default(string), string restartPolicy = default(string), string schedulerName = default(string), V1PodSecurityContext securityContext = default(V1PodSecurityContext), string serviceAccount = default(string), string serviceAccountName = default(string), bool? shareProcessNamespace = default(bool?), string subdomain = default(string), long? terminationGracePeriodSeconds = default(long?), IList<V1Toleration> tolerations = default(IList<V1Toleration>), IList<V1Volume> volumes = default(IList<V1Volume>))
         {
             ActiveDeadlineSeconds = activeDeadlineSeconds;
             Affinity = affinity;
@@ -166,6 +172,7 @@ namespace k8s.Models
             SecurityContext = securityContext;
             ServiceAccount = serviceAccount;
             ServiceAccountName = serviceAccountName;
+            ShareProcessNamespace = shareProcessNamespace;
             Subdomain = subdomain;
             TerminationGracePeriodSeconds = terminationGracePeriodSeconds;
             Tolerations = tolerations;
@@ -211,8 +218,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets specifies the DNS parameters of a pod. Parameters
         /// specified here will be merged to the generated DNS configuration
-        /// based on DNSPolicy. This is an alpha feature introduced in v1.9 and
-        /// CustomPodDNS feature gate must be enabled to use it.
+        /// based on DNSPolicy.
         /// </summary>
         [JsonProperty(PropertyName = "dnsConfig")]
         public V1PodDNSConfig DnsConfig { get; set; }
@@ -223,9 +229,7 @@ namespace k8s.Models
         /// 'ClusterFirst', 'Default' or 'None'. DNS parameters given in
         /// DNSConfig will be merged with the policy selected with DNSPolicy.
         /// To have DNS options set along with hostNetwork, you have to specify
-        /// DNS policy explicitly to 'ClusterFirstWithHostNet'. Note that
-        /// 'None' policy is an alpha feature introduced in v1.9 and
-        /// CustomPodDNS feature gate must be enabled to use it.
+        /// DNS policy explicitly to 'ClusterFirstWithHostNet'.
         /// </summary>
         [JsonProperty(PropertyName = "dnsPolicy")]
         public string DnsPolicy { get; set; }
@@ -327,11 +331,13 @@ namespace k8s.Models
         public int? Priority { get; set; }
 
         /// <summary>
-        /// Gets or sets if specified, indicates the pod's priority. "SYSTEM"
-        /// is a special keyword which indicates the highest priority. Any
-        /// other name must be defined by creating a PriorityClass object with
-        /// that name. If not specified, the pod priority will be default or
-        /// zero if there is no default.
+        /// Gets or sets if specified, indicates the pod's priority.
+        /// "system-node-critical" and "system-cluster-critical" are two
+        /// special keywords which indicate the highest priorities with the
+        /// former being the highest priority. Any other name must be defined
+        /// by creating a PriorityClass object with that name. If not
+        /// specified, the pod priority will be default or zero if there is no
+        /// default.
         /// </summary>
         [JsonProperty(PropertyName = "priorityClassName")]
         public string PriorityClassName { get; set; }
@@ -374,6 +380,18 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "serviceAccountName")]
         public string ServiceAccountName { get; set; }
+
+        /// <summary>
+        /// Gets or sets share a single process namespace between all of the
+        /// containers in a pod. When this is set containers will be able to
+        /// view and signal processes from other containers in the same pod,
+        /// and the first process in each container will not be assigned PID 1.
+        /// HostPID and ShareProcessNamespace cannot both be set. Optional:
+        /// Default to false. This field is alpha-level and is honored only by
+        /// servers that enable the PodShareProcessNamespace feature.
+        /// </summary>
+        [JsonProperty(PropertyName = "shareProcessNamespace")]
+        public bool? ShareProcessNamespace { get; set; }
 
         /// <summary>
         /// Gets or sets if specified, the fully qualified Pod hostname will be

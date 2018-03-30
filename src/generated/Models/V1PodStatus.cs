@@ -43,6 +43,16 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-and-container-status</param>
         /// <param name="message">A human readable message indicating details
         /// about why the pod is in this condition.</param>
+        /// <param name="nominatedNodeName">nominatedNodeName is set only when
+        /// this pod preempts other pods on the node, but it cannot be
+        /// scheduled right away as preemption victims receive their graceful
+        /// termination periods. This field does not guarantee that the pod
+        /// will be scheduled on this node. Scheduler may decide to place the
+        /// pod elsewhere if other nodes become available sooner. Scheduler may
+        /// also decide to give the resources on this node to a higher priority
+        /// pod that is created after preemption. As a result, this field may
+        /// be different than PodSpec.nodeName when the pod is
+        /// scheduled.</param>
         /// <param name="phase">Current condition of the pod. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-phase</param>
         /// <param name="podIP">IP address allocated to the pod. Routable at
@@ -50,19 +60,20 @@ namespace k8s.Models
         /// <param name="qosClass">The Quality of Service (QOS) classification
         /// assigned to the pod based on resource requirements See PodQOSClass
         /// type for available QOS classes More info:
-        /// https://github.com/kubernetes/kubernetes/blob/master/docs/design/resource-qos.md</param>
+        /// https://git.k8s.io/community/contributors/design-proposals/node/resource-qos.md</param>
         /// <param name="reason">A brief CamelCase message indicating details
         /// about why the pod is in this state. e.g. 'Evicted'</param>
         /// <param name="startTime">RFC 3339 date and time at which the object
         /// was acknowledged by the Kubelet. This is before the Kubelet pulled
         /// the container image(s) for the pod.</param>
-        public V1PodStatus(IList<V1PodCondition> conditions = default(IList<V1PodCondition>), IList<V1ContainerStatus> containerStatuses = default(IList<V1ContainerStatus>), string hostIP = default(string), IList<V1ContainerStatus> initContainerStatuses = default(IList<V1ContainerStatus>), string message = default(string), string phase = default(string), string podIP = default(string), string qosClass = default(string), string reason = default(string), System.DateTime? startTime = default(System.DateTime?))
+        public V1PodStatus(IList<V1PodCondition> conditions = default(IList<V1PodCondition>), IList<V1ContainerStatus> containerStatuses = default(IList<V1ContainerStatus>), string hostIP = default(string), IList<V1ContainerStatus> initContainerStatuses = default(IList<V1ContainerStatus>), string message = default(string), string nominatedNodeName = default(string), string phase = default(string), string podIP = default(string), string qosClass = default(string), string reason = default(string), System.DateTime? startTime = default(System.DateTime?))
         {
             Conditions = conditions;
             ContainerStatuses = containerStatuses;
             HostIP = hostIP;
             InitContainerStatuses = initContainerStatuses;
             Message = message;
+            NominatedNodeName = nominatedNodeName;
             Phase = phase;
             PodIP = podIP;
             QosClass = qosClass;
@@ -116,6 +127,20 @@ namespace k8s.Models
         public string Message { get; set; }
 
         /// <summary>
+        /// Gets or sets nominatedNodeName is set only when this pod preempts
+        /// other pods on the node, but it cannot be scheduled right away as
+        /// preemption victims receive their graceful termination periods. This
+        /// field does not guarantee that the pod will be scheduled on this
+        /// node. Scheduler may decide to place the pod elsewhere if other
+        /// nodes become available sooner. Scheduler may also decide to give
+        /// the resources on this node to a higher priority pod that is created
+        /// after preemption. As a result, this field may be different than
+        /// PodSpec.nodeName when the pod is scheduled.
+        /// </summary>
+        [JsonProperty(PropertyName = "nominatedNodeName")]
+        public string NominatedNodeName { get; set; }
+
+        /// <summary>
         /// Gets or sets current condition of the pod. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-phase
         /// </summary>
@@ -133,7 +158,7 @@ namespace k8s.Models
         /// Gets or sets the Quality of Service (QOS) classification assigned
         /// to the pod based on resource requirements See PodQOSClass type for
         /// available QOS classes More info:
-        /// https://github.com/kubernetes/kubernetes/blob/master/docs/design/resource-qos.md
+        /// https://git.k8s.io/community/contributors/design-proposals/node/resource-qos.md
         /// </summary>
         [JsonProperty(PropertyName = "qosClass")]
         public string QosClass { get; set; }
