@@ -25,3 +25,6 @@ before_install:
 
 script:
   - ./ci.sh
+
+after_script:
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ./integration-tests.sh; fi
