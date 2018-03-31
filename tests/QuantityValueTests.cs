@@ -166,6 +166,12 @@ namespace k8s.Tests
         }
 
         [Fact]
+        public void ConstructorTest()
+        {
+            Assert.Throws<FormatException>(() => new ResourceQuantity(string.Empty));
+        }
+
+        [Fact]
         public void QuantityString()
         {
             foreach (var (input, expect, alternate) in new[]
@@ -233,6 +239,20 @@ namespace k8s.Tests
                 ResourceQuantity quantity = 12000;
                 Assert.Equal("\"12e3\"", JsonConvert.SerializeObject(quantity));
             }
+        }
+
+        [Fact]
+        public void DeserializeYaml()
+        {
+            var value = Yaml.LoadFromString<ResourceQuantity>("\"1\"");
+            Assert.Equal(new ResourceQuantity(1, 0, DecimalSI), value);
+        }
+
+        [Fact]
+        public void SerializeYaml()
+        {
+            var value = Yaml.SaveToString(new ResourceQuantity(1, -1, DecimalSI));
+            Assert.Equal("100m", value);
         }
     }
 }
