@@ -54,7 +54,7 @@ namespace k8s.Tests
                 WebSocket clientSocket = await client.WebSocketNamespacedPodExecAsync(
                     name: "mypod",
                     @namespace: "mynamespace",
-                    command: "/bin/bash",
+                    command: new string[] { "/bin/bash" },
                     container: "mycontainer",
                     stderr: false,
                     stdin: false,

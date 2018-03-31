@@ -20,7 +20,13 @@ namespace k8s
         public Func<WebSocketBuilder> CreateWebSocketBuilder { get; set; } = () => new WebSocketBuilder();
 
         /// <inheritdoc/>
-        public Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", string command = "/bin/sh", string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", string command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return WebSocketNamespacedPodExecAsync(name, @namespace, new string[] { command }, container, stderr, stdin, stdout, tty, customHeaders, cancellationToken);
+        }
+
+        /// <inheritdoc/>
+        public Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", IEnumerable<string> command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (name == null)
             {
@@ -35,6 +41,11 @@ namespace k8s
             if (command == null)
             {
                 throw new ArgumentNullException(nameof(command));
+            }
+
+            if (!command.Any())
+            {
+                throw new ArgumentOutOfRangeException(nameof(command));
             }
 
             // Tracing
@@ -67,16 +78,27 @@ namespace k8s
 
             uriBuilder.Path += $"api/v1/namespaces/{@namespace}/pods/{name}/exec";
 
+            var query = string.Empty;
 
-            uriBuilder.Query = QueryHelpers.AddQueryString(string.Empty, new Dictionary<string, string>
+            foreach (var c in command)
             {
-                { "command", command},
-                { "container", container},
-                { "stderr", stderr ? "1": "0"},
-                { "stdin", stdin ? "1": "0"},
-                { "stdout", stdout ? "1": "0"},
-                { "tty", tty ? "1": "0"}
+                query = QueryHelpers.AddQueryString(query, "command", c);
+            }
+
+            if (container != null)
+            {
+                query = QueryHelpers.AddQueryString(query, "container", Uri.EscapeDataString(container));
+            }
+
+            query = QueryHelpers.AddQueryString(query, new Dictionary<string, string>
+            {
+                {"stderr", stderr ? "1" : "0"},
+                {"stdin", stdin ? "1" : "0"},
+                {"stdout", stdout ? "1" : "0"},
+                {"tty", tty ? "1" : "0"}
             }).TrimStart('?');
+
+            uriBuilder.Query = query;
 
             return this.StreamConnectAsync(uriBuilder.Uri, _invocationId, customHeaders, cancellationToken);
         }
