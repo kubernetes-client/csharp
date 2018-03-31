@@ -91,19 +91,10 @@ namespace k8s.Tests
                 httpContext.Response.ContentLength = null;
 
                 await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse);
-                await Task.Delay(TimeSpan.FromMilliseconds(100));
-
                 await WriteStreamLine(httpContext, MockBadStreamLine);
-                await Task.Delay(TimeSpan.FromMilliseconds(100));
-
                 await WriteStreamLine(httpContext, MockAddedEventStreamLine);
-                await Task.Delay(TimeSpan.FromMilliseconds(100));
-
                 await WriteStreamLine(httpContext, MockBadStreamLine);
-                await Task.Delay(TimeSpan.FromMilliseconds(100));
-
                 await WriteStreamLine(httpContext, MockModifiedStreamLine);
-                await Task.Delay(TimeSpan.FromMilliseconds(100));
 
                 // make server alive, cannot set to int.max as of it would block response
                 await Task.Delay(TimeSpan.FromDays(1));
@@ -116,7 +107,6 @@ namespace k8s.Tests
                 });
 
                 var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).Result;
-
 
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
@@ -159,16 +149,14 @@ namespace k8s.Tests
         [Fact]
         public void DisposeWatch()
         {
+            using (var eventsReceived = new CountdownEvent(1))
             using (var server = new MockKubeApiServer(TestOutput, async httpContext =>
             {
                 await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse);
-                await Task.Delay(TimeSpan.FromMilliseconds(100));
 
                 for (;;)
                 {
-                await WriteStreamLine(httpContext, MockAddedEventStreamLine);
-                await Task.Delay(TimeSpan.FromMilliseconds(100));
-
+                    await WriteStreamLine(httpContext, MockAddedEventStreamLine);
                 }
             }))
             {
@@ -183,11 +171,17 @@ namespace k8s.Tests
                 var events = new HashSet<WatchEventType>();
 
                 var watcher = listTask.Watch<V1Pod>(
-                    (type, item) => { events.Add(type); }
+                    (type, item) => {
+                        events.Add(type);
+                        eventsReceived.Signal();
+                    }
                 );
 
                 // wait at least an event
-                Thread.Sleep(TimeSpan.FromMilliseconds(1000));
+                Assert.True(
+                    eventsReceived.Wait(TimeSpan.FromSeconds(10)),
+                    "Timed out waiting for events."
+                );
 
                 Assert.NotEmpty(events);
                 Assert.True(watcher.Watching);
@@ -211,19 +205,10 @@ namespace k8s.Tests
             using (var server = new MockKubeApiServer(TestOutput, async httpContext =>
             {
                 await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse);
-                await Task.Delay(TimeSpan.FromMilliseconds(100));
-
                 await WriteStreamLine(httpContext, MockAddedEventStreamLine);
-                await Task.Delay(TimeSpan.FromMilliseconds(100));
-
                 await WriteStreamLine(httpContext, MockDeletedStreamLine);
-                await Task.Delay(TimeSpan.FromMilliseconds(100));
-
                 await WriteStreamLine(httpContext, MockModifiedStreamLine);
-                await Task.Delay(TimeSpan.FromMilliseconds(100));
-
                 await WriteStreamLine(httpContext, MockErrorStreamLine);
-                await Task.Delay(TimeSpan.FromMilliseconds(100));
 
                 // make server alive, cannot set to int.max as of it would block response
                 await Task.Delay(TimeSpan.FromDays(1));
@@ -279,16 +264,13 @@ namespace k8s.Tests
         [Fact]
         public void WatchServerDisconnect()
         {
-            Watcher<V1Pod> watcher;
             Exception exceptionCatched = null;
-
+            using (var exceptionReceived = new AutoResetEvent(false))
+            using (var waitForException = new AutoResetEvent(false))
             using (var server = new MockKubeApiServer(TestOutput, async httpContext =>
             {
                 await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse);
-
-                // make sure watch success
-                await Task.Delay(TimeSpan.FromMilliseconds(200));
-
+                waitForException.WaitOne();
                 throw new IOException("server down");
             }))
             {
@@ -299,16 +281,24 @@ namespace k8s.Tests
 
                 var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).Result;
 
+                waitForException.Set();
+                Watcher<V1Pod> watcher;
                 watcher = listTask.Watch<V1Pod>(
                     (type, item) => { },
-                    e => { exceptionCatched = e; });
+                    e => {
+                        exceptionCatched = e;
+                        exceptionReceived.Set();
+                    });
+
+                // wait server down
+                Assert.True(
+                    exceptionReceived.WaitOne(TimeSpan.FromSeconds(10)),
+                    "Timed out waiting for exception"
+                );
+
+                Assert.False(watcher.Watching);
+                Assert.IsType<IOException>(exceptionCatched);
             }
-
-            // wait server down
-            Thread.Sleep(TimeSpan.FromMilliseconds(1000));
-
-            Assert.False(watcher.Watching);
-            Assert.IsType<IOException>(exceptionCatched);
         }
 
         private class DummyHandler : DelegatingHandler
@@ -326,13 +316,11 @@ namespace k8s.Tests
         [Fact]
         public void TestWatchWithHandlers()
         {
+            using (CountdownEvent eventsReceived = new CountdownEvent(1))
             using (var server = new MockKubeApiServer(TestOutput, async httpContext =>
             {
                 await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse);
-                await Task.Delay(TimeSpan.FromMilliseconds(100));
-
                 await WriteStreamLine(httpContext, MockAddedEventStreamLine);
-                await Task.Delay(TimeSpan.FromMilliseconds(100));
 
                 // make server alive, cannot set to int.max as of it would block response
                 await Task.Delay(TimeSpan.FromDays(1));
@@ -355,11 +343,17 @@ namespace k8s.Tests
                 var events = new HashSet<WatchEventType>();
 
                 var watcher = listTask.Watch<V1Pod>(
-                    (type, item) => { events.Add(type); }
+                    (type, item) => {
+                        events.Add(type);
+                        eventsReceived.Signal();
+                    }
                 );
 
                 // wait server yields all events
-                Thread.Sleep(TimeSpan.FromMilliseconds(500));
+                Assert.True(
+                     eventsReceived.Wait(TimeSpan.FromMilliseconds(10000)),
+                    "Timed out waiting for all events / errors to be received."
+                );
 
                 Assert.Contains(WatchEventType.Added, events);
 
