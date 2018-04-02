@@ -1,5 +1,7 @@
 using System.IO;
+using System.Linq;
 using k8s.Exceptions;
+using k8s.KubeConfigModels;
 using Xunit;
 
 namespace k8s.Tests
@@ -271,7 +273,7 @@ namespace k8s.Tests
         {
             var assetFileInfo = new FileInfo("assets/kubeconfig.yml");
             var tempFileInfo = new FileInfo(Path.GetTempFileName());
-            
+
             File.Copy(assetFileInfo.FullName, tempFileInfo.FullName, /* overwrite: */ true);
 
             KubernetesClientConfiguration config;
@@ -322,6 +324,76 @@ namespace k8s.Tests
 
             var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(txt, null, null);
             Assert.NotNull(cfg.Host);
+        }
+
+        /// <summary>
+        ///     Ensures Kube config file is loaded from explicit file
+        /// </summary>
+        [Fact]
+        public void LoadKubeConfigExplicitFilePath()
+        {
+            var txt = File.ReadAllText("assets/kubeconfig.yml");
+            var expectedCfg = Yaml.LoadFromString<K8SConfiguration>(txt);
+
+            var cfg = KubernetesClientConfiguration.LoadKubeConfig("assets/kubeconfig.yml");
+
+            Assert.NotNull(cfg);
+
+            ConfigsEqual(expectedCfg, cfg);
+        }
+
+        private void ConfigsEqual(K8SConfiguration expected, K8SConfiguration actual)
+        {
+            Assert.Equal(expected.ApiVersion, actual.ApiVersion);
+            Assert.Equal(expected.CurrentContext, actual.CurrentContext);
+
+            foreach (var expectedContext in expected.Contexts)
+            {
+                // Will throw exception if not found
+                var actualContext = actual.Contexts.First(c => c.Name.Equals(expectedContext.Name));
+
+                Assert.Equal(expectedContext.Namespace, actualContext.Namespace);
+                Assert.Equal(expectedContext.ContextDetails.Cluster, actualContext.ContextDetails.Cluster);
+                Assert.Equal(expectedContext.ContextDetails.User, actualContext.ContextDetails.User);
+                Assert.Equal(expectedContext.ContextDetails.Namespace, actualContext.ContextDetails.Namespace);
+            }
+
+            foreach (var expectedCluster in expected.Clusters)
+            {
+                // Will throw exception if not found
+                var actualCluster = actual.Clusters.First(c => c.Name.Equals(expectedCluster.Name));
+                
+                Assert.Equal(expectedCluster.ClusterEndpoint.CertificateAuthority, actualCluster.ClusterEndpoint.CertificateAuthority);
+                Assert.Equal(expectedCluster.ClusterEndpoint.CertificateAuthorityData, actualCluster.ClusterEndpoint.CertificateAuthorityData);
+                Assert.Equal(expectedCluster.ClusterEndpoint.Server, actualCluster.ClusterEndpoint.Server);
+                Assert.Equal(expectedCluster.ClusterEndpoint.SkipTlsVerify, actualCluster.ClusterEndpoint.SkipTlsVerify);
+            }
+
+            foreach (var expectedUser in expected.Users)
+            {
+                // Will throw exception if not found
+                var actualUser = actual.Users.First(u => u.Name.Equals(expectedUser.Name));
+
+                var expectedCreds = expectedUser.UserCredentials;
+                var actualCreds = expectedUser.UserCredentials;
+
+                Assert.Equal(expectedCreds.ClientCertificateData, actualCreds.ClientCertificateData);
+                Assert.Equal(expectedCreds.ClientCertificate, actualCreds.ClientCertificate);
+                Assert.Equal(expectedCreds.ClientKeyData, actualCreds.ClientKeyData);
+                Assert.Equal(expectedCreds.ClientKey, actualCreds.ClientKey);
+                Assert.Equal(expectedCreds.Token, actualCreds.Token);
+                Assert.Equal(expectedCreds.Impersonate, actualCreds.Impersonate);
+                Assert.Equal(expectedCreds.UserName, actualCreds.UserName);
+                Assert.Equal(expectedCreds.Password, actualCreds.Password);
+
+                Assert.True(expectedCreds.ImpersonateGroups.All(x => actualCreds.ImpersonateGroups.Contains(x)));
+                Assert.True(expectedCreds.ImpersonateUserExtra.All(x => actualCreds.ImpersonateUserExtra.Contains(x)));
+
+                if (expectedCreds.AuthProvider != null)
+                {
+                    Assert.True(expectedCreds.AuthProvider.All(x => actualCreds.AuthProvider.Contains(x)));
+                }
+            }
         }
     }
 }

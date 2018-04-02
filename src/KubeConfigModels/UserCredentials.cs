@@ -12,25 +12,25 @@ namespace k8s.KubeConfigModels
         /// <summary>
         /// Gets or sets PEM-encoded data from a client cert file for TLS. Overrides <see cref="ClientCertificate"/>.
         /// </summary>
-        [YamlMember(Alias = "client-certificate-data")]
+        [YamlMember(Alias = "client-certificate-data", ApplyNamingConventions = false)]
         public string ClientCertificateData { get; set; }
 
         /// <summary>
         /// Gets or sets the path to a client cert file for TLS.
         /// </summary>
-        [YamlMember(Alias = "client-certificate")]
+        [YamlMember(Alias = "client-certificate", ApplyNamingConventions = false)]
         public string ClientCertificate { get; set; }
 
         /// <summary>
         /// Gets or sets PEM-encoded data from a client key file for TLS. Overrides <see cref="ClientKey"/>.
         /// </summary>
-        [YamlMember(Alias = "client-key-data")]
+        [YamlMember(Alias = "client-key-data", ApplyNamingConventions = false)]
         public string ClientKeyData { get; set; }
 
         /// <summary>
         /// Gets or sets the path to a client key file for TLS.
         /// </summary>
-        [YamlMember(Alias = "client-key")]
+        [YamlMember(Alias = "client-key", ApplyNamingConventions = false)]
         public string ClientKey { get; set; }
 
         /// <summary>
@@ -48,13 +48,13 @@ namespace k8s.KubeConfigModels
         /// <summary>
         /// Gets or sets the groups to imperonate.
         /// </summary>
-        [YamlMember(Alias = "as-groups")]
+        [YamlMember(Alias = "as-groups", ApplyNamingConventions = false)]
         public IEnumerable<string> ImpersonateGroups { get; set; } = new string[0];
 
         /// <summary>
         /// Gets or sets additional information for impersonated user.
         /// </summary>
-        [YamlMember(Alias = "as-user-extra")]
+        [YamlMember(Alias = "as-user-extra", ApplyNamingConventions = false)]
         public Dictionary<string, string> ImpersonateUserExtra { get; set; } = new Dictionary<string, string>();
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace k8s.KubeConfigModels
         /// <summary>
         /// Gets or sets custom authentication plugin for the kubernetes cluster.
         /// </summary>
-        [YamlMember(Alias = "auth-provider")]
+        [YamlMember(Alias = "auth-provider", ApplyNamingConventions = false)]
         public Dictionary<string, dynamic> AuthProvider { get; set; }
 
         /// <summary>
