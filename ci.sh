@@ -7,6 +7,7 @@ set -e
 find . -name *.csproj -exec dotnet build {} \;
 
 # Execute Unit tests
-cd tests
+cd tests/KubernetesClient.Tests
 dotnet restore
 dotnet test
+
