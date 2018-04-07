@@ -1,19 +1,30 @@
+sudo: required
+dist: trusty
+
+os:
+  - osx
+  - linux
+
 language: csharp
-sudo: false
-matrix:
-  include:
-    - mono: none
-      dist: trusty
-      # We need the .NET Core 2.1 (preview 1) SDK to build. Travis doesn't know how to install this yet.
-      before_install:
-      - echo 'Installing .NET Core...'
-      - export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
-      - export DOTNET_CLI_TELEMETRY_OPTOUT=1
-      - curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-      - sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-      - sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod trusty main" > /etc/apt/sources.list.d/dotnetdev.list'
-      - sudo apt-get -qq update
-      - sudo apt-get install -y dotnet-sdk-2.1.300-preview1-008174
+mono: none
+env:
+  global:
+    - DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
+    - DOTNET_CLI_TELEMETRY_OPTOUT=1
+    - COMPlus_UseManagedHttpClientHandler=true
+
+# minikube-related changes
+    - CHANGE_MINIKUBE_NONE_USER=true
+    - MINIKUBE_WANTREPORTERRORPROMPT=false
+    - MINIKUBE_WANTUPDATENOTIFICATION=false
+    - KUBECONFIG=/home/travis/.kube/config
+
+# We need the .NET Core 2.1 (preview 1) SDK to build. Travis doesn't know how to install this yet.
+before_install:
+  - ./install-$TRAVIS_OS_NAME.sh
 
 script:
   - ./ci.sh
+
+after_script:
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ./integration-tests.sh; fi

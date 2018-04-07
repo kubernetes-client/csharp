@@ -1,6 +1,7 @@
 using System;
 using System.Buffers;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net.WebSockets;
 using System.Threading;
@@ -29,10 +30,18 @@ namespace k8s
 
         public void Dispose()
         {
-            if (this.runLoop != null)
+            try
             {
-                this.cts.Cancel();
-                this.runLoop.Wait();
+                if (this.runLoop != null)
+                {
+                    this.cts.Cancel();
+                    this.runLoop.Wait();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Dispose methods can never throw.
+                Debug.Write(ex);
             }
         }
 

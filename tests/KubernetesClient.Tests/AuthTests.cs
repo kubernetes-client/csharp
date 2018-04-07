@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http.Headers;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,9 @@ using k8s.Tests.Mock;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Https;
 using Microsoft.Rest;
+using Org.BouncyCastle.Crypto.Parameters;
+using Org.BouncyCastle.Pkcs;
+using Org.BouncyCastle.Security;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -46,7 +50,7 @@ namespace k8s.Tests
 
             using (var server = new MockKubeApiServer(TestOutput, cxt =>
             {
-                cxt.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
+                cxt.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                 return Task.FromResult(false);
             }))
             {
@@ -76,7 +80,7 @@ namespace k8s.Tests
 
                 if (header != expect)
                 {
-                    cxt.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
+                    cxt.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                     return Task.FromResult(false);
                 }
 
@@ -168,7 +172,12 @@ namespace k8s.Tests
             var clientCertificateKeyData = File.ReadAllText("assets/client-key-data.txt");
             var clientCertificateData = File.ReadAllText("assets/client-certificate-data.txt");
 
-            var serverCertificate = new X509Certificate2(Convert.FromBase64String(serverCertificateData), "");
+            X509Certificate2 serverCertificate = null;
+            using (MemoryStream serverCertificateStream = new MemoryStream(Convert.FromBase64String(serverCertificateData)))
+            {
+                serverCertificate = OpenCertificateStore(serverCertificateStream);
+            }
+
             var clientCertificate = new X509Certificate2(Convert.FromBase64String(clientCertificateData), "");
 
             var clientCertificateValidationCalled = false;
@@ -263,7 +272,7 @@ namespace k8s.Tests
 
                 if (header != expect)
                 {
-                    cxt.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
+                    cxt.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                     return Task.FromResult(false);
                 }
 
@@ -319,6 +328,27 @@ namespace k8s.Tests
                     Assert.Equal(HttpStatusCode.Unauthorized, listTask.Response.StatusCode);
                 }
             }
+        }
+
+        private X509Certificate2 OpenCertificateStore(Stream stream)
+        {
+            Pkcs12Store store = new Pkcs12Store();
+            store.Load(stream, new char[] { });
+
+            var keyAlias = store.Aliases.Cast<string>().SingleOrDefault(a => store.IsKeyEntry(a));
+
+            var key = (RsaPrivateCrtKeyParameters)store.GetKey(keyAlias).Key;
+            var bouncyCertificate = store.GetCertificate(keyAlias).Certificate;
+
+            var certificate = new X509Certificate2(DotNetUtilities.ToX509Certificate(bouncyCertificate));
+            var parameters = DotNetUtilities.ToRSAParameters(key);
+
+            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
+            rsa.ImportParameters(parameters);
+
+            certificate = RSACertificateExtensions.CopyWithPrivateKey(certificate, rsa);
+
+            return certificate;
         }
     }
 }
