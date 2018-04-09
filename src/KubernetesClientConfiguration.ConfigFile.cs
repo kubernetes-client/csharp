@@ -29,8 +29,8 @@ namespace k8s
         /// </summary>
         /// <param name="masterUrl">kube api server endpoint</param>
         /// <param name="kubeconfigPath">Explicit file path to kubeconfig. Set to null to use the default file path</param>
-        public static KubernetesClientConfiguration BuildConfigFromConfigFile(string masterUrl = null,
-            string kubeconfigPath = null)
+        public static KubernetesClientConfiguration BuildConfigFromConfigFile(string kubeconfigPath,
+            string currentContext = null, string masterUrl = null)
         {
             return BuildConfigFromConfigFile(new FileInfo(kubeconfigPath ?? KubeConfigDefaultLocation), null,
                 masterUrl);
@@ -50,25 +50,6 @@ namespace k8s
             }
 
             var k8SConfig = LoadKubeConfig(kubeconfig);
-            var k8SConfiguration = GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig);
-
-            return k8SConfiguration;
-        }
-
-        /// <summary>
-        /// </summary>
-        /// <param name="kubeconfig">String representation of kubeconfig contents, cannot be null, whitespaced or empty</param>
-        /// <param name="currentContext">override the context in config file, set null if do not want to override</param>
-        /// <param name="masterUrl">overrider kube api server endpoint, set null if do not want to override</param>
-        public static KubernetesClientConfiguration BuildConfigFromConfigFile(string kubeconfig,
-            string currentContext = null, string masterUrl = null)
-        {
-            if (string.IsNullOrWhiteSpace(kubeconfig))
-            {
-                throw new NullReferenceException(nameof(kubeconfig));
-            }
-
-            var k8SConfig = Yaml.LoadFromString<K8SConfiguration>(kubeconfig);
             var k8SConfiguration = GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig);
 
             return k8SConfiguration;
@@ -309,6 +290,26 @@ namespace k8s
         public static K8SConfiguration LoadKubeConfig(FileInfo kubeconfig)
         {
             return LoadKubeConfigAsync(kubeconfig).GetAwaiter().GetResult();
+        }
+
+        // <summary>
+        ///     Loads Kube Config
+        /// </summary>
+        /// <param name="kubeconfigStream">Kube config file contents stream</param>
+        /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
+        public static async Task<K8SConfiguration> LoadKubeConfigAsync(Stream kubeconfigStream)
+        {
+            return await Yaml.LoadFromStreamAsync<K8SConfiguration>(kubeconfigStream);
+        }
+
+        /// <summary>
+        ///     Loads Kube Config
+        /// </summary>
+        /// <param name="kubeconfig">Kube config file contents stream</param>
+        /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
+        public static K8SConfiguration LoadKubeConfig(Stream kubeconfigStream)
+        {
+            return LoadKubeConfigAsync(kubeconfigStream).GetAwaiter().GetResult();
         }
     }
 }
