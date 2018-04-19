@@ -27,7 +27,7 @@ namespace k8s.KubeConfigModels
         /// <summary>
         /// Gets or sets the name of the context that you would like to use by default.
         /// </summary>
-        [YamlMember(Alias = "current-context")]
+        [YamlMember(Alias = "current-context", ApplyNamingConventions = false)]
         public string CurrentContext { get; set; }
 
         /// <summary>

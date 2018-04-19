@@ -18,8 +18,7 @@ namespace k8s.Tests
         [Fact]
         public void LoadFromFiles() 
         {
-            var fi = new FileInfo(kubeConfigFileName);
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, "federal-context");
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(kubeConfigFileName, "federal-context");
 
             // Just validate that this doesn't throw and private key is non-null
             var cert = CertUtils.GeneratePfx(cfg);
@@ -32,8 +31,7 @@ namespace k8s.Tests
         [Fact]
         public void LoadFromInlineData() 
         {
-            var fi = new FileInfo(kubeConfigFileName);
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, "victorian-context");
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(kubeConfigFileName, "victorian-context");
 
             // Just validate that this doesn't throw and private key is non-null
             var cert = CertUtils.GeneratePfx(cfg);
