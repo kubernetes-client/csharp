@@ -29,7 +29,7 @@ namespace k8s
         /// </summary>
         /// <param name="masterUrl">kube api server endpoint</param>
         /// <param name="kubeconfigPath">Explicit file path to kubeconfig. Set to null to use the default file path</param>
-        public static KubernetesClientConfiguration BuildConfigFromConfigFile(string kubeconfigPath,
+        public static KubernetesClientConfiguration BuildConfigFromConfigFile(string kubeconfigPath = null,
             string currentContext = null, string masterUrl = null)
         {
             return BuildConfigFromConfigFile(new FileInfo(kubeconfigPath ?? KubeConfigDefaultLocation), null,
