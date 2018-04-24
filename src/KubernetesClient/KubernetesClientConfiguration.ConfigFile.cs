@@ -172,7 +172,7 @@ namespace k8s
                     }
                     else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
                     {
-                        SslCaCert = new X509Certificate2(clusterDetails.ClusterEndpoint.CertificateAuthority);
+                        SslCaCert = new X509Certificate2(GetFullPath(k8SConfig, clusterDetails.ClusterEndpoint.CertificateAuthority));
                     }
                 }
             }
@@ -230,8 +230,8 @@ namespace k8s
             if (!string.IsNullOrWhiteSpace(userDetails.UserCredentials.ClientCertificate) &&
                 !string.IsNullOrWhiteSpace(userDetails.UserCredentials.ClientKey))
             {
-                ClientCertificateFilePath = userDetails.UserCredentials.ClientCertificate;
-                ClientKeyFilePath = userDetails.UserCredentials.ClientKey;
+                ClientCertificateFilePath = GetFullPath(k8SConfig, userDetails.UserCredentials.ClientCertificate);
+                ClientKeyFilePath = GetFullPath(k8SConfig, userDetails.UserCredentials.ClientKey);
                 userCredentialsFound = true;
             }
 
@@ -263,7 +263,7 @@ namespace k8s
         {
             return LoadKubeConfigAsync(kubeconfigPath).GetAwaiter().GetResult();
         }
-        
+
         // <summary>
         ///     Loads Kube Config
         /// </summary>
@@ -278,7 +278,9 @@ namespace k8s
 
             using (var stream = kubeconfig.OpenRead())
             {
-                return await Yaml.LoadFromStreamAsync<K8SConfiguration>(stream);
+                var config = await Yaml.LoadFromStreamAsync<K8SConfiguration>(stream);
+                config.Filename = kubeconfig.FullName;
+                return config;
             }
         }
 
@@ -310,6 +312,36 @@ namespace k8s
         public static K8SConfiguration LoadKubeConfig(Stream kubeconfigStream)
         {
             return LoadKubeConfigAsync(kubeconfigStream).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Tries to get the full path to a file referenced from the Kubernetes configuration.
+        /// </summary>
+        /// <param name="configuration">
+        /// The Kubernetes configuration.
+        /// </param>
+        /// <param name="path">
+        /// The path to resolve.
+        /// </param>
+        /// <returns>
+        /// When possible a fully qualified path to the file.
+        /// </returns>
+        /// <remarks>
+        /// For example, if the configuration file is at "C:\Users\me\kube.config" and path is "ca.crt",
+        /// this will return "C:\Users\me\ca.crt". Similarly, if path is "D:\ca.cart", this will return
+        /// "D:\ca.crt".
+        /// </remarks>
+        private static string GetFullPath(K8SConfiguration configuration, string path)
+        {
+            // If we don't have a file name,
+            if (string.IsNullOrWhiteSpace(configuration.Filename) || Path.IsPathRooted(path))
+            {
+                return path;
+            }
+            else
+            {
+                return Path.Combine(Path.GetDirectoryName(configuration.Filename), path);
+            }
         }
     }
 }
