@@ -59,6 +59,6 @@ namespace k8s.KubeConfigModels
         /// was loaded from disk, and can be used to resolve relative paths.
         /// </summary>
         [YamlIgnore]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
     }
 }
