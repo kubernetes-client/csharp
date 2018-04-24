@@ -279,7 +279,7 @@ namespace k8s
             using (var stream = kubeconfig.OpenRead())
             {
                 var config = await Yaml.LoadFromStreamAsync<K8SConfiguration>(stream);
-                config.Filename = kubeconfig.FullName;
+                config.FileName = kubeconfig.FullName;
                 return config;
             }
         }
@@ -334,13 +334,13 @@ namespace k8s
         private static string GetFullPath(K8SConfiguration configuration, string path)
         {
             // If we don't have a file name,
-            if (string.IsNullOrWhiteSpace(configuration.Filename) || Path.IsPathRooted(path))
+            if (string.IsNullOrWhiteSpace(configuration.FileName) || Path.IsPathRooted(path))
             {
                 return path;
             }
             else
             {
-                return Path.Combine(Path.GetDirectoryName(configuration.Filename), path);
+                return Path.Combine(Path.GetDirectoryName(configuration.FileName), path);
             }
         }
     }
