@@ -208,7 +208,7 @@ namespace k8s.Tests
         public void UserNotFound()
         {
             var fi = new FileInfo("assets/kubeconfig.user-not-found.yml");
-            Assert.Throws<KubeConfigException>(() => KubernetesClientConfiguration.BuildConfigFromConfigFile(fi));
+            Assert.Throws<KubeConfigException>(() => KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, useRelativePaths: false));
         }
 
         /// <summary>
