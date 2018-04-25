@@ -13,13 +13,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Nito.AsyncEx;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace k8s.Tests
 {
     public class WatchTests
-        : TestBase
     {
         private static readonly string MockAddedEventStreamLine = BuildWatchEventStreamLine(WatchEventType.Added);
         private static readonly string MockDeletedStreamLine = BuildWatchEventStreamLine(WatchEventType.Deleted);
@@ -27,8 +27,11 @@ namespace k8s.Tests
         private static readonly string MockErrorStreamLine = BuildWatchEventStreamLine(WatchEventType.Error);
         private static readonly string MockBadStreamLine = "bad json";
 
-        public WatchTests(ITestOutputHelper testOutput) : base(testOutput)
+        private readonly ITestOutputHelper testOutput;
+
+        public WatchTests(ITestOutputHelper testOutput)
         {
+            this.testOutput = testOutput;
         }
 
         private static string BuildWatchEventStreamLine(WatchEventType eventType)
@@ -50,9 +53,9 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void CannotWatch()
+        public async Task CannotWatch()
         {
-            using (var server = new MockKubeApiServer(testOutput: TestOutput))
+            using (var server = new MockKubeApiServer(testOutput: testOutput))
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration
                 {
@@ -60,53 +63,54 @@ namespace k8s.Tests
                 });
 
                 // did not pass watch param
+                var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default");
+                Assert.ThrowsAny<KubernetesClientException>(() =>
                 {
-                    var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default").Result;
-                    Assert.ThrowsAny<KubernetesClientException>(() =>
-                    {
-                        listTask.Watch<V1Pod>((type, item) => { });
-                    });
-                }
+                    listTask.Watch<V1Pod>((type, item) => { });
+                });
 
                 // server did not response line by line
+                await Assert.ThrowsAnyAsync<Exception>(() =>
                 {
-                    Assert.ThrowsAny<Exception>(() =>
-                    {
-                        var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).Result;
+                    return client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
 
-                        // this line did not throw
-                        // listTask.Watch<Corev1Pod>((type, item) => { });
-                    });
-                }
+                    // this line did not throw
+                    // listTask.Watch<Corev1Pod>((type, item) => { });
+                });
             }
         }
 
         [Fact]
-        public void SuriveBadLine()
+        public async Task SuriveBadLine()
         {
-            using (CountdownEvent eventsReceived = new CountdownEvent(4 /* first line of response is eaten by WatcherDelegatingHandler */))
-            using (var server = new MockKubeApiServer(TestOutput, async httpContext =>
-            {
-                httpContext.Response.StatusCode = (int) HttpStatusCode.OK;
-                httpContext.Response.ContentLength = null;
+            AsyncCountdownEvent eventsReceived = new AsyncCountdownEvent(4 /* first line of response is eaten by WatcherDelegatingHandler */);
+            AsyncManualResetEvent serverShutdown = new AsyncManualResetEvent();
 
-                await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse);
-                await WriteStreamLine(httpContext, MockBadStreamLine);
-                await WriteStreamLine(httpContext, MockAddedEventStreamLine);
-                await WriteStreamLine(httpContext, MockBadStreamLine);
-                await WriteStreamLine(httpContext, MockModifiedStreamLine);
+            using (var server =
+                new MockKubeApiServer(
+                    testOutput,
+                    async httpContext =>
+                    {
+                        httpContext.Response.StatusCode = (int)HttpStatusCode.OK;
+                        httpContext.Response.ContentLength = null;
 
-                // make server alive, cannot set to int.max as of it would block response
-                await Task.Delay(TimeSpan.FromDays(1));
-                return false;
-            }))
+                        await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse);
+                        await WriteStreamLine(httpContext, MockBadStreamLine);
+                        await WriteStreamLine(httpContext, MockAddedEventStreamLine);
+                        await WriteStreamLine(httpContext, MockBadStreamLine);
+                        await WriteStreamLine(httpContext, MockModifiedStreamLine);
+
+                        // make server alive, cannot set to int.max as of it would block response
+                        await serverShutdown.WaitAsync();
+                        return false;
+                    }))
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration
                 {
                     Host = server.Uri.ToString()
                 });
 
-                var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).Result;
+                var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
 
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
@@ -114,14 +118,14 @@ namespace k8s.Tests
                 var watcher = listTask.Watch<V1Pod>(
                     (type, item) =>
                     {
-                        Log.LogInformation("Watcher received '{EventType}' event.", type);
+                        testOutput.WriteLine($"Watcher received '{type}' event.");
 
                         events.Add(type);
                         eventsReceived.Signal();
                     },
                     error =>
                     {
-                        Log.LogInformation("Watcher received '{ErrorType}' error.", error.GetType().FullName);
+                        testOutput.WriteLine($"Watcher received '{error.GetType().FullName}' error.");
 
                         errors += 1;
                         eventsReceived.Signal();
@@ -129,8 +133,10 @@ namespace k8s.Tests
                 );
 
                 // wait server yields all events
+                await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TimeSpan.FromSeconds(30)));
+
                 Assert.True(
-                    eventsReceived.Wait(TimeSpan.FromMilliseconds(3000)),
+                    eventsReceived.CurrentCount == 0,
                     "Timed out waiting for all events / errors to be received."
                 );
 
@@ -141,23 +147,27 @@ namespace k8s.Tests
 
                 Assert.True(watcher.Watching);
 
-                // prevent from server down exception trigger
-                Thread.Sleep(TimeSpan.FromMilliseconds(1000));
+                // Let the server know it can initiate a shut down.
+                serverShutdown.Set();
             }
         }
 
         [Fact]
-        public void DisposeWatch()
+        public async Task DisposeWatch()
         {
-            using (var eventsReceived = new CountdownEvent(1))
-            using (var server = new MockKubeApiServer(TestOutput, async httpContext =>
+            var eventsReceived = new AsyncCountdownEvent(1);
+            bool serverRunning = true;
+
+            using (var server = new MockKubeApiServer(testOutput, async httpContext =>
             {
                 await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse);
 
-                for (;;)
+                while (serverRunning)
                 {
                     await WriteStreamLine(httpContext, MockAddedEventStreamLine);
                 }
+
+                return true;
             }))
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration
@@ -165,21 +175,22 @@ namespace k8s.Tests
                     Host = server.Uri.ToString()
                 });
 
-                var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).Result;
-
+                var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
 
                 var events = new HashSet<WatchEventType>();
 
                 var watcher = listTask.Watch<V1Pod>(
-                    (type, item) => {
+                    (type, item) =>
+                    {
                         events.Add(type);
                         eventsReceived.Signal();
                     }
                 );
 
                 // wait at least an event
+                await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TimeSpan.FromSeconds(10)));
                 Assert.True(
-                    eventsReceived.Wait(TimeSpan.FromSeconds(10)),
+                    eventsReceived.CurrentCount == 0,
                     "Timed out waiting for events."
                 );
 
@@ -190,19 +201,26 @@ namespace k8s.Tests
 
                 events.Clear();
 
-                // make sure wait event called
-                Thread.Sleep(TimeSpan.FromMilliseconds(1000));
+                // Let the server disconnect
+                serverRunning = false;
+
+                var timeout = Task.Delay(TimeSpan.FromSeconds(5));
+
+                while(!timeout.IsCompleted && watcher.Watching)
+                {
+                    await Task.Yield();
+                }
+
                 Assert.Empty(events);
                 Assert.False(watcher.Watching);
-
             }
         }
 
         [Fact]
-        public void WatchAllEvents()
+        public async Task WatchAllEvents()
         {
-            using (CountdownEvent eventsReceived = new CountdownEvent(4 /* first line of response is eaten by WatcherDelegatingHandler */))
-            using (var server = new MockKubeApiServer(TestOutput, async httpContext =>
+            AsyncCountdownEvent eventsReceived = new AsyncCountdownEvent(4 /* first line of response is eaten by WatcherDelegatingHandler */);
+            using (var server = new MockKubeApiServer(testOutput, async httpContext =>
             {
                 await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse);
                 await WriteStreamLine(httpContext, MockAddedEventStreamLine);
@@ -229,14 +247,14 @@ namespace k8s.Tests
                 var watcher = listTask.Watch<V1Pod>(
                     (type, item) =>
                     {
-                        Log.LogInformation("Watcher received '{EventType}' event.", type);
+                        testOutput.WriteLine($"Watcher received '{type}' event.");
 
                         events.Add(type);
                         eventsReceived.Signal();
                     },
                     error =>
                     {
-                        Log.LogInformation("Watcher received '{ErrorType}' error.", error.GetType().FullName);
+                        testOutput.WriteLine($"Watcher received '{error.GetType().FullName}' error.");
 
                         errors += 1;
                         eventsReceived.Signal();
@@ -244,8 +262,10 @@ namespace k8s.Tests
                 );
 
                 // wait server yields all events
+                await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TimeSpan.FromSeconds(30)));
+
                 Assert.True(
-                    eventsReceived.Wait(TimeSpan.FromMilliseconds(3000)),
+                    eventsReceived.CurrentCount == 0,
                     "Timed out waiting for all events / errors to be received."
                 );
 
@@ -262,15 +282,15 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void WatchServerDisconnect()
+        public async Task WatchServerDisconnect()
         {
             Exception exceptionCatched = null;
-            using (var exceptionReceived = new AutoResetEvent(false))
-            using (var waitForException = new AutoResetEvent(false))
-            using (var server = new MockKubeApiServer(TestOutput, async httpContext =>
+            var exceptionReceived = new AsyncManualResetEvent(false);
+            var waitForException = new AsyncManualResetEvent(false);
+            using (var server = new MockKubeApiServer(testOutput, async httpContext =>
             {
                 await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse);
-                waitForException.WaitOne();
+                await waitForException.WaitAsync();
                 throw new IOException("server down");
             }))
             {
@@ -279,20 +299,23 @@ namespace k8s.Tests
                     Host = server.Uri.ToString()
                 });
 
-                var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).Result;
+                var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
 
                 waitForException.Set();
                 Watcher<V1Pod> watcher;
                 watcher = listTask.Watch<V1Pod>(
                     (type, item) => { },
-                    e => {
+                    e =>
+                    {
                         exceptionCatched = e;
                         exceptionReceived.Set();
                     });
 
                 // wait server down
+                await Task.WhenAny(exceptionReceived.WaitAsync(), Task.Delay(TimeSpan.FromSeconds(30)));
+
                 Assert.True(
-                    exceptionReceived.WaitOne(TimeSpan.FromSeconds(10)),
+                    exceptionReceived.IsSet,
                     "Timed out waiting for exception"
                 );
 
@@ -314,10 +337,10 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void TestWatchWithHandlers()
+        public async Task TestWatchWithHandlers()
         {
-            using (CountdownEvent eventsReceived = new CountdownEvent(1))
-            using (var server = new MockKubeApiServer(TestOutput, async httpContext =>
+            AsyncCountdownEvent eventsReceived = new AsyncCountdownEvent(1);
+            using (var server = new MockKubeApiServer(testOutput, async httpContext =>
             {
                 await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse);
                 await WriteStreamLine(httpContext, MockAddedEventStreamLine);
@@ -338,20 +361,23 @@ namespace k8s.Tests
                 Assert.False(handler1.Called);
                 Assert.False(handler2.Called);
 
-                var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).Result;
+                var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
 
                 var events = new HashSet<WatchEventType>();
 
                 var watcher = listTask.Watch<V1Pod>(
-                    (type, item) => {
+                    (type, item) =>
+                    {
                         events.Add(type);
                         eventsReceived.Signal();
                     }
                 );
 
                 // wait server yields all events
+                await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TimeSpan.FromSeconds(10)));
+
                 Assert.True(
-                     eventsReceived.Wait(TimeSpan.FromMilliseconds(10000)),
+                     eventsReceived.CurrentCount == 0,
                     "Timed out waiting for all events / errors to be received."
                 );
 
