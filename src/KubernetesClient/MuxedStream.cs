@@ -85,7 +85,8 @@ namespace k8s
         /// <inheritdoc/>
         public override void Flush()
         {
-            throw new NotSupportedException();
+            // Whenever we call muxer.Write, a message is immediately sent over the wire, so we don't need/support flushing.
+            // Implement flushing as a no-op operation as opposed to throwing a NotSupportedException.
         }
 
         /// <inheritdoc/>
