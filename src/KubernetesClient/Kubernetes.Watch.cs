@@ -1,4 +1,3 @@
-using k8s.Models;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Rest;
 using System;
@@ -14,83 +13,7 @@ namespace k8s
     public partial class Kubernetes
     {
         /// <inheritdoc/>
-        public Task<Watcher<V1ConfigMap>> WatchNamespacedConfigMapAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, int? timeoutSeconds = null, int? resourceVersion = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1ConfigMap> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return WatchNamespacedObjectAsync<V1ConfigMap>("configmaps", name, @namespace, @continue, fieldSelector, includeUninitialized, labelSelector, limit, pretty, timeoutSeconds, resourceVersion, customHeaders, onEvent, onError, cancellationToken);
-        }
-
-        /// <inheritdoc/>
-        public Task<Watcher<V1Endpoints>> WatchNamespacedEndpointAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, int? timeoutSeconds = null, int? resourceVersion = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1Endpoints> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return WatchNamespacedObjectAsync<V1Endpoints>("endpoints", name, @namespace, @continue, fieldSelector, includeUninitialized, labelSelector, limit, pretty, timeoutSeconds, resourceVersion, customHeaders, onEvent, onError, cancellationToken);
-        }
-
-        /// <inheritdoc/>
-        public Task<Watcher<V1Event>> WatchNamespacedEventAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, int? timeoutSeconds = null, int? resourceVersion = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1Event> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return WatchNamespacedObjectAsync<V1Event>("events", name, @namespace, @continue, fieldSelector, includeUninitialized, labelSelector, limit, pretty, timeoutSeconds, resourceVersion, customHeaders, onEvent, onError, cancellationToken);
-        }
-
-        /// <inheritdoc/>
-        public Task<Watcher<V1LimitRange>> WatchNamespacedLimitRangeAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, int? timeoutSeconds = null, int? resourceVersion = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1LimitRange> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return WatchNamespacedObjectAsync<V1LimitRange>("limitranges", name, @namespace, @continue, fieldSelector, includeUninitialized, labelSelector, limit, pretty, timeoutSeconds, resourceVersion, customHeaders, onEvent, onError, cancellationToken);
-        }
-
-        /// <inheritdoc/>
-        public Task<Watcher<V1Namespace>> WatchNamespaceAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, int? timeoutSeconds = null, int? resourceVersion = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1Namespace> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return WatchObjectAsync<V1Namespace>("namespaces", name, @namespace, @continue, fieldSelector, includeUninitialized, labelSelector, limit, pretty, timeoutSeconds, resourceVersion, customHeaders, onEvent, onError, cancellationToken);
-        }
-
-        /// <inheritdoc/>
-        public Task<Watcher<V1Node>> WatchNodeAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, int? timeoutSeconds = null, int? resourceVersion = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1Node> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return WatchObjectAsync<V1Node>("nodes", name, @namespace, @continue, fieldSelector, includeUninitialized, labelSelector, limit, pretty, timeoutSeconds, resourceVersion, customHeaders, onEvent, onError, cancellationToken);
-        }
-
-        /// <inheritdoc/>
-        public Task<Watcher<V1PersistentVolumeClaim>> WatchNamespacedPersistentVolumeClaimAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, int? timeoutSeconds = null, int? resourceVersion = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1PersistentVolumeClaim> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return WatchNamespacedObjectAsync<V1PersistentVolumeClaim>("persistentvolumeclaims", name, @namespace, @continue, fieldSelector, includeUninitialized, labelSelector, limit, pretty, timeoutSeconds, resourceVersion, customHeaders, onEvent, onError, cancellationToken);
-        }
-
-        /// <inheritdoc/>
-        public Task<Watcher<V1PersistentVolume>> WatchPersistentVolumeAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, int? timeoutSeconds = null, int? resourceVersion = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1PersistentVolume> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return WatchObjectAsync<V1PersistentVolume>("persistentvolumes", name, @namespace, @continue, fieldSelector, includeUninitialized, labelSelector, limit, pretty, timeoutSeconds, resourceVersion, customHeaders, onEvent, onError, cancellationToken);
-        }
-
-        /// <inheritdoc/>
-        public Task<Watcher<V1Pod>> WatchNamespacedPodAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, int? timeoutSeconds = null, int? resourceVersion = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1Pod> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return WatchNamespacedObjectAsync<V1Pod>("pods", name, @namespace, @continue, fieldSelector, includeUninitialized, labelSelector, limit, pretty, timeoutSeconds, resourceVersion, customHeaders, onEvent, onError, cancellationToken);
-        }
-
-        /// <inheritdoc/>
-        public Task<Watcher<V1PodTemplate>> WatchNamespacedPodTemplateAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, int? timeoutSeconds = null, int? resourceVersion = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1PodTemplate> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return WatchNamespacedObjectAsync<V1PodTemplate>("podtemplates", name, @namespace, @continue, fieldSelector, includeUninitialized, labelSelector, limit, pretty, timeoutSeconds, resourceVersion, customHeaders, onEvent, onError, cancellationToken);
-        }
-
-        /// <inheritdoc/>
-        public Task<Watcher<V1ReplicationController>> WatchNamespacedReplicationControllerAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, int? timeoutSeconds = null, int? resourceVersion = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1ReplicationController> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return WatchNamespacedObjectAsync<V1ReplicationController>("replicationcontrollers", name, @namespace, @continue, fieldSelector, includeUninitialized, labelSelector, limit, pretty, timeoutSeconds, resourceVersion, customHeaders, onEvent, onError, cancellationToken);
-        }
-        
-        public Task<Watcher<T>> WatchNamespacedObjectAsync<T>(string resourceType, string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, int? timeoutSeconds = null, int? resourceVersion = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, T> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-
-            if (@namespace == null)
-            {
-                throw new ArgumentNullException(nameof(@namespace));
-            }
-
-            return WatchObjectAsync<T>(resourceType, name, @namespace, @continue, fieldSelector, includeUninitialized, labelSelector, limit, pretty, timeoutSeconds, resourceVersion, customHeaders, onEvent, onError, cancellationToken);
-        }
-
-        public async Task<Watcher<T>> WatchObjectAsync<T>(string resourceType, string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, int? timeoutSeconds = null, int? resourceVersion = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, T> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Watcher<T>> WatchObjectAsync<T>(string path, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, int? timeoutSeconds = null, string resourceVersion = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, T> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -99,8 +22,7 @@ namespace k8s
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("name", name);
-                tracingParameters.Add("namespace", @namespace);
+                tracingParameters.Add("path", path);
                 tracingParameters.Add("continue", @continue);
                 tracingParameters.Add("fieldSelector", fieldSelector);
                 tracingParameters.Add("includeUninitialized", includeUninitialized);
@@ -109,7 +31,7 @@ namespace k8s
                 tracingParameters.Add("pretty", pretty);
                 tracingParameters.Add("timeoutSeconds", timeoutSeconds);
                 tracingParameters.Add("resourceVersion", resourceVersion);
-                ServiceClientTracing.Enter(_invocationId, this, nameof(WatchNamespacedPodAsync), tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, nameof(WatchObjectAsync), tracingParameters);
             }
 
             // Construct URL
@@ -119,14 +41,7 @@ namespace k8s
                 uriBuilder.Path += "/";
             }
 
-            uriBuilder.Path += "api/v1/watch";
-
-            if (@namespace != null)
-            {
-                uriBuilder.Path += $"/namespaces/{@namespace}";
-            }
-
-            uriBuilder.Path += $"/{resourceType}/{name}";
+            uriBuilder.Path += path;
 
             var query = string.Empty;
 
@@ -171,7 +86,7 @@ namespace k8s
 
             if (resourceVersion != null)
             {
-                query = QueryHelpers.AddQueryString(query, "resourceVersion", resourceVersion.Value.ToString());
+                query = QueryHelpers.AddQueryString(query, "resourceVersion", resourceVersion);
             }
 
             uriBuilder.Query = query;
