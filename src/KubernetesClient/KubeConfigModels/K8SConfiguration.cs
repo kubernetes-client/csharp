@@ -53,5 +53,12 @@ namespace k8s.KubeConfigModels
         /// </summary>
         [YamlMember(Alias = "extensions")]
         public IDictionary<string, dynamic> Extensions { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the Kubernetes configuration file. This property is set only when the configuration
+        /// was loaded from disk, and can be used to resolve relative paths.
+        /// </summary>
+        [YamlIgnore]
+        public string FileName { get; set; }
     }
 }
