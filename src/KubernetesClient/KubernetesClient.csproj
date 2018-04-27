@@ -1,6 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <PackageVersion>0.7.0-beta</PackageVersion>
     <Authors>The Kubernetes Project Authors</Authors>
     <Copyright>2017 The Kubernetes Project Authors</Copyright>
     <Description>Client library for the Kubernetes open source container orchestrator.</Description>
@@ -17,6 +16,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="1.1.2" />
+    <PackageReference Include="Nerdbank.GitVersioning" Version="2.1.23" PrivateAssets="all" />
     <PackageReference Include="Portable.BouncyCastle" Version="1.8.1.3" />
     <PackageReference Include="Fractions" Version="3.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="1.1.2" />
