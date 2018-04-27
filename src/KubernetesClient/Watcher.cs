@@ -4,6 +4,7 @@ using System.Runtime.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using k8s.Exceptions;
+using k8s.Models;
 using Microsoft.Rest;
 using Microsoft.Rest.Serialization;
 
@@ -30,7 +31,7 @@ namespace k8s
         private readonly CancellationTokenSource _cts;
         private readonly StreamReader _streamReader;
 
-        internal Watcher(StreamReader streamReader, Action<WatchEventType, T> onEvent, Action<Exception> onError)
+        public Watcher(StreamReader streamReader, Action<WatchEventType, T> onEvent, Action<Exception> onError)
         {
             _streamReader = streamReader;
             OnEvent += onEvent;
@@ -57,8 +58,19 @@ namespace k8s
 
                         try
                         {
-                            var @event = SafeJsonConvert.DeserializeObject<WatchEvent>(line);
-                            OnEvent?.Invoke(@event.Type, @event.Object);
+                            var genericEvent = SafeJsonConvert.DeserializeObject<k8s.Watcher<KubernetesObject>.WatchEvent>(line);
+
+                            if (genericEvent.Object.Kind == "Status")
+                            {
+                                var statusEvent = SafeJsonConvert.DeserializeObject<k8s.Watcher<V1Status>.WatchEvent>(line);
+                                var exception = new KubernetesException(statusEvent.Object);
+                                this.OnError?.Invoke(exception);
+                            }
+                            else
+                            {
+                                var @event = SafeJsonConvert.DeserializeObject<k8s.Watcher<T>.WatchEvent>(line);
+                                this.OnEvent?.Invoke(@event.Type, @event.Object);
+                            }
                         }
                         catch (Exception e)
                         {

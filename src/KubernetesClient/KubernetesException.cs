@@ -1,0 +1,82 @@
+using k8s.Models;
+using System;
+#if !NETSTANDARD1_4
+using System.Runtime.Serialization;
+#endif
+
+namespace k8s
+{
+    /// <summary>
+    /// Represents an error message returned by the Kubernetes API server.
+    /// </summary>
+    public class KubernetesException : Exception
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EtcdException"/> class.
+        /// </summary>
+        public KubernetesException()
+        {
+        }
+
+        public KubernetesException(V1Status status)
+            : this(status?.Message)
+        {
+            this.Status = status;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EtcdException"/> class with an error message.
+        /// </summary>
+        /// <param name="message">
+        /// The error message that explains the reason for the exception.
+        /// </param>
+        public KubernetesException(string message)
+            : base(message)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EtcdException"/> class with a specified error
+        /// message and a reference to the inner exception that is the cause of this exception.
+        /// </summary>
+        /// <param name="message">
+        /// The error message that explains the reason for the exception.
+        /// </param>
+        /// <param name="inner">
+        /// The exception that is the cause of the current exception, or <see langword="null"/>
+        ///  if no inner exception is specified.
+        /// </param>
+        public KubernetesException(string message, Exception innerException)
+            : base(message, innerException)
+        {
+        }
+
+#if !NETSTANDARD1_4
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EtcdException"/> class with serialized data.
+        /// </summary>
+        /// <param name="info">
+        /// The <see cref="SerializationInfo"/> that holds the serialized
+        /// object data about the exception being thrown.
+        /// </param>
+        /// <param name="context">
+        /// The <see cref="StreamingContext"/> that contains contextual information
+        /// about the source or destination.
+        /// </param>
+        protected KubernetesException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
+        {
+        }
+#endif
+
+        /// <summary>
+        /// Gets, when this exception was raised because of a Kubernetes status message, the underlying
+        /// Kubernetes status message.
+        /// </summary>
+        public V1Status Status
+        {
+            get;
+            private set;
+        }
+    }
+}
