@@ -221,6 +221,8 @@ namespace k8s.Tests
         public async Task WatchAllEvents()
         {
             AsyncCountdownEvent eventsReceived = new AsyncCountdownEvent(4 /* first line of response is eaten by WatcherDelegatingHandler */);
+            AsyncManualResetEvent serverShutdown = new AsyncManualResetEvent();
+
             using (var server = new MockKubeApiServer(testOutput, async httpContext =>
             {
                 await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse);
@@ -230,7 +232,7 @@ namespace k8s.Tests
                 await WriteStreamLine(httpContext, MockErrorStreamLine);
 
                 // make server alive, cannot set to int.max as of it would block response
-                await Task.Delay(TimeSpan.FromDays(1));
+                await serverShutdown.WaitAsync();
                 return false;
             }))
             {
@@ -275,10 +277,11 @@ namespace k8s.Tests
                 Assert.Contains(WatchEventType.Modified, events);
                 Assert.Contains(WatchEventType.Error, events);
 
-
                 Assert.Equal(0, errors);
 
                 Assert.True(watcher.Watching);
+
+                serverShutdown.Set();
             }
         }
 
@@ -341,13 +344,15 @@ namespace k8s.Tests
         public async Task TestWatchWithHandlers()
         {
             AsyncCountdownEvent eventsReceived = new AsyncCountdownEvent(1);
+            AsyncManualResetEvent serverShutdown = new AsyncManualResetEvent();
+
             using (var server = new MockKubeApiServer(testOutput, async httpContext =>
             {
                 await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse);
                 await WriteStreamLine(httpContext, MockAddedEventStreamLine);
 
                 // make server alive, cannot set to int.max as of it would block response
-                await Task.Delay(TimeSpan.FromDays(1));
+                await serverShutdown.WaitAsync();
                 return false;
             }))
             {
@@ -386,6 +391,8 @@ namespace k8s.Tests
 
                 Assert.True(handler1.Called);
                 Assert.True(handler2.Called);
+
+                serverShutdown.Set();
             }
         }
     }
