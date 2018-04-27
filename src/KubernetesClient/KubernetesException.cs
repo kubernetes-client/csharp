@@ -12,12 +12,19 @@ namespace k8s
     public class KubernetesException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EtcdException"/> class.
+        /// Initializes a new instance of the <see cref="KubernetesException"/> class.
         /// </summary>
         public KubernetesException()
         {
         }
 
+        /// <summary>
+        /// Initializes a ne winstance of the <see cref="KubernetesException"/> class using
+        /// the data from a <see cref="V1Status"/> object.
+        /// </summary>
+        /// <param name="status">
+        /// A status message which triggered this exception to be thrown.
+        /// </param>
         public KubernetesException(V1Status status)
             : this(status?.Message)
         {
@@ -25,7 +32,7 @@ namespace k8s
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EtcdException"/> class with an error message.
+        /// Initializes a new instance of the <see cref="KubernetesException"/> class with an error message.
         /// </summary>
         /// <param name="message">
         /// The error message that explains the reason for the exception.
@@ -36,7 +43,7 @@ namespace k8s
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EtcdException"/> class with a specified error
+        /// Initializes a new instance of the <see cref="KubernetesException"/> class with a specified error
         /// message and a reference to the inner exception that is the cause of this exception.
         /// </summary>
         /// <param name="message">
@@ -53,7 +60,7 @@ namespace k8s
 
 #if !NETSTANDARD1_4
         /// <summary>
-        /// Initializes a new instance of the <see cref="EtcdException"/> class with serialized data.
+        /// Initializes a new instance of the <see cref="KubernetesException"/> class with serialized data.
         /// </summary>
         /// <param name="info">
         /// The <see cref="SerializationInfo"/> that holds the serialized
