@@ -1,6 +1,10 @@
 sudo: required
 dist: trusty
 
+# Don't do shallow clones
+git:
+  depth: false
+
 os:
   - osx
   - linux
