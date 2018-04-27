@@ -26,6 +26,7 @@ namespace k8s.Tests
         private static readonly string MockModifiedStreamLine = BuildWatchEventStreamLine(WatchEventType.Modified);
         private static readonly string MockErrorStreamLine = BuildWatchEventStreamLine(WatchEventType.Error);
         private static readonly string MockBadStreamLine = "bad json";
+        private static readonly TimeSpan TestTimeout = TimeSpan.FromSeconds(15);
 
         private readonly ITestOutputHelper testOutput;
 
@@ -133,7 +134,7 @@ namespace k8s.Tests
                 );
 
                 // wait server yields all events
-                await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TimeSpan.FromSeconds(30)));
+                await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout));
 
                 Assert.True(
                     eventsReceived.CurrentCount == 0,
@@ -188,7 +189,7 @@ namespace k8s.Tests
                 );
 
                 // wait at least an event
-                await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TimeSpan.FromSeconds(10)));
+                await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout));
                 Assert.True(
                     eventsReceived.CurrentCount == 0,
                     "Timed out waiting for events."
@@ -204,7 +205,7 @@ namespace k8s.Tests
                 // Let the server disconnect
                 serverRunning = false;
 
-                var timeout = Task.Delay(TimeSpan.FromSeconds(5));
+                var timeout = Task.Delay(TestTimeout);
 
                 while(!timeout.IsCompleted && watcher.Watching)
                 {
@@ -262,7 +263,7 @@ namespace k8s.Tests
                 );
 
                 // wait server yields all events
-                await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TimeSpan.FromSeconds(30)));
+                await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout));
 
                 Assert.True(
                     eventsReceived.CurrentCount == 0,
@@ -312,7 +313,7 @@ namespace k8s.Tests
                     });
 
                 // wait server down
-                await Task.WhenAny(exceptionReceived.WaitAsync(), Task.Delay(TimeSpan.FromSeconds(30)));
+                await Task.WhenAny(exceptionReceived.WaitAsync(), Task.Delay(TestTimeout));
 
                 Assert.True(
                     exceptionReceived.IsSet,
@@ -374,7 +375,7 @@ namespace k8s.Tests
                 );
 
                 // wait server yields all events
-                await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TimeSpan.FromSeconds(10)));
+                await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout));
 
                 Assert.True(
                      eventsReceived.CurrentCount == 0,
