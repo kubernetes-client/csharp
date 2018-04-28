@@ -1,13 +1,12 @@
-using Newtonsoft.Json;
 using NJsonSchema;
 using NSwag;
+using Nustache.Core;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace KubernetesWatchGenerator
@@ -16,9 +15,35 @@ namespace KubernetesWatchGenerator
     {
         static async Task Main(string[] args)
         {
-            // Download the latest spec
-            const string kubernetesBranch = "v1.10.0";
+            // Initialize variables - such as the Kubernetes branch for which to generate the API.
+            string kubernetesBranch = "v1.10.0";
+
+            if (Environment.GetEnvironmentVariable("KUBERNETES_BRANCH") != null)
+            {
+                kubernetesBranch = Environment.GetEnvironmentVariable("KUBERNETES_BRANCH");
+
+                Console.WriteLine($"Using Kubernetes branch {kubernetesBranch}, as set by the KUBERNETES_BRANCH environment variable");
+            }
+
             const string outputDirectory = "../../../../../src/KubernetesClient/generated/";
+
+            var specUrl = $"https://raw.githubusercontent.com/kubernetes/kubernetes/{kubernetesBranch}/api/openapi-spec/swagger.json";
+            var specPath = $"{kubernetesBranch}-swagger.json";
+
+            // Download the Kubernetes spec, and cache it locally. Don't download it if already present in the cache.
+            if (!File.Exists(specPath))
+            {
+                HttpClient client = new HttpClient();
+                using (var response = await client.GetAsync(specUrl, HttpCompletionOption.ResponseHeadersRead))
+                using (var stream = await response.Content.ReadAsStreamAsync())
+                using (var output = File.Open(specPath, FileMode.Create, FileAccess.ReadWrite))
+                {
+                    await stream.CopyToAsync(output);
+                }
+            }
+
+            // Read the spec
+            var swagger = await SwaggerDocument.FromFileAsync(specPath);
 
             // We skip operations where the name of the class in the C# client could not be determined correctly.
             // That's usually because there are different version of the same object (e.g. for deployments).
@@ -32,162 +57,108 @@ namespace KubernetesWatchGenerator
                 "watchExtensionsV1beta1PodSecurityPolicy"
             };
 
-            var specUrl = $"https://raw.githubusercontent.com/kubernetes/kubernetes/{kubernetesBranch}/api/openapi-spec/swagger.json";
-            var specPath = $"{kubernetesBranch}-swagger.json";
-
-            if (!File.Exists(specPath))
-            {
-                HttpClient client = new HttpClient();
-                using (var response = await client.GetAsync(specUrl, HttpCompletionOption.ResponseHeadersRead))
-                using (var stream = await response.Content.ReadAsStreamAsync())
-                using (var output = File.Open(specPath, FileMode.Create, FileAccess.ReadWrite))
-                {
-                    await stream.CopyToAsync(output);
-                }
-            }
-
-            var swagger = await SwaggerDocument.FromFileAsync(specPath);
-
             var watchOperations = swagger.Operations.Where(
                 o => o.Path.Contains("/watch/")
                 && o.Operation.ActualParameters.Any(p => p.Name == "name")
                 && !blacklistedOperations.Contains(o.Operation.OperationId)).ToArray();
 
-            using (Stream interfaceFile = File.Open($"{outputDirectory}IKubernetes.Watch.cs", FileMode.Create, FileAccess.ReadWrite))
-            using (StreamWriter interfaceWriter = new StreamWriter(interfaceFile, Encoding.UTF8))
-            using (Stream classFile = File.Open($"{outputDirectory}Kubernetes.Watch.cs", FileMode.Create, FileAccess.ReadWrite))
-            using (StreamWriter classWriter = new StreamWriter(classFile, Encoding.UTF8))
+            // Register helpers used in the templating.
+            Helpers.Register(nameof(ToXmlDoc), ToXmlDoc);
+            Helpers.Register(nameof(ClassName), ClassName);
+            Helpers.Register(nameof(MethodName), MethodName);
+            Helpers.Register(nameof(GetDotNetName), GetDotNetName);
+            Helpers.Register(nameof(GetDotNetType), GetDotNetType);
+            Helpers.Register(nameof(GetPathExpression), GetPathExpression);
+
+            // Render.
+            Render.FileToFile("IKubernetes.Watch.cs.template", watchOperations, $"{outputDirectory}IKubernetes.Watch.cs");
+            Render.FileToFile("Kubernetes.Watch.cs.template", watchOperations, $"{outputDirectory}Kubernetes.Watch.cs");
+        }
+
+        static void ToXmlDoc(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
+        {
+            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is string)
             {
-                interfaceWriter.WriteLine("using k8s.Models;");
-                interfaceWriter.WriteLine("using System; ");
-                interfaceWriter.WriteLine("using System.Collections.Generic; ");
-                interfaceWriter.WriteLine("using System.Threading; ");
-                interfaceWriter.WriteLine("using System.Threading.Tasks; ");
-                interfaceWriter.WriteLine("");
-                interfaceWriter.WriteLine("namespace k8s");
-                interfaceWriter.WriteLine("{");
-                interfaceWriter.WriteLine("    public partial interface IKubernetes");
-                interfaceWriter.WriteLine("    {");
+                bool first = true;
 
-                classWriter.WriteLine("using k8s.Models;");
-                classWriter.WriteLine("using System; ");
-                classWriter.WriteLine("using System.Collections.Generic; ");
-                classWriter.WriteLine("using System.Threading; ");
-                classWriter.WriteLine("using System.Threading.Tasks; ");
-                classWriter.WriteLine("");
-                classWriter.WriteLine("namespace k8s");
-                classWriter.WriteLine("{");
-                classWriter.WriteLine("    public partial class Kubernetes");
-                classWriter.WriteLine("    {");
-
-                foreach (var watchOperation in watchOperations)
+                using (StringReader reader = new StringReader(arguments[0] as string))
                 {
-                    var groupVersionKind = (Dictionary<string, object>)watchOperation.Operation.ExtensionData["x-kubernetes-group-version-kind"];
-                    var group = (string)groupVersionKind["group"];
-                    var kind = (string)groupVersionKind["kind"];
-                    var version = (string)groupVersionKind["version"];
-                    var tag = watchOperation.Operation.Tags[0];
-                    tag = tag.Replace("_", string.Empty);
-
-                    var className = $"{ToPascalCase(version)}{kind}";
-                    var methodName = ToPascalCase(watchOperation.Operation.OperationId);
-
-                    // This tries to remove the version from the method name, e.g. watchCoreV1NamespacedPod => WatchNamespacedPod
-                    methodName = methodName.Replace(tag, string.Empty, StringComparison.OrdinalIgnoreCase);
-                    methodName += "Async";
-
-                    // Generate the signature and the method definition in the interface
-                    string signature = $"Task<Watcher<{className}>> {methodName}(";
-                    bool firstParam = true;
-
-                    interfaceWriter.WriteLine("        /// <summary>");
-
-                    using (StringReader reader = new StringReader(watchOperation.Operation.Description))
+                    string line = null;
+                    while ((line = reader.ReadLine()) != null)
                     {
-                        string line;
-                        while ((line = reader.ReadLine()) != null)
+                        if (!first)
                         {
-                            interfaceWriter.WriteLine($"        /// {line}");
-                        }
-                    }
-
-                    interfaceWriter.WriteLine("        /// </summary>");
-
-                    foreach (var param in watchOperation.Operation.ActualParameters.OrderByDescending(p => p.IsRequired).ThenBy(p => p.Name))
-                    {
-                        if (param.Name == "watch")
-                        {
-                            continue;
-                        }
-
-                        interfaceWriter.WriteLine($"        /// <param name=\"{param.Name}\">");
-                        using (StringReader reader = new StringReader(param.Description))
-                        {
-                            string line;
-                            while ((line = reader.ReadLine()) != null)
-                            {
-                                interfaceWriter.WriteLine($"        /// {line}");
-                            }
-                        }
-
-                        interfaceWriter.WriteLine("        /// </param>");
-
-                        if (firstParam)
-                        {
-                            firstParam = false;
+                            context.Write(Environment.NewLine);
+                            context.Write("        /// ");
                         }
                         else
                         {
-                            signature += ", ";
+                            first = false;
                         }
-
-                        signature += $"{GetDotNetType(param.Type, param.Name, param.IsRequired)} {GetDotNetName(param.Name)}";
-
-                        if (!param.IsRequired)
-                        {
-                            signature += " = null";
-                        }
+                        context.Write(line);
                     }
-
-                    interfaceWriter.WriteLine(
-@"        /// <param name=""customHeaders"">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name=""onEvent"" >
-        /// The action to invoke when the server sends a new event.
-        /// </param>
-        /// <param name=""onError"" >
-        /// The action to invoke when an error occurs.
-        /// </param>
-        /// <param name=""cancellationToken"" >
-        /// A <see cref=""CancellationToken""/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        /// <returns>
-        /// A <see cref=""Task"" /> which represents the asynchronous operation, and returns a new watcher.
-        /// </returns>");
-                    signature += $", Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, {className}> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken))";
-
-                    interfaceWriter.WriteLine($"        {signature};");
-                    interfaceWriter.WriteLine();
-
-                    string pathExpression = watchOperation.Path;
-                    pathExpression = pathExpression.Replace("{namespace}", "{@namespace}");
-
-                    // Generate the method implementation in the class.
-                    classWriter.WriteLine("        /// <inheritdoc/>");
-                    classWriter.WriteLine($"        public {signature}");
-                    classWriter.WriteLine("        {");
-                    classWriter.WriteLine($"            string path = $\"{pathExpression}\";");
-                    classWriter.WriteLine($"            return WatchObjectAsync<{className}>(path: path, @continue: @continue, fieldSelector: fieldSelector, includeUninitialized: includeUninitialized, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, cancellationToken: cancellationToken);");
-                    classWriter.WriteLine("        }");
-                    classWriter.WriteLine();
                 }
+            }
+        }
 
-                interfaceWriter.WriteLine("    }");
-                interfaceWriter.WriteLine("}");
+        static void MethodName(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
+        {
+            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is SwaggerOperation)
+            {
+                context.Write(MethodName(arguments[0] as SwaggerOperation));
+            }
+        }
 
-                classWriter.WriteLine("    }");
-                classWriter.WriteLine("}");
+        static string MethodName(SwaggerOperation watchOperation)
+        {
+            var tag = watchOperation.Tags[0];
+            tag = tag.Replace("_", string.Empty);
+
+            var methodName = ToPascalCase(watchOperation.OperationId);
+
+            // This tries to remove the version from the method name, e.g. watchCoreV1NamespacedPod => WatchNamespacedPod
+            methodName = methodName.Replace(tag, string.Empty, StringComparison.OrdinalIgnoreCase);
+            methodName += "Async";
+            return methodName;
+        }
+
+        static void ClassName(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
+        {
+            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is SwaggerOperation)
+            {
+                context.Write(ClassName(arguments[0] as SwaggerOperation));
+            }
+        }
+
+        static string ClassName(SwaggerOperation watchOperation)
+        {
+            var groupVersionKind = (Dictionary<string, object>)watchOperation.ExtensionData["x-kubernetes-group-version-kind"];
+            var group = (string)groupVersionKind["group"];
+            var kind = (string)groupVersionKind["kind"];
+            var version = (string)groupVersionKind["version"];
+
+            var className = $"{ToPascalCase(version)}{kind}";
+            return className;
+        }
+
+        static void GetDotNetType(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
+        {
+            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is SwaggerParameter)
+            {
+                var parameter = arguments[0] as SwaggerParameter;
+                context.Write(GetDotNetType(parameter.Type, parameter.Name, parameter.IsRequired));
+            }
+            else if(arguments != null && arguments.Count > 2 && arguments[0] != null && arguments[1] != null && arguments[2] != null && arguments[0] is JsonObjectType && arguments[1] is string && arguments[2] is bool)
+            {
+                context.Write(GetDotNetType((JsonObjectType)arguments[0], (string)arguments[1], (bool)arguments[2]));
+            }
+            else if(arguments != null && arguments.Count > 0 && arguments[0] != null)
+            {
+                context.Write($"ERROR: Expected SwaggerParameter but got {arguments[0].GetType().FullName}");
+            }
+            else
+            {
+                context.Write($"ERROR: Expected a SwaggerParameter argument but got none.");
             }
         }
 
@@ -228,6 +199,20 @@ namespace KubernetesWatchGenerator
             }
         }
 
+        static void GetDotNetName(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
+        {
+            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is SwaggerParameter)
+            {
+                var parameter = arguments[0] as SwaggerParameter;
+                context.Write(GetDotNetName(parameter.Name));
+            }
+            else if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is string)
+            {
+                var parameter = arguments[0] as SwaggerParameter;
+                context.Write(GetDotNetName((string)arguments[0]));
+            }
+        }
+
         private static string GetDotNetName(string jsonName)
         {
             if (jsonName == "namespace")
@@ -240,6 +225,22 @@ namespace KubernetesWatchGenerator
             }
 
             return jsonName;
+        }
+
+        static void GetPathExpression(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
+        {
+            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is SwaggerOperationDescription)
+            {
+                var operation = arguments[0] as SwaggerOperationDescription;
+                context.Write(GetPathExpression(operation));
+            }
+        }
+
+        private static string GetPathExpression(SwaggerOperationDescription operation)
+        {
+            string pathExpression = operation.Path;
+            pathExpression = pathExpression.Replace("{namespace}", "{@namespace}");
+            return pathExpression;
         }
 
         private static string ToPascalCase(string name)
