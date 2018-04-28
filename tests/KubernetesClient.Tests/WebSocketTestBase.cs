@@ -19,13 +19,14 @@ namespace k8s.Tests
     /// <summary>
     ///     The base class for Kubernetes WebSocket test suites.
     /// </summary>
-    public abstract class WebSocketTestBase
-        : TestBase
+    public abstract class WebSocketTestBase : IDisposable
     {
         /// <summary>
         ///     The next server port to use.
         /// </summary>
         static int NextPort = 13255;
+
+        private readonly ITestOutputHelper testOutput;
 
         /// <summary>
         ///     Create a new <see cref="WebSocketTestBase"/>.
@@ -34,13 +35,14 @@ namespace k8s.Tests
         ///     Output for the current test.
         /// </param>
         protected WebSocketTestBase(ITestOutputHelper testOutput)
-            : base(testOutput)
         {
+            this.testOutput = testOutput;
+
             int port = Interlocked.Increment(ref NextPort);
 
             // Useful to diagnose test timeouts.
             TestCancellation.Register(
-                () => Log.LogInformation("Test-level cancellation token has been canceled.")
+                () => testOutput.WriteLine("Test-level cancellation token has been canceled.")
             );
 
             ServerBaseAddress = new Uri($"http://localhost:{port}");
@@ -52,9 +54,6 @@ namespace k8s.Tests
                 .ConfigureLogging(ConfigureTestServerLogging)
                 .UseUrls(ServerBaseAddress.AbsoluteUri)
                 .Build();
-
-            Disposal.Add(CancellationSource);
-            Disposal.Add(Host);
         }
 
         /// <summary>
@@ -115,7 +114,7 @@ namespace k8s.Tests
                 throw new ArgumentNullException(nameof(logging));
 
             logging.ClearProviders(); // Don't log to console.
-            logging.AddTestOutput(TestOutput, MinLogLevel);
+            logging.AddTestOutput(this.testOutput, LogLevel.Information);
         }
 
         /// <summary>
@@ -165,7 +164,7 @@ namespace k8s.Tests
             if (serverSocket == null)
                 throw new ArgumentNullException(nameof(serverSocket));
 
-            Log.LogInformation("Disconnecting...");
+            testOutput.WriteLine("Disconnecting...");
 
             // Asynchronously perform the server's half of the handshake (the call to clientSocket.CloseAsync will block until it receives the server-side response).
             ArraySegment<byte> receiveBuffer = new byte[1024];
@@ -173,19 +172,16 @@ namespace k8s.Tests
                 .ContinueWith(async received =>
                 {
                     if (received.IsFaulted)
-                        Log.LogError(new EventId(0), received.Exception.Flatten().InnerExceptions[0], "Server socket operation to receive Close message failed.");
+                        testOutput.WriteLine("Server socket operation to receive Close message failed: {0}", received.Exception.Flatten().InnerExceptions[0]);
                     else if (received.IsCanceled)
-                        Log.LogWarning("Server socket operation to receive Close message was canceled.");
+                        testOutput.WriteLine("Server socket operation to receive Close message was canceled.");
                     else
                     {
-                        Log.LogInformation("Received {MessageType} message from server socket (expecting {ExpectedMessageType}).",
-                            received.Result.MessageType,
-                            WebSocketMessageType.Close
-                        );
+                        testOutput.WriteLine($"Received {received.Result.MessageType} message from server socket (expecting {WebSocketMessageType.Close}).");
 
                         if (received.Result.MessageType == WebSocketMessageType.Close)
                         {
-                            Log.LogInformation("Closing server socket (with status {CloseStatus})...", received.Result.CloseStatus);
+                            testOutput.WriteLine($"Closing server socket (with status {received.Result.CloseStatus})...");
 
                             await serverSocket.CloseAsync(
                                 received.Result.CloseStatus.Value,
@@ -193,22 +189,22 @@ namespace k8s.Tests
                                 TestCancellation
                             );
 
-                            Log.LogInformation("Server socket closed.");
+                            testOutput.WriteLine("Server socket closed.");
                         }
 
                         Assert.Equal(WebSocketMessageType.Close, received.Result.MessageType);
                     }
                 });
 
-            Log.LogInformation("Closing client socket...");
+            testOutput.WriteLine("Closing client socket...");
 
             await clientSocket.CloseAsync(closeStatus, closeStatusDescription, TestCancellation).ConfigureAwait(false);
 
-            Log.LogInformation("Client socket closed.");
+            testOutput.WriteLine("Client socket closed.");
 
             await closeServerSocket.ConfigureAwait(false);
 
-            Log.LogInformation("Disconnected.");
+            testOutput.WriteLine("Disconnected.");
 
             Assert.Equal(closeStatus, clientSocket.CloseStatus);
             Assert.Equal(clientSocket.CloseStatus, serverSocket.CloseStatus);
@@ -297,6 +293,12 @@ namespace k8s.Tests
                 streamIndex: receivedData[0],
                 totalBytes: receivedData.Length
             );
+        }
+
+        public void Dispose()
+        {
+            this.CancellationSource.Dispose();
+            this.Host.Dispose();
         }
 
         /// <summary>

@@ -22,6 +22,8 @@ namespace k8s.Tests
     public class PodExecTests
         : WebSocketTestBase
     {
+        private readonly ITestOutputHelper testOutput;
+
         /// <summary>
         ///     Create a new <see cref="KubeApiClient"/> exec-in-pod test suite.
         /// </summary>
@@ -31,6 +33,7 @@ namespace k8s.Tests
         public PodExecTests(ITestOutputHelper testOutput)
             : base(testOutput)
         {
+            this.testOutput = testOutput;
         }
 
         /// <summary>
@@ -49,7 +52,7 @@ namespace k8s.Tests
 
             using (Kubernetes client = CreateTestClient())
             {
-                Log.LogInformation("Invoking exec operation...");
+                testOutput.WriteLine("Invoking exec operation...");
 
                 WebSocket clientSocket = await client.WebSocketNamespacedPodExecAsync(
                     name: "mypod",
@@ -63,19 +66,19 @@ namespace k8s.Tests
                 );
                 Assert.Equal(K8sProtocol.ChannelV1, clientSocket.SubProtocol); // For WebSockets, the Kubernetes API defaults to the binary channel (v1) protocol.
 
-                Log.LogInformation("Client socket connected (socket state is {ClientSocketState}). Waiting for server-side socket to become available...", clientSocket.State);
+                testOutput.WriteLine($"Client socket connected (socket state is {clientSocket.State}). Waiting for server-side socket to become available...");
 
                 WebSocket serverSocket = await WebSocketTestAdapter.AcceptedPodExecV1Connection;
-                Log.LogInformation("Server-side socket is now available (socket state is {ServerSocketState}). Sending data to server socket...", serverSocket.State);
+                testOutput.WriteLine($"Server-side socket is now available (socket state is {serverSocket.State}). Sending data to server socket...");
 
                 const int STDOUT = 1;
                 const string expectedOutput = "This is text send to STDOUT.";
 
                 int bytesSent = await SendMultiplexed(serverSocket, STDOUT, expectedOutput);
-                Log.LogInformation("Sent {ByteCount} bytes to server socket; receiving from client socket...", bytesSent);
+                testOutput.WriteLine($"Sent {bytesSent} bytes to server socket; receiving from client socket...");
 
                 (string receivedText, byte streamIndex, int bytesReceived) = await ReceiveTextMultiplexed(clientSocket);
-                Log.LogInformation("Received {ByteCount} bytes from client socket ('{ReceivedText}', stream {StreamIndex}).", bytesReceived, receivedText, streamIndex);
+                testOutput.WriteLine($"Received {bytesReceived} bytes from client socket ('{receivedText}', stream {streamIndex}).");
 
                 Assert.Equal(STDOUT, streamIndex);
                 Assert.Equal(expectedOutput, receivedText);
