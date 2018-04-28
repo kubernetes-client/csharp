@@ -1,4 +1,4 @@
-﻿using k8s.Models;
+using k8s.Models;
 using System; 
 using System.Collections.Generic; 
 using System.Threading; 
@@ -43,22 +43,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1ConfigMap>> WatchNamespacedConfigMapAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1ConfigMap> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1ConfigMap>> WatchNamespacedConfigMapAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1ConfigMap> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind Endpoints
@@ -95,22 +113,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1Endpoints>> WatchNamespacedEndpointsAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1Endpoints> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1Endpoints>> WatchNamespacedEndpointsAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1Endpoints> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind Event
@@ -147,22 +183,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1Event>> WatchNamespacedEventAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1Event> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1Event>> WatchNamespacedEventAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1Event> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind LimitRange
@@ -199,22 +253,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1LimitRange>> WatchNamespacedLimitRangeAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1LimitRange> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1LimitRange>> WatchNamespacedLimitRangeAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1LimitRange> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind PersistentVolumeClaim
@@ -251,22 +323,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1PersistentVolumeClaim>> WatchNamespacedPersistentVolumeClaimAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1PersistentVolumeClaim> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1PersistentVolumeClaim>> WatchNamespacedPersistentVolumeClaimAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1PersistentVolumeClaim> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind Pod
@@ -303,22 +393,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1Pod>> WatchNamespacedPodAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1Pod> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1Pod>> WatchNamespacedPodAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1Pod> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind PodTemplate
@@ -355,22 +463,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1PodTemplate>> WatchNamespacedPodTemplateAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1PodTemplate> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1PodTemplate>> WatchNamespacedPodTemplateAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1PodTemplate> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind ReplicationController
@@ -407,22 +533,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1ReplicationController>> WatchNamespacedReplicationControllerAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1ReplicationController> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1ReplicationController>> WatchNamespacedReplicationControllerAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1ReplicationController> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind ResourceQuota
@@ -459,22 +603,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1ResourceQuota>> WatchNamespacedResourceQuotaAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1ResourceQuota> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1ResourceQuota>> WatchNamespacedResourceQuotaAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1ResourceQuota> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind Secret
@@ -511,22 +673,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1Secret>> WatchNamespacedSecretAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1Secret> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1Secret>> WatchNamespacedSecretAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1Secret> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind ServiceAccount
@@ -563,22 +743,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1ServiceAccount>> WatchNamespacedServiceAccountAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1ServiceAccount> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1ServiceAccount>> WatchNamespacedServiceAccountAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1ServiceAccount> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind Service
@@ -615,22 +813,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1Service>> WatchNamespacedServiceAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1Service> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1Service>> WatchNamespacedServiceAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1Service> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind Namespace
@@ -664,22 +880,39 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1Namespace>> WatchNamespaceAsync(string name, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1Namespace> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1Namespace>> WatchNamespaceAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1Namespace> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind Node
@@ -713,22 +946,39 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1Node>> WatchNodeAsync(string name, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1Node> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1Node>> WatchNodeAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1Node> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind PersistentVolume
@@ -762,22 +1012,39 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1PersistentVolume>> WatchPersistentVolumeAsync(string name, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1PersistentVolume> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1PersistentVolume>> WatchPersistentVolumeAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1PersistentVolume> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind InitializerConfiguration
@@ -811,22 +1078,39 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1alpha1InitializerConfiguration>> WatchInitializerConfigurationAsync(string name, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1alpha1InitializerConfiguration> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1alpha1InitializerConfiguration>> WatchInitializerConfigurationAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1alpha1InitializerConfiguration> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind MutatingWebhookConfiguration
@@ -860,22 +1144,39 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta1MutatingWebhookConfiguration>> WatchMutatingWebhookConfigurationAsync(string name, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta1MutatingWebhookConfiguration> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta1MutatingWebhookConfiguration>> WatchMutatingWebhookConfigurationAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1MutatingWebhookConfiguration> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind ValidatingWebhookConfiguration
@@ -909,22 +1210,39 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta1ValidatingWebhookConfiguration>> WatchValidatingWebhookConfigurationAsync(string name, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta1ValidatingWebhookConfiguration> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta1ValidatingWebhookConfiguration>> WatchValidatingWebhookConfigurationAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1ValidatingWebhookConfiguration> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind CustomResourceDefinition
@@ -958,22 +1276,39 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta1CustomResourceDefinition>> WatchCustomResourceDefinitionAsync(string name, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta1CustomResourceDefinition> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta1CustomResourceDefinition>> WatchCustomResourceDefinitionAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1CustomResourceDefinition> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind APIService
@@ -1007,22 +1342,39 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1APIService>> WatchAPIServiceAsync(string name, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1APIService> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1APIService>> WatchAPIServiceAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1APIService> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind APIService
@@ -1056,22 +1408,39 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta1APIService>> WatchAPIServiceAsync(string name, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta1APIService> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta1APIService>> WatchAPIServiceAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1APIService> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind ControllerRevision
@@ -1108,22 +1477,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1ControllerRevision>> WatchNamespacedControllerRevisionAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1ControllerRevision> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1ControllerRevision>> WatchNamespacedControllerRevisionAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1ControllerRevision> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind DaemonSet
@@ -1160,22 +1547,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1DaemonSet>> WatchNamespacedDaemonSetAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1DaemonSet> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1DaemonSet>> WatchNamespacedDaemonSetAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1DaemonSet> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind Deployment
@@ -1212,22 +1617,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1Deployment>> WatchNamespacedDeploymentAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1Deployment> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1Deployment>> WatchNamespacedDeploymentAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1Deployment> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind ReplicaSet
@@ -1264,22 +1687,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1ReplicaSet>> WatchNamespacedReplicaSetAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1ReplicaSet> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1ReplicaSet>> WatchNamespacedReplicaSetAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1ReplicaSet> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind StatefulSet
@@ -1316,22 +1757,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1StatefulSet>> WatchNamespacedStatefulSetAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1StatefulSet> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1StatefulSet>> WatchNamespacedStatefulSetAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1StatefulSet> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind ControllerRevision
@@ -1368,22 +1827,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta1ControllerRevision>> WatchNamespacedControllerRevisionAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta1ControllerRevision> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta1ControllerRevision>> WatchNamespacedControllerRevisionAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1ControllerRevision> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind StatefulSet
@@ -1420,22 +1897,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta1StatefulSet>> WatchNamespacedStatefulSetAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta1StatefulSet> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta1StatefulSet>> WatchNamespacedStatefulSetAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1StatefulSet> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind ControllerRevision
@@ -1472,22 +1967,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta2ControllerRevision>> WatchNamespacedControllerRevisionAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta2ControllerRevision> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta2ControllerRevision>> WatchNamespacedControllerRevisionAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta2ControllerRevision> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind DaemonSet
@@ -1524,22 +2037,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta2DaemonSet>> WatchNamespacedDaemonSetAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta2DaemonSet> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta2DaemonSet>> WatchNamespacedDaemonSetAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta2DaemonSet> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind ReplicaSet
@@ -1576,22 +2107,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta2ReplicaSet>> WatchNamespacedReplicaSetAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta2ReplicaSet> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta2ReplicaSet>> WatchNamespacedReplicaSetAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta2ReplicaSet> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind StatefulSet
@@ -1628,22 +2177,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta2StatefulSet>> WatchNamespacedStatefulSetAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta2StatefulSet> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta2StatefulSet>> WatchNamespacedStatefulSetAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta2StatefulSet> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind HorizontalPodAutoscaler
@@ -1680,22 +2247,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1HorizontalPodAutoscaler>> WatchNamespacedHorizontalPodAutoscalerAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1HorizontalPodAutoscaler> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1HorizontalPodAutoscaler>> WatchNamespacedHorizontalPodAutoscalerAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1HorizontalPodAutoscaler> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind HorizontalPodAutoscaler
@@ -1732,22 +2317,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V2beta1HorizontalPodAutoscaler>> WatchNamespacedHorizontalPodAutoscalerAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V2beta1HorizontalPodAutoscaler> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V2beta1HorizontalPodAutoscaler>> WatchNamespacedHorizontalPodAutoscalerAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V2beta1HorizontalPodAutoscaler> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind Job
@@ -1784,22 +2387,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1Job>> WatchNamespacedJobAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1Job> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1Job>> WatchNamespacedJobAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1Job> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind CronJob
@@ -1836,22 +2457,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta1CronJob>> WatchNamespacedCronJobAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta1CronJob> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta1CronJob>> WatchNamespacedCronJobAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1CronJob> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind CronJob
@@ -1888,22 +2527,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V2alpha1CronJob>> WatchNamespacedCronJobAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V2alpha1CronJob> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V2alpha1CronJob>> WatchNamespacedCronJobAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V2alpha1CronJob> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind CertificateSigningRequest
@@ -1937,22 +2594,39 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta1CertificateSigningRequest>> WatchCertificateSigningRequestAsync(string name, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta1CertificateSigningRequest> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta1CertificateSigningRequest>> WatchCertificateSigningRequestAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1CertificateSigningRequest> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind Event
@@ -1989,22 +2663,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta1Event>> WatchNamespacedEventAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta1Event> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta1Event>> WatchNamespacedEventAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1Event> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind DaemonSet
@@ -2041,22 +2733,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta1DaemonSet>> WatchNamespacedDaemonSetAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta1DaemonSet> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta1DaemonSet>> WatchNamespacedDaemonSetAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1DaemonSet> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind Ingress
@@ -2093,22 +2803,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta1Ingress>> WatchNamespacedIngressAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta1Ingress> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta1Ingress>> WatchNamespacedIngressAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1Ingress> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind ReplicaSet
@@ -2145,22 +2873,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta1ReplicaSet>> WatchNamespacedReplicaSetAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta1ReplicaSet> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta1ReplicaSet>> WatchNamespacedReplicaSetAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1ReplicaSet> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind NetworkPolicy
@@ -2197,22 +2943,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1NetworkPolicy>> WatchNamespacedNetworkPolicyAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1NetworkPolicy> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1NetworkPolicy>> WatchNamespacedNetworkPolicyAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1NetworkPolicy> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind PodDisruptionBudget
@@ -2249,22 +3013,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta1PodDisruptionBudget>> WatchNamespacedPodDisruptionBudgetAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta1PodDisruptionBudget> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta1PodDisruptionBudget>> WatchNamespacedPodDisruptionBudgetAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1PodDisruptionBudget> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind ClusterRoleBinding
@@ -2298,22 +3080,39 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1ClusterRoleBinding>> WatchClusterRoleBindingAsync(string name, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1ClusterRoleBinding> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1ClusterRoleBinding>> WatchClusterRoleBindingAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1ClusterRoleBinding> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind ClusterRole
@@ -2347,22 +3146,39 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1ClusterRole>> WatchClusterRoleAsync(string name, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1ClusterRole> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1ClusterRole>> WatchClusterRoleAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1ClusterRole> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind RoleBinding
@@ -2399,22 +3215,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1RoleBinding>> WatchNamespacedRoleBindingAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1RoleBinding> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1RoleBinding>> WatchNamespacedRoleBindingAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1RoleBinding> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind Role
@@ -2451,22 +3285,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1Role>> WatchNamespacedRoleAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1Role> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1Role>> WatchNamespacedRoleAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1Role> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind ClusterRoleBinding
@@ -2500,22 +3352,39 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1alpha1ClusterRoleBinding>> WatchClusterRoleBindingAsync(string name, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1alpha1ClusterRoleBinding> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1alpha1ClusterRoleBinding>> WatchClusterRoleBindingAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1alpha1ClusterRoleBinding> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind ClusterRole
@@ -2549,22 +3418,39 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1alpha1ClusterRole>> WatchClusterRoleAsync(string name, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1alpha1ClusterRole> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1alpha1ClusterRole>> WatchClusterRoleAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1alpha1ClusterRole> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind RoleBinding
@@ -2601,22 +3487,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1alpha1RoleBinding>> WatchNamespacedRoleBindingAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1alpha1RoleBinding> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1alpha1RoleBinding>> WatchNamespacedRoleBindingAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1alpha1RoleBinding> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind Role
@@ -2653,22 +3557,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1alpha1Role>> WatchNamespacedRoleAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1alpha1Role> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1alpha1Role>> WatchNamespacedRoleAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1alpha1Role> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind ClusterRoleBinding
@@ -2702,22 +3624,39 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta1ClusterRoleBinding>> WatchClusterRoleBindingAsync(string name, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta1ClusterRoleBinding> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta1ClusterRoleBinding>> WatchClusterRoleBindingAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1ClusterRoleBinding> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind ClusterRole
@@ -2751,22 +3690,39 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta1ClusterRole>> WatchClusterRoleAsync(string name, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta1ClusterRole> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta1ClusterRole>> WatchClusterRoleAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1ClusterRole> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind RoleBinding
@@ -2803,22 +3759,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta1RoleBinding>> WatchNamespacedRoleBindingAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta1RoleBinding> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta1RoleBinding>> WatchNamespacedRoleBindingAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1RoleBinding> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind Role
@@ -2855,22 +3829,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta1Role>> WatchNamespacedRoleAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta1Role> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta1Role>> WatchNamespacedRoleAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1Role> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind PriorityClass
@@ -2904,22 +3896,39 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1alpha1PriorityClass>> WatchPriorityClassAsync(string name, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1alpha1PriorityClass> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1alpha1PriorityClass>> WatchPriorityClassAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1alpha1PriorityClass> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind PodPreset
@@ -2956,22 +3965,40 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1alpha1PodPreset>> WatchNamespacedPodPresetAsync(string name, string @namespace, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1alpha1PodPreset> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1alpha1PodPreset>> WatchNamespacedPodPresetAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1alpha1PodPreset> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind StorageClass
@@ -3005,22 +4032,39 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1StorageClass>> WatchStorageClassAsync(string name, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1StorageClass> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1StorageClass>> WatchStorageClassAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1StorageClass> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind VolumeAttachment
@@ -3054,22 +4098,39 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1alpha1VolumeAttachment>> WatchVolumeAttachmentAsync(string name, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1alpha1VolumeAttachment> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1alpha1VolumeAttachment>> WatchVolumeAttachmentAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1alpha1VolumeAttachment> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind StorageClass
@@ -3103,22 +4164,39 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta1StorageClass>> WatchStorageClassAsync(string name, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta1StorageClass> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta1StorageClass>> WatchStorageClassAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1StorageClass> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// watch changes to an object of kind VolumeAttachment
@@ -3152,22 +4230,39 @@ namespace k8s
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
         /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
         /// </param>
-        /// <param name="onEvent" >
+        /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
         /// </param>
-        /// <param name="onError" >
+        /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
-        /// <param name="cancellationToken" >
+        /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> which represents the asynchronous operation, and returns a new watcher.
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<V1beta1VolumeAttachment>> WatchVolumeAttachmentAsync(string name, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, string resourceVersion = null, int? timeoutSeconds = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, V1beta1VolumeAttachment> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Watcher<V1beta1VolumeAttachment>> WatchVolumeAttachmentAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1VolumeAttachment> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
 
     }
 }
