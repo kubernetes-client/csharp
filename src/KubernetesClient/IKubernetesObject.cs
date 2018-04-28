@@ -11,7 +11,7 @@ namespace k8s
     /// and use the <see cref="ApiVersion"/> and <see cref="Kind"/> properties to get basic metadata about any Kubernetes object.
     /// You can then 
     /// </remarks>
-    public class KubernetesObject : IKubernetesObject
+    public interface IKubernetesObject
     {
         /// <summary>
         /// Gets or sets aPIVersion defines the versioned schema of this
@@ -21,7 +21,7 @@ namespace k8s
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#resources
         /// </summary>
         [JsonProperty(PropertyName = "apiVersion")]
-        public string ApiVersion { get; set; }
+        string ApiVersion { get; set; }
 
         /// <summary>
         /// Gets or sets kind is a string value representing the REST resource
@@ -31,6 +31,6 @@ namespace k8s
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
-        public string Kind { get; set; }
+        string Kind { get; set; }
     }
 }
