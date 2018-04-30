@@ -212,7 +212,7 @@ namespace k8s
             return StreamConnectAsync(uriBuilder.Uri, _invocationId, webSocketSubProtol, customHeaders, cancellationToken);
         }
 
-        protected async Task<WebSocket> StreamConnectAsync(Uri uri, string webSocketSubProtocol = null, string invocationId = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        protected async Task<WebSocket> StreamConnectAsync(Uri uri, string invocationId = null, string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
 
