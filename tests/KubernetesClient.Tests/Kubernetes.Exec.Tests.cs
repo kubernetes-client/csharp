@@ -62,6 +62,7 @@ namespace k8s.Tests
                     stderr: false,
                     stdin: false,
                     stdout: true,
+                    webSocketSubProtol: WebSocketProtocol.ChannelWebSocketProtocol,
                     cancellationToken: TestCancellation
                 );
                 Assert.Equal(WebSocketProtocol.ChannelWebSocketProtocol, clientSocket.SubProtocol); // For WebSockets, the Kubernetes API defaults to the binary channel (v1) protocol.
