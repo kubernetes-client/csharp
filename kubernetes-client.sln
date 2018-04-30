@@ -1,38 +1,37 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{B70AFB57-57C9-46DC-84BE-11B7DDD34B40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "attach", "examples\attach\attach.csproj", "{87CD4259-88DC-4748-AC61-CDDFB6E02891}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "attach", "examples\attach\attach.csproj", "{87CD4259-88DC-4748-AC61-CDDFB6E02891}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "exec", "examples\exec\exec.csproj", "{0044011C-25A6-4303-AA3F-877244B51ABB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exec", "examples\exec\exec.csproj", "{0044011C-25A6-4303-AA3F-877244B51ABB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "labels", "examples\labels\labels.csproj", "{D5471F2E-F522-47E7-B3D2-F98A4452E214}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "labels", "examples\labels\labels.csproj", "{D5471F2E-F522-47E7-B3D2-F98A4452E214}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "logs", "examples\logs\logs.csproj", "{4BD050E8-B0E4-40B4-AC72-5130D81095C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "logs", "examples\logs\logs.csproj", "{4BD050E8-B0E4-40B4-AC72-5130D81095C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "namespace", "examples\namespace\namespace.csproj", "{1AA79D75-E7C4-4C0C-928B-FB12EC3CBF68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "namespace", "examples\namespace\namespace.csproj", "{1AA79D75-E7C4-4C0C-928B-FB12EC3CBF68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "simple", "examples\simple\simple.csproj", "{DDB14203-DD5B-452A-A1E0-9FD98629101F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "simple", "examples\simple\simple.csproj", "{DDB14203-DD5B-452A-A1E0-9FD98629101F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "watch", "examples\watch\watch.csproj", "{1DDB0CCF-7CCE-4A60-BAC6-9AE1779DEDB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "watch", "examples\watch\watch.csproj", "{1DDB0CCF-7CCE-4A60-BAC6-9AE1779DEDB5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3D1864AA-1FFC-4512-BB13-46055E410F73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KubernetesClient", "src\KubernetesClient\KubernetesClient.csproj", "{35DD7248-F9EC-4272-A32C-B0C59E5A6FA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KubernetesClient", "src\KubernetesClient\KubernetesClient.csproj", "{35DD7248-F9EC-4272-A32C-B0C59E5A6FA7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{8AF4A5C2-F0CE-47D5-A4C5-FE4AB83CA509}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KubernetesClient.Tests", "tests\KubernetesClient.Tests\KubernetesClient.Tests.csproj", "{806AD0E5-833F-42FB-A870-4BCEE7F4B17F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KubernetesClient.Tests", "tests\KubernetesClient.Tests\KubernetesClient.Tests.csproj", "{806AD0E5-833F-42FB-A870-4BCEE7F4B17F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gen", "gen", "{879F8787-C3BB-43F3-A92D-6D4C7D3A5285}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KubernetesWatchGenerator", "gen\KubernetesWatchGenerator\KubernetesWatchGenerator.csproj", "{542DC30E-FDF7-4A35-B026-6C21F435E8B1}"
 EndProject
 Global
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {049A763A-C891-4E8D-80CF-89DD3E22ADC7}
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
@@ -150,6 +149,21 @@ Global
 		{806AD0E5-833F-42FB-A870-4BCEE7F4B17F}.Release|x64.Build.0 = Release|Any CPU
 		{806AD0E5-833F-42FB-A870-4BCEE7F4B17F}.Release|x86.ActiveCfg = Release|Any CPU
 		{806AD0E5-833F-42FB-A870-4BCEE7F4B17F}.Release|x86.Build.0 = Release|Any CPU
+		{542DC30E-FDF7-4A35-B026-6C21F435E8B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{542DC30E-FDF7-4A35-B026-6C21F435E8B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{542DC30E-FDF7-4A35-B026-6C21F435E8B1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{542DC30E-FDF7-4A35-B026-6C21F435E8B1}.Debug|x64.Build.0 = Debug|Any CPU
+		{542DC30E-FDF7-4A35-B026-6C21F435E8B1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{542DC30E-FDF7-4A35-B026-6C21F435E8B1}.Debug|x86.Build.0 = Debug|Any CPU
+		{542DC30E-FDF7-4A35-B026-6C21F435E8B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{542DC30E-FDF7-4A35-B026-6C21F435E8B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{542DC30E-FDF7-4A35-B026-6C21F435E8B1}.Release|x64.ActiveCfg = Release|Any CPU
+		{542DC30E-FDF7-4A35-B026-6C21F435E8B1}.Release|x64.Build.0 = Release|Any CPU
+		{542DC30E-FDF7-4A35-B026-6C21F435E8B1}.Release|x86.ActiveCfg = Release|Any CPU
+		{542DC30E-FDF7-4A35-B026-6C21F435E8B1}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{87CD4259-88DC-4748-AC61-CDDFB6E02891} = {B70AFB57-57C9-46DC-84BE-11B7DDD34B40}
@@ -161,5 +175,9 @@ Global
 		{1DDB0CCF-7CCE-4A60-BAC6-9AE1779DEDB5} = {B70AFB57-57C9-46DC-84BE-11B7DDD34B40}
 		{35DD7248-F9EC-4272-A32C-B0C59E5A6FA7} = {3D1864AA-1FFC-4512-BB13-46055E410F73}
 		{806AD0E5-833F-42FB-A870-4BCEE7F4B17F} = {8AF4A5C2-F0CE-47D5-A4C5-FE4AB83CA509}
+		{542DC30E-FDF7-4A35-B026-6C21F435E8B1} = {879F8787-C3BB-43F3-A92D-6D4C7D3A5285}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {049A763A-C891-4E8D-80CF-89DD3E22ADC7}
 	EndGlobalSection
 EndGlobal

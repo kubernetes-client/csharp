@@ -1,0 +1,35 @@
+using k8s.Models;
+using System; 
+using System.Collections.Generic; 
+using System.Threading; 
+using System.Threading.Tasks; 
+
+namespace k8s
+{
+    public partial class Kubernetes
+    {
+        {{#.}}
+        /// <inheritdoc>
+        public Task<Watcher<{{ClassName operation}}>> {{MethodName operation}}(
+{{#operation.actualParameters}}
+{{#isRequired}}
+            {{GetDotNetType type name isRequired}} {{GetDotNetName name}},
+{{/isRequired}}
+{{/operation.actualParameters}}
+{{#operation.actualParameters}}
+{{^isRequired}}
+            {{GetDotNetType .}} {{GetDotNetName .}} = null,
+{{/isRequired}}
+{{/operation.actualParameters}}
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, {{ClassName operation}}> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"{{GetPathExpression .}}";
+            return WatchObjectAsync<{{ClassName operation}}>(path: path, @continue: @continue, fieldSelector: fieldSelector, includeUninitialized: includeUninitialized, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, cancellationToken: cancellationToken);
+        }
+
+        {{/.}}
+    }
+}

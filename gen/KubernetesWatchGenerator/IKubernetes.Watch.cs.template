@@ -1,0 +1,62 @@
+using k8s.Models;
+using System; 
+using System.Collections.Generic; 
+using System.Threading; 
+using System.Threading.Tasks; 
+
+namespace k8s
+{
+    public partial interface IKubernetes
+    {
+        {{#.}}
+        /// <summary>
+        /// {{ToXmlDoc operation.description}}
+        /// </summary>
+        {{#operation.actualParameters}}
+        {{#isRequired}}
+        /// <param name="{{name}}">
+        /// {{ToXmlDoc description}}
+        /// </param>
+        {{/isRequired}}
+        {{/operation.actualParameters}}
+        {{#operation.actualParameters}}
+        {{^isRequired}}
+        /// <param name="{{name}}">
+        /// {{ToXmlDoc description}}
+        /// </param>
+        {{/isRequired}}
+        {{/operation.actualParameters}}
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="onEvent">
+        /// The action to invoke when the server sends a new event.
+        /// </param>
+        /// <param name="onError">
+        /// The action to invoke when an error occurs.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        /// <returns>
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
+        /// </returns>
+        Task<Watcher<{{ClassName operation}}>> {{MethodName operation}}(
+{{#operation.actualParameters}}
+{{#isRequired}}
+            {{GetDotNetType type name isRequired}} {{GetDotNetName name}},
+{{/isRequired}}
+{{/operation.actualParameters}}
+{{#operation.actualParameters}}
+{{^isRequired}}
+            {{GetDotNetType .}} {{GetDotNetName .}} = null,
+{{/isRequired}}
+{{/operation.actualParameters}}
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, {{ClassName operation}}> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        {{/.}}
+    }
+}
