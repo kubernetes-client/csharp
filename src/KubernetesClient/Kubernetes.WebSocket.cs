@@ -20,13 +20,13 @@ namespace k8s
         public Func<WebSocketBuilder> CreateWebSocketBuilder { get; set; } = () => new WebSocketBuilder();
 
         /// <inheritdoc/>
-        public Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", string command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", string command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return WebSocketNamespacedPodExecAsync(name, @namespace, new string[] { command }, container, stderr, stdin, stdout, tty, customHeaders, cancellationToken);
+            return WebSocketNamespacedPodExecAsync(name, @namespace, new string[] { command }, container, stderr, stdin, stdout, tty, webSocketSubProtol, customHeaders, cancellationToken);
         }
 
         /// <inheritdoc/>
-        public Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", IEnumerable<string> command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", IEnumerable<string> command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (name == null)
             {
@@ -63,7 +63,7 @@ namespace k8s
                 tracingParameters.Add("stdin", stdin);
                 tracingParameters.Add("stdout", stdout);
                 tracingParameters.Add("tty", tty);
-                tracingParameters.Add("cancellationToken", cancellationToken);
+                tracingParameters.Add("webSocketSubProtol", webSocketSubProtol);
                 ServiceClientTracing.Enter(_invocationId, this, nameof(WebSocketNamespacedPodExecAsync), tracingParameters);
             }
 
@@ -100,11 +100,11 @@ namespace k8s
 
             uriBuilder.Query = query;
 
-            return this.StreamConnectAsync(uriBuilder.Uri, _invocationId, customHeaders, cancellationToken);
+            return this.StreamConnectAsync(uriBuilder.Uri, _invocationId, webSocketSubProtol, customHeaders, cancellationToken);
         }
 
         /// <inheritdoc/>
-        public Task<WebSocket> WebSocketNamespacedPodPortForwardAsync(string name, string @namespace, IEnumerable<int> ports, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public Task<WebSocket> WebSocketNamespacedPodPortForwardAsync(string name, string @namespace, IEnumerable<int> ports, string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (name == null)
             {
@@ -131,7 +131,7 @@ namespace k8s
                 tracingParameters.Add("name", name);
                 tracingParameters.Add("@namespace", @namespace);
                 tracingParameters.Add("ports", ports);
-                tracingParameters.Add("cancellationToken", cancellationToken);
+                tracingParameters.Add("webSocketSubProtocol", webSocketSubProtocol);
                 ServiceClientTracing.Enter(_invocationId, this, nameof(WebSocketNamespacedPodPortForwardAsync), tracingParameters);
             }
 
@@ -155,11 +155,11 @@ namespace k8s
 
 
 
-            return StreamConnectAsync(uriBuilder.Uri, _invocationId, customHeaders, cancellationToken);
+            return StreamConnectAsync(uriBuilder.Uri, _invocationId, webSocketSubProtocol, customHeaders, cancellationToken);
         }
 
         /// <inheritdoc/>
-        public Task<WebSocket> WebSocketNamespacedPodAttachAsync(string name, string @namespace, string container = default(string), bool stderr = true, bool stdin = false, bool stdout = true, bool tty = false, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public Task<WebSocket> WebSocketNamespacedPodAttachAsync(string name, string @namespace, string container = default(string), bool stderr = true, bool stdin = false, bool stdout = true, bool tty = false, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (name == null)
             {
@@ -185,7 +185,7 @@ namespace k8s
                 tracingParameters.Add("stdin", stdin);
                 tracingParameters.Add("stdout", stdout);
                 tracingParameters.Add("tty", tty);
-                tracingParameters.Add("cancellationToken", cancellationToken);
+                tracingParameters.Add("webSocketSubProtol", webSocketSubProtol);
                 ServiceClientTracing.Enter(_invocationId, this, nameof(WebSocketNamespacedPodAttachAsync), tracingParameters);
             }
 
@@ -209,10 +209,10 @@ namespace k8s
                 { "tty", tty ? "1": "0"}
             }).TrimStart('?');
 
-            return StreamConnectAsync(uriBuilder.Uri, _invocationId, customHeaders, cancellationToken);
+            return StreamConnectAsync(uriBuilder.Uri, _invocationId, webSocketSubProtol, customHeaders, cancellationToken);
         }
 
-        protected async Task<WebSocket> StreamConnectAsync(Uri uri, string invocationId = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        protected async Task<WebSocket> StreamConnectAsync(Uri uri, string webSocketSubProtocol = null, string invocationId = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
 
@@ -255,11 +255,16 @@ namespace k8s
             {
                 webSocketBuilder.ExpectServerCertificate(this.CaCert);
             }
+
             if (this.SkipTlsVerify)
             {
                 webSocketBuilder.SkipServerCertificateValidation();
             }
-            webSocketBuilder.Options.RequestedSubProtocols.Add(K8sProtocol.ChannelV1);
+
+            if (webSocketSubProtocol != null)
+            {
+                webSocketBuilder.Options.RequestedSubProtocols.Add(webSocketSubProtocol);
+            }
 #endif // NETCOREAPP2_1
 
             // Send Request

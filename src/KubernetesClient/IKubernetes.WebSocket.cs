@@ -40,6 +40,10 @@ namespace k8s
         /// TTY if true indicates that a tty will be allocated for the exec call.
         /// Defaults to <see langword="true"/>.
         /// </param>
+        /// <param name="webSocketSubProtocol">
+        /// The Kubernetes-specific WebSocket sub protocol to use. See <see cref="WebSocketProtocol"/> for a list of available
+        /// protocols.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -52,7 +56,7 @@ namespace k8s
         /// <return>
         /// A <see cref="ClientWebSocket"/> which can be used to communicate with the process running in the pod.
         /// </return>
-        Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", string command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", string command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Executes a command in a pod.
@@ -87,6 +91,10 @@ namespace k8s
         /// TTY if true indicates that a tty will be allocated for the exec call.
         /// Defaults to <see langword="true"/>.
         /// </param>
+        /// <param name="webSocketSubProtocol">
+        /// The Kubernetes-specific WebSocket sub protocol to use. See <see cref="WebSocketProtocol"/> for a list of available
+        /// protocols.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -99,7 +107,7 @@ namespace k8s
         /// <return>
         /// A <see cref="ClientWebSocket"/> which can be used to communicate with the process running in the pod.
         /// </return>
-        Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", IEnumerable<string> command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", IEnumerable<string> command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Start port forwarding one or more ports of a pod.
@@ -113,13 +121,17 @@ namespace k8s
         /// <param name='ports'>
         /// List of ports to forward.
         /// </param>
+        /// <param name="webSocketSubProtocol">
+        /// The Kubernetes-specific WebSocket sub protocol to use. See <see cref="WebSocketProtocol"/> for a list of available
+        /// protocols.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<WebSocket> WebSocketNamespacedPodPortForwardAsync(string name, string @namespace, IEnumerable<int> ports, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<WebSocket> WebSocketNamespacedPodPortForwardAsync(string name, string @namespace, IEnumerable<int> ports, string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect GET requests to attach of Pod
@@ -151,6 +163,10 @@ namespace k8s
         /// This is passed through the container runtime so the tty is allocated on the
         /// worker node by the container runtime. Defaults to false.
         /// </param>
+        /// <param name="webSocketSubProtocol">
+        /// The Kubernetes-specific WebSocket sub protocol to use. See <see cref="WebSocketProtocol"/> for a list of available
+        /// protocols.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -172,6 +188,6 @@ namespace k8s
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        Task<WebSocket> WebSocketNamespacedPodAttachAsync(string name, string @namespace, string container = default(string), bool stderr = true, bool stdin = false, bool stdout = true, bool tty = false, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<WebSocket> WebSocketNamespacedPodAttachAsync(string name, string @namespace, string container = default(string), bool stderr = true, bool stdin = false, bool stdout = true, bool tty = false, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
