@@ -64,6 +64,7 @@ namespace k8s
                 tracingParameters.Add("stdout", stdout);
                 tracingParameters.Add("tty", tty);
                 tracingParameters.Add("webSocketSubProtol", webSocketSubProtol);
+                tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, nameof(WebSocketNamespacedPodExecAsync), tracingParameters);
             }
 
@@ -132,6 +133,7 @@ namespace k8s
                 tracingParameters.Add("@namespace", @namespace);
                 tracingParameters.Add("ports", ports);
                 tracingParameters.Add("webSocketSubProtocol", webSocketSubProtocol);
+                tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, nameof(WebSocketNamespacedPodPortForwardAsync), tracingParameters);
             }
 
@@ -186,6 +188,7 @@ namespace k8s
                 tracingParameters.Add("stdout", stdout);
                 tracingParameters.Add("tty", tty);
                 tracingParameters.Add("webSocketSubProtol", webSocketSubProtol);
+                tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, nameof(WebSocketNamespacedPodAttachAsync), tracingParameters);
             }
 
