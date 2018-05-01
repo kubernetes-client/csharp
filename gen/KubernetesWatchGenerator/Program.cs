@@ -49,7 +49,7 @@ namespace KubernetesWatchGenerator
             // Register helpers used in the templating.
             Helpers.Register(nameof(ToXmlDoc), ToXmlDoc);
             Helpers.Register(nameof(GetClassName), GetClassName);
-            Helpers.Register(nameof(MethodName), MethodName);
+            Helpers.Register(nameof(GetMethodName), GetMethodName);
             Helpers.Register(nameof(GetDotNetName), GetDotNetName);
             Helpers.Register(nameof(GetDotNetType), GetDotNetType);
             Helpers.Register(nameof(GetPathExpression), GetPathExpression);
@@ -134,6 +134,10 @@ namespace KubernetesWatchGenerator
             {
                 context.Write(GetClassName(arguments[0] as SwaggerOperation));
             }
+            else if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema4)
+            {
+                context.Write(GetClassName(arguments[0] as JsonSchema4));
+            }
         }
 
         static string GetClassName(SwaggerOperation watchOperation)
@@ -145,6 +149,18 @@ namespace KubernetesWatchGenerator
 
             var className = $"{ToPascalCase(version)}{kind}";
             return className;
+        }
+
+        private static string GetClassName(JsonSchema4 definition)
+        {
+            var groupVersionKindElements = (object[])definition.ExtensionData["x-kubernetes-group-version-kind"];
+            var groupVersionKind = (Dictionary<string, object>)groupVersionKindElements[0];
+
+            var group = groupVersionKind["group"] as string;
+            var version = groupVersionKind["version"] as string;
+            var kind = groupVersionKind["kind"] as string;
+
+            return $"{ToPascalCase(version)}{ToPascalCase(kind)}";
         }
 
         static void GetKind(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
