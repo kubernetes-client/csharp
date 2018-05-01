@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <PackageVersion>0.7.0-beta</PackageVersion>
         <Authors>The Kubernetes Project Authors</Authors>
@@ -10,7 +10,7 @@
         <PackageIconUrl>https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.png</PackageIconUrl>
         <PackageTags>kubernetes;docker;containers;</PackageTags>
 
-        <TargetFrameworks>netstandard1.4;net452;netcoreapp2.1;xamarinios10;monoandroid80</TargetFrameworks>
+        <TargetFrameworks>netstandard1.4;net452;netcoreapp2.1;xamarinios10;monoandroid81</TargetFrameworks>
         <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard1.4;netcoreapp2.1</TargetFrameworks>
         <RootNamespace>k8s</RootNamespace>
     </PropertyGroup>
@@ -37,7 +37,7 @@
         <Reference Include="System.Runtime.Serialization" />
         <Reference Include="Xamarin.iOS" />
     </ItemGroup>
-    <ItemGroup Condition="'$(TargetFramework)' == 'monoandroid80'">
+    <ItemGroup Condition="'$(TargetFramework)' == 'monoandroid81'">
         <Reference Include="Mono.Android" />
         <Reference Include="System.Numerics" />
         <Reference Include="System.Runtime.Serialization" />        

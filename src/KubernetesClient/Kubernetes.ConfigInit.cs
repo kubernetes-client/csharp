@@ -12,7 +12,7 @@ namespace k8s
 {
     public partial class Kubernetes
     {
-#if MONOANDROID8_0
+#if MONOANDROID8_1
         /// <summary>
         ///     Initializes a new instance of the <see cref="Kubernetes" /> class.
         /// </summary>
@@ -157,7 +157,7 @@ namespace k8s
 
         partial void CustomInitialize()
         {
-#if NET452 || XAMARINIOS1_0 || MONOANDROID8_0
+#if NET452 || XAMARINIOS1_0 || MONOANDROID8_1
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
 #endif
             AppendDelegatingHandler<WatcherDelegatingHandler>();
