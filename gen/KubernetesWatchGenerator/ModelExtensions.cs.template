@@ -1,0 +1,12 @@
+namespace k8s.Models
+{
+{{#.}}
+    public partial class {{GetClassName . }} : IKubernetesObject
+    {
+        public const string KubeApiVersion = "{{GetApiVersion . }}";
+        public const string KubeKind = "{{GetKind . }}";
+        public const string KubeGroup = "{{GetGroup . }}";
+    }
+
+{{/.}}
+}

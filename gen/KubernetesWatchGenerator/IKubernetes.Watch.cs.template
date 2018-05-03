@@ -41,7 +41,7 @@ namespace k8s
         /// <returns>
         /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
-        Task<Watcher<{{ClassName operation}}>> {{MethodName operation}}(
+        Task<Watcher<{{GetClassName operation}}>> {{GetMethodName operation}}(
 {{#operation.actualParameters}}
 {{#isRequired}}
             {{GetDotNetType type name isRequired}} {{GetDotNetName name}},
@@ -53,7 +53,7 @@ namespace k8s
 {{/isRequired}}
 {{/operation.actualParameters}}
             Dictionary<string, List<string>> customHeaders = null,
-            Action<WatchEventType, {{ClassName operation}}> onEvent = null,
+            Action<WatchEventType, {{GetClassName operation}}> onEvent = null,
             Action<Exception> onError = null,
             CancellationToken cancellationToken = default(CancellationToken));
 

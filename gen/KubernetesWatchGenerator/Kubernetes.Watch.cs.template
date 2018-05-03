@@ -10,7 +10,7 @@ namespace k8s
     {
         {{#.}}
         /// <inheritdoc>
-        public Task<Watcher<{{ClassName operation}}>> {{MethodName operation}}(
+        public Task<Watcher<{{GetClassName operation}}>> {{GetMethodName operation}}(
 {{#operation.actualParameters}}
 {{#isRequired}}
             {{GetDotNetType type name isRequired}} {{GetDotNetName name}},
@@ -22,12 +22,12 @@ namespace k8s
 {{/isRequired}}
 {{/operation.actualParameters}}
             Dictionary<string, List<string>> customHeaders = null,
-            Action<WatchEventType, {{ClassName operation}}> onEvent = null,
+            Action<WatchEventType, {{GetClassName operation}}> onEvent = null,
             Action<Exception> onError = null,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             string path = $"{{GetPathExpression .}}";
-            return WatchObjectAsync<{{ClassName operation}}>(path: path, @continue: @continue, fieldSelector: fieldSelector, includeUninitialized: includeUninitialized, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, cancellationToken: cancellationToken);
+            return WatchObjectAsync<{{GetClassName operation}}>(path: path, @continue: @continue, fieldSelector: fieldSelector, includeUninitialized: includeUninitialized, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, cancellationToken: cancellationToken);
         }
 
         {{/.}}
