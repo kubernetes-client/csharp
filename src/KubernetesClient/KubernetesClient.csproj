@@ -12,6 +12,8 @@
     <TargetFrameworks>netstandard1.4;net452;netcoreapp2.1</TargetFrameworks>
     <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard1.4;netcoreapp2.1</TargetFrameworks>
     <RootNamespace>k8s</RootNamespace>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>kubernetes-client.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
