@@ -52,7 +52,7 @@ namespace k8s.Tests.Mock.Server.Controllers
                 return BadRequest("PortForward requires WebSockets");
 
             WebSocket webSocket = await HttpContext.WebSockets.AcceptWebSocketAsync(
-                subProtocol: K8sProtocol.ChannelV1
+                subProtocol: WebSocketProtocol.ChannelWebSocketProtocol
             );
 
             WebSocketTestAdapter.AcceptedPodPortForwardV1Connection.AcceptServerSocket(webSocket);

@@ -48,7 +48,7 @@ namespace k8s.Tests.Mock.Server.Controllers
                 return BadRequest("Exec requires WebSockets");
 
             WebSocket webSocket = await HttpContext.WebSockets.AcceptWebSocketAsync(
-                subProtocol: K8sProtocol.ChannelV1
+                subProtocol: WebSocketProtocol.ChannelWebSocketProtocol
             );
 
             WebSocketTestAdapter.AcceptedPodExecV1Connection.AcceptServerSocket(webSocket);

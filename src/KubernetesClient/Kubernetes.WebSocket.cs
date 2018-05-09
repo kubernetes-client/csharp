@@ -1,8 +1,11 @@
+using k8s.Models;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Rest;
+using Microsoft.Rest.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.WebSockets;
 using System.Security.Cryptography.X509Certificates;
@@ -20,13 +23,13 @@ namespace k8s
         public Func<WebSocketBuilder> CreateWebSocketBuilder { get; set; } = () => new WebSocketBuilder();
 
         /// <inheritdoc/>
-        public Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", string command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", string command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return WebSocketNamespacedPodExecAsync(name, @namespace, new string[] { command }, container, stderr, stdin, stdout, tty, customHeaders, cancellationToken);
+            return WebSocketNamespacedPodExecAsync(name, @namespace, new string[] { command }, container, stderr, stdin, stdout, tty, webSocketSubProtol, customHeaders, cancellationToken);
         }
 
         /// <inheritdoc/>
-        public Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", IEnumerable<string> command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", IEnumerable<string> command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (name == null)
             {
@@ -63,6 +66,7 @@ namespace k8s
                 tracingParameters.Add("stdin", stdin);
                 tracingParameters.Add("stdout", stdout);
                 tracingParameters.Add("tty", tty);
+                tracingParameters.Add("webSocketSubProtol", webSocketSubProtol);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, nameof(WebSocketNamespacedPodExecAsync), tracingParameters);
             }
@@ -100,11 +104,11 @@ namespace k8s
 
             uriBuilder.Query = query;
 
-            return this.StreamConnectAsync(uriBuilder.Uri, _invocationId, customHeaders, cancellationToken);
+            return this.StreamConnectAsync(uriBuilder.Uri, _invocationId, webSocketSubProtol, customHeaders, cancellationToken);
         }
 
         /// <inheritdoc/>
-        public Task<WebSocket> WebSocketNamespacedPodPortForwardAsync(string name, string @namespace, IEnumerable<int> ports, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public Task<WebSocket> WebSocketNamespacedPodPortForwardAsync(string name, string @namespace, IEnumerable<int> ports, string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (name == null)
             {
@@ -131,6 +135,7 @@ namespace k8s
                 tracingParameters.Add("name", name);
                 tracingParameters.Add("@namespace", @namespace);
                 tracingParameters.Add("ports", ports);
+                tracingParameters.Add("webSocketSubProtocol", webSocketSubProtocol);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, nameof(WebSocketNamespacedPodPortForwardAsync), tracingParameters);
             }
@@ -155,11 +160,11 @@ namespace k8s
 
 
 
-            return StreamConnectAsync(uriBuilder.Uri, _invocationId, customHeaders, cancellationToken);
+            return StreamConnectAsync(uriBuilder.Uri, _invocationId, webSocketSubProtocol, customHeaders, cancellationToken);
         }
 
         /// <inheritdoc/>
-        public Task<WebSocket> WebSocketNamespacedPodAttachAsync(string name, string @namespace, string container = default(string), bool stderr = true, bool stdin = false, bool stdout = true, bool tty = false, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public Task<WebSocket> WebSocketNamespacedPodAttachAsync(string name, string @namespace, string container = default(string), bool stderr = true, bool stdin = false, bool stdout = true, bool tty = false, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (name == null)
             {
@@ -185,6 +190,7 @@ namespace k8s
                 tracingParameters.Add("stdin", stdin);
                 tracingParameters.Add("stdout", stdout);
                 tracingParameters.Add("tty", tty);
+                tracingParameters.Add("webSocketSubProtol", webSocketSubProtol);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, nameof(WebSocketNamespacedPodAttachAsync), tracingParameters);
             }
@@ -209,10 +215,10 @@ namespace k8s
                 { "tty", tty ? "1": "0"}
             }).TrimStart('?');
 
-            return StreamConnectAsync(uriBuilder.Uri, _invocationId, customHeaders, cancellationToken);
+            return StreamConnectAsync(uriBuilder.Uri, _invocationId, webSocketSubProtol, customHeaders, cancellationToken);
         }
 
-        protected async Task<WebSocket> StreamConnectAsync(Uri uri, string invocationId = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        protected async Task<WebSocket> StreamConnectAsync(Uri uri, string invocationId = null, string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
 
@@ -255,11 +261,16 @@ namespace k8s
             {
                 webSocketBuilder.ExpectServerCertificate(this.CaCert);
             }
+
             if (this.SkipTlsVerify)
             {
                 webSocketBuilder.SkipServerCertificateValidation();
             }
-            webSocketBuilder.Options.RequestedSubProtocols.Add(K8sProtocol.ChannelV1);
+
+            if (webSocketSubProtocol != null)
+            {
+                webSocketBuilder.Options.RequestedSubProtocols.Add(webSocketSubProtocol);
+            }
 #endif // NETCOREAPP2_1
 
             // Send Request
@@ -269,6 +280,46 @@ namespace k8s
             try
             {
                 webSocket = await webSocketBuilder.BuildAndConnectAsync(uri, CancellationToken.None).ConfigureAwait(false);
+            }
+            catch (WebSocketException wse) when (wse.WebSocketErrorCode == WebSocketError.HeaderError || (wse.InnerException is WebSocketException && ((WebSocketException)wse.InnerException).WebSocketErrorCode == WebSocketError.HeaderError))
+            {
+                // This usually indicates the server sent an error message, like 400 Bad Request. Unfortunately, the WebSocket client
+                // class doesn't give us a lot of information about what went wrong. So, retry the connection.
+                var uriBuilder = new UriBuilder(uri);
+                uriBuilder.Scheme = uri.Scheme == "wss" ? "https" : "http";
+
+                var response = await this.HttpClient.GetAsync(uriBuilder.Uri, cancellationToken).ConfigureAwait(false);
+
+                if (response.StatusCode == HttpStatusCode.SwitchingProtocols)
+                {
+                    // This should never happen - the server just allowed us to switch to WebSockets but the previous call didn't work.
+                    // Rethrow the original exception
+                    response.Dispose();
+                    throw;
+                }
+                else
+                {
+                    var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+                    // Try to parse the content as a V1Status object
+                    var genericObject = SafeJsonConvert.DeserializeObject<KubernetesObject>(content);
+                    V1Status status = null;
+
+                    if (genericObject.ApiVersion == "v1" && genericObject.Kind == "Status")
+                    {
+                        status = SafeJsonConvert.DeserializeObject<V1Status>(content);
+                    }
+
+                    var ex = new HttpOperationException($"The operation returned an invalid status code: {response.StatusCode}", wse)
+                    {
+                        Response = new HttpResponseMessageWrapper(response, content),
+                        Body = status != null ? (object)status : content,
+                    };
+
+                    response.Dispose();
+
+                    throw ex;
+                }
             }
             catch (Exception ex)
             {
