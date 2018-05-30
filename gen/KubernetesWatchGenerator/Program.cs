@@ -314,6 +314,12 @@ namespace KubernetesWatchGenerator
         private static string GetPathExpression(SwaggerOperationDescription operation)
         {
             string pathExpression = operation.Path;
+
+            if(pathExpression.StartsWith("/"))
+            {
+                pathExpression = pathExpression.Substring(1);
+            }
+
             pathExpression = pathExpression.Replace("{namespace}", "{@namespace}");
             return pathExpression;
         }
