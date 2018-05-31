@@ -287,22 +287,19 @@ namespace k8s
 
             var newBuffer = ArrayPool<byte>.Shared.Rent(size);
 
-            if (this.WriteWaterMark <= this.ReadWaterMark)
+            if (this.WriteWaterMark < this.ReadWaterMark)
             {
                 // Copy the data at the start
                 Array.Copy(this.buffer, 0, newBuffer, 0, this.WriteWaterMark);
 
-                if (this.ReadWaterMark > 0)
-                {
-                    int trailingDataLength = this.buffer.Length - this.ReadWaterMark;
-                    Array.Copy(this.buffer,
-                        sourceIndex: this.ReadWaterMark,
-                        destinationArray: newBuffer,
-                        destinationIndex: newBuffer.Length - trailingDataLength,
-                        length: trailingDataLength);
+                int trailingDataLength = this.buffer.Length - this.ReadWaterMark;
+                Array.Copy(this.buffer,
+                    sourceIndex: this.ReadWaterMark,
+                    destinationArray: newBuffer,
+                    destinationIndex: newBuffer.Length - trailingDataLength,
+                    length: trailingDataLength);
 
-                    this.ReadWaterMark += newBuffer.Length - this.buffer.Length;
-                }
+                this.ReadWaterMark += newBuffer.Length - this.buffer.Length;
             }
             else
             {
