@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Authors>The Kubernetes Project Authors</Authors>
     <Copyright>2017 The Kubernetes Project Authors</Copyright>
@@ -14,6 +14,8 @@
     <RootNamespace>k8s</RootNamespace>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>kubernetes-client.snk</AssemblyOriginatorKeyFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>1701;1702;1591;1570;1572;1573;1574</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
