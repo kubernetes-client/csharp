@@ -1,5 +1,3 @@
-#if !NETCOREAPP2_1
-
 using System;
 using System.Net.WebSockets;
 using System.Security.Cryptography.X509Certificates;
@@ -23,6 +21,8 @@ namespace k8s
         {
         }
 
+        public ClientWebSocketOptions Options => WebSocket.Options;
+
         public virtual WebSocketBuilder SetRequestHeader(string headerName, string headerValue)
         {
             this.WebSocket.Options.SetRequestHeader(headerName, headerValue);
@@ -35,6 +35,27 @@ namespace k8s
             return this;
         }
 
+#if NETCOREAPP2_1
+
+        public WebSocketBuilder ExpectServerCertificate(X509Certificate2 serverCertificate)
+        {
+            Options.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
+            {
+                return Kubernetes.CertificateValidationCallBack(sender, serverCertificate, certificate, chain, sslPolicyErrors);
+            };
+
+            return this;
+        }
+
+        public WebSocketBuilder SkipServerCertificateValidation()
+        {
+            Options.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
+
+            return this;
+        }
+
+#endif // NETCOREAPP2_1
+
         public virtual async Task<WebSocket> BuildAndConnectAsync(Uri uri, CancellationToken cancellationToken)
         {
             await this.WebSocket.ConnectAsync(uri, cancellationToken).ConfigureAwait(false);
@@ -42,5 +63,3 @@ namespace k8s
         }
     }
 }
-
-#endif // !NETCOREAPP2_1
