@@ -138,6 +138,14 @@ namespace k8s.Tests
                 KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, "context-not-found"));
         }
 
+        [Fact]
+        public void CreatedFromPreLoadedConfig()
+        {
+            var k8sConfig = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo("assets/kubeconfig.yml"), useRelativePaths: false);
+            var cfg = KubernetesClientConfiguration.BuildConfig(k8sConfig);
+            Assert.NotNull(cfg.Host);
+        }
+
         /// <summary>
         ///     Checks Host is loaded from the default configuration file
         /// </summary>
@@ -295,6 +303,32 @@ namespace k8s.Tests
         public void DefaultConfigurationAsStringLoaded()
         {
             var filePath = "assets/kubeconfig.yml";
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(filePath, null, null, useRelativePaths: false);
+            Assert.NotNull(cfg.Host);
+        }
+
+
+        /// <summary>
+        ///     Checks Host is loaded from the default configuration file as stream
+        /// </summary>
+        [Fact]
+        public void DefaultConfigurationAsStreamLoaded()
+        {
+            using (var stream = File.OpenRead("assets/kubeconfig.yml"))
+            {
+                var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(stream);
+                Assert.NotNull(cfg.Host);
+            }
+        }
+
+        /// <summary>
+        ///     Checks users.as-user-extra is loaded correctly from a configuration file.
+        /// </summary>
+        [Fact]
+        public void AsUserExtra()
+        {
+            var filePath = "assets/kubeconfig.as-user-extra.yml";
+
             var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(filePath, null, null, useRelativePaths: false);
             Assert.NotNull(cfg.Host);
         }
