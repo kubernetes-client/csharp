@@ -269,7 +269,7 @@ namespace k8s
 
             if (webSocketSubProtocol != null)
             {
-                webSocketBuilder.Options.RequestedSubProtocols.Add(webSocketSubProtocol);
+                webSocketBuilder.Options.AddSubProtocol(webSocketSubProtocol);
             }
 #endif // NETCOREAPP2_1
 
