@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Security;
@@ -181,6 +182,10 @@ namespace k8s
                 chain.ChainPolicy.ExtraStore.Add(caCert);
                 chain.ChainPolicy.VerificationFlags = X509VerificationFlags.AllowUnknownCertificateAuthority;
                 var isValid = chain.Build((X509Certificate2) certificate);
+                
+                var rootCert = chain.ChainElements[chain.ChainElements.Count - 1].Certificate;
+                isValid = isValid && rootCert.RawData.SequenceEqual(caCert.RawData);
+
                 return isValid;
             }
 
