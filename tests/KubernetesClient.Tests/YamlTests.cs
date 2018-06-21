@@ -53,7 +53,7 @@ metadata:
             Assert.Equal(@"apiVersion: v1
 kind: Pod
 metadata:
-  name: foo", yaml);
+  name: foo", yaml.Replace(System.Environment.NewLine, "\n"));
         }
 
         [Fact]
