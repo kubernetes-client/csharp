@@ -177,9 +177,17 @@ namespace k8s.Tests
             var clientCertificateData = File.ReadAllText("assets/client-certificate-data.txt");
 
             X509Certificate2 serverCertificate = null;
-            using (MemoryStream serverCertificateStream = new MemoryStream(Convert.FromBase64String(serverCertificateData)))
+
+            if (Environment.OSVersion.Platform == PlatformID.MacOSX)
             {
-                serverCertificate = OpenCertificateStore(serverCertificateStream);
+                using (MemoryStream serverCertificateStream = new MemoryStream(Convert.FromBase64String(serverCertificateData)))
+                {
+                    serverCertificate = OpenCertificateStore(serverCertificateStream);
+                }
+            }
+            else
+            {
+                serverCertificate = new X509Certificate2(Convert.FromBase64String(serverCertificateData), "");
             }
 
             var clientCertificate = new X509Certificate2(Convert.FromBase64String(clientCertificateData), "");
