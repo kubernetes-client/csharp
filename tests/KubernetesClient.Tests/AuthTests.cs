@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http.Headers;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -177,9 +178,17 @@ namespace k8s.Tests
             var clientCertificateData = File.ReadAllText("assets/client-certificate-data.txt");
 
             X509Certificate2 serverCertificate = null;
-            using (MemoryStream serverCertificateStream = new MemoryStream(Convert.FromBase64String(serverCertificateData)))
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                serverCertificate = OpenCertificateStore(serverCertificateStream);
+                using (MemoryStream serverCertificateStream = new MemoryStream(Convert.FromBase64String(serverCertificateData)))
+                {
+                    serverCertificate = OpenCertificateStore(serverCertificateStream);
+                }
+            }
+            else
+            {
+                serverCertificate = new X509Certificate2(Convert.FromBase64String(serverCertificateData), "");
             }
 
             var clientCertificate = new X509Certificate2(Convert.FromBase64String(clientCertificateData), "");
