@@ -89,6 +89,9 @@ namespace k8s
 
         private async Task WatcherLoop(CancellationToken cancellationToken)
         {
+            // Make sure we run async
+            await Task.Yield();
+
             try
             {
                 Watching = true;
@@ -132,8 +135,8 @@ namespace k8s
             }
             finally
             {
-                OnClosed?.Invoke();
                 Watching = false;
+                OnClosed?.Invoke();
             }
         }
     }
