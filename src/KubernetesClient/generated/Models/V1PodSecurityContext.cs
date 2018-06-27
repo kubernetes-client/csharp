@@ -67,7 +67,10 @@ namespace k8s.Models
         /// first process run in each container, in addition to the container's
         /// primary GID.  If unspecified, no groups will be added to any
         /// container.</param>
-        public V1PodSecurityContext(long? fsGroup = default(long?), long? runAsGroup = default(long?), bool? runAsNonRoot = default(bool?), long? runAsUser = default(long?), V1SELinuxOptions seLinuxOptions = default(V1SELinuxOptions), IList<long?> supplementalGroups = default(IList<long?>))
+        /// <param name="sysctls">Sysctls hold a list of namespaced sysctls
+        /// used for the pod. Pods with unsupported sysctls (by the container
+        /// runtime) might fail to launch.</param>
+        public V1PodSecurityContext(long? fsGroup = default(long?), long? runAsGroup = default(long?), bool? runAsNonRoot = default(bool?), long? runAsUser = default(long?), V1SELinuxOptions seLinuxOptions = default(V1SELinuxOptions), IList<long?> supplementalGroups = default(IList<long?>), IList<V1Sysctl> sysctls = default(IList<V1Sysctl>))
         {
             FsGroup = fsGroup;
             RunAsGroup = runAsGroup;
@@ -75,6 +78,7 @@ namespace k8s.Models
             RunAsUser = runAsUser;
             SeLinuxOptions = seLinuxOptions;
             SupplementalGroups = supplementalGroups;
+            Sysctls = sysctls;
             CustomInit();
         }
 
@@ -148,6 +152,14 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "supplementalGroups")]
         public IList<long?> SupplementalGroups { get; set; }
+
+        /// <summary>
+        /// Gets or sets sysctls hold a list of namespaced sysctls used for the
+        /// pod. Pods with unsupported sysctls (by the container runtime) might
+        /// fail to launch.
+        /// </summary>
+        [JsonProperty(PropertyName = "sysctls")]
+        public IList<V1Sysctl> Sysctls { get; set; }
 
     }
 }

@@ -13,7 +13,8 @@ namespace k8s.Models
 
     /// <summary>
     /// PodStatus represents information about the status of a pod. Status may
-    /// trail the actual state of a system.
+    /// trail the actual state of a system, especially if the node that hosts
+    /// the pod cannot contact the control plane.
     /// </summary>
     public partial class V1PodStatus
     {
@@ -53,7 +54,28 @@ namespace k8s.Models
         /// pod that is created after preemption. As a result, this field may
         /// be different than PodSpec.nodeName when the pod is
         /// scheduled.</param>
-        /// <param name="phase">Current condition of the pod. More info:
+        /// <param name="phase">The phase of a Pod is a simple, high-level
+        /// summary of where the Pod is in its lifecycle. The conditions array,
+        /// the reason and message fields, and the individual container status
+        /// arrays contain more detail about the pod's status. There are five
+        /// possible phase values:
+        ///
+        /// Pending: The pod has been accepted by the Kubernetes system, but
+        /// one or more of the container images has not been created. This
+        /// includes time before being scheduled as well as time spent
+        /// downloading images over the network, which could take a while.
+        /// Running: The pod has been bound to a node, and all of the
+        /// containers have been created. At least one container is still
+        /// running, or is in the process of starting or restarting. Succeeded:
+        /// All containers in the pod have terminated in success, and will not
+        /// be restarted. Failed: All containers in the pod have terminated,
+        /// and at least one container has terminated in failure. The container
+        /// either exited with non-zero status or was terminated by the system.
+        /// Unknown: For some reason the state of the pod could not be
+        /// obtained, typically due to an error in communicating with the host
+        /// of the pod.
+        ///
+        /// More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-phase</param>
         /// <param name="podIP">IP address allocated to the pod. Routable at
         /// least within the cluster. Empty if not yet allocated.</param>
@@ -141,7 +163,28 @@ namespace k8s.Models
         public string NominatedNodeName { get; set; }
 
         /// <summary>
-        /// Gets or sets current condition of the pod. More info:
+        /// Gets or sets the phase of a Pod is a simple, high-level summary of
+        /// where the Pod is in its lifecycle. The conditions array, the reason
+        /// and message fields, and the individual container status arrays
+        /// contain more detail about the pod's status. There are five possible
+        /// phase values:
+        ///
+        /// Pending: The pod has been accepted by the Kubernetes system, but
+        /// one or more of the container images has not been created. This
+        /// includes time before being scheduled as well as time spent
+        /// downloading images over the network, which could take a while.
+        /// Running: The pod has been bound to a node, and all of the
+        /// containers have been created. At least one container is still
+        /// running, or is in the process of starting or restarting. Succeeded:
+        /// All containers in the pod have terminated in success, and will not
+        /// be restarted. Failed: All containers in the pod have terminated,
+        /// and at least one container has terminated in failure. The container
+        /// either exited with non-zero status or was terminated by the system.
+        /// Unknown: For some reason the state of the pod could not be
+        /// obtained, typically due to an error in communicating with the host
+        /// of the pod.
+        ///
+        /// More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-phase
         /// </summary>
         [JsonProperty(PropertyName = "phase")]

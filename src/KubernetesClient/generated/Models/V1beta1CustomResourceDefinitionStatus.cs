@@ -36,10 +36,19 @@ namespace k8s.Models
         /// the names in spec.</param>
         /// <param name="conditions">Conditions indicate state for particular
         /// aspects of a CustomResourceDefinition</param>
-        public V1beta1CustomResourceDefinitionStatus(V1beta1CustomResourceDefinitionNames acceptedNames, IList<V1beta1CustomResourceDefinitionCondition> conditions)
+        /// <param name="storedVersions">StoredVersions are all versions of
+        /// CustomResources that were ever persisted. Tracking these versions
+        /// allows a migration path for stored versions in etcd. The field is
+        /// mutable so the migration controller can first finish a migration to
+        /// another version (i.e. that no old objects are left in the storage),
+        /// and then remove the rest of the versions from this list. None of
+        /// the versions in this list can be removed from the spec.Versions
+        /// field.</param>
+        public V1beta1CustomResourceDefinitionStatus(V1beta1CustomResourceDefinitionNames acceptedNames, IList<V1beta1CustomResourceDefinitionCondition> conditions, IList<string> storedVersions)
         {
             AcceptedNames = acceptedNames;
             Conditions = conditions;
+            StoredVersions = storedVersions;
             CustomInit();
         }
 
@@ -64,6 +73,18 @@ namespace k8s.Models
         public IList<V1beta1CustomResourceDefinitionCondition> Conditions { get; set; }
 
         /// <summary>
+        /// Gets or sets storedVersions are all versions of CustomResources
+        /// that were ever persisted. Tracking these versions allows a
+        /// migration path for stored versions in etcd. The field is mutable so
+        /// the migration controller can first finish a migration to another
+        /// version (i.e. that no old objects are left in the storage), and
+        /// then remove the rest of the versions from this list. None of the
+        /// versions in this list can be removed from the spec.Versions field.
+        /// </summary>
+        [JsonProperty(PropertyName = "storedVersions")]
+        public IList<string> StoredVersions { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -78,6 +99,10 @@ namespace k8s.Models
             if (Conditions == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Conditions");
+            }
+            if (StoredVersions == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "StoredVersions");
             }
             if (AcceptedNames != null)
             {

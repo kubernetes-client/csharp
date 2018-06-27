@@ -62,16 +62,6 @@ namespace k8s.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "NodeSelectorTerms");
             }
-            if (NodeSelectorTerms != null)
-            {
-                foreach (var element in NodeSelectorTerms)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
-            }
         }
     }
 }

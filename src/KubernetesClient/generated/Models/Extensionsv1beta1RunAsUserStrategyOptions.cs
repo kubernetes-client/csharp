@@ -13,8 +13,9 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// Run A sUser Strategy Options defines the strategy type and any options
-    /// used to create the strategy.
+    /// RunAsUserStrategyOptions defines the strategy type and any options used
+    /// to create the strategy. Deprecated: use RunAsUserStrategyOptions from
+    /// policy API Group instead.
     /// </summary>
     public partial class Extensionsv1beta1RunAsUserStrategyOptions
     {
@@ -31,10 +32,12 @@ namespace k8s.Models
         /// Initializes a new instance of the
         /// Extensionsv1beta1RunAsUserStrategyOptions class.
         /// </summary>
-        /// <param name="rule">Rule is the strategy that will dictate the
+        /// <param name="rule">rule is the strategy that will dictate the
         /// allowable RunAsUser values that may be set.</param>
-        /// <param name="ranges">Ranges are the allowed ranges of uids that may
-        /// be used.</param>
+        /// <param name="ranges">ranges are the allowed ranges of uids that may
+        /// be used. If you would like to force a single uid then supply a
+        /// single range with the same start and end. Required for
+        /// MustRunAs.</param>
         public Extensionsv1beta1RunAsUserStrategyOptions(string rule, IList<Extensionsv1beta1IDRange> ranges = default(IList<Extensionsv1beta1IDRange>))
         {
             Ranges = ranges;
@@ -49,7 +52,8 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets ranges are the allowed ranges of uids that may be
-        /// used.
+        /// used. If you would like to force a single uid then supply a single
+        /// range with the same start and end. Required for MustRunAs.
         /// </summary>
         [JsonProperty(PropertyName = "ranges")]
         public IList<Extensionsv1beta1IDRange> Ranges { get; set; }

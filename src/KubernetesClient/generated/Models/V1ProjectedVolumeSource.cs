@@ -74,6 +74,16 @@ namespace k8s.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Sources");
             }
+            if (Sources != null)
+            {
+                foreach (var element in Sources)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
         }
     }
 }

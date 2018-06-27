@@ -32,11 +32,14 @@ namespace k8s.Models
         /// project</param>
         /// <param name="secret">information about the secret data to
         /// project</param>
-        public V1VolumeProjection(V1ConfigMapProjection configMap = default(V1ConfigMapProjection), V1DownwardAPIProjection downwardAPI = default(V1DownwardAPIProjection), V1SecretProjection secret = default(V1SecretProjection))
+        /// <param name="serviceAccountToken">information about the
+        /// serviceAccountToken data to project</param>
+        public V1VolumeProjection(V1ConfigMapProjection configMap = default(V1ConfigMapProjection), V1DownwardAPIProjection downwardAPI = default(V1DownwardAPIProjection), V1SecretProjection secret = default(V1SecretProjection), V1ServiceAccountTokenProjection serviceAccountToken = default(V1ServiceAccountTokenProjection))
         {
             ConfigMap = configMap;
             DownwardAPI = downwardAPI;
             Secret = secret;
+            ServiceAccountToken = serviceAccountToken;
             CustomInit();
         }
 
@@ -63,5 +66,25 @@ namespace k8s.Models
         [JsonProperty(PropertyName = "secret")]
         public V1SecretProjection Secret { get; set; }
 
+        /// <summary>
+        /// Gets or sets information about the serviceAccountToken data to
+        /// project
+        /// </summary>
+        [JsonProperty(PropertyName = "serviceAccountToken")]
+        public V1ServiceAccountTokenProjection ServiceAccountToken { get; set; }
+
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (ServiceAccountToken != null)
+            {
+                ServiceAccountToken.Validate();
+            }
+        }
     }
 }

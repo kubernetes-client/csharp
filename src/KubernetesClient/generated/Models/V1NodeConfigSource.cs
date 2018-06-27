@@ -26,21 +26,11 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1NodeConfigSource class.
         /// </summary>
-        /// <param name="apiVersion">APIVersion defines the versioned schema of
-        /// this representation of an object. Servers should convert recognized
-        /// schemas to the latest internal value, and may reject unrecognized
-        /// values. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#resources</param>
-        /// <param name="kind">Kind is a string value representing the REST
-        /// resource this object represents. Servers may infer this from the
-        /// endpoint the client submits requests to. Cannot be updated. In
-        /// CamelCase. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
-        public V1NodeConfigSource(string apiVersion = default(string), V1ObjectReference configMapRef = default(V1ObjectReference), string kind = default(string))
+        /// <param name="configMap">ConfigMap is a reference to a Node's
+        /// ConfigMap</param>
+        public V1NodeConfigSource(V1ConfigMapNodeConfigSource configMap = default(V1ConfigMapNodeConfigSource))
         {
-            ApiVersion = apiVersion;
-            ConfigMapRef = configMapRef;
-            Kind = kind;
+            ConfigMap = configMap;
             CustomInit();
         }
 
@@ -50,29 +40,23 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets aPIVersion defines the versioned schema of this
-        /// representation of an object. Servers should convert recognized
-        /// schemas to the latest internal value, and may reject unrecognized
-        /// values. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#resources
+        /// Gets or sets configMap is a reference to a Node's ConfigMap
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
-        public string ApiVersion { get; set; }
+        [JsonProperty(PropertyName = "configMap")]
+        public V1ConfigMapNodeConfigSource ConfigMap { get; set; }
 
         /// <summary>
+        /// Validate the object.
         /// </summary>
-        [JsonProperty(PropertyName = "configMapRef")]
-        public V1ObjectReference ConfigMapRef { get; set; }
-
-        /// <summary>
-        /// Gets or sets kind is a string value representing the REST resource
-        /// this object represents. Servers may infer this from the endpoint
-        /// the client submits requests to. Cannot be updated. In CamelCase.
-        /// More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
-        /// </summary>
-        [JsonProperty(PropertyName = "kind")]
-        public string Kind { get; set; }
-
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (ConfigMap != null)
+            {
+                ConfigMap.Validate();
+            }
+        }
     }
 }

@@ -41,10 +41,13 @@ namespace k8s.Models
         /// (read/write). ReadOnly here will force the ReadOnly setting in
         /// VolumeMounts. More info:
         /// https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md</param>
-        public V1CinderVolumeSource(string volumeID, string fsType = default(string), bool? readOnlyProperty = default(bool?))
+        /// <param name="secretRef">Optional: points to a secret object
+        /// containing parameters used to connect to OpenStack.</param>
+        public V1CinderVolumeSource(string volumeID, string fsType = default(string), bool? readOnlyProperty = default(bool?), V1LocalObjectReference secretRef = default(V1LocalObjectReference))
         {
             FsType = fsType;
             ReadOnlyProperty = readOnlyProperty;
+            SecretRef = secretRef;
             VolumeID = volumeID;
             CustomInit();
         }
@@ -70,6 +73,13 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "readOnly")]
         public bool? ReadOnlyProperty { get; set; }
+
+        /// <summary>
+        /// Gets or sets optional: points to a secret object containing
+        /// parameters used to connect to OpenStack.
+        /// </summary>
+        [JsonProperty(PropertyName = "secretRef")]
+        public V1LocalObjectReference SecretRef { get; set; }
 
         /// <summary>
         /// Gets or sets volume id used to identify the volume in cinder More

@@ -13,7 +13,8 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// Pod Security Policy List is a list of PodSecurityPolicy objects.
+    /// PodSecurityPolicyList is a list of PodSecurityPolicy objects.
+    /// Deprecated: use PodSecurityPolicyList from policy API Group instead.
     /// </summary>
     public partial class Extensionsv1beta1PodSecurityPolicyList
     {
@@ -30,7 +31,7 @@ namespace k8s.Models
         /// Initializes a new instance of the
         /// Extensionsv1beta1PodSecurityPolicyList class.
         /// </summary>
-        /// <param name="items">Items is a list of schema objects.</param>
+        /// <param name="items">items is a list of schema objects.</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
