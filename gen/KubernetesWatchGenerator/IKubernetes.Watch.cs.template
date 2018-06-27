@@ -35,6 +35,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -55,6 +58,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, {{GetClassName operation}}> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         {{/.}}

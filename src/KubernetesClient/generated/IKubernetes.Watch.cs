@@ -55,6 +55,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -76,6 +79,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1ConfigMap> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -125,6 +129,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -146,6 +153,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1Endpoints> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -195,6 +203,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -216,6 +227,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1Event> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -265,6 +277,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -286,6 +301,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1LimitRange> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -335,6 +351,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -356,6 +375,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1PersistentVolumeClaim> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -405,6 +425,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -426,6 +449,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1Pod> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -475,6 +499,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -496,6 +523,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1PodTemplate> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -545,6 +573,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -566,6 +597,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1ReplicationController> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -615,6 +647,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -636,6 +671,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1ResourceQuota> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -685,6 +721,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -706,6 +745,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1Secret> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -755,6 +795,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -776,6 +819,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1ServiceAccount> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -825,6 +869,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -846,6 +893,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1Service> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -892,6 +940,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -912,6 +963,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1Namespace> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -958,6 +1010,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -978,6 +1033,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1Node> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -1024,6 +1080,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -1044,6 +1103,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1PersistentVolume> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -1090,6 +1150,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -1110,6 +1173,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1alpha1InitializerConfiguration> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -1156,6 +1220,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -1176,6 +1243,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta1MutatingWebhookConfiguration> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -1222,6 +1290,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -1242,6 +1313,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta1ValidatingWebhookConfiguration> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -1288,6 +1360,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -1308,6 +1383,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta1CustomResourceDefinition> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -1353,6 +1429,9 @@ namespace k8s
         /// </param>
         /// <param name="onError">
         /// The action to invoke when an error occurs.
+        /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
@@ -1374,6 +1453,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1APIService> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -1420,6 +1500,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -1440,6 +1523,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta1APIService> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -1489,6 +1573,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -1510,6 +1597,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1ControllerRevision> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -1559,6 +1647,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -1580,6 +1671,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1DaemonSet> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -1629,6 +1721,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -1650,6 +1745,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1Deployment> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -1699,6 +1795,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -1720,6 +1819,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1ReplicaSet> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -1768,6 +1868,9 @@ namespace k8s
         /// </param>
         /// <param name="onError">
         /// The action to invoke when an error occurs.
+        /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
@@ -1790,6 +1893,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1StatefulSet> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -1839,6 +1943,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -1860,6 +1967,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta1ControllerRevision> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -1909,6 +2017,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -1930,6 +2041,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta1StatefulSet> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -1979,6 +2091,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -2000,6 +2115,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta2ControllerRevision> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -2049,6 +2165,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -2070,6 +2189,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta2DaemonSet> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -2119,6 +2239,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -2140,6 +2263,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta2ReplicaSet> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -2189,6 +2313,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -2210,6 +2337,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta2StatefulSet> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -2258,6 +2386,9 @@ namespace k8s
         /// </param>
         /// <param name="onError">
         /// The action to invoke when an error occurs.
+        /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
@@ -2280,6 +2411,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1HorizontalPodAutoscaler> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -2329,6 +2461,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -2350,6 +2485,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V2beta1HorizontalPodAutoscaler> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -2399,6 +2535,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -2420,6 +2559,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1Job> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -2468,6 +2608,9 @@ namespace k8s
         /// </param>
         /// <param name="onError">
         /// The action to invoke when an error occurs.
+        /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
@@ -2490,6 +2633,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta1CronJob> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -2539,6 +2683,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -2560,6 +2707,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V2alpha1CronJob> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -2606,6 +2754,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -2626,6 +2777,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta1CertificateSigningRequest> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -2675,6 +2827,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -2696,6 +2851,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta1Event> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -2745,6 +2901,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -2766,6 +2925,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta1DaemonSet> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -2815,6 +2975,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -2836,6 +2999,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta1Ingress> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -2885,6 +3049,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -2906,6 +3073,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta1ReplicaSet> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -2955,6 +3123,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -2976,6 +3147,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1NetworkPolicy> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -3025,6 +3197,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -3046,6 +3221,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta1PodDisruptionBudget> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -3092,6 +3268,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -3112,6 +3291,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1ClusterRoleBinding> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -3158,6 +3338,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -3178,6 +3361,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1ClusterRole> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -3226,6 +3410,9 @@ namespace k8s
         /// </param>
         /// <param name="onError">
         /// The action to invoke when an error occurs.
+        /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
@@ -3248,6 +3435,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1RoleBinding> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -3296,6 +3484,9 @@ namespace k8s
         /// </param>
         /// <param name="onError">
         /// The action to invoke when an error occurs.
+        /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
@@ -3318,6 +3509,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1Role> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -3364,6 +3556,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -3384,6 +3579,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1alpha1ClusterRoleBinding> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -3430,6 +3626,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -3450,6 +3649,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1alpha1ClusterRole> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -3498,6 +3698,9 @@ namespace k8s
         /// </param>
         /// <param name="onError">
         /// The action to invoke when an error occurs.
+        /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
@@ -3520,6 +3723,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1alpha1RoleBinding> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -3569,6 +3773,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -3590,6 +3797,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1alpha1Role> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -3636,6 +3844,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -3656,6 +3867,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta1ClusterRoleBinding> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -3702,6 +3914,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -3722,6 +3937,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta1ClusterRole> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -3771,6 +3987,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -3792,6 +4011,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta1RoleBinding> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -3841,6 +4061,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -3862,6 +4085,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta1Role> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -3908,6 +4132,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -3928,6 +4155,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1alpha1PriorityClass> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -3977,6 +4205,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -3998,6 +4229,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1alpha1PodPreset> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -4043,6 +4275,9 @@ namespace k8s
         /// </param>
         /// <param name="onError">
         /// The action to invoke when an error occurs.
+        /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
@@ -4064,6 +4299,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1StorageClass> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -4110,6 +4346,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -4130,6 +4369,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1alpha1VolumeAttachment> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -4176,6 +4416,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -4196,6 +4439,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta1StorageClass> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
@@ -4242,6 +4486,9 @@ namespace k8s
         /// <param name="onError">
         /// The action to invoke when an error occurs.
         /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
@@ -4262,6 +4509,7 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta1VolumeAttachment> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
     }
