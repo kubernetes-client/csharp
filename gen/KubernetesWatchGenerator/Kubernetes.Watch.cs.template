@@ -24,10 +24,11 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, {{GetClassName operation}}> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             string path = $"{{GetPathExpression .}}";
-            return WatchObjectAsync<{{GetClassName operation}}>(path: path, @continue: @continue, fieldSelector: fieldSelector, includeUninitialized: includeUninitialized, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, cancellationToken: cancellationToken);
+            return WatchObjectAsync<{{GetClassName operation}}>(path: path, @continue: @continue, fieldSelector: fieldSelector, includeUninitialized: includeUninitialized, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
         {{/.}}
