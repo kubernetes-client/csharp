@@ -414,8 +414,9 @@ namespace k8s.Tests
                     "Timed out waiting for exception"
                 );
 
-                Assert.False(watcher.Watching);
+                await Task.WhenAny(waitForClosed.WaitAsync(), Task.Delay(TestTimeout));
                 Assert.True(waitForClosed.IsSet);
+                Assert.False(watcher.Watching);
                 Assert.IsType<IOException>(exceptionCatched);
             }
         }
