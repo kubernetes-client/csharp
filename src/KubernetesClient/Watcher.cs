@@ -92,15 +92,15 @@ namespace k8s
             try
             {
                 Watching = true;
+                string line;
 
-                while (!this._streamReader.EndOfStream)
+                // ReadLineAsync will return null when we've reached the end of the stream.
+                while ((line = await this._streamReader.ReadLineAsync().ConfigureAwait(false)) != null)
                 {
                     if (cancellationToken.IsCancellationRequested)
                     {
                         return;
                     }
-
-                    var line = await this._streamReader.ReadLineAsync();
 
                     try
                     {
