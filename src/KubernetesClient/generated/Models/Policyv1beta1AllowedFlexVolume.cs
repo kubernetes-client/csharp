@@ -29,7 +29,7 @@ namespace k8s.Models
         /// Initializes a new instance of the Policyv1beta1AllowedFlexVolume
         /// class.
         /// </summary>
-        /// <param name="driver">Driver is the name of the Flexvolume
+        /// <param name="driver">driver is the name of the Flexvolume
         /// driver.</param>
         public Policyv1beta1AllowedFlexVolume(string driver)
         {

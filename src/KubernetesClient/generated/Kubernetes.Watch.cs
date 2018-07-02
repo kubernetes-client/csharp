@@ -1303,6 +1303,27 @@ namespace k8s
         }
 
         /// <inheritdoc>
+        public Task<Watcher<V1beta1PriorityClass>> WatchPriorityClassAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1PriorityClass> onEvent = null,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/scheduling.k8s.io/v1beta1/watch/priorityclasses/{name}";
+            return WatchObjectAsync<V1beta1PriorityClass>(path: path, @continue: @continue, fieldSelector: fieldSelector, includeUninitialized: includeUninitialized, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
         public Task<Watcher<V1alpha1PodPreset>> WatchNamespacedPodPresetAsync(
             string name,
             string @namespace,

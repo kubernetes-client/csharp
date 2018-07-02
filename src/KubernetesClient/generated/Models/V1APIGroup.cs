@@ -30,17 +30,6 @@ namespace k8s.Models
         /// Initializes a new instance of the V1APIGroup class.
         /// </summary>
         /// <param name="name">name is the name of the group.</param>
-        /// <param name="serverAddressByClientCIDRs">a map of client CIDR to
-        /// server address that is serving this group. This is to help clients
-        /// reach servers in the most network-efficient way possible. Clients
-        /// can use the appropriate server address as per the CIDR that they
-        /// match. In case of multiple matches, clients should use the longest
-        /// matching CIDR. The server returns only those CIDRs that it thinks
-        /// that the client can match. For example: the master will return an
-        /// internal IP CIDR only, if the client reaches the server using an
-        /// internal IP. Server looks at X-Forwarded-For header or X-Real-Ip
-        /// header or request.RemoteAddr (in that order) to get the client
-        /// IP.</param>
         /// <param name="versions">versions are the versions supported in this
         /// group.</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
@@ -56,7 +45,18 @@ namespace k8s.Models
         /// <param name="preferredVersion">preferredVersion is the version
         /// preferred by the API server, which probably is the storage
         /// version.</param>
-        public V1APIGroup(string name, IList<V1ServerAddressByClientCIDR> serverAddressByClientCIDRs, IList<V1GroupVersionForDiscovery> versions, string apiVersion = default(string), string kind = default(string), V1GroupVersionForDiscovery preferredVersion = default(V1GroupVersionForDiscovery))
+        /// <param name="serverAddressByClientCIDRs">a map of client CIDR to
+        /// server address that is serving this group. This is to help clients
+        /// reach servers in the most network-efficient way possible. Clients
+        /// can use the appropriate server address as per the CIDR that they
+        /// match. In case of multiple matches, clients should use the longest
+        /// matching CIDR. The server returns only those CIDRs that it thinks
+        /// that the client can match. For example: the master will return an
+        /// internal IP CIDR only, if the client reaches the server using an
+        /// internal IP. Server looks at X-Forwarded-For header or X-Real-Ip
+        /// header or request.RemoteAddr (in that order) to get the client
+        /// IP.</param>
+        public V1APIGroup(string name, IList<V1GroupVersionForDiscovery> versions, string apiVersion = default(string), string kind = default(string), V1GroupVersionForDiscovery preferredVersion = default(V1GroupVersionForDiscovery), IList<V1ServerAddressByClientCIDR> serverAddressByClientCIDRs = default(IList<V1ServerAddressByClientCIDR>))
         {
             ApiVersion = apiVersion;
             Kind = kind;
@@ -137,10 +137,6 @@ namespace k8s.Models
             if (Name == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Name");
-            }
-            if (ServerAddressByClientCIDRs == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ServerAddressByClientCIDRs");
             }
             if (Versions == null)
             {

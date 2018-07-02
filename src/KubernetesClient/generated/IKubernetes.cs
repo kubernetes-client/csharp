@@ -8450,6 +8450,23 @@ namespace k8s
         Task<HttpOperationResponse<V1beta1CustomResourceDefinition>> PatchCustomResourceDefinitionWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// read status of the specified CustomResourceDefinition
+        /// </summary>
+        /// <param name='name'>
+        /// name of the CustomResourceDefinition
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1CustomResourceDefinition>> ReadCustomResourceDefinitionStatusWithHttpMessagesAsync(string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// replace status of the specified CustomResourceDefinition
         /// </summary>
         /// <param name='body'>
@@ -8467,6 +8484,25 @@ namespace k8s
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<V1beta1CustomResourceDefinition>> ReplaceCustomResourceDefinitionStatusWithHttpMessagesAsync(V1beta1CustomResourceDefinition body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update status of the specified CustomResourceDefinition
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the CustomResourceDefinition
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1CustomResourceDefinition>> PatchCustomResourceDefinitionStatusWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get information of a group
@@ -8779,6 +8815,23 @@ namespace k8s
         Task<HttpOperationResponse<V1APIService>> PatchAPIServiceWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// read status of the specified APIService
+        /// </summary>
+        /// <param name='name'>
+        /// name of the APIService
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1APIService>> ReadAPIServiceStatusWithHttpMessagesAsync(string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// replace status of the specified APIService
         /// </summary>
         /// <param name='body'>
@@ -8796,6 +8849,25 @@ namespace k8s
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<V1APIService>> ReplaceAPIServiceStatusWithHttpMessagesAsync(V1APIService body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update status of the specified APIService
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the APIService
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1APIService>> PatchAPIServiceStatusWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -9097,6 +9169,23 @@ namespace k8s
         Task<HttpOperationResponse<V1beta1APIService>> PatchAPIService1WithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// read status of the specified APIService
+        /// </summary>
+        /// <param name='name'>
+        /// name of the APIService
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1APIService>> ReadAPIServiceStatus1WithHttpMessagesAsync(string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// replace status of the specified APIService
         /// </summary>
         /// <param name='body'>
@@ -9114,6 +9203,25 @@ namespace k8s
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<V1beta1APIService>> ReplaceAPIServiceStatus1WithHttpMessagesAsync(V1beta1APIService body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update status of the specified APIService
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the APIService
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1APIService>> PatchAPIServiceStatus1WithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get information of a group
@@ -18348,6 +18456,23 @@ namespace k8s
         Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> ReplaceCertificateSigningRequestApprovalWithHttpMessagesAsync(V1beta1CertificateSigningRequest body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// read status of the specified CertificateSigningRequest
+        /// </summary>
+        /// <param name='name'>
+        /// name of the CertificateSigningRequest
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> ReadCertificateSigningRequestStatusWithHttpMessagesAsync(string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// replace status of the specified CertificateSigningRequest
         /// </summary>
         /// <param name='body'>
@@ -18365,6 +18490,25 @@ namespace k8s
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> ReplaceCertificateSigningRequestStatusWithHttpMessagesAsync(V1beta1CertificateSigningRequest body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update status of the specified CertificateSigningRequest
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the CertificateSigningRequest
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> PatchCertificateSigningRequestStatusWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get information of a group
@@ -27039,6 +27183,305 @@ namespace k8s
         Task<HttpOperationResponse<V1alpha1PriorityClass>> PatchPriorityClassWithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// get available resources
+        /// </summary>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources27WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// list or watch objects of kind PriorityClass
+        /// </summary>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server the server will respond with a 410 ResourceExpired error
+        /// indicating the client must restart their list without the continue
+        /// field. This field is not supported when watch is true. Clients may
+        /// start a watch from the last resourceVersion value returned by the
+        /// server and not miss any modifications.
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='includeUninitialized'>
+        /// If true, partially initialized resources are included in the
+        /// response.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// When specified with a watch call, shows changes that occur after
+        /// that particular version of a resource. Defaults to changes from the
+        /// beginning of history. When specified for list: - if unset, then the
+        /// result is returned from remote storage based on quorum-read flag; -
+        /// if it's 0, then we simply return what we currently have in cache,
+        /// no guarantee; - if set to non zero, then the result is at least as
+        /// fresh as given rv.
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='watch'>
+        /// Watch for changes to the described resources and return them as a
+        /// stream of add, update, and remove notifications. Specify
+        /// resourceVersion.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1PriorityClassList>> ListPriorityClass1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// create a PriorityClass
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1PriorityClass>> CreatePriorityClass1WithHttpMessagesAsync(V1beta1PriorityClass body, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete collection of PriorityClass
+        /// </summary>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server the server will respond with a 410 ResourceExpired error
+        /// indicating the client must restart their list without the continue
+        /// field. This field is not supported when watch is true. Clients may
+        /// start a watch from the last resourceVersion value returned by the
+        /// server and not miss any modifications.
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='includeUninitialized'>
+        /// If true, partially initialized resources are included in the
+        /// response.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// When specified with a watch call, shows changes that occur after
+        /// that particular version of a resource. Defaults to changes from the
+        /// beginning of history. When specified for list: - if unset, then the
+        /// result is returned from remote storage based on quorum-read flag; -
+        /// if it's 0, then we simply return what we currently have in cache,
+        /// no guarantee; - if set to non zero, then the result is at least as
+        /// fresh as given rv.
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='watch'>
+        /// Watch for changes to the described resources and return them as a
+        /// stream of add, update, and remove notifications. Specify
+        /// resourceVersion.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityClass1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read the specified PriorityClass
+        /// </summary>
+        /// <param name='name'>
+        /// name of the PriorityClass
+        /// </param>
+        /// <param name='exact'>
+        /// Should the export be exact.  Exact export maintains
+        /// cluster-specific fields like 'Namespace'.
+        /// </param>
+        /// <param name='export'>
+        /// Should this value be exported.  Export strips fields that a user
+        /// can not specify.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1PriorityClass>> ReadPriorityClass1WithHttpMessagesAsync(string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace the specified PriorityClass
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the PriorityClass
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1PriorityClass>> ReplacePriorityClass1WithHttpMessagesAsync(V1beta1PriorityClass body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete a PriorityClass
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the PriorityClass
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeletePriorityClass1WithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update the specified PriorityClass
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the PriorityClass
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1PriorityClass>> PatchPriorityClass1WithHttpMessagesAsync(V1Patch body, string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// get information of a group
         /// </summary>
         /// <param name='customHeaders'>
@@ -27058,7 +27501,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources27WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources28WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodPreset
@@ -27472,7 +27915,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources28WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources29WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind StorageClass
@@ -27771,7 +28214,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources29WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources30WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind VolumeAttachment
@@ -28070,7 +28513,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources30WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources31WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind StorageClass

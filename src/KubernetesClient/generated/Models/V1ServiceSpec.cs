@@ -82,10 +82,7 @@ namespace k8s.Models
         /// the Service. The default value is false. The primary use case for
         /// setting this field is to use a StatefulSet's Headless Service to
         /// propagate SRV records for its Pods without respect to their
-        /// readiness for purpose of peer discovery. This field will replace
-        /// the service.alpha.kubernetes.io/tolerate-unready-endpoints when
-        /// that annotation is deprecated and all clients have been converted
-        /// to use this field.</param>
+        /// readiness for purpose of peer discovery.</param>
         /// <param name="selector">Route service traffic to pods with label
         /// keys and values matching this selector. If empty or not present,
         /// the service is assumed to have an external process managing its
@@ -231,10 +228,7 @@ namespace k8s.Models
         /// value is false. The primary use case for setting this field is to
         /// use a StatefulSet's Headless Service to propagate SRV records for
         /// its Pods without respect to their readiness for purpose of peer
-        /// discovery. This field will replace the
-        /// service.alpha.kubernetes.io/tolerate-unready-endpoints when that
-        /// annotation is deprecated and all clients have been converted to use
-        /// this field.
+        /// discovery.
         /// </summary>
         [JsonProperty(PropertyName = "publishNotReadyAddresses")]
         public bool? PublishNotReadyAddresses { get; set; }

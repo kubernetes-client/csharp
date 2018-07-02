@@ -476,13 +476,6 @@ namespace k8s.Models
         public const string KubeGroup = "";
     }
 
-    public partial class V1NodeConfigSource : IKubernetesObject
-    {
-        public const string KubeApiVersion = "v1";
-        public const string KubeKind = "NodeConfigSource";
-        public const string KubeGroup = "";
-    }
-
     public partial class V1NodeList : IKubernetesObject
     {
         public const string KubeApiVersion = "v1";
@@ -903,6 +896,20 @@ namespace k8s.Models
         public const string KubeGroup = "scheduling.k8s.io";
     }
 
+    public partial class V1beta1PriorityClass : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "PriorityClass";
+        public const string KubeGroup = "scheduling.k8s.io";
+    }
+
+    public partial class V1beta1PriorityClassList : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "PriorityClassList";
+        public const string KubeGroup = "scheduling.k8s.io";
+    }
+
     public partial class V1alpha1PodPreset : IKubernetesObject
     {
         public const string KubeApiVersion = "v1alpha1";
@@ -973,6 +980,20 @@ namespace k8s.Models
         public const string KubeGroup = "storage.k8s.io";
     }
 
+    public partial class V1beta1CustomResourceDefinition : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "CustomResourceDefinition";
+        public const string KubeGroup = "apiextensions.k8s.io";
+    }
+
+    public partial class V1beta1CustomResourceDefinitionList : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "CustomResourceDefinitionList";
+        public const string KubeGroup = "apiextensions.k8s.io";
+    }
+
     public partial class V1APIGroup : IKubernetesObject
     {
         public const string KubeApiVersion = "v1";
@@ -1013,6 +1034,34 @@ namespace k8s.Models
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "Status";
         public const string KubeGroup = "";
+    }
+
+    public partial class V1APIService : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "APIService";
+        public const string KubeGroup = "apiregistration.k8s.io";
+    }
+
+    public partial class V1APIServiceList : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "APIServiceList";
+        public const string KubeGroup = "apiregistration.k8s.io";
+    }
+
+    public partial class V1beta1APIService : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "APIService";
+        public const string KubeGroup = "apiregistration.k8s.io";
+    }
+
+    public partial class V1beta1APIServiceList : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "APIServiceList";
+        public const string KubeGroup = "apiregistration.k8s.io";
     }
 
 }

@@ -27,15 +27,21 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1ResourceQuotaSpec class.
         /// </summary>
-        /// <param name="hard">Hard is the set of desired hard limits for each
+        /// <param name="hard">hard is the set of desired hard limits for each
         /// named resource. More info:
         /// https://kubernetes.io/docs/concepts/policy/resource-quotas/</param>
+        /// <param name="scopeSelector">scopeSelector is also a collection of
+        /// filters like scopes that must match each object tracked by a quota
+        /// but expressed using ScopeSelectorOperator in combination with
+        /// possible values. For a resource to match, both scopes AND
+        /// scopeSelector (if specified in spec), must be matched.</param>
         /// <param name="scopes">A collection of filters that must match each
         /// object tracked by a quota. If not specified, the quota matches all
         /// objects.</param>
-        public V1ResourceQuotaSpec(IDictionary<string, ResourceQuantity> hard = default(IDictionary<string, ResourceQuantity>), IList<string> scopes = default(IList<string>))
+        public V1ResourceQuotaSpec(IDictionary<string, ResourceQuantity> hard = default(IDictionary<string, ResourceQuantity>), V1ScopeSelector scopeSelector = default(V1ScopeSelector), IList<string> scopes = default(IList<string>))
         {
             Hard = hard;
+            ScopeSelector = scopeSelector;
             Scopes = scopes;
             CustomInit();
         }
@@ -52,6 +58,16 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "hard")]
         public IDictionary<string, ResourceQuantity> Hard { get; set; }
+
+        /// <summary>
+        /// Gets or sets scopeSelector is also a collection of filters like
+        /// scopes that must match each object tracked by a quota but expressed
+        /// using ScopeSelectorOperator in combination with possible values.
+        /// For a resource to match, both scopes AND scopeSelector (if
+        /// specified in spec), must be matched.
+        /// </summary>
+        [JsonProperty(PropertyName = "scopeSelector")]
+        public V1ScopeSelector ScopeSelector { get; set; }
 
         /// <summary>
         /// Gets or sets a collection of filters that must match each object

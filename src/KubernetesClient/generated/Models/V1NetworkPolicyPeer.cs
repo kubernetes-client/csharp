@@ -10,8 +10,8 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// NetworkPolicyPeer describes a peer to allow traffic from. Exactly one
-    /// of its fields must be specified.
+    /// NetworkPolicyPeer describes a peer to allow traffic from. Only certain
+    /// combinations of fields are allowed
     /// </summary>
     public partial class V1NetworkPolicyPeer
     {
@@ -27,16 +27,24 @@ namespace k8s.Models
         /// Initializes a new instance of the V1NetworkPolicyPeer class.
         /// </summary>
         /// <param name="ipBlock">IPBlock defines policy on a particular
-        /// IPBlock</param>
-        /// <param name="namespaceSelector">Selects Namespaces using cluster
-        /// scoped-labels. This matches all pods in all namespaces selected by
-        /// this label selector. This field follows standard label selector
-        /// semantics. If present but empty, this selector selects all
-        /// namespaces.</param>
+        /// IPBlock. If this field is set then neither of the other fields can
+        /// be.</param>
+        /// <param name="namespaceSelector">Selects Namespaces using
+        /// cluster-scoped labels. This field follows standard label selector
+        /// semantics; if present but empty, it selects all namespaces.
+        ///
+        /// If PodSelector is also set, then the NetworkPolicyPeer as a whole
+        /// selects the Pods matching PodSelector in the Namespaces selected by
+        /// NamespaceSelector. Otherwise it selects all Pods in the Namespaces
+        /// selected by NamespaceSelector.</param>
         /// <param name="podSelector">This is a label selector which selects
-        /// Pods in this namespace. This field follows standard label selector
-        /// semantics. If present but empty, this selector selects all pods in
-        /// this namespace.</param>
+        /// Pods. This field follows standard label selector semantics; if
+        /// present but empty, it selects all pods.
+        ///
+        /// If NamespaceSelector is also set, then the NetworkPolicyPeer as a
+        /// whole selects the Pods matching PodSelector in the Namespaces
+        /// selected by NamespaceSelector. Otherwise it selects the Pods
+        /// matching PodSelector in the policy's own Namespace.</param>
         public V1NetworkPolicyPeer(V1IPBlock ipBlock = default(V1IPBlock), V1LabelSelector namespaceSelector = default(V1LabelSelector), V1LabelSelector podSelector = default(V1LabelSelector))
         {
             IpBlock = ipBlock;
@@ -51,25 +59,34 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets iPBlock defines policy on a particular IPBlock
+        /// Gets or sets iPBlock defines policy on a particular IPBlock. If
+        /// this field is set then neither of the other fields can be.
         /// </summary>
         [JsonProperty(PropertyName = "ipBlock")]
         public V1IPBlock IpBlock { get; set; }
 
         /// <summary>
-        /// Gets or sets selects Namespaces using cluster scoped-labels. This
-        /// matches all pods in all namespaces selected by this label selector.
-        /// This field follows standard label selector semantics. If present
-        /// but empty, this selector selects all namespaces.
+        /// Gets or sets selects Namespaces using cluster-scoped labels. This
+        /// field follows standard label selector semantics; if present but
+        /// empty, it selects all namespaces.
+        ///
+        /// If PodSelector is also set, then the NetworkPolicyPeer as a whole
+        /// selects the Pods matching PodSelector in the Namespaces selected by
+        /// NamespaceSelector. Otherwise it selects all Pods in the Namespaces
+        /// selected by NamespaceSelector.
         /// </summary>
         [JsonProperty(PropertyName = "namespaceSelector")]
         public V1LabelSelector NamespaceSelector { get; set; }
 
         /// <summary>
-        /// Gets or sets this is a label selector which selects Pods in this
-        /// namespace. This field follows standard label selector semantics. If
-        /// present but empty, this selector selects all pods in this
-        /// namespace.
+        /// Gets or sets this is a label selector which selects Pods. This
+        /// field follows standard label selector semantics; if present but
+        /// empty, it selects all pods.
+        ///
+        /// If NamespaceSelector is also set, then the NetworkPolicyPeer as a
+        /// whole selects the Pods matching PodSelector in the Namespaces
+        /// selected by NamespaceSelector. Otherwise it selects the Pods
+        /// matching PodSelector in the policy's own Namespace.
         /// </summary>
         [JsonProperty(PropertyName = "podSelector")]
         public V1LabelSelector PodSelector { get; set; }

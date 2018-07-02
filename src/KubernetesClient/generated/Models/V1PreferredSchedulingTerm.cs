@@ -70,10 +70,6 @@ namespace k8s.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Preference");
             }
-            if (Preference != null)
-            {
-                Preference.Validate();
-            }
         }
     }
 }

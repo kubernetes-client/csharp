@@ -29,8 +29,7 @@ namespace k8s.Models
         /// <param name="status">Status is the status of the condition. Can be
         /// True, False, Unknown. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions</param>
-        /// <param name="type">Type is the type of the condition. Currently
-        /// only Ready. More info:
+        /// <param name="type">Type is the type of the condition. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions</param>
         /// <param name="lastProbeTime">Last time we probed the
         /// condition.</param>
@@ -92,8 +91,7 @@ namespace k8s.Models
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or sets type is the type of the condition. Currently only
-        /// Ready. More info:
+        /// Gets or sets type is the type of the condition. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
         /// </summary>
         [JsonProperty(PropertyName = "type")]

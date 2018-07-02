@@ -10,9 +10,9 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// Host Port Range defines a range of host ports that will be enabled by a
+    /// HostPortRange defines a range of host ports that will be enabled by a
     /// policy for pods to use.  It requires both the start and end to be
-    /// defined.
+    /// defined. Deprecated: use HostPortRange from policy API Group instead.
     /// </summary>
     public partial class Extensionsv1beta1HostPortRange
     {

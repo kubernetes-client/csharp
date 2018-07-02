@@ -12,7 +12,7 @@ namespace k8s.Models
 
     /// <summary>
     /// AllowedFlexVolume represents a single Flexvolume that is allowed to be
-    /// used.
+    /// used. Deprecated: use AllowedFlexVolume from policy API Group instead.
     /// </summary>
     public partial class Extensionsv1beta1AllowedFlexVolume
     {
@@ -29,7 +29,7 @@ namespace k8s.Models
         /// Initializes a new instance of the
         /// Extensionsv1beta1AllowedFlexVolume class.
         /// </summary>
-        /// <param name="driver">Driver is the name of the Flexvolume
+        /// <param name="driver">driver is the name of the Flexvolume
         /// driver.</param>
         public Extensionsv1beta1AllowedFlexVolume(string driver)
         {
