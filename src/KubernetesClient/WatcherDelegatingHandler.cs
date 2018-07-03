@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -96,6 +97,36 @@ namespace k8s
                 var line = await ReadLineAsync();
                 _buffer.Enqueue(line);
                 return line;
+            }
+
+            public override int Read()
+            {
+                throw new NotImplementedException();
+            }
+
+            public override int Read(char[] buffer, int index, int count)
+            {
+                throw new NotImplementedException();
+            }
+            public override Task<int> ReadAsync(char[] buffer, int index, int count)
+            {
+                throw new NotImplementedException();
+            }
+            public override int ReadBlock(char[] buffer, int index, int count)
+            {
+                throw new NotImplementedException();
+            }
+            public override Task<int> ReadBlockAsync(char[] buffer, int index, int count)
+            {
+                throw new NotImplementedException();
+            }
+            public override string ReadToEnd()
+            {
+                throw new NotImplementedException();
+            }
+            public override Task<string> ReadToEndAsync()
+            {
+                throw new NotImplementedException();
             }
         }
     }
