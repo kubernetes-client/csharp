@@ -86,7 +86,7 @@ namespace k8s.Tests
         [Fact]
         public async Task SuriveBadLine()
         {
-            AsyncCountdownEvent eventsReceived = new AsyncCountdownEvent(4 /* first line of response is eaten by WatcherDelegatingHandler */);
+            AsyncCountdownEvent eventsReceived = new AsyncCountdownEvent(5);
             AsyncManualResetEvent serverShutdown = new AsyncManualResetEvent();
             AsyncManualResetEvent connectionClosed = new AsyncManualResetEvent();
 
@@ -148,7 +148,7 @@ namespace k8s.Tests
                 Assert.Contains(WatchEventType.Added, events);
                 Assert.Contains(WatchEventType.Modified, events);
 
-                Assert.Equal(2, errors);
+                Assert.Equal(3, errors);
 
                 Assert.True(watcher.Watching);
 
@@ -236,7 +236,6 @@ namespace k8s.Tests
 
             using (var server = new MockKubeApiServer(testOutput, async httpContext =>
             {
-                await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse);
                 await WriteStreamLine(httpContext, MockAddedEventStreamLine);
                 await WriteStreamLine(httpContext, MockDeletedStreamLine);
                 await WriteStreamLine(httpContext, MockModifiedStreamLine);
@@ -303,7 +302,7 @@ namespace k8s.Tests
         [Fact]
         public async Task WatchEventsWithTimeout()
         {
-            AsyncCountdownEvent eventsReceived = new AsyncCountdownEvent(4 /* first line of response is eaten by WatcherDelegatingHandler */);
+            AsyncCountdownEvent eventsReceived = new AsyncCountdownEvent(5);
             AsyncManualResetEvent serverShutdown = new AsyncManualResetEvent();
             AsyncManualResetEvent connectionClosed = new AsyncManualResetEvent();
 
@@ -362,7 +361,7 @@ namespace k8s.Tests
                 Assert.Contains(WatchEventType.Modified, events);
                 Assert.Contains(WatchEventType.Error, events);
 
-                Assert.Equal(0, errors);
+                Assert.Equal(1, errors);
 
                 Assert.True(watcher.Watching);
 
