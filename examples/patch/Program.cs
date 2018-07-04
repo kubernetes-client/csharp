@@ -18,7 +18,7 @@ namespace patch
             var pod = client.ListNamespacedPod("default").Items.First();
 
             var name = pod.Metadata.Name;
-            PrintLables(pod);
+            PrintLabels(pod);
 
             var newlables = new Dictionary<string, string>(pod.Metadata.Labels)
             {
@@ -28,10 +28,10 @@ namespace patch
             patch.Replace(e => e.Metadata.Labels, newlables);
             client.PatchNamespacedPod(new V1Patch(patch), name, "default");
 
-            PrintLables(client.ReadNamespacedPod(name, "default"));
+            PrintLabels(client.ReadNamespacedPod(name, "default"));
         }
 
-        private static void PrintLables(V1Pod pod)
+        private static void PrintLabels(V1Pod pod)
         {
             Console.WriteLine($"Lables: for {pod.Metadata.Name}");
             foreach (var (k, v) in pod.Metadata.Labels)
