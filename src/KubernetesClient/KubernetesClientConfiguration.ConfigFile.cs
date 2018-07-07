@@ -3,9 +3,9 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 using k8s.Exceptions;
 using k8s.KubeConfigModels;
-using YamlDotNet.Serialization;
 
 namespace k8s
 {
@@ -28,47 +28,32 @@ namespace k8s
         ///     Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
         /// </summary>
         /// <param name="masterUrl">kube api server endpoint</param>
-        /// <param name="kubeconfigPath">kubeconfig filepath</param>
-        public static KubernetesClientConfiguration BuildConfigFromConfigFile(string masterUrl = null,
-            string kubeconfigPath = null)
+        /// <param name="kubeconfigPath">Explicit file path to kubeconfig. Set to null to use the default file path</param>
+        /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
+        /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
+        public static KubernetesClientConfiguration BuildConfigFromConfigFile(string kubeconfigPath = null,
+            string currentContext = null, string masterUrl = null, bool useRelativePaths = true)
         {
             return BuildConfigFromConfigFile(new FileInfo(kubeconfigPath ?? KubeConfigDefaultLocation), null,
-                masterUrl);
+                masterUrl, useRelativePaths);
         }
 
         /// <summary>
         /// </summary>
         /// <param name="kubeconfig">Fileinfo of the kubeconfig, cannot be null</param>
         /// <param name="currentContext">override the context in config file, set null if do not want to override</param>
-        /// <param name="masterUrl">overrider kube api server endpoint, set null if do not want to override</param>
+        /// <param name="masterUrl">override the kube api server endpoint, set null if do not want to override</param>
+        /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
+        /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
         public static KubernetesClientConfiguration BuildConfigFromConfigFile(FileInfo kubeconfig,
-            string currentContext = null, string masterUrl = null)
+            string currentContext = null, string masterUrl = null, bool useRelativePaths = true)
         {
             if (kubeconfig == null)
             {
                 throw new NullReferenceException(nameof(kubeconfig));
             }
 
-            var k8SConfig = LoadKubeConfig(kubeconfig);
-            var k8SConfiguration = GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig);
-
-            return k8SConfiguration;
-        }
-
-        /// <summary>
-        /// </summary>
-        /// <param name="kubeconfig">Fileinfo of the kubeconfig, cannot be null, whitespaced or empty</param>
-        /// <param name="currentContext">override the context in config file, set null if do not want to override</param>
-        /// <param name="masterUrl">overrider kube api server endpoint, set null if do not want to override</param>
-        public static KubernetesClientConfiguration BuildConfigFromConfigFile(string kubeconfig,
-            string currentContext = null, string masterUrl = null)
-        {
-            if (string.IsNullOrWhiteSpace(kubeconfig))
-            {
-                throw new NullReferenceException(nameof(kubeconfig));
-            }
-
-            var k8SConfig = LoadKubeConfig(kubeconfig);
+            var k8SConfig = LoadKubeConfig(kubeconfig, useRelativePaths);
             var k8SConfiguration = GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig);
 
             return k8SConfiguration;
@@ -94,7 +79,7 @@ namespace k8s
 
             kubeconfig.Position = 0;
 
-            var k8SConfig = LoadKubeConfig(kubeconfig);
+            var k8SConfig = Yaml.LoadFromStreamAsync<K8SConfiguration>(kubeconfig).GetAwaiter().GetResult();
             var k8SConfiguration = GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig);
 
             return k8SConfiguration;
@@ -191,7 +176,7 @@ namespace k8s
                     }
                     else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
                     {
-                        SslCaCert = new X509Certificate2(clusterDetails.ClusterEndpoint.CertificateAuthority);
+                        SslCaCert = new X509Certificate2(GetFullPath(k8SConfig, clusterDetails.ClusterEndpoint.CertificateAuthority));
                     }
                 }
             }
@@ -249,8 +234,8 @@ namespace k8s
             if (!string.IsNullOrWhiteSpace(userDetails.UserCredentials.ClientCertificate) &&
                 !string.IsNullOrWhiteSpace(userDetails.UserCredentials.ClientKey))
             {
-                ClientCertificateFilePath = userDetails.UserCredentials.ClientCertificate;
-                ClientKeyFilePath = userDetails.UserCredentials.ClientKey;
+                ClientCertificateFilePath = GetFullPath(k8SConfig, userDetails.UserCredentials.ClientCertificate);
+                ClientKeyFilePath = GetFullPath(k8SConfig, userDetails.UserCredentials.ClientKey);
                 userCredentialsFound = true;
             }
 
@@ -262,49 +247,117 @@ namespace k8s
         }
 
         /// <summary>
+        ///     Loads entire Kube Config from default or explicit file path
+        /// </summary>
+        /// <param name="kubeconfigPath">Explicit file path to kubeconfig. Set to null to use the default file path</param>
+        /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
+        /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
+        /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
+        public static async Task<K8SConfiguration> LoadKubeConfigAsync(string kubeconfigPath = null, bool useRelativePaths = true)
+        {
+            var fileInfo = new FileInfo(kubeconfigPath ?? KubeConfigDefaultLocation);
+
+            return await LoadKubeConfigAsync(fileInfo, useRelativePaths);
+        }
+
+        /// <summary>
+        ///     Loads entire Kube Config from default or explicit file path
+        /// </summary>
+        /// <param name="kubeconfigPath">Explicit file path to kubeconfig. Set to null to use the default file path</param>
+        /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
+        /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
+        /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
+        public static K8SConfiguration LoadKubeConfig(string kubeconfigPath = null, bool useRelativePaths = true)
+        {
+            return LoadKubeConfigAsync(kubeconfigPath, useRelativePaths).GetAwaiter().GetResult();
+        }
+
+        // <summary>
         ///     Loads Kube Config
         /// </summary>
         /// <param name="kubeconfig">Kube config file contents</param>
+        /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
+        /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
         /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
-        private static K8SConfiguration LoadKubeConfig(FileInfo kubeconfig)
+        public static async Task<K8SConfiguration> LoadKubeConfigAsync(FileInfo kubeconfig, bool useRelativePaths = true)
         {
             if (!kubeconfig.Exists)
             {
                 throw new KubeConfigException($"kubeconfig file not found at {kubeconfig.FullName}");
             }
 
-            var deserializeBuilder = new DeserializerBuilder();
-            var deserializer = deserializeBuilder.Build();
-            using (var kubeConfigTextStream = kubeconfig.OpenText())
+            using (var stream = kubeconfig.OpenRead())
             {
-                return deserializer.Deserialize<K8SConfiguration>(kubeConfigTextStream);
+                var config = await Yaml.LoadFromStreamAsync<K8SConfiguration>(stream);
+
+                if (useRelativePaths)
+                {
+                    config.FileName = kubeconfig.FullName;
+                }
+
+                return config;
             }
         }
 
         /// <summary>
-        ///     Loads Kube Config from string
+        ///     Loads Kube Config
         /// </summary>
         /// <param name="kubeconfig">Kube config file contents</param>
+        /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
+        /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
         /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
-        private static K8SConfiguration LoadKubeConfig(string kubeconfig)
+        public static K8SConfiguration LoadKubeConfig(FileInfo kubeconfig, bool useRelativePaths = true)
         {
+            return LoadKubeConfigAsync(kubeconfig, useRelativePaths).GetAwaiter().GetResult();
+        }
 
-            var deserializeBuilder = new DeserializerBuilder();
-            var deserializer = deserializeBuilder.Build();
-            return deserializer.Deserialize<K8SConfiguration>(kubeconfig);
+        // <summary>
+        ///     Loads Kube Config
+        /// </summary>
+        /// <param name="kubeconfigStream">Kube config file contents stream</param>
+        /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
+        public static async Task<K8SConfiguration> LoadKubeConfigAsync(Stream kubeconfigStream)
+        {
+            return await Yaml.LoadFromStreamAsync<K8SConfiguration>(kubeconfigStream);
         }
 
         /// <summary>
-        ///     Loads Kube Config from stream.
+        ///     Loads Kube Config
         /// </summary>
-        /// <param name="kubeconfig">Kube config file contents</param>
+        /// <param name="kubeconfig">Kube config file contents stream</param>
         /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
-        private static K8SConfiguration LoadKubeConfig(Stream kubeconfig)
+        public static K8SConfiguration LoadKubeConfig(Stream kubeconfigStream)
         {
-            using (var sr = new StreamReader(kubeconfig))
-            {               
-                var strKubeConfig = sr.ReadToEnd();
-                return LoadKubeConfig(strKubeConfig);
+            return LoadKubeConfigAsync(kubeconfigStream).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Tries to get the full path to a file referenced from the Kubernetes configuration.
+        /// </summary>
+        /// <param name="configuration">
+        /// The Kubernetes configuration.
+        /// </param>
+        /// <param name="path">
+        /// The path to resolve.
+        /// </param>
+        /// <returns>
+        /// When possible a fully qualified path to the file.
+        /// </returns>
+        /// <remarks>
+        /// For example, if the configuration file is at "C:\Users\me\kube.config" and path is "ca.crt",
+        /// this will return "C:\Users\me\ca.crt". Similarly, if path is "D:\ca.cart", this will return
+        /// "D:\ca.crt".
+        /// </remarks>
+        private static string GetFullPath(K8SConfiguration configuration, string path)
+        {
+            // If we don't have a file name,
+            if (string.IsNullOrWhiteSpace(configuration.FileName) || Path.IsPathRooted(path))
+            {
+                return path;
+            }
+            else
+            {
+                return Path.Combine(Path.GetDirectoryName(configuration.FileName), path);
             }
         }
     }

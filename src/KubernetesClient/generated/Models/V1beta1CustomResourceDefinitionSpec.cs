@@ -8,6 +8,8 @@ namespace k8s.Models
 {
     using Microsoft.Rest;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -35,22 +37,42 @@ namespace k8s.Models
         /// custom resource</param>
         /// <param name="scope">Scope indicates whether this resource is
         /// cluster or namespace scoped.  Default is namespaced</param>
-        /// <param name="version">Version is the version this resource belongs
-        /// in</param>
+        /// <param name="additionalPrinterColumns">AdditionalPrinterColumns are
+        /// additional columns shown e.g. in kubectl next to the name. Defaults
+        /// to a created-at column.</param>
         /// <param name="subresources">Subresources describes the subresources
-        /// for CustomResources This field is alpha-level and should only be
-        /// sent to servers that enable subresources via the
-        /// CustomResourceSubresources feature gate.</param>
+        /// for CustomResources</param>
         /// <param name="validation">Validation describes the validation
         /// methods for CustomResources</param>
-        public V1beta1CustomResourceDefinitionSpec(string group, V1beta1CustomResourceDefinitionNames names, string scope, string version, V1beta1CustomResourceSubresources subresources = default(V1beta1CustomResourceSubresources), V1beta1CustomResourceValidation validation = default(V1beta1CustomResourceValidation))
+        /// <param name="version">Version is the version this resource belongs
+        /// in Should be always first item in Versions field if provided.
+        /// Optional, but at least one of Version or Versions must be set.
+        /// Deprecated: Please use `Versions`.</param>
+        /// <param name="versions">Versions is the list of all supported
+        /// versions for this resource. If Version field is provided, this
+        /// field is optional. Validation: All versions must use the same
+        /// validation schema for now. i.e., top level Validation field is
+        /// applied to all of these versions. Order: The version name will be
+        /// used to compute the order. If the version string is "kube-like", it
+        /// will sort above non "kube-like" version strings, which are ordered
+        /// lexicographically. "Kube-like" versions start with a "v", then are
+        /// followed by a number (the major version), then optionally the
+        /// string "alpha" or "beta" and another number (the minor version).
+        /// These are sorted first by GA &gt; beta &gt; alpha (where GA is a
+        /// version with no suffix such as beta or alpha), and then by
+        /// comparing major version, then minor version. An example sorted list
+        /// of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1,
+        /// v11alpha2, foo1, foo10.</param>
+        public V1beta1CustomResourceDefinitionSpec(string group, V1beta1CustomResourceDefinitionNames names, string scope, IList<V1beta1CustomResourceColumnDefinition> additionalPrinterColumns = default(IList<V1beta1CustomResourceColumnDefinition>), V1beta1CustomResourceSubresources subresources = default(V1beta1CustomResourceSubresources), V1beta1CustomResourceValidation validation = default(V1beta1CustomResourceValidation), string version = default(string), IList<V1beta1CustomResourceDefinitionVersion> versions = default(IList<V1beta1CustomResourceDefinitionVersion>))
         {
+            AdditionalPrinterColumns = additionalPrinterColumns;
             Group = group;
             Names = names;
             Scope = scope;
             Subresources = subresources;
             Validation = validation;
             Version = version;
+            Versions = versions;
             CustomInit();
         }
 
@@ -58,6 +80,13 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets additionalPrinterColumns are additional columns shown
+        /// e.g. in kubectl next to the name. Defaults to a created-at column.
+        /// </summary>
+        [JsonProperty(PropertyName = "additionalPrinterColumns")]
+        public IList<V1beta1CustomResourceColumnDefinition> AdditionalPrinterColumns { get; set; }
 
         /// <summary>
         /// Gets or sets group is the group this resource belongs in
@@ -81,9 +110,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets subresources describes the subresources for
-        /// CustomResources This field is alpha-level and should only be sent
-        /// to servers that enable subresources via the
-        /// CustomResourceSubresources feature gate.
+        /// CustomResources
         /// </summary>
         [JsonProperty(PropertyName = "subresources")]
         public V1beta1CustomResourceSubresources Subresources { get; set; }
@@ -96,10 +123,33 @@ namespace k8s.Models
         public V1beta1CustomResourceValidation Validation { get; set; }
 
         /// <summary>
-        /// Gets or sets version is the version this resource belongs in
+        /// Gets or sets version is the version this resource belongs in Should
+        /// be always first item in Versions field if provided. Optional, but
+        /// at least one of Version or Versions must be set. Deprecated: Please
+        /// use `Versions`.
         /// </summary>
         [JsonProperty(PropertyName = "version")]
         public string Version { get; set; }
+
+        /// <summary>
+        /// Gets or sets versions is the list of all supported versions for
+        /// this resource. If Version field is provided, this field is
+        /// optional. Validation: All versions must use the same validation
+        /// schema for now. i.e., top level Validation field is applied to all
+        /// of these versions. Order: The version name will be used to compute
+        /// the order. If the version string is "kube-like", it will sort above
+        /// non "kube-like" version strings, which are ordered
+        /// lexicographically. "Kube-like" versions start with a "v", then are
+        /// followed by a number (the major version), then optionally the
+        /// string "alpha" or "beta" and another number (the minor version).
+        /// These are sorted first by GA &amp;gt; beta &amp;gt; alpha (where GA
+        /// is a version with no suffix such as beta or alpha), and then by
+        /// comparing major version, then minor version. An example sorted list
+        /// of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1,
+        /// v11alpha2, foo1, foo10.
+        /// </summary>
+        [JsonProperty(PropertyName = "versions")]
+        public IList<V1beta1CustomResourceDefinitionVersion> Versions { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -121,9 +171,15 @@ namespace k8s.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Scope");
             }
-            if (Version == null)
+            if (AdditionalPrinterColumns != null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Version");
+                foreach (var element in AdditionalPrinterColumns)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
             }
             if (Names != null)
             {
@@ -133,9 +189,15 @@ namespace k8s.Models
             {
                 Subresources.Validate();
             }
-            if (Validation != null)
+            if (Versions != null)
             {
-                Validation.Validate();
+                foreach (var element1 in Versions)
+                {
+                    if (element1 != null)
+                    {
+                        element1.Validate();
+                    }
+                }
             }
         }
     }

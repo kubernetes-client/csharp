@@ -11,13 +11,13 @@ namespace k8s.KubeConfigModels
         /// <summary>
         /// Gets or sets the path to a cert file for the certificate authority.
         /// </summary>
-        [YamlMember(Alias = "certificate-authority")]
+        [YamlMember(Alias = "certificate-authority", ApplyNamingConventions = false)]
         public string CertificateAuthority {get; set; }
 
         /// <summary>
         /// Gets or sets =PEM-encoded certificate authority certificates. Overrides <see cref="CertificateAuthority"/>.
         /// </summary>
-        [YamlMember(Alias = "certificate-authority-data")]
+        [YamlMember(Alias = "certificate-authority-data", ApplyNamingConventions = false)]
         public string CertificateAuthorityData { get; set; }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace k8s.KubeConfigModels
         /// Gets or sets a value indicating whether to skip the validity check for the server's certificate.
         /// This will make your HTTPS connections insecure.
         /// </summary>
-        [YamlMember(Alias = "insecure-skip-tls-verify")]
+        [YamlMember(Alias = "insecure-skip-tls-verify", ApplyNamingConventions = false)]
         public bool SkipTlsVerify { get; set; }
 
         /// <summary>

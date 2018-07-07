@@ -35,8 +35,6 @@ namespace k8s.Models
         /// <param name="roleRef">RoleRef can reference a Role in the current
         /// namespace or a ClusterRole in the global namespace. If the RoleRef
         /// cannot be resolved, the Authorizer must return an error.</param>
-        /// <param name="subjects">Subjects holds references to the objects the
-        /// role applies to.</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
@@ -48,7 +46,9 @@ namespace k8s.Models
         /// CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
         /// <param name="metadata">Standard object's metadata.</param>
-        public V1beta1RoleBinding(V1beta1RoleRef roleRef, IList<V1beta1Subject> subjects, string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta))
+        /// <param name="subjects">Subjects holds references to the objects the
+        /// role applies to.</param>
+        public V1beta1RoleBinding(V1beta1RoleRef roleRef, string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), IList<V1beta1Subject> subjects = default(IList<V1beta1Subject>))
         {
             ApiVersion = apiVersion;
             Kind = kind;
@@ -115,10 +115,6 @@ namespace k8s.Models
             if (RoleRef == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "RoleRef");
-            }
-            if (Subjects == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Subjects");
             }
             if (Metadata != null)
             {

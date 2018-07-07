@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http.Headers;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -21,10 +22,12 @@ using Xunit.Abstractions;
 namespace k8s.Tests
 {
     public class AuthTests
-        : TestBase
     {
-        public AuthTests(ITestOutputHelper testOutput) : base(testOutput)
+        private readonly ITestOutputHelper testOutput;
+
+        public AuthTests(ITestOutputHelper testOutput)
         {
+            this.testOutput = testOutput;
         }
 
         private static HttpOperationResponse<V1PodList> ExecuteListPods(IKubernetes client)
@@ -35,7 +38,7 @@ namespace k8s.Tests
         [Fact]
         public void Anonymous()
         {
-            using (var server = new MockKubeApiServer(TestOutput))
+            using (var server = new MockKubeApiServer(testOutput))
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration
                 {
@@ -48,7 +51,7 @@ namespace k8s.Tests
                 Assert.Equal(1, listTask.Body.Items.Count);
             }
 
-            using (var server = new MockKubeApiServer(TestOutput, cxt =>
+            using (var server = new MockKubeApiServer(testOutput, cxt =>
             {
                 cxt.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                 return Task.FromResult(false);
@@ -71,7 +74,7 @@ namespace k8s.Tests
             const string testName = "test_name";
             const string testPassword = "test_password";
 
-            using (var server = new MockKubeApiServer(TestOutput, cxt =>
+            using (var server = new MockKubeApiServer(testOutput, cxt =>
             {
                 var header = cxt.Request.Headers["Authorization"].FirstOrDefault();
 
@@ -164,6 +167,8 @@ namespace k8s.Tests
             }
         }
 
+#if NETCOREAPP2_1 // The functionality under test, here, is dependent on managed HTTP / WebSocket functionality in .NET Core 2.1 or newer.
+
         [Fact]
         public void Cert()
         {
@@ -173,16 +178,24 @@ namespace k8s.Tests
             var clientCertificateData = File.ReadAllText("assets/client-certificate-data.txt");
 
             X509Certificate2 serverCertificate = null;
-            using (MemoryStream serverCertificateStream = new MemoryStream(Convert.FromBase64String(serverCertificateData)))
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                serverCertificate = OpenCertificateStore(serverCertificateStream);
+                using (MemoryStream serverCertificateStream = new MemoryStream(Convert.FromBase64String(serverCertificateData)))
+                {
+                    serverCertificate = OpenCertificateStore(serverCertificateStream);
+                }
+            }
+            else
+            {
+                serverCertificate = new X509Certificate2(Convert.FromBase64String(serverCertificateData), "");
             }
 
             var clientCertificate = new X509Certificate2(Convert.FromBase64String(clientCertificateData), "");
 
             var clientCertificateValidationCalled = false;
 
-            using (var server = new MockKubeApiServer(TestOutput, listenConfigure: options =>
+            using (var server = new MockKubeApiServer(testOutput, listenConfigure: options =>
             {
                 options.UseHttps(new HttpsConnectionAdapterOptions
                 {
@@ -259,12 +272,14 @@ namespace k8s.Tests
             }
         }
 
+#endif // NETCOREAPP2_1
+
         [Fact]
         public void Token()
         {
             const string token = "testingtoken";
 
-            using (var server = new MockKubeApiServer(TestOutput, cxt =>
+            using (var server = new MockKubeApiServer(testOutput, cxt =>
             {
                 var header = cxt.Request.Headers["Authorization"].FirstOrDefault();
 

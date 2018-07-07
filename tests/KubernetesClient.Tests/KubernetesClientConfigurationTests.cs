@@ -1,5 +1,7 @@
 using System.IO;
+using System.Linq;
 using k8s.Exceptions;
+using k8s.KubeConfigModels;
 using Xunit;
 
 namespace k8s.Tests
@@ -15,7 +17,7 @@ namespace k8s.Tests
         public void ContextHost(string context, string host)
         {
             var fi = new FileInfo("assets/kubeconfig.yml");
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, context);
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, context, useRelativePaths: false);
             Assert.Equal(host, cfg.Host);
         }
 
@@ -46,7 +48,7 @@ namespace k8s.Tests
         public void ContextCertificate(string context, string clientCert, string clientCertKey)
         {
             var fi = new FileInfo("assets/kubeconfig.yml");
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, context);
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, context, useRelativePaths: false);
             Assert.Equal(context, cfg.CurrentContext);
             Assert.Equal(cfg.ClientCertificateFilePath, clientCert);
             Assert.Equal(cfg.ClientKeyFilePath, clientCertKey);
@@ -142,7 +144,7 @@ namespace k8s.Tests
         [Fact]
         public void DefaultConfigurationLoaded()
         {
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(new FileInfo("assets/kubeconfig.yml"));
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(new FileInfo("assets/kubeconfig.yml"), useRelativePaths: false);
             Assert.NotNull(cfg.Host);
         }
 
@@ -153,7 +155,7 @@ namespace k8s.Tests
         public void IncompleteUserCredentials()
         {
             var fi = new FileInfo("assets/kubeconfig.no-credentials.yml");
-            Assert.Throws<KubeConfigException>(() => KubernetesClientConfiguration.BuildConfigFromConfigFile(fi));
+            Assert.Throws<KubeConfigException>(() => KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, useRelativePaths: false));
         }
 
         /// <summary>
@@ -194,7 +196,7 @@ namespace k8s.Tests
         public void UserPasswordAuthentication()
         {
             var fi = new FileInfo("assets/kubeconfig.user-pass.yml");
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi);
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, useRelativePaths: false);
             Assert.Equal("admin", cfg.Username);
             Assert.Equal("secret", cfg.Password);
         }
@@ -206,7 +208,7 @@ namespace k8s.Tests
         public void UserNotFound()
         {
             var fi = new FileInfo("assets/kubeconfig.user-not-found.yml");
-            Assert.Throws<KubeConfigException>(() => KubernetesClientConfiguration.BuildConfigFromConfigFile(fi));
+            Assert.Throws<KubeConfigException>(() => KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, useRelativePaths: false));
         }
 
         /// <summary>
@@ -216,7 +218,7 @@ namespace k8s.Tests
         public void EmptyUserNotFound()
         {
             var fi = new FileInfo("assets/kubeconfig.no-user.yml");
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi);
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, useRelativePaths: false);
 
             Assert.NotEmpty(cfg.Host);
         }
@@ -228,7 +230,7 @@ namespace k8s.Tests
         public void OverrideByMasterUrl()
         {
             var fi = new FileInfo("assets/kubeconfig.yml");
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, masterUrl: "http://test.server");
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, masterUrl: "http://test.server", useRelativePaths: false);
             Assert.Equal("http://test.server", cfg.Host);
         }
 
@@ -271,14 +273,14 @@ namespace k8s.Tests
         {
             var assetFileInfo = new FileInfo("assets/kubeconfig.yml");
             var tempFileInfo = new FileInfo(Path.GetTempFileName());
-            
+
             File.Copy(assetFileInfo.FullName, tempFileInfo.FullName, /* overwrite: */ true);
 
             KubernetesClientConfiguration config;
 
             try
             {
-                config = KubernetesClientConfiguration.BuildConfigFromConfigFile(tempFileInfo);
+                config = KubernetesClientConfiguration.BuildConfigFromConfigFile(tempFileInfo, useRelativePaths: false);
             }
             finally
             {
@@ -292,9 +294,8 @@ namespace k8s.Tests
         [Fact]
         public void DefaultConfigurationAsStringLoaded()
         {
-            var txt = File.ReadAllText("assets/kubeconfig.yml");
-
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(txt, null, null);
+            var filePath = "assets/kubeconfig.yml";
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(filePath, null, null, useRelativePaths: false);
             Assert.NotNull(cfg.Host);
         }
 
@@ -318,10 +319,127 @@ namespace k8s.Tests
         [Fact]
         public void AsUserExtra()
         {
-            var txt = File.ReadAllText("assets/kubeconfig.as-user-extra.yml");
+            var filePath = "assets/kubeconfig.as-user-extra.yml";
 
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(txt, null, null);
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(filePath, null, null, useRelativePaths: false);
             Assert.NotNull(cfg.Host);
+        }
+
+        /// <summary>
+        ///     Ensures Kube config file is loaded from explicit file
+        /// </summary>
+        [Fact]
+        public void LoadKubeConfigExplicitFilePath()
+        {
+            var txt = File.ReadAllText("assets/kubeconfig.yml");
+            var expectedCfg = Yaml.LoadFromString<K8SConfiguration>(txt);
+
+            var cfg = KubernetesClientConfiguration.LoadKubeConfig("assets/kubeconfig.yml");
+
+            Assert.NotNull(cfg);
+            AssertConfigEqual(expectedCfg, cfg);
+        }
+
+        [Fact]
+        public void LoadKubeConfigFileInfo()
+        {
+            var filePath = "assets/kubeconfig.yml";
+            var txt = File.ReadAllText(filePath);
+            var expectedCfg = Yaml.LoadFromString<K8SConfiguration>(txt);
+
+            var fileInfo = new FileInfo(filePath);
+            var cfg = KubernetesClientConfiguration.LoadKubeConfig(fileInfo);
+
+            Assert.NotNull(cfg);
+            AssertConfigEqual(expectedCfg, cfg);
+        }
+
+        [Fact]
+        public void LoadKubeConfigStream()
+        {
+            var filePath = "assets/kubeconfig.yml";
+            var txt = File.ReadAllText(filePath);
+            var expectedCfg = Yaml.LoadFromString<K8SConfiguration>(txt);
+
+            var fileInfo = new FileInfo(filePath);
+            K8SConfiguration cfg;
+            using (var stream = fileInfo.OpenRead())
+            {
+                cfg = KubernetesClientConfiguration.LoadKubeConfig(stream);
+            }
+                
+            Assert.NotNull(cfg);
+            AssertConfigEqual(expectedCfg, cfg);
+        }
+
+        private void AssertConfigEqual(K8SConfiguration expected, K8SConfiguration actual)
+        {
+            Assert.Equal(expected.ApiVersion, actual.ApiVersion);
+            Assert.Equal(expected.CurrentContext, actual.CurrentContext);
+            
+            foreach (var expectedContext in expected.Contexts)
+            {
+                // Will throw exception if not found
+                var actualContext = actual.Contexts.First(c => c.Name.Equals(expectedContext.Name));
+                AssertContextEqual(expectedContext, actualContext);
+            }
+
+            foreach (var expectedCluster in expected.Clusters)
+            {
+                // Will throw exception if not found
+                var actualCluster = actual.Clusters.First(c => c.Name.Equals(expectedCluster.Name));
+                AssertClusterEqual(expectedCluster, actualCluster);
+            }
+
+            foreach (var expectedUser in expected.Users)
+            {
+                // Will throw exception if not found
+                var actualUser = actual.Users.First(u => u.Name.Equals(expectedUser.Name));
+                AssertUserEqual(expectedUser, actualUser);
+            }
+        }
+
+        private void AssertContextEqual(Context expected, Context actual)
+        {
+            Assert.Equal(expected.Name, actual.Name);
+            Assert.Equal(expected.Namespace, actual.Namespace);
+            Assert.Equal(expected.ContextDetails.Cluster, actual.ContextDetails.Cluster);
+            Assert.Equal(expected.ContextDetails.User, actual.ContextDetails.User);
+            Assert.Equal(expected.ContextDetails.Namespace, actual.ContextDetails.Namespace);
+        }
+
+        private void AssertClusterEqual(Cluster expected, Cluster actual)
+        {
+            Assert.Equal(expected.Name, actual.Name);
+            Assert.Equal(expected.ClusterEndpoint.CertificateAuthority, actual.ClusterEndpoint.CertificateAuthority);
+            Assert.Equal(expected.ClusterEndpoint.CertificateAuthorityData, actual.ClusterEndpoint.CertificateAuthorityData);
+            Assert.Equal(expected.ClusterEndpoint.Server, actual.ClusterEndpoint.Server);
+            Assert.Equal(expected.ClusterEndpoint.SkipTlsVerify, actual.ClusterEndpoint.SkipTlsVerify);
+        }
+
+        private void AssertUserEqual(User expected, User actual)
+        {
+            Assert.Equal(expected.Name, actual.Name);
+
+            var expectedCreds = expected.UserCredentials;
+            var actualCreds = actual.UserCredentials;
+
+            Assert.Equal(expectedCreds.ClientCertificateData, actualCreds.ClientCertificateData);
+            Assert.Equal(expectedCreds.ClientCertificate, actualCreds.ClientCertificate);
+            Assert.Equal(expectedCreds.ClientKeyData, actualCreds.ClientKeyData);
+            Assert.Equal(expectedCreds.ClientKey, actualCreds.ClientKey);
+            Assert.Equal(expectedCreds.Token, actualCreds.Token);
+            Assert.Equal(expectedCreds.Impersonate, actualCreds.Impersonate);
+            Assert.Equal(expectedCreds.UserName, actualCreds.UserName);
+            Assert.Equal(expectedCreds.Password, actualCreds.Password);
+
+            Assert.True(expectedCreds.ImpersonateGroups.All(x => actualCreds.ImpersonateGroups.Contains(x)));
+            Assert.True(expectedCreds.ImpersonateUserExtra.All(x => actualCreds.ImpersonateUserExtra.Contains(x)));
+
+            if (expectedCreds.AuthProvider != null)
+            {
+                Assert.True(expectedCreds.AuthProvider.All(x => actualCreds.AuthProvider.Contains(x)));
+            }
         }
     }
 }

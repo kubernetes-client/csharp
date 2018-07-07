@@ -28,9 +28,6 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1beta1APIServiceSpec class.
         /// </summary>
-        /// <param name="caBundle">CABundle is a PEM encoded CA bundle which
-        /// will be used to validate an API server's serving
-        /// certificate.</param>
         /// <param name="groupPriorityMinimum">GroupPriorityMininum is the
         /// priority this group should have at least. Higher priority means
         /// that the group is preferred by clients over lower priority ones.
@@ -50,10 +47,22 @@ namespace k8s.Models
         /// <param name="versionPriority">VersionPriority controls the ordering
         /// of this API version inside of its group.  Must be greater than
         /// zero. The primary sort is based on VersionPriority, ordered highest
-        /// to lowest (20 before 10). The secondary sort is based on the
-        /// alphabetical comparison of the name of the object.  (v1.bar before
-        /// v1.foo) Since it's inside of a group, the number can be small,
-        /// probably in the 10s.</param>
+        /// to lowest (20 before 10). Since it's inside of a group, the number
+        /// can be small, probably in the 10s. In case of equal version
+        /// priorities, the version string will be used to compute the order
+        /// inside a group. If the version string is "kube-like", it will sort
+        /// above non "kube-like" version strings, which are ordered
+        /// lexicographically. "Kube-like" versions start with a "v", then are
+        /// followed by a number (the major version), then optionally the
+        /// string "alpha" or "beta" and another number (the minor version).
+        /// These are sorted first by GA &gt; beta &gt; alpha (where GA is a
+        /// version with no suffix such as beta or alpha), and then by
+        /// comparing major version, then minor version. An example sorted list
+        /// of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1,
+        /// v11alpha2, foo1, foo10.</param>
+        /// <param name="caBundle">CABundle is a PEM encoded CA bundle which
+        /// will be used to validate an API server's serving
+        /// certificate.</param>
         /// <param name="group">Group is the API group name this server
         /// hosts</param>
         /// <param name="insecureSkipTLSVerify">InsecureSkipTLSVerify disables
@@ -62,7 +71,7 @@ namespace k8s.Models
         /// instead.</param>
         /// <param name="version">Version is the API version this server hosts.
         /// For example, "v1"</param>
-        public V1beta1APIServiceSpec(byte[] caBundle, int groupPriorityMinimum, Apiregistrationv1beta1ServiceReference service, int versionPriority, string group = default(string), bool? insecureSkipTLSVerify = default(bool?), string version = default(string))
+        public V1beta1APIServiceSpec(int groupPriorityMinimum, Apiregistrationv1beta1ServiceReference service, int versionPriority, byte[] caBundle = default(byte[]), string group = default(string), bool? insecureSkipTLSVerify = default(bool?), string version = default(string))
         {
             CaBundle = caBundle;
             Group = group;
@@ -136,10 +145,19 @@ namespace k8s.Models
         /// Gets or sets versionPriority controls the ordering of this API
         /// version inside of its group.  Must be greater than zero. The
         /// primary sort is based on VersionPriority, ordered highest to lowest
-        /// (20 before 10). The secondary sort is based on the alphabetical
-        /// comparison of the name of the object.  (v1.bar before v1.foo) Since
-        /// it's inside of a group, the number can be small, probably in the
-        /// 10s.
+        /// (20 before 10). Since it's inside of a group, the number can be
+        /// small, probably in the 10s. In case of equal version priorities,
+        /// the version string will be used to compute the order inside a
+        /// group. If the version string is "kube-like", it will sort above non
+        /// "kube-like" version strings, which are ordered lexicographically.
+        /// "Kube-like" versions start with a "v", then are followed by a
+        /// number (the major version), then optionally the string "alpha" or
+        /// "beta" and another number (the minor version). These are sorted
+        /// first by GA &amp;gt; beta &amp;gt; alpha (where GA is a version
+        /// with no suffix such as beta or alpha), and then by comparing major
+        /// version, then minor version. An example sorted list of versions:
+        /// v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2,
+        /// foo1, foo10.
         /// </summary>
         [JsonProperty(PropertyName = "versionPriority")]
         public int VersionPriority { get; set; }
@@ -152,10 +170,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (CaBundle == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "CaBundle");
-            }
             if (Service == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Service");

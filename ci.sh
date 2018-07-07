@@ -6,6 +6,11 @@ set -e
 # Ensure no compile errors in all projects
 find . -name *.csproj -exec dotnet build {} \;
 
+# Create the NuGet package
+cd src/KubernetesClient/
+dotnet pack -c Release
+cd ../..
+
 # Execute Unit tests
 cd tests/KubernetesClient.Tests
 dotnet restore
@@ -14,3 +19,4 @@ if [[ $? != 0 ]]; then
     exit 1
 fi
 
+cd ../..

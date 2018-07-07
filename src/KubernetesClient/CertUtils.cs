@@ -51,7 +51,7 @@ namespace k8s
 
             if (keyData == null)
             {
-                throw new KubeConfigException("certData is empty");
+                throw new KubeConfigException("keyData is empty");
             }
 
             if (!string.IsNullOrWhiteSpace(config.ClientCertificateData))

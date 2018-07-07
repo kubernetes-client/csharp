@@ -64,7 +64,10 @@ namespace k8s.Models
         /// exposed to the pod. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk</param>
         /// <param name="gitRepo">GitRepo represents a git repository at a
-        /// particular revision.</param>
+        /// particular revision. DEPRECATED: GitRepo is deprecated. To
+        /// provision a container with a git repo, mount an EmptyDir into an
+        /// InitContainer that clones the repo using git, then mount the
+        /// EmptyDir into the Pod's container.</param>
         /// <param name="glusterfs">Glusterfs represents a Glusterfs mount on
         /// the host that shares a pod's lifetime. More info:
         /// https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md</param>
@@ -238,7 +241,10 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets gitRepo represents a git repository at a particular
-        /// revision.
+        /// revision. DEPRECATED: GitRepo is deprecated. To provision a
+        /// container with a git repo, mount an EmptyDir into an InitContainer
+        /// that clones the repo using git, then mount the EmptyDir into the
+        /// Pod's container.
         /// </summary>
         [JsonProperty(PropertyName = "gitRepo")]
         public V1GitRepoVolumeSource GitRepo { get; set; }

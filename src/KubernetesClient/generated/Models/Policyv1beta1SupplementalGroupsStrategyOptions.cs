@@ -30,10 +30,11 @@ namespace k8s.Models
         /// Initializes a new instance of the
         /// Policyv1beta1SupplementalGroupsStrategyOptions class.
         /// </summary>
-        /// <param name="ranges">Ranges are the allowed ranges of supplemental
+        /// <param name="ranges">ranges are the allowed ranges of supplemental
         /// groups.  If you would like to force a single supplemental group
-        /// then supply a single range with the same start and end.</param>
-        /// <param name="rule">Rule is the strategy that will dictate what
+        /// then supply a single range with the same start and end. Required
+        /// for MustRunAs.</param>
+        /// <param name="rule">rule is the strategy that will dictate what
         /// supplemental groups is used in the SecurityContext.</param>
         public Policyv1beta1SupplementalGroupsStrategyOptions(IList<Policyv1beta1IDRange> ranges = default(IList<Policyv1beta1IDRange>), string rule = default(string))
         {
@@ -50,7 +51,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets ranges are the allowed ranges of supplemental groups.
         /// If you would like to force a single supplemental group then supply
-        /// a single range with the same start and end.
+        /// a single range with the same start and end. Required for MustRunAs.
         /// </summary>
         [JsonProperty(PropertyName = "ranges")]
         public IList<Policyv1beta1IDRange> Ranges { get; set; }

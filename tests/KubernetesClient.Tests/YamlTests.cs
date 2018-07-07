@@ -1,4 +1,7 @@
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using k8s.Models;
 using Xunit;
 
@@ -50,10 +53,26 @@ metadata:
             };
 
             var yaml = Yaml.SaveToString(pod);
-            Assert.Equal(@"apiVersion: v1
+            Assert.True(ToLines(@"apiVersion: v1
 kind: Pod
 metadata:
-  name: foo", yaml);
+  name: foo").SequenceEqual(ToLines(yaml)));
+        }
+
+        private static IEnumerable<string> ToLines(string s)
+        {
+            using (var reader = new StringReader(s))
+            {
+                for (;;)
+                {
+                    var line = reader.ReadLine();
+                    if (line == null)
+                    {
+                        yield break;
+                    }
+                    yield return line;
+                }
+            }
         }
 
         [Fact]

@@ -68,6 +68,14 @@ namespace k8s
         }
 
         /// <summary>
+        /// Gets the maximum allowed size of the buffer.
+        /// </summary>
+        public int MaximumSize
+        {
+            get { return this.maximumSize; }
+        }
+
+        /// <summary>
         /// Gets the offset from which the next byte will be read. Increased every time a caller reads data.
         /// </summary>
         public int ReadWaterMark
@@ -260,6 +268,11 @@ namespace k8s
         }
 
         /// <summary>
+        /// The event which is raised when the buffer is resized.
+        /// </summary>
+        public event EventHandler OnResize;
+
+        /// <summary>
         /// Increases the buffer size. Any call to this method must be protected with a lock.
         /// </summary>
         /// <param name="size">
@@ -274,7 +287,7 @@ namespace k8s
 
             var newBuffer = ArrayPool<byte>.Shared.Rent(size);
 
-            if (this.WriteWaterMark <= this.ReadWaterMark)
+            if (this.WriteWaterMark < this.ReadWaterMark)
             {
                 // Copy the data at the start
                 Array.Copy(this.buffer, 0, newBuffer, 0, this.WriteWaterMark);
@@ -298,6 +311,7 @@ namespace k8s
             this.buffer = newBuffer;
 
             Debug.Assert(this.bytesRead + this.AvailableReadableBytes == this.bytesWritten);
+            this.OnResize?.Invoke(this, EventArgs.Empty);
         }
     }
 }

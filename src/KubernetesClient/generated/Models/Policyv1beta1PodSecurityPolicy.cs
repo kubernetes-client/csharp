@@ -10,8 +10,8 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// Pod Security Policy governs the ability to make requests that affect
-    /// the Security Context that will be applied to a pod and container.
+    /// PodSecurityPolicy governs the ability to make requests that affect the
+    /// Security Context that will be applied to a pod and container.
     /// </summary>
     public partial class Policyv1beta1PodSecurityPolicy
     {

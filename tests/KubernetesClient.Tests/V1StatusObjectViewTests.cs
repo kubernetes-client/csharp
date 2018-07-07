@@ -7,10 +7,12 @@ using Xunit.Abstractions;
 namespace k8s.Tests
 {
     public class V1StatusObjectViewTests
-        : TestBase
     {
-        public V1StatusObjectViewTests(ITestOutputHelper testOutput) : base(testOutput)
+        private readonly ITestOutputHelper testOutput;
+
+        public V1StatusObjectViewTests(ITestOutputHelper testOutput)
         {
+            this.testOutput = testOutput;
         }
 
         [Fact]
@@ -22,7 +24,7 @@ namespace k8s.Tests
                 Status = "test status"
             };
 
-            using (var server = new MockKubeApiServer(TestOutput, resp: JsonConvert.SerializeObject(v1Status)))
+            using (var server = new MockKubeApiServer(testOutput, resp: JsonConvert.SerializeObject(v1Status)))
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration
                 {
@@ -52,7 +54,7 @@ namespace k8s.Tests
                 }
             };
 
-            using (var server = new MockKubeApiServer(TestOutput, resp: JsonConvert.SerializeObject(corev1Namespace)))
+            using (var server = new MockKubeApiServer(testOutput, resp: JsonConvert.SerializeObject(corev1Namespace)))
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration
                 {

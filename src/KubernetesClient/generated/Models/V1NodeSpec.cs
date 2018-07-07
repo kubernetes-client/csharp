@@ -30,8 +30,9 @@ namespace k8s.Models
         /// <param name="configSource">If specified, the source to get node
         /// configuration from The DynamicKubeletConfig feature gate must be
         /// enabled for the Kubelet to use this field</param>
-        /// <param name="externalID">External ID of the node assigned by some
-        /// machine database (e.g. a cloud provider). Deprecated.</param>
+        /// <param name="externalID">Deprecated. Not all kubelets will set this
+        /// field. Remove field after 1.13. see:
+        /// https://issues.k8s.io/61966</param>
         /// <param name="podCIDR">PodCIDR represents the pod IP range assigned
         /// to the node.</param>
         /// <param name="providerID">ID of the node assigned by the cloud
@@ -67,8 +68,8 @@ namespace k8s.Models
         public V1NodeConfigSource ConfigSource { get; set; }
 
         /// <summary>
-        /// Gets or sets external ID of the node assigned by some machine
-        /// database (e.g. a cloud provider). Deprecated.
+        /// Gets or sets deprecated. Not all kubelets will set this field.
+        /// Remove field after 1.13. see: https://issues.k8s.io/61966
         /// </summary>
         [JsonProperty(PropertyName = "externalID")]
         public string ExternalID { get; set; }
@@ -102,5 +103,28 @@ namespace k8s.Models
         [JsonProperty(PropertyName = "unschedulable")]
         public bool? Unschedulable { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (ConfigSource != null)
+            {
+                ConfigSource.Validate();
+            }
+            if (Taints != null)
+            {
+                foreach (var element in Taints)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+        }
     }
 }
