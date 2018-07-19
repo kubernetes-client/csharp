@@ -239,11 +239,36 @@ namespace k8s
                 userCredentialsFound = true;
             }
 
+            if (userDetails.UserCredentials.AuthProvider != null) {
+                if (userDetails.UserCredentials.AuthProvider.Name == "azure" &&
+                    userDetails.UserCredentials.AuthProvider.Config != null &&
+                    userDetails.UserCredentials.AuthProvider.Config.ContainsKey("access-token")) {
+                    var config = userDetails.UserCredentials.AuthProvider.Config;
+                    if (config.ContainsKey("expires-on")) {
+                        var expires = DateTimeOffset.FromUnixTimeSeconds(Int32.Parse(config["expires-on"]));
+                        if (DateTimeOffset.Compare(expires, DateTimeOffset.Now) <= 0) {
+                            var tenantId = config["tenant-id"];
+                            var clientId = config["client-id"];
+                            var apiServerId = config["apiserver-id"];
+                            var refresh = config["refresh-token"];
+                            var newToken = RenewAzureToken(tenantId, clientId, apiServerId, refresh);
+                            config["access-token"] = newToken;
+                        }
+                    }
+                    AccessToken = config["access-token"];
+                    userCredentialsFound = true;
+                }
+            }
+
             if (!userCredentialsFound)
             {
                 throw new KubeConfigException(
                     $"User: {userDetails.Name} does not have appropriate auth credentials in kubeconfig");
             }
+        }
+
+        public static string RenewAzureToken(string tenantId, string clientId, string apiServerId, string refresh) {
+            throw new KubeConfigException("Refresh not supported.");
         }
 
         /// <summary>
