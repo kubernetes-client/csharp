@@ -48,18 +48,5 @@ namespace k8s.Models
         [JsonProperty(PropertyName = "openAPIV3Schema")]
         public V1beta1JSONSchemaProps OpenAPIV3Schema { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (OpenAPIV3Schema != null)
-            {
-                OpenAPIV3Schema.Validate();
-            }
-        }
     }
 }

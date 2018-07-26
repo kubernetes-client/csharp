@@ -28,7 +28,22 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1beta1JSONSchemaProps class.
         /// </summary>
-        public V1beta1JSONSchemaProps(string refProperty = default(string), string schema = default(string), V1beta1JSONSchemaPropsOrBool additionalItems = default(V1beta1JSONSchemaPropsOrBool), V1beta1JSONSchemaPropsOrBool additionalProperties = default(V1beta1JSONSchemaPropsOrBool), IList<V1beta1JSONSchemaProps> allOf = default(IList<V1beta1JSONSchemaProps>), IList<V1beta1JSONSchemaProps> anyOf = default(IList<V1beta1JSONSchemaProps>), V1beta1JSON defaultProperty = default(V1beta1JSON), IDictionary<string, V1beta1JSONSchemaProps> definitions = default(IDictionary<string, V1beta1JSONSchemaProps>), IDictionary<string, V1beta1JSONSchemaPropsOrStringArray> dependencies = default(IDictionary<string, V1beta1JSONSchemaPropsOrStringArray>), string description = default(string), IList<V1beta1JSON> enumProperty = default(IList<V1beta1JSON>), V1beta1JSON example = default(V1beta1JSON), bool? exclusiveMaximum = default(bool?), bool? exclusiveMinimum = default(bool?), V1beta1ExternalDocumentation externalDocs = default(V1beta1ExternalDocumentation), string format = default(string), string id = default(string), V1beta1JSONSchemaPropsOrArray items = default(V1beta1JSONSchemaPropsOrArray), long? maxItems = default(long?), long? maxLength = default(long?), long? maxProperties = default(long?), double? maximum = default(double?), long? minItems = default(long?), long? minLength = default(long?), long? minProperties = default(long?), double? minimum = default(double?), double? multipleOf = default(double?), V1beta1JSONSchemaProps not = default(V1beta1JSONSchemaProps), IList<V1beta1JSONSchemaProps> oneOf = default(IList<V1beta1JSONSchemaProps>), string pattern = default(string), IDictionary<string, V1beta1JSONSchemaProps> patternProperties = default(IDictionary<string, V1beta1JSONSchemaProps>), IDictionary<string, V1beta1JSONSchemaProps> properties = default(IDictionary<string, V1beta1JSONSchemaProps>), IList<string> required = default(IList<string>), string title = default(string), string type = default(string), bool? uniqueItems = default(bool?))
+        /// <param name="additionalItems">JSONSchemaPropsOrBool represents
+        /// JSONSchemaProps or a boolean value. Defaults to true for the
+        /// boolean property.</param>
+        /// <param name="additionalProperties">JSONSchemaPropsOrBool represents
+        /// JSONSchemaProps or a boolean value. Defaults to true for the
+        /// boolean property.</param>
+        /// <param name="defaultProperty">JSON represents any valid JSON value.
+        /// These types are supported: bool, int64, float64, string,
+        /// []interface{}, map[string]interface{} and nil.</param>
+        /// <param name="example">JSON represents any valid JSON value. These
+        /// types are supported: bool, int64, float64, string, []interface{},
+        /// map[string]interface{} and nil.</param>
+        /// <param name="items">JSONSchemaPropsOrArray represents a value that
+        /// can either be a JSONSchemaProps or an array of JSONSchemaProps.
+        /// Mainly here for serialization purposes.</param>
+        public V1beta1JSONSchemaProps(string refProperty = default(string), string schema = default(string), object additionalItems = default(object), object additionalProperties = default(object), IList<V1beta1JSONSchemaProps> allOf = default(IList<V1beta1JSONSchemaProps>), IList<V1beta1JSONSchemaProps> anyOf = default(IList<V1beta1JSONSchemaProps>), object defaultProperty = default(object), IDictionary<string, V1beta1JSONSchemaProps> definitions = default(IDictionary<string, V1beta1JSONSchemaProps>), IDictionary<string, object> dependencies = default(IDictionary<string, object>), string description = default(string), IList<object> enumProperty = default(IList<object>), object example = default(object), bool? exclusiveMaximum = default(bool?), bool? exclusiveMinimum = default(bool?), V1beta1ExternalDocumentation externalDocs = default(V1beta1ExternalDocumentation), string format = default(string), string id = default(string), object items = default(object), long? maxItems = default(long?), long? maxLength = default(long?), long? maxProperties = default(long?), double? maximum = default(double?), long? minItems = default(long?), long? minLength = default(long?), long? minProperties = default(long?), double? minimum = default(double?), double? multipleOf = default(double?), V1beta1JSONSchemaProps not = default(V1beta1JSONSchemaProps), IList<V1beta1JSONSchemaProps> oneOf = default(IList<V1beta1JSONSchemaProps>), string pattern = default(string), IDictionary<string, V1beta1JSONSchemaProps> patternProperties = default(IDictionary<string, V1beta1JSONSchemaProps>), IDictionary<string, V1beta1JSONSchemaProps> properties = default(IDictionary<string, V1beta1JSONSchemaProps>), IList<string> required = default(IList<string>), string title = default(string), string type = default(string), bool? uniqueItems = default(bool?))
         {
             RefProperty = refProperty;
             Schema = schema;
@@ -85,14 +100,18 @@ namespace k8s.Models
         public string Schema { get; set; }
 
         /// <summary>
+        /// Gets or sets jSONSchemaPropsOrBool represents JSONSchemaProps or a
+        /// boolean value. Defaults to true for the boolean property.
         /// </summary>
         [JsonProperty(PropertyName = "additionalItems")]
-        public V1beta1JSONSchemaPropsOrBool AdditionalItems { get; set; }
+        public object AdditionalItems { get; set; }
 
         /// <summary>
+        /// Gets or sets jSONSchemaPropsOrBool represents JSONSchemaProps or a
+        /// boolean value. Defaults to true for the boolean property.
         /// </summary>
         [JsonProperty(PropertyName = "additionalProperties")]
-        public V1beta1JSONSchemaPropsOrBool AdditionalProperties { get; set; }
+        public object AdditionalProperties { get; set; }
 
         /// <summary>
         /// </summary>
@@ -105,9 +124,12 @@ namespace k8s.Models
         public IList<V1beta1JSONSchemaProps> AnyOf { get; set; }
 
         /// <summary>
+        /// Gets or sets JSON represents any valid JSON value. These types are
+        /// supported: bool, int64, float64, string, []interface{},
+        /// map[string]interface{} and nil.
         /// </summary>
         [JsonProperty(PropertyName = "default")]
-        public V1beta1JSON DefaultProperty { get; set; }
+        public object DefaultProperty { get; set; }
 
         /// <summary>
         /// </summary>
@@ -117,7 +139,7 @@ namespace k8s.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "dependencies")]
-        public IDictionary<string, V1beta1JSONSchemaPropsOrStringArray> Dependencies { get; set; }
+        public IDictionary<string, object> Dependencies { get; set; }
 
         /// <summary>
         /// </summary>
@@ -127,12 +149,15 @@ namespace k8s.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "enum")]
-        public IList<V1beta1JSON> EnumProperty { get; set; }
+        public IList<object> EnumProperty { get; set; }
 
         /// <summary>
+        /// Gets or sets JSON represents any valid JSON value. These types are
+        /// supported: bool, int64, float64, string, []interface{},
+        /// map[string]interface{} and nil.
         /// </summary>
         [JsonProperty(PropertyName = "example")]
-        public V1beta1JSON Example { get; set; }
+        public object Example { get; set; }
 
         /// <summary>
         /// </summary>
@@ -160,9 +185,12 @@ namespace k8s.Models
         public string Id { get; set; }
 
         /// <summary>
+        /// Gets or sets jSONSchemaPropsOrArray represents a value that can
+        /// either be a JSONSchemaProps or an array of JSONSchemaProps. Mainly
+        /// here for serialization purposes.
         /// </summary>
         [JsonProperty(PropertyName = "items")]
-        public V1beta1JSONSchemaPropsOrArray Items { get; set; }
+        public object Items { get; set; }
 
         /// <summary>
         /// </summary>
@@ -254,118 +282,5 @@ namespace k8s.Models
         [JsonProperty(PropertyName = "uniqueItems")]
         public bool? UniqueItems { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (AdditionalItems != null)
-            {
-                AdditionalItems.Validate();
-            }
-            if (AdditionalProperties != null)
-            {
-                AdditionalProperties.Validate();
-            }
-            if (AllOf != null)
-            {
-                foreach (var element in AllOf)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
-            }
-            if (AnyOf != null)
-            {
-                foreach (var element1 in AnyOf)
-                {
-                    if (element1 != null)
-                    {
-                        element1.Validate();
-                    }
-                }
-            }
-            if (DefaultProperty != null)
-            {
-                DefaultProperty.Validate();
-            }
-            if (Definitions != null)
-            {
-                foreach (var valueElement in Definitions.Values)
-                {
-                    if (valueElement != null)
-                    {
-                        valueElement.Validate();
-                    }
-                }
-            }
-            if (Dependencies != null)
-            {
-                foreach (var valueElement1 in Dependencies.Values)
-                {
-                    if (valueElement1 != null)
-                    {
-                        valueElement1.Validate();
-                    }
-                }
-            }
-            if (EnumProperty != null)
-            {
-                foreach (var element2 in EnumProperty)
-                {
-                    if (element2 != null)
-                    {
-                        element2.Validate();
-                    }
-                }
-            }
-            if (Example != null)
-            {
-                Example.Validate();
-            }
-            if (Items != null)
-            {
-                Items.Validate();
-            }
-            if (Not != null)
-            {
-                Not.Validate();
-            }
-            if (OneOf != null)
-            {
-                foreach (var element3 in OneOf)
-                {
-                    if (element3 != null)
-                    {
-                        element3.Validate();
-                    }
-                }
-            }
-            if (PatternProperties != null)
-            {
-                foreach (var valueElement2 in PatternProperties.Values)
-                {
-                    if (valueElement2 != null)
-                    {
-                        valueElement2.Validate();
-                    }
-                }
-            }
-            if (Properties != null)
-            {
-                foreach (var valueElement3 in Properties.Values)
-                {
-                    if (valueElement3 != null)
-                    {
-                        valueElement3.Validate();
-                    }
-                }
-            }
-        }
     }
 }

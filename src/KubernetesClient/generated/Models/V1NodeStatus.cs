@@ -39,6 +39,8 @@ namespace k8s.Models
         /// <param name="conditions">Conditions is an array of current observed
         /// node conditions. More info:
         /// https://kubernetes.io/docs/concepts/nodes/node/#condition</param>
+        /// <param name="config">Status of the config assigned to the node via
+        /// the dynamic Kubelet config feature.</param>
         /// <param name="daemonEndpoints">Endpoints of daemons running on the
         /// Node.</param>
         /// <param name="images">List of container images on this node</param>
@@ -53,12 +55,13 @@ namespace k8s.Models
         /// the node.</param>
         /// <param name="volumesInUse">List of attachable volumes in use
         /// (mounted) by the node.</param>
-        public V1NodeStatus(IList<V1NodeAddress> addresses = default(IList<V1NodeAddress>), IDictionary<string, ResourceQuantity> allocatable = default(IDictionary<string, ResourceQuantity>), IDictionary<string, ResourceQuantity> capacity = default(IDictionary<string, ResourceQuantity>), IList<V1NodeCondition> conditions = default(IList<V1NodeCondition>), V1NodeDaemonEndpoints daemonEndpoints = default(V1NodeDaemonEndpoints), IList<V1ContainerImage> images = default(IList<V1ContainerImage>), V1NodeSystemInfo nodeInfo = default(V1NodeSystemInfo), string phase = default(string), IList<V1AttachedVolume> volumesAttached = default(IList<V1AttachedVolume>), IList<string> volumesInUse = default(IList<string>))
+        public V1NodeStatus(IList<V1NodeAddress> addresses = default(IList<V1NodeAddress>), IDictionary<string, ResourceQuantity> allocatable = default(IDictionary<string, ResourceQuantity>), IDictionary<string, ResourceQuantity> capacity = default(IDictionary<string, ResourceQuantity>), IList<V1NodeCondition> conditions = default(IList<V1NodeCondition>), V1NodeConfigStatus config = default(V1NodeConfigStatus), V1NodeDaemonEndpoints daemonEndpoints = default(V1NodeDaemonEndpoints), IList<V1ContainerImage> images = default(IList<V1ContainerImage>), V1NodeSystemInfo nodeInfo = default(V1NodeSystemInfo), string phase = default(string), IList<V1AttachedVolume> volumesAttached = default(IList<V1AttachedVolume>), IList<string> volumesInUse = default(IList<string>))
         {
             Addresses = addresses;
             Allocatable = allocatable;
             Capacity = capacity;
             Conditions = conditions;
+            Config = config;
             DaemonEndpoints = daemonEndpoints;
             Images = images;
             NodeInfo = nodeInfo;
@@ -103,6 +106,13 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "conditions")]
         public IList<V1NodeCondition> Conditions { get; set; }
+
+        /// <summary>
+        /// Gets or sets status of the config assigned to the node via the
+        /// dynamic Kubelet config feature.
+        /// </summary>
+        [JsonProperty(PropertyName = "config")]
+        public V1NodeConfigStatus Config { get; set; }
 
         /// <summary>
         /// Gets or sets endpoints of daemons running on the Node.
@@ -172,6 +182,10 @@ namespace k8s.Models
                         element1.Validate();
                     }
                 }
+            }
+            if (Config != null)
+            {
+                Config.Validate();
             }
             if (DaemonEndpoints != null)
             {

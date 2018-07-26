@@ -11,28 +11,26 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// JSONSchemaPropsOrBool represents JSONSchemaProps or a boolean value.
-    /// Defaults to true for the boolean property.
+    /// PodReadinessGate contains the reference to a pod condition
     /// </summary>
-    public partial class V1beta1JSONSchemaPropsOrBool
+    public partial class V1PodReadinessGate
     {
         /// <summary>
-        /// Initializes a new instance of the V1beta1JSONSchemaPropsOrBool
-        /// class.
+        /// Initializes a new instance of the V1PodReadinessGate class.
         /// </summary>
-        public V1beta1JSONSchemaPropsOrBool()
+        public V1PodReadinessGate()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the V1beta1JSONSchemaPropsOrBool
-        /// class.
+        /// Initializes a new instance of the V1PodReadinessGate class.
         /// </summary>
-        public V1beta1JSONSchemaPropsOrBool(bool allows, V1beta1JSONSchemaProps schema)
+        /// <param name="conditionType">ConditionType refers to a condition in
+        /// the pod's condition list with matching type.</param>
+        public V1PodReadinessGate(string conditionType)
         {
-            Allows = allows;
-            Schema = schema;
+            ConditionType = conditionType;
             CustomInit();
         }
 
@@ -42,14 +40,11 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets conditionType refers to a condition in the pod's
+        /// condition list with matching type.
         /// </summary>
-        [JsonProperty(PropertyName = "Allows")]
-        public bool Allows { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "Schema")]
-        public V1beta1JSONSchemaProps Schema { get; set; }
+        [JsonProperty(PropertyName = "conditionType")]
+        public string ConditionType { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -59,13 +54,9 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Schema == null)
+            if (ConditionType == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Schema");
-            }
-            if (Schema != null)
-            {
-                Schema.Validate();
+                throw new ValidationException(ValidationRules.CannotBeNull, "ConditionType");
             }
         }
     }

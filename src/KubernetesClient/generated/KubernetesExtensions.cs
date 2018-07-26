@@ -17522,6 +17522,46 @@ namespace k8s
             }
 
             /// <summary>
+            /// read status of the specified CustomResourceDefinition
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='name'>
+            /// name of the CustomResourceDefinition
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1CustomResourceDefinition ReadCustomResourceDefinitionStatus(this IKubernetes operations, string name, string pretty = default(string))
+            {
+                return operations.ReadCustomResourceDefinitionStatusAsync(name, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// read status of the specified CustomResourceDefinition
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='name'>
+            /// name of the CustomResourceDefinition
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1CustomResourceDefinition> ReadCustomResourceDefinitionStatusAsync(this IKubernetes operations, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ReadCustomResourceDefinitionStatusWithHttpMessagesAsync(name, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// replace status of the specified CustomResourceDefinition
             /// </summary>
             /// <param name='operations'>
@@ -17560,6 +17600,50 @@ namespace k8s
             public static async Task<V1beta1CustomResourceDefinition> ReplaceCustomResourceDefinitionStatusAsync(this IKubernetes operations, V1beta1CustomResourceDefinition body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ReplaceCustomResourceDefinitionStatusWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// partially update status of the specified CustomResourceDefinition
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the CustomResourceDefinition
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1CustomResourceDefinition PatchCustomResourceDefinitionStatus(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
+            {
+                return operations.PatchCustomResourceDefinitionStatusAsync(body, name, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// partially update status of the specified CustomResourceDefinition
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the CustomResourceDefinition
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1CustomResourceDefinition> PatchCustomResourceDefinitionStatusAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.PatchCustomResourceDefinitionStatusWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -18212,6 +18296,46 @@ namespace k8s
             }
 
             /// <summary>
+            /// read status of the specified APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='name'>
+            /// name of the APIService
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1APIService ReadAPIServiceStatus(this IKubernetes operations, string name, string pretty = default(string))
+            {
+                return operations.ReadAPIServiceStatusAsync(name, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// read status of the specified APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='name'>
+            /// name of the APIService
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1APIService> ReadAPIServiceStatusAsync(this IKubernetes operations, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ReadAPIServiceStatusWithHttpMessagesAsync(name, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// replace status of the specified APIService
             /// </summary>
             /// <param name='operations'>
@@ -18250,6 +18374,50 @@ namespace k8s
             public static async Task<V1APIService> ReplaceAPIServiceStatusAsync(this IKubernetes operations, V1APIService body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ReplaceAPIServiceStatusWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// partially update status of the specified APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the APIService
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1APIService PatchAPIServiceStatus(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
+            {
+                return operations.PatchAPIServiceStatusAsync(body, name, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// partially update status of the specified APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the APIService
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1APIService> PatchAPIServiceStatusAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.PatchAPIServiceStatusWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -18874,6 +19042,46 @@ namespace k8s
             }
 
             /// <summary>
+            /// read status of the specified APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='name'>
+            /// name of the APIService
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1APIService ReadAPIServiceStatus1(this IKubernetes operations, string name, string pretty = default(string))
+            {
+                return operations.ReadAPIServiceStatus1Async(name, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// read status of the specified APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='name'>
+            /// name of the APIService
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1APIService> ReadAPIServiceStatus1Async(this IKubernetes operations, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ReadAPIServiceStatus1WithHttpMessagesAsync(name, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// replace status of the specified APIService
             /// </summary>
             /// <param name='operations'>
@@ -18912,6 +19120,50 @@ namespace k8s
             public static async Task<V1beta1APIService> ReplaceAPIServiceStatus1Async(this IKubernetes operations, V1beta1APIService body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ReplaceAPIServiceStatus1WithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// partially update status of the specified APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the APIService
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1APIService PatchAPIServiceStatus1(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
+            {
+                return operations.PatchAPIServiceStatus1Async(body, name, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// partially update status of the specified APIService
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the APIService
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1APIService> PatchAPIServiceStatus1Async(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.PatchAPIServiceStatus1WithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -38140,6 +38392,46 @@ namespace k8s
             }
 
             /// <summary>
+            /// read status of the specified CertificateSigningRequest
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='name'>
+            /// name of the CertificateSigningRequest
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1CertificateSigningRequest ReadCertificateSigningRequestStatus(this IKubernetes operations, string name, string pretty = default(string))
+            {
+                return operations.ReadCertificateSigningRequestStatusAsync(name, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// read status of the specified CertificateSigningRequest
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='name'>
+            /// name of the CertificateSigningRequest
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1CertificateSigningRequest> ReadCertificateSigningRequestStatusAsync(this IKubernetes operations, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ReadCertificateSigningRequestStatusWithHttpMessagesAsync(name, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// replace status of the specified CertificateSigningRequest
             /// </summary>
             /// <param name='operations'>
@@ -38178,6 +38470,50 @@ namespace k8s
             public static async Task<V1beta1CertificateSigningRequest> ReplaceCertificateSigningRequestStatusAsync(this IKubernetes operations, V1beta1CertificateSigningRequest body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ReplaceCertificateSigningRequestStatusWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// partially update status of the specified CertificateSigningRequest
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the CertificateSigningRequest
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1CertificateSigningRequest PatchCertificateSigningRequestStatus(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
+            {
+                return operations.PatchCertificateSigningRequestStatusAsync(body, name, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// partially update status of the specified CertificateSigningRequest
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the CertificateSigningRequest
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1CertificateSigningRequest> PatchCertificateSigningRequestStatusAsync(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.PatchCertificateSigningRequestStatusWithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -56000,6 +56336,624 @@ namespace k8s
             }
 
             /// <summary>
+            /// get available resources
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            public static V1APIResourceList GetAPIResources27(this IKubernetes operations)
+            {
+                return operations.GetAPIResources27Async().GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// get available resources
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1APIResourceList> GetAPIResources27Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetAPIResources27WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// list or watch objects of kind PriorityClass
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='continueParameter'>
+            /// The continue option should be set when retrieving more results from the
+            /// server. Since this value is server defined, clients may only use the
+            /// continue value from a previous query result with identical query parameters
+            /// (except for the value of continue) and the server may reject a continue
+            /// value it does not recognize. If the specified continue value is no longer
+            /// valid whether due to expiration (generally five to fifteen minutes) or a
+            /// configuration change on the server the server will respond with a 410
+            /// ResourceExpired error indicating the client must restart their list without
+            /// the continue field. This field is not supported when watch is true. Clients
+            /// may start a watch from the last resourceVersion value returned by the
+            /// server and not miss any modifications.
+            /// </param>
+            /// <param name='fieldSelector'>
+            /// A selector to restrict the list of returned objects by their fields.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='includeUninitialized'>
+            /// If true, partially initialized resources are included in the response.
+            /// </param>
+            /// <param name='labelSelector'>
+            /// A selector to restrict the list of returned objects by their labels.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='limit'>
+            /// limit is a maximum number of responses to return for a list call. If more
+            /// items exist, the server will set the `continue` field on the list metadata
+            /// to a value that can be used with the same initial query to retrieve the
+            /// next set of results. Setting a limit may return fewer than the requested
+            /// amount of items (up to zero items) in the event all requested objects are
+            /// filtered out and clients should only use the presence of the continue field
+            /// to determine whether more results are available. Servers may choose not to
+            /// support the limit argument and will return all of the available results. If
+            /// limit is specified and the continue field is empty, clients may assume that
+            /// no more results are available. This field is not supported if watch is
+            /// true.
+            ///
+            /// The server guarantees that the objects returned when using continue will be
+            /// identical to issuing a single list call without a limit - that is, no
+            /// objects created, modified, or deleted after the first request is issued
+            /// will be included in any subsequent continued requests. This is sometimes
+            /// referred to as a consistent snapshot, and ensures that a client that is
+            /// using limit to receive smaller chunks of a very large result can ensure
+            /// they see all possible objects. If objects are updated during a chunked list
+            /// the version of the object that was present at the time the first list
+            /// result was calculated is returned.
+            /// </param>
+            /// <param name='resourceVersion'>
+            /// When specified with a watch call, shows changes that occur after that
+            /// particular version of a resource. Defaults to changes from the beginning of
+            /// history. When specified for list: - if unset, then the result is returned
+            /// from remote storage based on quorum-read flag; - if it's 0, then we simply
+            /// return what we currently have in cache, no guarantee; - if set to non zero,
+            /// then the result is at least as fresh as given rv.
+            /// </param>
+            /// <param name='timeoutSeconds'>
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
+            /// </param>
+            /// <param name='watch'>
+            /// Watch for changes to the described resources and return them as a stream of
+            /// add, update, and remove notifications. Specify resourceVersion.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1PriorityClassList ListPriorityClass1(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string))
+            {
+                return operations.ListPriorityClass1Async(continueParameter, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// list or watch objects of kind PriorityClass
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='continueParameter'>
+            /// The continue option should be set when retrieving more results from the
+            /// server. Since this value is server defined, clients may only use the
+            /// continue value from a previous query result with identical query parameters
+            /// (except for the value of continue) and the server may reject a continue
+            /// value it does not recognize. If the specified continue value is no longer
+            /// valid whether due to expiration (generally five to fifteen minutes) or a
+            /// configuration change on the server the server will respond with a 410
+            /// ResourceExpired error indicating the client must restart their list without
+            /// the continue field. This field is not supported when watch is true. Clients
+            /// may start a watch from the last resourceVersion value returned by the
+            /// server and not miss any modifications.
+            /// </param>
+            /// <param name='fieldSelector'>
+            /// A selector to restrict the list of returned objects by their fields.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='includeUninitialized'>
+            /// If true, partially initialized resources are included in the response.
+            /// </param>
+            /// <param name='labelSelector'>
+            /// A selector to restrict the list of returned objects by their labels.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='limit'>
+            /// limit is a maximum number of responses to return for a list call. If more
+            /// items exist, the server will set the `continue` field on the list metadata
+            /// to a value that can be used with the same initial query to retrieve the
+            /// next set of results. Setting a limit may return fewer than the requested
+            /// amount of items (up to zero items) in the event all requested objects are
+            /// filtered out and clients should only use the presence of the continue field
+            /// to determine whether more results are available. Servers may choose not to
+            /// support the limit argument and will return all of the available results. If
+            /// limit is specified and the continue field is empty, clients may assume that
+            /// no more results are available. This field is not supported if watch is
+            /// true.
+            ///
+            /// The server guarantees that the objects returned when using continue will be
+            /// identical to issuing a single list call without a limit - that is, no
+            /// objects created, modified, or deleted after the first request is issued
+            /// will be included in any subsequent continued requests. This is sometimes
+            /// referred to as a consistent snapshot, and ensures that a client that is
+            /// using limit to receive smaller chunks of a very large result can ensure
+            /// they see all possible objects. If objects are updated during a chunked list
+            /// the version of the object that was present at the time the first list
+            /// result was calculated is returned.
+            /// </param>
+            /// <param name='resourceVersion'>
+            /// When specified with a watch call, shows changes that occur after that
+            /// particular version of a resource. Defaults to changes from the beginning of
+            /// history. When specified for list: - if unset, then the result is returned
+            /// from remote storage based on quorum-read flag; - if it's 0, then we simply
+            /// return what we currently have in cache, no guarantee; - if set to non zero,
+            /// then the result is at least as fresh as given rv.
+            /// </param>
+            /// <param name='timeoutSeconds'>
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
+            /// </param>
+            /// <param name='watch'>
+            /// Watch for changes to the described resources and return them as a stream of
+            /// add, update, and remove notifications. Specify resourceVersion.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1PriorityClassList> ListPriorityClass1Async(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListPriorityClass1WithHttpMessagesAsync(continueParameter, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// create a PriorityClass
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1PriorityClass CreatePriorityClass1(this IKubernetes operations, V1beta1PriorityClass body, string pretty = default(string))
+            {
+                return operations.CreatePriorityClass1Async(body, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// create a PriorityClass
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1PriorityClass> CreatePriorityClass1Async(this IKubernetes operations, V1beta1PriorityClass body, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreatePriorityClass1WithHttpMessagesAsync(body, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// delete collection of PriorityClass
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='continueParameter'>
+            /// The continue option should be set when retrieving more results from the
+            /// server. Since this value is server defined, clients may only use the
+            /// continue value from a previous query result with identical query parameters
+            /// (except for the value of continue) and the server may reject a continue
+            /// value it does not recognize. If the specified continue value is no longer
+            /// valid whether due to expiration (generally five to fifteen minutes) or a
+            /// configuration change on the server the server will respond with a 410
+            /// ResourceExpired error indicating the client must restart their list without
+            /// the continue field. This field is not supported when watch is true. Clients
+            /// may start a watch from the last resourceVersion value returned by the
+            /// server and not miss any modifications.
+            /// </param>
+            /// <param name='fieldSelector'>
+            /// A selector to restrict the list of returned objects by their fields.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='includeUninitialized'>
+            /// If true, partially initialized resources are included in the response.
+            /// </param>
+            /// <param name='labelSelector'>
+            /// A selector to restrict the list of returned objects by their labels.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='limit'>
+            /// limit is a maximum number of responses to return for a list call. If more
+            /// items exist, the server will set the `continue` field on the list metadata
+            /// to a value that can be used with the same initial query to retrieve the
+            /// next set of results. Setting a limit may return fewer than the requested
+            /// amount of items (up to zero items) in the event all requested objects are
+            /// filtered out and clients should only use the presence of the continue field
+            /// to determine whether more results are available. Servers may choose not to
+            /// support the limit argument and will return all of the available results. If
+            /// limit is specified and the continue field is empty, clients may assume that
+            /// no more results are available. This field is not supported if watch is
+            /// true.
+            ///
+            /// The server guarantees that the objects returned when using continue will be
+            /// identical to issuing a single list call without a limit - that is, no
+            /// objects created, modified, or deleted after the first request is issued
+            /// will be included in any subsequent continued requests. This is sometimes
+            /// referred to as a consistent snapshot, and ensures that a client that is
+            /// using limit to receive smaller chunks of a very large result can ensure
+            /// they see all possible objects. If objects are updated during a chunked list
+            /// the version of the object that was present at the time the first list
+            /// result was calculated is returned.
+            /// </param>
+            /// <param name='resourceVersion'>
+            /// When specified with a watch call, shows changes that occur after that
+            /// particular version of a resource. Defaults to changes from the beginning of
+            /// history. When specified for list: - if unset, then the result is returned
+            /// from remote storage based on quorum-read flag; - if it's 0, then we simply
+            /// return what we currently have in cache, no guarantee; - if set to non zero,
+            /// then the result is at least as fresh as given rv.
+            /// </param>
+            /// <param name='timeoutSeconds'>
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
+            /// </param>
+            /// <param name='watch'>
+            /// Watch for changes to the described resources and return them as a stream of
+            /// add, update, and remove notifications. Specify resourceVersion.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1Status DeleteCollectionPriorityClass1(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string))
+            {
+                return operations.DeleteCollectionPriorityClass1Async(continueParameter, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// delete collection of PriorityClass
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='continueParameter'>
+            /// The continue option should be set when retrieving more results from the
+            /// server. Since this value is server defined, clients may only use the
+            /// continue value from a previous query result with identical query parameters
+            /// (except for the value of continue) and the server may reject a continue
+            /// value it does not recognize. If the specified continue value is no longer
+            /// valid whether due to expiration (generally five to fifteen minutes) or a
+            /// configuration change on the server the server will respond with a 410
+            /// ResourceExpired error indicating the client must restart their list without
+            /// the continue field. This field is not supported when watch is true. Clients
+            /// may start a watch from the last resourceVersion value returned by the
+            /// server and not miss any modifications.
+            /// </param>
+            /// <param name='fieldSelector'>
+            /// A selector to restrict the list of returned objects by their fields.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='includeUninitialized'>
+            /// If true, partially initialized resources are included in the response.
+            /// </param>
+            /// <param name='labelSelector'>
+            /// A selector to restrict the list of returned objects by their labels.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='limit'>
+            /// limit is a maximum number of responses to return for a list call. If more
+            /// items exist, the server will set the `continue` field on the list metadata
+            /// to a value that can be used with the same initial query to retrieve the
+            /// next set of results. Setting a limit may return fewer than the requested
+            /// amount of items (up to zero items) in the event all requested objects are
+            /// filtered out and clients should only use the presence of the continue field
+            /// to determine whether more results are available. Servers may choose not to
+            /// support the limit argument and will return all of the available results. If
+            /// limit is specified and the continue field is empty, clients may assume that
+            /// no more results are available. This field is not supported if watch is
+            /// true.
+            ///
+            /// The server guarantees that the objects returned when using continue will be
+            /// identical to issuing a single list call without a limit - that is, no
+            /// objects created, modified, or deleted after the first request is issued
+            /// will be included in any subsequent continued requests. This is sometimes
+            /// referred to as a consistent snapshot, and ensures that a client that is
+            /// using limit to receive smaller chunks of a very large result can ensure
+            /// they see all possible objects. If objects are updated during a chunked list
+            /// the version of the object that was present at the time the first list
+            /// result was calculated is returned.
+            /// </param>
+            /// <param name='resourceVersion'>
+            /// When specified with a watch call, shows changes that occur after that
+            /// particular version of a resource. Defaults to changes from the beginning of
+            /// history. When specified for list: - if unset, then the result is returned
+            /// from remote storage based on quorum-read flag; - if it's 0, then we simply
+            /// return what we currently have in cache, no guarantee; - if set to non zero,
+            /// then the result is at least as fresh as given rv.
+            /// </param>
+            /// <param name='timeoutSeconds'>
+            /// Timeout for the list/watch call. This limits the duration of the call,
+            /// regardless of any activity or inactivity.
+            /// </param>
+            /// <param name='watch'>
+            /// Watch for changes to the described resources and return them as a stream of
+            /// add, update, and remove notifications. Specify resourceVersion.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1Status> DeleteCollectionPriorityClass1Async(this IKubernetes operations, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeleteCollectionPriorityClass1WithHttpMessagesAsync(continueParameter, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// read the specified PriorityClass
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='name'>
+            /// name of the PriorityClass
+            /// </param>
+            /// <param name='exact'>
+            /// Should the export be exact.  Exact export maintains cluster-specific fields
+            /// like 'Namespace'.
+            /// </param>
+            /// <param name='export'>
+            /// Should this value be exported.  Export strips fields that a user can not
+            /// specify.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1PriorityClass ReadPriorityClass1(this IKubernetes operations, string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string))
+            {
+                return operations.ReadPriorityClass1Async(name, exact, export, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// read the specified PriorityClass
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='name'>
+            /// name of the PriorityClass
+            /// </param>
+            /// <param name='exact'>
+            /// Should the export be exact.  Exact export maintains cluster-specific fields
+            /// like 'Namespace'.
+            /// </param>
+            /// <param name='export'>
+            /// Should this value be exported.  Export strips fields that a user can not
+            /// specify.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1PriorityClass> ReadPriorityClass1Async(this IKubernetes operations, string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ReadPriorityClass1WithHttpMessagesAsync(name, exact, export, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// replace the specified PriorityClass
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the PriorityClass
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1PriorityClass ReplacePriorityClass1(this IKubernetes operations, V1beta1PriorityClass body, string name, string pretty = default(string))
+            {
+                return operations.ReplacePriorityClass1Async(body, name, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// replace the specified PriorityClass
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the PriorityClass
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1PriorityClass> ReplacePriorityClass1Async(this IKubernetes operations, V1beta1PriorityClass body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ReplacePriorityClass1WithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// delete a PriorityClass
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the PriorityClass
+            /// </param>
+            /// <param name='gracePeriodSeconds'>
+            /// The duration in seconds before the object should be deleted. Value must be
+            /// non-negative integer. The value zero indicates delete immediately. If this
+            /// value is nil, the default grace period for the specified type will be used.
+            /// Defaults to a per object value if not specified. zero means delete
+            /// immediately.
+            /// </param>
+            /// <param name='orphanDependents'>
+            /// Deprecated: please use the PropagationPolicy, this field will be deprecated
+            /// in 1.7. Should the dependent objects be orphaned. If true/false, the
+            /// "orphan" finalizer will be added to/removed from the object's finalizers
+            /// list. Either this field or PropagationPolicy may be set, but not both.
+            /// </param>
+            /// <param name='propagationPolicy'>
+            /// Whether and how garbage collection will be performed. Either this field or
+            /// OrphanDependents may be set, but not both. The default policy is decided by
+            /// the existing finalizer set in the metadata.finalizers and the
+            /// resource-specific default policy. Acceptable values are: 'Orphan' - orphan
+            /// the dependents; 'Background' - allow the garbage collector to delete the
+            /// dependents in the background; 'Foreground' - a cascading policy that
+            /// deletes all dependents in the foreground.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1Status DeletePriorityClass1(this IKubernetes operations, V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string))
+            {
+                return operations.DeletePriorityClass1Async(body, name, gracePeriodSeconds, orphanDependents, propagationPolicy, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// delete a PriorityClass
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the PriorityClass
+            /// </param>
+            /// <param name='gracePeriodSeconds'>
+            /// The duration in seconds before the object should be deleted. Value must be
+            /// non-negative integer. The value zero indicates delete immediately. If this
+            /// value is nil, the default grace period for the specified type will be used.
+            /// Defaults to a per object value if not specified. zero means delete
+            /// immediately.
+            /// </param>
+            /// <param name='orphanDependents'>
+            /// Deprecated: please use the PropagationPolicy, this field will be deprecated
+            /// in 1.7. Should the dependent objects be orphaned. If true/false, the
+            /// "orphan" finalizer will be added to/removed from the object's finalizers
+            /// list. Either this field or PropagationPolicy may be set, but not both.
+            /// </param>
+            /// <param name='propagationPolicy'>
+            /// Whether and how garbage collection will be performed. Either this field or
+            /// OrphanDependents may be set, but not both. The default policy is decided by
+            /// the existing finalizer set in the metadata.finalizers and the
+            /// resource-specific default policy. Acceptable values are: 'Orphan' - orphan
+            /// the dependents; 'Background' - allow the garbage collector to delete the
+            /// dependents in the background; 'Foreground' - a cascading policy that
+            /// deletes all dependents in the foreground.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1Status> DeletePriorityClass1Async(this IKubernetes operations, V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeletePriorityClass1WithHttpMessagesAsync(body, name, gracePeriodSeconds, orphanDependents, propagationPolicy, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// partially update the specified PriorityClass
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the PriorityClass
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static V1beta1PriorityClass PatchPriorityClass1(this IKubernetes operations, V1Patch body, string name, string pretty = default(string))
+            {
+                return operations.PatchPriorityClass1Async(body, name, pretty).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// partially update the specified PriorityClass
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='name'>
+            /// name of the PriorityClass
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<V1beta1PriorityClass> PatchPriorityClass1Async(this IKubernetes operations, V1Patch body, string name, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.PatchPriorityClass1WithHttpMessagesAsync(body, name, pretty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// get information of a group
             /// </summary>
             /// <param name='operations'>
@@ -56033,9 +56987,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources27(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources28(this IKubernetes operations)
             {
-                return operations.GetAPIResources27Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources28Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -56047,9 +57001,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources27Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources28Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources27WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources28WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -56881,9 +57835,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources28(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources29(this IKubernetes operations)
             {
-                return operations.GetAPIResources28Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources29Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -56895,9 +57849,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources28Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources29Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources28WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources29WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -57499,9 +58453,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources29(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources30(this IKubernetes operations)
             {
-                return operations.GetAPIResources29Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources30Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -57513,9 +58467,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources29Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources30Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources29WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources30WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -58117,9 +59071,9 @@ namespace k8s
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static V1APIResourceList GetAPIResources30(this IKubernetes operations)
+            public static V1APIResourceList GetAPIResources31(this IKubernetes operations)
             {
-                return operations.GetAPIResources30Async().GetAwaiter().GetResult();
+                return operations.GetAPIResources31Async().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -58131,9 +59085,9 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<V1APIResourceList> GetAPIResources30Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<V1APIResourceList> GetAPIResources31Async(this IKubernetes operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPIResources30WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAPIResources31WithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

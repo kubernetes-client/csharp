@@ -10,7 +10,8 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// ID Range provides a min/max of an allowed range of IDs.
+    /// IDRange provides a min/max of an allowed range of IDs. Deprecated: use
+    /// IDRange from policy API Group instead.
     /// </summary>
     public partial class Extensionsv1beta1IDRange
     {
@@ -25,8 +26,8 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the Extensionsv1beta1IDRange class.
         /// </summary>
-        /// <param name="max">Max is the end of the range, inclusive.</param>
-        /// <param name="min">Min is the start of the range, inclusive.</param>
+        /// <param name="max">max is the end of the range, inclusive.</param>
+        /// <param name="min">min is the start of the range, inclusive.</param>
         public Extensionsv1beta1IDRange(long max, long min)
         {
             Max = max;

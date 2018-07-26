@@ -6,14 +6,15 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// A null or empty node selector term matches no objects.
+    /// A null or empty node selector term matches no objects. The requirements
+    /// of them are ANDed. The TopologySelectorTerm type implements a subset of
+    /// the NodeSelectorTerm.
     /// </summary>
     public partial class V1NodeSelectorTerm
     {
@@ -28,11 +29,14 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1NodeSelectorTerm class.
         /// </summary>
-        /// <param name="matchExpressions">Required. A list of node selector
-        /// requirements. The requirements are ANDed.</param>
-        public V1NodeSelectorTerm(IList<V1NodeSelectorRequirement> matchExpressions)
+        /// <param name="matchExpressions">A list of node selector requirements
+        /// by node's labels.</param>
+        /// <param name="matchFields">A list of node selector requirements by
+        /// node's fields.</param>
+        public V1NodeSelectorTerm(IList<V1NodeSelectorRequirement> matchExpressions = default(IList<V1NodeSelectorRequirement>), IList<V1NodeSelectorRequirement> matchFields = default(IList<V1NodeSelectorRequirement>))
         {
             MatchExpressions = matchExpressions;
+            MatchFields = matchFields;
             CustomInit();
         }
 
@@ -42,34 +46,16 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets required. A list of node selector requirements. The
-        /// requirements are ANDed.
+        /// Gets or sets a list of node selector requirements by node's labels.
         /// </summary>
         [JsonProperty(PropertyName = "matchExpressions")]
         public IList<V1NodeSelectorRequirement> MatchExpressions { get; set; }
 
         /// <summary>
-        /// Validate the object.
+        /// Gets or sets a list of node selector requirements by node's fields.
         /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (MatchExpressions == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "MatchExpressions");
-            }
-            if (MatchExpressions != null)
-            {
-                foreach (var element in MatchExpressions)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
-            }
-        }
+        [JsonProperty(PropertyName = "matchFields")]
+        public IList<V1NodeSelectorRequirement> MatchFields { get; set; }
+
     }
 }

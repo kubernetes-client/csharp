@@ -105,6 +105,11 @@ namespace k8s.Models
         /// by creating a PriorityClass object with that name. If not
         /// specified, the pod priority will be default or zero if there is no
         /// default.</param>
+        /// <param name="readinessGates">If specified, all readiness gates will
+        /// be evaluated for pod readiness. A pod is ready when all its
+        /// containers are ready AND all conditions specified in the readiness
+        /// gates have status equal to "True" More info:
+        /// https://github.com/kubernetes/community/blob/master/keps/sig-network/0007-pod-ready%2B%2B.md</param>
         /// <param name="restartPolicy">Restart policy for all containers
         /// within the pod. One of Always, OnFailure, Never. Default to Always.
         /// More info:
@@ -148,7 +153,7 @@ namespace k8s.Models
         /// <param name="volumes">List of volumes that can be mounted by
         /// containers belonging to the pod. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes</param>
-        public V1PodSpec(IList<V1Container> containers, long? activeDeadlineSeconds = default(long?), V1Affinity affinity = default(V1Affinity), bool? automountServiceAccountToken = default(bool?), V1PodDNSConfig dnsConfig = default(V1PodDNSConfig), string dnsPolicy = default(string), IList<V1HostAlias> hostAliases = default(IList<V1HostAlias>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), string hostname = default(string), IList<V1LocalObjectReference> imagePullSecrets = default(IList<V1LocalObjectReference>), IList<V1Container> initContainers = default(IList<V1Container>), string nodeName = default(string), IDictionary<string, string> nodeSelector = default(IDictionary<string, string>), int? priority = default(int?), string priorityClassName = default(string), string restartPolicy = default(string), string schedulerName = default(string), V1PodSecurityContext securityContext = default(V1PodSecurityContext), string serviceAccount = default(string), string serviceAccountName = default(string), bool? shareProcessNamespace = default(bool?), string subdomain = default(string), long? terminationGracePeriodSeconds = default(long?), IList<V1Toleration> tolerations = default(IList<V1Toleration>), IList<V1Volume> volumes = default(IList<V1Volume>))
+        public V1PodSpec(IList<V1Container> containers, long? activeDeadlineSeconds = default(long?), V1Affinity affinity = default(V1Affinity), bool? automountServiceAccountToken = default(bool?), V1PodDNSConfig dnsConfig = default(V1PodDNSConfig), string dnsPolicy = default(string), IList<V1HostAlias> hostAliases = default(IList<V1HostAlias>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), string hostname = default(string), IList<V1LocalObjectReference> imagePullSecrets = default(IList<V1LocalObjectReference>), IList<V1Container> initContainers = default(IList<V1Container>), string nodeName = default(string), IDictionary<string, string> nodeSelector = default(IDictionary<string, string>), int? priority = default(int?), string priorityClassName = default(string), IList<V1PodReadinessGate> readinessGates = default(IList<V1PodReadinessGate>), string restartPolicy = default(string), string schedulerName = default(string), V1PodSecurityContext securityContext = default(V1PodSecurityContext), string serviceAccount = default(string), string serviceAccountName = default(string), bool? shareProcessNamespace = default(bool?), string subdomain = default(string), long? terminationGracePeriodSeconds = default(long?), IList<V1Toleration> tolerations = default(IList<V1Toleration>), IList<V1Volume> volumes = default(IList<V1Volume>))
         {
             ActiveDeadlineSeconds = activeDeadlineSeconds;
             Affinity = affinity;
@@ -167,6 +172,7 @@ namespace k8s.Models
             NodeSelector = nodeSelector;
             Priority = priority;
             PriorityClassName = priorityClassName;
+            ReadinessGates = readinessGates;
             RestartPolicy = restartPolicy;
             SchedulerName = schedulerName;
             SecurityContext = securityContext;
@@ -343,6 +349,16 @@ namespace k8s.Models
         public string PriorityClassName { get; set; }
 
         /// <summary>
+        /// Gets or sets if specified, all readiness gates will be evaluated
+        /// for pod readiness. A pod is ready when all its containers are ready
+        /// AND all conditions specified in the readiness gates have status
+        /// equal to "True" More info:
+        /// https://github.com/kubernetes/community/blob/master/keps/sig-network/0007-pod-ready%2B%2B.md
+        /// </summary>
+        [JsonProperty(PropertyName = "readinessGates")]
+        public IList<V1PodReadinessGate> ReadinessGates { get; set; }
+
+        /// <summary>
         /// Gets or sets restart policy for all containers within the pod. One
         /// of Always, OnFailure, Never. Default to Always. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy
@@ -466,13 +482,23 @@ namespace k8s.Models
                     }
                 }
             }
-            if (Volumes != null)
+            if (ReadinessGates != null)
             {
-                foreach (var element2 in Volumes)
+                foreach (var element2 in ReadinessGates)
                 {
                     if (element2 != null)
                     {
                         element2.Validate();
+                    }
+                }
+            }
+            if (Volumes != null)
+            {
+                foreach (var element3 in Volumes)
+                {
+                    if (element3 != null)
+                    {
+                        element3.Validate();
                     }
                 }
             }

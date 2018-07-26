@@ -13,7 +13,7 @@ namespace k8s
     public partial class Kubernetes
     {
         /// <inheritdoc/>
-        public async Task<Watcher<T>> WatchObjectAsync<T>(string path, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, int? timeoutSeconds = null, string resourceVersion = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, T> onEvent = null, Action<Exception> onError = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Watcher<T>> WatchObjectAsync<T>(string path, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, int? timeoutSeconds = null, string resourceVersion = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, T> onEvent = null, Action<Exception> onError = null, Action onClosed = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -152,7 +152,7 @@ namespace k8s
             var stream = await httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false);
             StreamReader reader = new StreamReader(stream);
 
-            return new Watcher<T>(reader, onEvent, onError);
+            return new Watcher<T>(reader, onEvent, onError, onClosed);
         }
     }
 }

@@ -11,7 +11,8 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// Local represents directly-attached storage with node affinity
+    /// Local represents directly-attached storage with node affinity (Beta
+    /// feature)
     /// </summary>
     public partial class V1LocalVolumeSource
     {
@@ -26,9 +27,12 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1LocalVolumeSource class.
         /// </summary>
-        /// <param name="path">The full path to the volume on the node For
-        /// alpha, this path must be a directory Once block as a source is
-        /// supported, then this path can point to a block device</param>
+        /// <param name="path">The full path to the volume on the node. It can
+        /// be either a directory or block device (disk, partition, ...).
+        /// Directories can be represented only by PersistentVolume with
+        /// VolumeMode=Filesystem. Block devices can be represented only by
+        /// VolumeMode=Block, which also requires the BlockVolume alpha feature
+        /// gate to be enabled.</param>
         public V1LocalVolumeSource(string path)
         {
             Path = path;
@@ -41,9 +45,12 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the full path to the volume on the node For alpha,
-        /// this path must be a directory Once block as a source is supported,
-        /// then this path can point to a block device
+        /// Gets or sets the full path to the volume on the node. It can be
+        /// either a directory or block device (disk, partition, ...).
+        /// Directories can be represented only by PersistentVolume with
+        /// VolumeMode=Filesystem. Block devices can be represented only by
+        /// VolumeMode=Block, which also requires the BlockVolume alpha feature
+        /// gate to be enabled.
         /// </summary>
         [JsonProperty(PropertyName = "path")]
         public string Path { get; set; }

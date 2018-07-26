@@ -36,6 +36,12 @@ namespace k8s.Models
         /// provisioner.</param>
         /// <param name="allowVolumeExpansion">AllowVolumeExpansion shows
         /// whether the storage class allow volume expand</param>
+        /// <param name="allowedTopologies">Restrict the node topologies where
+        /// volumes can be dynamically provisioned. Each volume plugin defines
+        /// its own supported topology specifications. An empty
+        /// TopologySelectorTerm list means there is no topology restriction.
+        /// This field is alpha-level and is only honored by servers that
+        /// enable the DynamicProvisioningScheduling feature.</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
@@ -63,9 +69,10 @@ namespace k8s.Models
         /// unset, VolumeBindingImmediate is used. This field is alpha-level
         /// and is only honored by servers that enable the VolumeScheduling
         /// feature.</param>
-        public V1StorageClass(string provisioner, bool? allowVolumeExpansion = default(bool?), string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), IList<string> mountOptions = default(IList<string>), IDictionary<string, string> parameters = default(IDictionary<string, string>), string reclaimPolicy = default(string), string volumeBindingMode = default(string))
+        public V1StorageClass(string provisioner, bool? allowVolumeExpansion = default(bool?), IList<V1TopologySelectorTerm> allowedTopologies = default(IList<V1TopologySelectorTerm>), string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), IList<string> mountOptions = default(IList<string>), IDictionary<string, string> parameters = default(IDictionary<string, string>), string reclaimPolicy = default(string), string volumeBindingMode = default(string))
         {
             AllowVolumeExpansion = allowVolumeExpansion;
+            AllowedTopologies = allowedTopologies;
             ApiVersion = apiVersion;
             Kind = kind;
             Metadata = metadata;
@@ -88,6 +95,17 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "allowVolumeExpansion")]
         public bool? AllowVolumeExpansion { get; set; }
+
+        /// <summary>
+        /// Gets or sets restrict the node topologies where volumes can be
+        /// dynamically provisioned. Each volume plugin defines its own
+        /// supported topology specifications. An empty TopologySelectorTerm
+        /// list means there is no topology restriction. This field is
+        /// alpha-level and is only honored by servers that enable the
+        /// DynamicProvisioningScheduling feature.
+        /// </summary>
+        [JsonProperty(PropertyName = "allowedTopologies")]
+        public IList<V1TopologySelectorTerm> AllowedTopologies { get; set; }
 
         /// <summary>
         /// Gets or sets aPIVersion defines the versioned schema of this

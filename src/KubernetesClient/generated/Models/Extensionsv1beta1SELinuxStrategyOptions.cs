@@ -11,8 +11,9 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// SELinux  Strategy Options defines the strategy type and any options
-    /// used to create the strategy.
+    /// SELinuxStrategyOptions defines the strategy type and any options used
+    /// to create the strategy. Deprecated: use SELinuxStrategyOptions from
+    /// policy API Group instead.
     /// </summary>
     public partial class Extensionsv1beta1SELinuxStrategyOptions
     {
@@ -29,7 +30,7 @@ namespace k8s.Models
         /// Initializes a new instance of the
         /// Extensionsv1beta1SELinuxStrategyOptions class.
         /// </summary>
-        /// <param name="rule">type is the strategy that will dictate the
+        /// <param name="rule">rule is the strategy that will dictate the
         /// allowable labels that may be set.</param>
         /// <param name="seLinuxOptions">seLinuxOptions required to run as;
         /// required for MustRunAs More info:
@@ -47,7 +48,7 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets type is the strategy that will dictate the allowable
+        /// Gets or sets rule is the strategy that will dictate the allowable
         /// labels that may be set.
         /// </summary>
         [JsonProperty(PropertyName = "rule")]

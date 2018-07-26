@@ -13,7 +13,8 @@ namespace k8s.Models
 
     /// <summary>
     /// FSGroupStrategyOptions defines the strategy type and options used to
-    /// create the strategy.
+    /// create the strategy. Deprecated: use FSGroupStrategyOptions from policy
+    /// API Group instead.
     /// </summary>
     public partial class Extensionsv1beta1FSGroupStrategyOptions
     {
@@ -30,10 +31,10 @@ namespace k8s.Models
         /// Initializes a new instance of the
         /// Extensionsv1beta1FSGroupStrategyOptions class.
         /// </summary>
-        /// <param name="ranges">Ranges are the allowed ranges of fs groups.
+        /// <param name="ranges">ranges are the allowed ranges of fs groups.
         /// If you would like to force a single fs group then supply a single
-        /// range with the same start and end.</param>
-        /// <param name="rule">Rule is the strategy that will dictate what
+        /// range with the same start and end. Required for MustRunAs.</param>
+        /// <param name="rule">rule is the strategy that will dictate what
         /// FSGroup is used in the SecurityContext.</param>
         public Extensionsv1beta1FSGroupStrategyOptions(IList<Extensionsv1beta1IDRange> ranges = default(IList<Extensionsv1beta1IDRange>), string rule = default(string))
         {
@@ -50,7 +51,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets ranges are the allowed ranges of fs groups.  If you
         /// would like to force a single fs group then supply a single range
-        /// with the same start and end.
+        /// with the same start and end. Required for MustRunAs.
         /// </summary>
         [JsonProperty(PropertyName = "ranges")]
         public IList<Extensionsv1beta1IDRange> Ranges { get; set; }

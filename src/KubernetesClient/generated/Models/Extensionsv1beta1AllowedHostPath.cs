@@ -10,8 +10,9 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// defines the host volume conditions that will be enabled by a policy for
-    /// pods to use. It requires the path prefix to be defined.
+    /// AllowedHostPath defines the host volume conditions that will be enabled
+    /// by a policy for pods to use. It requires the path prefix to be defined.
+    /// Deprecated: use AllowedHostPath from policy API Group instead.
     /// </summary>
     public partial class Extensionsv1beta1AllowedHostPath
     {
@@ -28,15 +29,19 @@ namespace k8s.Models
         /// Initializes a new instance of the Extensionsv1beta1AllowedHostPath
         /// class.
         /// </summary>
-        /// <param name="pathPrefix">is the path prefix that the host volume
-        /// must match. It does not support `*`. Trailing slashes are trimmed
-        /// when validating the path prefix with a host path.
+        /// <param name="pathPrefix">pathPrefix is the path prefix that the
+        /// host volume must match. It does not support `*`. Trailing slashes
+        /// are trimmed when validating the path prefix with a host path.
         ///
         /// Examples: `/foo` would allow `/foo`, `/foo/` and `/foo/bar` `/foo`
         /// would not allow `/food` or `/etc/foo`</param>
-        public Extensionsv1beta1AllowedHostPath(string pathPrefix = default(string))
+        /// <param name="readOnlyProperty">when set to true, will allow host
+        /// volumes matching the pathPrefix only if all volume mounts are
+        /// readOnly.</param>
+        public Extensionsv1beta1AllowedHostPath(string pathPrefix = default(string), bool? readOnlyProperty = default(bool?))
         {
             PathPrefix = pathPrefix;
+            ReadOnlyProperty = readOnlyProperty;
             CustomInit();
         }
 
@@ -46,15 +51,22 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets is the path prefix that the host volume must match. It
-        /// does not support `*`. Trailing slashes are trimmed when validating
-        /// the path prefix with a host path.
+        /// Gets or sets pathPrefix is the path prefix that the host volume
+        /// must match. It does not support `*`. Trailing slashes are trimmed
+        /// when validating the path prefix with a host path.
         ///
         /// Examples: `/foo` would allow `/foo`, `/foo/` and `/foo/bar` `/foo`
         /// would not allow `/food` or `/etc/foo`
         /// </summary>
         [JsonProperty(PropertyName = "pathPrefix")]
         public string PathPrefix { get; set; }
+
+        /// <summary>
+        /// Gets or sets when set to true, will allow host volumes matching the
+        /// pathPrefix only if all volume mounts are readOnly.
+        /// </summary>
+        [JsonProperty(PropertyName = "readOnly")]
+        public bool? ReadOnlyProperty { get; set; }
 
     }
 }
