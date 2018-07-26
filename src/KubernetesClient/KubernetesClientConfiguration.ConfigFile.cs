@@ -239,14 +239,26 @@ namespace k8s
                 userCredentialsFound = true;
             }
 
-            if (userDetails.UserCredentials.AuthProvider != null) {
+            if (userDetails.UserCredentials.AuthProvider != null)
+            {
                 if (userDetails.UserCredentials.AuthProvider.Name == "azure" &&
                     userDetails.UserCredentials.AuthProvider.Config != null &&
-                    userDetails.UserCredentials.AuthProvider.Config.ContainsKey("access-token")) {
+                    userDetails.UserCredentials.AuthProvider.Config.ContainsKey("access-token"))
+                {
                     var config = userDetails.UserCredentials.AuthProvider.Config;
-                    if (config.ContainsKey("expires-on")) {
-                        var expires = DateTimeOffset.FromUnixTimeSeconds(Int32.Parse(config["expires-on"]));
-                        if (DateTimeOffset.Compare(expires, DateTimeOffset.Now) <= 0) {
+                    if (config.ContainsKey("expires-on"))
+                    {
+                        var expiresOn = Int32.Parse(config["expires-on"]);
+                        DateTimeOffset expires;
+#if NET452
+                        var epoch = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
+                        expires = epoch.AddSeconds(expiresOn);
+#else
+                        expires = DateTimeOffset.FromUnixTimeSeconds(expiresOn);
+#endif
+
+                        if (DateTimeOffset.Compare(expires, DateTimeOffset.Now) <= 0)
+                        {
                             var tenantId = config["tenant-id"];
                             var clientId = config["client-id"];
                             var apiServerId = config["apiserver-id"];
@@ -267,7 +279,8 @@ namespace k8s
             }
         }
 
-        public static string RenewAzureToken(string tenantId, string clientId, string apiServerId, string refresh) {
+        public static string RenewAzureToken(string tenantId, string clientId, string apiServerId, string refresh)
+        {
             throw new KubeConfigException("Refresh not supported.");
         }
 
