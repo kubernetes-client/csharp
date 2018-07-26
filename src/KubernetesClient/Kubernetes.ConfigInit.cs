@@ -135,8 +135,8 @@ namespace k8s
 #elif XAMARINIOS1_0
                     System.Net.ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) =>
                     {
-                        var test = new X509Certificate2(certificate);
-                        return Kubernetes.CertificateValidationCallBack(sender, CaCert, test, chain, sslPolicyErrors);
+                        var cert = new X509Certificate2(certificate);
+                        return Kubernetes.CertificateValidationCallBack(sender, CaCert, cert, chain, sslPolicyErrors);
                     };
 #else
                     HttpClientHandler.ServerCertificateCustomValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
