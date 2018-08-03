@@ -60346,152 +60346,6 @@ namespace k8s
             }
 
             /// <summary>
-            /// Creates a cluster scoped Custom object
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='body'>
-            /// The JSON schema of the Resource to create.
-            /// </param>
-            /// <param name='group'>
-            /// The custom resource's group name
-            /// </param>
-            /// <param name='version'>
-            /// The custom resource's version
-            /// </param>
-            /// <param name='plural'>
-            /// The custom resource's plural name. For TPRs this would be lowercase plural
-            /// kind.
-            /// </param>
-            /// <param name='pretty'>
-            /// If 'true', then the output is pretty printed.
-            /// </param>
-            public static object CreateClusterCustomObject(this IKubernetes operations, object body, string group, string version, string plural, string pretty = default(string))
-            {
-                return operations.CreateClusterCustomObjectAsync(body, group, version, plural, pretty).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates a cluster scoped Custom object
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='body'>
-            /// The JSON schema of the Resource to create.
-            /// </param>
-            /// <param name='group'>
-            /// The custom resource's group name
-            /// </param>
-            /// <param name='version'>
-            /// The custom resource's version
-            /// </param>
-            /// <param name='plural'>
-            /// The custom resource's plural name. For TPRs this would be lowercase plural
-            /// kind.
-            /// </param>
-            /// <param name='pretty'>
-            /// If 'true', then the output is pretty printed.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<object> CreateClusterCustomObjectAsync(this IKubernetes operations, object body, string group, string version, string plural, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CreateClusterCustomObjectWithHttpMessagesAsync(body, group, version, plural, pretty, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// list or watch cluster scoped custom objects
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='group'>
-            /// The custom resource's group name
-            /// </param>
-            /// <param name='version'>
-            /// The custom resource's version
-            /// </param>
-            /// <param name='plural'>
-            /// The custom resource's plural name. For TPRs this would be lowercase plural
-            /// kind.
-            /// </param>
-            /// <param name='labelSelector'>
-            /// A selector to restrict the list of returned objects by their labels.
-            /// Defaults to everything.
-            /// </param>
-            /// <param name='resourceVersion'>
-            /// When specified with a watch call, shows changes that occur after that
-            /// particular version of a resource. Defaults to changes from the beginning of
-            /// history. When specified for list: - if unset, then the result is returned
-            /// from remote storage based on quorum-read flag; - if it's 0, then we simply
-            /// return what we currently have in cache, no guarantee; - if set to non zero,
-            /// then the result is at least as fresh as given rv.
-            /// </param>
-            /// <param name='watch'>
-            /// Watch for changes to the described resources and return them as a stream of
-            /// add, update, and remove notifications.
-            /// </param>
-            /// <param name='pretty'>
-            /// If 'true', then the output is pretty printed.
-            /// </param>
-            public static object ListClusterCustomObject(this IKubernetes operations, string group, string version, string plural, string labelSelector = default(string), string resourceVersion = default(string), bool? watch = default(bool?), string pretty = default(string))
-            {
-                return operations.ListClusterCustomObjectAsync(group, version, plural, labelSelector, resourceVersion, watch, pretty).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// list or watch cluster scoped custom objects
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='group'>
-            /// The custom resource's group name
-            /// </param>
-            /// <param name='version'>
-            /// The custom resource's version
-            /// </param>
-            /// <param name='plural'>
-            /// The custom resource's plural name. For TPRs this would be lowercase plural
-            /// kind.
-            /// </param>
-            /// <param name='labelSelector'>
-            /// A selector to restrict the list of returned objects by their labels.
-            /// Defaults to everything.
-            /// </param>
-            /// <param name='resourceVersion'>
-            /// When specified with a watch call, shows changes that occur after that
-            /// particular version of a resource. Defaults to changes from the beginning of
-            /// history. When specified for list: - if unset, then the result is returned
-            /// from remote storage based on quorum-read flag; - if it's 0, then we simply
-            /// return what we currently have in cache, no guarantee; - if set to non zero,
-            /// then the result is at least as fresh as given rv.
-            /// </param>
-            /// <param name='watch'>
-            /// Watch for changes to the described resources and return them as a stream of
-            /// add, update, and remove notifications.
-            /// </param>
-            /// <param name='pretty'>
-            /// If 'true', then the output is pretty printed.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<object> ListClusterCustomObjectAsync(this IKubernetes operations, string group, string version, string plural, string labelSelector = default(string), string resourceVersion = default(string), bool? watch = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListClusterCustomObjectWithHttpMessagesAsync(group, version, plural, labelSelector, resourceVersion, watch, pretty, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Creates a namespace scoped Custom object
             /// </summary>
             /// <param name='operations'>
@@ -60650,127 +60504,153 @@ namespace k8s
             }
 
             /// <summary>
-            /// replace the specified cluster scoped custom object
+            /// Creates a cluster scoped Custom object
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='body'>
-            /// The JSON schema of the Resource to replace.
+            /// The JSON schema of the Resource to create.
             /// </param>
             /// <param name='group'>
-            /// the custom resource's group
+            /// The custom resource's group name
             /// </param>
             /// <param name='version'>
-            /// the custom resource's version
+            /// The custom resource's version
             /// </param>
             /// <param name='plural'>
-            /// the custom object's plural name. For TPRs this would be lowercase plural
+            /// The custom resource's plural name. For TPRs this would be lowercase plural
             /// kind.
             /// </param>
-            /// <param name='name'>
-            /// the custom object's name
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
             /// </param>
-            public static object ReplaceClusterCustomObject(this IKubernetes operations, object body, string group, string version, string plural, string name)
+            public static object CreateClusterCustomObject(this IKubernetes operations, object body, string group, string version, string plural, string pretty = default(string))
             {
-                return operations.ReplaceClusterCustomObjectAsync(body, group, version, plural, name).GetAwaiter().GetResult();
+                return operations.CreateClusterCustomObjectAsync(body, group, version, plural, pretty).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// replace the specified cluster scoped custom object
+            /// Creates a cluster scoped Custom object
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='body'>
-            /// The JSON schema of the Resource to replace.
+            /// The JSON schema of the Resource to create.
             /// </param>
             /// <param name='group'>
-            /// the custom resource's group
+            /// The custom resource's group name
             /// </param>
             /// <param name='version'>
-            /// the custom resource's version
+            /// The custom resource's version
             /// </param>
             /// <param name='plural'>
-            /// the custom object's plural name. For TPRs this would be lowercase plural
+            /// The custom resource's plural name. For TPRs this would be lowercase plural
             /// kind.
             /// </param>
-            /// <param name='name'>
-            /// the custom object's name
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<object> ReplaceClusterCustomObjectAsync(this IKubernetes operations, object body, string group, string version, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> CreateClusterCustomObjectAsync(this IKubernetes operations, object body, string group, string version, string plural, string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ReplaceClusterCustomObjectWithHttpMessagesAsync(body, group, version, plural, name, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateClusterCustomObjectWithHttpMessagesAsync(body, group, version, plural, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// patch the specified cluster scoped custom object
+            /// list or watch cluster scoped custom objects
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='body'>
-            /// The JSON schema of the Resource to patch.
-            /// </param>
             /// <param name='group'>
-            /// the custom resource's group
+            /// The custom resource's group name
             /// </param>
             /// <param name='version'>
-            /// the custom resource's version
+            /// The custom resource's version
             /// </param>
             /// <param name='plural'>
-            /// the custom object's plural name. For TPRs this would be lowercase plural
+            /// The custom resource's plural name. For TPRs this would be lowercase plural
             /// kind.
             /// </param>
-            /// <param name='name'>
-            /// the custom object's name
+            /// <param name='labelSelector'>
+            /// A selector to restrict the list of returned objects by their labels.
+            /// Defaults to everything.
             /// </param>
-            public static object PatchClusterCustomObject(this IKubernetes operations, object body, string group, string version, string plural, string name)
+            /// <param name='resourceVersion'>
+            /// When specified with a watch call, shows changes that occur after that
+            /// particular version of a resource. Defaults to changes from the beginning of
+            /// history. When specified for list: - if unset, then the result is returned
+            /// from remote storage based on quorum-read flag; - if it's 0, then we simply
+            /// return what we currently have in cache, no guarantee; - if set to non zero,
+            /// then the result is at least as fresh as given rv.
+            /// </param>
+            /// <param name='watch'>
+            /// Watch for changes to the described resources and return them as a stream of
+            /// add, update, and remove notifications.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
+            /// </param>
+            public static object ListClusterCustomObject(this IKubernetes operations, string group, string version, string plural, string labelSelector = default(string), string resourceVersion = default(string), bool? watch = default(bool?), string pretty = default(string))
             {
-                return operations.PatchClusterCustomObjectAsync(body, group, version, plural, name).GetAwaiter().GetResult();
+                return operations.ListClusterCustomObjectAsync(group, version, plural, labelSelector, resourceVersion, watch, pretty).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// patch the specified cluster scoped custom object
+            /// list or watch cluster scoped custom objects
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='body'>
-            /// The JSON schema of the Resource to patch.
-            /// </param>
             /// <param name='group'>
-            /// the custom resource's group
+            /// The custom resource's group name
             /// </param>
             /// <param name='version'>
-            /// the custom resource's version
+            /// The custom resource's version
             /// </param>
             /// <param name='plural'>
-            /// the custom object's plural name. For TPRs this would be lowercase plural
+            /// The custom resource's plural name. For TPRs this would be lowercase plural
             /// kind.
             /// </param>
-            /// <param name='name'>
-            /// the custom object's name
+            /// <param name='labelSelector'>
+            /// A selector to restrict the list of returned objects by their labels.
+            /// Defaults to everything.
+            /// </param>
+            /// <param name='resourceVersion'>
+            /// When specified with a watch call, shows changes that occur after that
+            /// particular version of a resource. Defaults to changes from the beginning of
+            /// history. When specified for list: - if unset, then the result is returned
+            /// from remote storage based on quorum-read flag; - if it's 0, then we simply
+            /// return what we currently have in cache, no guarantee; - if set to non zero,
+            /// then the result is at least as fresh as given rv.
+            /// </param>
+            /// <param name='watch'>
+            /// Watch for changes to the described resources and return them as a stream of
+            /// add, update, and remove notifications.
+            /// </param>
+            /// <param name='pretty'>
+            /// If 'true', then the output is pretty printed.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<object> PatchClusterCustomObjectAsync(this IKubernetes operations, object body, string group, string version, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> ListClusterCustomObjectAsync(this IKubernetes operations, string group, string version, string plural, string labelSelector = default(string), string resourceVersion = default(string), bool? watch = default(bool?), string pretty = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.PatchClusterCustomObjectWithHttpMessagesAsync(body, group, version, plural, name, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListClusterCustomObjectWithHttpMessagesAsync(group, version, plural, labelSelector, resourceVersion, watch, pretty, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Deletes the specified cluster scoped custom object
+            /// replace status of the cluster scoped specified custom object
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -60784,38 +60664,19 @@ namespace k8s
             /// the custom resource's version
             /// </param>
             /// <param name='plural'>
-            /// the custom object's plural name. For TPRs this would be lowercase plural
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
             /// kind.
             /// </param>
             /// <param name='name'>
             /// the custom object's name
             /// </param>
-            /// <param name='gracePeriodSeconds'>
-            /// The duration in seconds before the object should be deleted. Value must be
-            /// non-negative integer. The value zero indicates delete immediately. If this
-            /// value is nil, the default grace period for the specified type will be used.
-            /// Defaults to a per object value if not specified. zero means delete
-            /// immediately.
-            /// </param>
-            /// <param name='orphanDependents'>
-            /// Deprecated: please use the PropagationPolicy, this field will be deprecated
-            /// in 1.7. Should the dependent objects be orphaned. If true/false, the
-            /// "orphan" finalizer will be added to/removed from the object's finalizers
-            /// list. Either this field or PropagationPolicy may be set, but not both.
-            /// </param>
-            /// <param name='propagationPolicy'>
-            /// Whether and how garbage collection will be performed. Either this field or
-            /// OrphanDependents may be set, but not both. The default policy is decided by
-            /// the existing finalizer set in the metadata.finalizers and the
-            /// resource-specific default policy.
-            /// </param>
-            public static object DeleteClusterCustomObject(this IKubernetes operations, V1DeleteOptions body, string group, string version, string plural, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string))
+            public static object ReplaceClusterCustomObjectStatus(this IKubernetes operations, object body, string group, string version, string plural, string name)
             {
-                return operations.DeleteClusterCustomObjectAsync(body, group, version, plural, name, gracePeriodSeconds, orphanDependents, propagationPolicy).GetAwaiter().GetResult();
+                return operations.ReplaceClusterCustomObjectStatusAsync(body, group, version, plural, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Deletes the specified cluster scoped custom object
+            /// replace status of the cluster scoped specified custom object
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -60829,47 +60690,30 @@ namespace k8s
             /// the custom resource's version
             /// </param>
             /// <param name='plural'>
-            /// the custom object's plural name. For TPRs this would be lowercase plural
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
             /// kind.
             /// </param>
             /// <param name='name'>
             /// the custom object's name
-            /// </param>
-            /// <param name='gracePeriodSeconds'>
-            /// The duration in seconds before the object should be deleted. Value must be
-            /// non-negative integer. The value zero indicates delete immediately. If this
-            /// value is nil, the default grace period for the specified type will be used.
-            /// Defaults to a per object value if not specified. zero means delete
-            /// immediately.
-            /// </param>
-            /// <param name='orphanDependents'>
-            /// Deprecated: please use the PropagationPolicy, this field will be deprecated
-            /// in 1.7. Should the dependent objects be orphaned. If true/false, the
-            /// "orphan" finalizer will be added to/removed from the object's finalizers
-            /// list. Either this field or PropagationPolicy may be set, but not both.
-            /// </param>
-            /// <param name='propagationPolicy'>
-            /// Whether and how garbage collection will be performed. Either this field or
-            /// OrphanDependents may be set, but not both. The default policy is decided by
-            /// the existing finalizer set in the metadata.finalizers and the
-            /// resource-specific default policy.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<object> DeleteClusterCustomObjectAsync(this IKubernetes operations, V1DeleteOptions body, string group, string version, string plural, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> ReplaceClusterCustomObjectStatusAsync(this IKubernetes operations, object body, string group, string version, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DeleteClusterCustomObjectWithHttpMessagesAsync(body, group, version, plural, name, gracePeriodSeconds, orphanDependents, propagationPolicy, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ReplaceClusterCustomObjectStatusWithHttpMessagesAsync(body, group, version, plural, name, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Returns a cluster scoped custom object
+            /// partially update status of the specified cluster scoped custom object
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
             /// </param>
             /// <param name='group'>
             /// the custom resource's group
@@ -60878,22 +60722,24 @@ namespace k8s
             /// the custom resource's version
             /// </param>
             /// <param name='plural'>
-            /// the custom object's plural name. For TPRs this would be lowercase plural
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
             /// kind.
             /// </param>
             /// <param name='name'>
             /// the custom object's name
             /// </param>
-            public static object GetClusterCustomObject(this IKubernetes operations, string group, string version, string plural, string name)
+            public static object PatchClusterCustomObjectStatus(this IKubernetes operations, object body, string group, string version, string plural, string name)
             {
-                return operations.GetClusterCustomObjectAsync(group, version, plural, name).GetAwaiter().GetResult();
+                return operations.PatchClusterCustomObjectStatusAsync(body, group, version, plural, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Returns a cluster scoped custom object
+            /// partially update status of the specified cluster scoped custom object
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
             /// </param>
             /// <param name='group'>
             /// the custom resource's group
@@ -60902,7 +60748,7 @@ namespace k8s
             /// the custom resource's version
             /// </param>
             /// <param name='plural'>
-            /// the custom object's plural name. For TPRs this would be lowercase plural
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
             /// kind.
             /// </param>
             /// <param name='name'>
@@ -60911,9 +60757,63 @@ namespace k8s
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<object> GetClusterCustomObjectAsync(this IKubernetes operations, string group, string version, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> PatchClusterCustomObjectStatusAsync(this IKubernetes operations, object body, string group, string version, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetClusterCustomObjectWithHttpMessagesAsync(group, version, plural, name, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.PatchClusterCustomObjectStatusWithHttpMessagesAsync(body, group, version, plural, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// read status of the specified cluster scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            public static object GetClusterCustomObjectStatus(this IKubernetes operations, string group, string version, string plural, string name)
+            {
+                return operations.GetClusterCustomObjectStatusAsync(group, version, plural, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// read status of the specified cluster scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<object> GetClusterCustomObjectStatusAsync(this IKubernetes operations, string group, string version, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetClusterCustomObjectStatusWithHttpMessagesAsync(group, version, plural, name, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -61208,6 +61108,822 @@ namespace k8s
             public static async Task<object> GetNamespacedCustomObjectAsync(this IKubernetes operations, string group, string version, string namespaceParameter, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetNamespacedCustomObjectWithHttpMessagesAsync(group, version, namespaceParameter, plural, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// replace scale of the specified namespace scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='namespaceParameter'>
+            /// The custom resource's namespace
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            public static object ReplaceNamespacedCustomObjectScale(this IKubernetes operations, object body, string group, string version, string namespaceParameter, string plural, string name)
+            {
+                return operations.ReplaceNamespacedCustomObjectScaleAsync(body, group, version, namespaceParameter, plural, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// replace scale of the specified namespace scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='namespaceParameter'>
+            /// The custom resource's namespace
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<object> ReplaceNamespacedCustomObjectScaleAsync(this IKubernetes operations, object body, string group, string version, string namespaceParameter, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ReplaceNamespacedCustomObjectScaleWithHttpMessagesAsync(body, group, version, namespaceParameter, plural, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// partially update scale of the specified namespace scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='namespaceParameter'>
+            /// The custom resource's namespace
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            public static object PatchNamespacedCustomObjectScale(this IKubernetes operations, object body, string group, string version, string namespaceParameter, string plural, string name)
+            {
+                return operations.PatchNamespacedCustomObjectScaleAsync(body, group, version, namespaceParameter, plural, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// partially update scale of the specified namespace scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='namespaceParameter'>
+            /// The custom resource's namespace
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<object> PatchNamespacedCustomObjectScaleAsync(this IKubernetes operations, object body, string group, string version, string namespaceParameter, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.PatchNamespacedCustomObjectScaleWithHttpMessagesAsync(body, group, version, namespaceParameter, plural, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// read scale of the specified namespace scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='namespaceParameter'>
+            /// The custom resource's namespace
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            public static object GetNamespacedCustomObjectScale(this IKubernetes operations, string group, string version, string namespaceParameter, string plural, string name)
+            {
+                return operations.GetNamespacedCustomObjectScaleAsync(group, version, namespaceParameter, plural, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// read scale of the specified namespace scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='namespaceParameter'>
+            /// The custom resource's namespace
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<object> GetNamespacedCustomObjectScaleAsync(this IKubernetes operations, string group, string version, string namespaceParameter, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetNamespacedCustomObjectScaleWithHttpMessagesAsync(group, version, namespaceParameter, plural, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// replace scale of the specified cluster scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            public static object ReplaceClusterCustomObjectScale(this IKubernetes operations, object body, string group, string version, string plural, string name)
+            {
+                return operations.ReplaceClusterCustomObjectScaleAsync(body, group, version, plural, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// replace scale of the specified cluster scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<object> ReplaceClusterCustomObjectScaleAsync(this IKubernetes operations, object body, string group, string version, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ReplaceClusterCustomObjectScaleWithHttpMessagesAsync(body, group, version, plural, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// partially update scale of the specified cluster scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            public static object PatchClusterCustomObjectScale(this IKubernetes operations, object body, string group, string version, string plural, string name)
+            {
+                return operations.PatchClusterCustomObjectScaleAsync(body, group, version, plural, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// partially update scale of the specified cluster scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<object> PatchClusterCustomObjectScaleAsync(this IKubernetes operations, object body, string group, string version, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.PatchClusterCustomObjectScaleWithHttpMessagesAsync(body, group, version, plural, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// read scale of the specified custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            public static object GetClusterCustomObjectScale(this IKubernetes operations, string group, string version, string plural, string name)
+            {
+                return operations.GetClusterCustomObjectScaleAsync(group, version, plural, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// read scale of the specified custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<object> GetClusterCustomObjectScaleAsync(this IKubernetes operations, string group, string version, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetClusterCustomObjectScaleWithHttpMessagesAsync(group, version, plural, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// replace the specified cluster scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// The JSON schema of the Resource to replace.
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='plural'>
+            /// the custom object's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            public static object ReplaceClusterCustomObject(this IKubernetes operations, object body, string group, string version, string plural, string name)
+            {
+                return operations.ReplaceClusterCustomObjectAsync(body, group, version, plural, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// replace the specified cluster scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// The JSON schema of the Resource to replace.
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='plural'>
+            /// the custom object's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<object> ReplaceClusterCustomObjectAsync(this IKubernetes operations, object body, string group, string version, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ReplaceClusterCustomObjectWithHttpMessagesAsync(body, group, version, plural, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// patch the specified cluster scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// The JSON schema of the Resource to patch.
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='plural'>
+            /// the custom object's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            public static object PatchClusterCustomObject(this IKubernetes operations, object body, string group, string version, string plural, string name)
+            {
+                return operations.PatchClusterCustomObjectAsync(body, group, version, plural, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// patch the specified cluster scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// The JSON schema of the Resource to patch.
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='plural'>
+            /// the custom object's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<object> PatchClusterCustomObjectAsync(this IKubernetes operations, object body, string group, string version, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.PatchClusterCustomObjectWithHttpMessagesAsync(body, group, version, plural, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes the specified cluster scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='plural'>
+            /// the custom object's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            /// <param name='gracePeriodSeconds'>
+            /// The duration in seconds before the object should be deleted. Value must be
+            /// non-negative integer. The value zero indicates delete immediately. If this
+            /// value is nil, the default grace period for the specified type will be used.
+            /// Defaults to a per object value if not specified. zero means delete
+            /// immediately.
+            /// </param>
+            /// <param name='orphanDependents'>
+            /// Deprecated: please use the PropagationPolicy, this field will be deprecated
+            /// in 1.7. Should the dependent objects be orphaned. If true/false, the
+            /// "orphan" finalizer will be added to/removed from the object's finalizers
+            /// list. Either this field or PropagationPolicy may be set, but not both.
+            /// </param>
+            /// <param name='propagationPolicy'>
+            /// Whether and how garbage collection will be performed. Either this field or
+            /// OrphanDependents may be set, but not both. The default policy is decided by
+            /// the existing finalizer set in the metadata.finalizers and the
+            /// resource-specific default policy.
+            /// </param>
+            public static object DeleteClusterCustomObject(this IKubernetes operations, V1DeleteOptions body, string group, string version, string plural, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string))
+            {
+                return operations.DeleteClusterCustomObjectAsync(body, group, version, plural, name, gracePeriodSeconds, orphanDependents, propagationPolicy).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Deletes the specified cluster scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='plural'>
+            /// the custom object's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            /// <param name='gracePeriodSeconds'>
+            /// The duration in seconds before the object should be deleted. Value must be
+            /// non-negative integer. The value zero indicates delete immediately. If this
+            /// value is nil, the default grace period for the specified type will be used.
+            /// Defaults to a per object value if not specified. zero means delete
+            /// immediately.
+            /// </param>
+            /// <param name='orphanDependents'>
+            /// Deprecated: please use the PropagationPolicy, this field will be deprecated
+            /// in 1.7. Should the dependent objects be orphaned. If true/false, the
+            /// "orphan" finalizer will be added to/removed from the object's finalizers
+            /// list. Either this field or PropagationPolicy may be set, but not both.
+            /// </param>
+            /// <param name='propagationPolicy'>
+            /// Whether and how garbage collection will be performed. Either this field or
+            /// OrphanDependents may be set, but not both. The default policy is decided by
+            /// the existing finalizer set in the metadata.finalizers and the
+            /// resource-specific default policy.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<object> DeleteClusterCustomObjectAsync(this IKubernetes operations, V1DeleteOptions body, string group, string version, string plural, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeleteClusterCustomObjectWithHttpMessagesAsync(body, group, version, plural, name, gracePeriodSeconds, orphanDependents, propagationPolicy, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Returns a cluster scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='plural'>
+            /// the custom object's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            public static object GetClusterCustomObject(this IKubernetes operations, string group, string version, string plural, string name)
+            {
+                return operations.GetClusterCustomObjectAsync(group, version, plural, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Returns a cluster scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='plural'>
+            /// the custom object's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<object> GetClusterCustomObjectAsync(this IKubernetes operations, string group, string version, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetClusterCustomObjectWithHttpMessagesAsync(group, version, plural, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// replace status of the specified namespace scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='namespaceParameter'>
+            /// The custom resource's namespace
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            public static object ReplaceNamespacedCustomObjectStatus(this IKubernetes operations, object body, string group, string version, string namespaceParameter, string plural, string name)
+            {
+                return operations.ReplaceNamespacedCustomObjectStatusAsync(body, group, version, namespaceParameter, plural, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// replace status of the specified namespace scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='namespaceParameter'>
+            /// The custom resource's namespace
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<object> ReplaceNamespacedCustomObjectStatusAsync(this IKubernetes operations, object body, string group, string version, string namespaceParameter, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ReplaceNamespacedCustomObjectStatusWithHttpMessagesAsync(body, group, version, namespaceParameter, plural, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// partially update status of the specified namespace scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='namespaceParameter'>
+            /// The custom resource's namespace
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            public static object PatchNamespacedCustomObjectStatus(this IKubernetes operations, object body, string group, string version, string namespaceParameter, string plural, string name)
+            {
+                return operations.PatchNamespacedCustomObjectStatusAsync(body, group, version, namespaceParameter, plural, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// partially update status of the specified namespace scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='namespaceParameter'>
+            /// The custom resource's namespace
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<object> PatchNamespacedCustomObjectStatusAsync(this IKubernetes operations, object body, string group, string version, string namespaceParameter, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.PatchNamespacedCustomObjectStatusWithHttpMessagesAsync(body, group, version, namespaceParameter, plural, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// read status of the specified namespace scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='namespaceParameter'>
+            /// The custom resource's namespace
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            public static object GetNamespacedCustomObjectStatus(this IKubernetes operations, string group, string version, string namespaceParameter, string plural, string name)
+            {
+                return operations.GetNamespacedCustomObjectStatusAsync(group, version, namespaceParameter, plural, name).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// read status of the specified namespace scoped custom object
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='group'>
+            /// the custom resource's group
+            /// </param>
+            /// <param name='version'>
+            /// the custom resource's version
+            /// </param>
+            /// <param name='namespaceParameter'>
+            /// The custom resource's namespace
+            /// </param>
+            /// <param name='plural'>
+            /// the custom resource's plural name. For TPRs this would be lowercase plural
+            /// kind.
+            /// </param>
+            /// <param name='name'>
+            /// the custom object's name
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<object> GetNamespacedCustomObjectStatusAsync(this IKubernetes operations, string group, string version, string namespaceParameter, string plural, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetNamespacedCustomObjectStatusWithHttpMessagesAsync(group, version, namespaceParameter, plural, name, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
