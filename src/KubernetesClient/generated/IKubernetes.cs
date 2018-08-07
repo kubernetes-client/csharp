@@ -29122,74 +29122,6 @@ namespace k8s
         Task<HttpOperationResponse<VersionInfo>> GetCodeWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Creates a cluster scoped Custom object
-        /// </summary>
-        /// <param name='body'>
-        /// The JSON schema of the Resource to create.
-        /// </param>
-        /// <param name='group'>
-        /// The custom resource's group name
-        /// </param>
-        /// <param name='version'>
-        /// The custom resource's version
-        /// </param>
-        /// <param name='plural'>
-        /// The custom resource's plural name. For TPRs this would be lowercase
-        /// plural kind.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<object>> CreateClusterCustomObjectWithHttpMessagesAsync(object body, string group, string version, string plural, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch cluster scoped custom objects
-        /// </summary>
-        /// <param name='group'>
-        /// The custom resource's group name
-        /// </param>
-        /// <param name='version'>
-        /// The custom resource's version
-        /// </param>
-        /// <param name='plural'>
-        /// The custom resource's plural name. For TPRs this would be lowercase
-        /// plural kind.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<object>> ListClusterCustomObjectWithHttpMessagesAsync(string group, string version, string plural, string labelSelector = default(string), string resourceVersion = default(string), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// Creates a namespace scoped Custom object
         /// </summary>
         /// <param name='body'>
@@ -29264,23 +29196,23 @@ namespace k8s
         Task<HttpOperationResponse<object>> ListNamespacedCustomObjectWithHttpMessagesAsync(string group, string version, string namespaceParameter, string plural, string labelSelector = default(string), string resourceVersion = default(string), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// replace the specified cluster scoped custom object
+        /// Creates a cluster scoped Custom object
         /// </summary>
         /// <param name='body'>
-        /// The JSON schema of the Resource to replace.
+        /// The JSON schema of the Resource to create.
         /// </param>
         /// <param name='group'>
-        /// the custom resource's group
+        /// The custom resource's group name
         /// </param>
         /// <param name='version'>
-        /// the custom resource's version
+        /// The custom resource's version
         /// </param>
         /// <param name='plural'>
-        /// the custom object's plural name. For TPRs this would be lowercase
+        /// The custom resource's plural name. For TPRs this would be lowercase
         /// plural kind.
         /// </param>
-        /// <param name='name'>
-        /// the custom object's name
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -29288,13 +29220,53 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> ReplaceClusterCustomObjectWithHttpMessagesAsync(object body, string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> CreateClusterCustomObjectWithHttpMessagesAsync(object body, string group, string version, string plural, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// patch the specified cluster scoped custom object
+        /// list or watch cluster scoped custom objects
+        /// </summary>
+        /// <param name='group'>
+        /// The custom resource's group name
+        /// </param>
+        /// <param name='version'>
+        /// The custom resource's version
+        /// </param>
+        /// <param name='plural'>
+        /// The custom resource's plural name. For TPRs this would be lowercase
+        /// plural kind.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// When specified with a watch call, shows changes that occur after
+        /// that particular version of a resource. Defaults to changes from the
+        /// beginning of history. When specified for list: - if unset, then the
+        /// result is returned from remote storage based on quorum-read flag; -
+        /// if it's 0, then we simply return what we currently have in cache,
+        /// no guarantee; - if set to non zero, then the result is at least as
+        /// fresh as given rv.
+        /// </param>
+        /// <param name='watch'>
+        /// Watch for changes to the described resources and return them as a
+        /// stream of add, update, and remove notifications.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<object>> ListClusterCustomObjectWithHttpMessagesAsync(string group, string version, string plural, string labelSelector = default(string), string resourceVersion = default(string), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace status of the cluster scoped specified custom object
         /// </summary>
         /// <param name='body'>
-        /// The JSON schema of the Resource to patch.
         /// </param>
         /// <param name='group'>
         /// the custom resource's group
@@ -29303,7 +29275,7 @@ namespace k8s
         /// the custom resource's version
         /// </param>
         /// <param name='plural'>
-        /// the custom object's plural name. For TPRs this would be lowercase
+        /// the custom resource's plural name. For TPRs this would be lowercase
         /// plural kind.
         /// </param>
         /// <param name='name'>
@@ -29315,10 +29287,11 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> PatchClusterCustomObjectWithHttpMessagesAsync(object body, string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> ReplaceClusterCustomObjectStatusWithHttpMessagesAsync(object body, string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Deletes the specified cluster scoped custom object
+        /// partially update status of the specified cluster scoped custom
+        /// object
         /// </summary>
         /// <param name='body'>
         /// </param>
@@ -29329,31 +29302,11 @@ namespace k8s
         /// the custom resource's version
         /// </param>
         /// <param name='plural'>
-        /// the custom object's plural name. For TPRs this would be lowercase
+        /// the custom resource's plural name. For TPRs this would be lowercase
         /// plural kind.
         /// </param>
         /// <param name='name'>
         /// the custom object's name
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -29361,10 +29314,10 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> DeleteClusterCustomObjectWithHttpMessagesAsync(V1DeleteOptions body, string group, string version, string plural, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> PatchClusterCustomObjectStatusWithHttpMessagesAsync(object body, string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Returns a cluster scoped custom object
+        /// read status of the specified cluster scoped custom object
         /// </summary>
         /// <param name='group'>
         /// the custom resource's group
@@ -29373,7 +29326,7 @@ namespace k8s
         /// the custom resource's version
         /// </param>
         /// <param name='plural'>
-        /// the custom object's plural name. For TPRs this would be lowercase
+        /// the custom resource's plural name. For TPRs this would be lowercase
         /// plural kind.
         /// </param>
         /// <param name='name'>
@@ -29385,7 +29338,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> GetClusterCustomObjectWithHttpMessagesAsync(string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> GetClusterCustomObjectStatusWithHttpMessagesAsync(string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified namespace scoped custom object
@@ -29522,6 +29475,379 @@ namespace k8s
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<object>> GetNamespacedCustomObjectWithHttpMessagesAsync(string group, string version, string namespaceParameter, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace scale of the specified namespace scoped custom object
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='group'>
+        /// the custom resource's group
+        /// </param>
+        /// <param name='version'>
+        /// the custom resource's version
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// The custom resource's namespace
+        /// </param>
+        /// <param name='plural'>
+        /// the custom resource's plural name. For TPRs this would be lowercase
+        /// plural kind.
+        /// </param>
+        /// <param name='name'>
+        /// the custom object's name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<object>> ReplaceNamespacedCustomObjectScaleWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update scale of the specified namespace scoped custom
+        /// object
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='group'>
+        /// the custom resource's group
+        /// </param>
+        /// <param name='version'>
+        /// the custom resource's version
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// The custom resource's namespace
+        /// </param>
+        /// <param name='plural'>
+        /// the custom resource's plural name. For TPRs this would be lowercase
+        /// plural kind.
+        /// </param>
+        /// <param name='name'>
+        /// the custom object's name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<object>> PatchNamespacedCustomObjectScaleWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read scale of the specified namespace scoped custom object
+        /// </summary>
+        /// <param name='group'>
+        /// the custom resource's group
+        /// </param>
+        /// <param name='version'>
+        /// the custom resource's version
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// The custom resource's namespace
+        /// </param>
+        /// <param name='plural'>
+        /// the custom resource's plural name. For TPRs this would be lowercase
+        /// plural kind.
+        /// </param>
+        /// <param name='name'>
+        /// the custom object's name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<object>> GetNamespacedCustomObjectScaleWithHttpMessagesAsync(string group, string version, string namespaceParameter, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace scale of the specified cluster scoped custom object
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='group'>
+        /// the custom resource's group
+        /// </param>
+        /// <param name='version'>
+        /// the custom resource's version
+        /// </param>
+        /// <param name='plural'>
+        /// the custom resource's plural name. For TPRs this would be lowercase
+        /// plural kind.
+        /// </param>
+        /// <param name='name'>
+        /// the custom object's name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<object>> ReplaceClusterCustomObjectScaleWithHttpMessagesAsync(object body, string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update scale of the specified cluster scoped custom
+        /// object
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='group'>
+        /// the custom resource's group
+        /// </param>
+        /// <param name='version'>
+        /// the custom resource's version
+        /// </param>
+        /// <param name='plural'>
+        /// the custom resource's plural name. For TPRs this would be lowercase
+        /// plural kind.
+        /// </param>
+        /// <param name='name'>
+        /// the custom object's name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<object>> PatchClusterCustomObjectScaleWithHttpMessagesAsync(object body, string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read scale of the specified custom object
+        /// </summary>
+        /// <param name='group'>
+        /// the custom resource's group
+        /// </param>
+        /// <param name='version'>
+        /// the custom resource's version
+        /// </param>
+        /// <param name='plural'>
+        /// the custom resource's plural name. For TPRs this would be lowercase
+        /// plural kind.
+        /// </param>
+        /// <param name='name'>
+        /// the custom object's name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<object>> GetClusterCustomObjectScaleWithHttpMessagesAsync(string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace the specified cluster scoped custom object
+        /// </summary>
+        /// <param name='body'>
+        /// The JSON schema of the Resource to replace.
+        /// </param>
+        /// <param name='group'>
+        /// the custom resource's group
+        /// </param>
+        /// <param name='version'>
+        /// the custom resource's version
+        /// </param>
+        /// <param name='plural'>
+        /// the custom object's plural name. For TPRs this would be lowercase
+        /// plural kind.
+        /// </param>
+        /// <param name='name'>
+        /// the custom object's name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<object>> ReplaceClusterCustomObjectWithHttpMessagesAsync(object body, string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// patch the specified cluster scoped custom object
+        /// </summary>
+        /// <param name='body'>
+        /// The JSON schema of the Resource to patch.
+        /// </param>
+        /// <param name='group'>
+        /// the custom resource's group
+        /// </param>
+        /// <param name='version'>
+        /// the custom resource's version
+        /// </param>
+        /// <param name='plural'>
+        /// the custom object's plural name. For TPRs this would be lowercase
+        /// plural kind.
+        /// </param>
+        /// <param name='name'>
+        /// the custom object's name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<object>> PatchClusterCustomObjectWithHttpMessagesAsync(object body, string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Deletes the specified cluster scoped custom object
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='group'>
+        /// the custom resource's group
+        /// </param>
+        /// <param name='version'>
+        /// the custom resource's version
+        /// </param>
+        /// <param name='plural'>
+        /// the custom object's plural name. For TPRs this would be lowercase
+        /// plural kind.
+        /// </param>
+        /// <param name='name'>
+        /// the custom object's name
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<object>> DeleteClusterCustomObjectWithHttpMessagesAsync(V1DeleteOptions body, string group, string version, string plural, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Returns a cluster scoped custom object
+        /// </summary>
+        /// <param name='group'>
+        /// the custom resource's group
+        /// </param>
+        /// <param name='version'>
+        /// the custom resource's version
+        /// </param>
+        /// <param name='plural'>
+        /// the custom object's plural name. For TPRs this would be lowercase
+        /// plural kind.
+        /// </param>
+        /// <param name='name'>
+        /// the custom object's name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<object>> GetClusterCustomObjectWithHttpMessagesAsync(string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace status of the specified namespace scoped custom object
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='group'>
+        /// the custom resource's group
+        /// </param>
+        /// <param name='version'>
+        /// the custom resource's version
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// The custom resource's namespace
+        /// </param>
+        /// <param name='plural'>
+        /// the custom resource's plural name. For TPRs this would be lowercase
+        /// plural kind.
+        /// </param>
+        /// <param name='name'>
+        /// the custom object's name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<object>> ReplaceNamespacedCustomObjectStatusWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update status of the specified namespace scoped custom
+        /// object
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='group'>
+        /// the custom resource's group
+        /// </param>
+        /// <param name='version'>
+        /// the custom resource's version
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// The custom resource's namespace
+        /// </param>
+        /// <param name='plural'>
+        /// the custom resource's plural name. For TPRs this would be lowercase
+        /// plural kind.
+        /// </param>
+        /// <param name='name'>
+        /// the custom object's name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<object>> PatchNamespacedCustomObjectStatusWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read status of the specified namespace scoped custom object
+        /// </summary>
+        /// <param name='group'>
+        /// the custom resource's group
+        /// </param>
+        /// <param name='version'>
+        /// the custom resource's version
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// The custom resource's namespace
+        /// </param>
+        /// <param name='plural'>
+        /// the custom resource's plural name. For TPRs this would be lowercase
+        /// plural kind.
+        /// </param>
+        /// <param name='name'>
+        /// the custom object's name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<object>> GetNamespacedCustomObjectStatusWithHttpMessagesAsync(string group, string version, string namespaceParameter, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
     }
 }
