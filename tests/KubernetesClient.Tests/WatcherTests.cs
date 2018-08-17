@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using Xunit;
 
-namespace k8s.tests
+namespace k8s.Tests
 {
     public class WatcherTests
     {

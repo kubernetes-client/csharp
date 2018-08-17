@@ -73,7 +73,7 @@ namespace k8s.KubeConfigModels
         /// Gets or sets custom authentication plugin for the kubernetes cluster.
         /// </summary>
         [YamlMember(Alias = "auth-provider", ApplyNamingConventions = false)]
-        public Dictionary<string, dynamic> AuthProvider { get; set; }
+        public AuthProvider AuthProvider { get; set; }
 
         /// <summary>
         /// Gets or sets additional information. This is useful for extenders so that reads and writes don't clobber unknown fields.

@@ -4,7 +4,7 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using Xunit;
 
-namespace k8s.tests
+namespace k8s.Tests
 {
     public class CertificateValidationTests
     {

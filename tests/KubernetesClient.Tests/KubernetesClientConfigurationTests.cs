@@ -438,7 +438,7 @@ namespace k8s.Tests
 
             if (expectedCreds.AuthProvider != null)
             {
-                Assert.True(expectedCreds.AuthProvider.All(x => actualCreds.AuthProvider.Contains(x)));
+                Assert.True(expectedCreds.AuthProvider.Config.All(x => actualCreds.AuthProvider.Config.Contains(x)));
             }
         }
     }
