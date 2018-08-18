@@ -27,6 +27,8 @@ env:
 before_install:
   - ./install-$TRAVIS_OS_NAME.sh
   - dotnet tool install --tool-path tools coveralls.net --version 1.0.0
+  - sudo apt-get install jq
+  - wget -O ~/codacy-coverage-reporter-assembly-latest.jar $(curl https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest | jq -r .assets[0].browser_download_url)
 
 script:
   - ./ci.sh  
@@ -41,7 +43,7 @@ after_script:
   - echo $REPO_COMMIT_AUTHOR_EMAIL
   - echo $REPO_COMMIT_MESSAGE
   - echo $TRAVIS_JOB_ID
-  - ./test.sh
+  - ./codacy-unit-test.sh
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ./integration-tests.sh; fi
 
 deploy:
