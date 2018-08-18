@@ -2,6 +2,7 @@
 cd tests/KubernetesClient.Tests
 dotnet restore
 dotnet test --no-restore --no-build /p:CollectCoverage=true /p:ExcludeByFile=\"*/generated/**/*.cs\" /p:CoverletOutputFormat=lcov /p:CoverletOutput=./coverage.xml
+echo Uploading coverage...
 java -jar ~/codacy-coverage-reporter-assembly-latest.jar report -l CSharp --forceLanguage -r ./coverage.xml
 if [[ $? != 0 ]]; then
     exit 1
