@@ -2,9 +2,11 @@
 .vs
 obj/
 bin/
+tools/
 
 # User-specific VS files
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
+
