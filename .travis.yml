@@ -33,16 +33,8 @@ script:
   - ./ci.sh  
 
 after_script:
-  - REPO_COMMIT_AUTHOR=$(git show -s --pretty=format:"%cn")
-  - REPO_COMMIT_AUTHOR_EMAIL=$(git show -s --pretty=format:"%ce")
-  - REPO_COMMIT_MESSAGE=$(git show -s --pretty=format:"%s")
-  - echo $TRAVIS_COMMIT
-  - echo $TRAVIS_BRANCH
-  - echo $REPO_COMMIT_AUTHOR
-  - echo $REPO_COMMIT_AUTHOR_EMAIL
-  - echo $REPO_COMMIT_MESSAGE
-  - echo $TRAVIS_JOB_ID  
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ./codacy-unit-test.sh && ./integration-tests.sh; fi
+  - ./$TRAVIS_OS_NAME-unit-test.sh
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ./integration-tests.sh; fi
 
 deploy:
   skip_cleanup: true

@@ -9,4 +9,5 @@ tools/
 *.user
 *.userosscache
 *.sln.docstates
+coverage.xml
 
