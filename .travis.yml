@@ -44,6 +44,9 @@ after_script:
   - echo $TRAVIS_JOB_ID  
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ./codacy-unit-test.sh && ./integration-tests.sh; fi
 
+  after_success:
+  - java -jar ~/codacy-coverage-reporter-assembly-latest.jar report -l csharp --forceLanguage -r ./coverage.xml
+
 deploy:
   skip_cleanup: true
   provider: script
