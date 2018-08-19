@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo 'Installing Brew...'
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 echo 'Installing .NET Core...'
 
