@@ -26,7 +26,6 @@ env:
 # We need the .NET Core 2.1 SDK to build. Travis doesn't know how to install this yet.
 before_install:
   - ./install-$TRAVIS_OS_NAME.sh
-  - dotnet tool install --tool-path tools coveralls.net --version 1.0.0
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ./integration-tests.sh; fi
 
 script:
