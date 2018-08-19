@@ -12,5 +12,4 @@ sudo installer -pkg ~/dotnet-sdk-2.1.300-osx-x64.pkg -target /
 ln -s /usr/local/share/dotnet/dotnet /usr/local/bin/
 
 echo 'Installing code coverage tools'
-brew install jq
-wget -O ~/codacy-coverage-reporter-assembly-latest.jar $(curl https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest | jq -r .assets[0].browser_download_url)
+wget -O ~/codacy-coverage-reporter-assembly-latest.jar https://github.com/codacy/codacy-coverage-reporter/releases/download/4.0.2/codacy-coverage-reporter-4.0.2-assembly.jar
