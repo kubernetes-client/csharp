@@ -13,6 +13,68 @@ namespace k8s
 {
     public partial class Kubernetes
     {
+#if MONOANDROID8_1
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Kubernetes" /> class.
+        /// </summary>
+        /// <param name='config'>
+        ///     Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
+        /// <param name="handlers">
+        ///     Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
+        public Kubernetes(KubernetesClientConfiguration config, params DelegatingHandler[] handlers) : this(new Xamarin.Android.Net.AndroidClientHandler(), handlers)
+        {
+            if (string.IsNullOrWhiteSpace(config.Host))
+            {
+                throw new KubeConfigException("Host url must be set");
+            }
+
+            try
+            {
+                BaseUri = new Uri(config.Host);
+            }
+            catch (UriFormatException e)
+            {
+                throw new KubeConfigException("Bad host url", e);
+            }
+
+            CaCert = config.SslCaCert;
+            SkipTlsVerify = config.SkipTlsVerify;
+
+            if (BaseUri.Scheme == "https")
+            {
+                if (config.SkipTlsVerify)
+                {
+                    System.Net.ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) =>
+                    {
+                        return true;
+                    };
+                }
+                else
+                {
+                    if (CaCert == null)
+                    {
+                        throw new KubeConfigException("a CA must be set when SkipTlsVerify === false");
+                    }
+                    
+                    using (System.IO.MemoryStream certStream = new System.IO.MemoryStream(config.SslCaCert.RawData))
+                    {
+                        Java.Security.Cert.Certificate cert = Java.Security.Cert.CertificateFactory.GetInstance("X509").GenerateCertificate(certStream);
+                        Xamarin.Android.Net.AndroidClientHandler handler = (Xamarin.Android.Net.AndroidClientHandler)this.HttpClientHandler;
+
+                        handler.TrustedCerts = new System.Collections.Generic.List<Java.Security.Cert.Certificate>()
+                        {
+                            cert
+                        };
+                    }
+                }
+            }
+
+            // set credentails for the kubernernet client
+            SetCredentials(config, HttpClientHandler);
+        }
+#else
         /// <summary>
         ///     Initializes a new instance of the <see cref="Kubernetes" /> class.
         /// </summary>
@@ -48,6 +110,11 @@ namespace k8s
 #if NET452
                     ((WebRequestHandler) HttpClientHandler).ServerCertificateValidationCallback =
                         (sender, certificate, chain, sslPolicyErrors) => true;
+#elif XAMARINIOS1_0
+                    System.Net.ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) =>
+                    {
+                        return true;
+                    };
 #else
                     HttpClientHandler.ServerCertificateCustomValidationCallback =
                         (sender, certificate, chain, sslPolicyErrors) => true;
@@ -65,8 +132,14 @@ namespace k8s
                     {
                         return Kubernetes.CertificateValidationCallBack(sender, CaCert, certificate, chain, sslPolicyErrors);
                     };
+#elif XAMARINIOS1_0
+                    System.Net.ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) =>
+                    {
+                        var cert = new X509Certificate2(certificate);
+                        return Kubernetes.CertificateValidationCallBack(sender, CaCert, cert, chain, sslPolicyErrors);
+                    };
 #else
-                    HttpClientHandler.ServerCertificateCustomValidationCallback = (sender, certificate, chain, sslPolicyErrors) => 
+                    HttpClientHandler.ServerCertificateCustomValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
                     {
                         return Kubernetes.CertificateValidationCallBack(sender, CaCert, certificate, chain, sslPolicyErrors);
                     };
@@ -77,6 +150,7 @@ namespace k8s
             // set credentails for the kubernernet client
             SetCredentials(config, HttpClientHandler);
         }
+#endif
 
         private X509Certificate2 CaCert { get; }
 
@@ -84,7 +158,7 @@ namespace k8s
 
         partial void CustomInitialize()
         {
-#if NET452
+#if NET452 || XAMARINIOS1_0 || MONOANDROID8_1
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
 #endif
             AppendDelegatingHandler<WatcherDelegatingHandler>();
@@ -135,7 +209,12 @@ namespace k8s
                     Password = config.Password
                 };
             }
-            // othwerwise set handler for clinet cert based auth
+
+#if XAMARINIOS1_0 || MONOANDROID8_1
+            // handle.ClientCertificates is not implemented in Xamarin.
+            return;
+#endif
+
             if ((!string.IsNullOrWhiteSpace(config.ClientCertificateData) ||
                       !string.IsNullOrWhiteSpace(config.ClientCertificateFilePath)) &&
                      (!string.IsNullOrWhiteSpace(config.ClientCertificateKeyData) ||
@@ -181,8 +260,8 @@ namespace k8s
                 // add all your extra certificate chain
                 chain.ChainPolicy.ExtraStore.Add(caCert);
                 chain.ChainPolicy.VerificationFlags = X509VerificationFlags.AllowUnknownCertificateAuthority;
-                var isValid = chain.Build((X509Certificate2) certificate);
-                
+                var isValid = chain.Build((X509Certificate2)certificate);
+
                 var rootCert = chain.ChainElements[chain.ChainElements.Count - 1].Certificate;
                 isValid = isValid && rootCert.RawData.SequenceEqual(caCert.RawData);
 
