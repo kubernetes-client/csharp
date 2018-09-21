@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
@@ -42,7 +42,7 @@ namespace Fractions.TypeConverters {
             };
 
         /// <summary>
-        /// Returns whether the type converter can convert an object to the specified type. 
+        /// Returns whether the type converter can convert an object to the specified type.
         /// </summary>
         /// <param name="context">An object that provides a format context.</param>
         /// <param name="destinationType">The type you want to convert to.</param>
@@ -52,7 +52,7 @@ namespace Fractions.TypeConverters {
         }
 
         /// <summary>
-        /// Returns whether this converter can convert an object of the given type to the type of this converter, using the specified context. 
+        /// Returns whether this converter can convert an object of the given type to the type of this converter, using the specified context.
         /// </summary>
         /// <param name="context">An <see cref="ITypeDescriptorContext "/>that provides a format context. </param>
         /// <param name="sourceType">A <see cref="Type"/> that represents the type you want to convert from. </param>
@@ -62,7 +62,7 @@ namespace Fractions.TypeConverters {
         }
 
         /// <summary>
-        /// Converts the given value object to the specified type, using the specified context and culture information. 
+        /// Converts the given value object to the specified type, using the specified context and culture information.
         /// </summary>
         /// <param name="context">An <see cref="ITypeDescriptorContext" /> that provides a format context.</param>
         /// <param name="culture">A CultureInfo. If <c>null</c> is passed, the current culture is assumed.</param>

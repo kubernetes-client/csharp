@@ -475,7 +475,7 @@ namespace k8s.Tests
                 await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout));
 
                 Assert.True(
-                     eventsReceived.CurrentCount == 0,
+                    eventsReceived.CurrentCount == 0,
                     "Timed out waiting for all events / errors to be received."
                 );
 
@@ -584,21 +584,21 @@ namespace k8s.Tests
                             Spec = new V1PodSpec()
                             {
                                 Containers = new List<V1Container>()
-                                 {
-                                     new V1Container()
-                                     {
-                                         Image = "ubuntu/xenial",
-                                         Name = "runner",
-                                         Command = new List<string>()
-                                         {
-                                             "/bin/bash",
-                                             "-c",
-                                             "--"
-                                         },
-                                         Args = new List<string>()
-                                         {
-                                             "trap : TERM INT; sleep infinity & wait"
-                                         }
+                                {
+                                    new V1Container()
+                                    {
+                                        Image = "ubuntu/xenial",
+                                        Name = "runner",
+                                        Command = new List<string>()
+                                        {
+                                            "/bin/bash",
+                                            "-c",
+                                            "--"
+                                        },
+                                        Args = new List<string>()
+                                        {
+                                            "trap : TERM INT; sleep infinity & wait"
+                                        }
                                     }
                                 },
                                 RestartPolicy = "Never"

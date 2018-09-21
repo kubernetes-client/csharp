@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.Numerics;
 using Fractions.Extensions;
@@ -165,9 +165,9 @@ namespace Fractions {
         }
 
         /// <summary>
-        /// Converts a floating point value to a fraction. The value will not be rounded therefore you will probably 
+        /// Converts a floating point value to a fraction. The value will not be rounded therefore you will probably
         /// get huge numbers as numerator und denominator. <see cref="double"/> values are not able to store simple rational
-        /// numbers like 0.2 or 0.3 - so please don't be worried if the fraction looks weird. For more information visit 
+        /// numbers like 0.2 or 0.3 - so please don't be worried if the fraction looks weird. For more information visit
         /// http://en.wikipedia.org/wiki/Floating_point
         /// </summary>
         /// <param name="value">A floating point value.</param>
@@ -178,7 +178,7 @@ namespace Fractions {
                 throw new InvalidNumberException();
             }
 
-            // No rounding here! It will convert the actual number that is stored as double! 
+            // No rounding here! It will convert the actual number that is stored as double!
             // See http://www.mpdvc.de/artikel/FloatingPoint.htm
 
             const ulong SIGN_BIT = 0x8000000000000000;
@@ -234,7 +234,7 @@ namespace Fractions {
             }
 
             // Inspired from Syed Mehroz Alam <smehrozalam@yahoo.com> http://www.geocities.ws/smehrozalam/source/fractioncs.txt
-            // .. who got it from http://ebookbrowse.com/confrac-pdf-d13212190 
+            // .. who got it from http://ebookbrowse.com/confrac-pdf-d13212190
             // or ftp://89.25.159.69/knm/ksiazki/reszta/homepage.smc.edu.kennedy_john/CONFRAC.pdf
             var sign = Math.Sign(value);
             var absoluteValue = Math.Abs(value);
@@ -246,7 +246,7 @@ namespace Fractions {
             var breakCounter = 0;
 
             while (MathExt.RemainingDigitsAfterTheDecimalPoint(remainingDigits)
-                   && Math.Abs(absoluteValue - (double) numerator / denominator) > double.Epsilon) {
+                    && Math.Abs(absoluteValue - (double) numerator / denominator) > double.Epsilon) {
 
                 remainingDigits = 1.0 / (remainingDigits - Math.Floor(remainingDigits));
 

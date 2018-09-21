@@ -215,7 +215,7 @@ namespace k8s
                 userCredentialsFound = true;
             }
             else if (!string.IsNullOrWhiteSpace(userDetails.UserCredentials.UserName) &&
-                     !string.IsNullOrWhiteSpace(userDetails.UserCredentials.Password))
+                    !string.IsNullOrWhiteSpace(userDetails.UserCredentials.Password))
             {
                 Username = userDetails.UserCredentials.UserName;
                 Password = userDetails.UserCredentials.Password;

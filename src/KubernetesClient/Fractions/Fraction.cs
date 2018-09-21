@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Numerics;
 using System.Runtime.InteropServices;
@@ -6,7 +6,7 @@ using Fractions.TypeConverters;
 
 namespace Fractions {
     /// <summary>
-    /// A mathematical fraction. A rational number written as a/b (a is the numerator and b the denominator). 
+    /// A mathematical fraction. A rational number written as a/b (a is the numerator and b the denominator).
     /// The data type is not capable to store NaN (not a number) or infinite.
     /// </summary>
     [TypeConverter(typeof (FractionTypeConverter))]
@@ -21,61 +21,61 @@ namespace Fractions {
         private readonly BigInteger _denominator;
         private readonly BigInteger _numerator;
         private readonly FractionState _state;
-        
+
         /// <summary>
         /// The numerator.
         /// </summary>
-        
+
         public BigInteger Numerator => _numerator;
 
         /// <summary>
         /// The denominator
         /// </summary>
-        
+
         public BigInteger Denominator => _denominator;
 
         /// <summary>
         /// <c>true</c> if the value is positive (greater than or equal to 0).
         /// </summary>
-        
+
         public bool IsPositive => _numerator.Sign == 1 && _denominator.Sign == 1 ||
-                                  _numerator.Sign == -1 && _denominator.Sign == -1;
+                                _numerator.Sign == -1 && _denominator.Sign == -1;
 
         /// <summary>
         /// <c>true</c> if the value is negative (lesser than 0).
         /// </summary>
-        
+
         public bool IsNegative => _numerator.Sign == -1 && _denominator.Sign == 1 ||
-                                  _numerator.Sign == 1 && _denominator.Sign == -1;
+                                _numerator.Sign == 1 && _denominator.Sign == -1;
 
         /// <summary>
         /// <c>true</c> if the fraction has a real (calculated) value of 0.
         /// </summary>
-        
+
         public bool IsZero => _numerator.IsZero || _denominator.IsZero;
 
         /// <summary>
         /// The fraction's state.
         /// </summary>
-        
+
         public FractionState State => _state;
 
         /// <summary>
         /// A fraction with the reduced/simplified value of 0.
         /// </summary>
-        
+
         public static Fraction Zero => _zero;
 
         /// <summary>
         /// A fraction with the reduced/simplified value of 1.
         /// </summary>
-        
+
         public static Fraction One => _one;
 
         /// <summary>
         /// A fraction with the reduced/simplified value of -1.
         /// </summary>
-        
+
         public static Fraction MinusOne => _minus_one;
     }
 }

@@ -51,7 +51,7 @@ namespace @namespace
         {
             var k8SClientConfig = KubernetesClientConfiguration.BuildConfigFromConfigFile();
             IKubernetes client = new Kubernetes(k8SClientConfig);
-            
+
             ListNamespaces(client);
 
             var ns = new V1Namespace

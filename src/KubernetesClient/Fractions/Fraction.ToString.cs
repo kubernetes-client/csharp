@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using Fractions.Formatter;
 
@@ -9,7 +9,7 @@ namespace Fractions {
         /// The returning value is culture invariant (<see cref="CultureInfo" />).
         /// </summary>
         /// <returns>"numerator/denominator" or just "numerator"</returns>
-        
+
         public override string ToString() {
             return ToString("G", DefaultFractionFormatProvider.Instance);
         }
@@ -20,7 +20,7 @@ namespace Fractions {
         /// See <see cref="ToString(string,IFormatProvider)"/> for all formatting options.
         /// </summary>
         /// <returns>"numerator/denominator" or just "numerator"</returns>
-        
+
         public string ToString(string format) {
             return ToString(format, DefaultFractionFormatProvider.Instance);
         }
@@ -31,7 +31,7 @@ namespace Fractions {
         /// <returns>
         /// The value of the current instance in the specified format.
         /// </returns>
-        /// <param name="format">The format to use. 
+        /// <param name="format">The format to use.
         /// <list type="table">
         /// <listheader><term>symbol</term><description>description</description></listheader>
         /// <item><term>G</term><description>General format: numerator/denominator</description></item>
@@ -47,8 +47,8 @@ namespace Fractions {
         public string ToString(string format, IFormatProvider formatProvider) {
             var formatter = formatProvider?.GetFormat(GetType()) as ICustomFormatter;
 
-            return formatter != null 
-                ? formatter.Format(format, this, formatProvider) 
+            return formatter != null
+                ? formatter.Format(format, this, formatProvider)
                 : DefaultFractionFormatter.Instance.Format(format, this, formatProvider);
         }
     }

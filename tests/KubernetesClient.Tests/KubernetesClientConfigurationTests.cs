@@ -367,7 +367,7 @@ namespace k8s.Tests
             {
                 cfg = KubernetesClientConfiguration.LoadKubeConfig(stream);
             }
-                
+
             Assert.NotNull(cfg);
             AssertConfigEqual(expectedCfg, cfg);
         }
@@ -376,7 +376,7 @@ namespace k8s.Tests
         {
             Assert.Equal(expected.ApiVersion, actual.ApiVersion);
             Assert.Equal(expected.CurrentContext, actual.CurrentContext);
-            
+
             foreach (var expectedContext in expected.Contexts)
             {
                 // Will throw exception if not found
