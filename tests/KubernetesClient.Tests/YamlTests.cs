@@ -89,10 +89,10 @@ spec:
   - name: cpu-demo-ctr
     image: vish/stress
     resources:
-    limits:
-        cpu: ""1""
-    requests:
-        cpu: ""0.5""
+        limits:
+            cpu: ""1""
+        requests:
+            cpu: ""0.5""
     args:
             - -cpus
             - ""2""";
