@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Fractions.Extensions {
     internal static class MathExt {
@@ -120,7 +120,7 @@ namespace Fractions.Extensions {
         /// </summary>
         /// <param name="remainingDigits">A <see cref="double"/> value with possible remaining digits</param>
         /// <returns><c>true</c> if <paramref name="remainingDigits"/> has digits after the decimal point</returns>
-        
+
         public static bool RemainingDigitsAfterTheDecimalPoint(double remainingDigits) {
             return Math.Abs(remainingDigits - Math.Floor(remainingDigits)) > double.Epsilon;
         }

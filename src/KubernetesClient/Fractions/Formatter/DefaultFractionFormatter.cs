@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.Numerics;
 using System.Text;
@@ -21,7 +21,7 @@ namespace Fractions.Formatter {
             if (string.IsNullOrEmpty(format) || format == "G") {
                 return FormatGeneral(fraction);
             }
-            
+
             var sb = new StringBuilder(32);
             foreach (var character in format) {
                 switch (character) {
@@ -82,7 +82,7 @@ namespace Fractions.Formatter {
         }
 
         private static string FormatGeneral(Fraction fraction) {
-              if (fraction.Denominator == BigInteger.One) {
+            if (fraction.Denominator == BigInteger.One) {
                 return fraction.Numerator.ToString(CultureInfo.InvariantCulture);
 
             }

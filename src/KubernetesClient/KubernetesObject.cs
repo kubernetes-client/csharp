@@ -9,7 +9,7 @@ namespace k8s
     /// You can use the <see cref="KubernetesObject"/> if you receive JSON from a Kubernetes API server but
     /// are unsure which object the API server is about to return. You can parse the JSON as a <see cref="KubernetesObject"/>
     /// and use the <see cref="ApiVersion"/> and <see cref="Kind"/> properties to get basic metadata about any Kubernetes object.
-    /// You can then 
+    /// You can then
     /// </remarks>
     public class KubernetesObject : IKubernetesObject
     {

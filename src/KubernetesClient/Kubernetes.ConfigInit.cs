@@ -57,7 +57,7 @@ namespace k8s
                     {
                         throw new KubeConfigException("a CA must be set when SkipTlsVerify === false");
                     }
-                    
+
                     using (System.IO.MemoryStream certStream = new System.IO.MemoryStream(config.SslCaCert.RawData))
                     {
                         Java.Security.Cert.Certificate cert = Java.Security.Cert.CertificateFactory.GetInstance("X509").GenerateCertificate(certStream);
@@ -216,9 +216,9 @@ namespace k8s
 #endif
 
             if ((!string.IsNullOrWhiteSpace(config.ClientCertificateData) ||
-                      !string.IsNullOrWhiteSpace(config.ClientCertificateFilePath)) &&
-                     (!string.IsNullOrWhiteSpace(config.ClientCertificateKeyData) ||
-                      !string.IsNullOrWhiteSpace(config.ClientKeyFilePath)))
+                    !string.IsNullOrWhiteSpace(config.ClientCertificateFilePath)) &&
+                    (!string.IsNullOrWhiteSpace(config.ClientCertificateKeyData) ||
+                    !string.IsNullOrWhiteSpace(config.ClientKeyFilePath)))
             {
                 var cert = CertUtils.GeneratePfx(config);
 

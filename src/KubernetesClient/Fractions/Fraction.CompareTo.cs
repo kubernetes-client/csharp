@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 
 namespace Fractions {
@@ -34,7 +34,7 @@ namespace Fractions {
         /// Less than 0 if <paramref name="other"/> is greater.
         /// Zero (0) if both calculated values are equal.
         /// Greater then zero (0) if <paramref name="other"/> less.</returns>
-        
+
         public int CompareTo(Fraction other) {
             if (_denominator == other._denominator) {
                 return _numerator.CompareTo(other._numerator);
