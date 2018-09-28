@@ -7,6 +7,8 @@
 namespace k8s.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -30,6 +32,11 @@ namespace k8s.Models
         /// schemas to the latest internal value, and may reject unrecognized
         /// values. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#resources</param>
+        /// <param name="dryRun">When present, indicates that modifications
+        /// should not be persisted. An invalid or unrecognized dryRun
+        /// directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run
+        /// stages will be processed</param>
         /// <param name="gracePeriodSeconds">The duration in seconds before the
         /// object should be deleted. Value must be non-negative integer. The
         /// value zero indicates delete immediately. If this value is nil, the
@@ -58,9 +65,10 @@ namespace k8s.Models
         /// dependents; 'Background' - allow the garbage collector to delete
         /// the dependents in the background; 'Foreground' - a cascading policy
         /// that deletes all dependents in the foreground.</param>
-        public V1DeleteOptions(string apiVersion = default(string), long? gracePeriodSeconds = default(long?), string kind = default(string), bool? orphanDependents = default(bool?), V1Preconditions preconditions = default(V1Preconditions), string propagationPolicy = default(string))
+        public V1DeleteOptions(string apiVersion = default(string), IList<string> dryRun = default(IList<string>), long? gracePeriodSeconds = default(long?), string kind = default(string), bool? orphanDependents = default(bool?), V1Preconditions preconditions = default(V1Preconditions), string propagationPolicy = default(string))
         {
             ApiVersion = apiVersion;
+            DryRun = dryRun;
             GracePeriodSeconds = gracePeriodSeconds;
             Kind = kind;
             OrphanDependents = orphanDependents;
@@ -83,6 +91,16 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "apiVersion")]
         public string ApiVersion { get; set; }
+
+        /// <summary>
+        /// Gets or sets when present, indicates that modifications should not
+        /// be persisted. An invalid or unrecognized dryRun directive will
+        /// result in an error response and no further processing of the
+        /// request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </summary>
+        [JsonProperty(PropertyName = "dryRun")]
+        public IList<string> DryRun { get; set; }
 
         /// <summary>
         /// Gets or sets the duration in seconds before the object should be

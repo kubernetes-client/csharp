@@ -40,8 +40,8 @@ namespace k8s.Models
         /// volumes can be dynamically provisioned. Each volume plugin defines
         /// its own supported topology specifications. An empty
         /// TopologySelectorTerm list means there is no topology restriction.
-        /// This field is alpha-level and is only honored by servers that
-        /// enable the DynamicProvisioningScheduling feature.</param>
+        /// This field is only honored by servers that enable the
+        /// VolumeScheduling feature.</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
@@ -66,9 +66,8 @@ namespace k8s.Models
         /// reclaimPolicy. Defaults to Delete.</param>
         /// <param name="volumeBindingMode">VolumeBindingMode indicates how
         /// PersistentVolumeClaims should be provisioned and bound.  When
-        /// unset, VolumeBindingImmediate is used. This field is alpha-level
-        /// and is only honored by servers that enable the VolumeScheduling
-        /// feature.</param>
+        /// unset, VolumeBindingImmediate is used. This field is only honored
+        /// by servers that enable the VolumeScheduling feature.</param>
         public V1StorageClass(string provisioner, bool? allowVolumeExpansion = default(bool?), IList<V1TopologySelectorTerm> allowedTopologies = default(IList<V1TopologySelectorTerm>), string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), IList<string> mountOptions = default(IList<string>), IDictionary<string, string> parameters = default(IDictionary<string, string>), string reclaimPolicy = default(string), string volumeBindingMode = default(string))
         {
             AllowVolumeExpansion = allowVolumeExpansion;
@@ -100,9 +99,8 @@ namespace k8s.Models
         /// Gets or sets restrict the node topologies where volumes can be
         /// dynamically provisioned. Each volume plugin defines its own
         /// supported topology specifications. An empty TopologySelectorTerm
-        /// list means there is no topology restriction. This field is
-        /// alpha-level and is only honored by servers that enable the
-        /// DynamicProvisioningScheduling feature.
+        /// list means there is no topology restriction. This field is only
+        /// honored by servers that enable the VolumeScheduling feature.
         /// </summary>
         [JsonProperty(PropertyName = "allowedTopologies")]
         public IList<V1TopologySelectorTerm> AllowedTopologies { get; set; }
@@ -167,8 +165,8 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets volumeBindingMode indicates how PersistentVolumeClaims
         /// should be provisioned and bound.  When unset,
-        /// VolumeBindingImmediate is used. This field is alpha-level and is
-        /// only honored by servers that enable the VolumeScheduling feature.
+        /// VolumeBindingImmediate is used. This field is only honored by
+        /// servers that enable the VolumeScheduling feature.
         /// </summary>
         [JsonProperty(PropertyName = "volumeBindingMode")]
         public string VolumeBindingMode { get; set; }

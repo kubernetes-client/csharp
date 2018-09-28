@@ -29,8 +29,8 @@ namespace k8s.Models
         /// <param name="name">The name of this port (corresponds to
         /// ServicePort.Name). Must be a DNS_LABEL. Optional only if one port
         /// is defined.</param>
-        /// <param name="protocol">The IP protocol for this port. Must be UDP
-        /// or TCP. Default is TCP.</param>
+        /// <param name="protocol">The IP protocol for this port. Must be UDP,
+        /// TCP, or SCTP. Default is TCP.</param>
         public V1EndpointPort(int port, string name = default(string), string protocol = default(string))
         {
             Name = name;
@@ -59,8 +59,8 @@ namespace k8s.Models
         public int Port { get; set; }
 
         /// <summary>
-        /// Gets or sets the IP protocol for this port. Must be UDP or TCP.
-        /// Default is TCP.
+        /// Gets or sets the IP protocol for this port. Must be UDP, TCP, or
+        /// SCTP. Default is TCP.
         /// </summary>
         [JsonProperty(PropertyName = "protocol")]
         public string Protocol { get; set; }

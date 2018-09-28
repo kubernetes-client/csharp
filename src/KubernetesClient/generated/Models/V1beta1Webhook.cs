@@ -91,13 +91,22 @@ namespace k8s.Models
         /// ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks are never
         /// called on admission requests for ValidatingWebhookConfiguration and
         /// MutatingWebhookConfiguration objects.</param>
-        public V1beta1Webhook(V1beta1WebhookClientConfig clientConfig, string name, string failurePolicy = default(string), V1LabelSelector namespaceSelector = default(V1LabelSelector), IList<V1beta1RuleWithOperations> rules = default(IList<V1beta1RuleWithOperations>))
+        /// <param name="sideEffects">SideEffects states whether this webhookk
+        /// has side effects. Acceptable values are: Unknown, None, Some,
+        /// NoneOnDryRun Webhooks with side effects MUST implement a
+        /// reconciliation system, since a request may be rejected by a future
+        /// step in the admission change and the side effects therefore need to
+        /// be undone. Requests with the dryRun attribute will be auto-rejected
+        /// if they match a webhook with sideEffects == Unknown or Some.
+        /// Defaults to Unknown.</param>
+        public V1beta1Webhook(V1beta1WebhookClientConfig clientConfig, string name, string failurePolicy = default(string), V1LabelSelector namespaceSelector = default(V1LabelSelector), IList<V1beta1RuleWithOperations> rules = default(IList<V1beta1RuleWithOperations>), string sideEffects = default(string))
         {
             ClientConfig = clientConfig;
             FailurePolicy = failurePolicy;
             Name = name;
             NamespaceSelector = namespaceSelector;
             Rules = rules;
+            SideEffects = sideEffects;
             CustomInit();
         }
 
@@ -190,6 +199,18 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "rules")]
         public IList<V1beta1RuleWithOperations> Rules { get; set; }
+
+        /// <summary>
+        /// Gets or sets sideEffects states whether this webhookk has side
+        /// effects. Acceptable values are: Unknown, None, Some, NoneOnDryRun
+        /// Webhooks with side effects MUST implement a reconciliation system,
+        /// since a request may be rejected by a future step in the admission
+        /// change and the side effects therefore need to be undone. Requests
+        /// with the dryRun attribute will be auto-rejected if they match a
+        /// webhook with sideEffects == Unknown or Some. Defaults to Unknown.
+        /// </summary>
+        [JsonProperty(PropertyName = "sideEffects")]
+        public string SideEffects { get; set; }
 
         /// <summary>
         /// Validate the object.

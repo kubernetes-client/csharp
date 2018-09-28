@@ -33,6 +33,15 @@ namespace k8s.Models
         /// <param name="accessModes">AccessModes contains the desired access
         /// modes the volume should have. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1</param>
+        /// <param name="dataSource">This field requires the
+        /// VolumeSnapshotDataSource alpha feature gate to be enabled and
+        /// currently VolumeSnapshot is the only supported data source. If the
+        /// provisioner can support VolumeSnapshot data source, it will create
+        /// a new volume and data will be restored to the volume at the same
+        /// time. If the provisioner does not support VolumeSnapshot data
+        /// source, volume will not be created and the failure will be reported
+        /// as an event. In the future, we plan to support more data source
+        /// types and the behavior of the provisioner may change.</param>
         /// <param name="resources">Resources represents the minimum resources
         /// the volume should have. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources</param>
@@ -47,9 +56,10 @@ namespace k8s.Models
         /// the future.</param>
         /// <param name="volumeName">VolumeName is the binding reference to the
         /// PersistentVolume backing this claim.</param>
-        public V1PersistentVolumeClaimSpec(IList<string> accessModes = default(IList<string>), V1ResourceRequirements resources = default(V1ResourceRequirements), V1LabelSelector selector = default(V1LabelSelector), string storageClassName = default(string), string volumeMode = default(string), string volumeName = default(string))
+        public V1PersistentVolumeClaimSpec(IList<string> accessModes = default(IList<string>), V1TypedLocalObjectReference dataSource = default(V1TypedLocalObjectReference), V1ResourceRequirements resources = default(V1ResourceRequirements), V1LabelSelector selector = default(V1LabelSelector), string storageClassName = default(string), string volumeMode = default(string), string volumeName = default(string))
         {
             AccessModes = accessModes;
+            DataSource = dataSource;
             Resources = resources;
             Selector = selector;
             StorageClassName = storageClassName;
@@ -70,6 +80,20 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "accessModes")]
         public IList<string> AccessModes { get; set; }
+
+        /// <summary>
+        /// Gets or sets this field requires the VolumeSnapshotDataSource alpha
+        /// feature gate to be enabled and currently VolumeSnapshot is the only
+        /// supported data source. If the provisioner can support
+        /// VolumeSnapshot data source, it will create a new volume and data
+        /// will be restored to the volume at the same time. If the provisioner
+        /// does not support VolumeSnapshot data source, volume will not be
+        /// created and the failure will be reported as an event. In the
+        /// future, we plan to support more data source types and the behavior
+        /// of the provisioner may change.
+        /// </summary>
+        [JsonProperty(PropertyName = "dataSource")]
+        public V1TypedLocalObjectReference DataSource { get; set; }
 
         /// <summary>
         /// Gets or sets resources represents the minimum resources the volume
@@ -108,5 +132,18 @@ namespace k8s.Models
         [JsonProperty(PropertyName = "volumeName")]
         public string VolumeName { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (DataSource != null)
+            {
+                DataSource.Validate();
+            }
+        }
     }
 }

@@ -63,7 +63,17 @@ namespace k8s.Models
         /// the pod count. Normally, the system sets this field for you. More
         /// info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors</param>
-        public V1JobSpec(V1PodTemplateSpec template, long? activeDeadlineSeconds = default(long?), int? backoffLimit = default(int?), int? completions = default(int?), bool? manualSelector = default(bool?), int? parallelism = default(int?), V1LabelSelector selector = default(V1LabelSelector))
+        /// <param name="ttlSecondsAfterFinished">ttlSecondsAfterFinished
+        /// limits the lifetime of a Job that has finished execution (either
+        /// Complete or Failed). If this field is set, ttlSecondsAfterFinished
+        /// after the Job finishes, it is eligible to be automatically deleted.
+        /// When the Job is being deleted, its lifecycle guarantees (e.g.
+        /// finalizers) will be honored. If this field is unset, the Job won't
+        /// be automatically deleted. If this field is set to zero, the Job
+        /// becomes eligible to be deleted immediately after it finishes. This
+        /// field is alpha-level and is only honored by servers that enable the
+        /// TTLAfterFinished feature.</param>
+        public V1JobSpec(V1PodTemplateSpec template, long? activeDeadlineSeconds = default(long?), int? backoffLimit = default(int?), int? completions = default(int?), bool? manualSelector = default(bool?), int? parallelism = default(int?), V1LabelSelector selector = default(V1LabelSelector), int? ttlSecondsAfterFinished = default(int?))
         {
             ActiveDeadlineSeconds = activeDeadlineSeconds;
             BackoffLimit = backoffLimit;
@@ -72,6 +82,7 @@ namespace k8s.Models
             Parallelism = parallelism;
             Selector = selector;
             Template = template;
+            TtlSecondsAfterFinished = ttlSecondsAfterFinished;
             CustomInit();
         }
 
@@ -148,6 +159,21 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "template")]
         public V1PodTemplateSpec Template { get; set; }
+
+        /// <summary>
+        /// Gets or sets ttlSecondsAfterFinished limits the lifetime of a Job
+        /// that has finished execution (either Complete or Failed). If this
+        /// field is set, ttlSecondsAfterFinished after the Job finishes, it is
+        /// eligible to be automatically deleted. When the Job is being
+        /// deleted, its lifecycle guarantees (e.g. finalizers) will be
+        /// honored. If this field is unset, the Job won't be automatically
+        /// deleted. If this field is set to zero, the Job becomes eligible to
+        /// be deleted immediately after it finishes. This field is alpha-level
+        /// and is only honored by servers that enable the TTLAfterFinished
+        /// feature.
+        /// </summary>
+        [JsonProperty(PropertyName = "ttlSecondsAfterFinished")]
+        public int? TtlSecondsAfterFinished { get; set; }
 
         /// <summary>
         /// Validate the object.

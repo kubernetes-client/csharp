@@ -55,6 +55,10 @@ namespace k8s.Models
         /// <param name="allowedHostPaths">allowedHostPaths is a white list of
         /// allowed host paths. Empty indicates that all host paths may be
         /// used.</param>
+        /// <param name="allowedProcMountTypes">AllowedProcMountTypes is a
+        /// whitelist of allowed ProcMountTypes. Empty or nil indicates that
+        /// only the DefaultProcMountType may be used. This requires the
+        /// ProcMountType feature flag to be enabled.</param>
         /// <param name="allowedUnsafeSysctls">allowedUnsafeSysctls is a list
         /// of explicitly allowed unsafe sysctls, defaults to none. Each entry
         /// is either a plain sysctl name or ends in "*" in which case it is
@@ -105,12 +109,13 @@ namespace k8s.Models
         /// <param name="volumes">volumes is a white list of allowed volume
         /// plugins. Empty indicates that no volumes may be used. To allow all
         /// volumes you may use '*'.</param>
-        public Extensionsv1beta1PodSecurityPolicySpec(Extensionsv1beta1FSGroupStrategyOptions fsGroup, Extensionsv1beta1RunAsUserStrategyOptions runAsUser, Extensionsv1beta1SELinuxStrategyOptions seLinux, Extensionsv1beta1SupplementalGroupsStrategyOptions supplementalGroups, bool? allowPrivilegeEscalation = default(bool?), IList<string> allowedCapabilities = default(IList<string>), IList<Extensionsv1beta1AllowedFlexVolume> allowedFlexVolumes = default(IList<Extensionsv1beta1AllowedFlexVolume>), IList<Extensionsv1beta1AllowedHostPath> allowedHostPaths = default(IList<Extensionsv1beta1AllowedHostPath>), IList<string> allowedUnsafeSysctls = default(IList<string>), IList<string> defaultAddCapabilities = default(IList<string>), bool? defaultAllowPrivilegeEscalation = default(bool?), IList<string> forbiddenSysctls = default(IList<string>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), IList<Extensionsv1beta1HostPortRange> hostPorts = default(IList<Extensionsv1beta1HostPortRange>), bool? privileged = default(bool?), bool? readOnlyRootFilesystem = default(bool?), IList<string> requiredDropCapabilities = default(IList<string>), IList<string> volumes = default(IList<string>))
+        public Extensionsv1beta1PodSecurityPolicySpec(Extensionsv1beta1FSGroupStrategyOptions fsGroup, Extensionsv1beta1RunAsUserStrategyOptions runAsUser, Extensionsv1beta1SELinuxStrategyOptions seLinux, Extensionsv1beta1SupplementalGroupsStrategyOptions supplementalGroups, bool? allowPrivilegeEscalation = default(bool?), IList<string> allowedCapabilities = default(IList<string>), IList<Extensionsv1beta1AllowedFlexVolume> allowedFlexVolumes = default(IList<Extensionsv1beta1AllowedFlexVolume>), IList<Extensionsv1beta1AllowedHostPath> allowedHostPaths = default(IList<Extensionsv1beta1AllowedHostPath>), IList<string> allowedProcMountTypes = default(IList<string>), IList<string> allowedUnsafeSysctls = default(IList<string>), IList<string> defaultAddCapabilities = default(IList<string>), bool? defaultAllowPrivilegeEscalation = default(bool?), IList<string> forbiddenSysctls = default(IList<string>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), IList<Extensionsv1beta1HostPortRange> hostPorts = default(IList<Extensionsv1beta1HostPortRange>), bool? privileged = default(bool?), bool? readOnlyRootFilesystem = default(bool?), IList<string> requiredDropCapabilities = default(IList<string>), IList<string> volumes = default(IList<string>))
         {
             AllowPrivilegeEscalation = allowPrivilegeEscalation;
             AllowedCapabilities = allowedCapabilities;
             AllowedFlexVolumes = allowedFlexVolumes;
             AllowedHostPaths = allowedHostPaths;
+            AllowedProcMountTypes = allowedProcMountTypes;
             AllowedUnsafeSysctls = allowedUnsafeSysctls;
             DefaultAddCapabilities = defaultAddCapabilities;
             DefaultAllowPrivilegeEscalation = defaultAllowPrivilegeEscalation;
@@ -168,6 +173,15 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "allowedHostPaths")]
         public IList<Extensionsv1beta1AllowedHostPath> AllowedHostPaths { get; set; }
+
+        /// <summary>
+        /// Gets or sets allowedProcMountTypes is a whitelist of allowed
+        /// ProcMountTypes. Empty or nil indicates that only the
+        /// DefaultProcMountType may be used. This requires the ProcMountType
+        /// feature flag to be enabled.
+        /// </summary>
+        [JsonProperty(PropertyName = "allowedProcMountTypes")]
+        public IList<string> AllowedProcMountTypes { get; set; }
 
         /// <summary>
         /// Gets or sets allowedUnsafeSysctls is a list of explicitly allowed

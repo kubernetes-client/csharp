@@ -74,11 +74,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -174,11 +183,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -257,11 +275,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -340,11 +367,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -423,11 +459,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -506,11 +551,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -627,11 +681,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -732,11 +795,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -865,6 +937,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -898,7 +976,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedConfigMapWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedConfigMapWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified ConfigMap
@@ -936,11 +1014,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -1041,11 +1128,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -1174,6 +1270,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -1207,7 +1309,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedEndpointsWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedEndpointsWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified Endpoints
@@ -1245,11 +1347,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -1350,11 +1461,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -1483,6 +1603,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -1516,7 +1642,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedEventWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedEventWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified Event
@@ -1554,11 +1680,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -1659,11 +1794,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -1792,6 +1936,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -1825,7 +1975,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedLimitRangeWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedLimitRangeWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified LimitRange
@@ -1863,11 +2013,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -1968,11 +2127,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -2101,6 +2269,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -2134,7 +2308,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedPersistentVolumeClaimWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedPersistentVolumeClaimWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified PersistentVolumeClaim
@@ -2236,11 +2410,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -2341,11 +2524,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -2474,6 +2666,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -2507,7 +2705,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedPodWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedPodWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified Pod
@@ -2535,7 +2733,7 @@ namespace k8s
         /// connect GET requests to attach of Pod
         /// </summary>
         /// <param name='name'>
-        /// name of the Pod
+        /// name of the PodAttachOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -2574,7 +2772,7 @@ namespace k8s
         /// connect POST requests to attach of Pod
         /// </summary>
         /// <param name='name'>
-        /// name of the Pod
+        /// name of the PodAttachOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -2657,7 +2855,7 @@ namespace k8s
         /// connect GET requests to exec of Pod
         /// </summary>
         /// <param name='name'>
-        /// name of the Pod
+        /// name of the PodExecOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -2698,7 +2896,7 @@ namespace k8s
         /// connect POST requests to exec of Pod
         /// </summary>
         /// <param name='name'>
-        /// name of the Pod
+        /// name of the PodExecOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -2791,7 +2989,7 @@ namespace k8s
         /// connect GET requests to portforward of Pod
         /// </summary>
         /// <param name='name'>
-        /// name of the Pod
+        /// name of the PodPortForwardOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -2811,7 +3009,7 @@ namespace k8s
         /// connect POST requests to portforward of Pod
         /// </summary>
         /// <param name='name'>
-        /// name of the Pod
+        /// name of the PodPortForwardOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -2831,7 +3029,7 @@ namespace k8s
         /// connect GET requests to proxy of Pod
         /// </summary>
         /// <param name='name'>
-        /// name of the Pod
+        /// name of the PodProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -2851,7 +3049,7 @@ namespace k8s
         /// connect PUT requests to proxy of Pod
         /// </summary>
         /// <param name='name'>
-        /// name of the Pod
+        /// name of the PodProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -2871,7 +3069,7 @@ namespace k8s
         /// connect POST requests to proxy of Pod
         /// </summary>
         /// <param name='name'>
-        /// name of the Pod
+        /// name of the PodProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -2891,7 +3089,7 @@ namespace k8s
         /// connect DELETE requests to proxy of Pod
         /// </summary>
         /// <param name='name'>
-        /// name of the Pod
+        /// name of the PodProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -2911,7 +3109,7 @@ namespace k8s
         /// connect HEAD requests to proxy of Pod
         /// </summary>
         /// <param name='name'>
-        /// name of the Pod
+        /// name of the PodProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -2931,7 +3129,7 @@ namespace k8s
         /// connect PATCH requests to proxy of Pod
         /// </summary>
         /// <param name='name'>
-        /// name of the Pod
+        /// name of the PodProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -2951,7 +3149,7 @@ namespace k8s
         /// connect GET requests to proxy of Pod
         /// </summary>
         /// <param name='name'>
-        /// name of the Pod
+        /// name of the PodProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -2974,7 +3172,7 @@ namespace k8s
         /// connect PUT requests to proxy of Pod
         /// </summary>
         /// <param name='name'>
-        /// name of the Pod
+        /// name of the PodProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -2997,7 +3195,7 @@ namespace k8s
         /// connect POST requests to proxy of Pod
         /// </summary>
         /// <param name='name'>
-        /// name of the Pod
+        /// name of the PodProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -3020,7 +3218,7 @@ namespace k8s
         /// connect DELETE requests to proxy of Pod
         /// </summary>
         /// <param name='name'>
-        /// name of the Pod
+        /// name of the PodProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -3043,7 +3241,7 @@ namespace k8s
         /// connect HEAD requests to proxy of Pod
         /// </summary>
         /// <param name='name'>
-        /// name of the Pod
+        /// name of the PodProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -3066,7 +3264,7 @@ namespace k8s
         /// connect PATCH requests to proxy of Pod
         /// </summary>
         /// <param name='name'>
-        /// name of the Pod
+        /// name of the PodProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -3163,11 +3361,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -3268,11 +3475,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -3401,6 +3617,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -3434,7 +3656,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedPodTemplateWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedPodTemplateWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified PodTemplate
@@ -3472,11 +3694,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -3577,11 +3808,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -3710,6 +3950,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -3743,7 +3989,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedReplicationControllerWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedReplicationControllerWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified ReplicationController
@@ -3909,11 +4155,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -4014,11 +4269,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -4147,6 +4411,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -4180,7 +4450,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedResourceQuotaWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedResourceQuotaWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified ResourceQuota
@@ -4282,11 +4552,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -4387,11 +4666,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -4520,6 +4808,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -4553,7 +4847,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedSecretWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedSecretWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified Secret
@@ -4591,11 +4885,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -4696,11 +4999,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -4829,6 +5141,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -4862,7 +5180,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedServiceAccountWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedServiceAccountWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified ServiceAccount
@@ -4900,11 +5218,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -5052,6 +5379,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -5085,7 +5418,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedServiceWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedServiceWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified Service
@@ -5113,7 +5446,7 @@ namespace k8s
         /// connect GET requests to proxy of Service
         /// </summary>
         /// <param name='name'>
-        /// name of the Service
+        /// name of the ServiceProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -5137,7 +5470,7 @@ namespace k8s
         /// connect PUT requests to proxy of Service
         /// </summary>
         /// <param name='name'>
-        /// name of the Service
+        /// name of the ServiceProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -5161,7 +5494,7 @@ namespace k8s
         /// connect POST requests to proxy of Service
         /// </summary>
         /// <param name='name'>
-        /// name of the Service
+        /// name of the ServiceProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -5185,7 +5518,7 @@ namespace k8s
         /// connect DELETE requests to proxy of Service
         /// </summary>
         /// <param name='name'>
-        /// name of the Service
+        /// name of the ServiceProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -5209,7 +5542,7 @@ namespace k8s
         /// connect HEAD requests to proxy of Service
         /// </summary>
         /// <param name='name'>
-        /// name of the Service
+        /// name of the ServiceProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -5233,7 +5566,7 @@ namespace k8s
         /// connect PATCH requests to proxy of Service
         /// </summary>
         /// <param name='name'>
-        /// name of the Service
+        /// name of the ServiceProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -5257,7 +5590,7 @@ namespace k8s
         /// connect GET requests to proxy of Service
         /// </summary>
         /// <param name='name'>
-        /// name of the Service
+        /// name of the ServiceProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -5284,7 +5617,7 @@ namespace k8s
         /// connect PUT requests to proxy of Service
         /// </summary>
         /// <param name='name'>
-        /// name of the Service
+        /// name of the ServiceProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -5311,7 +5644,7 @@ namespace k8s
         /// connect POST requests to proxy of Service
         /// </summary>
         /// <param name='name'>
-        /// name of the Service
+        /// name of the ServiceProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -5338,7 +5671,7 @@ namespace k8s
         /// connect DELETE requests to proxy of Service
         /// </summary>
         /// <param name='name'>
-        /// name of the Service
+        /// name of the ServiceProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -5365,7 +5698,7 @@ namespace k8s
         /// connect HEAD requests to proxy of Service
         /// </summary>
         /// <param name='name'>
-        /// name of the Service
+        /// name of the ServiceProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -5392,7 +5725,7 @@ namespace k8s
         /// connect PATCH requests to proxy of Service
         /// </summary>
         /// <param name='name'>
-        /// name of the Service
+        /// name of the ServiceProxyOptions
         /// </param>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
@@ -5531,6 +5864,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the Namespace
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -5564,7 +5903,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespaceWithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespaceWithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified Namespace
@@ -5670,11 +6009,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -5769,11 +6117,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -5893,6 +6250,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the Node
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -5926,7 +6289,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNodeWithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNodeWithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified Node
@@ -5951,7 +6314,7 @@ namespace k8s
         /// connect GET requests to proxy of Node
         /// </summary>
         /// <param name='name'>
-        /// name of the Node
+        /// name of the NodeProxyOptions
         /// </param>
         /// <param name='path'>
         /// Path is the URL path to use for the current proxy request to node.
@@ -5968,7 +6331,7 @@ namespace k8s
         /// connect PUT requests to proxy of Node
         /// </summary>
         /// <param name='name'>
-        /// name of the Node
+        /// name of the NodeProxyOptions
         /// </param>
         /// <param name='path'>
         /// Path is the URL path to use for the current proxy request to node.
@@ -5985,7 +6348,7 @@ namespace k8s
         /// connect POST requests to proxy of Node
         /// </summary>
         /// <param name='name'>
-        /// name of the Node
+        /// name of the NodeProxyOptions
         /// </param>
         /// <param name='path'>
         /// Path is the URL path to use for the current proxy request to node.
@@ -6002,7 +6365,7 @@ namespace k8s
         /// connect DELETE requests to proxy of Node
         /// </summary>
         /// <param name='name'>
-        /// name of the Node
+        /// name of the NodeProxyOptions
         /// </param>
         /// <param name='path'>
         /// Path is the URL path to use for the current proxy request to node.
@@ -6019,7 +6382,7 @@ namespace k8s
         /// connect HEAD requests to proxy of Node
         /// </summary>
         /// <param name='name'>
-        /// name of the Node
+        /// name of the NodeProxyOptions
         /// </param>
         /// <param name='path'>
         /// Path is the URL path to use for the current proxy request to node.
@@ -6036,7 +6399,7 @@ namespace k8s
         /// connect PATCH requests to proxy of Node
         /// </summary>
         /// <param name='name'>
-        /// name of the Node
+        /// name of the NodeProxyOptions
         /// </param>
         /// <param name='path'>
         /// Path is the URL path to use for the current proxy request to node.
@@ -6053,7 +6416,7 @@ namespace k8s
         /// connect GET requests to proxy of Node
         /// </summary>
         /// <param name='name'>
-        /// name of the Node
+        /// name of the NodeProxyOptions
         /// </param>
         /// <param name='path'>
         /// path to the resource
@@ -6073,7 +6436,7 @@ namespace k8s
         /// connect PUT requests to proxy of Node
         /// </summary>
         /// <param name='name'>
-        /// name of the Node
+        /// name of the NodeProxyOptions
         /// </param>
         /// <param name='path'>
         /// path to the resource
@@ -6093,7 +6456,7 @@ namespace k8s
         /// connect POST requests to proxy of Node
         /// </summary>
         /// <param name='name'>
-        /// name of the Node
+        /// name of the NodeProxyOptions
         /// </param>
         /// <param name='path'>
         /// path to the resource
@@ -6113,7 +6476,7 @@ namespace k8s
         /// connect DELETE requests to proxy of Node
         /// </summary>
         /// <param name='name'>
-        /// name of the Node
+        /// name of the NodeProxyOptions
         /// </param>
         /// <param name='path'>
         /// path to the resource
@@ -6133,7 +6496,7 @@ namespace k8s
         /// connect HEAD requests to proxy of Node
         /// </summary>
         /// <param name='name'>
-        /// name of the Node
+        /// name of the NodeProxyOptions
         /// </param>
         /// <param name='path'>
         /// path to the resource
@@ -6153,7 +6516,7 @@ namespace k8s
         /// connect PATCH requests to proxy of Node
         /// </summary>
         /// <param name='name'>
-        /// name of the Node
+        /// name of the NodeProxyOptions
         /// </param>
         /// <param name='path'>
         /// path to the resource
@@ -6235,11 +6598,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -6318,11 +6690,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -6417,11 +6798,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -6541,6 +6931,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the PersistentVolume
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -6574,7 +6970,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeletePersistentVolumeWithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeletePersistentVolumeWithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified PersistentVolume
@@ -6661,11 +7057,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -6744,11 +7149,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -6827,11 +7241,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -6910,11 +7333,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -6993,11 +7425,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -7076,11 +7517,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -7159,11 +7609,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -7275,11 +7734,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -7374,11 +7842,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -7498,6 +7975,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the InitializerConfiguration
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -7531,7 +8014,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteInitializerConfigurationWithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteInitializerConfigurationWithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified InitializerConfiguration
@@ -7574,11 +8057,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -7673,11 +8165,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -7797,6 +8298,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the MutatingWebhookConfiguration
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -7830,7 +8337,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteMutatingWebhookConfigurationWithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteMutatingWebhookConfigurationWithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified MutatingWebhookConfiguration
@@ -7862,11 +8369,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -7961,11 +8477,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -8085,6 +8610,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the ValidatingWebhookConfiguration
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -8118,7 +8649,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteValidatingWebhookConfigurationWithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteValidatingWebhookConfigurationWithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified ValidatingWebhookConfiguration
@@ -8172,11 +8703,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -8271,11 +8811,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -8395,6 +8944,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the CustomResourceDefinition
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -8428,7 +8983,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCustomResourceDefinitionWithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCustomResourceDefinitionWithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified CustomResourceDefinition
@@ -8537,11 +9092,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -8636,11 +9200,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -8760,6 +9333,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the APIService
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -8793,7 +9372,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteAPIServiceWithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteAPIServiceWithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified APIService
@@ -8891,11 +9470,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -8990,11 +9578,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -9114,6 +9711,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the APIService
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -9147,7 +9750,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteAPIService1WithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteAPIService1WithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified APIService
@@ -9256,11 +9859,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -9339,11 +9951,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -9422,11 +10043,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -9508,11 +10138,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -9613,11 +10252,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -9746,6 +10394,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -9779,7 +10433,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedControllerRevisionWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedControllerRevisionWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified ControllerRevision
@@ -9817,11 +10471,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -9922,11 +10585,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -10055,6 +10727,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -10088,7 +10766,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedDaemonSetWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedDaemonSetWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified DaemonSet
@@ -10190,11 +10868,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -10295,11 +10982,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -10428,6 +11124,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -10461,7 +11163,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedDeploymentWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedDeploymentWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified Deployment
@@ -10627,11 +11329,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -10732,11 +11443,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -10865,6 +11585,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -10898,7 +11624,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedReplicaSetWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedReplicaSetWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified ReplicaSet
@@ -11064,11 +11790,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -11169,11 +11904,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -11302,6 +12046,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -11335,7 +12085,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedStatefulSetWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedStatefulSetWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified StatefulSet
@@ -11498,11 +12248,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -11581,11 +12340,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -11675,11 +12443,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -11758,11 +12535,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -11844,11 +12630,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -11949,11 +12744,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -12082,6 +12886,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -12115,7 +12925,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedControllerRevision1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedControllerRevision1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified ControllerRevision
@@ -12153,11 +12963,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -12258,11 +13077,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -12391,6 +13219,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -12424,7 +13258,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedDeployment1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedDeployment1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified Deployment
@@ -12468,7 +13302,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Appsv1beta1DeploymentRollback>> CreateNamespacedDeploymentRollbackWithHttpMessagesAsync(Appsv1beta1DeploymentRollback body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Appsv1beta1DeploymentStatus>> CreateNamespacedDeploymentRollbackWithHttpMessagesAsync(Appsv1beta1DeploymentRollback body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read scale of the specified Deployment
@@ -12612,11 +13446,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -12717,11 +13560,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -12850,6 +13702,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -12883,7 +13741,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedStatefulSet1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedStatefulSet1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified StatefulSet
@@ -13046,11 +13904,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -13140,11 +14007,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -13223,11 +14099,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -13306,11 +14191,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -13392,11 +14286,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -13497,11 +14400,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -13630,6 +14542,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -13663,7 +14581,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedControllerRevision2WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedControllerRevision2WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified ControllerRevision
@@ -13701,11 +14619,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -13806,11 +14733,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -13939,6 +14875,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -13972,7 +14914,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedDaemonSet1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedDaemonSet1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified DaemonSet
@@ -14074,11 +15016,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -14179,11 +15130,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -14312,6 +15272,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -14345,7 +15311,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedDeployment2WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedDeployment2WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified Deployment
@@ -14511,11 +15477,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -14616,11 +15591,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -14749,6 +15733,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -14782,7 +15772,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedReplicaSet1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedReplicaSet1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified ReplicaSet
@@ -14948,11 +15938,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -15053,11 +16052,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -15186,6 +16194,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -15219,7 +16233,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedStatefulSet2WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedStatefulSet2WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified StatefulSet
@@ -15382,11 +16396,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -15465,11 +16488,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -15802,11 +16834,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -15888,11 +16929,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -15993,11 +17043,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -16126,6 +17185,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -16159,7 +17224,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified HorizontalPodAutoscaler
@@ -16269,11 +17334,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -16355,11 +17429,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -16460,11 +17543,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -16593,6 +17685,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -16626,7 +17724,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified HorizontalPodAutoscaler
@@ -16715,6 +17813,506 @@ namespace k8s
         Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerStatus1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// get available resources
+        /// </summary>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources15WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// list or watch objects of kind HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='includeUninitialized'>
+        /// If true, partially initialized resources are included in the
+        /// response.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// When specified with a watch call, shows changes that occur after
+        /// that particular version of a resource. Defaults to changes from the
+        /// beginning of history. When specified for list: - if unset, then the
+        /// result is returned from remote storage based on quorum-read flag; -
+        /// if it's 0, then we simply return what we currently have in cache,
+        /// no guarantee; - if set to non zero, then the result is at least as
+        /// fresh as given rv.
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='watch'>
+        /// Watch for changes to the described resources and return them as a
+        /// stream of add, update, and remove notifications. Specify
+        /// resourceVersion.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespaces2WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// list or watch objects of kind HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='includeUninitialized'>
+        /// If true, partially initialized resources are included in the
+        /// response.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// When specified with a watch call, shows changes that occur after
+        /// that particular version of a resource. Defaults to changes from the
+        /// beginning of history. When specified for list: - if unset, then the
+        /// result is returned from remote storage based on quorum-read flag; -
+        /// if it's 0, then we simply return what we currently have in cache,
+        /// no guarantee; - if set to non zero, then the result is at least as
+        /// fresh as given rv.
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='watch'>
+        /// Watch for changes to the described resources and return them as a
+        /// stream of add, update, and remove notifications. Specify
+        /// resourceVersion.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// create a HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> CreateNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(V2beta2HorizontalPodAutoscaler body, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete collection of HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='includeUninitialized'>
+        /// If true, partially initialized resources are included in the
+        /// response.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// When specified with a watch call, shows changes that occur after
+        /// that particular version of a resource. Defaults to changes from the
+        /// beginning of history. When specified for list: - if unset, then the
+        /// result is returned from remote storage based on quorum-read flag; -
+        /// if it's 0, then we simply return what we currently have in cache,
+        /// no guarantee; - if set to non zero, then the result is at least as
+        /// fresh as given rv.
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='watch'>
+        /// Watch for changes to the described resources and return them as a
+        /// stream of add, update, and remove notifications. Specify
+        /// resourceVersion.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read the specified HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name='name'>
+        /// name of the HorizontalPodAutoscaler
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='exact'>
+        /// Should the export be exact.  Exact export maintains
+        /// cluster-specific fields like 'Namespace'.
+        /// </param>
+        /// <param name='export'>
+        /// Should this value be exported.  Export strips fields that a user
+        /// can not specify.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> ReadNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace the specified HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the HorizontalPodAutoscaler
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> ReplaceNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(V2beta2HorizontalPodAutoscaler body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete a HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the HorizontalPodAutoscaler
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update the specified HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the HorizontalPodAutoscaler
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read status of the specified HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name='name'>
+        /// name of the HorizontalPodAutoscaler
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> ReadNamespacedHorizontalPodAutoscalerStatus2WithHttpMessagesAsync(string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace status of the specified HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the HorizontalPodAutoscaler
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> ReplaceNamespacedHorizontalPodAutoscalerStatus2WithHttpMessagesAsync(V2beta2HorizontalPodAutoscaler body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update status of the specified HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the HorizontalPodAutoscaler
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerStatus2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// get information of a group
         /// </summary>
         /// <param name='customHeaders'>
@@ -16734,7 +18332,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources15WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources16WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Job
@@ -16747,11 +18345,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -16833,11 +18440,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -16938,11 +18554,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -17071,6 +18696,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -17104,7 +18735,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedJobWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedJobWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified Job
@@ -17201,7 +18832,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources16WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources17WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CronJob
@@ -17214,11 +18845,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -17300,11 +18940,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -17405,11 +19054,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -17538,6 +19196,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -17571,7 +19235,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedCronJobWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedCronJobWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified CronJob
@@ -17668,7 +19332,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources17WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources18WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CronJob
@@ -17681,11 +19345,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -17767,11 +19440,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -17872,11 +19554,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -18005,6 +19696,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -18038,7 +19735,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedCronJob1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedCronJob1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified CronJob
@@ -18146,7 +19843,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources18WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources19WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CertificateSigningRequest
@@ -18159,11 +19856,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -18258,11 +19964,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -18382,6 +20097,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the CertificateSigningRequest
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -18415,7 +20136,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCertificateSigningRequestWithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCertificateSigningRequestWithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified CertificateSigningRequest
@@ -18530,7 +20251,454 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources19WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources20WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// list or watch objects of kind Lease
+        /// </summary>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='includeUninitialized'>
+        /// If true, partially initialized resources are included in the
+        /// response.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// When specified with a watch call, shows changes that occur after
+        /// that particular version of a resource. Defaults to changes from the
+        /// beginning of history. When specified for list: - if unset, then the
+        /// result is returned from remote storage based on quorum-read flag; -
+        /// if it's 0, then we simply return what we currently have in cache,
+        /// no guarantee; - if set to non zero, then the result is at least as
+        /// fresh as given rv.
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='watch'>
+        /// Watch for changes to the described resources and return them as a
+        /// stream of add, update, and remove notifications. Specify
+        /// resourceVersion.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1LeaseList>> ListLeaseForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// list or watch objects of kind Lease
+        /// </summary>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='includeUninitialized'>
+        /// If true, partially initialized resources are included in the
+        /// response.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// When specified with a watch call, shows changes that occur after
+        /// that particular version of a resource. Defaults to changes from the
+        /// beginning of history. When specified for list: - if unset, then the
+        /// result is returned from remote storage based on quorum-read flag; -
+        /// if it's 0, then we simply return what we currently have in cache,
+        /// no guarantee; - if set to non zero, then the result is at least as
+        /// fresh as given rv.
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='watch'>
+        /// Watch for changes to the described resources and return them as a
+        /// stream of add, update, and remove notifications. Specify
+        /// resourceVersion.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1LeaseList>> ListNamespacedLeaseWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// create a Lease
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1Lease>> CreateNamespacedLeaseWithHttpMessagesAsync(V1beta1Lease body, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete collection of Lease
+        /// </summary>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='includeUninitialized'>
+        /// If true, partially initialized resources are included in the
+        /// response.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// When specified with a watch call, shows changes that occur after
+        /// that particular version of a resource. Defaults to changes from the
+        /// beginning of history. When specified for list: - if unset, then the
+        /// result is returned from remote storage based on quorum-read flag; -
+        /// if it's 0, then we simply return what we currently have in cache,
+        /// no guarantee; - if set to non zero, then the result is at least as
+        /// fresh as given rv.
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='watch'>
+        /// Watch for changes to the described resources and return them as a
+        /// stream of add, update, and remove notifications. Specify
+        /// resourceVersion.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedLeaseWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), bool? includeUninitialized = default(bool?), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read the specified Lease
+        /// </summary>
+        /// <param name='name'>
+        /// name of the Lease
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='exact'>
+        /// Should the export be exact.  Exact export maintains
+        /// cluster-specific fields like 'Namespace'.
+        /// </param>
+        /// <param name='export'>
+        /// Should this value be exported.  Export strips fields that a user
+        /// can not specify.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1Lease>> ReadNamespacedLeaseWithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace the specified Lease
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the Lease
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1Lease>> ReplaceNamespacedLeaseWithHttpMessagesAsync(V1beta1Lease body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete a Lease
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the Lease
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedLeaseWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update the specified Lease
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the Lease
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1Lease>> PatchNamespacedLeaseWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// get information of a group
+        /// </summary>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup10WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// get available resources
+        /// </summary>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources21WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Event
@@ -18543,11 +20711,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -18629,11 +20806,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -18734,11 +20920,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -18867,6 +21062,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -18900,7 +21101,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedEvent1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedEvent1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified Event
@@ -18933,7 +21134,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup10WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup11WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -18944,7 +21145,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources20WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources22WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind DaemonSet
@@ -18957,11 +21158,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -19040,11 +21250,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -19123,11 +21342,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -19209,11 +21437,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -19314,11 +21551,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -19447,6 +21693,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -19480,7 +21732,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedDaemonSet2WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedDaemonSet2WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified DaemonSet
@@ -19582,11 +21834,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -19687,11 +21948,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -19820,6 +22090,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -19853,7 +22129,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedDeployment3WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedDeployment3WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified Deployment
@@ -19897,7 +22173,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1DeploymentRollback>> CreateNamespacedDeploymentRollback1WithHttpMessagesAsync(Extensionsv1beta1DeploymentRollback body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Extensionsv1beta1DeploymentStatus>> CreateNamespacedDeploymentRollback1WithHttpMessagesAsync(Extensionsv1beta1DeploymentRollback body, string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read scale of the specified Deployment
@@ -20041,11 +22317,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -20146,11 +22431,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -20279,6 +22573,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -20312,7 +22612,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedIngressWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedIngressWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified Ingress
@@ -20414,11 +22714,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -20519,11 +22828,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -20652,6 +22970,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -20685,7 +23009,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedNetworkPolicyWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedNetworkPolicyWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified NetworkPolicy
@@ -20723,11 +23047,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -20828,11 +23161,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -20961,6 +23303,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -20994,7 +23342,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedReplicaSet2WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedReplicaSet2WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified ReplicaSet
@@ -21221,11 +23569,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -21304,11 +23661,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -21403,11 +23769,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -21527,6 +23902,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the PodSecurityPolicy
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -21560,7 +23941,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeletePodSecurityPolicyWithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeletePodSecurityPolicyWithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified PodSecurityPolicy
@@ -21592,11 +23973,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -21673,7 +24063,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup11WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup12WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -21684,7 +24074,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources21WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources23WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind NetworkPolicy
@@ -21700,11 +24090,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -21805,11 +24204,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -21938,6 +24346,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -21971,7 +24385,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedNetworkPolicy1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedNetworkPolicy1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified NetworkPolicy
@@ -22006,11 +24420,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -22087,7 +24510,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup12WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup13WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -22098,7 +24521,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources22WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources24WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodDisruptionBudget
@@ -22114,11 +24537,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -22219,11 +24651,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -22352,6 +24793,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -22385,7 +24832,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedPodDisruptionBudgetWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedPodDisruptionBudgetWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified PodDisruptionBudget
@@ -22484,11 +24931,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -22567,11 +25023,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -22666,11 +25131,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -22790,6 +25264,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the PodSecurityPolicy
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -22823,7 +25303,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeletePodSecurityPolicy1WithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeletePodSecurityPolicy1WithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified PodSecurityPolicy
@@ -22853,7 +25333,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup13WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup14WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -22864,7 +25344,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources23WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources25WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRoleBinding
@@ -22877,11 +25357,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -22976,11 +25465,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -23092,6 +25590,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the ClusterRoleBinding
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -23125,7 +25629,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteClusterRoleBindingWithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteClusterRoleBindingWithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified ClusterRoleBinding
@@ -23157,11 +25661,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -23256,11 +25769,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -23372,6 +25894,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the ClusterRole
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -23405,7 +25933,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteClusterRoleWithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteClusterRoleWithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified ClusterRole
@@ -23440,11 +25968,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -23545,11 +26082,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -23670,6 +26216,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -23703,7 +26255,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedRoleBindingWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedRoleBindingWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified RoleBinding
@@ -23741,11 +26293,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -23846,11 +26407,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -23971,6 +26541,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -24004,7 +26580,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedRoleWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedRoleWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified Role
@@ -24039,11 +26615,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -24122,11 +26707,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -24203,7 +26797,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources24WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources26WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRoleBinding
@@ -24216,11 +26810,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -24315,11 +26918,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -24431,6 +27043,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the ClusterRoleBinding
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -24464,7 +27082,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteClusterRoleBinding1WithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteClusterRoleBinding1WithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified ClusterRoleBinding
@@ -24496,11 +27114,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -24595,11 +27222,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -24711,6 +27347,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the ClusterRole
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -24744,7 +27386,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteClusterRole1WithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteClusterRole1WithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified ClusterRole
@@ -24779,11 +27421,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -24884,11 +27535,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -25009,6 +27669,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -25042,7 +27708,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedRoleBinding1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedRoleBinding1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified RoleBinding
@@ -25080,11 +27746,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -25185,11 +27860,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -25310,6 +27994,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -25343,7 +28033,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedRole1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedRole1WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified Role
@@ -25378,11 +28068,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -25461,11 +28160,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -25542,7 +28250,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources25WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources27WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRoleBinding
@@ -25555,11 +28263,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -25654,11 +28371,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -25770,6 +28496,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the ClusterRoleBinding
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -25803,7 +28535,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteClusterRoleBinding2WithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteClusterRoleBinding2WithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified ClusterRoleBinding
@@ -25835,11 +28567,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -25934,11 +28675,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -26050,6 +28800,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the ClusterRole
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -26083,7 +28839,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteClusterRole2WithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteClusterRole2WithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified ClusterRole
@@ -26118,11 +28874,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -26223,11 +28988,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -26348,6 +29122,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -26381,7 +29161,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedRoleBinding2WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedRoleBinding2WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified RoleBinding
@@ -26419,11 +29199,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -26524,11 +29313,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -26649,6 +29447,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -26682,7 +29486,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedRole2WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedRole2WithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified Role
@@ -26717,11 +29521,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -26800,11 +29613,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -26881,7 +29703,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup14WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup15WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -26892,7 +29714,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources26WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources28WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PriorityClass
@@ -26905,11 +29727,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -27004,11 +29835,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -27128,6 +29968,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the PriorityClass
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -27161,7 +30007,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeletePriorityClassWithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeletePriorityClassWithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified PriorityClass
@@ -27191,7 +30037,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources27WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources29WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PriorityClass
@@ -27204,11 +30050,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -27303,11 +30158,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -27427,6 +30291,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the PriorityClass
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -27460,7 +30330,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeletePriorityClass1WithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeletePriorityClass1WithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified PriorityClass
@@ -27490,7 +30360,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup15WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup16WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -27501,7 +30371,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources28WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources30WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodPreset
@@ -27517,11 +30387,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -27622,11 +30501,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -27755,6 +30643,12 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -27788,7 +30682,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedPodPresetWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedPodPresetWithHttpMessagesAsync(V1DeleteOptions body, string name, string namespaceParameter, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified PodPreset
@@ -27823,11 +30717,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -27904,7 +30807,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup16WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup17WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -27915,7 +30818,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources29WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources31WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind StorageClass
@@ -27928,11 +30831,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -28027,11 +30939,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -28151,6 +31072,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the StorageClass
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -28184,7 +31111,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteStorageClassWithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteStorageClassWithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified StorageClass
@@ -28214,7 +31141,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources30WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources32WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind VolumeAttachment
@@ -28227,11 +31154,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -28326,11 +31262,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -28450,6 +31395,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the VolumeAttachment
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -28483,7 +31434,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteVolumeAttachmentWithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteVolumeAttachmentWithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified VolumeAttachment
@@ -28513,7 +31464,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources31WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources33WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind StorageClass
@@ -28526,11 +31477,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -28625,11 +31585,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -28749,6 +31718,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the StorageClass
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -28782,7 +31757,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteStorageClass1WithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteStorageClass1WithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified StorageClass
@@ -28814,11 +31789,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -28913,11 +31897,20 @@ namespace k8s
         /// may reject a continue value it does not recognize. If the specified
         /// continue value is no longer valid whether due to expiration
         /// (generally five to fifteen minutes) or a configuration change on
-        /// the server the server will respond with a 410 ResourceExpired error
-        /// indicating the client must restart their list without the continue
-        /// field. This field is not supported when watch is true. Clients may
-        /// start a watch from the last resourceVersion value returned by the
-        /// server and not miss any modifications.
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
         /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -29037,6 +32030,12 @@ namespace k8s
         /// <param name='name'>
         /// name of the VolumeAttachment
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
         /// must be non-negative integer. The value zero indicates delete
@@ -29070,7 +32069,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteVolumeAttachment1WithHttpMessagesAsync(V1DeleteOptions body, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteVolumeAttachment1WithHttpMessagesAsync(V1DeleteOptions body, string name, string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified VolumeAttachment

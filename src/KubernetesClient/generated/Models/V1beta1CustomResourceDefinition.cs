@@ -6,6 +6,7 @@
 
 namespace k8s.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -29,6 +30,8 @@ namespace k8s.Models
         /// Initializes a new instance of the V1beta1CustomResourceDefinition
         /// class.
         /// </summary>
+        /// <param name="spec">Spec describes how the user wants the resources
+        /// to appear</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
@@ -39,11 +42,9 @@ namespace k8s.Models
         /// endpoint the client submits requests to. Cannot be updated. In
         /// CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
-        /// <param name="spec">Spec describes how the user wants the resources
-        /// to appear</param>
         /// <param name="status">Status indicates the actual state of the
         /// CustomResourceDefinition</param>
-        public V1beta1CustomResourceDefinition(string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), V1beta1CustomResourceDefinitionSpec spec = default(V1beta1CustomResourceDefinitionSpec), V1beta1CustomResourceDefinitionStatus status = default(V1beta1CustomResourceDefinitionStatus))
+        public V1beta1CustomResourceDefinition(V1beta1CustomResourceDefinitionSpec spec, string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), V1beta1CustomResourceDefinitionStatus status = default(V1beta1CustomResourceDefinitionStatus))
         {
             ApiVersion = apiVersion;
             Kind = kind;
@@ -100,11 +101,15 @@ namespace k8s.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
+            if (Spec == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Spec");
+            }
             if (Metadata != null)
             {
                 Metadata.Validate();

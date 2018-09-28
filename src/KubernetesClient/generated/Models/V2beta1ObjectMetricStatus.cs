@@ -33,10 +33,20 @@ namespace k8s.Models
         /// question.</param>
         /// <param name="target">target is the described Kubernetes
         /// object.</param>
-        public V2beta1ObjectMetricStatus(ResourceQuantity currentValue, string metricName, V2beta1CrossVersionObjectReference target)
+        /// <param name="averageValue">averageValue is the current value of the
+        /// average of the metric across all relevant pods (as a
+        /// quantity)</param>
+        /// <param name="selector">selector is the string-encoded form of a
+        /// standard kubernetes label selector for the given metric When set in
+        /// the ObjectMetricSource, it is passed as an additional parameter to
+        /// the metrics server for more specific metrics scoping. When unset,
+        /// just the metricName will be used to gather metrics.</param>
+        public V2beta1ObjectMetricStatus(ResourceQuantity currentValue, string metricName, V2beta1CrossVersionObjectReference target, ResourceQuantity averageValue = default(ResourceQuantity), V1LabelSelector selector = default(V1LabelSelector))
         {
+            AverageValue = averageValue;
             CurrentValue = currentValue;
             MetricName = metricName;
+            Selector = selector;
             Target = target;
             CustomInit();
         }
@@ -45,6 +55,13 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets averageValue is the current value of the average of
+        /// the metric across all relevant pods (as a quantity)
+        /// </summary>
+        [JsonProperty(PropertyName = "averageValue")]
+        public ResourceQuantity AverageValue { get; set; }
 
         /// <summary>
         /// Gets or sets currentValue is the current value of the metric (as a
@@ -58,6 +75,16 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "metricName")]
         public string MetricName { get; set; }
+
+        /// <summary>
+        /// Gets or sets selector is the string-encoded form of a standard
+        /// kubernetes label selector for the given metric When set in the
+        /// ObjectMetricSource, it is passed as an additional parameter to the
+        /// metrics server for more specific metrics scoping. When unset, just
+        /// the metricName will be used to gather metrics.
+        /// </summary>
+        [JsonProperty(PropertyName = "selector")]
+        public V1LabelSelector Selector { get; set; }
 
         /// <summary>
         /// Gets or sets target is the described Kubernetes object.
