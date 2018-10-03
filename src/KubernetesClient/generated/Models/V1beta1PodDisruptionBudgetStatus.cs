@@ -6,7 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -34,6 +33,10 @@ namespace k8s.Models
         /// <param name="currentHealthy">current number of healthy pods</param>
         /// <param name="desiredHealthy">minimum desired number of healthy
         /// pods</param>
+        /// <param name="disruptionsAllowed">Number of pod disruptions that are
+        /// currently allowed.</param>
+        /// <param name="expectedPods">total number of pods counted by this
+        /// disruption budget</param>
         /// <param name="disruptedPods">DisruptedPods contains information
         /// about pods whose eviction was processed by the API server eviction
         /// subresource handler but has not yet been observed by the
@@ -48,15 +51,11 @@ namespace k8s.Models
         /// smooth this map should be empty for the most of the time. Large
         /// number of entries in the map may indicate problems with pod
         /// deletions.</param>
-        /// <param name="disruptionsAllowed">Number of pod disruptions that are
-        /// currently allowed.</param>
-        /// <param name="expectedPods">total number of pods counted by this
-        /// disruption budget</param>
         /// <param name="observedGeneration">Most recent generation observed
         /// when updating this PDB status. PodDisruptionsAllowed and other
         /// status informatio is valid only if observedGeneration equals to
         /// PDB's object generation.</param>
-        public V1beta1PodDisruptionBudgetStatus(int currentHealthy, int desiredHealthy, IDictionary<string, System.DateTime?> disruptedPods, int disruptionsAllowed, int expectedPods, long? observedGeneration = default(long?))
+        public V1beta1PodDisruptionBudgetStatus(int currentHealthy, int desiredHealthy, int disruptionsAllowed, int expectedPods, IDictionary<string, System.DateTime?> disruptedPods = default(IDictionary<string, System.DateTime?>), long? observedGeneration = default(long?))
         {
             CurrentHealthy = currentHealthy;
             DesiredHealthy = desiredHealthy;
@@ -125,15 +124,11 @@ namespace k8s.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (DisruptedPods == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "DisruptedPods");
-            }
         }
     }
 }

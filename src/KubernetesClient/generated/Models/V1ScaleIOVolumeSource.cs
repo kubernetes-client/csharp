@@ -35,7 +35,7 @@ namespace k8s.Models
         /// in ScaleIO.</param>
         /// <param name="fsType">Filesystem type to mount. Must be a filesystem
         /// type supported by the host operating system. Ex. "ext4", "xfs",
-        /// "ntfs". Implicitly inferred to be "ext4" if unspecified.</param>
+        /// "ntfs". Default is "xfs".</param>
         /// <param name="protectionDomain">The name of the ScaleIO Protection
         /// Domain for the configured storage.</param>
         /// <param name="readOnlyProperty">Defaults to false (read/write).
@@ -44,7 +44,8 @@ namespace k8s.Models
         /// <param name="sslEnabled">Flag to enable/disable SSL communication
         /// with Gateway, default false</param>
         /// <param name="storageMode">Indicates whether the storage for a
-        /// volume should be ThickProvisioned or ThinProvisioned.</param>
+        /// volume should be ThickProvisioned or ThinProvisioned. Default is
+        /// ThinProvisioned.</param>
         /// <param name="storagePool">The ScaleIO Storage Pool associated with
         /// the protection domain.</param>
         /// <param name="volumeName">The name of a volume already created in
@@ -73,7 +74,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets filesystem type to mount. Must be a filesystem type
         /// supported by the host operating system. Ex. "ext4", "xfs", "ntfs".
-        /// Implicitly inferred to be "ext4" if unspecified.
+        /// Default is "xfs".
         /// </summary>
         [JsonProperty(PropertyName = "fsType")]
         public string FsType { get; set; }
@@ -115,7 +116,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets indicates whether the storage for a volume should be
-        /// ThickProvisioned or ThinProvisioned.
+        /// ThickProvisioned or ThinProvisioned. Default is ThinProvisioned.
         /// </summary>
         [JsonProperty(PropertyName = "storageMode")]
         public string StorageMode { get; set; }

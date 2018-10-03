@@ -40,7 +40,7 @@ namespace k8s.Models
         /// one. More info:
         /// https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport</param>
         /// <param name="protocol">The IP protocol for this port. Supports
-        /// "TCP" and "UDP". Default is TCP.</param>
+        /// "TCP", "UDP", and "SCTP". Default is TCP.</param>
         /// <param name="targetPort">Number or name of the port to access on
         /// the pods targeted by the service. Number must be in the range 1 to
         /// 65535. Name must be an IANA_SVC_NAME. If this is a string, it will
@@ -92,8 +92,8 @@ namespace k8s.Models
         public int Port { get; set; }
 
         /// <summary>
-        /// Gets or sets the IP protocol for this port. Supports "TCP" and
-        /// "UDP". Default is TCP.
+        /// Gets or sets the IP protocol for this port. Supports "TCP", "UDP",
+        /// and "SCTP". Default is TCP.
         /// </summary>
         [JsonProperty(PropertyName = "protocol")]
         public string Protocol { get; set; }

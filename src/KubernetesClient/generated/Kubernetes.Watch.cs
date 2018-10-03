@@ -782,6 +782,29 @@ namespace k8s
         }
 
         /// <inheritdoc>
+        public Task<Watcher<V2beta2HorizontalPodAutoscaler>> WatchNamespacedHorizontalPodAutoscalerAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V2beta2HorizontalPodAutoscaler> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/autoscaling/v2beta2/watch/namespaces/{@namespace}/horizontalpodautoscalers/{name}";
+            return WatchObjectAsync<V2beta2HorizontalPodAutoscaler>(path: path, @continue: @continue, fieldSelector: fieldSelector, includeUninitialized: includeUninitialized, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
         public Task<Watcher<V1Job>> WatchNamespacedJobAsync(
             string name,
             string @namespace,
@@ -870,6 +893,29 @@ namespace k8s
         {
             string path = $"apis/certificates.k8s.io/v1beta1/watch/certificatesigningrequests/{name}";
             return WatchObjectAsync<V1beta1CertificateSigningRequest>(path: path, @continue: @continue, fieldSelector: fieldSelector, includeUninitialized: includeUninitialized, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
+        public Task<Watcher<V1beta1Lease>> WatchNamespacedLeaseAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            bool? includeUninitialized = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1Lease> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/coordination.k8s.io/v1beta1/watch/namespaces/{@namespace}/leases/{name}";
+            return WatchObjectAsync<V1beta1Lease>(path: path, @continue: @continue, fieldSelector: fieldSelector, includeUninitialized: includeUninitialized, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
         /// <inheritdoc>
@@ -1317,10 +1363,11 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta1PriorityClass> onEvent = null,
             Action<Exception> onError = null,
+            Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             string path = $"apis/scheduling.k8s.io/v1beta1/watch/priorityclasses/{name}";
-            return WatchObjectAsync<V1beta1PriorityClass>(path: path, @continue: @continue, fieldSelector: fieldSelector, includeUninitialized: includeUninitialized, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, cancellationToken: cancellationToken);
+            return WatchObjectAsync<V1beta1PriorityClass>(path: path, @continue: @continue, fieldSelector: fieldSelector, includeUninitialized: includeUninitialized, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
         /// <inheritdoc>

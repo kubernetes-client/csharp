@@ -34,21 +34,21 @@ namespace k8s.Models
         /// <param name="conditions">conditions is the set of conditions
         /// required for this autoscaler to scale its target, and indicates
         /// whether or not those conditions are met.</param>
-        /// <param name="currentMetrics">currentMetrics is the last read state
-        /// of the metrics used by this autoscaler.</param>
         /// <param name="currentReplicas">currentReplicas is current number of
         /// replicas of pods managed by this autoscaler, as last seen by the
         /// autoscaler.</param>
         /// <param name="desiredReplicas">desiredReplicas is the desired number
         /// of replicas of pods managed by this autoscaler, as last calculated
         /// by the autoscaler.</param>
+        /// <param name="currentMetrics">currentMetrics is the last read state
+        /// of the metrics used by this autoscaler.</param>
         /// <param name="lastScaleTime">lastScaleTime is the last time the
         /// HorizontalPodAutoscaler scaled the number of pods, used by the
         /// autoscaler to control how often the number of pods is
         /// changed.</param>
         /// <param name="observedGeneration">observedGeneration is the most
         /// recent generation observed by this autoscaler.</param>
-        public V2beta1HorizontalPodAutoscalerStatus(IList<V2beta1HorizontalPodAutoscalerCondition> conditions, IList<V2beta1MetricStatus> currentMetrics, int currentReplicas, int desiredReplicas, System.DateTime? lastScaleTime = default(System.DateTime?), long? observedGeneration = default(long?))
+        public V2beta1HorizontalPodAutoscalerStatus(IList<V2beta1HorizontalPodAutoscalerCondition> conditions, int currentReplicas, int desiredReplicas, IList<V2beta1MetricStatus> currentMetrics = default(IList<V2beta1MetricStatus>), System.DateTime? lastScaleTime = default(System.DateTime?), long? observedGeneration = default(long?))
         {
             Conditions = conditions;
             CurrentMetrics = currentMetrics;
@@ -120,10 +120,6 @@ namespace k8s.Models
             if (Conditions == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Conditions");
-            }
-            if (CurrentMetrics == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "CurrentMetrics");
             }
             if (Conditions != null)
             {

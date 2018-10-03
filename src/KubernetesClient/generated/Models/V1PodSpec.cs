@@ -114,6 +114,14 @@ namespace k8s.Models
         /// within the pod. One of Always, OnFailure, Never. Default to Always.
         /// More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy</param>
+        /// <param name="runtimeClassName">RuntimeClassName refers to a
+        /// RuntimeClass object in the node.k8s.io group, which should be used
+        /// to run this pod.  If no RuntimeClass resource matches the named
+        /// class, the pod will not be run. If unset or empty, the "legacy"
+        /// RuntimeClass will be used, which is an implicit class with an empty
+        /// definition that uses the default runtime handler. More info:
+        /// https://github.com/kubernetes/community/blob/master/keps/sig-node/0014-runtime-class.md
+        /// This is an alpha feature and may change in the future.</param>
         /// <param name="schedulerName">If specified, the pod will be
         /// dispatched by specified scheduler. If not specified, the pod will
         /// be dispatched by default scheduler.</param>
@@ -133,8 +141,8 @@ namespace k8s.Models
         /// containers in the same pod, and the first process in each container
         /// will not be assigned PID 1. HostPID and ShareProcessNamespace
         /// cannot both be set. Optional: Default to false. This field is
-        /// alpha-level and is honored only by servers that enable the
-        /// PodShareProcessNamespace feature.</param>
+        /// beta-level and may be disabled with the PodShareProcessNamespace
+        /// feature.</param>
         /// <param name="subdomain">If specified, the fully qualified Pod
         /// hostname will be "&lt;hostname&gt;.&lt;subdomain&gt;.&lt;pod
         /// namespace&gt;.svc.&lt;cluster domain&gt;". If not specified, the
@@ -153,7 +161,7 @@ namespace k8s.Models
         /// <param name="volumes">List of volumes that can be mounted by
         /// containers belonging to the pod. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes</param>
-        public V1PodSpec(IList<V1Container> containers, long? activeDeadlineSeconds = default(long?), V1Affinity affinity = default(V1Affinity), bool? automountServiceAccountToken = default(bool?), V1PodDNSConfig dnsConfig = default(V1PodDNSConfig), string dnsPolicy = default(string), IList<V1HostAlias> hostAliases = default(IList<V1HostAlias>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), string hostname = default(string), IList<V1LocalObjectReference> imagePullSecrets = default(IList<V1LocalObjectReference>), IList<V1Container> initContainers = default(IList<V1Container>), string nodeName = default(string), IDictionary<string, string> nodeSelector = default(IDictionary<string, string>), int? priority = default(int?), string priorityClassName = default(string), IList<V1PodReadinessGate> readinessGates = default(IList<V1PodReadinessGate>), string restartPolicy = default(string), string schedulerName = default(string), V1PodSecurityContext securityContext = default(V1PodSecurityContext), string serviceAccount = default(string), string serviceAccountName = default(string), bool? shareProcessNamespace = default(bool?), string subdomain = default(string), long? terminationGracePeriodSeconds = default(long?), IList<V1Toleration> tolerations = default(IList<V1Toleration>), IList<V1Volume> volumes = default(IList<V1Volume>))
+        public V1PodSpec(IList<V1Container> containers, long? activeDeadlineSeconds = default(long?), V1Affinity affinity = default(V1Affinity), bool? automountServiceAccountToken = default(bool?), V1PodDNSConfig dnsConfig = default(V1PodDNSConfig), string dnsPolicy = default(string), IList<V1HostAlias> hostAliases = default(IList<V1HostAlias>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), string hostname = default(string), IList<V1LocalObjectReference> imagePullSecrets = default(IList<V1LocalObjectReference>), IList<V1Container> initContainers = default(IList<V1Container>), string nodeName = default(string), IDictionary<string, string> nodeSelector = default(IDictionary<string, string>), int? priority = default(int?), string priorityClassName = default(string), IList<V1PodReadinessGate> readinessGates = default(IList<V1PodReadinessGate>), string restartPolicy = default(string), string runtimeClassName = default(string), string schedulerName = default(string), V1PodSecurityContext securityContext = default(V1PodSecurityContext), string serviceAccount = default(string), string serviceAccountName = default(string), bool? shareProcessNamespace = default(bool?), string subdomain = default(string), long? terminationGracePeriodSeconds = default(long?), IList<V1Toleration> tolerations = default(IList<V1Toleration>), IList<V1Volume> volumes = default(IList<V1Volume>))
         {
             ActiveDeadlineSeconds = activeDeadlineSeconds;
             Affinity = affinity;
@@ -174,6 +182,7 @@ namespace k8s.Models
             PriorityClassName = priorityClassName;
             ReadinessGates = readinessGates;
             RestartPolicy = restartPolicy;
+            RuntimeClassName = runtimeClassName;
             SchedulerName = schedulerName;
             SecurityContext = securityContext;
             ServiceAccount = serviceAccount;
@@ -367,6 +376,19 @@ namespace k8s.Models
         public string RestartPolicy { get; set; }
 
         /// <summary>
+        /// Gets or sets runtimeClassName refers to a RuntimeClass object in
+        /// the node.k8s.io group, which should be used to run this pod.  If no
+        /// RuntimeClass resource matches the named class, the pod will not be
+        /// run. If unset or empty, the "legacy" RuntimeClass will be used,
+        /// which is an implicit class with an empty definition that uses the
+        /// default runtime handler. More info:
+        /// https://github.com/kubernetes/community/blob/master/keps/sig-node/0014-runtime-class.md
+        /// This is an alpha feature and may change in the future.
+        /// </summary>
+        [JsonProperty(PropertyName = "runtimeClassName")]
+        public string RuntimeClassName { get; set; }
+
+        /// <summary>
         /// Gets or sets if specified, the pod will be dispatched by specified
         /// scheduler. If not specified, the pod will be dispatched by default
         /// scheduler.
@@ -403,8 +425,8 @@ namespace k8s.Models
         /// view and signal processes from other containers in the same pod,
         /// and the first process in each container will not be assigned PID 1.
         /// HostPID and ShareProcessNamespace cannot both be set. Optional:
-        /// Default to false. This field is alpha-level and is honored only by
-        /// servers that enable the PodShareProcessNamespace feature.
+        /// Default to false. This field is beta-level and may be disabled with
+        /// the PodShareProcessNamespace feature.
         /// </summary>
         [JsonProperty(PropertyName = "shareProcessNamespace")]
         public bool? ShareProcessNamespace { get; set; }

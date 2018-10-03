@@ -45,7 +45,7 @@ namespace k8s.Models
         /// passed.</param>
         /// <param name="fsType">Filesystem type to mount. Must be a filesystem
         /// type supported by the host operating system. Ex. "ext4", "xfs",
-        /// "ntfs". Implicitly inferred to be "ext4" if unspecified.</param>
+        /// "ntfs".</param>
         /// <param name="nodePublishSecretRef">NodePublishSecretRef is a
         /// reference to the secret object containing sensitive information to
         /// pass to the CSI driver to complete the CSI NodePublishVolume and
@@ -103,7 +103,6 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets filesystem type to mount. Must be a filesystem type
         /// supported by the host operating system. Ex. "ext4", "xfs", "ntfs".
-        /// Implicitly inferred to be "ext4" if unspecified.
         /// </summary>
         [JsonProperty(PropertyName = "fsType")]
         public string FsType { get; set; }

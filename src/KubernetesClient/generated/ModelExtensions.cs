@@ -322,6 +322,20 @@ namespace k8s.Models
         public const string KubeGroup = "autoscaling";
     }
 
+    public partial class V2beta2HorizontalPodAutoscaler : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v2beta2";
+        public const string KubeKind = "HorizontalPodAutoscaler";
+        public const string KubeGroup = "autoscaling";
+    }
+
+    public partial class V2beta2HorizontalPodAutoscalerList : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v2beta2";
+        public const string KubeKind = "HorizontalPodAutoscalerList";
+        public const string KubeGroup = "autoscaling";
+    }
+
     public partial class V1Job : IKubernetesObject
     {
         public const string KubeApiVersion = "v1";
@@ -376,6 +390,20 @@ namespace k8s.Models
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "CertificateSigningRequestList";
         public const string KubeGroup = "certificates.k8s.io";
+    }
+
+    public partial class V1beta1Lease : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "Lease";
+        public const string KubeGroup = "coordination.k8s.io";
+    }
+
+    public partial class V1beta1LeaseList : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "LeaseList";
+        public const string KubeGroup = "coordination.k8s.io";
     }
 
     public partial class V1Binding : IKubernetesObject
