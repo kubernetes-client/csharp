@@ -98,9 +98,9 @@ namespace k8s
         /// </returns>
         public Stream GetStream(byte? inputIndex, byte? outputIndex)
         {
-            if (inputIndex != null && !this.buffers.ContainsKey(inputIndex.Value))
+            lock (this.buffers)
             {
-                lock (this.buffers)
+                if (inputIndex != null && !this.buffers.ContainsKey(inputIndex.Value))
                 {
                     var buffer = new ByteBuffer();
                     this.buffers.Add(inputIndex.Value, buffer);
