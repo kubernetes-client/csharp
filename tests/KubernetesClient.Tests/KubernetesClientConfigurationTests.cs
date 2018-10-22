@@ -333,32 +333,6 @@ namespace k8s.Tests
             Assert.NotNull(cfg.Host);
         }
 
-
-        /// <summary>
-        ///     Checks Host is loaded from the default configuration file as stream
-        /// </summary>
-        [Fact]
-        public void DefaultConfigurationAsStreamLoaded()
-        {
-            using (var stream = File.OpenRead("assets/kubeconfig.yml"))
-            {
-                var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(stream);
-                Assert.NotNull(cfg.Host);
-            }
-        }
-
-        /// <summary>
-        ///     Checks users.as-user-extra is loaded correctly from a configuration file.
-        /// </summary>
-        [Fact]
-        public void AsUserExtra()
-        {
-            var filePath = "assets/kubeconfig.as-user-extra.yml";
-
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(filePath, null, null, useRelativePaths: false);
-            Assert.NotNull(cfg.Host);
-        }
-
         /// <summary>
         ///     Ensures Kube config file is loaded from explicit file
         /// </summary>
