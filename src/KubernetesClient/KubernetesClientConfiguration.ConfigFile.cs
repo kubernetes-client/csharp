@@ -64,8 +64,8 @@ namespace k8s
         /// Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
         /// </summary>
         /// <param name="kubeconfig">Stream of the kubeconfig, cannot be null</param>
-        /// <param name="currentContext">override the context in config file, set null if do not want to override</param>
-        /// <param name="masterUrl">overrider kube api server endpoint, set null if do not want to override</param>
+        /// <param name="currentContext">Override the current context in config, set null if do not want to override</param>
+        /// <param name="masterUrl">Override the Kubernetes API server endpoint, set null if do not want to override</param>
         public static KubernetesClientConfiguration BuildConfigFromConfigFile(Stream kubeconfig,
             string currentContext = null, string masterUrl = null)
         {
@@ -92,7 +92,7 @@ namespace k8s
         /// </summary>
         /// <param name="k8sConfig">A <see cref="K8SConfiguration"/>, for example loaded from <see cref="LoadKubeConfigAsync(string, bool)" /></param>
         /// <param name="currentContext">Override the current context in config, set null if do not want to override</param>
-        /// <param name="masterUrl">overrider kube api server endpoint, set null if do not want to override</param>
+        /// <param name="masterUrl">Override the Kubernetes API server endpoint, set null if do not want to override</param>
         public static KubernetesClientConfiguration BuildConfig(K8SConfiguration k8SConfig, string currentContext = null, string masterUrl = null)
             => GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig);
 
