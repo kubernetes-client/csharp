@@ -142,7 +142,7 @@ namespace k8s.Tests
         public void CreatedFromPreLoadedConfig()
         {
             var k8sConfig = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo("assets/kubeconfig.yml"), useRelativePaths: false);
-            var cfg = KubernetesClientConfiguration.BuildConfig(k8sConfig);
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigObject(k8sConfig);
             Assert.NotNull(cfg.Host);
         }
 

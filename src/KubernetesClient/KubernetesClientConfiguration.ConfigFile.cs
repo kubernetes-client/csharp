@@ -93,7 +93,7 @@ namespace k8s
         /// <param name="k8sConfig">A <see cref="K8SConfiguration"/>, for example loaded from <see cref="LoadKubeConfigAsync(string, bool)" /></param>
         /// <param name="currentContext">Override the current context in config, set null if do not want to override</param>
         /// <param name="masterUrl">Override the Kubernetes API server endpoint, set null if do not want to override</param>
-        public static KubernetesClientConfiguration BuildConfig(K8SConfiguration k8SConfig, string currentContext = null, string masterUrl = null)
+        public static KubernetesClientConfiguration BuildConfigFromConfigObject(K8SConfiguration k8SConfig, string currentContext = null, string masterUrl = null)
             => GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig);
 
         private static KubernetesClientConfiguration GetKubernetesClientConfiguration(string currentContext, string masterUrl, K8SConfiguration k8SConfig)
