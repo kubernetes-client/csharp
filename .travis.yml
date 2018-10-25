@@ -10,7 +10,8 @@ os:
   - linux
 
 language: csharp
-mono: none
+mono:
+  - 5.14.0
 env:
   global:
     - DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
