@@ -39,6 +39,7 @@ namespace k8s
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
         /// </summary>
         /// <param name="kubeconfig">Fileinfo of the kubeconfig, cannot be null</param>
         /// <param name="currentContext">override the context in config file, set null if do not want to override</param>
@@ -60,10 +61,11 @@ namespace k8s
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
         /// </summary>
-        /// <param name="kubeconfig">Fileinfo of the kubeconfig, cannot be null, whitespaced or empty</param>
-        /// <param name="currentContext">override the context in config file, set null if do not want to override</param>
-        /// <param name="masterUrl">overrider kube api server endpoint, set null if do not want to override</param>
+        /// <param name="kubeconfig">Stream of the kubeconfig, cannot be null</param>
+        /// <param name="currentContext">Override the current context in config, set null if do not want to override</param>
+        /// <param name="masterUrl">Override the Kubernetes API server endpoint, set null if do not want to override</param>
         public static KubernetesClientConfiguration BuildConfigFromConfigFile(Stream kubeconfig,
             string currentContext = null, string masterUrl = null)
         {
@@ -84,6 +86,15 @@ namespace k8s
 
             return k8SConfiguration;
         }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="KubernetesClientConfiguration"/> from pre-loaded config object.
+        /// </summary>
+        /// <param name="k8sConfig">A <see cref="K8SConfiguration"/>, for example loaded from <see cref="LoadKubeConfigAsync(string, bool)" /></param>
+        /// <param name="currentContext">Override the current context in config, set null if do not want to override</param>
+        /// <param name="masterUrl">Override the Kubernetes API server endpoint, set null if do not want to override</param>
+        public static KubernetesClientConfiguration BuildConfigFromConfigObject(K8SConfiguration k8SConfig, string currentContext = null, string masterUrl = null)
+            => GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig);
 
         private static KubernetesClientConfiguration GetKubernetesClientConfiguration(string currentContext, string masterUrl, K8SConfiguration k8SConfig)
         {

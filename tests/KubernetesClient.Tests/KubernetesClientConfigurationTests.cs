@@ -138,6 +138,14 @@ namespace k8s.Tests
                 KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, "context-not-found"));
         }
 
+        [Fact]
+        public void CreatedFromPreLoadedConfig()
+        {
+            var k8sConfig = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo("assets/kubeconfig.yml"), useRelativePaths: false);
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigObject(k8sConfig);
+            Assert.NotNull(cfg.Host);
+        }
+
         /// <summary>
         ///     Checks Host is loaded from the default configuration file
         /// </summary>
