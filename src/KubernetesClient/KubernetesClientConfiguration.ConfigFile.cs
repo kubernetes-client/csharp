@@ -167,7 +167,7 @@ namespace k8s
 
             if(!Uri.TryCreate(Host, UriKind.Absolute, out Uri uri))
             {
-                throw new KubeConfigException($"Bad Server host url `{Host}` (cannot be parsed)");
+                throw new KubeConfigException($"Bad server host URL `{Host}` (cannot be parsed)");
             }
             
             if (uri.Scheme == "https")
