@@ -75,17 +75,6 @@ namespace k8s.Tests
         ///     skip
         /// </summary>
         [Fact]
-        public void CheckClusterTlsCorrectness()
-        {
-            var fi = new FileInfo("assets/kubeconfig.tls-no-skip-error.yml");
-            Assert.Throws<KubeConfigException>(() => KubernetesClientConfiguration.BuildConfigFromConfigFile(fi));
-        }
-
-        /// <summary>
-        ///     Checks that a KubeConfigException is thrown when no certificate-authority-data is set and user do not require tls
-        ///     skip
-        /// </summary>
-        [Fact]
         public void CheckClusterTlsSkipCorrectness()
         {
             var fi = new FileInfo("assets/kubeconfig.tls-skip.yml");
