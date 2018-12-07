@@ -50,6 +50,9 @@ namespace k8s.Models
         /// DNSConfig will be merged with the policy selected with DNSPolicy.
         /// To have DNS options set along with hostNetwork, you have to specify
         /// DNS policy explicitly to 'ClusterFirstWithHostNet'.</param>
+        /// <param name="enableServiceLinks">EnableServiceLinks indicates
+        /// whether information about services should be injected into pod's
+        /// environment variables, matching the syntax of Docker links.</param>
         /// <param name="hostAliases">HostAliases is an optional list of hosts
         /// and IPs that will be injected into the pod's hosts file if
         /// specified. This is only valid for non-hostNetwork pods.</param>
@@ -161,7 +164,7 @@ namespace k8s.Models
         /// <param name="volumes">List of volumes that can be mounted by
         /// containers belonging to the pod. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes</param>
-        public V1PodSpec(IList<V1Container> containers, long? activeDeadlineSeconds = default(long?), V1Affinity affinity = default(V1Affinity), bool? automountServiceAccountToken = default(bool?), V1PodDNSConfig dnsConfig = default(V1PodDNSConfig), string dnsPolicy = default(string), IList<V1HostAlias> hostAliases = default(IList<V1HostAlias>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), string hostname = default(string), IList<V1LocalObjectReference> imagePullSecrets = default(IList<V1LocalObjectReference>), IList<V1Container> initContainers = default(IList<V1Container>), string nodeName = default(string), IDictionary<string, string> nodeSelector = default(IDictionary<string, string>), int? priority = default(int?), string priorityClassName = default(string), IList<V1PodReadinessGate> readinessGates = default(IList<V1PodReadinessGate>), string restartPolicy = default(string), string runtimeClassName = default(string), string schedulerName = default(string), V1PodSecurityContext securityContext = default(V1PodSecurityContext), string serviceAccount = default(string), string serviceAccountName = default(string), bool? shareProcessNamespace = default(bool?), string subdomain = default(string), long? terminationGracePeriodSeconds = default(long?), IList<V1Toleration> tolerations = default(IList<V1Toleration>), IList<V1Volume> volumes = default(IList<V1Volume>))
+        public V1PodSpec(IList<V1Container> containers, long? activeDeadlineSeconds = default(long?), V1Affinity affinity = default(V1Affinity), bool? automountServiceAccountToken = default(bool?), V1PodDNSConfig dnsConfig = default(V1PodDNSConfig), string dnsPolicy = default(string), bool? enableServiceLinks = default(bool?), IList<V1HostAlias> hostAliases = default(IList<V1HostAlias>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), string hostname = default(string), IList<V1LocalObjectReference> imagePullSecrets = default(IList<V1LocalObjectReference>), IList<V1Container> initContainers = default(IList<V1Container>), string nodeName = default(string), IDictionary<string, string> nodeSelector = default(IDictionary<string, string>), int? priority = default(int?), string priorityClassName = default(string), IList<V1PodReadinessGate> readinessGates = default(IList<V1PodReadinessGate>), string restartPolicy = default(string), string runtimeClassName = default(string), string schedulerName = default(string), V1PodSecurityContext securityContext = default(V1PodSecurityContext), string serviceAccount = default(string), string serviceAccountName = default(string), bool? shareProcessNamespace = default(bool?), string subdomain = default(string), long? terminationGracePeriodSeconds = default(long?), IList<V1Toleration> tolerations = default(IList<V1Toleration>), IList<V1Volume> volumes = default(IList<V1Volume>))
         {
             ActiveDeadlineSeconds = activeDeadlineSeconds;
             Affinity = affinity;
@@ -169,6 +172,7 @@ namespace k8s.Models
             Containers = containers;
             DnsConfig = dnsConfig;
             DnsPolicy = dnsPolicy;
+            EnableServiceLinks = enableServiceLinks;
             HostAliases = hostAliases;
             HostIPC = hostIPC;
             HostNetwork = hostNetwork;
@@ -248,6 +252,14 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "dnsPolicy")]
         public string DnsPolicy { get; set; }
+
+        /// <summary>
+        /// Gets or sets enableServiceLinks indicates whether information about
+        /// services should be injected into pod's environment variables,
+        /// matching the syntax of Docker links.
+        /// </summary>
+        [JsonProperty(PropertyName = "enableServiceLinks")]
+        public bool? EnableServiceLinks { get; set; }
 
         /// <summary>
         /// Gets or sets hostAliases is an optional list of hosts and IPs that

@@ -61,8 +61,8 @@ namespace k8s.Models
         /// of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1,
         /// v11alpha2, foo1, foo10.</param>
         /// <param name="caBundle">CABundle is a PEM encoded CA bundle which
-        /// will be used to validate an API server's serving
-        /// certificate.</param>
+        /// will be used to validate an API server's serving certificate. If
+        /// unspecified, system trust roots on the apiserver are used.</param>
         /// <param name="group">Group is the API group name this server
         /// hosts</param>
         /// <param name="insecureSkipTLSVerify">InsecureSkipTLSVerify disables
@@ -90,7 +90,8 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets cABundle is a PEM encoded CA bundle which will be used
-        /// to validate an API server's serving certificate.
+        /// to validate an API server's serving certificate. If unspecified,
+        /// system trust roots on the apiserver are used.
         /// </summary>
         [JsonProperty(PropertyName = "caBundle")]
         public byte[] CaBundle { get; set; }

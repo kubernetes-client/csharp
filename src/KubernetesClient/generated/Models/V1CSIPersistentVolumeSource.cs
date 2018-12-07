@@ -40,7 +40,7 @@ namespace k8s.Models
         /// is a reference to the secret object containing sensitive
         /// information to pass to the CSI driver to complete the CSI
         /// ControllerPublishVolume and ControllerUnpublishVolume calls. This
-        /// field is optional, and  may be empty if no secret is required. If
+        /// field is optional, and may be empty if no secret is required. If
         /// the secret object contains more than one secret, all secrets are
         /// passed.</param>
         /// <param name="fsType">Filesystem type to mount. Must be a filesystem
@@ -49,14 +49,14 @@ namespace k8s.Models
         /// <param name="nodePublishSecretRef">NodePublishSecretRef is a
         /// reference to the secret object containing sensitive information to
         /// pass to the CSI driver to complete the CSI NodePublishVolume and
-        /// NodeUnpublishVolume calls. This field is optional, and  may be
-        /// empty if no secret is required. If the secret object contains more
-        /// than one secret, all secrets are passed.</param>
+        /// NodeUnpublishVolume calls. This field is optional, and may be empty
+        /// if no secret is required. If the secret object contains more than
+        /// one secret, all secrets are passed.</param>
         /// <param name="nodeStageSecretRef">NodeStageSecretRef is a reference
         /// to the secret object containing sensitive information to pass to
         /// the CSI driver to complete the CSI NodeStageVolume and
         /// NodeStageVolume and NodeUnstageVolume calls. This field is
-        /// optional, and  may be empty if no secret is required. If the secret
+        /// optional, and may be empty if no secret is required. If the secret
         /// object contains more than one secret, all secrets are
         /// passed.</param>
         /// <param name="readOnlyProperty">Optional: The value to pass to
@@ -86,9 +86,9 @@ namespace k8s.Models
         /// Gets or sets controllerPublishSecretRef is a reference to the
         /// secret object containing sensitive information to pass to the CSI
         /// driver to complete the CSI ControllerPublishVolume and
-        /// ControllerUnpublishVolume calls. This field is optional, and  may
-        /// be empty if no secret is required. If the secret object contains
-        /// more than one secret, all secrets are passed.
+        /// ControllerUnpublishVolume calls. This field is optional, and may be
+        /// empty if no secret is required. If the secret object contains more
+        /// than one secret, all secrets are passed.
         /// </summary>
         [JsonProperty(PropertyName = "controllerPublishSecretRef")]
         public V1SecretReference ControllerPublishSecretRef { get; set; }
@@ -111,7 +111,7 @@ namespace k8s.Models
         /// Gets or sets nodePublishSecretRef is a reference to the secret
         /// object containing sensitive information to pass to the CSI driver
         /// to complete the CSI NodePublishVolume and NodeUnpublishVolume
-        /// calls. This field is optional, and  may be empty if no secret is
+        /// calls. This field is optional, and may be empty if no secret is
         /// required. If the secret object contains more than one secret, all
         /// secrets are passed.
         /// </summary>
@@ -122,7 +122,7 @@ namespace k8s.Models
         /// Gets or sets nodeStageSecretRef is a reference to the secret object
         /// containing sensitive information to pass to the CSI driver to
         /// complete the CSI NodeStageVolume and NodeStageVolume and
-        /// NodeUnstageVolume calls. This field is optional, and  may be empty
+        /// NodeUnstageVolume calls. This field is optional, and may be empty
         /// if no secret is required. If the secret object contains more than
         /// one secret, all secrets are passed.
         /// </summary>

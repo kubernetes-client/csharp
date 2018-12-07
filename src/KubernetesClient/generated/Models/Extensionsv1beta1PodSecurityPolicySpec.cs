@@ -106,10 +106,14 @@ namespace k8s.Models
         /// <param name="requiredDropCapabilities">requiredDropCapabilities are
         /// the capabilities that will be dropped from the container.  These
         /// are required to be dropped and cannot be added.</param>
+        /// <param name="runAsGroup">RunAsGroup is the strategy that will
+        /// dictate the allowable RunAsGroup values that may be set. If this
+        /// field is omitted, the pod's RunAsGroup can take any value. This
+        /// field requires the RunAsGroup feature gate to be enabled.</param>
         /// <param name="volumes">volumes is a white list of allowed volume
         /// plugins. Empty indicates that no volumes may be used. To allow all
         /// volumes you may use '*'.</param>
-        public Extensionsv1beta1PodSecurityPolicySpec(Extensionsv1beta1FSGroupStrategyOptions fsGroup, Extensionsv1beta1RunAsUserStrategyOptions runAsUser, Extensionsv1beta1SELinuxStrategyOptions seLinux, Extensionsv1beta1SupplementalGroupsStrategyOptions supplementalGroups, bool? allowPrivilegeEscalation = default(bool?), IList<string> allowedCapabilities = default(IList<string>), IList<Extensionsv1beta1AllowedFlexVolume> allowedFlexVolumes = default(IList<Extensionsv1beta1AllowedFlexVolume>), IList<Extensionsv1beta1AllowedHostPath> allowedHostPaths = default(IList<Extensionsv1beta1AllowedHostPath>), IList<string> allowedProcMountTypes = default(IList<string>), IList<string> allowedUnsafeSysctls = default(IList<string>), IList<string> defaultAddCapabilities = default(IList<string>), bool? defaultAllowPrivilegeEscalation = default(bool?), IList<string> forbiddenSysctls = default(IList<string>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), IList<Extensionsv1beta1HostPortRange> hostPorts = default(IList<Extensionsv1beta1HostPortRange>), bool? privileged = default(bool?), bool? readOnlyRootFilesystem = default(bool?), IList<string> requiredDropCapabilities = default(IList<string>), IList<string> volumes = default(IList<string>))
+        public Extensionsv1beta1PodSecurityPolicySpec(Extensionsv1beta1FSGroupStrategyOptions fsGroup, Extensionsv1beta1RunAsUserStrategyOptions runAsUser, Extensionsv1beta1SELinuxStrategyOptions seLinux, Extensionsv1beta1SupplementalGroupsStrategyOptions supplementalGroups, bool? allowPrivilegeEscalation = default(bool?), IList<string> allowedCapabilities = default(IList<string>), IList<Extensionsv1beta1AllowedFlexVolume> allowedFlexVolumes = default(IList<Extensionsv1beta1AllowedFlexVolume>), IList<Extensionsv1beta1AllowedHostPath> allowedHostPaths = default(IList<Extensionsv1beta1AllowedHostPath>), IList<string> allowedProcMountTypes = default(IList<string>), IList<string> allowedUnsafeSysctls = default(IList<string>), IList<string> defaultAddCapabilities = default(IList<string>), bool? defaultAllowPrivilegeEscalation = default(bool?), IList<string> forbiddenSysctls = default(IList<string>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), IList<Extensionsv1beta1HostPortRange> hostPorts = default(IList<Extensionsv1beta1HostPortRange>), bool? privileged = default(bool?), bool? readOnlyRootFilesystem = default(bool?), IList<string> requiredDropCapabilities = default(IList<string>), Extensionsv1beta1RunAsGroupStrategyOptions runAsGroup = default(Extensionsv1beta1RunAsGroupStrategyOptions), IList<string> volumes = default(IList<string>))
         {
             AllowPrivilegeEscalation = allowPrivilegeEscalation;
             AllowedCapabilities = allowedCapabilities;
@@ -128,6 +132,7 @@ namespace k8s.Models
             Privileged = privileged;
             ReadOnlyRootFilesystem = readOnlyRootFilesystem;
             RequiredDropCapabilities = requiredDropCapabilities;
+            RunAsGroup = runAsGroup;
             RunAsUser = runAsUser;
             SeLinux = seLinux;
             SupplementalGroups = supplementalGroups;
@@ -290,6 +295,15 @@ namespace k8s.Models
         public IList<string> RequiredDropCapabilities { get; set; }
 
         /// <summary>
+        /// Gets or sets runAsGroup is the strategy that will dictate the
+        /// allowable RunAsGroup values that may be set. If this field is
+        /// omitted, the pod's RunAsGroup can take any value. This field
+        /// requires the RunAsGroup feature gate to be enabled.
+        /// </summary>
+        [JsonProperty(PropertyName = "runAsGroup")]
+        public Extensionsv1beta1RunAsGroupStrategyOptions RunAsGroup { get; set; }
+
+        /// <summary>
         /// Gets or sets runAsUser is the strategy that will dictate the
         /// allowable RunAsUser values that may be set.
         /// </summary>
@@ -361,6 +375,10 @@ namespace k8s.Models
                         element1.Validate();
                     }
                 }
+            }
+            if (RunAsGroup != null)
+            {
+                RunAsGroup.Validate();
             }
             if (RunAsUser != null)
             {

@@ -52,8 +52,7 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1</param>
         /// <param name="volumeMode">volumeMode defines what type of volume is
         /// required by the claim. Value of Filesystem is implied when not
-        /// included in claim spec. This is an alpha feature and may change in
-        /// the future.</param>
+        /// included in claim spec. This is a beta feature.</param>
         /// <param name="volumeName">VolumeName is the binding reference to the
         /// PersistentVolume backing this claim.</param>
         public V1PersistentVolumeClaimSpec(IList<string> accessModes = default(IList<string>), V1TypedLocalObjectReference dataSource = default(V1TypedLocalObjectReference), V1ResourceRequirements resources = default(V1ResourceRequirements), V1LabelSelector selector = default(V1LabelSelector), string storageClassName = default(string), string volumeMode = default(string), string volumeName = default(string))
@@ -120,7 +119,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets volumeMode defines what type of volume is required by
         /// the claim. Value of Filesystem is implied when not included in
-        /// claim spec. This is an alpha feature and may change in the future.
+        /// claim spec. This is a beta feature.
         /// </summary>
         [JsonProperty(PropertyName = "volumeMode")]
         public string VolumeMode { get; set; }
