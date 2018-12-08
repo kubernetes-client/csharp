@@ -67,7 +67,7 @@ namespace @namespace
 
             ListNamespaces(client);
 
-            var status = client.DeleteNamespace(new V1DeleteOptions(), ns.Metadata.Name);
+            var status = client.DeleteNamespace(ns.Metadata.Name, new V1DeleteOptions());
 
             if (status.HasObject)
             {
