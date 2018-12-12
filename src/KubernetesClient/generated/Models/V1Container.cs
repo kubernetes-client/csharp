@@ -125,8 +125,8 @@ namespace k8s.Models
         /// <param name="tty">Whether this container should allocate a TTY for
         /// itself, also requires 'stdin' to be true. Default is false.</param>
         /// <param name="volumeDevices">volumeDevices is the list of block
-        /// devices to be used by the container. This is an alpha feature and
-        /// may change in the future.</param>
+        /// devices to be used by the container. This is a beta
+        /// feature.</param>
         /// <param name="volumeMounts">Pod volumes to mount into the
         /// container's filesystem. Cannot be updated.</param>
         /// <param name="workingDir">Container's working directory. If not
@@ -346,8 +346,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets volumeDevices is the list of block devices to be used
-        /// by the container. This is an alpha feature and may change in the
-        /// future.
+        /// by the container. This is a beta feature.
         /// </summary>
         [JsonProperty(PropertyName = "volumeDevices")]
         public IList<V1VolumeDevice> VolumeDevices { get; set; }
