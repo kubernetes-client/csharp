@@ -155,45 +155,32 @@ namespace k8s
 
             if (clusterDetails?.ClusterEndpoint == null)
             {
-                throw new KubeConfigException($"Cluster not found for context {activeContext} in kubeconfig");
+                throw new KubeConfigException($"Cluster not found for context `{activeContext}` in kubeconfig");
             }
-
             if (string.IsNullOrWhiteSpace(clusterDetails.ClusterEndpoint.Server))
             {
-                throw new KubeConfigException($"Server not found for current-context {activeContext} in kubeconfig");
+                throw new KubeConfigException($"Server not found for current-context `{activeContext}` in kubeconfig");
             }
-            Host = clusterDetails.ClusterEndpoint.Server;
 
+            Host = clusterDetails.ClusterEndpoint.Server;
             SkipTlsVerify = clusterDetails.ClusterEndpoint.SkipTlsVerify;
 
-            try
+            if(!Uri.TryCreate(Host, UriKind.Absolute, out Uri uri))
             {
-                var uri = new Uri(Host);
-                if (uri.Scheme == "https")
-                {
-                    // check certificate for https
-                    if (!clusterDetails.ClusterEndpoint.SkipTlsVerify &&
-                        string.IsNullOrWhiteSpace(clusterDetails.ClusterEndpoint.CertificateAuthorityData) &&
-                        string.IsNullOrWhiteSpace(clusterDetails.ClusterEndpoint.CertificateAuthority))
-                    {
-                        throw new KubeConfigException(
-                            $"neither certificate-authority-data nor certificate-authority not found for current-context :{activeContext} in kubeconfig");
-                    }
-
-                    if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthorityData))
-                    {
-                        var data = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
-                        SslCaCert = new X509Certificate2(Convert.FromBase64String(data));
-                    }
-                    else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
-                    {
-                        SslCaCert = new X509Certificate2(GetFullPath(k8SConfig, clusterDetails.ClusterEndpoint.CertificateAuthority));
-                    }
-                }
+                throw new KubeConfigException($"Bad server host URL `{Host}` (cannot be parsed)");
             }
-            catch (UriFormatException e)
+            
+            if (uri.Scheme == "https")
             {
-                throw new KubeConfigException("Bad Server host url", e);
+                if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthorityData))
+                {
+                    var data = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
+                    SslCaCert = new X509Certificate2(Convert.FromBase64String(data));
+                }
+                else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
+                {
+                    SslCaCert = new X509Certificate2(GetFullPath(k8SConfig, clusterDetails.ClusterEndpoint.CertificateAuthority));
+                }
             }
         }
 
