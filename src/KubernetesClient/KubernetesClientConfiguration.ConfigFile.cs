@@ -239,34 +239,68 @@ namespace k8s
 
             if (userDetails.UserCredentials.AuthProvider != null)
             {
-                if (userDetails.UserCredentials.AuthProvider.Name == "azure" &&
-                    userDetails.UserCredentials.AuthProvider.Config != null &&
-                    userDetails.UserCredentials.AuthProvider.Config.ContainsKey("access-token"))
+                if (userDetails.UserCredentials.AuthProvider.Config != null
+                 && userDetails.UserCredentials.AuthProvider.Config.ContainsKey("access-token"))
                 {
-                    var config = userDetails.UserCredentials.AuthProvider.Config;
-                    if (config.ContainsKey("expires-on"))
+                    switch (userDetails.UserCredentials.AuthProvider.Name)
                     {
-                        var expiresOn = Int32.Parse(config["expires-on"]);
-                        DateTimeOffset expires;
-#if NET452
-                        var epoch = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
-                        expires = epoch.AddSeconds(expiresOn);
-#else
-                        expires = DateTimeOffset.FromUnixTimeSeconds(expiresOn);
-#endif
-
-                        if (DateTimeOffset.Compare(expires, DateTimeOffset.Now) <= 0)
+                        case "azure":
                         {
-                            var tenantId = config["tenant-id"];
-                            var clientId = config["client-id"];
-                            var apiServerId = config["apiserver-id"];
-                            var refresh = config["refresh-token"];
-                            var newToken = RenewAzureToken(tenantId, clientId, apiServerId, refresh);
-                            config["access-token"] = newToken;
+                            var config = userDetails.UserCredentials.AuthProvider.Config;
+                            if (config.ContainsKey("expires-on"))
+                            {
+                                var expiresOn = Int32.Parse(config["expires-on"]);
+                                DateTimeOffset expires;
+                                #if NET452
+                                var epoch = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
+                                expires = epoch.AddSeconds(expiresOn);
+                                #else
+                                expires = DateTimeOffset.FromUnixTimeSeconds(expiresOn);
+                                #endif
+
+                                if (DateTimeOffset.Compare(expires
+                                                         , DateTimeOffset.Now)
+                                 <= 0)
+                                {
+                                    var tenantId = config["tenant-id"];
+                                    var clientId = config["client-id"];
+                                    var apiServerId = config["apiserver-id"];
+                                    var refresh = config["refresh-token"];
+                                    var newToken = RenewAzureToken(tenantId
+                                                                 , clientId
+                                                                 , apiServerId
+                                                                 , refresh);
+                                    config["access-token"] = newToken;
+                                }
+                            }
+
+                            AccessToken = config["access-token"];
+                            userCredentialsFound = true;
+                            break;
+                        }
+                        case "gcp":
+                        {
+                            var config = userDetails.UserCredentials.AuthProvider.Config;
+                            const string keyExpire = "expiry";
+                            if (config.ContainsKey(keyExpire))
+                            {
+                                if (DateTimeOffset.TryParse(config[keyExpire]
+                                                          , out DateTimeOffset expires))
+                                {
+                                    if (DateTimeOffset.Compare(expires
+                                                             , DateTimeOffset.Now)
+                                     <= 0)
+                                    {
+                                        throw new KubeConfigException("Refresh not supported.");
+                                    }
+                                }
+                            }
+
+                            AccessToken = config["access-token"];
+                            userCredentialsFound = true;
+                            break;
                         }
                     }
-                    AccessToken = config["access-token"];
-                    userCredentialsFound = true;
                 }
             }
 
