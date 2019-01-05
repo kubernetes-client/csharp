@@ -34,9 +34,15 @@ namespace k8s.Models
         /// <param name="targetAverageValue">targetAverageValue is the target
         /// value of the average of the metric across all relevant pods (as a
         /// quantity)</param>
-        public V2beta1PodsMetricSource(string metricName, ResourceQuantity targetAverageValue)
+        /// <param name="selector">selector is the string-encoded form of a
+        /// standard kubernetes label selector for the given metric When set,
+        /// it is passed as an additional parameter to the metrics server for
+        /// more specific metrics scoping When unset, just the metricName will
+        /// be used to gather metrics.</param>
+        public V2beta1PodsMetricSource(string metricName, ResourceQuantity targetAverageValue, V1LabelSelector selector = default(V1LabelSelector))
         {
             MetricName = metricName;
+            Selector = selector;
             TargetAverageValue = targetAverageValue;
             CustomInit();
         }
@@ -51,6 +57,16 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "metricName")]
         public string MetricName { get; set; }
+
+        /// <summary>
+        /// Gets or sets selector is the string-encoded form of a standard
+        /// kubernetes label selector for the given metric When set, it is
+        /// passed as an additional parameter to the metrics server for more
+        /// specific metrics scoping When unset, just the metricName will be
+        /// used to gather metrics.
+        /// </summary>
+        [JsonProperty(PropertyName = "selector")]
+        public V1LabelSelector Selector { get; set; }
 
         /// <summary>
         /// Gets or sets targetAverageValue is the target value of the average

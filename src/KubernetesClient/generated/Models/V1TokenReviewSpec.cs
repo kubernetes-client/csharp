@@ -7,6 +7,8 @@
 namespace k8s.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -25,9 +27,16 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1TokenReviewSpec class.
         /// </summary>
+        /// <param name="audiences">Audiences is a list of the identifiers that
+        /// the resource server presented with the token identifies as.
+        /// Audience-aware token authenticators will verify that the token was
+        /// intended for at least one of the audiences in this list. If no
+        /// audiences are provided, the audience will default to the audience
+        /// of the Kubernetes apiserver.</param>
         /// <param name="token">Token is the opaque bearer token.</param>
-        public V1TokenReviewSpec(string token = default(string))
+        public V1TokenReviewSpec(IList<string> audiences = default(IList<string>), string token = default(string))
         {
+            Audiences = audiences;
             Token = token;
             CustomInit();
         }
@@ -36,6 +45,17 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets audiences is a list of the identifiers that the
+        /// resource server presented with the token identifies as.
+        /// Audience-aware token authenticators will verify that the token was
+        /// intended for at least one of the audiences in this list. If no
+        /// audiences are provided, the audience will default to the audience
+        /// of the Kubernetes apiserver.
+        /// </summary>
+        [JsonProperty(PropertyName = "audiences")]
+        public IList<string> Audiences { get; set; }
 
         /// <summary>
         /// Gets or sets token is the opaque bearer token.

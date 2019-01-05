@@ -17,9 +17,9 @@ metadata:
   name: foo
 ";
 
-           var obj = Yaml.LoadFromString<V1Pod>(content);
+            var obj = Yaml.LoadFromString<V1Pod>(content);
 
-           Assert.Equal("foo", obj.Metadata.Name);
+            Assert.Equal("foo", obj.Metadata.Name);
         }
 
         [Fact]
@@ -89,10 +89,10 @@ spec:
   - name: cpu-demo-ctr
     image: vish/stress
     resources:
-      limits:
-        cpu: ""1""
-      requests:
-        cpu: ""0.5""
+        limits:
+            cpu: ""1""
+        requests:
+            cpu: ""0.5""
     args:
             - -cpus
             - ""2""";

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Fractions.Formatter {
     /// <summary>
@@ -11,7 +11,7 @@ namespace Fractions.Formatter {
         public static readonly IFormatProvider Instance = new DefaultFractionFormatProvider();
 
         object IFormatProvider.GetFormat(Type formatType) {
-            return formatType == typeof (Fraction) 
+            return formatType == typeof (Fraction)
                 ? DefaultFractionFormatter.Instance
                 : null;
         }

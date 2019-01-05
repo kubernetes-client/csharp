@@ -81,3 +81,7 @@ cd csharp\tests
 dotnet restore
 dotnet test
 ```
+
+## Contributing
+
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) for instructions on how to contribute.

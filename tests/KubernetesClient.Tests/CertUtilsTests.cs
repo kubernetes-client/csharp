@@ -23,7 +23,7 @@ namespace k8s.Tests
         /// Checks that a certificate can be loaded from files.
         /// </summary>
         [Fact]
-        public void LoadFromFiles() 
+        public void LoadFromFiles()
         {
             var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(kubeConfigFileName, "federal-context", useRelativePaths: false);
 
@@ -49,7 +49,7 @@ namespace k8s.Tests
         /// Checks that a certificate can be loaded from inline.
         /// </summary>
         [Fact]
-        public void LoadFromInlineData() 
+        public void LoadFromInlineData()
         {
             var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(kubeConfigFileName, "victorian-context", useRelativePaths: false);
 
