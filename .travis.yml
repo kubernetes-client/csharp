@@ -30,9 +30,9 @@ before_install:
 
 script:
   - ./ci.sh    
+  - ./$TRAVIS_OS_NAME-unit-test.sh
 
 after_script:
-  - ./$TRAVIS_OS_NAME-unit-test.sh
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ./integration-tests.sh; fi
 
 deploy:
