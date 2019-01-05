@@ -7,6 +7,10 @@ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsof
 sudo apt-get -qq update
 sudo apt-get install -y dotnet-sdk-2.1
 
+echo 'Installing code coverage tools'
+sudo apt-get install jq
+wget -O ./tools/codacy-coverage-reporter.jar $(curl https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest | jq -r .assets[0].browser_download_url)
+
 echo 'Installing kubectl'
 curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.9.0/bin/linux/amd64/kubectl
 chmod +x kubectl

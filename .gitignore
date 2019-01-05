@@ -2,7 +2,7 @@
 .vs
 obj/
 bin/
-tools/
+tools/**
 
 # User-specific VS files
 *.suo
