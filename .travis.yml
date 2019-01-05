@@ -29,10 +29,11 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ./integration-tests.sh; fi
 
 script:
-  - ./ci.sh  
+  - ./ci.sh    
 
 after_script:
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then java -jar ./tools/codacy-coverage-reporter.jar report -l CSharp -r ./tests/KubernetesClient.Tests/coverage.xml; ./integration-tests.sh; fi
+  - ./$TRAVIS_OS_NAME-unit-test.sh
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ./integration-tests.sh; fi
 
 deploy:
   skip_cleanup: true

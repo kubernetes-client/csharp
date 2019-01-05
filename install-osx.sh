@@ -15,4 +15,5 @@ ln -s /usr/local/share/dotnet/dotnet /usr/local/bin/
 echo 'Installing code coverage tools'
 
 brew install jq
+mkdir -p tools
 wget -O ./tools/codacy-coverage-reporter.jar $(curl https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest | jq -r .assets[0].browser_download_url)
