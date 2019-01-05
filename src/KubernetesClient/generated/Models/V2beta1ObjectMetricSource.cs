@@ -33,9 +33,19 @@ namespace k8s.Models
         /// object.</param>
         /// <param name="targetValue">targetValue is the target value of the
         /// metric (as a quantity).</param>
-        public V2beta1ObjectMetricSource(string metricName, V2beta1CrossVersionObjectReference target, ResourceQuantity targetValue)
+        /// <param name="averageValue">averageValue is the target value of the
+        /// average of the metric across all relevant pods (as a
+        /// quantity)</param>
+        /// <param name="selector">selector is the string-encoded form of a
+        /// standard kubernetes label selector for the given metric When set,
+        /// it is passed as an additional parameter to the metrics server for
+        /// more specific metrics scoping When unset, just the metricName will
+        /// be used to gather metrics.</param>
+        public V2beta1ObjectMetricSource(string metricName, V2beta1CrossVersionObjectReference target, ResourceQuantity targetValue, ResourceQuantity averageValue = default(ResourceQuantity), V1LabelSelector selector = default(V1LabelSelector))
         {
+            AverageValue = averageValue;
             MetricName = metricName;
+            Selector = selector;
             Target = target;
             TargetValue = targetValue;
             CustomInit();
@@ -47,10 +57,27 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets averageValue is the target value of the average of the
+        /// metric across all relevant pods (as a quantity)
+        /// </summary>
+        [JsonProperty(PropertyName = "averageValue")]
+        public ResourceQuantity AverageValue { get; set; }
+
+        /// <summary>
         /// Gets or sets metricName is the name of the metric in question.
         /// </summary>
         [JsonProperty(PropertyName = "metricName")]
         public string MetricName { get; set; }
+
+        /// <summary>
+        /// Gets or sets selector is the string-encoded form of a standard
+        /// kubernetes label selector for the given metric When set, it is
+        /// passed as an additional parameter to the metrics server for more
+        /// specific metrics scoping When unset, just the metricName will be
+        /// used to gather metrics.
+        /// </summary>
+        [JsonProperty(PropertyName = "selector")]
+        public V1LabelSelector Selector { get; set; }
 
         /// <summary>
         /// Gets or sets target is the described Kubernetes object.

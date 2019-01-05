@@ -51,7 +51,7 @@ namespace @namespace
         {
             var k8SClientConfig = KubernetesClientConfiguration.BuildConfigFromConfigFile();
             IKubernetes client = new Kubernetes(k8SClientConfig);
-            
+
             ListNamespaces(client);
 
             var ns = new V1Namespace
@@ -67,7 +67,7 @@ namespace @namespace
 
             ListNamespaces(client);
 
-            var status = client.DeleteNamespace(new V1DeleteOptions(), ns.Metadata.Name);
+            var status = client.DeleteNamespace(ns.Metadata.Name, new V1DeleteOptions());
 
             if (status.HasObject)
             {

@@ -38,8 +38,8 @@ namespace k8s.Models
         /// unique within the pod. Each named port in a pod must have a unique
         /// name. Name for the port that can be referred to by
         /// services.</param>
-        /// <param name="protocol">Protocol for port. Must be UDP or TCP.
-        /// Defaults to "TCP".</param>
+        /// <param name="protocol">Protocol for port. Must be UDP, TCP, or
+        /// SCTP. Defaults to "TCP".</param>
         public V1ContainerPort(int containerPort, string hostIP = default(string), int? hostPort = default(int?), string name = default(string), string protocol = default(string))
         {
             ContainerPort = containerPort;
@@ -86,8 +86,8 @@ namespace k8s.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets protocol for port. Must be UDP or TCP. Defaults to
-        /// "TCP".
+        /// Gets or sets protocol for port. Must be UDP, TCP, or SCTP. Defaults
+        /// to "TCP".
         /// </summary>
         [JsonProperty(PropertyName = "protocol")]
         public string Protocol { get; set; }

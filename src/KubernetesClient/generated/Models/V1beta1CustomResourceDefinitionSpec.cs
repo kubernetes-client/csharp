@@ -39,11 +39,19 @@ namespace k8s.Models
         /// cluster or namespace scoped.  Default is namespaced</param>
         /// <param name="additionalPrinterColumns">AdditionalPrinterColumns are
         /// additional columns shown e.g. in kubectl next to the name. Defaults
-        /// to a created-at column.</param>
+        /// to a created-at column. Optional, the global columns for all
+        /// versions. Top-level and per-version columns are mutually
+        /// exclusive.</param>
+        /// <param name="conversion">`conversion` defines conversion settings
+        /// for the CRD.</param>
         /// <param name="subresources">Subresources describes the subresources
-        /// for CustomResources</param>
+        /// for CustomResource Optional, the global subresources for all
+        /// versions. Top-level and per-version subresources are mutually
+        /// exclusive.</param>
         /// <param name="validation">Validation describes the validation
-        /// methods for CustomResources</param>
+        /// methods for CustomResources Optional, the global validation schema
+        /// for all versions. Top-level and per-version schemas are mutually
+        /// exclusive.</param>
         /// <param name="version">Version is the version this resource belongs
         /// in Should be always first item in Versions field if provided.
         /// Optional, but at least one of Version or Versions must be set.
@@ -63,9 +71,10 @@ namespace k8s.Models
         /// comparing major version, then minor version. An example sorted list
         /// of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1,
         /// v11alpha2, foo1, foo10.</param>
-        public V1beta1CustomResourceDefinitionSpec(string group, V1beta1CustomResourceDefinitionNames names, string scope, IList<V1beta1CustomResourceColumnDefinition> additionalPrinterColumns = default(IList<V1beta1CustomResourceColumnDefinition>), V1beta1CustomResourceSubresources subresources = default(V1beta1CustomResourceSubresources), V1beta1CustomResourceValidation validation = default(V1beta1CustomResourceValidation), string version = default(string), IList<V1beta1CustomResourceDefinitionVersion> versions = default(IList<V1beta1CustomResourceDefinitionVersion>))
+        public V1beta1CustomResourceDefinitionSpec(string group, V1beta1CustomResourceDefinitionNames names, string scope, IList<V1beta1CustomResourceColumnDefinition> additionalPrinterColumns = default(IList<V1beta1CustomResourceColumnDefinition>), V1beta1CustomResourceConversion conversion = default(V1beta1CustomResourceConversion), V1beta1CustomResourceSubresources subresources = default(V1beta1CustomResourceSubresources), V1beta1CustomResourceValidation validation = default(V1beta1CustomResourceValidation), string version = default(string), IList<V1beta1CustomResourceDefinitionVersion> versions = default(IList<V1beta1CustomResourceDefinitionVersion>))
         {
             AdditionalPrinterColumns = additionalPrinterColumns;
+            Conversion = conversion;
             Group = group;
             Names = names;
             Scope = scope;
@@ -84,9 +93,17 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets additionalPrinterColumns are additional columns shown
         /// e.g. in kubectl next to the name. Defaults to a created-at column.
+        /// Optional, the global columns for all versions. Top-level and
+        /// per-version columns are mutually exclusive.
         /// </summary>
         [JsonProperty(PropertyName = "additionalPrinterColumns")]
         public IList<V1beta1CustomResourceColumnDefinition> AdditionalPrinterColumns { get; set; }
+
+        /// <summary>
+        /// Gets or sets `conversion` defines conversion settings for the CRD.
+        /// </summary>
+        [JsonProperty(PropertyName = "conversion")]
+        public V1beta1CustomResourceConversion Conversion { get; set; }
 
         /// <summary>
         /// Gets or sets group is the group this resource belongs in
@@ -110,14 +127,16 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets subresources describes the subresources for
-        /// CustomResources
+        /// CustomResource Optional, the global subresources for all versions.
+        /// Top-level and per-version subresources are mutually exclusive.
         /// </summary>
         [JsonProperty(PropertyName = "subresources")]
         public V1beta1CustomResourceSubresources Subresources { get; set; }
 
         /// <summary>
         /// Gets or sets validation describes the validation methods for
-        /// CustomResources
+        /// CustomResources Optional, the global validation schema for all
+        /// versions. Top-level and per-version schemas are mutually exclusive.
         /// </summary>
         [JsonProperty(PropertyName = "validation")]
         public V1beta1CustomResourceValidation Validation { get; set; }
@@ -180,6 +199,10 @@ namespace k8s.Models
                         element.Validate();
                     }
                 }
+            }
+            if (Conversion != null)
+            {
+                Conversion.Validate();
             }
             if (Names != null)
             {

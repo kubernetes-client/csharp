@@ -6,30 +6,32 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// WebhookClientConfig contains the information to make a TLS connection
-    /// with the webhook
+    /// with the webhook. It has the same field as
+    /// admissionregistration.v1beta1.WebhookClientConfig.
     /// </summary>
-    public partial class V1beta1WebhookClientConfig
+    public partial class Apiextensionsv1beta1WebhookClientConfig
     {
         /// <summary>
-        /// Initializes a new instance of the V1beta1WebhookClientConfig class.
+        /// Initializes a new instance of the
+        /// Apiextensionsv1beta1WebhookClientConfig class.
         /// </summary>
-        public V1beta1WebhookClientConfig()
+        public Apiextensionsv1beta1WebhookClientConfig()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the V1beta1WebhookClientConfig class.
+        /// Initializes a new instance of the
+        /// Apiextensionsv1beta1WebhookClientConfig class.
         /// </summary>
         /// <param name="caBundle">`caBundle` is a PEM encoded CA bundle which
-        /// will be used to validate the webhook's server certificate.
-        /// Required.</param>
+        /// will be used to validate the webhook's server certificate. If
+        /// unspecified, system trust roots on the apiserver are used.</param>
         /// <param name="service">`service` is a reference to the service for
         /// this webhook. Either `service` or `url` must be specified.
         ///
@@ -39,8 +41,8 @@ namespace k8s.Models
         /// Port 443 will be used if it is open, otherwise it is an
         /// error.</param>
         /// <param name="url">`url` gives the location of the webhook, in
-        /// standard URL form (`[scheme://]host:port/path`). Exactly one of
-        /// `url` or `service` must be specified.
+        /// standard URL form (`scheme://host:port/path`). Exactly one of `url`
+        /// or `service` must be specified.
         ///
         /// The `host` should not refer to a service running in the cluster;
         /// use the `service` field instead. The host might be resolved via
@@ -63,7 +65,7 @@ namespace k8s.Models
         /// Attempting to use a user or basic auth e.g. "user:password@" is not
         /// allowed. Fragments ("#...") and query parameters ("?...") are not
         /// allowed, either.</param>
-        public V1beta1WebhookClientConfig(byte[] caBundle, Admissionregistrationv1beta1ServiceReference service = default(Admissionregistrationv1beta1ServiceReference), string url = default(string))
+        public Apiextensionsv1beta1WebhookClientConfig(byte[] caBundle = default(byte[]), Apiextensionsv1beta1ServiceReference service = default(Apiextensionsv1beta1ServiceReference), string url = default(string))
         {
             CaBundle = caBundle;
             Service = service;
@@ -78,7 +80,8 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets `caBundle` is a PEM encoded CA bundle which will be
-        /// used to validate the webhook's server certificate. Required.
+        /// used to validate the webhook's server certificate. If unspecified,
+        /// system trust roots on the apiserver are used.
         /// </summary>
         [JsonProperty(PropertyName = "caBundle")]
         public byte[] CaBundle { get; set; }
@@ -93,11 +96,11 @@ namespace k8s.Models
         /// Port 443 will be used if it is open, otherwise it is an error.
         /// </summary>
         [JsonProperty(PropertyName = "service")]
-        public Admissionregistrationv1beta1ServiceReference Service { get; set; }
+        public Apiextensionsv1beta1ServiceReference Service { get; set; }
 
         /// <summary>
         /// Gets or sets `url` gives the location of the webhook, in standard
-        /// URL form (`[scheme://]host:port/path`). Exactly one of `url` or
+        /// URL form (`scheme://host:port/path`). Exactly one of `url` or
         /// `service` must be specified.
         ///
         /// The `host` should not refer to a service running in the cluster;
@@ -128,15 +131,11 @@ namespace k8s.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (CaBundle == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "CaBundle");
-            }
             if (Service != null)
             {
                 Service.Validate();

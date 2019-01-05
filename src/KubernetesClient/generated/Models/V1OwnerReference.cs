@@ -12,8 +12,8 @@ namespace k8s.Models
 
     /// <summary>
     /// OwnerReference contains enough information to let you identify an
-    /// owning object. Currently, an owning object must be in the same
-    /// namespace, so there is no namespace field.
+    /// owning object. An owning object must be in the same namespace as the
+    /// dependent, or be cluster-scoped, so there is no namespace field.
     /// </summary>
     public partial class V1OwnerReference
     {

@@ -149,7 +149,7 @@ namespace k8s.Models
             }
         }
 
-        // 
+        //
         // CanonicalizeString = go version CanonicalizeBytes
         // CanonicalizeBytes returns the canonical form of q and its suffix (see comment on Quantity).
         //

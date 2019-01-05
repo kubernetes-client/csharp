@@ -1,4 +1,4 @@
-﻿namespace Fractions {
+namespace Fractions {
     /// <summary>
     /// The fraction's state.
     /// </summary>

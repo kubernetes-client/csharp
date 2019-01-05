@@ -33,10 +33,16 @@ namespace k8s.Models
         /// (as a quantity)</param>
         /// <param name="metricName">metricName is the name of the metric in
         /// question</param>
-        public V2beta1PodsMetricStatus(ResourceQuantity currentAverageValue, string metricName)
+        /// <param name="selector">selector is the string-encoded form of a
+        /// standard kubernetes label selector for the given metric When set in
+        /// the PodsMetricSource, it is passed as an additional parameter to
+        /// the metrics server for more specific metrics scoping. When unset,
+        /// just the metricName will be used to gather metrics.</param>
+        public V2beta1PodsMetricStatus(ResourceQuantity currentAverageValue, string metricName, V1LabelSelector selector = default(V1LabelSelector))
         {
             CurrentAverageValue = currentAverageValue;
             MetricName = metricName;
+            Selector = selector;
             CustomInit();
         }
 
@@ -57,6 +63,16 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "metricName")]
         public string MetricName { get; set; }
+
+        /// <summary>
+        /// Gets or sets selector is the string-encoded form of a standard
+        /// kubernetes label selector for the given metric When set in the
+        /// PodsMetricSource, it is passed as an additional parameter to the
+        /// metrics server for more specific metrics scoping. When unset, just
+        /// the metricName will be used to gather metrics.
+        /// </summary>
+        [JsonProperty(PropertyName = "selector")]
+        public V1LabelSelector Selector { get; set; }
 
         /// <summary>
         /// Validate the object.

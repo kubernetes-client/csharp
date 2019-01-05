@@ -87,7 +87,7 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes</param>
         /// <param name="resources">Compute Resources required by this
         /// container. Cannot be updated. More info:
-        /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources</param>
+        /// https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/</param>
         /// <param name="securityContext">Security options the pod should run
         /// with. More info:
         /// https://kubernetes.io/docs/concepts/policy/security-context/ More
@@ -125,8 +125,8 @@ namespace k8s.Models
         /// <param name="tty">Whether this container should allocate a TTY for
         /// itself, also requires 'stdin' to be true. Default is false.</param>
         /// <param name="volumeDevices">volumeDevices is the list of block
-        /// devices to be used by the container. This is an alpha feature and
-        /// may change in the future.</param>
+        /// devices to be used by the container. This is a beta
+        /// feature.</param>
         /// <param name="volumeMounts">Pod volumes to mount into the
         /// container's filesystem. Cannot be updated.</param>
         /// <param name="workingDir">Container's working directory. If not
@@ -277,7 +277,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets compute Resources required by this container. Cannot
         /// be updated. More info:
-        /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        /// https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
         /// </summary>
         [JsonProperty(PropertyName = "resources")]
         public V1ResourceRequirements Resources { get; set; }
@@ -346,8 +346,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets volumeDevices is the list of block devices to be used
-        /// by the container. This is an alpha feature and may change in the
-        /// future.
+        /// by the container. This is a beta feature.
         /// </summary>
         [JsonProperty(PropertyName = "volumeDevices")]
         public IList<V1VolumeDevice> VolumeDevices { get; set; }

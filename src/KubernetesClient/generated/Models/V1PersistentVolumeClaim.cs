@@ -115,6 +115,10 @@ namespace k8s.Models
             {
                 Metadata.Validate();
             }
+            if (Spec != null)
+            {
+                Spec.Validate();
+            }
         }
     }
 }

@@ -31,7 +31,7 @@ namespace k8s.Tests
                     Host = server.Uri.ToString()
                 });
 
-                var status = client.DeleteNamespace(new V1DeleteOptions(), "test");
+                var status = client.DeleteNamespace("test", new V1DeleteOptions());
 
                 Assert.False(status.HasObject);
                 Assert.Equal(v1Status.Message, status.Message);
@@ -61,7 +61,7 @@ namespace k8s.Tests
                     Host = server.Uri.ToString()
                 });
 
-                var status = client.DeleteNamespace(new V1DeleteOptions(), "test");
+                var status = client.DeleteNamespace("test", new V1DeleteOptions());
 
                 Assert.True(status.HasObject);
 

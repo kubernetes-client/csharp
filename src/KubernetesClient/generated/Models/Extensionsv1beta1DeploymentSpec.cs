@@ -43,13 +43,16 @@ namespace k8s.Models
         /// deployments and a condition with a ProgressDeadlineExceeded reason
         /// will be surfaced in the deployment status. Note that progress will
         /// not be estimated during the time a deployment is paused. This is
-        /// not set by default.</param>
+        /// set to the max value of int32 (i.e. 2147483647) by default, which
+        /// means "no deadline".</param>
         /// <param name="replicas">Number of desired pods. This is a pointer to
         /// distinguish between explicit zero and not specified. Defaults to
         /// 1.</param>
         /// <param name="revisionHistoryLimit">The number of old ReplicaSets to
         /// retain to allow rollback. This is a pointer to distinguish between
-        /// explicit zero and not specified.</param>
+        /// explicit zero and not specified. This is set to the max value of
+        /// int32 (i.e. 2147483647) by default, which means "retaining all old
+        /// RelicaSets".</param>
         /// <param name="rollbackTo">DEPRECATED. The config this deployment is
         /// rolling back to. Will be cleared after rollback is done.</param>
         /// <param name="selector">Label selector for pods. Existing
@@ -98,7 +101,9 @@ namespace k8s.Models
         /// controller will continue to process failed deployments and a
         /// condition with a ProgressDeadlineExceeded reason will be surfaced
         /// in the deployment status. Note that progress will not be estimated
-        /// during the time a deployment is paused. This is not set by default.
+        /// during the time a deployment is paused. This is set to the max
+        /// value of int32 (i.e. 2147483647) by default, which means "no
+        /// deadline".
         /// </summary>
         [JsonProperty(PropertyName = "progressDeadlineSeconds")]
         public int? ProgressDeadlineSeconds { get; set; }
@@ -113,7 +118,8 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets the number of old ReplicaSets to retain to allow
         /// rollback. This is a pointer to distinguish between explicit zero
-        /// and not specified.
+        /// and not specified. This is set to the max value of int32 (i.e.
+        /// 2147483647) by default, which means "retaining all old RelicaSets".
         /// </summary>
         [JsonProperty(PropertyName = "revisionHistoryLimit")]
         public int? RevisionHistoryLimit { get; set; }
