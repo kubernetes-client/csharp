@@ -9,6 +9,7 @@ sudo apt-get install -y dotnet-sdk-2.1
 
 echo 'Installing code coverage tools'
 sudo apt-get install jq
+mkdir -p tools
 wget -O ./tools/codacy-coverage-reporter.jar $(curl https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest | jq -r .assets[0].browser_download_url)
 
 echo 'Installing kubectl'
