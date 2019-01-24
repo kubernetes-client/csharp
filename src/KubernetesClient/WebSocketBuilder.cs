@@ -1,5 +1,8 @@
 using System;
 using System.Net.WebSockets;
+#if NET452
+using System.Net.Security;
+#endif
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
@@ -35,8 +38,20 @@ namespace k8s
             return this;
         }
 
-#if NETCOREAPP2_1
+#if NET452
+        public WebSocketBuilder SetServerCertificateValidationCallback(RemoteCertificateValidationCallback validationCallback)
+        {
+            System.Net.ServicePointManager.ServerCertificateValidationCallback += validationCallback;
+            return this;
+        }
 
+        public void CleanupServerCertificateValidationCallback(RemoteCertificateValidationCallback validationCallback)
+        {
+            System.Net.ServicePointManager.ServerCertificateValidationCallback -= validationCallback;
+        }
+#endif
+
+#if NETCOREAPP2_1
         public WebSocketBuilder ExpectServerCertificate(X509Certificate2 serverCertificate)
         {
             Options.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
