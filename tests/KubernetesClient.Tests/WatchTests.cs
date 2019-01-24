@@ -634,9 +634,9 @@ namespace k8s.Tests
             Assert.True(connectionClosed.IsSet);
 
             await kubernetes.DeleteNamespacedJobAsync(
-                new V1DeleteOptions(),
                 job.Metadata.Name,
-                job.Metadata.NamespaceProperty);
+                job.Metadata.NamespaceProperty,
+                new V1DeleteOptions());
         }
 
         [Fact(Skip = "https://github.com/kubernetes-client/csharp/issues/165")]

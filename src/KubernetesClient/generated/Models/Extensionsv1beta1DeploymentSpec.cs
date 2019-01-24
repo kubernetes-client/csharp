@@ -50,7 +50,9 @@ namespace k8s.Models
         /// 1.</param>
         /// <param name="revisionHistoryLimit">The number of old ReplicaSets to
         /// retain to allow rollback. This is a pointer to distinguish between
-        /// explicit zero and not specified.</param>
+        /// explicit zero and not specified. This is set to the max value of
+        /// int32 (i.e. 2147483647) by default, which means "retaining all old
+        /// RelicaSets".</param>
         /// <param name="rollbackTo">DEPRECATED. The config this deployment is
         /// rolling back to. Will be cleared after rollback is done.</param>
         /// <param name="selector">Label selector for pods. Existing
@@ -116,7 +118,8 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets the number of old ReplicaSets to retain to allow
         /// rollback. This is a pointer to distinguish between explicit zero
-        /// and not specified.
+        /// and not specified. This is set to the max value of int32 (i.e.
+        /// 2147483647) by default, which means "retaining all old RelicaSets".
         /// </summary>
         [JsonProperty(PropertyName = "revisionHistoryLimit")]
         public int? RevisionHistoryLimit { get; set; }

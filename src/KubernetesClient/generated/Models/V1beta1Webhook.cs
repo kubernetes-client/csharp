@@ -99,7 +99,7 @@ namespace k8s.Models
         /// be undone. Requests with the dryRun attribute will be auto-rejected
         /// if they match a webhook with sideEffects == Unknown or Some.
         /// Defaults to Unknown.</param>
-        public V1beta1Webhook(V1beta1WebhookClientConfig clientConfig, string name, string failurePolicy = default(string), V1LabelSelector namespaceSelector = default(V1LabelSelector), IList<V1beta1RuleWithOperations> rules = default(IList<V1beta1RuleWithOperations>), string sideEffects = default(string))
+        public V1beta1Webhook(Admissionregistrationv1beta1WebhookClientConfig clientConfig, string name, string failurePolicy = default(string), V1LabelSelector namespaceSelector = default(V1LabelSelector), IList<V1beta1RuleWithOperations> rules = default(IList<V1beta1RuleWithOperations>), string sideEffects = default(string))
         {
             ClientConfig = clientConfig;
             FailurePolicy = failurePolicy;
@@ -120,7 +120,7 @@ namespace k8s.Models
         /// Required
         /// </summary>
         [JsonProperty(PropertyName = "clientConfig")]
-        public V1beta1WebhookClientConfig ClientConfig { get; set; }
+        public Admissionregistrationv1beta1WebhookClientConfig ClientConfig { get; set; }
 
         /// <summary>
         /// Gets or sets failurePolicy defines how unrecognized errors from the

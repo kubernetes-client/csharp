@@ -39,6 +39,7 @@ namespace k8s
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
         /// </summary>
         /// <param name="kubeconfig">Fileinfo of the kubeconfig, cannot be null</param>
         /// <param name="currentContext">override the context in config file, set null if do not want to override</param>
@@ -60,10 +61,11 @@ namespace k8s
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
         /// </summary>
-        /// <param name="kubeconfig">Fileinfo of the kubeconfig, cannot be null, whitespaced or empty</param>
-        /// <param name="currentContext">override the context in config file, set null if do not want to override</param>
-        /// <param name="masterUrl">overrider kube api server endpoint, set null if do not want to override</param>
+        /// <param name="kubeconfig">Stream of the kubeconfig, cannot be null</param>
+        /// <param name="currentContext">Override the current context in config, set null if do not want to override</param>
+        /// <param name="masterUrl">Override the Kubernetes API server endpoint, set null if do not want to override</param>
         public static KubernetesClientConfiguration BuildConfigFromConfigFile(Stream kubeconfig,
             string currentContext = null, string masterUrl = null)
         {
@@ -84,6 +86,15 @@ namespace k8s
 
             return k8SConfiguration;
         }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="KubernetesClientConfiguration"/> from pre-loaded config object.
+        /// </summary>
+        /// <param name="k8sConfig">A <see cref="K8SConfiguration"/>, for example loaded from <see cref="LoadKubeConfigAsync(string, bool)" /></param>
+        /// <param name="currentContext">Override the current context in config, set null if do not want to override</param>
+        /// <param name="masterUrl">Override the Kubernetes API server endpoint, set null if do not want to override</param>
+        public static KubernetesClientConfiguration BuildConfigFromConfigObject(K8SConfiguration k8SConfig, string currentContext = null, string masterUrl = null)
+            => GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig);
 
         private static KubernetesClientConfiguration GetKubernetesClientConfiguration(string currentContext, string masterUrl, K8SConfiguration k8SConfig)
         {
@@ -144,45 +155,32 @@ namespace k8s
 
             if (clusterDetails?.ClusterEndpoint == null)
             {
-                throw new KubeConfigException($"Cluster not found for context {activeContext} in kubeconfig");
+                throw new KubeConfigException($"Cluster not found for context `{activeContext}` in kubeconfig");
             }
-
             if (string.IsNullOrWhiteSpace(clusterDetails.ClusterEndpoint.Server))
             {
-                throw new KubeConfigException($"Server not found for current-context {activeContext} in kubeconfig");
+                throw new KubeConfigException($"Server not found for current-context `{activeContext}` in kubeconfig");
             }
-            Host = clusterDetails.ClusterEndpoint.Server;
 
+            Host = clusterDetails.ClusterEndpoint.Server;
             SkipTlsVerify = clusterDetails.ClusterEndpoint.SkipTlsVerify;
 
-            try
+            if(!Uri.TryCreate(Host, UriKind.Absolute, out Uri uri))
             {
-                var uri = new Uri(Host);
-                if (uri.Scheme == "https")
-                {
-                    // check certificate for https
-                    if (!clusterDetails.ClusterEndpoint.SkipTlsVerify &&
-                        string.IsNullOrWhiteSpace(clusterDetails.ClusterEndpoint.CertificateAuthorityData) &&
-                        string.IsNullOrWhiteSpace(clusterDetails.ClusterEndpoint.CertificateAuthority))
-                    {
-                        throw new KubeConfigException(
-                            $"neither certificate-authority-data nor certificate-authority not found for current-context :{activeContext} in kubeconfig");
-                    }
-
-                    if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthorityData))
-                    {
-                        var data = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
-                        SslCaCert = new X509Certificate2(Convert.FromBase64String(data));
-                    }
-                    else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
-                    {
-                        SslCaCert = new X509Certificate2(GetFullPath(k8SConfig, clusterDetails.ClusterEndpoint.CertificateAuthority));
-                    }
-                }
+                throw new KubeConfigException($"Bad server host URL `{Host}` (cannot be parsed)");
             }
-            catch (UriFormatException e)
+            
+            if (uri.Scheme == "https")
             {
-                throw new KubeConfigException("Bad Server host url", e);
+                if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthorityData))
+                {
+                    var data = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
+                    SslCaCert = new X509Certificate2(Convert.FromBase64String(data));
+                }
+                else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
+                {
+                    SslCaCert = new X509Certificate2(GetFullPath(k8SConfig, clusterDetails.ClusterEndpoint.CertificateAuthority));
+                }
             }
         }
 
@@ -241,34 +239,68 @@ namespace k8s
 
             if (userDetails.UserCredentials.AuthProvider != null)
             {
-                if (userDetails.UserCredentials.AuthProvider.Name == "azure" &&
-                    userDetails.UserCredentials.AuthProvider.Config != null &&
-                    userDetails.UserCredentials.AuthProvider.Config.ContainsKey("access-token"))
+                if (userDetails.UserCredentials.AuthProvider.Config != null
+                 && userDetails.UserCredentials.AuthProvider.Config.ContainsKey("access-token"))
                 {
-                    var config = userDetails.UserCredentials.AuthProvider.Config;
-                    if (config.ContainsKey("expires-on"))
+                    switch (userDetails.UserCredentials.AuthProvider.Name)
                     {
-                        var expiresOn = Int32.Parse(config["expires-on"]);
-                        DateTimeOffset expires;
-#if NET452
-                        var epoch = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
-                        expires = epoch.AddSeconds(expiresOn);
-#else
-                        expires = DateTimeOffset.FromUnixTimeSeconds(expiresOn);
-#endif
-
-                        if (DateTimeOffset.Compare(expires, DateTimeOffset.Now) <= 0)
+                        case "azure":
                         {
-                            var tenantId = config["tenant-id"];
-                            var clientId = config["client-id"];
-                            var apiServerId = config["apiserver-id"];
-                            var refresh = config["refresh-token"];
-                            var newToken = RenewAzureToken(tenantId, clientId, apiServerId, refresh);
-                            config["access-token"] = newToken;
+                            var config = userDetails.UserCredentials.AuthProvider.Config;
+                            if (config.ContainsKey("expires-on"))
+                            {
+                                var expiresOn = Int32.Parse(config["expires-on"]);
+                                DateTimeOffset expires;
+                                #if NET452
+                                var epoch = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
+                                expires = epoch.AddSeconds(expiresOn);
+                                #else
+                                expires = DateTimeOffset.FromUnixTimeSeconds(expiresOn);
+                                #endif
+
+                                if (DateTimeOffset.Compare(expires
+                                                         , DateTimeOffset.Now)
+                                 <= 0)
+                                {
+                                    var tenantId = config["tenant-id"];
+                                    var clientId = config["client-id"];
+                                    var apiServerId = config["apiserver-id"];
+                                    var refresh = config["refresh-token"];
+                                    var newToken = RenewAzureToken(tenantId
+                                                                 , clientId
+                                                                 , apiServerId
+                                                                 , refresh);
+                                    config["access-token"] = newToken;
+                                }
+                            }
+
+                            AccessToken = config["access-token"];
+                            userCredentialsFound = true;
+                            break;
+                        }
+                        case "gcp":
+                        {
+                            var config = userDetails.UserCredentials.AuthProvider.Config;
+                            const string keyExpire = "expiry";
+                            if (config.ContainsKey(keyExpire))
+                            {
+                                if (DateTimeOffset.TryParse(config[keyExpire]
+                                                          , out DateTimeOffset expires))
+                                {
+                                    if (DateTimeOffset.Compare(expires
+                                                             , DateTimeOffset.Now)
+                                     <= 0)
+                                    {
+                                        throw new KubeConfigException("Refresh not supported.");
+                                    }
+                                }
+                            }
+
+                            AccessToken = config["access-token"];
+                            userCredentialsFound = true;
+                            break;
                         }
                     }
-                    AccessToken = config["access-token"];
-                    userCredentialsFound = true;
                 }
             }
 
