@@ -179,7 +179,7 @@ namespace k8s
         {
             // Get a 1KB buffer
             byte[] buffer = ArrayPool<byte>.Shared.Rent(1024 * 1024);
-
+            int byteCount = 0;
             try
             {
                 var segment = new ArraySegment<byte>(buffer);
@@ -199,6 +199,13 @@ namespace k8s
 
                     var streamIndex = buffer[0];
                     var extraByteCount = 1;
+                    byteCount += result.Count - extraByteCount;
+                    if (byteCount <= 2)
+                    {
+                        // The first 2 bytes from the web socket is port bytes, skip.
+                        // https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/server/portforward/websocket.go
+                        continue;
+                    }
 
                     while (true)
                     {
