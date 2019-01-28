@@ -2,7 +2,6 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using k8s;
 using k8s.Models;
@@ -38,7 +37,7 @@ namespace portforward
 
             Socket handler = null;
 
-            var t = new Thread(new ThreadStart(() => {
+            var accept = Task.Run(() => {
                 while (true) {
                     handler = listener.Accept();
                     var bytes = new byte[4096];
@@ -50,14 +49,18 @@ namespace portforward
                         }
                     }
                 }
-            }));
-            t.Start();
+            });
 
-            var buff = new byte[4096];
-            while (true) {
-                var read = stream.Read(buff, 0, 4096);
-                handler.Send(buff, read, 0);
-            }
+            var copy = Task.Run(() => {
+                var buff = new byte[4096];
+                while (true) {
+                    var read = stream.Read(buff, 0, 4096);
+                    handler.Send(buff, read, 0);
+                }
+            });
+
+            await accept;
+            await copy;
         }
     }
 }
