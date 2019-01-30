@@ -184,7 +184,8 @@ namespace k8s
         {
             // Get a 1KB buffer
             byte[] buffer = ArrayPool<byte>.Shared.Rent(1024 * 1024);
-            int byteCount = 0;
+            // This maps remembers bytes skipped for each stream.
+            Dictionary<int, int> streamBytesToSkipMap = new Dictionary<int, int>();
             try
             {
                 var segment = new ArraySegment<byte>(buffer);
@@ -204,21 +205,38 @@ namespace k8s
 
                     var streamIndex = buffer[0];
                     var extraByteCount = 1;
-                    byteCount += result.Count - extraByteCount;
-                    if (this.streamType == StreamType.PortForward && byteCount <= 2)
-                    {
-                        // When used in port-forwarding, the first 2 bytes from the web socket is port bytes, skip.
-                        // https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/server/portforward/websocket.go
-                        continue;
-                    }
 
                     while (true)
                     {
-                        if (this.buffers.ContainsKey(streamIndex))
+                        int bytesToSkip = 0;
+                        if (streamBytesToSkipMap.ContainsKey(streamIndex))
                         {
-                            this.buffers[streamIndex].Write(buffer, extraByteCount, result.Count - extraByteCount);
+                            bytesToSkip = streamBytesToSkipMap[streamIndex];
+                        }
+                        else
+                        {
+                            // When used in port-forwarding, the first 2 bytes from the web socket is port bytes, skip.
+                            // https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/server/portforward/websocket.go
+                            bytesToSkip = this.streamType == StreamType.PortForward ? 2 : 0;
                         }
 
+                        int bytesCount = result.Count - extraByteCount;
+                        if (bytesToSkip >= bytesCount)
+                        {
+                            bytesToSkip -= bytesCount;
+                            bytesCount = 0;
+                        }
+                        else
+                        {
+                            bytesCount -= bytesToSkip;
+                            bytesToSkip = 0;
+                        }
+
+                        if (bytesCount > 0 && this.buffers.ContainsKey(streamIndex))
+                        {
+                            this.buffers[streamIndex].Write(buffer, extraByteCount, bytesCount);
+                        }
+                        streamBytesToSkipMap[streamIndex] = bytesToSkip;
                         if (result.EndOfMessage == true)
                         {
                             break;
