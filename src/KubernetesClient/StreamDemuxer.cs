@@ -26,6 +26,7 @@ namespace k8s
         private readonly WebSocket webSocket;
         private readonly Dictionary<byte, ByteBuffer> buffers = new Dictionary<byte, ByteBuffer>();
         private readonly CancellationTokenSource cts = new CancellationTokenSource();
+        private readonly StreamType streamType;
         private Task runLoop;
 
         /// <summary>
@@ -34,8 +35,12 @@ namespace k8s
         /// <param name="webSocket">
         /// A <see cref="WebSocket"/> which contains a multiplexed stream, such as the <see cref="WebSocket"/> returned by the exec or attach commands.
         /// </param>
-        public StreamDemuxer(WebSocket webSocket)
+        /// <param name="streamType">
+        /// A <see cref="StreamType"/> specifies the type of the stream.
+        /// </param>
+        public StreamDemuxer(WebSocket webSocket, StreamType streamType = StreamType.RemoteCommand)
         {
+            this.streamType = streamType;
             this.webSocket = webSocket ?? throw new ArgumentNullException(nameof(webSocket));
         }
 
@@ -200,9 +205,9 @@ namespace k8s
                     var streamIndex = buffer[0];
                     var extraByteCount = 1;
                     byteCount += result.Count - extraByteCount;
-                    if (byteCount <= 2)
+                    if (this.streamType == StreamType.PortForward && byteCount <= 2)
                     {
-                        // The first 2 bytes from the web socket is port bytes, skip.
+                        // When used in port-forwarding, the first 2 bytes from the web socket is port bytes, skip.
                         // https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/server/portforward/websocket.go
                         continue;
                     }
