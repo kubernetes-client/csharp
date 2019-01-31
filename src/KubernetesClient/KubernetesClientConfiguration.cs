@@ -38,6 +38,11 @@ namespace k8s
         public string ClientCertificateFilePath { get; set; }
 
         /// <summary>
+        ///     Gets or sets the ClientCertificate KeyStoreFlags to specify where and how to import the certificate private key
+        /// </summary>
+        public X509KeyStorageFlags? ClientCertificateKeyStoreFlags { get; set; }
+
+        /// <summary>
         ///     Gets ClientCertificate Key filename
         /// </summary>
         public string ClientKeyFilePath { get; set; }
