@@ -209,11 +209,7 @@ namespace k8s
                     while (true)
                     {
                         int bytesToSkip = 0;
-                        if (streamBytesToSkipMap.ContainsKey(streamIndex))
-                        {
-                            bytesToSkip = streamBytesToSkipMap[streamIndex];
-                        }
-                        else
+                        if (!streamBytesToSkipMap.TryGetValue(streamIndex, out bytesToSkip))
                         {
                             // When used in port-forwarding, the first 2 bytes from the web socket is port bytes, skip.
                             // https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/server/portforward/websocket.go
@@ -221,8 +217,9 @@ namespace k8s
                         }
 
                         int bytesCount = result.Count - extraByteCount;
-                        if (bytesToSkip >= bytesCount)
+                        if (bytesToSkip > 0 && bytesToSkip >= bytesCount)
                         {
+                            // skip the entire data.
                             bytesToSkip -= bytesCount;
                             extraByteCount += bytesCount;
                             bytesCount = 0;
@@ -232,13 +229,14 @@ namespace k8s
                             bytesCount -= bytesToSkip;
                             extraByteCount += bytesToSkip;
                             bytesToSkip = 0;
-                        }
 
-                        if (bytesCount > 0 && this.buffers.ContainsKey(streamIndex))
-                        {
-                            this.buffers[streamIndex].Write(buffer, extraByteCount, bytesCount);
+                            if (this.buffers.ContainsKey(streamIndex))
+                            {
+                                this.buffers[streamIndex].Write(buffer, extraByteCount, bytesCount);
+                            }
                         }
                         streamBytesToSkipMap[streamIndex] = bytesToSkip;
+
                         if (result.EndOfMessage == true)
                         {
                             break;
