@@ -93,7 +93,7 @@ namespace k8s
 
                 if (config.ClientCertificateKeyStoreFlags.HasValue)
                 {
-                    return new X509Certificate2(pkcs.ToArray(), null, config.ClientCertificateKeyStoreFlags.Value);
+                    return new X509Certificate2(pkcs.ToArray(), "", config.ClientCertificateKeyStoreFlags.Value);
                 }
                 else
                 {
