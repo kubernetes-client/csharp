@@ -185,7 +185,7 @@ namespace k8s
             // Get a 1KB buffer
             byte[] buffer = ArrayPool<byte>.Shared.Rent(1024 * 1024);
             // This maps remembers bytes skipped for each stream.
-            Dictionary<int, int> streamBytesToSkipMap = new Dictionary<int, int>();
+            Dictionary<byte, int> streamBytesToSkipMap = new Dictionary<byte, int>();
             try
             {
                 var segment = new ArraySegment<byte>(buffer);
@@ -224,11 +224,13 @@ namespace k8s
                         if (bytesToSkip >= bytesCount)
                         {
                             bytesToSkip -= bytesCount;
+                            extraByteCount += bytesCount;
                             bytesCount = 0;
                         }
                         else
                         {
                             bytesCount -= bytesToSkip;
+                            extraByteCount += bytesToSkip;
                             bytesToSkip = 0;
                         }
 
