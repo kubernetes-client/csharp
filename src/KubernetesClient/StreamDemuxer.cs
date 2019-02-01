@@ -26,6 +26,7 @@ namespace k8s
         private readonly WebSocket webSocket;
         private readonly Dictionary<byte, ByteBuffer> buffers = new Dictionary<byte, ByteBuffer>();
         private readonly CancellationTokenSource cts = new CancellationTokenSource();
+        private readonly StreamType streamType;
         private Task runLoop;
 
         /// <summary>
@@ -34,8 +35,12 @@ namespace k8s
         /// <param name="webSocket">
         /// A <see cref="WebSocket"/> which contains a multiplexed stream, such as the <see cref="WebSocket"/> returned by the exec or attach commands.
         /// </param>
-        public StreamDemuxer(WebSocket webSocket)
+        /// <param name="streamType">
+        /// A <see cref="StreamType"/> specifies the type of the stream.
+        /// </param>
+        public StreamDemuxer(WebSocket webSocket, StreamType streamType = StreamType.RemoteCommand)
         {
+            this.streamType = streamType;
             this.webSocket = webSocket ?? throw new ArgumentNullException(nameof(webSocket));
         }
 
@@ -179,7 +184,8 @@ namespace k8s
         {
             // Get a 1KB buffer
             byte[] buffer = ArrayPool<byte>.Shared.Rent(1024 * 1024);
-
+            // This maps remembers bytes skipped for each stream.
+            Dictionary<byte, int> streamBytesToSkipMap = new Dictionary<byte, int>();
             try
             {
                 var segment = new ArraySegment<byte>(buffer);
@@ -202,10 +208,34 @@ namespace k8s
 
                     while (true)
                     {
-                        if (this.buffers.ContainsKey(streamIndex))
+                        int bytesToSkip = 0;
+                        if (!streamBytesToSkipMap.TryGetValue(streamIndex, out bytesToSkip))
                         {
-                            this.buffers[streamIndex].Write(buffer, extraByteCount, result.Count - extraByteCount);
+                            // When used in port-forwarding, the first 2 bytes from the web socket is port bytes, skip.
+                            // https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/server/portforward/websocket.go
+                            bytesToSkip = this.streamType == StreamType.PortForward ? 2 : 0;
                         }
+
+                        int bytesCount = result.Count - extraByteCount;
+                        if (bytesToSkip > 0 && bytesToSkip >= bytesCount)
+                        {
+                            // skip the entire data.
+                            bytesToSkip -= bytesCount;
+                            extraByteCount += bytesCount;
+                            bytesCount = 0;
+                        }
+                        else
+                        {
+                            bytesCount -= bytesToSkip;
+                            extraByteCount += bytesToSkip;
+                            bytesToSkip = 0;
+
+                            if (this.buffers.ContainsKey(streamIndex))
+                            {
+                                this.buffers[streamIndex].Write(buffer, extraByteCount, bytesCount);
+                            }
+                        }
+                        streamBytesToSkipMap[streamIndex] = bytesToSkip;
 
                         if (result.EndOfMessage == true)
                         {
