@@ -90,7 +90,15 @@ namespace k8s
             using (var pkcs = new MemoryStream())
             {
                 store.Save(pkcs, new char[0], new SecureRandom());
-                return new X509Certificate2(pkcs.ToArray());
+
+                if (config.ClientCertificateKeyStoreFlags.HasValue)
+                {
+                    return new X509Certificate2(pkcs.ToArray(), "", config.ClientCertificateKeyStoreFlags.Value);
+                }
+                else
+                {
+                    return new X509Certificate2(pkcs.ToArray());
+                }
             }
         }
     }
