@@ -23,6 +23,48 @@ metadata:
         }
 
         [Fact]
+        public void LoadNamespacedFromString()
+        {
+            var content = @"apiVersion: v1
+kind: Pod
+metadata:
+  namespace: bar
+  name: foo
+";
+
+            var obj = Yaml.LoadFromString<V1Pod>(content);
+
+            Assert.Equal("foo", obj.Metadata.Name);
+            Assert.Equal("bar", obj.Metadata.NamespaceProperty);
+        }
+
+        [Fact]
+        public void LoadPropertyNamedReadOnlyFromString()
+        {
+            var content = @"apiVersion: v1
+kind: Pod
+metadata:
+  namespace: bar
+  name: foo
+spec:
+  containers:
+    - image: nginx
+      volumeMounts:
+      - name: vm1
+        mountPath: /vm1
+        readOnly: true
+      - name: vm2
+        mountPath: /vm2
+        readOnly: false
+";
+
+            var obj = Yaml.LoadFromString<V1Pod>(content);
+
+            Assert.True(obj.Spec.Containers[0].VolumeMounts[0].ReadOnlyProperty);
+            Assert.False(obj.Spec.Containers[0].VolumeMounts[1].ReadOnlyProperty);
+        }
+
+        [Fact]
         public void LoadFromStream()
         {
             var content = @"apiVersion: v1
@@ -57,6 +99,85 @@ metadata:
 kind: Pod
 metadata:
   name: foo").SequenceEqual(ToLines(yaml)));
+        }
+
+        [Fact]
+        public void WriteNamespacedToString()
+        {
+            var pod = new V1Pod()
+            {
+                ApiVersion = "v1",
+                Kind = "Pod",
+                Metadata = new V1ObjectMeta()
+                {
+                    Name = "foo",
+                    NamespaceProperty = "bar"
+                }
+            };
+
+            var yaml = Yaml.SaveToString(pod);
+            Assert.True(ToLines(@"apiVersion: v1
+kind: Pod
+metadata:
+  name: foo
+  namespace: bar").SequenceEqual(ToLines(yaml)));
+        }
+
+        [Fact]
+        public void WritePropertyNamedReadOnlyToString()
+        {
+            var pod = new V1Pod()
+            {
+                ApiVersion = "v1",
+                Kind = "Pod",
+                Metadata = new V1ObjectMeta()
+                {
+                    Name = "foo",
+                    NamespaceProperty = "bar"
+                },
+                Spec = new V1PodSpec()
+                {
+                    Containers = new[]
+                    {
+                        new V1Container()
+                        {
+                            Image = "nginx",
+                            VolumeMounts = new[]
+                            {
+                                new V1VolumeMount
+                                {
+                                    Name = "vm1",
+                                    MountPath = "/vm1",
+                                    ReadOnlyProperty = true
+                                },
+                                new V1VolumeMount
+                                {
+                                    Name = "vm2",
+                                    MountPath = "/vm2",
+                                    ReadOnlyProperty = false
+                                },
+                            }
+                        }
+                    }
+                }
+            };
+
+            var yaml = Yaml.SaveToString(pod);
+            Assert.True(ToLines(@"apiVersion: v1
+kind: Pod
+metadata:
+  name: foo
+  namespace: bar
+spec:
+  containers:
+  - image: nginx
+    volumeMounts:
+    - mountPath: /vm1
+      name: vm1
+      readOnly: true
+    - mountPath: /vm2
+      name: vm2
+      readOnly: false").SequenceEqual(ToLines(yaml)));
         }
 
         private static IEnumerable<string> ToLines(string s)
