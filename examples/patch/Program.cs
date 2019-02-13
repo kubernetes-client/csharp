@@ -20,12 +20,12 @@ namespace patch
             var name = pod.Metadata.Name;
             PrintLabels(pod);
 
-            var newlables = new Dictionary<string, string>(pod.Metadata.Labels)
+            var newlabels = new Dictionary<string, string>(pod.Metadata.Labels)
             {
                 ["test"] = "test"
             };
             var patch = new JsonPatchDocument<V1Pod>();
-            patch.Replace(e => e.Metadata.Labels, newlables);
+            patch.Replace(e => e.Metadata.Labels, newlabels);
             client.PatchNamespacedPod(new V1Patch(patch), name, "default");
 
             PrintLabels(client.ReadNamespacedPod(name, "default"));
