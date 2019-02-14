@@ -30,7 +30,7 @@ git clone https://github.com/kubernetes-client/gen
 
 ```bash
 # Where REPO_DIR points to the root of the csharp repository
-cd ${REPO_DIR}/csharp/src
+cd ${REPO_DIR}/csharp/src/KubernetesClient
 ${GEN_DIR}/openapi/csharp.sh generated ../csharp.settings
 ```
 
