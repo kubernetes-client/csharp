@@ -55,15 +55,15 @@ namespace k8s.Tests
         }
 
         /// <summary>
-        ///     Checks for loading of eliptical curve keys
+        ///     Checks for loading of elliptical curve keys
         /// </summary>
         /// <param name="context"></param>
         [Theory]
-        [InlineData("craftsman-context")]
-        public void ContextElpiticKey(string context)
+        [InlineData("elliptic-context")]
+        public void ContextEllipticKey(string context)
         {
             var fi = new FileInfo("assets/kubeconfig.yml");
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, context);
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, context, useRelativePaths: false);
             var pfx = CertUtils.GeneratePfx(cfg);
             Assert.NotNull(pfx);
         }
