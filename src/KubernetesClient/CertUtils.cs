@@ -9,6 +9,7 @@ using Org.BouncyCastle.OpenSsl;
 using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.X509;
+using X509Certificate = Org.BouncyCastle.X509.X509Certificate;
 
 namespace k8s
 {
@@ -21,13 +22,19 @@ namespace k8s
         /// <returns>x509 instance.</returns>
         public static X509Certificate2 LoadPemFileCert(string file)
         {
-            var certdata = File.ReadAllText(file)
-                .Replace("-----BEGIN CERTIFICATE-----", "")
-                .Replace("-----END CERTIFICATE-----", "")
-                .Replace("\r", "")
-                .Replace("\n", "");
+            var certs = new X509CertificateParser().ReadCertificates(File.OpenRead(file));
+            var store = new Pkcs12StoreBuilder().Build();
+            foreach (X509Certificate cert in certs)
+            {
+                store.SetCertificateEntry(Guid.NewGuid().ToString(), new X509CertificateEntry(cert));
+            }
 
-            return new X509Certificate2(Convert.FromBase64String(certdata));
+            using (var pkcs = new MemoryStream())
+            {
+                store.Save(pkcs, new char[0], new SecureRandom());
+                // TODO not a chain
+                return new X509Certificate2(pkcs.ToArray());
+            }
         }
 
         /// <summary>
