@@ -70,5 +70,15 @@ namespace k8s.Tests
             var cert = CertUtils.GeneratePfx(cfg);
             Assert.NotNull(cert.PrivateKey);
         }
+
+        /// <summary>
+        /// Checks 
+        /// </summary>
+        [Fact]
+        public void LoadPemWithMultiCert()
+        {
+            var cert = CertUtils.LoadPemFileCert("assets/ca3.crt");
+            Assert.NotNull(cert.PublicKey);
+        }
     }
 }
