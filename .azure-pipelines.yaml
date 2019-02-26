@@ -60,6 +60,8 @@ jobs:
       command: pack
       packagesToPack: src/KubernetesClient/KubernetesClient.csproj
       packDirectory: '$(Build.ArtifactStagingDirectory)/nupkg'
+      majorVersion: 1
+      minorVersion: 4      
       versioningScheme: byPrereleaseNumber
 
 
