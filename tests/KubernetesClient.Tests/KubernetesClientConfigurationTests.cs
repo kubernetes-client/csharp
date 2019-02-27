@@ -55,6 +55,20 @@ namespace k8s.Tests
         }
 
         /// <summary>
+        ///     Checks for loading of elliptical curve keys
+        /// </summary>
+        /// <param name="context"></param>
+        [Theory]
+        [InlineData("elliptic-context")]
+        public void ContextEllipticKey(string context)
+        {
+            var fi = new FileInfo("assets/kubeconfig.yml");
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, context, useRelativePaths: false);
+            var pfx = CertUtils.GeneratePfx(cfg);
+            Assert.NotNull(pfx);
+        }
+
+        /// <summary>
         ///     Checks if certificate-based authentication is loaded properly from the config file, per context
         /// </summary>
         /// <param name="context">Context to retreive the configuration</param>

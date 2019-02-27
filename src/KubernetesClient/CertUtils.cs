@@ -89,10 +89,10 @@ namespace k8s
                 }
             }
 
-            var rsaKeyParams = (RsaPrivateCrtKeyParameters) obj;
+            var keyParams = (AsymmetricKeyParameter) obj;
 
             var store = new Pkcs12StoreBuilder().Build();
-            store.SetKeyEntry("K8SKEY", new AsymmetricKeyEntry(rsaKeyParams), new[] {new X509CertificateEntry(cert)});
+            store.SetKeyEntry("K8SKEY", new AsymmetricKeyEntry(keyParams), new[] {new X509CertificateEntry(cert)});
 
             using (var pkcs = new MemoryStream())
             {
