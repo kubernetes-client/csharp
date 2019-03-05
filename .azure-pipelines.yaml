@@ -1,0 +1,74 @@
+jobs:
+
+- job: Build
+  pool:
+    vmImage: 'VS2017-Win2016'
+
+
+  steps:
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet restore'
+    inputs:
+      command: restore
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet build'
+    inputs:
+      projects: '**/*.sln'
+
+  # - task: MSBuild@1
+  #   displayName: 'Build solution **/*.sln'
+  #   inputs:
+  #     msbuildArchitecture: x64
+
+  #     configuration: Release
+
+  # - task: VSTest@2
+  #   displayName: 'VsTest - testAssemblies'
+  #   inputs:
+  #     testAssemblyVer2: |
+  #       tests\**\*Tests*.dll
+  #       !**\obj\**
+
+  #     codeCoverageEnabled: true
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet test'
+    inputs:
+      command: test
+      projects: tests\**\*.csproj
+      arguments: /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+
+  - task: PublishCodeCoverageResults@1
+    displayName: 'publish coverage results'
+    inputs:
+      codeCoverageTool: 'cobertura'
+      summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.cobertura.xml'  
+
+  - task: alanwales.resharper-code-analysis.custom-build-task.ResharperCli@1
+    displayName: 'Automated code quality checks'
+    inputs:
+      SolutionOrProjectPath: 'kubernetes-client.sln'
+
+      FailBuildOnCodeIssues: false
+
+    continueOnError: true
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet pack'
+    inputs:
+      command: pack
+      packagesToPack: src/KubernetesClient/KubernetesClient.csproj
+      packDirectory: '$(Build.ArtifactStagingDirectory)/nupkg'
+      majorVersion: 1
+      minorVersion: 4      
+      versioningScheme: byPrereleaseNumber
+
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+    inputs:
+      PathtoPublish: '$(build.artifactstagingdirectory)/nupkg'
+
+
+
