@@ -6,9 +6,9 @@ namespace k8s
 {
     public partial class KubernetesClientConfiguration
     {
-        private const string ServiceaccountPath = "/var/run/secrets/kubernetes.io/serviceaccount/";
-        private const string ServiceAccountTokenKeyFileName = "token";
-        private const string ServiceAccountRootCAKeyFileName = "ca.crt";
+        public const string ServiceaccountPath = "/var/run/secrets/kubernetes.io/serviceaccount/";
+        public const string ServiceAccountTokenKeyFileName = "token";
+        public const string ServiceAccountRootCAKeyFileName = "ca.crt";
 
         public static KubernetesClientConfiguration InClusterConfig()
         {

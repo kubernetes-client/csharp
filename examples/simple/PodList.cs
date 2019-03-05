@@ -7,7 +7,7 @@ namespace simple
     {
         private static void Main(string[] args)
         {
-            var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
+            var config = KubernetesClientConfiguration.BuildDefaultConfig();
             IKubernetes client = new Kubernetes(config);
             Console.WriteLine("Starting Request!");
 
