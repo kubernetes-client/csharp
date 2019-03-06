@@ -64,14 +64,8 @@ var ns = new V1Namespace
 var result = client.CreateNamespace(ns);
 Console.WriteLine(result);
 
-var result = client.CreateNamespace(ns);
-Console.WriteLine(result);
-
 var status = client.DeleteNamespace(ns.Metadata.Name, new V1DeleteOptions());
 ```
-
-### Deleting Objects
-```c#
 
 ## Examples
 
