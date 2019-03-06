@@ -27,6 +27,26 @@ namespace k8s
         /// <summary>
         ///     Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
         /// </summary>
+        public static KubernetesClientConfiguration BuildDefaultConfig() {
+            var kubeconfig = Environment.GetEnvironmentVariable("KUBECONFIG");
+            if (kubeconfig != null) {
+                return BuildConfigFromConfigFile(kubeconfigPath: kubeconfig);
+            }
+            if (File.Exists(KubeConfigDefaultLocation)) {
+                return BuildConfigFromConfigFile(kubeconfigPath: KubeConfigDefaultLocation);
+            }
+            if (IsInCluster()) {
+                return InClusterConfig();
+            }
+            var config = new KubernetesClientConfiguration();
+            config.Host = "http://localhost:8080";
+            return config;
+        }
+
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
+        /// </summary>
         /// <param name="masterUrl">kube api server endpoint</param>
         /// <param name="kubeconfigPath">Explicit file path to kubeconfig. Set to null to use the default file path</param>
         /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
