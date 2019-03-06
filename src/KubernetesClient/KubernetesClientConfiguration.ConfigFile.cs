@@ -35,8 +35,7 @@ namespace k8s
             if (File.Exists(KubeConfigDefaultLocation)) {
                 return BuildConfigFromConfigFile(kubeconfigPath: KubeConfigDefaultLocation);
             }
-            var tokenPath = KubernetesClientConfiguration.ServiceaccountPath + KubernetesClientConfiguration.ServiceAccountTokenKeyFileName;
-            if (File.Exists(tokenPath)) {
+            if (IsInCluster()) {
                 return InClusterConfig();
             }
             var config = new KubernetesClientConfiguration();
