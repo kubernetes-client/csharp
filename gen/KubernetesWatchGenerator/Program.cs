@@ -15,17 +15,13 @@ namespace KubernetesWatchGenerator
     {
         static async Task Main(string[] args)
         {
-            // Initialize variables - such as the Kubernetes branch for which to generate the API.
-            string kubernetesBranch = "v1.10.0";
-
-            if (Environment.GetEnvironmentVariable("KUBERNETES_BRANCH") != null)
+            if (args.Length < 2)
             {
-                kubernetesBranch = Environment.GetEnvironmentVariable("KUBERNETES_BRANCH");
-
-                Console.WriteLine($"Using Kubernetes branch {kubernetesBranch}, as set by the KUBERNETES_BRANCH environment variable");
+                Console.Error.WriteLine($"usage {args[0]} path/to/csharp.settings");
+                Environment.Exit(1);
             }
 
-            const string outputDirectory = "../../../../../src/KubernetesClient/generated/";
+            var (kubernetesBranch, outputDirectory) = LoadSettings(args[1]);
 
             var specUrl = $"https://raw.githubusercontent.com/kubernetes/kubernetes/{kubernetesBranch}/api/openapi-spec/swagger.json";
             var specPath = $"{kubernetesBranch}-swagger.json";
@@ -100,6 +96,38 @@ namespace KubernetesWatchGenerator
 
             // Render.
             Render.FileToFile("ModelExtensions.cs.template", definitions, $"{outputDirectory}ModelExtensions.cs");
+        }
+
+        private static (string kubernetesBranch, string outputDirectory) LoadSettings(string path)
+        {
+            var fileInfo = new FileInfo(path);
+
+            if (!fileInfo.Exists)
+            {
+                Console.Error.WriteLine("Cannot find csharp.settings");
+                Environment.Exit(1);
+            }
+
+            using (var s = new StreamReader(fileInfo.OpenRead()))
+            {
+                string l;
+                while ((l = s.ReadLine()) != null)
+                {
+                    if (l.Contains("KUBERNETES_BRANCH"))
+                    {
+                        var kubernetesBranch = l.Split("=")[1];
+                        var outputDirectory = Path.Combine(fileInfo.DirectoryName, @"src/KubernetesClient/generated/");
+
+                        Console.WriteLine($"Using branch {kubernetesBranch} output {outputDirectory}");
+
+                        return (kubernetesBranch, outputDirectory);
+                    }
+                }
+            }
+
+            Console.Error.WriteLine("Cannot find KUBERNETES_BRANCH in csharp.settings");
+            Environment.Exit(1);
+            return (null, null);
         }
 
         static void ToXmlDoc(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
