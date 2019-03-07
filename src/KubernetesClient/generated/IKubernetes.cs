@@ -35187,6 +35187,10 @@ namespace k8s
         /// The custom resource's plural name. For TPRs this would be lowercase
         /// plural kind.
         /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
         /// labels. Defaults to everything.
@@ -35199,6 +35203,10 @@ namespace k8s
         /// if it's 0, then we simply return what we currently have in cache,
         /// no guarantee; - if set to non zero, then the result is at least as
         /// fresh as given rv.
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
         /// </param>
         /// <param name='watch'>
         /// Watch for changes to the described resources and return them as a
@@ -35213,7 +35221,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> ListNamespacedCustomObjectWithHttpMessagesAsync(string group, string version, string namespaceParameter, string plural, string labelSelector = default(string), string resourceVersion = default(string), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> ListNamespacedCustomObjectWithHttpMessagesAsync(string group, string version, string namespaceParameter, string plural, string fieldSelector = default(string), string labelSelector = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Creates a cluster scoped Custom object
@@ -35255,6 +35263,10 @@ namespace k8s
         /// The custom resource's plural name. For TPRs this would be lowercase
         /// plural kind.
         /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
         /// labels. Defaults to everything.
@@ -35267,6 +35279,10 @@ namespace k8s
         /// if it's 0, then we simply return what we currently have in cache,
         /// no guarantee; - if set to non zero, then the result is at least as
         /// fresh as given rv.
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
         /// </param>
         /// <param name='watch'>
         /// Watch for changes to the described resources and return them as a
@@ -35281,7 +35297,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> ListClusterCustomObjectWithHttpMessagesAsync(string group, string version, string plural, string labelSelector = default(string), string resourceVersion = default(string), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> ListClusterCustomObjectWithHttpMessagesAsync(string group, string version, string plural, string fieldSelector = default(string), string labelSelector = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the cluster scoped specified custom object

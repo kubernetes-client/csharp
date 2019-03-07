@@ -217,6 +217,20 @@ namespace k8s.Models
         public const string KubeGroup = "apps";
     }
 
+    public partial class V1alpha1AuditSink : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1alpha1";
+        public const string KubeKind = "AuditSink";
+        public const string KubeGroup = "auditregistration.k8s.io";
+    }
+
+    public partial class V1alpha1AuditSinkList : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1alpha1";
+        public const string KubeKind = "AuditSinkList";
+        public const string KubeGroup = "auditregistration.k8s.io";
+    }
+
     public partial class V1TokenReview : IKubernetesObject
     {
         public const string KubeApiVersion = "v1";
@@ -963,6 +977,20 @@ namespace k8s.Models
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "StorageClassList";
+        public const string KubeGroup = "storage.k8s.io";
+    }
+
+    public partial class V1VolumeAttachment : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "VolumeAttachment";
+        public const string KubeGroup = "storage.k8s.io";
+    }
+
+    public partial class V1VolumeAttachmentList : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "VolumeAttachmentList";
         public const string KubeGroup = "storage.k8s.io";
     }
 
