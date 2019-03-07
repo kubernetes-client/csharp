@@ -19,9 +19,9 @@ namespace k8s
         public string Host { get; set; }
 
         /// <summary>
-        ///     Gets SslCaCert
+        ///     Gets SslCaCerts
         /// </summary>
-        public X509Certificate2Collection SslCaCert { get; set; }
+        public X509Certificate2Collection SslCaCerts { get; set; }
 
         /// <summary>
         ///     Gets ClientCertificateData

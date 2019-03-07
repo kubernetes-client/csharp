@@ -222,7 +222,7 @@ namespace k8s.Tests
                         Host = server.Uri.ToString(),
                         ClientCertificateData = clientCertificateData,
                         ClientCertificateKeyData = clientCertificateKeyData,
-                        SslCaCert = new X509Certificate2Collection(serverCertificate),
+                        SslCaCerts = new X509Certificate2Collection(serverCertificate),
                         SkipTlsVerify = false
                     });
 

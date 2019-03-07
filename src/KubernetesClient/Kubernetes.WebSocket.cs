@@ -260,16 +260,16 @@ namespace k8s
             }
 
 #if NET452
-            if (this.CaCert != null)
+            if (this.CaCerts != null)
             {
                 webSocketBuilder.SetServerCertificateValidationCallback(this.ServerCertificateValidationCallback);
             }
 #endif
 
 #if NETCOREAPP2_1
-            if (this.CaCert != null)
+            if (this.CaCerts != null)
             {
-                webSocketBuilder.ExpectServerCertificate(this.CaCert);
+                webSocketBuilder.ExpectServerCertificate(this.CaCerts);
             }
 
             if (this.SkipTlsVerify)
@@ -347,7 +347,7 @@ namespace k8s
                     ServiceClientTracing.Exit(invocationId, null);
                 }
 #if NET452
-                if (this.CaCert != null)
+                if (this.CaCerts != null)
                 {
                     webSocketBuilder.CleanupServerCertificateValidationCallback(this.ServerCertificateValidationCallback);
                 }
@@ -359,7 +359,7 @@ namespace k8s
 #if NET452
         internal bool ServerCertificateValidationCallback(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
         {
-            return Kubernetes.CertificateValidationCallBack(sender, this.CaCert, certificate, chain, sslPolicyErrors);
+            return Kubernetes.CertificateValidationCallBack(sender, this.CaCerts, certificate, chain, sslPolicyErrors);
         }
 #endif
     }

@@ -39,7 +39,7 @@ namespace k8s
                 throw new KubeConfigException("Bad host url", e);
             }
 
-            CaCert = config.SslCaCert;
+            CaCerts = config.SslCaCerts;
             SkipTlsVerify = config.SkipTlsVerify;
 
             if (BaseUri.Scheme == "https")
@@ -53,23 +53,26 @@ namespace k8s
                 }
                 else
                 {
-                    if (CaCert == null)
+                    if (CaCerts == null)
                     {
                         throw new KubeConfigException("a CA must be set when SkipTlsVerify === false");
                     }
 
-                    var caCert = CaCert[CaCert.Count - 1];
+                    var certList = new System.Collections.Generic.List<Java.Security.Cert.Certificate>();
 
-                    using (System.IO.MemoryStream certStream = new System.IO.MemoryStream(caCert.RawData))
+                    foreach (X509Certificate2 caCert in CaCerts)
                     {
-                        Java.Security.Cert.Certificate cert = Java.Security.Cert.CertificateFactory.GetInstance("X509").GenerateCertificate(certStream);
-                        Xamarin.Android.Net.AndroidClientHandler handler = (Xamarin.Android.Net.AndroidClientHandler)this.HttpClientHandler;
-
-                        handler.TrustedCerts = new System.Collections.Generic.List<Java.Security.Cert.Certificate>()
+                        using (System.IO.MemoryStream certStream = new System.IO.MemoryStream(caCert.RawData))
                         {
-                            cert
-                        };
+                            Java.Security.Cert.Certificate cert = Java.Security.Cert.CertificateFactory.GetInstance("X509").GenerateCertificate(certStream);
+
+                            certList.Add(cert);
+                        }
                     }
+
+                    Xamarin.Android.Net.AndroidClientHandler handler = (Xamarin.Android.Net.AndroidClientHandler)this.HttpClientHandler;
+
+                    handler.TrustedCerts = certList;
                 }
             }
 
@@ -102,7 +105,7 @@ namespace k8s
                 throw new KubeConfigException("Bad host url", e);
             }
 
-            CaCert = config.SslCaCert;
+            CaCerts = config.SslCaCerts;
             SkipTlsVerify = config.SkipTlsVerify;
 
             if (BaseUri.Scheme == "https")
@@ -124,7 +127,7 @@ namespace k8s
                 }
                 else
                 {
-                    if (CaCert == null)
+                    if (CaCerts == null)
                     {
                         throw new KubeConfigException("a CA must be set when SkipTlsVerify === false");
                     }
@@ -132,18 +135,18 @@ namespace k8s
 #if NET452
                     ((WebRequestHandler) HttpClientHandler).ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
                     {
-                        return Kubernetes.CertificateValidationCallBack(sender, CaCert, certificate, chain, sslPolicyErrors);
+                        return Kubernetes.CertificateValidationCallBack(sender, CaCerts, certificate, chain, sslPolicyErrors);
                     };
 #elif XAMARINIOS1_0
                     System.Net.ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) =>
                     {
                         var cert = new X509Certificate2(certificate);
-                        return Kubernetes.CertificateValidationCallBack(sender, CaCert, cert, chain, sslPolicyErrors);
+                        return Kubernetes.CertificateValidationCallBack(sender, CaCerts, cert, chain, sslPolicyErrors);
                     };
 #else
                     HttpClientHandler.ServerCertificateCustomValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
                     {
-                        return Kubernetes.CertificateValidationCallBack(sender, CaCert, certificate, chain, sslPolicyErrors);
+                        return Kubernetes.CertificateValidationCallBack(sender, CaCerts, certificate, chain, sslPolicyErrors);
                     };
 #endif
                 }
@@ -154,7 +157,7 @@ namespace k8s
         }
 #endif
 
-        private X509Certificate2Collection CaCert { get; }
+        private X509Certificate2Collection CaCerts { get; }
 
         private bool SkipTlsVerify { get; }
 
