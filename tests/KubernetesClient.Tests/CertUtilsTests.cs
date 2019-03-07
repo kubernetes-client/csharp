@@ -2,6 +2,9 @@ using System;
 using Xunit;
 using k8s;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
+using System.Linq;
 
 namespace k8s.Tests
 {
@@ -69,6 +72,23 @@ namespace k8s.Tests
             // Just validate that this doesn't throw and private key is non-null
             var cert = CertUtils.GeneratePfx(cfg);
             Assert.NotNull(cert.PrivateKey);
+        }
+
+        /// <summary>
+        /// Checks that the bundle certificate was loaded correctly
+        /// </summary>
+        [Fact]
+        public void LoadPemWithMultiCert()
+        {
+            var certCollection = CertUtils.LoadPemFileCert("assets/ca-bundle.crt");
+
+            var intermediateCert = new X509Certificate2("assets/ca-bundle-intermediate.crt");
+            var rootCert = new X509Certificate2("assets/ca-bundle-root.crt");
+
+            Assert.Equal(2, certCollection.Count);
+
+            Assert.True(certCollection[0].RawData.SequenceEqual(intermediateCert.RawData));
+            Assert.True(certCollection[1].RawData.SequenceEqual(rootCert.RawData));
         }
     }
 }

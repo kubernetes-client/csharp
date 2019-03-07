@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net;
@@ -155,7 +154,7 @@ namespace k8s
         }
 #endif
 
-        private IList<X509Certificate2> CaCert { get; }
+        private X509Certificate2Collection CaCert { get; }
 
         private bool SkipTlsVerify { get; }
 
@@ -244,7 +243,7 @@ namespace k8s
         [SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", Justification = "Unused by design")]
         public static bool CertificateValidationCallBack(
             object sender,
-            IList<X509Certificate2> caCerts,
+            X509Certificate2Collection caCerts,
             X509Certificate certificate,
             X509Chain chain,
             SslPolicyErrors sslPolicyErrors)
@@ -262,10 +261,7 @@ namespace k8s
 
                 // Added our trusted certificates to the chain
                 //
-                foreach (var caCert in caCerts)
-                {
-                    chain.ChainPolicy.ExtraStore.Add(caCert);
-                }
+                chain.ChainPolicy.ExtraStore.AddRange(caCerts);
 
                 chain.ChainPolicy.VerificationFlags = X509VerificationFlags.AllowUnknownCertificateAuthority;
                 var isValid = chain.Build((X509Certificate2)certificate);

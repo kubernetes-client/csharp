@@ -19,31 +19,20 @@ namespace k8s
         /// </summary>
         /// <param name="file">Path to pem encoded cert file</param>
         /// <returns>List of x509 instances.</returns>
-        public static IList<X509Certificate2> LoadPemFileCert(string file)
+        public static X509Certificate2Collection LoadPemFileCert(string file)
         {
-            var certs = new List<X509Certificate2>();
+            var certs =  new X509CertificateParser().ReadCertificates(File.OpenRead(file));
+            var certCollection = new X509Certificate2Collection();
 
-            var certdata = File.ReadAllText(file)
-                .Replace("\r", "")
-                .Replace("\n", "");
-
-            // Retrieve all certificates from the file
+            // Convert BouncyCastle X509Certificates to the .NET cryptography implementation and add
+            // it to the certificate collection
             //
-            var r = new Regex("-----BEGIN CERTIFICATE-----(.*?)-----END CERTIFICATE-----");
-
-            var matches = r.Matches(certdata);
-
-            // Strip the header and footer from each cert and store them in the certificate list
-            //
-            foreach (Match match in matches)
+            foreach (Org.BouncyCastle.X509.X509Certificate cert in certs)
             {
-                string certData = match.Value
-                    .Replace("-----BEGIN CERTIFICATE-----", "")
-                    .Replace("-----END CERTIFICATE-----", "");
-                certs.Add(new X509Certificate2(Convert.FromBase64String(certData)));
+                certCollection.Add(new X509Certificate2(cert.GetEncoded()));
             }
 
-            return certs;
+            return certCollection;
         }
 
         /// <summary>

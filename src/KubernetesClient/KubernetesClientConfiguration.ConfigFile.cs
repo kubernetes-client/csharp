@@ -196,11 +196,11 @@ namespace k8s
                 if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthorityData))
                 {
                     var data = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
-                    SslCaCert = new List<X509Certificate2>() { new X509Certificate2(Convert.FromBase64String(data)) };
+                    SslCaCert = new X509Certificate2Collection(new X509Certificate2(Convert.FromBase64String(data)));
                 }
                 else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
                 {
-                    SslCaCert = new List<X509Certificate2>() { new X509Certificate2(GetFullPath(k8SConfig, clusterDetails.ClusterEndpoint.CertificateAuthority)) };
+                    SslCaCert = new X509Certificate2Collection(new X509Certificate2(GetFullPath(k8SConfig, clusterDetails.ClusterEndpoint.CertificateAuthority)));
                 }
             }
         }

@@ -53,7 +53,7 @@ namespace k8s
 #endif
 
 #if NETCOREAPP2_1
-        public WebSocketBuilder ExpectServerCertificate(IList<X509Certificate2> serverCertificate)
+        public WebSocketBuilder ExpectServerCertificate(X509Certificate2Collection serverCertificate)
         {
             Options.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
             {

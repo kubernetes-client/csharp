@@ -21,7 +21,7 @@ namespace k8s
         /// <summary>
         ///     Gets SslCaCert
         /// </summary>
-        public IList<X509Certificate2> SslCaCert { get; set; }
+        public X509Certificate2Collection SslCaCert { get; set; }
 
         /// <summary>
         ///     Gets ClientCertificateData
