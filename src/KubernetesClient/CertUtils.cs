@@ -27,10 +27,14 @@ namespace k8s
                 .Replace("\r", "")
                 .Replace("\n", "");
 
+            // Retrieve all certificates from the file
+            //
             var r = new Regex("-----BEGIN CERTIFICATE-----(.*?)-----END CERTIFICATE-----");
 
             var matches = r.Matches(certdata);
 
+            // Strip the header and footer from each cert and store them in the certificate list
+            //
             foreach (Match match in matches)
             {
                 string certData = match.Value
