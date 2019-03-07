@@ -270,7 +270,7 @@ namespace k8s
                 chain.ChainPolicy.VerificationFlags = X509VerificationFlags.AllowUnknownCertificateAuthority;
                 var isValid = chain.Build((X509Certificate2)certificate);
 
-                var certMatch = false;
+                var doesCertMatch = false;
 
                 var rootCert = chain.ChainElements[chain.ChainElements.Count - 1].Certificate;
 
@@ -280,14 +280,12 @@ namespace k8s
                 {
                     if (rootCert.RawData.SequenceEqual(cert.RawData))
                     {
-                        certMatch = true;
+                        doesCertMatch = true;
                         break;
                     }
                 }
 
-                isValid = isValid && certMatch;
-
-                return isValid;
+                return isValid && doesCertMatch;
             }
 
             // In all other cases, return false.

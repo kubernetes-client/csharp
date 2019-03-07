@@ -12,7 +12,7 @@ namespace k8s.Tests
         [Fact]
         public void ValidCert()
         {
-            var caCert = new List<X509Certificate2>() { new X509Certificate2("assets/ca.crt") };
+            var caCert = CertUtils.LoadPemFileCert("assets/ca.crt");
             var testCert = new X509Certificate2("assets/ca.crt");
             var chain = new X509Chain();
             var errors = SslPolicyErrors.RemoteCertificateChainErrors;
@@ -25,7 +25,7 @@ namespace k8s.Tests
         [Fact]
         public void InvalidCert()
         {
-            var caCert = new List<X509Certificate2>() { new X509Certificate2("assets/ca.crt") };
+            var caCert = CertUtils.LoadPemFileCert("assets/ca.crt");
             var testCert = new X509Certificate2("assets/ca2.crt");
             var chain = new X509Chain();
             var errors = SslPolicyErrors.RemoteCertificateChainErrors;
@@ -39,7 +39,10 @@ namespace k8s.Tests
         public void ValidBundleCert()
         {
             var caCert = CertUtils.LoadPemFileCert("assets/ca-bundle.crt");
-            var testCert = new X509Certificate2("assets/ca-bundle-intermediate.crt");
+
+            // Load the intermediate cert
+            //
+            var testCert = caCert[0];
             var chain = new X509Chain();
             var errors = SslPolicyErrors.RemoteCertificateChainErrors;
 
