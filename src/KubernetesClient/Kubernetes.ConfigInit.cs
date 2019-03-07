@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net;
@@ -58,7 +59,9 @@ namespace k8s
                         throw new KubeConfigException("a CA must be set when SkipTlsVerify === false");
                     }
 
-                    using (System.IO.MemoryStream certStream = new System.IO.MemoryStream(config.SslCaCert.RawData))
+                    var caCert = CaCert[CaCert.Count - 1];
+
+                    using (System.IO.MemoryStream certStream = new System.IO.MemoryStream(caCert.RawData))
                     {
                         Java.Security.Cert.Certificate cert = Java.Security.Cert.CertificateFactory.GetInstance("X509").GenerateCertificate(certStream);
                         Xamarin.Android.Net.AndroidClientHandler handler = (Xamarin.Android.Net.AndroidClientHandler)this.HttpClientHandler;
@@ -152,7 +155,7 @@ namespace k8s
         }
 #endif
 
-        private X509Certificate2 CaCert { get; }
+        private IList<X509Certificate2> CaCert { get; }
 
         private bool SkipTlsVerify { get; }
 
@@ -241,7 +244,7 @@ namespace k8s
         [SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", Justification = "Unused by design")]
         public static bool CertificateValidationCallBack(
             object sender,
-            X509Certificate2 caCert,
+            IList<X509Certificate2> caCerts,
             X509Certificate certificate,
             X509Chain chain,
             SslPolicyErrors sslPolicyErrors)
@@ -257,13 +260,32 @@ namespace k8s
             {
                 chain.ChainPolicy.RevocationMode = X509RevocationMode.NoCheck;
 
-                // add all your extra certificate chain
-                chain.ChainPolicy.ExtraStore.Add(caCert);
+                // Added our trusted certificates to the chain
+                //
+                foreach (var caCert in caCerts)
+                {
+                    chain.ChainPolicy.ExtraStore.Add(caCert);
+                }
+
                 chain.ChainPolicy.VerificationFlags = X509VerificationFlags.AllowUnknownCertificateAuthority;
                 var isValid = chain.Build((X509Certificate2)certificate);
 
+                var certMatch = false;
+
                 var rootCert = chain.ChainElements[chain.ChainElements.Count - 1].Certificate;
-                isValid = isValid && rootCert.RawData.SequenceEqual(caCert.RawData);
+
+                // Make sure that one of our trusted certs exists in the chain provided by the server.
+                //
+                foreach (var cert in caCerts)
+                {
+                    if (rootCert.RawData.SequenceEqual(cert.RawData))
+                    {
+                        certMatch = true;
+                        break;
+                    }
+                }
+
+                isValid = isValid && certMatch;
 
                 return isValid;
             }

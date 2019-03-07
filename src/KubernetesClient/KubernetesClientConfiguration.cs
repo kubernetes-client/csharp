@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 
 namespace k8s
@@ -20,7 +21,7 @@ namespace k8s
         /// <summary>
         ///     Gets SslCaCert
         /// </summary>
-        public X509Certificate2 SslCaCert { get; set; }
+        public IList<X509Certificate2> SslCaCert { get; set; }
 
         /// <summary>
         ///     Gets ClientCertificateData

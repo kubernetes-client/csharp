@@ -1,15 +1,14 @@
-using System;
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using k8s.Exceptions;
 using Org.BouncyCastle.Crypto;
-using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.OpenSsl;
 using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.X509;
-using X509Certificate = Org.BouncyCastle.X509.X509Certificate;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
+using System.Text.RegularExpressions;
 
 namespace k8s
 {
@@ -19,22 +18,28 @@ namespace k8s
         /// Load pem encoded cert file
         /// </summary>
         /// <param name="file">Path to pem encoded cert file</param>
-        /// <returns>x509 instance.</returns>
-        public static X509Certificate2 LoadPemFileCert(string file)
+        /// <returns>List of x509 instances.</returns>
+        public static IList<X509Certificate2> LoadPemFileCert(string file)
         {
-            var certs = new X509CertificateParser().ReadCertificates(File.OpenRead(file));
-            var store = new Pkcs12StoreBuilder().Build();
-            foreach (X509Certificate cert in certs)
+            var certs = new List<X509Certificate2>();
+
+            var certdata = File.ReadAllText(file)
+                .Replace("\r", "")
+                .Replace("\n", "");
+
+            var r = new Regex("-----BEGIN CERTIFICATE-----(.*?)-----END CERTIFICATE-----");
+
+            var matches = r.Matches(certdata);
+
+            foreach (Match match in matches)
             {
-                store.SetCertificateEntry(Guid.NewGuid().ToString(), new X509CertificateEntry(cert));
+                string certData = match.Value
+                    .Replace("-----BEGIN CERTIFICATE-----", "")
+                    .Replace("-----END CERTIFICATE-----", "");
+                certs.Add(new X509Certificate2(Convert.FromBase64String(certData)));
             }
 
-            using (var pkcs = new MemoryStream())
-            {
-                store.Save(pkcs, new char[0], new SecureRandom());
-                // TODO not a chain
-                return new X509Certificate2(pkcs.ToArray());
-            }
+            return certs;
         }
 
         /// <summary>
