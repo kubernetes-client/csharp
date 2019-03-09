@@ -52,7 +52,8 @@ namespace k8s.Models
         /// DNS policy explicitly to 'ClusterFirstWithHostNet'.</param>
         /// <param name="enableServiceLinks">EnableServiceLinks indicates
         /// whether information about services should be injected into pod's
-        /// environment variables, matching the syntax of Docker links.</param>
+        /// environment variables, matching the syntax of Docker links.
+        /// Optional: Defaults to true.</param>
         /// <param name="hostAliases">HostAliases is an optional list of hosts
         /// and IPs that will be injected into the pod's hosts file if
         /// specified. This is only valid for non-hostNetwork pods.</param>
@@ -256,7 +257,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets enableServiceLinks indicates whether information about
         /// services should be injected into pod's environment variables,
-        /// matching the syntax of Docker links.
+        /// matching the syntax of Docker links. Optional: Defaults to true.
         /// </summary>
         [JsonProperty(PropertyName = "enableServiceLinks")]
         public bool? EnableServiceLinks { get; set; }
