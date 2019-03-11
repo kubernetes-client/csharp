@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Net.WebSockets;
 #if NET452
 using System.Net.Security;
@@ -52,7 +53,7 @@ namespace k8s
 #endif
 
 #if NETCOREAPP2_1
-        public WebSocketBuilder ExpectServerCertificate(X509Certificate2 serverCertificate)
+        public WebSocketBuilder ExpectServerCertificate(X509Certificate2Collection serverCertificate)
         {
             Options.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
             {

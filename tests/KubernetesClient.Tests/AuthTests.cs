@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -221,7 +222,7 @@ namespace k8s.Tests
                         Host = server.Uri.ToString(),
                         ClientCertificateData = clientCertificateData,
                         ClientCertificateKeyData = clientCertificateKeyData,
-                        SslCaCert = serverCertificate,
+                        SslCaCerts = new X509Certificate2Collection(serverCertificate),
                         SkipTlsVerify = false
                     });
 

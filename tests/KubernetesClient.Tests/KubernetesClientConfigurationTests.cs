@@ -79,7 +79,7 @@ namespace k8s.Tests
             var fi = new FileInfo("assets/kubeconfig.yml");
             var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, context);
             Assert.Equal(context, cfg.CurrentContext);
-            Assert.NotNull(cfg.SslCaCert);
+            Assert.NotNull(cfg.SslCaCerts);
             Assert.Equal(File.ReadAllText("assets/client-certificate-data.txt"), cfg.ClientCertificateData);
             Assert.Equal(File.ReadAllText("assets/client-key-data.txt"), cfg.ClientCertificateKeyData);
         }
@@ -94,7 +94,7 @@ namespace k8s.Tests
             var fi = new FileInfo("assets/kubeconfig.tls-skip.yml");
             var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi);
             Assert.NotNull(cfg.Host);
-            Assert.Null(cfg.SslCaCert);
+            Assert.Null(cfg.SslCaCerts);
             Assert.True(cfg.SkipTlsVerify);
         }
 

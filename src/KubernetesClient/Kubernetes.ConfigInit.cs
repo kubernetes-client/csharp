@@ -39,7 +39,7 @@ namespace k8s
                 throw new KubeConfigException("Bad host url", e);
             }
 
-            CaCert = config.SslCaCert;
+            CaCerts = config.SslCaCerts;
             SkipTlsVerify = config.SkipTlsVerify;
 
             if (BaseUri.Scheme == "https")
@@ -53,21 +53,26 @@ namespace k8s
                 }
                 else
                 {
-                    if (CaCert == null)
+                    if (CaCerts == null)
                     {
                         throw new KubeConfigException("a CA must be set when SkipTlsVerify === false");
                     }
 
-                    using (System.IO.MemoryStream certStream = new System.IO.MemoryStream(config.SslCaCert.RawData))
-                    {
-                        Java.Security.Cert.Certificate cert = Java.Security.Cert.CertificateFactory.GetInstance("X509").GenerateCertificate(certStream);
-                        Xamarin.Android.Net.AndroidClientHandler handler = (Xamarin.Android.Net.AndroidClientHandler)this.HttpClientHandler;
+                    var certList = new System.Collections.Generic.List<Java.Security.Cert.Certificate>();
 
-                        handler.TrustedCerts = new System.Collections.Generic.List<Java.Security.Cert.Certificate>()
+                    foreach (X509Certificate2 caCert in CaCerts)
+                    {
+                        using (System.IO.MemoryStream certStream = new System.IO.MemoryStream(caCert.RawData))
                         {
-                            cert
-                        };
+                            Java.Security.Cert.Certificate cert = Java.Security.Cert.CertificateFactory.GetInstance("X509").GenerateCertificate(certStream);
+
+                            certList.Add(cert);
+                        }
                     }
+
+                    Xamarin.Android.Net.AndroidClientHandler handler = (Xamarin.Android.Net.AndroidClientHandler)this.HttpClientHandler;
+
+                    handler.TrustedCerts = certList;
                 }
             }
 
@@ -100,7 +105,7 @@ namespace k8s
                 throw new KubeConfigException("Bad host url", e);
             }
 
-            CaCert = config.SslCaCert;
+            CaCerts = config.SslCaCerts;
             SkipTlsVerify = config.SkipTlsVerify;
 
             if (BaseUri.Scheme == "https")
@@ -122,7 +127,7 @@ namespace k8s
                 }
                 else
                 {
-                    if (CaCert == null)
+                    if (CaCerts == null)
                     {
                         throw new KubeConfigException("a CA must be set when SkipTlsVerify === false");
                     }
@@ -130,18 +135,18 @@ namespace k8s
 #if NET452
                     ((WebRequestHandler) HttpClientHandler).ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
                     {
-                        return Kubernetes.CertificateValidationCallBack(sender, CaCert, certificate, chain, sslPolicyErrors);
+                        return Kubernetes.CertificateValidationCallBack(sender, CaCerts, certificate, chain, sslPolicyErrors);
                     };
 #elif XAMARINIOS1_0
                     System.Net.ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) =>
                     {
                         var cert = new X509Certificate2(certificate);
-                        return Kubernetes.CertificateValidationCallBack(sender, CaCert, cert, chain, sslPolicyErrors);
+                        return Kubernetes.CertificateValidationCallBack(sender, CaCerts, cert, chain, sslPolicyErrors);
                     };
 #else
                     HttpClientHandler.ServerCertificateCustomValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
                     {
-                        return Kubernetes.CertificateValidationCallBack(sender, CaCert, certificate, chain, sslPolicyErrors);
+                        return Kubernetes.CertificateValidationCallBack(sender, CaCerts, certificate, chain, sslPolicyErrors);
                     };
 #endif
                 }
@@ -152,7 +157,7 @@ namespace k8s
         }
 #endif
 
-        private X509Certificate2 CaCert { get; }
+        private X509Certificate2Collection CaCerts { get; }
 
         private bool SkipTlsVerify { get; }
 
@@ -241,7 +246,7 @@ namespace k8s
         [SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", Justification = "Unused by design")]
         public static bool CertificateValidationCallBack(
             object sender,
-            X509Certificate2 caCert,
+            X509Certificate2Collection caCerts,
             X509Certificate certificate,
             X509Chain chain,
             SslPolicyErrors sslPolicyErrors)
@@ -257,15 +262,29 @@ namespace k8s
             {
                 chain.ChainPolicy.RevocationMode = X509RevocationMode.NoCheck;
 
-                // add all your extra certificate chain
-                chain.ChainPolicy.ExtraStore.Add(caCert);
+                // Added our trusted certificates to the chain
+                //
+                chain.ChainPolicy.ExtraStore.AddRange(caCerts);
+
                 chain.ChainPolicy.VerificationFlags = X509VerificationFlags.AllowUnknownCertificateAuthority;
                 var isValid = chain.Build((X509Certificate2)certificate);
 
-                var rootCert = chain.ChainElements[chain.ChainElements.Count - 1].Certificate;
-                isValid = isValid && rootCert.RawData.SequenceEqual(caCert.RawData);
+                var isTrusted = false;
 
-                return isValid;
+                var rootCert = chain.ChainElements[chain.ChainElements.Count - 1].Certificate;
+
+                // Make sure that one of our trusted certs exists in the chain provided by the server.
+                //
+                foreach (var cert in caCerts)
+                {
+                    if (rootCert.RawData.SequenceEqual(cert.RawData))
+                    {
+                        isTrusted = true;
+                        break;
+                    }
+                }
+
+                return isValid && isTrusted;
             }
 
             // In all other cases, return false.
