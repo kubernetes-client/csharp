@@ -325,8 +325,8 @@ namespace k8s.Tests
 
                 var t1 = Task.Run(async () =>
                 {
-                        // Simulate WebSocket received remote data to multiple streams
-                        await ws.InvokeReceiveAsync(new ArraySegment<byte>(GenerateRandomBuffer(100, channelIndex1, 0xE1, true)), WebSocketMessageType.Binary, true);
+                    // Simulate WebSocket received remote data to multiple streams
+                    await ws.InvokeReceiveAsync(new ArraySegment<byte>(GenerateRandomBuffer(100, channelIndex1, 0xE1, true)), WebSocketMessageType.Binary, true);
                     await ws.InvokeReceiveAsync(new ArraySegment<byte>(GenerateRandomBuffer(200, channelIndex2, 0xE2, true)), WebSocketMessageType.Binary, true);
                     await ws.InvokeReceiveAsync(new ArraySegment<byte>(GenerateRandomBuffer(300, channelIndex1, 0xE3, false)), WebSocketMessageType.Binary, true);
 
