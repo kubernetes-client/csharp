@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <IsPackable>false</IsPackable>
     <RootNamespace>k8s.tests</RootNamespace>
@@ -7,8 +7,8 @@
 
   <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
-      <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.2" />
-      <PackageReference Include="System.Reactive" Version="3.1.1" />
+      <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+      <PackageReference Include="System.Reactive" Version="4.1.3" />
       <PackageReference Include="Nito.AsyncEx" Version="4.0.1" />
   </ItemGroup>
 
@@ -21,14 +21,14 @@
 
   <ItemGroup>
 
-    <PackageReference Include="coverlet.msbuild" Version="2.2.1">
+    <PackageReference Include="coverlet.msbuild" Version="2.6.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
 
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
-    <PackageReference Include="xunit" Version="2.3.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" NoWarn="NU1701" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" NoWarn="NU1701" />
 
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
