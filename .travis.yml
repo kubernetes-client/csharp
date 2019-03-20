@@ -28,6 +28,9 @@ before_install:
   - ./install-$TRAVIS_OS_NAME.sh
 
 script:
+# Make NB.GV recognize the branch we're building, by setting environment variables.
+  - export BUILD_SOURCEBRANCH=${TRAVIS_BRANCH}
+  - export SYSTEM_TEAMPROJECTID=${TRAVIS_BUILD_ID}
   - ./ci.sh
 
 after_script:
