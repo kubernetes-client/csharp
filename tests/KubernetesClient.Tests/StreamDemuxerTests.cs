@@ -24,6 +24,7 @@ namespace k8s.Tests
         public async Task SendDataRemoteCommand()
         {
             using (MockWebSocket ws = new MockWebSocket())
+            using (StreamDemuxer demuxer = new StreamDemuxer(ws))
             {
                 List<byte> sentBuffer = new List<byte>();
                 ws.MessageSent += (sender, args) =>
@@ -31,8 +32,7 @@ namespace k8s.Tests
                     sentBuffer.AddRange(args.Data.Buffer);
                 };
 
-                StreamDemuxer demuxer = new StreamDemuxer(ws);
-                Task.Run(() => demuxer.Start());
+                demuxer.Start();
 
                 byte channelIndex = 12;
                 var stream = demuxer.GetStream(channelIndex, channelIndex);
@@ -50,6 +50,7 @@ namespace k8s.Tests
         public async Task SendMultipleDataRemoteCommand()
         {
             using (MockWebSocket ws = new MockWebSocket())
+            using (StreamDemuxer demuxer = new StreamDemuxer(ws))
             {
                 List<byte> sentBuffer = new List<byte>();
                 ws.MessageSent += (sender, args) =>
@@ -57,8 +58,7 @@ namespace k8s.Tests
                     sentBuffer.AddRange(args.Data.Buffer);
                 };
 
-                StreamDemuxer demuxer = new StreamDemuxer(ws);
-                Task.Run(() => demuxer.Start());
+                demuxer.Start();
 
                 byte channelIndex = 12;
                 var stream = demuxer.GetStream(channelIndex, channelIndex);
@@ -80,9 +80,9 @@ namespace k8s.Tests
         public async Task ReceiveDataRemoteCommand()
         {
             using (MockWebSocket ws = new MockWebSocket())
+            using (StreamDemuxer demuxer = new StreamDemuxer(ws))
             {
-                StreamDemuxer demuxer = new StreamDemuxer(ws);
-                Task.Run(() => demuxer.Start());
+                demuxer.Start();
 
                 List<byte> receivedBuffer = new List<byte>();
                 byte channelIndex = 12;
@@ -129,9 +129,9 @@ namespace k8s.Tests
         public async Task ReceiveDataPortForward()
         {
             using (MockWebSocket ws = new MockWebSocket())
+            using (StreamDemuxer demuxer = new StreamDemuxer(ws, StreamType.PortForward))
             {
-                StreamDemuxer demuxer = new StreamDemuxer(ws, StreamType.PortForward);
-                Task.Run(() => demuxer.Start());
+                demuxer.Start();
 
                 List<byte> receivedBuffer = new List<byte>();
                 byte channelIndex = 12;
@@ -179,9 +179,9 @@ namespace k8s.Tests
         public async Task ReceiveDataPortForwardOneByteMessage()
         {
             using (MockWebSocket ws = new MockWebSocket())
+            using (StreamDemuxer demuxer = new StreamDemuxer(ws, StreamType.PortForward))
             {
-                StreamDemuxer demuxer = new StreamDemuxer(ws, StreamType.PortForward);
-                Task.Run(() => demuxer.Start());
+                demuxer.Start();
 
                 List<byte> receivedBuffer = new List<byte>();
                 byte channelIndex = 12;
@@ -227,9 +227,9 @@ namespace k8s.Tests
         public async Task ReceiveDataRemoteCommandMultipleStream()
         {
             using (MockWebSocket ws = new MockWebSocket())
+            using (StreamDemuxer demuxer = new StreamDemuxer(ws))
             {
-                StreamDemuxer demuxer = new StreamDemuxer(ws);
-                Task.Run(() => demuxer.Start());
+                demuxer.Start();
 
                 List<byte> receivedBuffer1 = new List<byte>();
                 byte channelIndex1 = 1;
@@ -304,9 +304,9 @@ namespace k8s.Tests
         public async Task ReceiveDataPortForwardMultipleStream()
         {
             using (MockWebSocket ws = new MockWebSocket())
+            using (StreamDemuxer demuxer = new StreamDemuxer(ws, StreamType.PortForward))
             {
-                StreamDemuxer demuxer = new StreamDemuxer(ws, StreamType.PortForward);
-                Task.Run(() => demuxer.Start());
+                demuxer.Start();
 
                 List<byte> receivedBuffer1 = new List<byte>();
                 byte channelIndex1 = 1;
@@ -378,7 +378,6 @@ namespace k8s.Tests
                 Assert.True(receivedBuffer2[196] == 0xE2, "The first payload incorrect!");
             }
         }
-
 
         private static byte[] GenerateRandomBuffer(int length, byte channelIndex, byte content, bool portForward)
         {
