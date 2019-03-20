@@ -1,3 +1,4 @@
+using Nito.AsyncEx;
 using System;
 using System.Collections.Concurrent;
 using System.Net.WebSockets;
@@ -13,7 +14,7 @@ namespace k8s.tests.Mock
         private WebSocketState state;
         private string subProtocol;
         private ConcurrentQueue<MessageData> receiveBuffers = new ConcurrentQueue<MessageData>();
-        private AutoResetEvent receiveEvent = new AutoResetEvent(false);
+        private AsyncAutoResetEvent receiveEvent = new AsyncAutoResetEvent(false);
 
         public MockWebSocket(string subProtocol = null)
         {
@@ -78,12 +79,13 @@ namespace k8s.tests.Mock
             this.receiveEvent.Set();
         }
 
-        public override Task<WebSocketReceiveResult> ReceiveAsync(ArraySegment<byte> buffer, CancellationToken cancellationToken)
+        public override async Task<WebSocketReceiveResult> ReceiveAsync(ArraySegment<byte> buffer, CancellationToken cancellationToken)
         {
             if (this.receiveBuffers.Count == 0)
             {
-                this.receiveEvent.WaitOne();
+                await this.receiveEvent.WaitAsync(cancellationToken).ConfigureAwait(false);
             }
+
             int bytesReceived = 0;
             bool endOfMessage = true;
             WebSocketMessageType messageType = WebSocketMessageType.Close;
@@ -107,7 +109,8 @@ namespace k8s.tests.Mock
                     received.Buffer = received.Buffer.Slice(buffer.Count);
                 }
             }
-            return Task.FromResult(new WebSocketReceiveResult(bytesReceived, messageType, endOfMessage));
+
+            return new WebSocketReceiveResult(bytesReceived, messageType, endOfMessage);
         }
 
         public override Task SendAsync(ArraySegment<byte> buffer, WebSocketMessageType messageType, bool endOfMessage, CancellationToken cancellationToken)
