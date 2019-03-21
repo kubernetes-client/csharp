@@ -1,5 +1,5 @@
 sudo: required
-dist: trusty
+dist: xenial
 
 # Don't do shallow clones
 git:
