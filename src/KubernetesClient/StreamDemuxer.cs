@@ -21,12 +21,13 @@ namespace k8s
     ///     allows you to extract individual <see cref="Stream"/>s from this <see cref="WebSocket"/> class. You can then use these streams to send/receive data from that process.
     /// </para>
     /// </summary>
-    public class StreamDemuxer : IDisposable
+    public class StreamDemuxer : IStreamDemuxer
     {
         private readonly WebSocket webSocket;
         private readonly Dictionary<byte, ByteBuffer> buffers = new Dictionary<byte, ByteBuffer>();
         private readonly CancellationTokenSource cts = new CancellationTokenSource();
         private readonly StreamType streamType;
+        private readonly bool ownsSocket;
         private Task runLoop;
 
         /// <summary>
@@ -38,10 +39,15 @@ namespace k8s
         /// <param name="streamType">
         /// A <see cref="StreamType"/> specifies the type of the stream.
         /// </param>
-        public StreamDemuxer(WebSocket webSocket, StreamType streamType = StreamType.RemoteCommand)
+        /// <param name="ownsSocket">
+        /// A value indicating whether this instance of the <see cref="StreamDemuxer"/> owns the underlying <see cref="WebSocket"/>,
+        /// and should dispose of it when this instance is disposed of.
+        /// </param>
+        public StreamDemuxer(WebSocket webSocket, StreamType streamType = StreamType.RemoteCommand, bool ownsSocket = false)
         {
             this.streamType = streamType;
             this.webSocket = webSocket ?? throw new ArgumentNullException(nameof(webSocket));
+            this.ownsSocket = ownsSocket;
         }
 
         public event EventHandler ConnectionClosed;
@@ -69,6 +75,11 @@ namespace k8s
             {
                 // Dispose methods can never throw.
                 Debug.Write(ex);
+            }
+
+            if (this.ownsSocket)
+            {
+                this.webSocket.Dispose();
             }
         }
 
