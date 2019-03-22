@@ -48,14 +48,15 @@ namespace k8s
         /// <summary>
         ///     Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
         /// </summary>
-        /// <param name="masterUrl">kube api server endpoint</param>
         /// <param name="kubeconfigPath">Explicit file path to kubeconfig. Set to null to use the default file path</param>
+        /// <param name="currentContext">override the context in config file, set null if do not want to override</param>
+        /// <param name="masterUrl">kube api server endpoint</param>
         /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
         /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
         public static KubernetesClientConfiguration BuildConfigFromConfigFile(string kubeconfigPath = null,
             string currentContext = null, string masterUrl = null, bool useRelativePaths = true)
         {
-            return BuildConfigFromConfigFile(new FileInfo(kubeconfigPath ?? KubeConfigDefaultLocation), null,
+            return BuildConfigFromConfigFile(new FileInfo(kubeconfigPath ?? KubeConfigDefaultLocation), currentContext,
                 masterUrl, useRelativePaths);
         }
 
@@ -363,7 +364,7 @@ namespace k8s
             return LoadKubeConfigAsync(kubeconfigPath, useRelativePaths).GetAwaiter().GetResult();
         }
 
-        // <summary>
+        /// <summary>
         ///     Loads Kube Config
         /// </summary>
         /// <param name="kubeconfig">Kube config file contents</param>
@@ -402,7 +403,7 @@ namespace k8s
             return LoadKubeConfigAsync(kubeconfig, useRelativePaths).GetAwaiter().GetResult();
         }
 
-        // <summary>
+        /// <summary>
         ///     Loads Kube Config
         /// </summary>
         /// <param name="kubeconfigStream">Kube config file contents stream</param>
