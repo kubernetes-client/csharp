@@ -1,6 +1,6 @@
 using System;
 
-namespace Fractions {
+namespace k8s.Internal.Fractions {
     /// <summary>
     /// Exception that will be thrown if an argument contains not a number (NaN) or is infinite.
     /// </summary>

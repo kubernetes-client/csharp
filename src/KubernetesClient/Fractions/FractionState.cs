@@ -1,4 +1,4 @@
-namespace Fractions {
+namespace k8s.Internal.Fractions {
     /// <summary>
     /// The fraction's state.
     /// </summary>

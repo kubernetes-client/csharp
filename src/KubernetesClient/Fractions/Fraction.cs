@@ -2,9 +2,9 @@ using System;
 using System.ComponentModel;
 using System.Numerics;
 using System.Runtime.InteropServices;
-using Fractions.TypeConverters;
+using k8s.Internal.Fractions.TypeConverters;
 
-namespace Fractions {
+namespace k8s.Internal.Fractions {
     /// <summary>
     /// A mathematical fraction. A rational number written as a/b (a is the numerator and b the denominator).
     /// The data type is not capable to store NaN (not a number) or infinite.

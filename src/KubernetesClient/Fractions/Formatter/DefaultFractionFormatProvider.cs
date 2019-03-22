@@ -1,6 +1,6 @@
 using System;
 
-namespace Fractions.Formatter {
+namespace k8s.Internal.Fractions.Formatter {
     /// <summary>
     /// Default <see cref="Fraction.ToString()"/> formatter.
     /// </summary>

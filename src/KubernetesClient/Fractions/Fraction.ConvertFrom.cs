@@ -1,9 +1,9 @@
 using System;
 using System.Globalization;
 using System.Numerics;
-using Fractions.Extensions;
+using k8s.Internal.Fractions.Extensions;
 
-namespace Fractions {
+namespace k8s.Internal.Fractions {
     internal partial struct Fraction {
         /// <summary>
         /// Converts a string to a fraction. Example: "3/4" or "4.5" (the decimal separator character is depending on the system culture).

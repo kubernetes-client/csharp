@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Numerics;
 
-namespace Fractions.TypeConverters {
+namespace k8s.Internal.Fractions.TypeConverters {
     /// <summary>
     /// Converts the <see cref="Fraction"/> from / to various data types.
     /// </summary>

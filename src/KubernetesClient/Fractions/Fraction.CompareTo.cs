@@ -1,7 +1,7 @@
 using System;
 using System.Numerics;
 
-namespace Fractions {
+namespace k8s.Internal.Fractions {
     internal partial struct Fraction
     {
         /// <summary>

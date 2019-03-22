@@ -1,8 +1,8 @@
 using System;
 using System.Globalization;
-using Fractions.Formatter;
+using k8s.Internal.Fractions.Formatter;
 
-namespace Fractions {
+namespace k8s.Internal.Fractions {
     internal partial struct Fraction {
         /// <summary>
         /// Returns the fraction as "numerator/denominator" or just "numerator" if the denominator has a value of 1.

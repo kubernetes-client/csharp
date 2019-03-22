@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Numerics;
 using System.Text;
 
-namespace Fractions.Formatter {
+namespace k8s.Internal.Fractions.Formatter {
     internal class DefaultFractionFormatter : ICustomFormatter {
         public static readonly ICustomFormatter Instance = new DefaultFractionFormatter();
 
