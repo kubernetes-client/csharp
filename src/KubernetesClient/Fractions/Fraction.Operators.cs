@@ -1,7 +1,7 @@
 using System.Numerics;
 
-namespace Fractions {
-    public partial struct Fraction {
+namespace k8s.Internal.Fractions {
+    internal partial struct Fraction {
 #pragma warning disable 1591
         public static bool operator ==(Fraction left, Fraction right) {
             return left.Equals(right);

@@ -2,16 +2,16 @@ using System;
 using System.ComponentModel;
 using System.Numerics;
 using System.Runtime.InteropServices;
-using Fractions.TypeConverters;
+using k8s.Internal.Fractions.TypeConverters;
 
-namespace Fractions {
+namespace k8s.Internal.Fractions {
     /// <summary>
     /// A mathematical fraction. A rational number written as a/b (a is the numerator and b the denominator).
     /// The data type is not capable to store NaN (not a number) or infinite.
     /// </summary>
     [TypeConverter(typeof (FractionTypeConverter))]
     [StructLayout(LayoutKind.Sequential)]
-    public partial struct Fraction : IEquatable<Fraction>, IComparable, IComparable<Fraction>, IFormattable {
+    internal partial struct Fraction : IEquatable<Fraction>, IComparable, IComparable<Fraction>, IFormattable {
         private static readonly BigInteger MIN_DECIMAL = new BigInteger(decimal.MinValue);
         private static readonly BigInteger MAX_DECIMAL = new BigInteger(decimal.MaxValue);
         private static readonly Fraction _zero = new Fraction(BigInteger.Zero, BigInteger.Zero, FractionState.IsNormalized);

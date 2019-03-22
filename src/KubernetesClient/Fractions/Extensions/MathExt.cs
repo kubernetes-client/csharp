@@ -1,6 +1,6 @@
 using System;
 
-namespace Fractions.Extensions {
+namespace k8s.Internal.Fractions.Extensions {
     internal static class MathExt {
         /// <summary>
         /// Checks for an even number.

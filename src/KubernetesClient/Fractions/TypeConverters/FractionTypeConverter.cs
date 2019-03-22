@@ -4,11 +4,11 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Numerics;
 
-namespace Fractions.TypeConverters {
+namespace k8s.Internal.Fractions.TypeConverters {
     /// <summary>
     /// Converts the <see cref="Fraction"/> from / to various data types.
     /// </summary>
-    public sealed class FractionTypeConverter : TypeConverter {
+    internal sealed class FractionTypeConverter : TypeConverter {
         private static readonly HashSet<Type> SUPPORTED_TYPES = new HashSet<Type> {
             typeof (string),
             typeof (int),

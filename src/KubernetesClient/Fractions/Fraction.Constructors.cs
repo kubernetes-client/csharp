@@ -1,8 +1,8 @@
 using System;
 using System.Numerics;
 
-namespace Fractions {
-    public partial struct Fraction
+namespace k8s.Internal.Fractions {
+    internal partial struct Fraction
     {
         /// <summary>
         /// Create a fraction with <paramref name="numerator"/>, <paramref name="denominator"/> and the fraction' <paramref name="state"/>.

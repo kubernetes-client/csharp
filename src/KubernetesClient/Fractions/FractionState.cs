@@ -1,8 +1,8 @@
-namespace Fractions {
+namespace k8s.Internal.Fractions {
     /// <summary>
     /// The fraction's state.
     /// </summary>
-    public enum FractionState
+    internal enum FractionState
     {
         /// <summary>
         /// Unknown state.

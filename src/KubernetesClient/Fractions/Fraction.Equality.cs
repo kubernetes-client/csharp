@@ -1,6 +1,6 @@
 
-namespace Fractions {
-    public partial struct Fraction
+namespace k8s.Internal.Fractions {
+    internal partial struct Fraction
     {
         /// <summary>
         /// Tests if the calculated value of this fraction equals to the calculated value of <paramref name="other"/>.
