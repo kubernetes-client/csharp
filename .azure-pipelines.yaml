@@ -1,5 +1,26 @@
 jobs:
 
+- job: build_xamarin
+  pool:
+    vmImage: 'VS2017-Win2016'
+  steps:
+  - task: MSBuild@1
+    displayName: 'NuGet restore'
+    inputs:
+      solution: '$(Build.SourcesDirectory)/src/KubernetesClient/KubernetesClient.csproj'
+      msbuildArguments: '/restore /p:Configuration=Release'
+
+  - task: MSBuild@1
+    displayName: 'MSBuild Pack'
+    inputs:
+      solution: '$(Build.SourcesDirectory)/src/KubernetesClient/KubernetesClient.csproj'
+      msbuildArguments: '/t:pack /p:Configuration=Release /p:PackageOutputPath="$(Build.ArtifactStagingDirectory)/nupkg/"'
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)/nupkg/'
+
 - job: Build
   pool:
     vmImage: 'VS2017-Win2016'
