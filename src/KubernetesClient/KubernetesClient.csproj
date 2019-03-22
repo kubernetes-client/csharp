@@ -34,7 +34,7 @@
     <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.10" />
     <PackageReference Include="MSBuild.Sdk.Extras" Version="1.6.68" PrivateAssets="all" Condition="'$(MSBuildRuntimeType)' != 'Core'" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
-    <PackageReference Include="YamlDotNet.Signed" Version="5.1.0" />
+    <PackageReference Include="YamlDotNet" Version="6.0.0" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-18618-05" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net452' OR '$(TargetFramework)' == 'net461'">
