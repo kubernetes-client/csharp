@@ -4,7 +4,7 @@ using System.Numerics;
 using Fractions.Extensions;
 
 namespace Fractions {
-    public partial struct Fraction {
+    internal partial struct Fraction {
         /// <summary>
         /// Converts a string to a fraction. Example: "3/4" or "4.5" (the decimal separator character is depending on the system culture).
         /// If the number contains a decimal separator it will be parsed as <see cref="decimal"/>.

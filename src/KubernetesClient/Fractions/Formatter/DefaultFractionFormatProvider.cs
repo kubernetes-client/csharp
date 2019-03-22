@@ -4,7 +4,7 @@ namespace Fractions.Formatter {
     /// <summary>
     /// Default <see cref="Fraction.ToString()"/> formatter.
     /// </summary>
-    public class DefaultFractionFormatProvider : IFormatProvider {
+    internal class DefaultFractionFormatProvider : IFormatProvider {
         /// <summary>
         /// Singleton instance
         /// </summary>

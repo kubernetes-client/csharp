@@ -2,7 +2,7 @@ using System;
 using System.Numerics;
 
 namespace Fractions {
-    public partial struct Fraction {
+    internal partial struct Fraction {
         /// <summary>
         /// Calculates the remainder of the division with the fraction's value and the supplied <paramref name="divisor"/> (% operator).
         /// </summary>

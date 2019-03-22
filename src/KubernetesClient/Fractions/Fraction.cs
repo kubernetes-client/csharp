@@ -11,7 +11,7 @@ namespace Fractions {
     /// </summary>
     [TypeConverter(typeof (FractionTypeConverter))]
     [StructLayout(LayoutKind.Sequential)]
-    public partial struct Fraction : IEquatable<Fraction>, IComparable, IComparable<Fraction>, IFormattable {
+    internal partial struct Fraction : IEquatable<Fraction>, IComparable, IComparable<Fraction>, IFormattable {
         private static readonly BigInteger MIN_DECIMAL = new BigInteger(decimal.MinValue);
         private static readonly BigInteger MAX_DECIMAL = new BigInteger(decimal.MaxValue);
         private static readonly Fraction _zero = new Fraction(BigInteger.Zero, BigInteger.Zero, FractionState.IsNormalized);

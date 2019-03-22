@@ -3,7 +3,7 @@ using System.Globalization;
 using Fractions.Formatter;
 
 namespace Fractions {
-    public partial struct Fraction {
+    internal partial struct Fraction {
         /// <summary>
         /// Returns the fraction as "numerator/denominator" or just "numerator" if the denominator has a value of 1.
         /// The returning value is culture invariant (<see cref="CultureInfo" />).

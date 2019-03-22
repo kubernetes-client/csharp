@@ -2,7 +2,7 @@ using System;
 using System.Numerics;
 
 namespace Fractions {
-    public partial struct Fraction {
+    internal partial struct Fraction {
         /// <summary>
         /// Returns the fraction as signed 32bit integer.
         /// </summary>
