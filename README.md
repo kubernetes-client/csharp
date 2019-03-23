@@ -10,8 +10,6 @@
 dotnet add package KubernetesClient
 ```
 
-# Usage
-
 ## Authentication/Configuration
 You should be able to use an standard KubeConfig file with this library,
 see the `BuildConfigFromConfigFile` function below. Most authentication
