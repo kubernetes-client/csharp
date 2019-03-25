@@ -1,6 +1,6 @@
 jobs:
 
-- job: build_xamarin
+- job: xamarin_build
   pool:
     vmImage: 'VS2017-Win2016'
   steps:
@@ -21,10 +21,9 @@ jobs:
     inputs:
       PathtoPublish: '$(Build.ArtifactStagingDirectory)/nupkg/'
 
-- job: Build
+- job: windows_build
   pool:
     vmImage: 'VS2017-Win2016'
-
 
   steps:
   - task: DotNetCoreCLI@2
@@ -37,22 +36,6 @@ jobs:
     inputs:
       projects: '**/*.sln'
 
-  # - task: MSBuild@1
-  #   displayName: 'Build solution **/*.sln'
-  #   inputs:
-  #     msbuildArchitecture: x64
-
-  #     configuration: Release
-
-  # - task: VSTest@2
-  #   displayName: 'VsTest - testAssemblies'
-  #   inputs:
-  #     testAssemblyVer2: |
-  #       tests\**\*Tests*.dll
-  #       !**\obj\**
-
-  #     codeCoverageEnabled: true
-
   - task: DotNetCoreCLI@2
     displayName: 'dotnet test'
     inputs:
@@ -64,15 +47,13 @@ jobs:
     displayName: 'publish coverage results'
     inputs:
       codeCoverageTool: 'cobertura'
-      summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.cobertura.xml'  
+      summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.cobertura.xml'
 
   - task: alanwales.resharper-code-analysis.custom-build-task.ResharperCli@1
     displayName: 'Automated code quality checks'
     inputs:
       SolutionOrProjectPath: 'kubernetes-client.sln'
-
       FailBuildOnCodeIssues: false
-
     continueOnError: true
 
   - task: DotNetCoreCLI@2
@@ -81,15 +62,60 @@ jobs:
       command: pack
       packagesToPack: src/KubernetesClient/KubernetesClient.csproj
       packDirectory: '$(Build.ArtifactStagingDirectory)/nupkg'
-      majorVersion: 1
-      minorVersion: 4      
-      versioningScheme: byPrereleaseNumber
-
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
     inputs:
-      PathtoPublish: '$(build.artifactstagingdirectory)/nupkg'
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)/nupkg'
 
+- job: macos_build
+  pool:
+    vmImage: 'xcode9-macos10.13'
+  steps:
+  - script: |
+      brew install coreutils
+      which realpath
+      ./ci.sh
+    displayName: 'Build & Test'
 
+  - task: PublishTestResults@1
+    displayName: 'Publish Test Results'
+    inputs:
+      testRunner: VSTest
+      testResultsFiles: '$(Build.SourcesDirectory)/tests/**/*.xunit.trx'
+    condition: succeededOrFailed()
 
+  - task: PublishCodeCoverageResults@1
+    displayName: 'publish coverage results'
+    inputs:
+      codeCoverageTool: 'cobertura'
+      summaryFileLocation: '$(Build.SourcesDirectory)/tests/coveragereport/Cobertura.xml'
+      reportDirectory: '$(Build.SourcesDirectory)/tests/coveragereport/'
+    condition: succeededOrFailed()
+
+- job: ubuntu_build
+  pool:
+    vmImage: 'ubuntu-16.04'
+  steps:
+  - script: |
+      ./install-linux.sh
+    displayName: 'Install .NET & set up minikube'
+
+  - script: |
+      ./ci.sh
+    displayName: 'Build & Test'
+
+  - task: PublishTestResults@1
+    displayName: 'Publish Test Results'
+    inputs:
+      testRunner: VSTest
+      testResultsFiles: '$(Build.SourcesDirectory)/tests/**/*.xunit.trx'
+    condition: succeededOrFailed()
+
+  - task: PublishCodeCoverageResults@1
+    displayName: 'publish coverage results'
+    inputs:
+      codeCoverageTool: 'cobertura'
+      summaryFileLocation: '$(Build.SourcesDirectory)/tests/coveragereport/Cobertura.xml'
+      reportDirectory: '$(Build.SourcesDirectory)/tests/coveragereport/'
+    condition: succeededOrFailed()
