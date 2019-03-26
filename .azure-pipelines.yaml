@@ -49,12 +49,12 @@ jobs:
       codeCoverageTool: 'cobertura'
       summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.cobertura.xml'
 
-  - task: alanwales.resharper-code-analysis.custom-build-task.ResharperCli@1
-    displayName: 'Automated code quality checks'
-    inputs:
-      SolutionOrProjectPath: 'kubernetes-client.sln'
-      FailBuildOnCodeIssues: false
-    continueOnError: true
+#  - task: alanwales.resharper-code-analysis.custom-build-task.ResharperCli@1
+#    displayName: 'Automated code quality checks'
+#    inputs:
+#      SolutionOrProjectPath: 'kubernetes-client.sln'
+#      FailBuildOnCodeIssues: false
+#    continueOnError: true
 
   - task: DotNetCoreCLI@2
     displayName: 'dotnet pack'
