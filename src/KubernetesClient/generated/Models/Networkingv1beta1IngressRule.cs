@@ -15,18 +15,20 @@ namespace k8s.Models
     /// evaluated for a host match, then routed to the backend associated with
     /// the matching IngressRuleValue.
     /// </summary>
-    public partial class V1beta1IngressRule
+    public partial class Networkingv1beta1IngressRule
     {
         /// <summary>
-        /// Initializes a new instance of the V1beta1IngressRule class.
+        /// Initializes a new instance of the Networkingv1beta1IngressRule
+        /// class.
         /// </summary>
-        public V1beta1IngressRule()
+        public Networkingv1beta1IngressRule()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the V1beta1IngressRule class.
+        /// Initializes a new instance of the Networkingv1beta1IngressRule
+        /// class.
         /// </summary>
         /// <param name="host">Host is the fully qualified domain name of a
         /// network host, as defined by RFC 3986. Note the following deviations
@@ -41,7 +43,7 @@ namespace k8s.Models
         /// against the host before the IngressRuleValue. If the host is
         /// unspecified, the Ingress routes all traffic based on the specified
         /// IngressRuleValue.</param>
-        public V1beta1IngressRule(string host = default(string), V1beta1HTTPIngressRuleValue http = default(V1beta1HTTPIngressRuleValue))
+        public Networkingv1beta1IngressRule(string host = default(string), Networkingv1beta1HTTPIngressRuleValue http = default(Networkingv1beta1HTTPIngressRuleValue))
         {
             Host = host;
             Http = http;
@@ -74,7 +76,7 @@ namespace k8s.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "http")]
-        public V1beta1HTTPIngressRuleValue Http { get; set; }
+        public Networkingv1beta1HTTPIngressRuleValue Http { get; set; }
 
         /// <summary>
         /// Validate the object.

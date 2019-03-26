@@ -51,7 +51,7 @@ namespace k8s.Models
         /// non-nil when bound. claim.VolumeName is the authoritative bind
         /// between PV and PVC. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#binding</param>
-        /// <param name="csi">CSI represents storage that handled by an
+        /// <param name="csi">CSI represents storage that is handled by an
         /// external CSI driver (Beta feature).</param>
         /// <param name="fc">FC represents a Fibre Channel resource that is
         /// attached to a kubelet's host machine and then exposed to the
@@ -228,8 +228,8 @@ namespace k8s.Models
         public V1ObjectReference ClaimRef { get; set; }
 
         /// <summary>
-        /// Gets or sets CSI represents storage that handled by an external CSI
-        /// driver (Beta feature).
+        /// Gets or sets CSI represents storage that is handled by an external
+        /// CSI driver (Beta feature).
         /// </summary>
         [JsonProperty(PropertyName = "csi")]
         public V1CSIPersistentVolumeSource Csi { get; set; }

@@ -13,22 +13,22 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// IngressList is a collection of Ingress.
+    /// LeaseList is a list of Lease objects.
     /// </summary>
-    public partial class V1beta1IngressList
+    public partial class V1LeaseList
     {
         /// <summary>
-        /// Initializes a new instance of the V1beta1IngressList class.
+        /// Initializes a new instance of the V1LeaseList class.
         /// </summary>
-        public V1beta1IngressList()
+        public V1LeaseList()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the V1beta1IngressList class.
+        /// Initializes a new instance of the V1LeaseList class.
         /// </summary>
-        /// <param name="items">Items is the list of Ingress.</param>
+        /// <param name="items">Items is a list of schema objects.</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
@@ -39,9 +39,9 @@ namespace k8s.Models
         /// endpoint the client submits requests to. Cannot be updated. In
         /// CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
-        /// <param name="metadata">Standard object's metadata. More info:
+        /// <param name="metadata">Standard list metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</param>
-        public V1beta1IngressList(IList<V1beta1Ingress> items, string apiVersion = default(string), string kind = default(string), V1ListMeta metadata = default(V1ListMeta))
+        public V1LeaseList(IList<V1Lease> items, string apiVersion = default(string), string kind = default(string), V1ListMeta metadata = default(V1ListMeta))
         {
             ApiVersion = apiVersion;
             Items = items;
@@ -66,10 +66,10 @@ namespace k8s.Models
         public string ApiVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets items is the list of Ingress.
+        /// Gets or sets items is a list of schema objects.
         /// </summary>
         [JsonProperty(PropertyName = "items")]
-        public IList<V1beta1Ingress> Items { get; set; }
+        public IList<V1Lease> Items { get; set; }
 
         /// <summary>
         /// Gets or sets kind is a string value representing the REST resource
@@ -82,7 +82,7 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// Gets or sets standard object's metadata. More info:
+        /// Gets or sets standard list metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]

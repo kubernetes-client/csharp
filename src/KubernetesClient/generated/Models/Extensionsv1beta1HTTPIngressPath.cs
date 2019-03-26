@@ -14,18 +14,20 @@ namespace k8s.Models
     /// HTTPIngressPath associates a path regex with a backend. Incoming urls
     /// matching the path are forwarded to the backend.
     /// </summary>
-    public partial class V1beta1HTTPIngressPath
+    public partial class Extensionsv1beta1HTTPIngressPath
     {
         /// <summary>
-        /// Initializes a new instance of the V1beta1HTTPIngressPath class.
+        /// Initializes a new instance of the Extensionsv1beta1HTTPIngressPath
+        /// class.
         /// </summary>
-        public V1beta1HTTPIngressPath()
+        public Extensionsv1beta1HTTPIngressPath()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the V1beta1HTTPIngressPath class.
+        /// Initializes a new instance of the Extensionsv1beta1HTTPIngressPath
+        /// class.
         /// </summary>
         /// <param name="backend">Backend defines the referenced service
         /// endpoint to which the traffic will be forwarded to.</param>
@@ -36,7 +38,7 @@ namespace k8s.Models
         /// conventional "path" part of a URL as defined by RFC 3986. Paths
         /// must begin with a '/'. If unspecified, the path defaults to a catch
         /// all sending traffic to the backend.</param>
-        public V1beta1HTTPIngressPath(V1beta1IngressBackend backend, string path = default(string))
+        public Extensionsv1beta1HTTPIngressPath(Extensionsv1beta1IngressBackend backend, string path = default(string))
         {
             Backend = backend;
             Path = path;
@@ -53,7 +55,7 @@ namespace k8s.Models
         /// which the traffic will be forwarded to.
         /// </summary>
         [JsonProperty(PropertyName = "backend")]
-        public V1beta1IngressBackend Backend { get; set; }
+        public Extensionsv1beta1IngressBackend Backend { get; set; }
 
         /// <summary>
         /// Gets or sets path is an extended POSIX regex as defined by IEEE Std

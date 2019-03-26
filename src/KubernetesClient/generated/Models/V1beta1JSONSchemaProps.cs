@@ -43,7 +43,7 @@ namespace k8s.Models
         /// <param name="items">JSONSchemaPropsOrArray represents a value that
         /// can either be a JSONSchemaProps or an array of JSONSchemaProps.
         /// Mainly here for serialization purposes.</param>
-        public V1beta1JSONSchemaProps(string refProperty = default(string), string schema = default(string), object additionalItems = default(object), object additionalProperties = default(object), IList<V1beta1JSONSchemaProps> allOf = default(IList<V1beta1JSONSchemaProps>), IList<V1beta1JSONSchemaProps> anyOf = default(IList<V1beta1JSONSchemaProps>), object defaultProperty = default(object), IDictionary<string, V1beta1JSONSchemaProps> definitions = default(IDictionary<string, V1beta1JSONSchemaProps>), IDictionary<string, object> dependencies = default(IDictionary<string, object>), string description = default(string), IList<object> enumProperty = default(IList<object>), object example = default(object), bool? exclusiveMaximum = default(bool?), bool? exclusiveMinimum = default(bool?), V1beta1ExternalDocumentation externalDocs = default(V1beta1ExternalDocumentation), string format = default(string), string id = default(string), object items = default(object), long? maxItems = default(long?), long? maxLength = default(long?), long? maxProperties = default(long?), double? maximum = default(double?), long? minItems = default(long?), long? minLength = default(long?), long? minProperties = default(long?), double? minimum = default(double?), double? multipleOf = default(double?), V1beta1JSONSchemaProps not = default(V1beta1JSONSchemaProps), IList<V1beta1JSONSchemaProps> oneOf = default(IList<V1beta1JSONSchemaProps>), string pattern = default(string), IDictionary<string, V1beta1JSONSchemaProps> patternProperties = default(IDictionary<string, V1beta1JSONSchemaProps>), IDictionary<string, V1beta1JSONSchemaProps> properties = default(IDictionary<string, V1beta1JSONSchemaProps>), IList<string> required = default(IList<string>), string title = default(string), string type = default(string), bool? uniqueItems = default(bool?))
+        public V1beta1JSONSchemaProps(string refProperty = default(string), string schema = default(string), object additionalItems = default(object), object additionalProperties = default(object), IList<V1beta1JSONSchemaProps> allOf = default(IList<V1beta1JSONSchemaProps>), IList<V1beta1JSONSchemaProps> anyOf = default(IList<V1beta1JSONSchemaProps>), object defaultProperty = default(object), IDictionary<string, V1beta1JSONSchemaProps> definitions = default(IDictionary<string, V1beta1JSONSchemaProps>), IDictionary<string, object> dependencies = default(IDictionary<string, object>), string description = default(string), IList<object> enumProperty = default(IList<object>), object example = default(object), bool? exclusiveMaximum = default(bool?), bool? exclusiveMinimum = default(bool?), V1beta1ExternalDocumentation externalDocs = default(V1beta1ExternalDocumentation), string format = default(string), string id = default(string), object items = default(object), long? maxItems = default(long?), long? maxLength = default(long?), long? maxProperties = default(long?), double? maximum = default(double?), long? minItems = default(long?), long? minLength = default(long?), long? minProperties = default(long?), double? minimum = default(double?), double? multipleOf = default(double?), V1beta1JSONSchemaProps not = default(V1beta1JSONSchemaProps), bool? nullable = default(bool?), IList<V1beta1JSONSchemaProps> oneOf = default(IList<V1beta1JSONSchemaProps>), string pattern = default(string), IDictionary<string, V1beta1JSONSchemaProps> patternProperties = default(IDictionary<string, V1beta1JSONSchemaProps>), IDictionary<string, V1beta1JSONSchemaProps> properties = default(IDictionary<string, V1beta1JSONSchemaProps>), IList<string> required = default(IList<string>), string title = default(string), string type = default(string), bool? uniqueItems = default(bool?))
         {
             RefProperty = refProperty;
             Schema = schema;
@@ -73,6 +73,7 @@ namespace k8s.Models
             Minimum = minimum;
             MultipleOf = multipleOf;
             Not = not;
+            Nullable = nullable;
             OneOf = oneOf;
             Pattern = pattern;
             PatternProperties = patternProperties;
@@ -241,6 +242,11 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "not")]
         public V1beta1JSONSchemaProps Not { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "nullable")]
+        public bool? Nullable { get; set; }
 
         /// <summary>
         /// </summary>

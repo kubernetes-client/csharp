@@ -10,6 +10,10 @@ namespace k8s.Models
     using Newtonsoft.Json;
     using System.Linq;
 
+    /// <summary>
+    /// APIServiceCondition describes the state of an APIService at a
+    /// particular point
+    /// </summary>
     public partial class V1beta1APIServiceCondition
     {
         /// <summary>

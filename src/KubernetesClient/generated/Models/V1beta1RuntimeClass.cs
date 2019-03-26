@@ -6,28 +6,41 @@
 
 namespace k8s.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Ingress is a collection of rules that allow inbound connections to
-    /// reach the endpoints defined by a backend. An Ingress can be configured
-    /// to give services externally-reachable urls, load balance traffic,
-    /// terminate SSL, offer name based virtual hosting etc.
+    /// RuntimeClass defines a class of container runtime supported in the
+    /// cluster. The RuntimeClass is used to determine which container runtime
+    /// is used to run all containers in a pod. RuntimeClasses are (currently)
+    /// manually defined by a user or cluster provisioner, and referenced in
+    /// the PodSpec. The Kubelet is responsible for resolving the
+    /// RuntimeClassName reference before running the pod.  For more details,
+    /// see https://git.k8s.io/enhancements/keps/sig-node/runtime-class.md
     /// </summary>
-    public partial class V1beta1Ingress
+    public partial class V1beta1RuntimeClass
     {
         /// <summary>
-        /// Initializes a new instance of the V1beta1Ingress class.
+        /// Initializes a new instance of the V1beta1RuntimeClass class.
         /// </summary>
-        public V1beta1Ingress()
+        public V1beta1RuntimeClass()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the V1beta1Ingress class.
+        /// Initializes a new instance of the V1beta1RuntimeClass class.
         /// </summary>
+        /// <param name="handler">Handler specifies the underlying runtime and
+        /// configuration that the CRI implementation will use to handle pods
+        /// of this class. The possible values are specific to the node &amp;
+        /// CRI configuration.  It is assumed that all handlers are available
+        /// on every node, and handlers of the same name are equivalent on
+        /// every node. For example, a handler called "runc" might specify that
+        /// the runc OCI runtime (using native Linux containers) will be used
+        /// to run the containers in a pod. The Handler must conform to the DNS
+        /// Label (RFC 1123) requirements, and is immutable.</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
@@ -38,21 +51,14 @@ namespace k8s.Models
         /// endpoint the client submits requests to. Cannot be updated. In
         /// CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
-        /// <param name="metadata">Standard object's metadata. More info:
+        /// <param name="metadata">More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</param>
-        /// <param name="spec">Spec is the desired state of the Ingress. More
-        /// info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status</param>
-        /// <param name="status">Status is the current state of the Ingress.
-        /// More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status</param>
-        public V1beta1Ingress(string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), V1beta1IngressSpec spec = default(V1beta1IngressSpec), V1beta1IngressStatus status = default(V1beta1IngressStatus))
+        public V1beta1RuntimeClass(string handler, string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta))
         {
             ApiVersion = apiVersion;
+            Handler = handler;
             Kind = kind;
             Metadata = metadata;
-            Spec = spec;
-            Status = status;
             CustomInit();
         }
 
@@ -72,6 +78,21 @@ namespace k8s.Models
         public string ApiVersion { get; set; }
 
         /// <summary>
+        /// Gets or sets handler specifies the underlying runtime and
+        /// configuration that the CRI implementation will use to handle pods
+        /// of this class. The possible values are specific to the node
+        /// &amp;amp; CRI configuration.  It is assumed that all handlers are
+        /// available on every node, and handlers of the same name are
+        /// equivalent on every node. For example, a handler called "runc"
+        /// might specify that the runc OCI runtime (using native Linux
+        /// containers) will be used to run the containers in a pod. The
+        /// Handler must conform to the DNS Label (RFC 1123) requirements, and
+        /// is immutable.
+        /// </summary>
+        [JsonProperty(PropertyName = "handler")]
+        public string Handler { get; set; }
+
+        /// <summary>
         /// Gets or sets kind is a string value representing the REST resource
         /// this object represents. Servers may infer this from the endpoint
         /// the client submits requests to. Cannot be updated. In CamelCase.
@@ -82,41 +103,27 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// Gets or sets standard object's metadata. More info:
+        /// Gets or sets more info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
-        /// Gets or sets spec is the desired state of the Ingress. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
-        /// </summary>
-        [JsonProperty(PropertyName = "spec")]
-        public V1beta1IngressSpec Spec { get; set; }
-
-        /// <summary>
-        /// Gets or sets status is the current state of the Ingress. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
-        /// </summary>
-        [JsonProperty(PropertyName = "status")]
-        public V1beta1IngressStatus Status { get; set; }
-
-        /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
+            if (Handler == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Handler");
+            }
             if (Metadata != null)
             {
                 Metadata.Validate();
-            }
-            if (Spec != null)
-            {
-                Spec.Validate();
             }
         }
     }

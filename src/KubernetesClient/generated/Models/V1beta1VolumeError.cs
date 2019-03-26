@@ -26,7 +26,7 @@ namespace k8s.Models
         /// Initializes a new instance of the V1beta1VolumeError class.
         /// </summary>
         /// <param name="message">String detailing the error encountered during
-        /// Attach or Detach operation. This string maybe logged, so it should
+        /// Attach or Detach operation. This string may be logged, so it should
         /// not contain sensitive information.</param>
         /// <param name="time">Time the error was encountered.</param>
         public V1beta1VolumeError(string message = default(string), System.DateTime? time = default(System.DateTime?))
@@ -43,7 +43,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets string detailing the error encountered during Attach
-        /// or Detach operation. This string maybe logged, so it should not
+        /// or Detach operation. This string may be logged, so it should not
         /// contain sensitive information.
         /// </summary>
         [JsonProperty(PropertyName = "message")]

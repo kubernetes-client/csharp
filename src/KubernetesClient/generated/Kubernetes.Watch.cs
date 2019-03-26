@@ -14,7 +14,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -37,7 +36,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -60,7 +58,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -83,7 +80,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -106,7 +102,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -129,7 +124,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -152,7 +146,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -175,7 +168,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -198,7 +190,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -221,7 +212,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -244,7 +234,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -267,7 +256,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -289,7 +277,6 @@ namespace k8s
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -311,7 +298,6 @@ namespace k8s
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -333,7 +319,6 @@ namespace k8s
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -351,33 +336,10 @@ namespace k8s
         }
 
         /// <inheritdoc>
-        public Task<Watcher<V1alpha1InitializerConfiguration>> WatchInitializerConfigurationAsync(
-            string name,
-            string @continue = null,
-            string fieldSelector = null,
-            bool? includeUninitialized = null,
-            string labelSelector = null,
-            int? limit = null,
-            bool? pretty = null,
-            string resourceVersion = null,
-            int? timeoutSeconds = null,
-            bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            Action<WatchEventType, V1alpha1InitializerConfiguration> onEvent = null,
-            Action<Exception> onError = null,
-            Action onClosed = null,
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            string path = $"apis/admissionregistration.k8s.io/v1alpha1/watch/initializerconfigurations/{name}";
-            return WatchObjectAsync<V1alpha1InitializerConfiguration>(path: path, @continue: @continue, fieldSelector: fieldSelector, includeUninitialized: includeUninitialized, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
-        }
-
-        /// <inheritdoc>
         public Task<Watcher<V1beta1MutatingWebhookConfiguration>> WatchMutatingWebhookConfigurationAsync(
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -399,7 +361,6 @@ namespace k8s
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -421,7 +382,6 @@ namespace k8s
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -443,7 +403,6 @@ namespace k8s
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -465,7 +424,6 @@ namespace k8s
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -488,7 +446,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -511,7 +468,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -534,7 +490,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -557,7 +512,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -580,7 +534,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -603,7 +556,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -626,7 +578,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -649,7 +600,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -672,7 +622,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -695,7 +644,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -718,7 +666,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -740,7 +687,6 @@ namespace k8s
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -763,7 +709,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -786,7 +731,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -809,7 +753,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -832,7 +775,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -855,7 +797,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -878,7 +819,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -900,7 +840,6 @@ namespace k8s
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -918,12 +857,33 @@ namespace k8s
         }
 
         /// <inheritdoc>
+        public Task<Watcher<V1Lease>> WatchNamespacedLeaseAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1Lease> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/coordination.k8s.io/v1/watch/namespaces/{@namespace}/leases/{name}";
+            return WatchObjectAsync<V1Lease>(path: path, @continue: @continue, fieldSelector: fieldSelector, includeUninitialized: includeUninitialized, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
         public Task<Watcher<V1beta1Lease>> WatchNamespacedLeaseAsync(
             string name,
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -946,7 +906,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -969,7 +928,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -992,7 +950,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1015,7 +972,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1038,7 +994,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1056,12 +1011,75 @@ namespace k8s
         }
 
         /// <inheritdoc>
+        public Task<Watcher<V1beta1Ingress>> WatchNamespacedIngressAsync(
+            string name,
+            string @namespace,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1Ingress> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/networking.k8s.io/v1beta1/watch/namespaces/{@namespace}/ingresses/{name}";
+            return WatchObjectAsync<V1beta1Ingress>(path: path, @continue: @continue, fieldSelector: fieldSelector, includeUninitialized: includeUninitialized, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
+        public Task<Watcher<V1alpha1RuntimeClass>> WatchRuntimeClassAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1alpha1RuntimeClass> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}";
+            return WatchObjectAsync<V1alpha1RuntimeClass>(path: path, @continue: @continue, fieldSelector: fieldSelector, includeUninitialized: includeUninitialized, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
+        public Task<Watcher<V1beta1RuntimeClass>> WatchRuntimeClassAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1RuntimeClass> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}";
+            return WatchObjectAsync<V1beta1RuntimeClass>(path: path, @continue: @continue, fieldSelector: fieldSelector, includeUninitialized: includeUninitialized, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
         public Task<Watcher<V1beta1PodDisruptionBudget>> WatchNamespacedPodDisruptionBudgetAsync(
             string name,
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1083,7 +1101,6 @@ namespace k8s
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1105,7 +1122,6 @@ namespace k8s
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1128,7 +1144,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1151,7 +1166,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1173,7 +1187,6 @@ namespace k8s
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1195,7 +1208,6 @@ namespace k8s
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1218,7 +1230,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1241,7 +1252,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1263,7 +1273,6 @@ namespace k8s
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1285,7 +1294,6 @@ namespace k8s
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1308,7 +1316,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1331,7 +1338,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1349,11 +1355,31 @@ namespace k8s
         }
 
         /// <inheritdoc>
+        public Task<Watcher<V1PriorityClass>> WatchPriorityClassAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1PriorityClass> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}";
+            return WatchObjectAsync<V1PriorityClass>(path: path, @continue: @continue, fieldSelector: fieldSelector, includeUninitialized: includeUninitialized, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
         public Task<Watcher<V1alpha1PriorityClass>> WatchPriorityClassAsync(
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1375,7 +1401,6 @@ namespace k8s
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1398,7 +1423,6 @@ namespace k8s
             string @namespace,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1420,7 +1444,6 @@ namespace k8s
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1442,7 +1465,6 @@ namespace k8s
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1464,7 +1486,6 @@ namespace k8s
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1482,11 +1503,52 @@ namespace k8s
         }
 
         /// <inheritdoc>
+        public Task<Watcher<V1beta1CSIDriver>> WatchCSIDriverAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1CSIDriver> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/storage.k8s.io/v1beta1/watch/csidrivers/{name}";
+            return WatchObjectAsync<V1beta1CSIDriver>(path: path, @continue: @continue, fieldSelector: fieldSelector, includeUninitialized: includeUninitialized, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
+        public Task<Watcher<V1beta1CSINode>> WatchCSINodeAsync(
+            string name,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1CSINode> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/storage.k8s.io/v1beta1/watch/csinodes/{name}";
+            return WatchObjectAsync<V1beta1CSINode>(path: path, @continue: @continue, fieldSelector: fieldSelector, includeUninitialized: includeUninitialized, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
         public Task<Watcher<V1beta1StorageClass>> WatchStorageClassAsync(
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,
@@ -1508,7 +1570,6 @@ namespace k8s
             string name,
             string @continue = null,
             string fieldSelector = null,
-            bool? includeUninitialized = null,
             string labelSelector = null,
             int? limit = null,
             bool? pretty = null,

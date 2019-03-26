@@ -13,32 +13,28 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// HTTPIngressRuleValue is a list of http selectors pointing to backends.
-    /// In the example: http://&lt;host&gt;/&lt;path&gt;?&lt;searchpart&gt;
-    /// -&gt; backend where where parts of the url correspond to RFC 3986, this
-    /// resource will be used to match against everything after the last '/'
-    /// and before the first '?' or '#'.
+    /// CSINodeSpec holds information about the specification of all CSI
+    /// drivers installed on a node
     /// </summary>
-    public partial class V1beta1HTTPIngressRuleValue
+    public partial class V1beta1CSINodeSpec
     {
         /// <summary>
-        /// Initializes a new instance of the V1beta1HTTPIngressRuleValue
-        /// class.
+        /// Initializes a new instance of the V1beta1CSINodeSpec class.
         /// </summary>
-        public V1beta1HTTPIngressRuleValue()
+        public V1beta1CSINodeSpec()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the V1beta1HTTPIngressRuleValue
-        /// class.
+        /// Initializes a new instance of the V1beta1CSINodeSpec class.
         /// </summary>
-        /// <param name="paths">A collection of paths that map requests to
-        /// backends.</param>
-        public V1beta1HTTPIngressRuleValue(IList<V1beta1HTTPIngressPath> paths)
+        /// <param name="drivers">drivers is a list of information of all CSI
+        /// Drivers existing on a node. If all drivers in the list are
+        /// uninstalled, this can become empty.</param>
+        public V1beta1CSINodeSpec(IList<V1beta1CSINodeDriver> drivers)
         {
-            Paths = paths;
+            Drivers = drivers;
             CustomInit();
         }
 
@@ -48,10 +44,12 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets a collection of paths that map requests to backends.
+        /// Gets or sets drivers is a list of information of all CSI Drivers
+        /// existing on a node. If all drivers in the list are uninstalled,
+        /// this can become empty.
         /// </summary>
-        [JsonProperty(PropertyName = "paths")]
-        public IList<V1beta1HTTPIngressPath> Paths { get; set; }
+        [JsonProperty(PropertyName = "drivers")]
+        public IList<V1beta1CSINodeDriver> Drivers { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -61,13 +59,13 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Paths == null)
+            if (Drivers == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Paths");
+                throw new ValidationException(ValidationRules.CannotBeNull, "Drivers");
             }
-            if (Paths != null)
+            if (Drivers != null)
             {
-                foreach (var element in Paths)
+                foreach (var element in Drivers)
                 {
                     if (element != null)
                     {

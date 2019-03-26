@@ -10,8 +10,10 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// PriorityClass defines mapping from a priority class name to the
-    /// priority integer value. The value can be any valid integer.
+    /// DEPRECATED - This group version of PriorityClass is deprecated by
+    /// scheduling.k8s.io/v1/PriorityClass. PriorityClass defines mapping from
+    /// a priority class name to the priority integer value. The value can be
+    /// any valid integer.
     /// </summary>
     public partial class V1beta1PriorityClass
     {
@@ -50,7 +52,7 @@ namespace k8s.Models
         /// CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
         /// <param name="metadata">Standard object's metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</param>
         public V1beta1PriorityClass(int value, string apiVersion = default(string), string description = default(string), bool? globalDefault = default(bool?), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta))
         {
             ApiVersion = apiVersion;
@@ -108,7 +110,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets standard object's metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ObjectMeta Metadata { get; set; }

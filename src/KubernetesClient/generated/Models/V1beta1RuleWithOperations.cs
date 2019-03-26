@@ -50,12 +50,20 @@ namespace k8s.Models
         ///
         /// Depending on the enclosing object, subresources might not be
         /// allowed. Required.</param>
-        public V1beta1RuleWithOperations(IList<string> apiGroups = default(IList<string>), IList<string> apiVersions = default(IList<string>), IList<string> operations = default(IList<string>), IList<string> resources = default(IList<string>))
+        /// <param name="scope">scope specifies the scope of this rule. Valid
+        /// values are "Cluster", "Namespaced", and "*" "Cluster" means that
+        /// only cluster-scoped resources will match this rule. Namespace API
+        /// objects are cluster-scoped. "Namespaced" means that only namespaced
+        /// resources will match this rule. "*" means that there are no scope
+        /// restrictions. Subresources match the scope of their parent
+        /// resource. Default is "*".</param>
+        public V1beta1RuleWithOperations(IList<string> apiGroups = default(IList<string>), IList<string> apiVersions = default(IList<string>), IList<string> operations = default(IList<string>), IList<string> resources = default(IList<string>), string scope = default(string))
         {
             ApiGroups = apiGroups;
             ApiVersions = apiVersions;
             Operations = operations;
             Resources = resources;
+            Scope = scope;
             CustomInit();
         }
 
@@ -104,6 +112,18 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "resources")]
         public IList<string> Resources { get; set; }
+
+        /// <summary>
+        /// Gets or sets scope specifies the scope of this rule. Valid values
+        /// are "Cluster", "Namespaced", and "*" "Cluster" means that only
+        /// cluster-scoped resources will match this rule. Namespace API
+        /// objects are cluster-scoped. "Namespaced" means that only namespaced
+        /// resources will match this rule. "*" means that there are no scope
+        /// restrictions. Subresources match the scope of their parent
+        /// resource. Default is "*".
+        /// </summary>
+        [JsonProperty(PropertyName = "scope")]
+        public string Scope { get; set; }
 
     }
 }

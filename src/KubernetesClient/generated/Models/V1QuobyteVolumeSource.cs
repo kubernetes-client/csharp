@@ -38,13 +38,17 @@ namespace k8s.Models
         /// <param name="readOnlyProperty">ReadOnly here will force the Quobyte
         /// volume to be mounted with read-only permissions. Defaults to
         /// false.</param>
+        /// <param name="tenant">Tenant owning the given Quobyte volume in the
+        /// Backend Used with dynamically provisioned Quobyte volumes, value is
+        /// set by the plugin</param>
         /// <param name="user">User to map volume access to Defaults to
         /// serivceaccount user</param>
-        public V1QuobyteVolumeSource(string registry, string volume, string group = default(string), bool? readOnlyProperty = default(bool?), string user = default(string))
+        public V1QuobyteVolumeSource(string registry, string volume, string group = default(string), bool? readOnlyProperty = default(bool?), string tenant = default(string), string user = default(string))
         {
             Group = group;
             ReadOnlyProperty = readOnlyProperty;
             Registry = registry;
+            Tenant = tenant;
             User = user;
             Volume = volume;
             CustomInit();
@@ -76,6 +80,14 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "registry")]
         public string Registry { get; set; }
+
+        /// <summary>
+        /// Gets or sets tenant owning the given Quobyte volume in the Backend
+        /// Used with dynamically provisioned Quobyte volumes, value is set by
+        /// the plugin
+        /// </summary>
+        [JsonProperty(PropertyName = "tenant")]
+        public string Tenant { get; set; }
 
         /// <summary>
         /// Gets or sets user to map volume access to Defaults to

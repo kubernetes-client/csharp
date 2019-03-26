@@ -45,6 +45,9 @@ namespace k8s.Models
         /// https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md</param>
         /// <param name="configMap">ConfigMap represents a configMap that
         /// should populate this volume</param>
+        /// <param name="csi">CSI (Container Storage Interface) represents
+        /// storage that is handled by an external CSI driver (Alpha
+        /// feature).</param>
         /// <param name="downwardAPI">DownwardAPI represents downward API about
         /// the pod that should populate this volume</param>
         /// <param name="emptyDir">EmptyDir represents a temporary directory
@@ -110,7 +113,7 @@ namespace k8s.Models
         /// attached and mounted on Kubernetes nodes.</param>
         /// <param name="vsphereVolume">VsphereVolume represents a vSphere
         /// volume attached and mounted on kubelets host machine</param>
-        public V1Volume(string name, V1AWSElasticBlockStoreVolumeSource awsElasticBlockStore = default(V1AWSElasticBlockStoreVolumeSource), V1AzureDiskVolumeSource azureDisk = default(V1AzureDiskVolumeSource), V1AzureFileVolumeSource azureFile = default(V1AzureFileVolumeSource), V1CephFSVolumeSource cephfs = default(V1CephFSVolumeSource), V1CinderVolumeSource cinder = default(V1CinderVolumeSource), V1ConfigMapVolumeSource configMap = default(V1ConfigMapVolumeSource), V1DownwardAPIVolumeSource downwardAPI = default(V1DownwardAPIVolumeSource), V1EmptyDirVolumeSource emptyDir = default(V1EmptyDirVolumeSource), V1FCVolumeSource fc = default(V1FCVolumeSource), V1FlexVolumeSource flexVolume = default(V1FlexVolumeSource), V1FlockerVolumeSource flocker = default(V1FlockerVolumeSource), V1GCEPersistentDiskVolumeSource gcePersistentDisk = default(V1GCEPersistentDiskVolumeSource), V1GitRepoVolumeSource gitRepo = default(V1GitRepoVolumeSource), V1GlusterfsVolumeSource glusterfs = default(V1GlusterfsVolumeSource), V1HostPathVolumeSource hostPath = default(V1HostPathVolumeSource), V1ISCSIVolumeSource iscsi = default(V1ISCSIVolumeSource), V1NFSVolumeSource nfs = default(V1NFSVolumeSource), V1PersistentVolumeClaimVolumeSource persistentVolumeClaim = default(V1PersistentVolumeClaimVolumeSource), V1PhotonPersistentDiskVolumeSource photonPersistentDisk = default(V1PhotonPersistentDiskVolumeSource), V1PortworxVolumeSource portworxVolume = default(V1PortworxVolumeSource), V1ProjectedVolumeSource projected = default(V1ProjectedVolumeSource), V1QuobyteVolumeSource quobyte = default(V1QuobyteVolumeSource), V1RBDVolumeSource rbd = default(V1RBDVolumeSource), V1ScaleIOVolumeSource scaleIO = default(V1ScaleIOVolumeSource), V1SecretVolumeSource secret = default(V1SecretVolumeSource), V1StorageOSVolumeSource storageos = default(V1StorageOSVolumeSource), V1VsphereVirtualDiskVolumeSource vsphereVolume = default(V1VsphereVirtualDiskVolumeSource))
+        public V1Volume(string name, V1AWSElasticBlockStoreVolumeSource awsElasticBlockStore = default(V1AWSElasticBlockStoreVolumeSource), V1AzureDiskVolumeSource azureDisk = default(V1AzureDiskVolumeSource), V1AzureFileVolumeSource azureFile = default(V1AzureFileVolumeSource), V1CephFSVolumeSource cephfs = default(V1CephFSVolumeSource), V1CinderVolumeSource cinder = default(V1CinderVolumeSource), V1ConfigMapVolumeSource configMap = default(V1ConfigMapVolumeSource), V1CSIVolumeSource csi = default(V1CSIVolumeSource), V1DownwardAPIVolumeSource downwardAPI = default(V1DownwardAPIVolumeSource), V1EmptyDirVolumeSource emptyDir = default(V1EmptyDirVolumeSource), V1FCVolumeSource fc = default(V1FCVolumeSource), V1FlexVolumeSource flexVolume = default(V1FlexVolumeSource), V1FlockerVolumeSource flocker = default(V1FlockerVolumeSource), V1GCEPersistentDiskVolumeSource gcePersistentDisk = default(V1GCEPersistentDiskVolumeSource), V1GitRepoVolumeSource gitRepo = default(V1GitRepoVolumeSource), V1GlusterfsVolumeSource glusterfs = default(V1GlusterfsVolumeSource), V1HostPathVolumeSource hostPath = default(V1HostPathVolumeSource), V1ISCSIVolumeSource iscsi = default(V1ISCSIVolumeSource), V1NFSVolumeSource nfs = default(V1NFSVolumeSource), V1PersistentVolumeClaimVolumeSource persistentVolumeClaim = default(V1PersistentVolumeClaimVolumeSource), V1PhotonPersistentDiskVolumeSource photonPersistentDisk = default(V1PhotonPersistentDiskVolumeSource), V1PortworxVolumeSource portworxVolume = default(V1PortworxVolumeSource), V1ProjectedVolumeSource projected = default(V1ProjectedVolumeSource), V1QuobyteVolumeSource quobyte = default(V1QuobyteVolumeSource), V1RBDVolumeSource rbd = default(V1RBDVolumeSource), V1ScaleIOVolumeSource scaleIO = default(V1ScaleIOVolumeSource), V1SecretVolumeSource secret = default(V1SecretVolumeSource), V1StorageOSVolumeSource storageos = default(V1StorageOSVolumeSource), V1VsphereVirtualDiskVolumeSource vsphereVolume = default(V1VsphereVirtualDiskVolumeSource))
         {
             AwsElasticBlockStore = awsElasticBlockStore;
             AzureDisk = azureDisk;
@@ -118,6 +121,7 @@ namespace k8s.Models
             Cephfs = cephfs;
             Cinder = cinder;
             ConfigMap = configMap;
+            Csi = csi;
             DownwardAPI = downwardAPI;
             EmptyDir = emptyDir;
             Fc = fc;
@@ -192,6 +196,13 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "configMap")]
         public V1ConfigMapVolumeSource ConfigMap { get; set; }
+
+        /// <summary>
+        /// Gets or sets CSI (Container Storage Interface) represents storage
+        /// that is handled by an external CSI driver (Alpha feature).
+        /// </summary>
+        [JsonProperty(PropertyName = "csi")]
+        public V1CSIVolumeSource Csi { get; set; }
 
         /// <summary>
         /// Gets or sets downwardAPI represents downward API about the pod that
@@ -398,6 +409,10 @@ namespace k8s.Models
             if (Cinder != null)
             {
                 Cinder.Validate();
+            }
+            if (Csi != null)
+            {
+                Csi.Validate();
             }
             if (FlexVolume != null)
             {

@@ -6,7 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -29,8 +28,6 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1Role class.
         /// </summary>
-        /// <param name="rules">Rules holds all the PolicyRules for this
-        /// Role</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
@@ -42,7 +39,9 @@ namespace k8s.Models
         /// CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
         /// <param name="metadata">Standard object's metadata.</param>
-        public V1Role(IList<V1PolicyRule> rules, string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta))
+        /// <param name="rules">Rules holds all the PolicyRules for this
+        /// Role</param>
+        public V1Role(string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), IList<V1PolicyRule> rules = default(IList<V1PolicyRule>))
         {
             ApiVersion = apiVersion;
             Kind = kind;
@@ -91,15 +90,11 @@ namespace k8s.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (Rules == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Rules");
-            }
             if (Metadata != null)
             {
                 Metadata.Validate();

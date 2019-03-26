@@ -12,22 +12,24 @@ namespace k8s.Models
     /// <summary>
     /// IngressStatus describe the current state of the Ingress.
     /// </summary>
-    public partial class V1beta1IngressStatus
+    public partial class Networkingv1beta1IngressStatus
     {
         /// <summary>
-        /// Initializes a new instance of the V1beta1IngressStatus class.
+        /// Initializes a new instance of the Networkingv1beta1IngressStatus
+        /// class.
         /// </summary>
-        public V1beta1IngressStatus()
+        public Networkingv1beta1IngressStatus()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the V1beta1IngressStatus class.
+        /// Initializes a new instance of the Networkingv1beta1IngressStatus
+        /// class.
         /// </summary>
         /// <param name="loadBalancer">LoadBalancer contains the current status
         /// of the load-balancer.</param>
-        public V1beta1IngressStatus(V1LoadBalancerStatus loadBalancer = default(V1LoadBalancerStatus))
+        public Networkingv1beta1IngressStatus(V1LoadBalancerStatus loadBalancer = default(V1LoadBalancerStatus))
         {
             LoadBalancer = loadBalancer;
             CustomInit();

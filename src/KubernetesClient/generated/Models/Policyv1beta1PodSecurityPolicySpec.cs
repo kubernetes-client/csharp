@@ -42,6 +42,10 @@ namespace k8s.Models
         /// <param name="allowPrivilegeEscalation">allowPrivilegeEscalation
         /// determines if a pod can request to allow privilege escalation. If
         /// unspecified, defaults to true.</param>
+        /// <param name="allowedCSIDrivers">AllowedCSIDrivers is a whitelist of
+        /// inline CSI drivers that must be explicitly set to be embedded
+        /// within a pod spec. An empty value means no CSI drivers can run
+        /// inline within a pod spec.</param>
         /// <param name="allowedCapabilities">allowedCapabilities is a list of
         /// capabilities that can be requested to add to the container.
         /// Capabilities in this field may be added at the pod author's
@@ -112,9 +116,10 @@ namespace k8s.Models
         /// <param name="volumes">volumes is a white list of allowed volume
         /// plugins. Empty indicates that no volumes may be used. To allow all
         /// volumes you may use '*'.</param>
-        public Policyv1beta1PodSecurityPolicySpec(Policyv1beta1FSGroupStrategyOptions fsGroup, Policyv1beta1RunAsUserStrategyOptions runAsUser, Policyv1beta1SELinuxStrategyOptions seLinux, Policyv1beta1SupplementalGroupsStrategyOptions supplementalGroups, bool? allowPrivilegeEscalation = default(bool?), IList<string> allowedCapabilities = default(IList<string>), IList<Policyv1beta1AllowedFlexVolume> allowedFlexVolumes = default(IList<Policyv1beta1AllowedFlexVolume>), IList<Policyv1beta1AllowedHostPath> allowedHostPaths = default(IList<Policyv1beta1AllowedHostPath>), IList<string> allowedProcMountTypes = default(IList<string>), IList<string> allowedUnsafeSysctls = default(IList<string>), IList<string> defaultAddCapabilities = default(IList<string>), bool? defaultAllowPrivilegeEscalation = default(bool?), IList<string> forbiddenSysctls = default(IList<string>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), IList<Policyv1beta1HostPortRange> hostPorts = default(IList<Policyv1beta1HostPortRange>), bool? privileged = default(bool?), bool? readOnlyRootFilesystem = default(bool?), IList<string> requiredDropCapabilities = default(IList<string>), Policyv1beta1RunAsGroupStrategyOptions runAsGroup = default(Policyv1beta1RunAsGroupStrategyOptions), IList<string> volumes = default(IList<string>))
+        public Policyv1beta1PodSecurityPolicySpec(Policyv1beta1FSGroupStrategyOptions fsGroup, Policyv1beta1RunAsUserStrategyOptions runAsUser, Policyv1beta1SELinuxStrategyOptions seLinux, Policyv1beta1SupplementalGroupsStrategyOptions supplementalGroups, bool? allowPrivilegeEscalation = default(bool?), IList<Policyv1beta1AllowedCSIDriver> allowedCSIDrivers = default(IList<Policyv1beta1AllowedCSIDriver>), IList<string> allowedCapabilities = default(IList<string>), IList<Policyv1beta1AllowedFlexVolume> allowedFlexVolumes = default(IList<Policyv1beta1AllowedFlexVolume>), IList<Policyv1beta1AllowedHostPath> allowedHostPaths = default(IList<Policyv1beta1AllowedHostPath>), IList<string> allowedProcMountTypes = default(IList<string>), IList<string> allowedUnsafeSysctls = default(IList<string>), IList<string> defaultAddCapabilities = default(IList<string>), bool? defaultAllowPrivilegeEscalation = default(bool?), IList<string> forbiddenSysctls = default(IList<string>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), IList<Policyv1beta1HostPortRange> hostPorts = default(IList<Policyv1beta1HostPortRange>), bool? privileged = default(bool?), bool? readOnlyRootFilesystem = default(bool?), IList<string> requiredDropCapabilities = default(IList<string>), Policyv1beta1RunAsGroupStrategyOptions runAsGroup = default(Policyv1beta1RunAsGroupStrategyOptions), IList<string> volumes = default(IList<string>))
         {
             AllowPrivilegeEscalation = allowPrivilegeEscalation;
+            AllowedCSIDrivers = allowedCSIDrivers;
             AllowedCapabilities = allowedCapabilities;
             AllowedFlexVolumes = allowedFlexVolumes;
             AllowedHostPaths = allowedHostPaths;
@@ -151,6 +156,14 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "allowPrivilegeEscalation")]
         public bool? AllowPrivilegeEscalation { get; set; }
+
+        /// <summary>
+        /// Gets or sets allowedCSIDrivers is a whitelist of inline CSI drivers
+        /// that must be explicitly set to be embedded within a pod spec. An
+        /// empty value means no CSI drivers can run inline within a pod spec.
+        /// </summary>
+        [JsonProperty(PropertyName = "allowedCSIDrivers")]
+        public IList<Policyv1beta1AllowedCSIDriver> AllowedCSIDrivers { get; set; }
 
         /// <summary>
         /// Gets or sets allowedCapabilities is a list of capabilities that can
@@ -355,9 +368,9 @@ namespace k8s.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "SupplementalGroups");
             }
-            if (AllowedFlexVolumes != null)
+            if (AllowedCSIDrivers != null)
             {
-                foreach (var element in AllowedFlexVolumes)
+                foreach (var element in AllowedCSIDrivers)
                 {
                     if (element != null)
                     {
@@ -365,13 +378,23 @@ namespace k8s.Models
                     }
                 }
             }
-            if (HostPorts != null)
+            if (AllowedFlexVolumes != null)
             {
-                foreach (var element1 in HostPorts)
+                foreach (var element1 in AllowedFlexVolumes)
                 {
                     if (element1 != null)
                     {
                         element1.Validate();
+                    }
+                }
+            }
+            if (HostPorts != null)
+            {
+                foreach (var element2 in HostPorts)
+                {
+                    if (element2 != null)
+                    {
+                        element2.Validate();
                     }
                 }
             }

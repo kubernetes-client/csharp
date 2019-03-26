@@ -36,11 +36,11 @@ namespace k8s.Models
         /// CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
         /// <param name="metadata">Standard object metadata; More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata.</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.</param>
         /// <param name="spec">defines the behavior of the scale. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status.</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.</param>
         /// <param name="status">current status of the scale. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status.
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
         /// Read-only.</param>
         public Extensionsv1beta1Scale(string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), Extensionsv1beta1ScaleSpec spec = default(Extensionsv1beta1ScaleSpec), Extensionsv1beta1ScaleStatus status = default(Extensionsv1beta1ScaleStatus))
         {
@@ -79,21 +79,21 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets standard object metadata; More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata.
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
         /// Gets or sets defines the behavior of the scale. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status.
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
         /// </summary>
         [JsonProperty(PropertyName = "spec")]
         public Extensionsv1beta1ScaleSpec Spec { get; set; }
 
         /// <summary>
         /// Gets or sets current status of the scale. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status.
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
         /// Read-only.
         /// </summary>
         [JsonProperty(PropertyName = "status")]

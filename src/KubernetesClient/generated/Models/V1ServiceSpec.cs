@@ -109,7 +109,7 @@ namespace k8s.Models
         /// "LoadBalancer" builds on NodePort and creates an external
         /// load-balancer (if supported in the current cloud) which routes to
         /// the clusterIP. More info:
-        /// https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services---service-types</param>
+        /// https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types</param>
         public V1ServiceSpec(string clusterIP = default(string), IList<string> externalIPs = default(IList<string>), string externalName = default(string), string externalTrafficPolicy = default(string), int? healthCheckNodePort = default(int?), string loadBalancerIP = default(string), IList<string> loadBalancerSourceRanges = default(IList<string>), IList<V1ServicePort> ports = default(IList<V1ServicePort>), bool? publishNotReadyAddresses = default(bool?), IDictionary<string, string> selector = default(IDictionary<string, string>), string sessionAffinity = default(string), V1SessionAffinityConfig sessionAffinityConfig = default(V1SessionAffinityConfig), string type = default(string))
         {
             ClusterIP = clusterIP;
@@ -275,7 +275,7 @@ namespace k8s.Models
         /// "LoadBalancer" builds on NodePort and creates an external
         /// load-balancer (if supported in the current cloud) which routes to
         /// the clusterIP. More info:
-        /// https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services---service-types
+        /// https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
