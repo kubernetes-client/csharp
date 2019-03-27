@@ -679,20 +679,6 @@ namespace k8s.Models
         public const string KubeGroup = "extensions";
     }
 
-    public partial class V1beta1Ingress : IKubernetesObject
-    {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "Ingress";
-        public const string KubeGroup = "extensions";
-    }
-
-    public partial class V1beta1IngressList : IKubernetesObject
-    {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "IngressList";
-        public const string KubeGroup = "extensions";
-    }
-
     public partial class V1beta1NetworkPolicy : IKubernetesObject
     {
         public const string KubeApiVersion = "v1beta1";
@@ -732,20 +718,6 @@ namespace k8s.Models
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "NetworkPolicyList";
-        public const string KubeGroup = "networking.k8s.io";
-    }
-
-    public partial class V1beta1Ingress : IKubernetesObject
-    {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "Ingress";
-        public const string KubeGroup = "networking.k8s.io";
-    }
-
-    public partial class V1beta1IngressList : IKubernetesObject
-    {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "IngressList";
         public const string KubeGroup = "networking.k8s.io";
     }
 
