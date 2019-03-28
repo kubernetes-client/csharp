@@ -13,24 +13,26 @@ namespace k8s.Models
     /// <summary>
     /// IngressBackend describes all endpoints for a given service and port.
     /// </summary>
-    public partial class V1beta1IngressBackend
+    public partial class Networkingv1beta1IngressBackend
     {
         /// <summary>
-        /// Initializes a new instance of the V1beta1IngressBackend class.
+        /// Initializes a new instance of the Networkingv1beta1IngressBackend
+        /// class.
         /// </summary>
-        public V1beta1IngressBackend()
+        public Networkingv1beta1IngressBackend()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the V1beta1IngressBackend class.
+        /// Initializes a new instance of the Networkingv1beta1IngressBackend
+        /// class.
         /// </summary>
         /// <param name="serviceName">Specifies the name of the referenced
         /// service.</param>
         /// <param name="servicePort">Specifies the port of the referenced
         /// service.</param>
-        public V1beta1IngressBackend(string serviceName, IntstrIntOrString servicePort)
+        public Networkingv1beta1IngressBackend(string serviceName, IntstrIntOrString servicePort)
         {
             ServiceName = serviceName;
             ServicePort = servicePort;

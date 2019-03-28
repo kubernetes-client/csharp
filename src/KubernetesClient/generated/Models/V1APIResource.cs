@@ -50,12 +50,20 @@ namespace k8s.Models
         /// Scale".</param>
         /// <param name="shortNames">shortNames is a list of suggested short
         /// names of the resource.</param>
+        /// <param name="storageVersionHash">The hash value of the storage
+        /// version, the version this resource is converted to when written to
+        /// the data store. Value must be treated as opaque by clients. Only
+        /// equality comparison on the value is valid. This is an alpha feature
+        /// and may change or be removed in the future. The field is populated
+        /// by the apiserver only if the StorageVersionHash feature gate is
+        /// enabled. This field will remain optional even if it
+        /// graduates.</param>
         /// <param name="version">version is the preferred version of the
         /// resource.  Empty implies the version of the containing resource
         /// list For subresources, this may have a different value, for
         /// example: v1 (while inside a v1beta1 version of the core resource's
         /// group)".</param>
-        public V1APIResource(string kind, string name, bool namespaced, string singularName, IList<string> verbs, IList<string> categories = default(IList<string>), string group = default(string), IList<string> shortNames = default(IList<string>), string version = default(string))
+        public V1APIResource(string kind, string name, bool namespaced, string singularName, IList<string> verbs, IList<string> categories = default(IList<string>), string group = default(string), IList<string> shortNames = default(IList<string>), string storageVersionHash = default(string), string version = default(string))
         {
             Categories = categories;
             Group = group;
@@ -64,6 +72,7 @@ namespace k8s.Models
             Namespaced = namespaced;
             ShortNames = shortNames;
             SingularName = singularName;
+            StorageVersionHash = storageVersionHash;
             Verbs = verbs;
             Version = version;
             CustomInit();
@@ -125,6 +134,18 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "singularName")]
         public string SingularName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the hash value of the storage version, the version
+        /// this resource is converted to when written to the data store. Value
+        /// must be treated as opaque by clients. Only equality comparison on
+        /// the value is valid. This is an alpha feature and may change or be
+        /// removed in the future. The field is populated by the apiserver only
+        /// if the StorageVersionHash feature gate is enabled. This field will
+        /// remain optional even if it graduates.
+        /// </summary>
+        [JsonProperty(PropertyName = "storageVersionHash")]
+        public string StorageVersionHash { get; set; }
 
         /// <summary>
         /// Gets or sets verbs is a list of supported kube verbs (this includes

@@ -6,7 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -29,8 +28,6 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1alpha1ClusterRole class.
         /// </summary>
-        /// <param name="rules">Rules holds all the PolicyRules for this
-        /// ClusterRole</param>
         /// <param name="aggregationRule">AggregationRule is an optional field
         /// that describes how to build the Rules for this ClusterRole. If
         /// AggregationRule is set, then the Rules are controller managed and
@@ -46,7 +43,9 @@ namespace k8s.Models
         /// CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
         /// <param name="metadata">Standard object's metadata.</param>
-        public V1alpha1ClusterRole(IList<V1alpha1PolicyRule> rules, V1alpha1AggregationRule aggregationRule = default(V1alpha1AggregationRule), string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta))
+        /// <param name="rules">Rules holds all the PolicyRules for this
+        /// ClusterRole</param>
+        public V1alpha1ClusterRole(V1alpha1AggregationRule aggregationRule = default(V1alpha1AggregationRule), string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), IList<V1alpha1PolicyRule> rules = default(IList<V1alpha1PolicyRule>))
         {
             AggregationRule = aggregationRule;
             ApiVersion = apiVersion;
@@ -105,15 +104,11 @@ namespace k8s.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (Rules == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Rules");
-            }
             if (Metadata != null)
             {
                 Metadata.Validate();

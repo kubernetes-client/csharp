@@ -14,18 +14,20 @@ namespace k8s.Models
     /// <summary>
     /// IngressSpec describes the Ingress the user wishes to exist.
     /// </summary>
-    public partial class V1beta1IngressSpec
+    public partial class Extensionsv1beta1IngressSpec
     {
         /// <summary>
-        /// Initializes a new instance of the V1beta1IngressSpec class.
+        /// Initializes a new instance of the Extensionsv1beta1IngressSpec
+        /// class.
         /// </summary>
-        public V1beta1IngressSpec()
+        public Extensionsv1beta1IngressSpec()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the V1beta1IngressSpec class.
+        /// Initializes a new instance of the Extensionsv1beta1IngressSpec
+        /// class.
         /// </summary>
         /// <param name="backend">A default backend capable of servicing
         /// requests that don't match any rule. At least one of 'backend' or
@@ -41,7 +43,7 @@ namespace k8s.Models
         /// according to the hostname specified through the SNI TLS extension,
         /// if the ingress controller fulfilling the ingress supports
         /// SNI.</param>
-        public V1beta1IngressSpec(V1beta1IngressBackend backend = default(V1beta1IngressBackend), IList<V1beta1IngressRule> rules = default(IList<V1beta1IngressRule>), IList<V1beta1IngressTLS> tls = default(IList<V1beta1IngressTLS>))
+        public Extensionsv1beta1IngressSpec(Extensionsv1beta1IngressBackend backend = default(Extensionsv1beta1IngressBackend), IList<Extensionsv1beta1IngressRule> rules = default(IList<Extensionsv1beta1IngressRule>), IList<Extensionsv1beta1IngressTLS> tls = default(IList<Extensionsv1beta1IngressTLS>))
         {
             Backend = backend;
             Rules = rules;
@@ -61,7 +63,7 @@ namespace k8s.Models
         /// controller or defaulting logic to specify a global default.
         /// </summary>
         [JsonProperty(PropertyName = "backend")]
-        public V1beta1IngressBackend Backend { get; set; }
+        public Extensionsv1beta1IngressBackend Backend { get; set; }
 
         /// <summary>
         /// Gets or sets a list of host rules used to configure the Ingress. If
@@ -69,7 +71,7 @@ namespace k8s.Models
         /// backend.
         /// </summary>
         [JsonProperty(PropertyName = "rules")]
-        public IList<V1beta1IngressRule> Rules { get; set; }
+        public IList<Extensionsv1beta1IngressRule> Rules { get; set; }
 
         /// <summary>
         /// Gets or sets TLS configuration. Currently the Ingress only supports
@@ -79,7 +81,7 @@ namespace k8s.Models
         /// if the ingress controller fulfilling the ingress supports SNI.
         /// </summary>
         [JsonProperty(PropertyName = "tls")]
-        public IList<V1beta1IngressTLS> Tls { get; set; }
+        public IList<Extensionsv1beta1IngressTLS> Tls { get; set; }
 
         /// <summary>
         /// Validate the object.

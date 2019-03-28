@@ -41,14 +41,14 @@ namespace k8s.Models
         /// <param name="metadata">If the Labels of a ReplicaSet are empty,
         /// they are defaulted to be the same as the Pod(s) that the ReplicaSet
         /// manages. Standard object's metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</param>
         /// <param name="spec">Spec defines the specification of the desired
         /// behavior of the ReplicaSet. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</param>
         /// <param name="status">Status is the most recently observed status of
         /// the ReplicaSet. This data may be out of date by some window of
         /// time. Populated by the system. Read-only. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</param>
         public V1beta2ReplicaSet(string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), V1beta2ReplicaSetSpec spec = default(V1beta2ReplicaSetSpec), V1beta2ReplicaSetStatus status = default(V1beta2ReplicaSetStatus))
         {
             ApiVersion = apiVersion;
@@ -88,7 +88,7 @@ namespace k8s.Models
         /// Gets or sets if the Labels of a ReplicaSet are empty, they are
         /// defaulted to be the same as the Pod(s) that the ReplicaSet manages.
         /// Standard object's metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ObjectMeta Metadata { get; set; }
@@ -96,7 +96,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets spec defines the specification of the desired behavior
         /// of the ReplicaSet. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [JsonProperty(PropertyName = "spec")]
         public V1beta2ReplicaSetSpec Spec { get; set; }
@@ -105,7 +105,7 @@ namespace k8s.Models
         /// Gets or sets status is the most recently observed status of the
         /// ReplicaSet. This data may be out of date by some window of time.
         /// Populated by the system. Read-only. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public V1beta2ReplicaSetStatus Status { get; set; }

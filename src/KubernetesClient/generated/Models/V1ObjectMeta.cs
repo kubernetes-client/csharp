@@ -110,11 +110,24 @@ namespace k8s.Models
         /// When an object is created, the system will populate this list with
         /// the current set of initializers. Only privileged users may set or
         /// modify this list. Once it is empty, it may not be modified further
-        /// by any user.</param>
+        /// by any user.
+        ///
+        /// DEPRECATED - initializers are an alpha field and will be removed in
+        /// v1.15.</param>
         /// <param name="labels">Map of string keys and values that can be used
         /// to organize and categorize (scope and select) objects. May match
         /// selectors of replication controllers and services. More info:
         /// http://kubernetes.io/docs/user-guide/labels</param>
+        /// <param name="managedFields">ManagedFields maps workflow-id and
+        /// version to the set of fields that are managed by that workflow.
+        /// This is mostly for internal housekeeping, and users typically
+        /// shouldn't need to set or understand this field. A workflow can be
+        /// the user's name, a controller's name, or the name of a specific
+        /// apply path like "ci-cd". The set of fields is always in the version
+        /// that the workflow used when modifying the object.
+        ///
+        /// This field is alpha and can be changed or removed without
+        /// notice.</param>
         /// <param name="name">Name must be unique within a namespace. Is
         /// required when creating resources, although some resources may allow
         /// a client to request the generation of an appropriate name
@@ -155,7 +168,7 @@ namespace k8s.Models
         ///
         /// Populated by the system. Read-only. More info:
         /// http://kubernetes.io/docs/user-guide/identifiers#uids</param>
-        public V1ObjectMeta(IDictionary<string, string> annotations = default(IDictionary<string, string>), string clusterName = default(string), System.DateTime? creationTimestamp = default(System.DateTime?), long? deletionGracePeriodSeconds = default(long?), System.DateTime? deletionTimestamp = default(System.DateTime?), IList<string> finalizers = default(IList<string>), string generateName = default(string), long? generation = default(long?), V1Initializers initializers = default(V1Initializers), IDictionary<string, string> labels = default(IDictionary<string, string>), string name = default(string), string namespaceProperty = default(string), IList<V1OwnerReference> ownerReferences = default(IList<V1OwnerReference>), string resourceVersion = default(string), string selfLink = default(string), string uid = default(string))
+        public V1ObjectMeta(IDictionary<string, string> annotations = default(IDictionary<string, string>), string clusterName = default(string), System.DateTime? creationTimestamp = default(System.DateTime?), long? deletionGracePeriodSeconds = default(long?), System.DateTime? deletionTimestamp = default(System.DateTime?), IList<string> finalizers = default(IList<string>), string generateName = default(string), long? generation = default(long?), V1Initializers initializers = default(V1Initializers), IDictionary<string, string> labels = default(IDictionary<string, string>), IList<V1ManagedFieldsEntry> managedFields = default(IList<V1ManagedFieldsEntry>), string name = default(string), string namespaceProperty = default(string), IList<V1OwnerReference> ownerReferences = default(IList<V1OwnerReference>), string resourceVersion = default(string), string selfLink = default(string), string uid = default(string))
         {
             Annotations = annotations;
             ClusterName = clusterName;
@@ -167,6 +180,7 @@ namespace k8s.Models
             Generation = generation;
             Initializers = initializers;
             Labels = labels;
+            ManagedFields = managedFields;
             Name = name;
             NamespaceProperty = namespaceProperty;
             OwnerReferences = ownerReferences;
@@ -302,6 +316,9 @@ namespace k8s.Models
         /// the current set of initializers. Only privileged users may set or
         /// modify this list. Once it is empty, it may not be modified further
         /// by any user.
+        ///
+        /// DEPRECATED - initializers are an alpha field and will be removed in
+        /// v1.15.
         /// </summary>
         [JsonProperty(PropertyName = "initializers")]
         public V1Initializers Initializers { get; set; }
@@ -314,6 +331,20 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "labels")]
         public IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Gets or sets managedFields maps workflow-id and version to the set
+        /// of fields that are managed by that workflow. This is mostly for
+        /// internal housekeeping, and users typically shouldn't need to set or
+        /// understand this field. A workflow can be the user's name, a
+        /// controller's name, or the name of a specific apply path like
+        /// "ci-cd". The set of fields is always in the version that the
+        /// workflow used when modifying the object.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </summary>
+        [JsonProperty(PropertyName = "managedFields")]
+        public IList<V1ManagedFieldsEntry> ManagedFields { get; set; }
 
         /// <summary>
         /// Gets or sets name must be unique within a namespace. Is required

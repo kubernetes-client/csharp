@@ -56,14 +56,18 @@ namespace KubernetesWatchGenerator
             // Generate the Watcher operations
             // We skip operations where the name of the class in the C# client could not be determined correctly.
             // That's usually because there are different version of the same object (e.g. for deployments).
-            Collection<string> blacklistedOperations = new Collection<string>()
+            var blacklistedOperations = new HashSet<string>()
             {
                 "watchAppsV1beta1NamespacedDeployment",
                 "watchAppsV1beta2NamespacedDeployment",
                 "watchExtensionsV1beta1NamespacedDeployment",
                 "watchExtensionsV1beta1NamespacedNetworkPolicy",
                 "watchPolicyV1beta1PodSecurityPolicy",
-                "watchExtensionsV1beta1PodSecurityPolicy"
+                "watchExtensionsV1beta1PodSecurityPolicy",
+                "watchExtensionsV1beta1NamespacedIngress",
+                "watchExtensionsV1beta1NamespacedIngressList",
+                "watchNetworkingV1beta1NamespacedIngress",
+                "watchNetworkingV1beta1NamespacedIngressList",
             };
 
             var watchOperations = swagger.Operations.Where(
@@ -76,7 +80,7 @@ namespace KubernetesWatchGenerator
             Render.FileToFile("Kubernetes.Watch.cs.template", watchOperations, $"{outputDirectory}Kubernetes.Watch.cs");
 
             // Generate the interface declarations
-            var skippedTypes = new Collection<string>()
+            var skippedTypes = new HashSet<string>()
             {
                 "V1beta1Deployment",
                 "V1beta1DeploymentList",
@@ -86,6 +90,8 @@ namespace KubernetesWatchGenerator
                 "V1beta1PodSecurityPolicy",
                 "V1beta1PodSecurityPolicyList",
                 "V1WatchEvent",
+                "V1beta1Ingress",
+                "V1beta1IngressList"
             };
 
             var definitions = swagger.Definitions.Values

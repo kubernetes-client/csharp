@@ -54,18 +54,18 @@ namespace k8s.Models
         /// does not allow any traffic (and serves solely to ensure that the
         /// pods it selects are isolated by default).</param>
         /// <param name="policyTypes">List of rule types that the NetworkPolicy
-        /// relates to. Valid options are Ingress, Egress, or Ingress,Egress.
-        /// If this field is not specified, it will default based on the
-        /// existence of Ingress or Egress rules; policies that contain an
-        /// Egress section are assumed to affect Egress, and all policies
-        /// (whether or not they contain an Ingress section) are assumed to
-        /// affect Ingress. If you want to write an egress-only policy, you
-        /// must explicitly specify policyTypes [ "Egress" ]. Likewise, if you
-        /// want to write a policy that specifies that no egress is allowed,
-        /// you must specify a policyTypes value that include "Egress" (since
-        /// such a policy would not include an Egress section and would
-        /// otherwise default to just [ "Ingress" ]). This field is beta-level
-        /// in 1.8</param>
+        /// relates to. Valid options are "Ingress", "Egress", or
+        /// "Ingress,Egress". If this field is not specified, it will default
+        /// based on the existence of Ingress or Egress rules; policies that
+        /// contain an Egress section are assumed to affect Egress, and all
+        /// policies (whether or not they contain an Ingress section) are
+        /// assumed to affect Ingress. If you want to write an egress-only
+        /// policy, you must explicitly specify policyTypes [ "Egress" ].
+        /// Likewise, if you want to write a policy that specifies that no
+        /// egress is allowed, you must specify a policyTypes value that
+        /// include "Egress" (since such a policy would not include an Egress
+        /// section and would otherwise default to just [ "Ingress" ]). This
+        /// field is beta-level in 1.8</param>
         public V1beta1NetworkPolicySpec(V1LabelSelector podSelector, IList<V1beta1NetworkPolicyEgressRule> egress = default(IList<V1beta1NetworkPolicyEgressRule>), IList<V1beta1NetworkPolicyIngressRule> ingress = default(IList<V1beta1NetworkPolicyIngressRule>), IList<string> policyTypes = default(IList<string>))
         {
             Egress = egress;
@@ -120,10 +120,10 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets list of rule types that the NetworkPolicy relates to.
-        /// Valid options are Ingress, Egress, or Ingress,Egress. If this field
-        /// is not specified, it will default based on the existence of Ingress
-        /// or Egress rules; policies that contain an Egress section are
-        /// assumed to affect Egress, and all policies (whether or not they
+        /// Valid options are "Ingress", "Egress", or "Ingress,Egress". If this
+        /// field is not specified, it will default based on the existence of
+        /// Ingress or Egress rules; policies that contain an Egress section
+        /// are assumed to affect Egress, and all policies (whether or not they
         /// contain an Ingress section) are assumed to affect Ingress. If you
         /// want to write an egress-only policy, you must explicitly specify
         /// policyTypes [ "Egress" ]. Likewise, if you want to write a policy

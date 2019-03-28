@@ -113,7 +113,7 @@ namespace k8s.Models
         /// be evaluated for pod readiness. A pod is ready when all its
         /// containers are ready AND all conditions specified in the readiness
         /// gates have status equal to "True" More info:
-        /// https://github.com/kubernetes/community/blob/master/keps/sig-network/0007-pod-ready%2B%2B.md</param>
+        /// https://git.k8s.io/enhancements/keps/sig-network/0007-pod-ready%2B%2B.md</param>
         /// <param name="restartPolicy">Restart policy for all containers
         /// within the pod. One of Always, OnFailure, Never. Default to Always.
         /// More info:
@@ -124,8 +124,8 @@ namespace k8s.Models
         /// class, the pod will not be run. If unset or empty, the "legacy"
         /// RuntimeClass will be used, which is an implicit class with an empty
         /// definition that uses the default runtime handler. More info:
-        /// https://github.com/kubernetes/community/blob/master/keps/sig-node/0014-runtime-class.md
-        /// This is an alpha feature and may change in the future.</param>
+        /// https://git.k8s.io/enhancements/keps/sig-node/runtime-class.md This
+        /// is an alpha feature and may change in the future.</param>
         /// <param name="schedulerName">If specified, the pod will be
         /// dispatched by specified scheduler. If not specified, the pod will
         /// be dispatched by default scheduler.</param>
@@ -375,7 +375,7 @@ namespace k8s.Models
         /// for pod readiness. A pod is ready when all its containers are ready
         /// AND all conditions specified in the readiness gates have status
         /// equal to "True" More info:
-        /// https://github.com/kubernetes/community/blob/master/keps/sig-network/0007-pod-ready%2B%2B.md
+        /// https://git.k8s.io/enhancements/keps/sig-network/0007-pod-ready%2B%2B.md
         /// </summary>
         [JsonProperty(PropertyName = "readinessGates")]
         public IList<V1PodReadinessGate> ReadinessGates { get; set; }
@@ -395,8 +395,8 @@ namespace k8s.Models
         /// run. If unset or empty, the "legacy" RuntimeClass will be used,
         /// which is an implicit class with an empty definition that uses the
         /// default runtime handler. More info:
-        /// https://github.com/kubernetes/community/blob/master/keps/sig-node/0014-runtime-class.md
-        /// This is an alpha feature and may change in the future.
+        /// https://git.k8s.io/enhancements/keps/sig-node/runtime-class.md This
+        /// is an alpha feature and may change in the future.
         /// </summary>
         [JsonProperty(PropertyName = "runtimeClassName")]
         public string RuntimeClassName { get; set; }

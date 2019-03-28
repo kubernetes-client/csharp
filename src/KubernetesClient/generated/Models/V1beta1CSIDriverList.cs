@@ -13,24 +13,22 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// InitializerConfigurationList is a list of InitializerConfiguration.
+    /// CSIDriverList is a collection of CSIDriver objects.
     /// </summary>
-    public partial class V1alpha1InitializerConfigurationList
+    public partial class V1beta1CSIDriverList
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// V1alpha1InitializerConfigurationList class.
+        /// Initializes a new instance of the V1beta1CSIDriverList class.
         /// </summary>
-        public V1alpha1InitializerConfigurationList()
+        public V1beta1CSIDriverList()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// V1alpha1InitializerConfigurationList class.
+        /// Initializes a new instance of the V1beta1CSIDriverList class.
         /// </summary>
-        /// <param name="items">List of InitializerConfiguration.</param>
+        /// <param name="items">items is the list of CSIDriver</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
@@ -41,9 +39,9 @@ namespace k8s.Models
         /// endpoint the client submits requests to. Cannot be updated. In
         /// CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
-        /// <param name="metadata">Standard list metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
-        public V1alpha1InitializerConfigurationList(IList<V1alpha1InitializerConfiguration> items, string apiVersion = default(string), string kind = default(string), V1ListMeta metadata = default(V1ListMeta))
+        /// <param name="metadata">Standard list metadata More info:
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</param>
+        public V1beta1CSIDriverList(IList<V1beta1CSIDriver> items, string apiVersion = default(string), string kind = default(string), V1ListMeta metadata = default(V1ListMeta))
         {
             ApiVersion = apiVersion;
             Items = items;
@@ -68,10 +66,10 @@ namespace k8s.Models
         public string ApiVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets list of InitializerConfiguration.
+        /// Gets or sets items is the list of CSIDriver
         /// </summary>
         [JsonProperty(PropertyName = "items")]
-        public IList<V1alpha1InitializerConfiguration> Items { get; set; }
+        public IList<V1beta1CSIDriver> Items { get; set; }
 
         /// <summary>
         /// Gets or sets kind is a string value representing the REST resource
@@ -84,8 +82,8 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// Gets or sets standard list metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+        /// Gets or sets standard list metadata More info:
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ListMeta Metadata { get; set; }

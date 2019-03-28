@@ -35,6 +35,15 @@ namespace k8s.Models
         /// be fully qualified, e.g., imagepolicy.kubernetes.io, where
         /// "imagepolicy" is the name of the webhook, and kubernetes.io is the
         /// name of the organization. Required.</param>
+        /// <param name="admissionReviewVersions">AdmissionReviewVersions is an
+        /// ordered list of preferred `AdmissionReview` versions the Webhook
+        /// expects. API server will try to use first version in the list which
+        /// it supports. If none of the versions specified in this list
+        /// supported by API server, validation will fail for this object. If a
+        /// persisted webhook configuration specifies allowed versions and does
+        /// not include any versions known to the API Server, calls to the
+        /// webhook will fail and be subject to the failure policy. Default to
+        /// `['v1beta1']`.</param>
         /// <param name="failurePolicy">FailurePolicy defines how unrecognized
         /// errors from the admission endpoint are handled - allowed values are
         /// Ignore or Fail. Defaults to Ignore.</param>
@@ -99,14 +108,21 @@ namespace k8s.Models
         /// be undone. Requests with the dryRun attribute will be auto-rejected
         /// if they match a webhook with sideEffects == Unknown or Some.
         /// Defaults to Unknown.</param>
-        public V1beta1Webhook(Admissionregistrationv1beta1WebhookClientConfig clientConfig, string name, string failurePolicy = default(string), V1LabelSelector namespaceSelector = default(V1LabelSelector), IList<V1beta1RuleWithOperations> rules = default(IList<V1beta1RuleWithOperations>), string sideEffects = default(string))
+        /// <param name="timeoutSeconds">TimeoutSeconds specifies the timeout
+        /// for this webhook. After the timeout passes, the webhook call will
+        /// be ignored or the API call will fail based on the failure policy.
+        /// The timeout value must be between 1 and 30 seconds. Default to 30
+        /// seconds.</param>
+        public V1beta1Webhook(Admissionregistrationv1beta1WebhookClientConfig clientConfig, string name, IList<string> admissionReviewVersions = default(IList<string>), string failurePolicy = default(string), V1LabelSelector namespaceSelector = default(V1LabelSelector), IList<V1beta1RuleWithOperations> rules = default(IList<V1beta1RuleWithOperations>), string sideEffects = default(string), int? timeoutSeconds = default(int?))
         {
+            AdmissionReviewVersions = admissionReviewVersions;
             ClientConfig = clientConfig;
             FailurePolicy = failurePolicy;
             Name = name;
             NamespaceSelector = namespaceSelector;
             Rules = rules;
             SideEffects = sideEffects;
+            TimeoutSeconds = timeoutSeconds;
             CustomInit();
         }
 
@@ -114,6 +130,20 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets admissionReviewVersions is an ordered list of
+        /// preferred `AdmissionReview` versions the Webhook expects. API
+        /// server will try to use first version in the list which it supports.
+        /// If none of the versions specified in this list supported by API
+        /// server, validation will fail for this object. If a persisted
+        /// webhook configuration specifies allowed versions and does not
+        /// include any versions known to the API Server, calls to the webhook
+        /// will fail and be subject to the failure policy. Default to
+        /// `['v1beta1']`.
+        /// </summary>
+        [JsonProperty(PropertyName = "admissionReviewVersions")]
+        public IList<string> AdmissionReviewVersions { get; set; }
 
         /// <summary>
         /// Gets or sets clientConfig defines how to communicate with the hook.
@@ -211,6 +241,15 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "sideEffects")]
         public string SideEffects { get; set; }
+
+        /// <summary>
+        /// Gets or sets timeoutSeconds specifies the timeout for this webhook.
+        /// After the timeout passes, the webhook call will be ignored or the
+        /// API call will fail based on the failure policy. The timeout value
+        /// must be between 1 and 30 seconds. Default to 30 seconds.
+        /// </summary>
+        [JsonProperty(PropertyName = "timeoutSeconds")]
+        public int? TimeoutSeconds { get; set; }
 
         /// <summary>
         /// Validate the object.

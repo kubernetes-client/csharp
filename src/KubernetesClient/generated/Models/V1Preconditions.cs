@@ -26,9 +26,12 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1Preconditions class.
         /// </summary>
+        /// <param name="resourceVersion">Specifies the target
+        /// ResourceVersion</param>
         /// <param name="uid">Specifies the target UID.</param>
-        public V1Preconditions(string uid = default(string))
+        public V1Preconditions(string resourceVersion = default(string), string uid = default(string))
         {
+            ResourceVersion = resourceVersion;
             Uid = uid;
             CustomInit();
         }
@@ -37,6 +40,12 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets specifies the target ResourceVersion
+        /// </summary>
+        [JsonProperty(PropertyName = "resourceVersion")]
+        public string ResourceVersion { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the target UID.

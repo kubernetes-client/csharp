@@ -38,14 +38,14 @@ namespace k8s.Models
         /// CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
         /// <param name="metadata">Standard object's metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</param>
         /// <param name="spec">The desired behavior of this daemon set. More
         /// info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</param>
         /// <param name="status">The current status of this daemon set. This
         /// data may be out of date by some window of time. Populated by the
         /// system. Read-only. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</param>
         public V1beta1DaemonSet(string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), V1beta1DaemonSetSpec spec = default(V1beta1DaemonSetSpec), V1beta1DaemonSetStatus status = default(V1beta1DaemonSetStatus))
         {
             ApiVersion = apiVersion;
@@ -83,14 +83,14 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets standard object's metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
         /// Gets or sets the desired behavior of this daemon set. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [JsonProperty(PropertyName = "spec")]
         public V1beta1DaemonSetSpec Spec { get; set; }
@@ -99,7 +99,7 @@ namespace k8s.Models
         /// Gets or sets the current status of this daemon set. This data may
         /// be out of date by some window of time. Populated by the system.
         /// Read-only. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public V1beta1DaemonSetStatus Status { get; set; }

@@ -39,13 +39,20 @@ namespace k8s.Models
         /// <param name="subPath">Path within the volume from which the
         /// container's volume should be mounted. Defaults to "" (volume's
         /// root).</param>
-        public V1VolumeMount(string mountPath, string name, string mountPropagation = default(string), bool? readOnlyProperty = default(bool?), string subPath = default(string))
+        /// <param name="subPathExpr">Expanded path within the volume from
+        /// which the container's volume should be mounted. Behaves similarly
+        /// to SubPath but environment variable references $(VAR_NAME) are
+        /// expanded using the container's environment. Defaults to ""
+        /// (volume's root). SubPathExpr and SubPath are mutually exclusive.
+        /// This field is alpha in 1.14.</param>
+        public V1VolumeMount(string mountPath, string name, string mountPropagation = default(string), bool? readOnlyProperty = default(bool?), string subPath = default(string), string subPathExpr = default(string))
         {
             MountPath = mountPath;
             MountPropagation = mountPropagation;
             Name = name;
             ReadOnlyProperty = readOnlyProperty;
             SubPath = subPath;
+            SubPathExpr = subPathExpr;
             CustomInit();
         }
 
@@ -88,6 +95,17 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "subPath")]
         public string SubPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets expanded path within the volume from which the
+        /// container's volume should be mounted. Behaves similarly to SubPath
+        /// but environment variable references $(VAR_NAME) are expanded using
+        /// the container's environment. Defaults to "" (volume's root).
+        /// SubPathExpr and SubPath are mutually exclusive. This field is alpha
+        /// in 1.14.
+        /// </summary>
+        [JsonProperty(PropertyName = "subPathExpr")]
+        public string SubPathExpr { get; set; }
 
         /// <summary>
         /// Validate the object.

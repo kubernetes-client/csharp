@@ -7,52 +7,52 @@
 namespace k8s.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// InitializerConfiguration describes the configuration of initializers.
+    /// Ingress is a collection of rules that allow inbound connections to
+    /// reach the endpoints defined by a backend. An Ingress can be configured
+    /// to give services externally-reachable urls, load balance traffic,
+    /// terminate SSL, offer name based virtual hosting etc.
     /// </summary>
-    public partial class V1alpha1InitializerConfiguration
+    public partial class Networkingv1beta1Ingress
     {
         /// <summary>
-        /// Initializes a new instance of the V1alpha1InitializerConfiguration
-        /// class.
+        /// Initializes a new instance of the Networkingv1beta1Ingress class.
         /// </summary>
-        public V1alpha1InitializerConfiguration()
+        public Networkingv1beta1Ingress()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the V1alpha1InitializerConfiguration
-        /// class.
+        /// Initializes a new instance of the Networkingv1beta1Ingress class.
         /// </summary>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
         /// values. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#resources</param>
-        /// <param name="initializers">Initializers is a list of resources and
-        /// their default initializers Order-sensitive. When merging multiple
-        /// InitializerConfigurations, we sort the initializers from different
-        /// InitializerConfigurations by the name of the
-        /// InitializerConfigurations; the order of the initializers from the
-        /// same InitializerConfiguration is preserved.</param>
         /// <param name="kind">Kind is a string value representing the REST
         /// resource this object represents. Servers may infer this from the
         /// endpoint the client submits requests to. Cannot be updated. In
         /// CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
-        /// <param name="metadata">Standard object metadata; More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata.</param>
-        public V1alpha1InitializerConfiguration(string apiVersion = default(string), IList<V1alpha1Initializer> initializers = default(IList<V1alpha1Initializer>), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta))
+        /// <param name="metadata">Standard object's metadata. More info:
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</param>
+        /// <param name="spec">Spec is the desired state of the Ingress. More
+        /// info:
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status</param>
+        /// <param name="status">Status is the current state of the Ingress.
+        /// More info:
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status</param>
+        public Networkingv1beta1Ingress(string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), Networkingv1beta1IngressSpec spec = default(Networkingv1beta1IngressSpec), Networkingv1beta1IngressStatus status = default(Networkingv1beta1IngressStatus))
         {
             ApiVersion = apiVersion;
-            Initializers = initializers;
             Kind = kind;
             Metadata = metadata;
+            Spec = spec;
+            Status = status;
             CustomInit();
         }
 
@@ -72,17 +72,6 @@ namespace k8s.Models
         public string ApiVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets initializers is a list of resources and their default
-        /// initializers Order-sensitive. When merging multiple
-        /// InitializerConfigurations, we sort the initializers from different
-        /// InitializerConfigurations by the name of the
-        /// InitializerConfigurations; the order of the initializers from the
-        /// same InitializerConfiguration is preserved.
-        /// </summary>
-        [JsonProperty(PropertyName = "initializers")]
-        public IList<V1alpha1Initializer> Initializers { get; set; }
-
-        /// <summary>
         /// Gets or sets kind is a string value representing the REST resource
         /// this object represents. Servers may infer this from the endpoint
         /// the client submits requests to. Cannot be updated. In CamelCase.
@@ -93,11 +82,25 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// Gets or sets standard object metadata; More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata.
+        /// Gets or sets standard object's metadata. More info:
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ObjectMeta Metadata { get; set; }
+
+        /// <summary>
+        /// Gets or sets spec is the desired state of the Ingress. More info:
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+        /// </summary>
+        [JsonProperty(PropertyName = "spec")]
+        public Networkingv1beta1IngressSpec Spec { get; set; }
+
+        /// <summary>
+        /// Gets or sets status is the current state of the Ingress. More info:
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public Networkingv1beta1IngressStatus Status { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -107,19 +110,13 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Initializers != null)
-            {
-                foreach (var element in Initializers)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
-            }
             if (Metadata != null)
             {
                 Metadata.Validate();
+            }
+            if (Spec != null)
+            {
+                Spec.Validate();
             }
         }
     }

@@ -15,18 +15,20 @@ namespace k8s.Models
     /// IngressTLS describes the transport layer security associated with an
     /// Ingress.
     /// </summary>
-    public partial class V1beta1IngressTLS
+    public partial class Extensionsv1beta1IngressTLS
     {
         /// <summary>
-        /// Initializes a new instance of the V1beta1IngressTLS class.
+        /// Initializes a new instance of the Extensionsv1beta1IngressTLS
+        /// class.
         /// </summary>
-        public V1beta1IngressTLS()
+        public Extensionsv1beta1IngressTLS()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the V1beta1IngressTLS class.
+        /// Initializes a new instance of the Extensionsv1beta1IngressTLS
+        /// class.
         /// </summary>
         /// <param name="hosts">Hosts are a list of hosts included in the TLS
         /// certificate. The values in this list must match the name/s used in
@@ -39,7 +41,7 @@ namespace k8s.Models
         /// listener conflicts with the "Host" header field used by an
         /// IngressRule, the SNI host is used for termination and value of the
         /// Host header is used for routing.</param>
-        public V1beta1IngressTLS(IList<string> hosts = default(IList<string>), string secretName = default(string))
+        public Extensionsv1beta1IngressTLS(IList<string> hosts = default(IList<string>), string secretName = default(string))
         {
             Hosts = hosts;
             SecretName = secretName;

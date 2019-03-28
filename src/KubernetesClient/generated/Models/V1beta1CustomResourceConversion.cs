@@ -8,6 +8,8 @@ namespace k8s.Models
 {
     using Microsoft.Rest;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -35,12 +37,21 @@ namespace k8s.Models
         /// `Webhook`: API Server will call to an external webhook to do the
         /// conversion. Additional information is needed for this
         /// option.</param>
+        /// <param name="conversionReviewVersions">ConversionReviewVersions is
+        /// an ordered list of preferred `ConversionReview` versions the
+        /// Webhook expects. API server will try to use first version in the
+        /// list which it supports. If none of the versions specified in this
+        /// list supported by API server, conversion will fail for this object.
+        /// If a persisted Webhook configuration specifies allowed versions and
+        /// does not include any versions known to the API Server, calls to the
+        /// webhook will fail. Default to `['v1beta1']`.</param>
         /// <param name="webhookClientConfig">`webhookClientConfig` is the
         /// instructions for how to call the webhook if strategy is `Webhook`.
         /// This field is alpha-level and is only honored by servers that
         /// enable the CustomResourceWebhookConversion feature.</param>
-        public V1beta1CustomResourceConversion(string strategy, Apiextensionsv1beta1WebhookClientConfig webhookClientConfig = default(Apiextensionsv1beta1WebhookClientConfig))
+        public V1beta1CustomResourceConversion(string strategy, IList<string> conversionReviewVersions = default(IList<string>), Apiextensionsv1beta1WebhookClientConfig webhookClientConfig = default(Apiextensionsv1beta1WebhookClientConfig))
         {
+            ConversionReviewVersions = conversionReviewVersions;
             Strategy = strategy;
             WebhookClientConfig = webhookClientConfig;
             CustomInit();
@@ -50,6 +61,19 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets conversionReviewVersions is an ordered list of
+        /// preferred `ConversionReview` versions the Webhook expects. API
+        /// server will try to use first version in the list which it supports.
+        /// If none of the versions specified in this list supported by API
+        /// server, conversion will fail for this object. If a persisted
+        /// Webhook configuration specifies allowed versions and does not
+        /// include any versions known to the API Server, calls to the webhook
+        /// will fail. Default to `['v1beta1']`.
+        /// </summary>
+        [JsonProperty(PropertyName = "conversionReviewVersions")]
+        public IList<string> ConversionReviewVersions { get; set; }
 
         /// <summary>
         /// Gets or sets `strategy` specifies the conversion strategy. Allowed
