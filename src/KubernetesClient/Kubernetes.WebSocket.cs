@@ -32,7 +32,15 @@ namespace k8s
         }
 
         /// <inheritdoc/>
-        public Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", IEnumerable<string> command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<IStreamDemuxer> MuxedStreamNamespacedPodExecAsync(string name, string @namespace = "default", IEnumerable<string> command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, string webSocketSubProtol = WebSocketProtocol.V4BinaryWebsocketProtocol, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            WebSocket webSocket = await this.WebSocketNamespacedPodExecAsync(name: name, @namespace: @namespace, command: command, container: container, tty: tty, cancellationToken: cancellationToken).ConfigureAwait(false);
+            StreamDemuxer muxer = new StreamDemuxer(webSocket);
+            return muxer;
+        }
+
+        /// <inheritdoc/>
+        public virtual Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", IEnumerable<string> command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, string webSocketSubProtol = WebSocketProtocol.V4BinaryWebsocketProtocol, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (name == null)
             {
@@ -52,6 +60,20 @@ namespace k8s
             if (!command.Any())
             {
                 throw new ArgumentOutOfRangeException(nameof(command));
+            }
+
+            if (command == null)
+            {
+                throw new ArgumentNullException(nameof(command));
+            }
+
+            var commandArray = command.ToArray();
+            foreach (var c in commandArray)
+            {
+                if (c.Length > 0 && c[0] == 0xfeff)
+                {
+                    throw new InvalidOperationException($"Detected an attempt to execute a command which starts with a Unicode byte order mark (BOM). This is probably incorrect. The command was {c}");
+                }
             }
 
             // Tracing

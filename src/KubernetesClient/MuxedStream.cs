@@ -34,7 +34,10 @@ namespace k8s
                 throw new ArgumentException("You must specify at least inputBuffer or outputIndex");
             }
 
-            this.muxer = muxer ?? throw new ArgumentNullException(nameof(muxer));
+            if (outputIndex != null)
+            {
+                this.muxer = muxer ?? throw new ArgumentNullException(nameof(muxer));
+            }
         }
 
         /// <inheritdoc/>

@@ -110,6 +110,57 @@ namespace k8s
         Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", IEnumerable<string> command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// Executes a command in a pod.
+        /// </summary>
+        /// <param name='name'>
+        /// name of the Pod
+        /// </param>
+        /// <param name='namespace'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='command'>
+        /// Command is the remote command to execute. argv array. Not executed within a
+        /// shell.
+        /// </param>
+        /// <param name='container'>
+        /// Container in which to execute the command. Defaults to only container if
+        /// there is only one container in the pod.
+        /// </param>
+        /// <param name='stderr'>
+        /// Redirect the standard error stream of the pod for this call. Defaults to
+        /// <see langword="true"/>.
+        /// </param>
+        /// <param name='stdin'>
+        /// Redirect the standard input stream of the pod for this call. Defaults to
+        /// <see langword="true"/>.
+        /// </param>
+        /// <param name='stdout'>
+        /// Redirect the standard output stream of the pod for this call. Defaults to
+        /// <see langword="true"/>.
+        /// </param>
+        /// <param name='tty'>
+        /// TTY if true indicates that a tty will be allocated for the exec call.
+        /// Defaults to <see langword="true"/>.
+        /// </param>
+        /// <param name="webSocketSubProtocol">
+        /// The Kubernetes-specific WebSocket sub protocol to use. See <see cref="WebSocketProtocol"/> for a list of available
+        /// protocols.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A <see cref="IStreamDemuxer"/> which can be used to communicate with the process running in the pod.
+        /// </return>
+        Task<IStreamDemuxer> MuxedStreamNamespacedPodExecAsync(string name, string @namespace = "default", IEnumerable<string> command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, string webSocketSubProtol = WebSocketProtocol.V4BinaryWebsocketProtocol, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// Start port forwarding one or more ports of a pod.
         /// </summary>
         /// <param name='name'>
