@@ -8,6 +8,8 @@
     <PackageProjectUrl>https://github.com/kubernetes-client/csharp</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.png</PackageIconUrl>
     <PackageTags>kubernetes;docker;containers;</PackageTags>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/kubernetes-client/csharp.git</RepositoryUrl>
 
     <TargetFrameworks>netstandard1.4;netstandard2.0;net452;net461;netcoreapp2.1;xamarinios10;monoandroid81</TargetFrameworks>
     <TargetFrameworks Condition="'$(MSBuildRuntimeType)' == 'Core'">netstandard1.4;netstandard2.0;net452;net461;netcoreapp2.1</TargetFrameworks>
