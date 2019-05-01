@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.WebSockets;
-#if NET452
+#if (NET452 || NETSTANDARD2_0)
 using System.Net.Security;
 #endif
 using System.Security.Cryptography.X509Certificates;
@@ -39,7 +39,7 @@ namespace k8s
             return this;
         }
 
-#if NET452
+#if (NET452 || NETSTANDARD2_0)
         public WebSocketBuilder SetServerCertificateValidationCallback(RemoteCertificateValidationCallback validationCallback)
         {
             System.Net.ServicePointManager.ServerCertificateValidationCallback += validationCallback;
