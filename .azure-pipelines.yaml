@@ -93,29 +93,29 @@ jobs:
       reportDirectory: '$(Build.SourcesDirectory)/tests/coveragereport/'
     condition: succeededOrFailed()
 
-- job: ubuntu_build
-  pool:
-    vmImage: 'ubuntu-16.04'
-  steps:
-  - script: |
-      ./install-linux.sh
-    displayName: 'Install .NET & set up minikube'
-
-  - script: |
-      ./ci.sh
-    displayName: 'Build & Test'
-
-  - task: PublishTestResults@1
-    displayName: 'Publish Test Results'
-    inputs:
-      testRunner: VSTest
-      testResultsFiles: '$(Build.SourcesDirectory)/tests/**/*.xunit.trx'
-    condition: succeededOrFailed()
-
-  - task: PublishCodeCoverageResults@1
-    displayName: 'publish coverage results'
-    inputs:
-      codeCoverageTool: 'cobertura'
-      summaryFileLocation: '$(Build.SourcesDirectory)/tests/coveragereport/Cobertura.xml'
-      reportDirectory: '$(Build.SourcesDirectory)/tests/coveragereport/'
-    condition: succeededOrFailed()
+#- job: ubuntu_build
+#  pool:
+#    vmImage: 'ubuntu-16.04'
+#  steps:
+#  - script: |
+#      ./install-linux.sh
+#    displayName: 'Install .NET & set up minikube'
+#
+#  - script: |
+#      ./ci.sh
+#    displayName: 'Build & Test'
+#
+#  - task: PublishTestResults@1
+#    displayName: 'Publish Test Results'
+#    inputs:
+#      testRunner: VSTest
+#      testResultsFiles: '$(Build.SourcesDirectory)/tests/**/*.xunit.trx'
+#    condition: succeededOrFailed()
+#
+#  - task: PublishCodeCoverageResults@1
+#    displayName: 'publish coverage results'
+#    inputs:
+#      codeCoverageTool: 'cobertura'
+#      summaryFileLocation: '$(Build.SourcesDirectory)/tests/coveragereport/Cobertura.xml'
+#      reportDirectory: '$(Build.SourcesDirectory)/tests/coveragereport/'
+#    condition: succeededOrFailed()
