@@ -368,6 +368,7 @@ namespace k8s
                 {
                     ServiceClientTracing.Exit(invocationId, null);
                 }
+
 #if (NET452 || NETSTANDARD2_0)
                 if (this.CaCerts != null)
                 {
