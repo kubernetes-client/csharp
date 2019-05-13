@@ -1,4 +1,7 @@
 #!/bin/sh
+echo 'docker is available with version:'
+docker version
+
 echo 'Installing .NET Core...'
 
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
