@@ -98,9 +98,9 @@ jobs:
     vmImage: 'ubuntu-16.04'
   steps:
   - task: DockerInstaller@0
-    displayName: 'Install Docker'
+    displayName: 'Install Docker version 17.09.0-ce'
     inputs:
-      dockerVersion: 18.09.0-ce
+      dockerVersion: 17.09.0-ce
 
   - script: |
       ./install-linux.sh
