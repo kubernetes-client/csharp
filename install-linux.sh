@@ -24,7 +24,7 @@ sudo chgrp -R $USER $HOME/.minikube
 sudo chown -R $USER $HOME/.kube
 sudo chgrp -R $USER $HOME/.kube
 
-minikube update-context
+minikube update-context --logtostderr
 
 echo 'Waiting for the cluster nodes to be ready'
 JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; \
