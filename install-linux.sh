@@ -24,7 +24,7 @@ echo 'minikube installed with version:'
 minikube version
 
 echo 'Creating the minikube cluster'
-sudo minikube start --vm-driver=none --kubernetes-version=v1.13.4 --extra-config=apiserver.authorization-mode=RBAC
+sudo minikube start --vm-driver=none --kubernetes-version=v1.13.4 --extra-config=apiserver.authorization-mode=RBAC --logtostderr
 sudo chown -R $USER $HOME/.minikube
 sudo chgrp -R $USER $HOME/.minikube
 sudo chown -R $USER $HOME/.kube
