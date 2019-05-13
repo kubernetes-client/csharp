@@ -20,6 +20,9 @@ curl -Lo minikube https://storage.googleapis.com/minikube/releases/v1.0.1/miniku
 chmod +x minikube
 sudo mv minikube /usr/local/bin/
 
+echo 'minikube installed with version:'
+minikube version
+
 echo 'Creating the minikube cluster'
 sudo minikube start --vm-driver=none --kubernetes-version=v1.13.4 --extra-config=apiserver.authorization-mode=RBAC
 sudo chown -R $USER $HOME/.minikube
