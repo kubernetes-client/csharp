@@ -105,6 +105,7 @@ jobs:
   - script: |
       ./install-linux.sh
     displayName: 'Install .NET & set up minikube'
+    failOnStderr: true
 
   - script: |
       ./ci.sh
