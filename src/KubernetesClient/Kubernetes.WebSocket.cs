@@ -8,7 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.WebSockets;
-#if NET452
+#if (NET452 || NETSTANDARD2_0)
 using System.Net.Security;
 #endif
 using System.Security.Cryptography.X509Certificates;
@@ -281,7 +281,7 @@ namespace k8s
                 }
             }
 
-#if NET452
+#if (NET452 || NETSTANDARD2_0)
             if (this.CaCerts != null)
             {
                 webSocketBuilder.SetServerCertificateValidationCallback(this.ServerCertificateValidationCallback);
@@ -368,7 +368,8 @@ namespace k8s
                 {
                     ServiceClientTracing.Exit(invocationId, null);
                 }
-#if NET452
+
+#if (NET452 || NETSTANDARD2_0)
                 if (this.CaCerts != null)
                 {
                     webSocketBuilder.CleanupServerCertificateValidationCallback(this.ServerCertificateValidationCallback);
@@ -378,7 +379,7 @@ namespace k8s
             return webSocket;
         }
 
-#if NET452
+#if (NET452 || NETSTANDARD2_0)
         internal bool ServerCertificateValidationCallback(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
         {
             return Kubernetes.CertificateValidationCallBack(sender, this.CaCerts, certificate, chain, sslPolicyErrors);
