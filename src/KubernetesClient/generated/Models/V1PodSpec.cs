@@ -96,6 +96,11 @@ namespace k8s.Models
         /// true for the pod to fit on a node. Selector which must match a
         /// node's labels for the pod to be scheduled on that node. More info:
         /// https://kubernetes.io/docs/concepts/configuration/assign-pod-node/</param>
+        /// <param name="preemptionPolicy">PreemptionPolicy is the Policy for
+        /// preempting pods with lower priority. One of Never,
+        /// PreemptLowerPriority. Defaults to PreemptLowerPriority if unset.
+        /// This field is alpha-level and is only honored by servers that
+        /// enable the NonPreemptingPriority feature.</param>
         /// <param name="priority">The priority value. Various system
         /// components use this field to find the priority of the pod. When
         /// Priority Admission Controller is enabled, it prevents users from
@@ -125,7 +130,7 @@ namespace k8s.Models
         /// RuntimeClass will be used, which is an implicit class with an empty
         /// definition that uses the default runtime handler. More info:
         /// https://git.k8s.io/enhancements/keps/sig-node/runtime-class.md This
-        /// is an alpha feature and may change in the future.</param>
+        /// is a beta feature as of Kubernetes v1.14.</param>
         /// <param name="schedulerName">If specified, the pod will be
         /// dispatched by specified scheduler. If not specified, the pod will
         /// be dispatched by default scheduler.</param>
@@ -165,7 +170,7 @@ namespace k8s.Models
         /// <param name="volumes">List of volumes that can be mounted by
         /// containers belonging to the pod. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes</param>
-        public V1PodSpec(IList<V1Container> containers, long? activeDeadlineSeconds = default(long?), V1Affinity affinity = default(V1Affinity), bool? automountServiceAccountToken = default(bool?), V1PodDNSConfig dnsConfig = default(V1PodDNSConfig), string dnsPolicy = default(string), bool? enableServiceLinks = default(bool?), IList<V1HostAlias> hostAliases = default(IList<V1HostAlias>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), string hostname = default(string), IList<V1LocalObjectReference> imagePullSecrets = default(IList<V1LocalObjectReference>), IList<V1Container> initContainers = default(IList<V1Container>), string nodeName = default(string), IDictionary<string, string> nodeSelector = default(IDictionary<string, string>), int? priority = default(int?), string priorityClassName = default(string), IList<V1PodReadinessGate> readinessGates = default(IList<V1PodReadinessGate>), string restartPolicy = default(string), string runtimeClassName = default(string), string schedulerName = default(string), V1PodSecurityContext securityContext = default(V1PodSecurityContext), string serviceAccount = default(string), string serviceAccountName = default(string), bool? shareProcessNamespace = default(bool?), string subdomain = default(string), long? terminationGracePeriodSeconds = default(long?), IList<V1Toleration> tolerations = default(IList<V1Toleration>), IList<V1Volume> volumes = default(IList<V1Volume>))
+        public V1PodSpec(IList<V1Container> containers, long? activeDeadlineSeconds = default(long?), V1Affinity affinity = default(V1Affinity), bool? automountServiceAccountToken = default(bool?), V1PodDNSConfig dnsConfig = default(V1PodDNSConfig), string dnsPolicy = default(string), bool? enableServiceLinks = default(bool?), IList<V1HostAlias> hostAliases = default(IList<V1HostAlias>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), string hostname = default(string), IList<V1LocalObjectReference> imagePullSecrets = default(IList<V1LocalObjectReference>), IList<V1Container> initContainers = default(IList<V1Container>), string nodeName = default(string), IDictionary<string, string> nodeSelector = default(IDictionary<string, string>), string preemptionPolicy = default(string), int? priority = default(int?), string priorityClassName = default(string), IList<V1PodReadinessGate> readinessGates = default(IList<V1PodReadinessGate>), string restartPolicy = default(string), string runtimeClassName = default(string), string schedulerName = default(string), V1PodSecurityContext securityContext = default(V1PodSecurityContext), string serviceAccount = default(string), string serviceAccountName = default(string), bool? shareProcessNamespace = default(bool?), string subdomain = default(string), long? terminationGracePeriodSeconds = default(long?), IList<V1Toleration> tolerations = default(IList<V1Toleration>), IList<V1Volume> volumes = default(IList<V1Volume>))
         {
             ActiveDeadlineSeconds = activeDeadlineSeconds;
             Affinity = affinity;
@@ -183,6 +188,7 @@ namespace k8s.Models
             InitContainers = initContainers;
             NodeName = nodeName;
             NodeSelector = nodeSelector;
+            PreemptionPolicy = preemptionPolicy;
             Priority = priority;
             PriorityClassName = priorityClassName;
             ReadinessGates = readinessGates;
@@ -349,6 +355,16 @@ namespace k8s.Models
         public IDictionary<string, string> NodeSelector { get; set; }
 
         /// <summary>
+        /// Gets or sets preemptionPolicy is the Policy for preempting pods
+        /// with lower priority. One of Never, PreemptLowerPriority. Defaults
+        /// to PreemptLowerPriority if unset. This field is alpha-level and is
+        /// only honored by servers that enable the NonPreemptingPriority
+        /// feature.
+        /// </summary>
+        [JsonProperty(PropertyName = "preemptionPolicy")]
+        public string PreemptionPolicy { get; set; }
+
+        /// <summary>
         /// Gets or sets the priority value. Various system components use this
         /// field to find the priority of the pod. When Priority Admission
         /// Controller is enabled, it prevents users from setting this field.
@@ -396,7 +412,7 @@ namespace k8s.Models
         /// which is an implicit class with an empty definition that uses the
         /// default runtime handler. More info:
         /// https://git.k8s.io/enhancements/keps/sig-node/runtime-class.md This
-        /// is an alpha feature and may change in the future.
+        /// is a beta feature as of Kubernetes v1.14.
         /// </summary>
         [JsonProperty(PropertyName = "runtimeClassName")]
         public string RuntimeClassName { get; set; }

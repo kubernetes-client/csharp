@@ -28,10 +28,14 @@ namespace k8s.Models
         /// <param name="name">Name is the name of the service</param>
         /// <param name="namespaceProperty">Namespace is the namespace of the
         /// service</param>
-        public V1ServiceReference(string name = default(string), string namespaceProperty = default(string))
+        /// <param name="port">If specified, the port on the service that
+        /// hosting webhook. Default to 443 for backward compatibility. `port`
+        /// should be a valid port number (1-65535, inclusive).</param>
+        public V1ServiceReference(string name = default(string), string namespaceProperty = default(string), int? port = default(int?))
         {
             Name = name;
             NamespaceProperty = namespaceProperty;
+            Port = port;
             CustomInit();
         }
 
@@ -51,6 +55,14 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "namespace")]
         public string NamespaceProperty { get; set; }
+
+        /// <summary>
+        /// Gets or sets if specified, the port on the service that hosting
+        /// webhook. Default to 443 for backward compatibility. `port` should
+        /// be a valid port number (1-65535, inclusive).
+        /// </summary>
+        [JsonProperty(PropertyName = "port")]
+        public int? Port { get; set; }
 
     }
 }

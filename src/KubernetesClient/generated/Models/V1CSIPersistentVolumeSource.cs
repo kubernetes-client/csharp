@@ -36,6 +36,13 @@ namespace k8s.Models
         /// <param name="volumeHandle">VolumeHandle is the unique volume name
         /// returned by the CSI volume plugin’s CreateVolume to refer to the
         /// volume on all subsequent calls. Required.</param>
+        /// <param name="controllerExpandSecretRef">ControllerExpandSecretRef
+        /// is a reference to the secret object containing sensitive
+        /// information to pass to the CSI driver to complete the CSI
+        /// ControllerExpandVolume call. This is an alpha field and requires
+        /// enabling ExpandCSIVolumes feature gate. This field is optional, and
+        /// may be empty if no secret is required. If the secret object
+        /// contains more than one secret, all secrets are passed.</param>
         /// <param name="controllerPublishSecretRef">ControllerPublishSecretRef
         /// is a reference to the secret object containing sensitive
         /// information to pass to the CSI driver to complete the CSI
@@ -64,8 +71,9 @@ namespace k8s.Models
         /// (read/write).</param>
         /// <param name="volumeAttributes">Attributes of the volume to
         /// publish.</param>
-        public V1CSIPersistentVolumeSource(string driver, string volumeHandle, V1SecretReference controllerPublishSecretRef = default(V1SecretReference), string fsType = default(string), V1SecretReference nodePublishSecretRef = default(V1SecretReference), V1SecretReference nodeStageSecretRef = default(V1SecretReference), bool? readOnlyProperty = default(bool?), IDictionary<string, string> volumeAttributes = default(IDictionary<string, string>))
+        public V1CSIPersistentVolumeSource(string driver, string volumeHandle, V1SecretReference controllerExpandSecretRef = default(V1SecretReference), V1SecretReference controllerPublishSecretRef = default(V1SecretReference), string fsType = default(string), V1SecretReference nodePublishSecretRef = default(V1SecretReference), V1SecretReference nodeStageSecretRef = default(V1SecretReference), bool? readOnlyProperty = default(bool?), IDictionary<string, string> volumeAttributes = default(IDictionary<string, string>))
         {
+            ControllerExpandSecretRef = controllerExpandSecretRef;
             ControllerPublishSecretRef = controllerPublishSecretRef;
             Driver = driver;
             FsType = fsType;
@@ -81,6 +89,18 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets controllerExpandSecretRef is a reference to the secret
+        /// object containing sensitive information to pass to the CSI driver
+        /// to complete the CSI ControllerExpandVolume call. This is an alpha
+        /// field and requires enabling ExpandCSIVolumes feature gate. This
+        /// field is optional, and may be empty if no secret is required. If
+        /// the secret object contains more than one secret, all secrets are
+        /// passed.
+        /// </summary>
+        [JsonProperty(PropertyName = "controllerExpandSecretRef")]
+        public V1SecretReference ControllerExpandSecretRef { get; set; }
 
         /// <summary>
         /// Gets or sets controllerPublishSecretRef is a reference to the

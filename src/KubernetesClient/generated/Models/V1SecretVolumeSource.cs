@@ -45,7 +45,7 @@ namespace k8s.Models
         /// which is not present in the Secret, the volume setup will error
         /// unless it is marked optional. Paths must be relative and may not
         /// contain the '..' path or start with '..'.</param>
-        /// <param name="optional">Specify whether the Secret or it's keys must
+        /// <param name="optional">Specify whether the Secret or its keys must
         /// be defined</param>
         /// <param name="secretName">Name of the secret in the pod's namespace
         /// to use. More info:
@@ -88,8 +88,7 @@ namespace k8s.Models
         public IList<V1KeyToPath> Items { get; set; }
 
         /// <summary>
-        /// Gets or sets specify whether the Secret or it's keys must be
-        /// defined
+        /// Gets or sets specify whether the Secret or its keys must be defined
         /// </summary>
         [JsonProperty(PropertyName = "optional")]
         public bool? Optional { get; set; }

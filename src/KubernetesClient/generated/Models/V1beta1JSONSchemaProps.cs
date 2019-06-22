@@ -34,16 +34,47 @@ namespace k8s.Models
         /// <param name="additionalProperties">JSONSchemaPropsOrBool represents
         /// JSONSchemaProps or a boolean value. Defaults to true for the
         /// boolean property.</param>
-        /// <param name="defaultProperty">JSON represents any valid JSON value.
-        /// These types are supported: bool, int64, float64, string,
-        /// []interface{}, map[string]interface{} and nil.</param>
+        /// <param name="defaultProperty">default is a default value for
+        /// undefined object fields. Defaulting is an alpha feature under the
+        /// CustomResourceDefaulting feature gate. Defaulting requires
+        /// spec.preserveUnknownFields to be false.</param>
         /// <param name="example">JSON represents any valid JSON value. These
         /// types are supported: bool, int64, float64, string, []interface{},
         /// map[string]interface{} and nil.</param>
         /// <param name="items">JSONSchemaPropsOrArray represents a value that
         /// can either be a JSONSchemaProps or an array of JSONSchemaProps.
         /// Mainly here for serialization purposes.</param>
-        public V1beta1JSONSchemaProps(string refProperty = default(string), string schema = default(string), object additionalItems = default(object), object additionalProperties = default(object), IList<V1beta1JSONSchemaProps> allOf = default(IList<V1beta1JSONSchemaProps>), IList<V1beta1JSONSchemaProps> anyOf = default(IList<V1beta1JSONSchemaProps>), object defaultProperty = default(object), IDictionary<string, V1beta1JSONSchemaProps> definitions = default(IDictionary<string, V1beta1JSONSchemaProps>), IDictionary<string, object> dependencies = default(IDictionary<string, object>), string description = default(string), IList<object> enumProperty = default(IList<object>), object example = default(object), bool? exclusiveMaximum = default(bool?), bool? exclusiveMinimum = default(bool?), V1beta1ExternalDocumentation externalDocs = default(V1beta1ExternalDocumentation), string format = default(string), string id = default(string), object items = default(object), long? maxItems = default(long?), long? maxLength = default(long?), long? maxProperties = default(long?), double? maximum = default(double?), long? minItems = default(long?), long? minLength = default(long?), long? minProperties = default(long?), double? minimum = default(double?), double? multipleOf = default(double?), V1beta1JSONSchemaProps not = default(V1beta1JSONSchemaProps), bool? nullable = default(bool?), IList<V1beta1JSONSchemaProps> oneOf = default(IList<V1beta1JSONSchemaProps>), string pattern = default(string), IDictionary<string, V1beta1JSONSchemaProps> patternProperties = default(IDictionary<string, V1beta1JSONSchemaProps>), IDictionary<string, V1beta1JSONSchemaProps> properties = default(IDictionary<string, V1beta1JSONSchemaProps>), IList<string> required = default(IList<string>), string title = default(string), string type = default(string), bool? uniqueItems = default(bool?))
+        /// <param
+        /// name="xKubernetesEmbeddedResource">x-kubernetes-embedded-resource
+        /// defines that the value is an embedded Kubernetes runtime.Object,
+        /// with TypeMeta and ObjectMeta. The type must be object. It is
+        /// allowed to further restrict the embedded object. kind, apiVersion
+        /// and metadata are validated automatically.
+        /// x-kubernetes-preserve-unknown-fields is allowed to be true, but
+        /// does not have to be if the object is fully specified (up to kind,
+        /// apiVersion, metadata).</param>
+        /// <param name="xKubernetesIntOrString">x-kubernetes-int-or-string
+        /// specifies that this value is either an integer or a string. If this
+        /// is true, an empty type is allowed and type as child of anyOf is
+        /// permitted if following one of the following patterns:
+        ///
+        /// 1) anyOf:
+        /// - type: integer
+        /// - type: string
+        /// 2) allOf:
+        /// - anyOf:
+        /// - type: integer
+        /// - type: string
+        /// - ... zero or more</param>
+        /// <param
+        /// name="xKubernetesPreserveUnknownFields">x-kubernetes-preserve-unknown-fields
+        /// stops the API server decoding step from pruning fields which are
+        /// not specified in the validation schema. This affects fields
+        /// recursively, but switches back to normal pruning behaviour if
+        /// nested properties or additionalProperties are specified in the
+        /// schema. This can either be true or undefined. False is
+        /// forbidden.</param>
+        public V1beta1JSONSchemaProps(string refProperty = default(string), string schema = default(string), object additionalItems = default(object), object additionalProperties = default(object), IList<V1beta1JSONSchemaProps> allOf = default(IList<V1beta1JSONSchemaProps>), IList<V1beta1JSONSchemaProps> anyOf = default(IList<V1beta1JSONSchemaProps>), object defaultProperty = default(object), IDictionary<string, V1beta1JSONSchemaProps> definitions = default(IDictionary<string, V1beta1JSONSchemaProps>), IDictionary<string, object> dependencies = default(IDictionary<string, object>), string description = default(string), IList<object> enumProperty = default(IList<object>), object example = default(object), bool? exclusiveMaximum = default(bool?), bool? exclusiveMinimum = default(bool?), V1beta1ExternalDocumentation externalDocs = default(V1beta1ExternalDocumentation), string format = default(string), string id = default(string), object items = default(object), long? maxItems = default(long?), long? maxLength = default(long?), long? maxProperties = default(long?), double? maximum = default(double?), long? minItems = default(long?), long? minLength = default(long?), long? minProperties = default(long?), double? minimum = default(double?), double? multipleOf = default(double?), V1beta1JSONSchemaProps not = default(V1beta1JSONSchemaProps), bool? nullable = default(bool?), IList<V1beta1JSONSchemaProps> oneOf = default(IList<V1beta1JSONSchemaProps>), string pattern = default(string), IDictionary<string, V1beta1JSONSchemaProps> patternProperties = default(IDictionary<string, V1beta1JSONSchemaProps>), IDictionary<string, V1beta1JSONSchemaProps> properties = default(IDictionary<string, V1beta1JSONSchemaProps>), IList<string> required = default(IList<string>), string title = default(string), string type = default(string), bool? uniqueItems = default(bool?), bool? xKubernetesEmbeddedResource = default(bool?), bool? xKubernetesIntOrString = default(bool?), bool? xKubernetesPreserveUnknownFields = default(bool?))
         {
             RefProperty = refProperty;
             Schema = schema;
@@ -82,6 +113,9 @@ namespace k8s.Models
             Title = title;
             Type = type;
             UniqueItems = uniqueItems;
+            XKubernetesEmbeddedResource = xKubernetesEmbeddedResource;
+            XKubernetesIntOrString = xKubernetesIntOrString;
+            XKubernetesPreserveUnknownFields = xKubernetesPreserveUnknownFields;
             CustomInit();
         }
 
@@ -125,9 +159,10 @@ namespace k8s.Models
         public IList<V1beta1JSONSchemaProps> AnyOf { get; set; }
 
         /// <summary>
-        /// Gets or sets JSON represents any valid JSON value. These types are
-        /// supported: bool, int64, float64, string, []interface{},
-        /// map[string]interface{} and nil.
+        /// Gets or sets default is a default value for undefined object
+        /// fields. Defaulting is an alpha feature under the
+        /// CustomResourceDefaulting feature gate. Defaulting requires
+        /// spec.preserveUnknownFields to be false.
         /// </summary>
         [JsonProperty(PropertyName = "default")]
         public object DefaultProperty { get; set; }
@@ -287,6 +322,47 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "uniqueItems")]
         public bool? UniqueItems { get; set; }
+
+        /// <summary>
+        /// Gets or sets x-kubernetes-embedded-resource defines that the value
+        /// is an embedded Kubernetes runtime.Object, with TypeMeta and
+        /// ObjectMeta. The type must be object. It is allowed to further
+        /// restrict the embedded object. kind, apiVersion and metadata are
+        /// validated automatically. x-kubernetes-preserve-unknown-fields is
+        /// allowed to be true, but does not have to be if the object is fully
+        /// specified (up to kind, apiVersion, metadata).
+        /// </summary>
+        [JsonProperty(PropertyName = "x-kubernetes-embedded-resource")]
+        public bool? XKubernetesEmbeddedResource { get; set; }
+
+        /// <summary>
+        /// Gets or sets x-kubernetes-int-or-string specifies that this value
+        /// is either an integer or a string. If this is true, an empty type is
+        /// allowed and type as child of anyOf is permitted if following one of
+        /// the following patterns:
+        ///
+        /// 1) anyOf:
+        /// - type: integer
+        /// - type: string
+        /// 2) allOf:
+        /// - anyOf:
+        /// - type: integer
+        /// - type: string
+        /// - ... zero or more
+        /// </summary>
+        [JsonProperty(PropertyName = "x-kubernetes-int-or-string")]
+        public bool? XKubernetesIntOrString { get; set; }
+
+        /// <summary>
+        /// Gets or sets x-kubernetes-preserve-unknown-fields stops the API
+        /// server decoding step from pruning fields which are not specified in
+        /// the validation schema. This affects fields recursively, but
+        /// switches back to normal pruning behaviour if nested properties or
+        /// additionalProperties are specified in the schema. This can either
+        /// be true or undefined. False is forbidden.
+        /// </summary>
+        [JsonProperty(PropertyName = "x-kubernetes-preserve-unknown-fields")]
+        public bool? XKubernetesPreserveUnknownFields { get; set; }
 
     }
 }

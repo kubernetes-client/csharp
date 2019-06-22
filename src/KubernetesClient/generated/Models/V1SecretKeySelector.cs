@@ -30,7 +30,7 @@ namespace k8s.Models
         /// valid secret key.</param>
         /// <param name="name">Name of the referent. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names</param>
-        /// <param name="optional">Specify whether the Secret or it's key must
+        /// <param name="optional">Specify whether the Secret or its key must
         /// be defined</param>
         public V1SecretKeySelector(string key, string name = default(string), bool? optional = default(bool?))
         {
@@ -60,7 +60,7 @@ namespace k8s.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets specify whether the Secret or it's key must be defined
+        /// Gets or sets specify whether the Secret or its key must be defined
         /// </summary>
         [JsonProperty(PropertyName = "optional")]
         public bool? Optional { get; set; }

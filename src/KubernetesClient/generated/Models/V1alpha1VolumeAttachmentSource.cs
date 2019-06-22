@@ -30,10 +30,18 @@ namespace k8s.Models
         /// Initializes a new instance of the V1alpha1VolumeAttachmentSource
         /// class.
         /// </summary>
+        /// <param name="inlineVolumeSpec">inlineVolumeSpec contains all the
+        /// information necessary to attach a persistent volume defined by a
+        /// pod's inline VolumeSource. This field is populated only for the
+        /// CSIMigration feature. It contains translated fields from a pod's
+        /// inline VolumeSource to a PersistentVolumeSpec. This field is
+        /// alpha-level and is only honored by servers that enabled the
+        /// CSIMigration feature.</param>
         /// <param name="persistentVolumeName">Name of the persistent volume to
         /// attach.</param>
-        public V1alpha1VolumeAttachmentSource(string persistentVolumeName = default(string))
+        public V1alpha1VolumeAttachmentSource(V1PersistentVolumeSpec inlineVolumeSpec = default(V1PersistentVolumeSpec), string persistentVolumeName = default(string))
         {
+            InlineVolumeSpec = inlineVolumeSpec;
             PersistentVolumeName = persistentVolumeName;
             CustomInit();
         }
@@ -44,10 +52,35 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets inlineVolumeSpec contains all the information
+        /// necessary to attach a persistent volume defined by a pod's inline
+        /// VolumeSource. This field is populated only for the CSIMigration
+        /// feature. It contains translated fields from a pod's inline
+        /// VolumeSource to a PersistentVolumeSpec. This field is alpha-level
+        /// and is only honored by servers that enabled the CSIMigration
+        /// feature.
+        /// </summary>
+        [JsonProperty(PropertyName = "inlineVolumeSpec")]
+        public V1PersistentVolumeSpec InlineVolumeSpec { get; set; }
+
+        /// <summary>
         /// Gets or sets name of the persistent volume to attach.
         /// </summary>
         [JsonProperty(PropertyName = "persistentVolumeName")]
         public string PersistentVolumeName { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (InlineVolumeSpec != null)
+            {
+                InlineVolumeSpec.Validate();
+            }
+        }
     }
 }

@@ -30,8 +30,8 @@ namespace k8s.Models
         /// last heartbeat time</param>
         /// <param name="lastObservedTime">Time of the last occurrence
         /// observed</param>
-        /// <param name="state">State of this Series: Ongoing or
-        /// Finished</param>
+        /// <param name="state">State of this Series: Ongoing or Finished
+        /// Deprecated. Planned removal for 1.18</param>
         public V1EventSeries(int? count = default(int?), System.DateTime? lastObservedTime = default(System.DateTime?), string state = default(string))
         {
             Count = count;
@@ -59,7 +59,8 @@ namespace k8s.Models
         public System.DateTime? LastObservedTime { get; set; }
 
         /// <summary>
-        /// Gets or sets state of this Series: Ongoing or Finished
+        /// Gets or sets state of this Series: Ongoing or Finished Deprecated.
+        /// Planned removal for 1.18
         /// </summary>
         [JsonProperty(PropertyName = "state")]
         public string State { get; set; }

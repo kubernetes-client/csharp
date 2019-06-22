@@ -37,6 +37,21 @@ namespace k8s.Models
         /// returned when using this continue value will be identical to the
         /// value in the first response, unless you have received this token
         /// from an error message.</param>
+        /// <param name="remainingItemCount">remainingItemCount is the number
+        /// of subsequent items in the list which are not included in this list
+        /// response. If the list request contained label or field selectors,
+        /// then the number of remaining items is unknown and the field will be
+        /// left unset and omitted during serialization. If the list is
+        /// complete (either because it is not chunking or because this is the
+        /// last chunk), then there are no more remaining items and this field
+        /// will be left unset and omitted during serialization. Servers older
+        /// than v1.15 do not set this field. The intended use of the
+        /// remainingItemCount is *estimating* the size of a collection.
+        /// Clients should not rely on the remainingItemCount to be set or to
+        /// be exact.
+        ///
+        /// This field is alpha and can be changed or removed without
+        /// notice.</param>
         /// <param name="resourceVersion">String that identifies the server's
         /// internal version of this object that can be used by clients to
         /// determine when objects have changed. Value must be treated as
@@ -45,9 +60,10 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency</param>
         /// <param name="selfLink">selfLink is a URL representing this object.
         /// Populated by the system. Read-only.</param>
-        public V1ListMeta(string continueProperty = default(string), string resourceVersion = default(string), string selfLink = default(string))
+        public V1ListMeta(string continueProperty = default(string), long? remainingItemCount = default(long?), string resourceVersion = default(string), string selfLink = default(string))
         {
             ContinueProperty = continueProperty;
+            RemainingItemCount = remainingItemCount;
             ResourceVersion = resourceVersion;
             SelfLink = selfLink;
             CustomInit();
@@ -72,6 +88,24 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "continue")]
         public string ContinueProperty { get; set; }
+
+        /// <summary>
+        /// Gets or sets remainingItemCount is the number of subsequent items
+        /// in the list which are not included in this list response. If the
+        /// list request contained label or field selectors, then the number of
+        /// remaining items is unknown and the field will be left unset and
+        /// omitted during serialization. If the list is complete (either
+        /// because it is not chunking or because this is the last chunk), then
+        /// there are no more remaining items and this field will be left unset
+        /// and omitted during serialization. Servers older than v1.15 do not
+        /// set this field. The intended use of the remainingItemCount is
+        /// *estimating* the size of a collection. Clients should not rely on
+        /// the remainingItemCount to be set or to be exact.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </summary>
+        [JsonProperty(PropertyName = "remainingItemCount")]
+        public long? RemainingItemCount { get; set; }
 
         /// <summary>
         /// Gets or sets string that identifies the server's internal version
