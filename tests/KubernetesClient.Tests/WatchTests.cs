@@ -616,7 +616,7 @@ namespace k8s.Tests
             var watcher = await kubernetes.WatchNamespacedJobAsync(
                 job.Metadata.Name,
                 job.Metadata.NamespaceProperty,
-                job.Metadata.ResourceVersion,
+                resourceVersion: job.Metadata.ResourceVersion,
                 timeoutSeconds: 30,
                 onEvent:
                 (type, source) =>
