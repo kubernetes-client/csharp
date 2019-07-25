@@ -36,10 +36,7 @@ namespace k8s.Models
         /// this webhook. Either `service` or `url` must be specified.
         ///
         /// If the webhook is running within the cluster, then you should use
-        /// `service`.
-        ///
-        /// Port 443 will be used if it is open, otherwise it is an
-        /// error.</param>
+        /// `service`.</param>
         /// <param name="url">`url` gives the location of the webhook, in
         /// standard URL form (`scheme://host:port/path`). Exactly one of `url`
         /// or `service` must be specified.
@@ -92,8 +89,6 @@ namespace k8s.Models
         ///
         /// If the webhook is running within the cluster, then you should use
         /// `service`.
-        ///
-        /// Port 443 will be used if it is open, otherwise it is an error.
         /// </summary>
         [JsonProperty(PropertyName = "service")]
         public Apiextensionsv1beta1ServiceReference Service { get; set; }

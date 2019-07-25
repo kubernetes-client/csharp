@@ -12,6 +12,7 @@ namespace k8s
         public Task<Watcher<V1ConfigMap>> WatchNamespacedConfigMapAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -34,6 +35,7 @@ namespace k8s
         public Task<Watcher<V1Endpoints>> WatchNamespacedEndpointsAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -56,6 +58,7 @@ namespace k8s
         public Task<Watcher<V1Event>> WatchNamespacedEventAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -78,6 +81,7 @@ namespace k8s
         public Task<Watcher<V1LimitRange>> WatchNamespacedLimitRangeAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -100,6 +104,7 @@ namespace k8s
         public Task<Watcher<V1PersistentVolumeClaim>> WatchNamespacedPersistentVolumeClaimAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -122,6 +127,7 @@ namespace k8s
         public Task<Watcher<V1Pod>> WatchNamespacedPodAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -144,6 +150,7 @@ namespace k8s
         public Task<Watcher<V1PodTemplate>> WatchNamespacedPodTemplateAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -166,6 +173,7 @@ namespace k8s
         public Task<Watcher<V1ReplicationController>> WatchNamespacedReplicationControllerAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -188,6 +196,7 @@ namespace k8s
         public Task<Watcher<V1ResourceQuota>> WatchNamespacedResourceQuotaAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -210,6 +219,7 @@ namespace k8s
         public Task<Watcher<V1Secret>> WatchNamespacedSecretAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -232,6 +242,7 @@ namespace k8s
         public Task<Watcher<V1ServiceAccount>> WatchNamespacedServiceAccountAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -254,6 +265,7 @@ namespace k8s
         public Task<Watcher<V1Service>> WatchNamespacedServiceAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -275,6 +287,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1Namespace>> WatchNamespaceAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -296,6 +309,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1Node>> WatchNodeAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -317,6 +331,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1PersistentVolume>> WatchPersistentVolumeAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -338,6 +353,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1beta1MutatingWebhookConfiguration>> WatchMutatingWebhookConfigurationAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -359,6 +375,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1beta1ValidatingWebhookConfiguration>> WatchValidatingWebhookConfigurationAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -380,6 +397,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1beta1CustomResourceDefinition>> WatchCustomResourceDefinitionAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -401,6 +419,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1APIService>> WatchAPIServiceAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -422,6 +441,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1beta1APIService>> WatchAPIServiceAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -444,6 +464,7 @@ namespace k8s
         public Task<Watcher<V1ControllerRevision>> WatchNamespacedControllerRevisionAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -466,6 +487,7 @@ namespace k8s
         public Task<Watcher<V1DaemonSet>> WatchNamespacedDaemonSetAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -488,6 +510,7 @@ namespace k8s
         public Task<Watcher<V1Deployment>> WatchNamespacedDeploymentAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -510,6 +533,7 @@ namespace k8s
         public Task<Watcher<V1ReplicaSet>> WatchNamespacedReplicaSetAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -532,6 +556,7 @@ namespace k8s
         public Task<Watcher<V1StatefulSet>> WatchNamespacedStatefulSetAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -554,6 +579,7 @@ namespace k8s
         public Task<Watcher<V1beta1ControllerRevision>> WatchNamespacedControllerRevisionAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -576,6 +602,7 @@ namespace k8s
         public Task<Watcher<V1beta1StatefulSet>> WatchNamespacedStatefulSetAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -598,6 +625,7 @@ namespace k8s
         public Task<Watcher<V1beta2ControllerRevision>> WatchNamespacedControllerRevisionAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -620,6 +648,7 @@ namespace k8s
         public Task<Watcher<V1beta2DaemonSet>> WatchNamespacedDaemonSetAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -642,6 +671,7 @@ namespace k8s
         public Task<Watcher<V1beta2ReplicaSet>> WatchNamespacedReplicaSetAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -664,6 +694,7 @@ namespace k8s
         public Task<Watcher<V1beta2StatefulSet>> WatchNamespacedStatefulSetAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -685,6 +716,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1alpha1AuditSink>> WatchAuditSinkAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -707,6 +739,7 @@ namespace k8s
         public Task<Watcher<V1HorizontalPodAutoscaler>> WatchNamespacedHorizontalPodAutoscalerAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -729,6 +762,7 @@ namespace k8s
         public Task<Watcher<V2beta1HorizontalPodAutoscaler>> WatchNamespacedHorizontalPodAutoscalerAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -751,6 +785,7 @@ namespace k8s
         public Task<Watcher<V2beta2HorizontalPodAutoscaler>> WatchNamespacedHorizontalPodAutoscalerAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -773,6 +808,7 @@ namespace k8s
         public Task<Watcher<V1Job>> WatchNamespacedJobAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -795,6 +831,7 @@ namespace k8s
         public Task<Watcher<V1beta1CronJob>> WatchNamespacedCronJobAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -817,6 +854,7 @@ namespace k8s
         public Task<Watcher<V2alpha1CronJob>> WatchNamespacedCronJobAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -838,6 +876,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1beta1CertificateSigningRequest>> WatchCertificateSigningRequestAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -860,6 +899,7 @@ namespace k8s
         public Task<Watcher<V1Lease>> WatchNamespacedLeaseAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -882,6 +922,7 @@ namespace k8s
         public Task<Watcher<V1beta1Lease>> WatchNamespacedLeaseAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -904,6 +945,7 @@ namespace k8s
         public Task<Watcher<V1beta1Event>> WatchNamespacedEventAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -926,6 +968,7 @@ namespace k8s
         public Task<Watcher<V1beta1DaemonSet>> WatchNamespacedDaemonSetAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -948,6 +991,7 @@ namespace k8s
         public Task<Watcher<V1beta1ReplicaSet>> WatchNamespacedReplicaSetAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -970,6 +1014,7 @@ namespace k8s
         public Task<Watcher<V1NetworkPolicy>> WatchNamespacedNetworkPolicyAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -991,6 +1036,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1alpha1RuntimeClass>> WatchRuntimeClassAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1012,6 +1058,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1beta1RuntimeClass>> WatchRuntimeClassAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1034,6 +1081,7 @@ namespace k8s
         public Task<Watcher<V1beta1PodDisruptionBudget>> WatchNamespacedPodDisruptionBudgetAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1055,6 +1103,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1ClusterRoleBinding>> WatchClusterRoleBindingAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1076,6 +1125,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1ClusterRole>> WatchClusterRoleAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1098,6 +1148,7 @@ namespace k8s
         public Task<Watcher<V1RoleBinding>> WatchNamespacedRoleBindingAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1120,6 +1171,7 @@ namespace k8s
         public Task<Watcher<V1Role>> WatchNamespacedRoleAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1141,6 +1193,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1alpha1ClusterRoleBinding>> WatchClusterRoleBindingAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1162,6 +1215,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1alpha1ClusterRole>> WatchClusterRoleAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1184,6 +1238,7 @@ namespace k8s
         public Task<Watcher<V1alpha1RoleBinding>> WatchNamespacedRoleBindingAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1206,6 +1261,7 @@ namespace k8s
         public Task<Watcher<V1alpha1Role>> WatchNamespacedRoleAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1227,6 +1283,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1beta1ClusterRoleBinding>> WatchClusterRoleBindingAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1248,6 +1305,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1beta1ClusterRole>> WatchClusterRoleAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1270,6 +1328,7 @@ namespace k8s
         public Task<Watcher<V1beta1RoleBinding>> WatchNamespacedRoleBindingAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1292,6 +1351,7 @@ namespace k8s
         public Task<Watcher<V1beta1Role>> WatchNamespacedRoleAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1313,6 +1373,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1PriorityClass>> WatchPriorityClassAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1334,6 +1395,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1alpha1PriorityClass>> WatchPriorityClassAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1355,6 +1417,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1beta1PriorityClass>> WatchPriorityClassAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1377,6 +1440,7 @@ namespace k8s
         public Task<Watcher<V1alpha1PodPreset>> WatchNamespacedPodPresetAsync(
             string name,
             string @namespace,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1398,6 +1462,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1StorageClass>> WatchStorageClassAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1419,6 +1484,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1VolumeAttachment>> WatchVolumeAttachmentAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1440,6 +1506,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1alpha1VolumeAttachment>> WatchVolumeAttachmentAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1461,6 +1528,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1beta1CSIDriver>> WatchCSIDriverAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1482,6 +1550,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1beta1CSINode>> WatchCSINodeAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1503,6 +1572,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1beta1StorageClass>> WatchStorageClassAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,
@@ -1524,6 +1594,7 @@ namespace k8s
         /// <inheritdoc>
         public Task<Watcher<V1beta1VolumeAttachment>> WatchVolumeAttachmentAsync(
             string name,
+            bool? allowWatchBookmarks = null,
             string @continue = null,
             string fieldSelector = null,
             string labelSelector = null,

@@ -32,7 +32,7 @@ namespace k8s.Models
         /// <param name="lastObservedTime">Time when last Event from the series
         /// was seen before last heartbeat.</param>
         /// <param name="state">Information whether this series is ongoing or
-        /// finished.</param>
+        /// finished. Deprecated. Planned removal for 1.18</param>
         public V1beta1EventSeries(int count, System.DateTime lastObservedTime, string state)
         {
             Count = count;
@@ -62,7 +62,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets information whether this series is ongoing or
-        /// finished.
+        /// finished. Deprecated. Planned removal for 1.18
         /// </summary>
         [JsonProperty(PropertyName = "state")]
         public string State { get; set; }

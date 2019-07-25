@@ -35,8 +35,9 @@ namespace k8s.Models
         /// strategy. Allowed values are: - `None`: The converter only change
         /// the apiVersion and would not touch any other field in the CR. -
         /// `Webhook`: API Server will call to an external webhook to do the
-        /// conversion. Additional information is needed for this
-        /// option.</param>
+        /// conversion. Additional information
+        /// is needed for this option. This requires spec.preserveUnknownFields
+        /// to be false.</param>
         /// <param name="conversionReviewVersions">ConversionReviewVersions is
         /// an ordered list of preferred `ConversionReview` versions the
         /// Webhook expects. API server will try to use first version in the
@@ -80,7 +81,9 @@ namespace k8s.Models
         /// values are: - `None`: The converter only change the apiVersion and
         /// would not touch any other field in the CR. - `Webhook`: API Server
         /// will call to an external webhook to do the conversion. Additional
-        /// information is needed for this option.
+        /// information
+        /// is needed for this option. This requires spec.preserveUnknownFields
+        /// to be false.
         /// </summary>
         [JsonProperty(PropertyName = "strategy")]
         public string Strategy { get; set; }

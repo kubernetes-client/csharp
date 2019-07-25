@@ -31,7 +31,8 @@ namespace k8s.Models
         /// </summary>
         /// <param name="status">Status is the status of the condition. Can be
         /// True, False, Unknown.</param>
-        /// <param name="type">Type is the type of the condition.</param>
+        /// <param name="type">Type is the type of the condition. Types include
+        /// Established, NamesAccepted and Terminating.</param>
         /// <param name="lastTransitionTime">Last time the condition
         /// transitioned from one status to another.</param>
         /// <param name="message">Human-readable message indicating details
@@ -82,7 +83,8 @@ namespace k8s.Models
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or sets type is the type of the condition.
+        /// Gets or sets type is the type of the condition. Types include
+        /// Established, NamesAccepted and Terminating.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

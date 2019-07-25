@@ -53,13 +53,19 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
         /// <param name="metadata">Standard object's metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</param>
-        public V1alpha1PriorityClass(int value, string apiVersion = default(string), string description = default(string), bool? globalDefault = default(bool?), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta))
+        /// <param name="preemptionPolicy">PreemptionPolicy is the Policy for
+        /// preempting pods with lower priority. One of Never,
+        /// PreemptLowerPriority. Defaults to PreemptLowerPriority if unset.
+        /// This field is alpha-level and is only honored by servers that
+        /// enable the NonPreemptingPriority feature.</param>
+        public V1alpha1PriorityClass(int value, string apiVersion = default(string), string description = default(string), bool? globalDefault = default(bool?), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), string preemptionPolicy = default(string))
         {
             ApiVersion = apiVersion;
             Description = description;
             GlobalDefault = globalDefault;
             Kind = kind;
             Metadata = metadata;
+            PreemptionPolicy = preemptionPolicy;
             Value = value;
             CustomInit();
         }
@@ -114,6 +120,16 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ObjectMeta Metadata { get; set; }
+
+        /// <summary>
+        /// Gets or sets preemptionPolicy is the Policy for preempting pods
+        /// with lower priority. One of Never, PreemptLowerPriority. Defaults
+        /// to PreemptLowerPriority if unset. This field is alpha-level and is
+        /// only honored by servers that enable the NonPreemptingPriority
+        /// feature.
+        /// </summary>
+        [JsonProperty(PropertyName = "preemptionPolicy")]
+        public string PreemptionPolicy { get; set; }
 
         /// <summary>
         /// Gets or sets the value of this priority class. This is the actual

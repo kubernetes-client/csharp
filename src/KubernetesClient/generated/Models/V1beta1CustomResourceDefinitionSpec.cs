@@ -44,6 +44,11 @@ namespace k8s.Models
         /// exclusive.</param>
         /// <param name="conversion">`conversion` defines conversion settings
         /// for the CRD.</param>
+        /// <param name="preserveUnknownFields">preserveUnknownFields disables
+        /// pruning of object fields which are not specified in the OpenAPI
+        /// schema. apiVersion, kind, metadata and known fields inside metadata
+        /// are always preserved. Defaults to true in v1beta and will default
+        /// to false in v1.</param>
         /// <param name="subresources">Subresources describes the subresources
         /// for CustomResource Optional, the global subresources for all
         /// versions. Top-level and per-version subresources are mutually
@@ -71,12 +76,13 @@ namespace k8s.Models
         /// comparing major version, then minor version. An example sorted list
         /// of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1,
         /// v11alpha2, foo1, foo10.</param>
-        public V1beta1CustomResourceDefinitionSpec(string group, V1beta1CustomResourceDefinitionNames names, string scope, IList<V1beta1CustomResourceColumnDefinition> additionalPrinterColumns = default(IList<V1beta1CustomResourceColumnDefinition>), V1beta1CustomResourceConversion conversion = default(V1beta1CustomResourceConversion), V1beta1CustomResourceSubresources subresources = default(V1beta1CustomResourceSubresources), V1beta1CustomResourceValidation validation = default(V1beta1CustomResourceValidation), string version = default(string), IList<V1beta1CustomResourceDefinitionVersion> versions = default(IList<V1beta1CustomResourceDefinitionVersion>))
+        public V1beta1CustomResourceDefinitionSpec(string group, V1beta1CustomResourceDefinitionNames names, string scope, IList<V1beta1CustomResourceColumnDefinition> additionalPrinterColumns = default(IList<V1beta1CustomResourceColumnDefinition>), V1beta1CustomResourceConversion conversion = default(V1beta1CustomResourceConversion), bool? preserveUnknownFields = default(bool?), V1beta1CustomResourceSubresources subresources = default(V1beta1CustomResourceSubresources), V1beta1CustomResourceValidation validation = default(V1beta1CustomResourceValidation), string version = default(string), IList<V1beta1CustomResourceDefinitionVersion> versions = default(IList<V1beta1CustomResourceDefinitionVersion>))
         {
             AdditionalPrinterColumns = additionalPrinterColumns;
             Conversion = conversion;
             Group = group;
             Names = names;
+            PreserveUnknownFields = preserveUnknownFields;
             Scope = scope;
             Subresources = subresources;
             Validation = validation;
@@ -117,6 +123,16 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "names")]
         public V1beta1CustomResourceDefinitionNames Names { get; set; }
+
+        /// <summary>
+        /// Gets or sets preserveUnknownFields disables pruning of object
+        /// fields which are not specified in the OpenAPI schema. apiVersion,
+        /// kind, metadata and known fields inside metadata are always
+        /// preserved. Defaults to true in v1beta and will default to false in
+        /// v1.
+        /// </summary>
+        [JsonProperty(PropertyName = "preserveUnknownFields")]
+        public bool? PreserveUnknownFields { get; set; }
 
         /// <summary>
         /// Gets or sets scope indicates whether this resource is cluster or

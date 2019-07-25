@@ -44,7 +44,7 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata.</param>
         /// <param name="webhooks">Webhooks is a list of webhooks and the
         /// affected resources and operations.</param>
-        public V1beta1MutatingWebhookConfiguration(string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), IList<V1beta1Webhook> webhooks = default(IList<V1beta1Webhook>))
+        public V1beta1MutatingWebhookConfiguration(string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), IList<V1beta1MutatingWebhook> webhooks = default(IList<V1beta1MutatingWebhook>))
         {
             ApiVersion = apiVersion;
             Kind = kind;
@@ -90,7 +90,7 @@ namespace k8s.Models
         /// resources and operations.
         /// </summary>
         [JsonProperty(PropertyName = "webhooks")]
-        public IList<V1beta1Webhook> Webhooks { get; set; }
+        public IList<V1beta1MutatingWebhook> Webhooks { get; set; }
 
         /// <summary>
         /// Validate the object.

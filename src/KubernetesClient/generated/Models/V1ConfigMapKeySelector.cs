@@ -29,7 +29,7 @@ namespace k8s.Models
         /// <param name="key">The key to select.</param>
         /// <param name="name">Name of the referent. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names</param>
-        /// <param name="optional">Specify whether the ConfigMap or it's key
+        /// <param name="optional">Specify whether the ConfigMap or its key
         /// must be defined</param>
         public V1ConfigMapKeySelector(string key, string name = default(string), bool? optional = default(bool?))
         {
@@ -58,7 +58,7 @@ namespace k8s.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets specify whether the ConfigMap or it's key must be
+        /// Gets or sets specify whether the ConfigMap or its key must be
         /// defined
         /// </summary>
         [JsonProperty(PropertyName = "optional")]

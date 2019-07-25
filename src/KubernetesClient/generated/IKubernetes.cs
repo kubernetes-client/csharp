@@ -66,6 +66,18 @@ namespace k8s
         /// <summary>
         /// list objects of kind ComponentStatus
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -149,7 +161,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ComponentStatusList>> ListComponentStatusWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ComponentStatusList>> ListComponentStatusWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read the specified ComponentStatus
@@ -171,6 +183,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind ConfigMap
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -254,11 +278,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ConfigMapList>> ListConfigMapForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ConfigMapList>> ListConfigMapForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Endpoints
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -342,11 +378,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1EndpointsList>> ListEndpointsForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1EndpointsList>> ListEndpointsForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Event
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -430,11 +478,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1EventList>> ListEventForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1EventList>> ListEventForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind LimitRange
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -518,11 +578,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1LimitRangeList>> ListLimitRangeForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1LimitRangeList>> ListLimitRangeForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Namespace
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -606,7 +678,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1NamespaceList>> ListNamespaceWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1NamespaceList>> ListNamespaceWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Namespace
@@ -673,6 +745,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -696,9 +782,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -729,6 +828,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -756,7 +872,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedConfigMapWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedConfigMapWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ConfigMap
@@ -764,6 +880,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -847,7 +975,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ConfigMapList>> ListNamespacedConfigMapWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ConfigMapList>> ListNamespacedConfigMapWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ConfigMap
@@ -1042,6 +1170,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -1065,9 +1207,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -1098,6 +1253,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -1125,7 +1297,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEndpointsWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEndpointsWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Endpoints
@@ -1133,6 +1305,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -1216,7 +1400,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1EndpointsList>> ListNamespacedEndpointsWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1EndpointsList>> ListNamespacedEndpointsWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create Endpoints
@@ -1411,6 +1595,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -1434,9 +1632,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -1467,6 +1678,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -1494,7 +1722,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEventWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEventWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Event
@@ -1502,6 +1730,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -1585,7 +1825,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1EventList>> ListNamespacedEventWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1EventList>> ListNamespacedEventWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create an Event
@@ -1780,6 +2020,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -1803,9 +2057,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -1836,6 +2103,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -1863,7 +2147,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedLimitRangeWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedLimitRangeWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind LimitRange
@@ -1871,6 +2155,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -1954,7 +2250,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1LimitRangeList>> ListNamespacedLimitRangeWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1LimitRangeList>> ListNamespacedLimitRangeWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a LimitRange
@@ -2149,6 +2445,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -2172,9 +2482,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -2205,6 +2528,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -2232,7 +2572,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPersistentVolumeClaimWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPersistentVolumeClaimWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PersistentVolumeClaim
@@ -2240,6 +2580,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -2323,7 +2675,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PersistentVolumeClaimList>> ListNamespacedPersistentVolumeClaimWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PersistentVolumeClaimList>> ListNamespacedPersistentVolumeClaimWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a PersistentVolumeClaim
@@ -2613,6 +2965,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -2636,9 +3002,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -2669,6 +3048,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -2696,7 +3092,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Pod
@@ -2704,6 +3100,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -2787,7 +3195,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PodList>> ListNamespacedPodWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PodList>> ListNamespacedPodWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Pod
@@ -3655,6 +4063,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -3678,9 +4100,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -3711,6 +4146,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -3738,7 +4190,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodTemplateWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodTemplateWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodTemplate
@@ -3746,6 +4198,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -3829,7 +4293,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PodTemplateList>> ListNamespacedPodTemplateWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PodTemplateList>> ListNamespacedPodTemplateWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a PodTemplate
@@ -4024,6 +4488,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -4047,9 +4525,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -4080,6 +4571,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -4107,7 +4615,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedReplicationControllerWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedReplicationControllerWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ReplicationController
@@ -4115,6 +4623,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -4198,7 +4718,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ReplicationControllerList>> ListNamespacedReplicationControllerWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ReplicationControllerList>> ListNamespacedReplicationControllerWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ReplicationController
@@ -4583,6 +5103,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -4606,9 +5140,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -4639,6 +5186,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -4666,7 +5230,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedResourceQuotaWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedResourceQuotaWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ResourceQuota
@@ -4674,6 +5238,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -4757,7 +5333,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ResourceQuotaList>> ListNamespacedResourceQuotaWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ResourceQuotaList>> ListNamespacedResourceQuotaWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ResourceQuota
@@ -5047,6 +5623,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -5070,9 +5660,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -5103,6 +5706,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -5130,7 +5750,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedSecretWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedSecretWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Secret
@@ -5138,6 +5758,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -5221,7 +5853,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1SecretList>> ListNamespacedSecretWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1SecretList>> ListNamespacedSecretWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Secret
@@ -5416,6 +6048,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -5439,9 +6085,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -5472,6 +6131,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -5499,7 +6175,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedServiceAccountWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedServiceAccountWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ServiceAccount
@@ -5507,6 +6183,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -5590,7 +6278,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ServiceAccountList>> ListNamespacedServiceAccountWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ServiceAccountList>> ListNamespacedServiceAccountWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ServiceAccount
@@ -5785,6 +6473,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -5868,7 +6568,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ServiceList>> ListNamespacedServiceWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ServiceList>> ListNamespacedServiceWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Service
@@ -6722,6 +7422,20 @@ namespace k8s
         /// <summary>
         /// delete collection of Node
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -6745,9 +7459,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -6778,6 +7505,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -6805,11 +7549,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNodeWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNodeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Node
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -6893,7 +7649,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1NodeList>> ListNodeWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1NodeList>> ListNodeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Node
@@ -7378,6 +8134,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind PersistentVolumeClaim
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -7461,11 +8229,25 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PersistentVolumeClaimList>> ListPersistentVolumeClaimForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PersistentVolumeClaimList>> ListPersistentVolumeClaimForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of PersistentVolume
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -7489,9 +8271,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -7522,6 +8317,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -7549,11 +8361,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionPersistentVolumeWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPersistentVolumeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PersistentVolume
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -7637,7 +8461,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PersistentVolumeList>> ListPersistentVolumeWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PersistentVolumeList>> ListPersistentVolumeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a PersistentVolume
@@ -7900,6 +8724,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind Pod
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -7983,11 +8819,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PodList>> ListPodForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PodList>> ListPodForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodTemplate
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -8071,11 +8919,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PodTemplateList>> ListPodTemplateForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PodTemplateList>> ListPodTemplateForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ReplicationController
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -8159,11 +9019,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ReplicationControllerList>> ListReplicationControllerForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ReplicationControllerList>> ListReplicationControllerForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ResourceQuota
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -8247,11 +9119,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ResourceQuotaList>> ListResourceQuotaForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ResourceQuotaList>> ListResourceQuotaForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Secret
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -8335,11 +9219,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1SecretList>> ListSecretForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1SecretList>> ListSecretForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ServiceAccount
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -8423,11 +9319,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ServiceAccountList>> ListServiceAccountForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ServiceAccountList>> ListServiceAccountForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Service
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -8511,7 +9419,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ServiceList>> ListServiceForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ServiceList>> ListServiceForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available API versions
@@ -8549,6 +9457,20 @@ namespace k8s
         /// <summary>
         /// delete collection of MutatingWebhookConfiguration
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -8572,9 +9494,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -8605,6 +9540,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -8632,11 +9584,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionMutatingWebhookConfigurationWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionMutatingWebhookConfigurationWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind MutatingWebhookConfiguration
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -8720,7 +9684,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1MutatingWebhookConfigurationList>> ListMutatingWebhookConfigurationWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1MutatingWebhookConfigurationList>> ListMutatingWebhookConfigurationWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a MutatingWebhookConfiguration
@@ -8897,6 +9861,20 @@ namespace k8s
         /// <summary>
         /// delete collection of ValidatingWebhookConfiguration
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -8920,9 +9898,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -8953,6 +9944,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -8980,11 +9988,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionValidatingWebhookConfigurationWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionValidatingWebhookConfigurationWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ValidatingWebhookConfiguration
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -9068,7 +10088,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1ValidatingWebhookConfigurationList>> ListValidatingWebhookConfigurationWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1ValidatingWebhookConfigurationList>> ListValidatingWebhookConfigurationWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ValidatingWebhookConfiguration
@@ -9267,6 +10287,20 @@ namespace k8s
         /// <summary>
         /// delete collection of CustomResourceDefinition
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -9290,9 +10324,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -9323,6 +10370,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -9350,11 +10414,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionCustomResourceDefinitionWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCustomResourceDefinitionWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CustomResourceDefinition
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -9438,7 +10514,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CustomResourceDefinitionList>> ListCustomResourceDefinitionWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CustomResourceDefinitionList>> ListCustomResourceDefinitionWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a CustomResourceDefinition
@@ -9723,6 +10799,20 @@ namespace k8s
         /// <summary>
         /// delete collection of APIService
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -9746,9 +10836,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -9779,6 +10882,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -9806,11 +10926,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionAPIServiceWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionAPIServiceWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind APIService
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -9894,7 +11026,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIServiceList>> ListAPIServiceWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIServiceList>> ListAPIServiceWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create an APIService
@@ -10168,6 +11300,20 @@ namespace k8s
         /// <summary>
         /// delete collection of APIService
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -10191,9 +11337,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -10224,6 +11383,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -10251,11 +11427,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionAPIService1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionAPIService1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind APIService
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -10339,7 +11527,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1APIServiceList>> ListAPIService1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1APIServiceList>> ListAPIService1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create an APIService
@@ -10624,6 +11812,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind ControllerRevision
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -10707,11 +11907,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ControllerRevisionList>> ListControllerRevisionForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ControllerRevisionList>> ListControllerRevisionForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind DaemonSet
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -10795,11 +12007,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1DaemonSetList>> ListDaemonSetForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1DaemonSetList>> ListDaemonSetForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Deployment
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -10883,7 +12107,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1DeploymentList>> ListDeploymentForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1DeploymentList>> ListDeploymentForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of ControllerRevision
@@ -10891,6 +12115,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -10914,9 +12152,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -10947,6 +12198,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -10974,7 +12242,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedControllerRevisionWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedControllerRevisionWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ControllerRevision
@@ -10982,6 +12250,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -11065,7 +12345,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ControllerRevisionList>> ListNamespacedControllerRevisionWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ControllerRevisionList>> ListNamespacedControllerRevisionWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ControllerRevision
@@ -11260,6 +12540,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -11283,9 +12577,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -11316,6 +12623,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -11343,7 +12667,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDaemonSetWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDaemonSetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind DaemonSet
@@ -11351,6 +12675,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -11434,7 +12770,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1DaemonSetList>> ListNamespacedDaemonSetWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1DaemonSetList>> ListNamespacedDaemonSetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a DaemonSet
@@ -11724,6 +13060,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -11747,9 +13097,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -11780,6 +13143,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -11807,7 +13187,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDeploymentWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDeploymentWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Deployment
@@ -11815,6 +13195,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -11898,7 +13290,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1DeploymentList>> ListNamespacedDeploymentWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1DeploymentList>> ListNamespacedDeploymentWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Deployment
@@ -12283,6 +13675,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -12306,9 +13712,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -12339,6 +13758,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -12366,7 +13802,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedReplicaSetWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedReplicaSetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ReplicaSet
@@ -12374,6 +13810,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -12457,7 +13905,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ReplicaSetList>> ListNamespacedReplicaSetWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ReplicaSetList>> ListNamespacedReplicaSetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ReplicaSet
@@ -12842,6 +14290,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -12865,9 +14327,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -12898,6 +14373,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -12925,7 +14417,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedStatefulSetWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedStatefulSetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind StatefulSet
@@ -12933,6 +14425,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -13016,7 +14520,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1StatefulSetList>> ListNamespacedStatefulSetWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1StatefulSetList>> ListNamespacedStatefulSetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a StatefulSet
@@ -13398,6 +14902,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind ReplicaSet
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -13481,11 +14997,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ReplicaSetList>> ListReplicaSetForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ReplicaSetList>> ListReplicaSetForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind StatefulSet
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -13569,7 +15097,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1StatefulSetList>> ListStatefulSetForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1StatefulSetList>> ListStatefulSetForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -13585,6 +15113,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind ControllerRevision
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -13668,11 +15208,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1ControllerRevisionList>> ListControllerRevisionForAllNamespaces1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1ControllerRevisionList>> ListControllerRevisionForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Deployment
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -13756,7 +15308,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Appsv1beta1DeploymentList>> ListDeploymentForAllNamespaces1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Appsv1beta1DeploymentList>> ListDeploymentForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of ControllerRevision
@@ -13764,6 +15316,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -13787,9 +15353,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -13820,6 +15399,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -13847,7 +15443,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedControllerRevision1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedControllerRevision1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ControllerRevision
@@ -13855,6 +15451,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -13938,7 +15546,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1ControllerRevisionList>> ListNamespacedControllerRevision1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1ControllerRevisionList>> ListNamespacedControllerRevision1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ControllerRevision
@@ -14133,6 +15741,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -14156,9 +15778,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -14189,6 +15824,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -14216,7 +15868,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDeployment1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDeployment1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Deployment
@@ -14224,6 +15876,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -14307,7 +15971,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Appsv1beta1DeploymentList>> ListNamespacedDeployment1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Appsv1beta1DeploymentList>> ListNamespacedDeployment1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Deployment
@@ -14726,6 +16390,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -14749,9 +16427,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -14782,6 +16473,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -14809,7 +16517,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedStatefulSet1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedStatefulSet1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind StatefulSet
@@ -14817,6 +16525,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -14900,7 +16620,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1StatefulSetList>> ListNamespacedStatefulSet1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1StatefulSetList>> ListNamespacedStatefulSet1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a StatefulSet
@@ -15282,6 +17002,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind StatefulSet
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -15365,7 +17097,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1StatefulSetList>> ListStatefulSetForAllNamespaces1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1StatefulSetList>> ListStatefulSetForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -15381,6 +17113,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind ControllerRevision
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -15464,11 +17208,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2ControllerRevisionList>> ListControllerRevisionForAllNamespaces2WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2ControllerRevisionList>> ListControllerRevisionForAllNamespaces2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind DaemonSet
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -15552,11 +17308,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2DaemonSetList>> ListDaemonSetForAllNamespaces1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2DaemonSetList>> ListDaemonSetForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Deployment
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -15640,7 +17408,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2DeploymentList>> ListDeploymentForAllNamespaces2WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2DeploymentList>> ListDeploymentForAllNamespaces2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of ControllerRevision
@@ -15648,6 +17416,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -15671,9 +17453,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -15704,6 +17499,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -15731,7 +17543,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedControllerRevision2WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedControllerRevision2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ControllerRevision
@@ -15739,6 +17551,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -15822,7 +17646,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2ControllerRevisionList>> ListNamespacedControllerRevision2WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2ControllerRevisionList>> ListNamespacedControllerRevision2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ControllerRevision
@@ -16017,6 +17841,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -16040,9 +17878,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -16073,6 +17924,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -16100,7 +17968,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDaemonSet1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDaemonSet1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind DaemonSet
@@ -16108,6 +17976,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -16191,7 +18071,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2DaemonSetList>> ListNamespacedDaemonSet1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2DaemonSetList>> ListNamespacedDaemonSet1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a DaemonSet
@@ -16481,6 +18361,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -16504,9 +18398,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -16537,6 +18444,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -16564,7 +18488,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDeployment2WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDeployment2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Deployment
@@ -16572,6 +18496,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -16655,7 +18591,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2DeploymentList>> ListNamespacedDeployment2WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2DeploymentList>> ListNamespacedDeployment2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Deployment
@@ -17040,6 +18976,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -17063,9 +19013,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -17096,6 +19059,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -17123,7 +19103,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedReplicaSet1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedReplicaSet1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ReplicaSet
@@ -17131,6 +19111,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -17214,7 +19206,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2ReplicaSetList>> ListNamespacedReplicaSet1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2ReplicaSetList>> ListNamespacedReplicaSet1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ReplicaSet
@@ -17599,6 +19591,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -17622,9 +19628,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -17655,6 +19674,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -17682,7 +19718,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedStatefulSet2WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedStatefulSet2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind StatefulSet
@@ -17690,6 +19726,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -17773,7 +19821,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2StatefulSetList>> ListNamespacedStatefulSet2WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2StatefulSetList>> ListNamespacedStatefulSet2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a StatefulSet
@@ -18155,6 +20203,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind ReplicaSet
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -18238,11 +20298,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2ReplicaSetList>> ListReplicaSetForAllNamespaces1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2ReplicaSetList>> ListReplicaSetForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind StatefulSet
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -18326,7 +20398,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta2StatefulSetList>> ListStatefulSetForAllNamespaces2WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta2StatefulSetList>> ListStatefulSetForAllNamespaces2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get information of a group
@@ -18353,6 +20425,20 @@ namespace k8s
         /// <summary>
         /// delete collection of AuditSink
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -18376,9 +20462,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -18409,6 +20508,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -18436,11 +20552,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionAuditSinkWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionAuditSinkWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind AuditSink
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -18524,7 +20652,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1AuditSinkList>> ListAuditSinkWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1AuditSinkList>> ListAuditSinkWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create an AuditSink
@@ -19075,6 +21203,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -19158,7 +21298,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of HorizontalPodAutoscaler
@@ -19166,6 +21306,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -19189,9 +21343,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -19222,6 +21389,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -19249,7 +21433,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -19257,6 +21441,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -19340,7 +21536,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a HorizontalPodAutoscaler
@@ -19638,6 +21834,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -19721,7 +21929,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespaces1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of HorizontalPodAutoscaler
@@ -19729,6 +21937,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -19752,9 +21974,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -19785,6 +22020,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -19812,7 +22064,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -19820,6 +22072,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -19903,7 +22167,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a HorizontalPodAutoscaler
@@ -20201,6 +22465,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -20284,7 +22560,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespaces2WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespaces2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of HorizontalPodAutoscaler
@@ -20292,6 +22568,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -20315,9 +22605,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -20348,6 +22651,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -20375,7 +22695,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -20383,6 +22703,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -20466,7 +22798,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a HorizontalPodAutoscaler
@@ -20775,6 +23107,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind Job
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -20858,7 +23202,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1JobList>> ListJobForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1JobList>> ListJobForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of Job
@@ -20866,6 +23210,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -20889,9 +23247,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -20922,6 +23293,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -20949,7 +23337,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedJobWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedJobWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Job
@@ -20957,6 +23345,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -21040,7 +23440,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1JobList>> ListNamespacedJobWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1JobList>> ListNamespacedJobWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Job
@@ -21338,6 +23738,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind CronJob
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -21421,7 +23833,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CronJobList>> ListCronJobForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CronJobList>> ListCronJobForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of CronJob
@@ -21429,6 +23841,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -21452,9 +23878,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -21485,6 +23924,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -21512,7 +23968,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedCronJobWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedCronJobWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CronJob
@@ -21520,6 +23976,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -21603,7 +24071,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CronJobList>> ListNamespacedCronJobWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CronJobList>> ListNamespacedCronJobWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a CronJob
@@ -21901,6 +24369,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind CronJob
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -21984,7 +24464,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2alpha1CronJobList>> ListCronJobForAllNamespaces1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2alpha1CronJobList>> ListCronJobForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of CronJob
@@ -21992,6 +24472,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -22015,9 +24509,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -22048,6 +24555,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -22075,7 +24599,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedCronJob1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedCronJob1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CronJob
@@ -22083,6 +24607,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -22166,7 +24702,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2alpha1CronJobList>> ListNamespacedCronJob1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2alpha1CronJobList>> ListNamespacedCronJob1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a CronJob
@@ -22475,6 +25011,20 @@ namespace k8s
         /// <summary>
         /// delete collection of CertificateSigningRequest
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -22498,9 +25048,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -22531,6 +25094,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -22558,11 +25138,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionCertificateSigningRequestWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCertificateSigningRequestWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CertificateSigningRequest
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -22646,7 +25238,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CertificateSigningRequestList>> ListCertificateSigningRequestWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CertificateSigningRequestList>> ListCertificateSigningRequestWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a CertificateSigningRequest
@@ -22962,6 +25554,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind Lease
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -23045,7 +25649,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1LeaseList>> ListLeaseForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1LeaseList>> ListLeaseForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of Lease
@@ -23053,6 +25657,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -23076,9 +25694,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -23109,6 +25740,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -23136,7 +25784,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedLeaseWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedLeaseWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Lease
@@ -23144,6 +25792,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -23227,7 +25887,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1LeaseList>> ListNamespacedLeaseWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1LeaseList>> ListNamespacedLeaseWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Lease
@@ -23430,6 +26090,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind Lease
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -23513,7 +26185,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1LeaseList>> ListLeaseForAllNamespaces1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1LeaseList>> ListLeaseForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of Lease
@@ -23521,6 +26193,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -23544,9 +26230,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -23577,6 +26276,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -23604,7 +26320,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedLease1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedLease1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Lease
@@ -23612,6 +26328,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -23695,7 +26423,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1LeaseList>> ListNamespacedLease1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1LeaseList>> ListNamespacedLease1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Lease
@@ -23909,6 +26637,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind Event
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -23992,7 +26732,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1EventList>> ListEventForAllNamespaces1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1EventList>> ListEventForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of Event
@@ -24000,6 +26740,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -24023,9 +26777,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -24056,6 +26823,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -24083,7 +26867,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEvent1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEvent1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Event
@@ -24091,6 +26875,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -24174,7 +26970,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1EventList>> ListNamespacedEvent1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1EventList>> ListNamespacedEvent1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create an Event
@@ -24388,6 +27184,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind DaemonSet
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -24471,11 +27279,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1DaemonSetList>> ListDaemonSetForAllNamespaces2WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1DaemonSetList>> ListDaemonSetForAllNamespaces2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Deployment
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -24559,11 +27379,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1DeploymentList>> ListDeploymentForAllNamespaces3WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Extensionsv1beta1DeploymentList>> ListDeploymentForAllNamespaces3WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Ingress
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -24647,7 +27479,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1IngressList>> ListIngressForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Extensionsv1beta1IngressList>> ListIngressForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of DaemonSet
@@ -24655,6 +27487,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -24678,9 +27524,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -24711,6 +27570,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -24738,7 +27614,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDaemonSet2WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDaemonSet2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind DaemonSet
@@ -24746,6 +27622,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -24829,7 +27717,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1DaemonSetList>> ListNamespacedDaemonSet2WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1DaemonSetList>> ListNamespacedDaemonSet2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a DaemonSet
@@ -25119,6 +28007,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -25142,9 +28044,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -25175,6 +28090,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -25202,7 +28134,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDeployment3WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDeployment3WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Deployment
@@ -25210,6 +28142,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -25293,7 +28237,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1DeploymentList>> ListNamespacedDeployment3WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Extensionsv1beta1DeploymentList>> ListNamespacedDeployment3WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Deployment
@@ -25712,6 +28656,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -25735,9 +28693,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -25768,6 +28739,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -25795,7 +28783,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedIngressWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedIngressWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Ingress
@@ -25803,6 +28791,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -25886,7 +28886,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1IngressList>> ListNamespacedIngressWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Extensionsv1beta1IngressList>> ListNamespacedIngressWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create an Ingress
@@ -26176,6 +29176,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -26199,9 +29213,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -26232,6 +29259,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -26259,7 +29303,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedNetworkPolicyWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedNetworkPolicyWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind NetworkPolicy
@@ -26267,6 +29311,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -26350,7 +29406,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1NetworkPolicyList>> ListNamespacedNetworkPolicyWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1NetworkPolicyList>> ListNamespacedNetworkPolicyWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a NetworkPolicy
@@ -26545,6 +29601,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -26568,9 +29638,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -26601,6 +29684,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -26628,7 +29728,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedReplicaSet2WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedReplicaSet2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ReplicaSet
@@ -26636,6 +29736,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -26719,7 +29831,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1ReplicaSetList>> ListNamespacedReplicaSet2WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1ReplicaSetList>> ListNamespacedReplicaSet2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ReplicaSet
@@ -27196,6 +30308,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind NetworkPolicy
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -27279,11 +30403,25 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1NetworkPolicyList>> ListNetworkPolicyForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1NetworkPolicyList>> ListNetworkPolicyForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of PodSecurityPolicy
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -27307,9 +30445,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -27340,6 +30491,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -27367,11 +30535,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionPodSecurityPolicyWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPodSecurityPolicyWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodSecurityPolicy
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -27455,7 +30635,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1PodSecurityPolicyList>> ListPodSecurityPolicyWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Extensionsv1beta1PodSecurityPolicyList>> ListPodSecurityPolicyWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a PodSecurityPolicy
@@ -27632,6 +30812,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind ReplicaSet
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -27715,7 +30907,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1ReplicaSetList>> ListReplicaSetForAllNamespaces2WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1ReplicaSetList>> ListReplicaSetForAllNamespaces2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get information of a group
@@ -27745,6 +30937,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -27768,9 +30974,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -27801,6 +31020,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -27828,7 +31064,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedNetworkPolicy1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedNetworkPolicy1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind NetworkPolicy
@@ -27836,6 +31072,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -27919,7 +31167,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1NetworkPolicyList>> ListNamespacedNetworkPolicy1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1NetworkPolicyList>> ListNamespacedNetworkPolicy1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a NetworkPolicy
@@ -28111,6 +31359,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind NetworkPolicy
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -28194,7 +31454,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1NetworkPolicyList>> ListNetworkPolicyForAllNamespaces1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1NetworkPolicyList>> ListNetworkPolicyForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -28210,6 +31470,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind Ingress
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -28293,7 +31565,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Networkingv1beta1IngressList>> ListIngressForAllNamespaces1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Networkingv1beta1IngressList>> ListIngressForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of Ingress
@@ -28301,6 +31573,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -28324,9 +31610,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -28357,6 +31656,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -28384,7 +31700,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedIngress1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedIngress1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Ingress
@@ -28392,6 +31708,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -28475,7 +31803,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Networkingv1beta1IngressList>> ListNamespacedIngress1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Networkingv1beta1IngressList>> ListNamespacedIngress1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create an Ingress
@@ -28784,6 +32112,20 @@ namespace k8s
         /// <summary>
         /// delete collection of RuntimeClass
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -28807,9 +32149,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -28840,6 +32195,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -28867,11 +32239,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionRuntimeClassWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionRuntimeClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind RuntimeClass
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -28955,7 +32339,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1RuntimeClassList>> ListRuntimeClassWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1RuntimeClassList>> ListRuntimeClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a RuntimeClass
@@ -29143,6 +32527,20 @@ namespace k8s
         /// <summary>
         /// delete collection of RuntimeClass
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -29166,9 +32564,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -29199,6 +32610,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -29226,11 +32654,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionRuntimeClass1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionRuntimeClass1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind RuntimeClass
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -29314,7 +32754,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1RuntimeClassList>> ListRuntimeClass1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1RuntimeClassList>> ListRuntimeClass1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a RuntimeClass
@@ -29516,6 +32956,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -29539,9 +32993,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -29572,6 +33039,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -29599,7 +33083,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodDisruptionBudgetWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodDisruptionBudgetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodDisruptionBudget
@@ -29607,6 +33091,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -29690,7 +33186,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1PodDisruptionBudgetList>> ListNamespacedPodDisruptionBudgetWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1PodDisruptionBudgetList>> ListNamespacedPodDisruptionBudgetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a PodDisruptionBudget
@@ -29977,6 +33473,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind PodDisruptionBudget
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -30060,11 +33568,25 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1PodDisruptionBudgetList>> ListPodDisruptionBudgetForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1PodDisruptionBudgetList>> ListPodDisruptionBudgetForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of PodSecurityPolicy
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -30088,9 +33610,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -30121,6 +33656,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -30148,11 +33700,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionPodSecurityPolicy1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPodSecurityPolicy1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodSecurityPolicy
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -30236,7 +33800,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Policyv1beta1PodSecurityPolicyList>> ListPodSecurityPolicy1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Policyv1beta1PodSecurityPolicyList>> ListPodSecurityPolicy1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a PodSecurityPolicy
@@ -30435,6 +33999,20 @@ namespace k8s
         /// <summary>
         /// delete collection of ClusterRoleBinding
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -30458,9 +34036,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -30491,6 +34082,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -30518,11 +34126,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleBindingWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleBindingWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRoleBinding
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -30606,7 +34226,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ClusterRoleBindingList>> ListClusterRoleBindingWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ClusterRoleBindingList>> ListClusterRoleBindingWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ClusterRoleBinding
@@ -30774,6 +34394,20 @@ namespace k8s
         /// <summary>
         /// delete collection of ClusterRole
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -30797,9 +34431,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -30830,6 +34477,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -30857,11 +34521,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRole
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -30945,7 +34621,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ClusterRoleList>> ListClusterRoleWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ClusterRoleList>> ListClusterRoleWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ClusterRole
@@ -31116,6 +34792,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -31139,9 +34829,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -31172,6 +34875,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -31199,7 +34919,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleBindingWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleBindingWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind RoleBinding
@@ -31207,6 +34927,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -31290,7 +35022,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1RoleBindingList>> ListNamespacedRoleBindingWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1RoleBindingList>> ListNamespacedRoleBindingWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a RoleBinding
@@ -31476,6 +35208,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -31499,9 +35245,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -31532,6 +35291,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -31559,7 +35335,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Role
@@ -31567,6 +35343,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -31650,7 +35438,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1RoleList>> ListNamespacedRoleWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1RoleList>> ListNamespacedRoleWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Role
@@ -31833,6 +35621,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind RoleBinding
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -31916,11 +35716,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1RoleBindingList>> ListRoleBindingForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1RoleBindingList>> ListRoleBindingForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Role
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -32004,7 +35816,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1RoleList>> ListRoleForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1RoleList>> ListRoleForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -32020,6 +35832,20 @@ namespace k8s
         /// <summary>
         /// delete collection of ClusterRoleBinding
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -32043,9 +35869,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -32076,6 +35915,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -32103,11 +35959,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleBinding1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleBinding1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRoleBinding
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -32191,7 +36059,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1ClusterRoleBindingList>> ListClusterRoleBinding1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1ClusterRoleBindingList>> ListClusterRoleBinding1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ClusterRoleBinding
@@ -32359,6 +36227,20 @@ namespace k8s
         /// <summary>
         /// delete collection of ClusterRole
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -32382,9 +36264,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -32415,6 +36310,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -32442,11 +36354,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRole1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRole1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRole
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -32530,7 +36454,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1ClusterRoleList>> ListClusterRole1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1ClusterRoleList>> ListClusterRole1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ClusterRole
@@ -32701,6 +36625,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -32724,9 +36662,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -32757,6 +36708,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -32784,7 +36752,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleBinding1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleBinding1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind RoleBinding
@@ -32792,6 +36760,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -32875,7 +36855,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1RoleBindingList>> ListNamespacedRoleBinding1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1RoleBindingList>> ListNamespacedRoleBinding1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a RoleBinding
@@ -33061,6 +37041,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -33084,9 +37078,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -33117,6 +37124,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -33144,7 +37168,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRole1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRole1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Role
@@ -33152,6 +37176,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -33235,7 +37271,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1RoleList>> ListNamespacedRole1WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1RoleList>> ListNamespacedRole1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Role
@@ -33418,6 +37454,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind RoleBinding
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -33501,11 +37549,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1RoleBindingList>> ListRoleBindingForAllNamespaces1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1RoleBindingList>> ListRoleBindingForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Role
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -33589,7 +37649,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1RoleList>> ListRoleForAllNamespaces1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1RoleList>> ListRoleForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -33605,6 +37665,20 @@ namespace k8s
         /// <summary>
         /// delete collection of ClusterRoleBinding
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -33628,9 +37702,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -33661,6 +37748,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -33688,11 +37792,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleBinding2WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleBinding2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRoleBinding
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -33776,7 +37892,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1ClusterRoleBindingList>> ListClusterRoleBinding2WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1ClusterRoleBindingList>> ListClusterRoleBinding2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ClusterRoleBinding
@@ -33944,6 +38060,20 @@ namespace k8s
         /// <summary>
         /// delete collection of ClusterRole
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -33967,9 +38097,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -34000,6 +38143,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -34027,11 +38187,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRole2WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRole2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRole
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -34115,7 +38287,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1ClusterRoleList>> ListClusterRole2WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1ClusterRoleList>> ListClusterRole2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ClusterRole
@@ -34286,6 +38458,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -34309,9 +38495,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -34342,6 +38541,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -34369,7 +38585,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleBinding2WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleBinding2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind RoleBinding
@@ -34377,6 +38593,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -34460,7 +38688,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1RoleBindingList>> ListNamespacedRoleBinding2WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1RoleBindingList>> ListNamespacedRoleBinding2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a RoleBinding
@@ -34646,6 +38874,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -34669,9 +38911,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -34702,6 +38957,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -34729,7 +39001,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRole2WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRole2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Role
@@ -34737,6 +39009,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -34820,7 +39104,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1RoleList>> ListNamespacedRole2WithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1RoleList>> ListNamespacedRole2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Role
@@ -35003,6 +39287,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind RoleBinding
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -35086,11 +39382,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1RoleBindingList>> ListRoleBindingForAllNamespaces2WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1RoleBindingList>> ListRoleBindingForAllNamespaces2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Role
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -35174,7 +39482,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1RoleList>> ListRoleForAllNamespaces2WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1RoleList>> ListRoleForAllNamespaces2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get information of a group
@@ -35201,6 +39509,20 @@ namespace k8s
         /// <summary>
         /// delete collection of PriorityClass
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -35224,9 +39546,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -35257,6 +39592,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -35284,11 +39636,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityClassWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PriorityClass
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -35372,7 +39736,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PriorityClassList>> ListPriorityClassWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PriorityClassList>> ListPriorityClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a PriorityClass
@@ -35560,6 +39924,20 @@ namespace k8s
         /// <summary>
         /// delete collection of PriorityClass
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -35583,9 +39961,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -35616,6 +40007,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -35643,11 +40051,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityClass1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityClass1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PriorityClass
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -35731,7 +40151,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1PriorityClassList>> ListPriorityClass1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1PriorityClassList>> ListPriorityClass1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a PriorityClass
@@ -35919,6 +40339,20 @@ namespace k8s
         /// <summary>
         /// delete collection of PriorityClass
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -35942,9 +40376,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -35975,6 +40422,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -36002,11 +40466,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityClass2WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityClass2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PriorityClass
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -36090,7 +40566,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1PriorityClassList>> ListPriorityClass2WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1PriorityClassList>> ListPriorityClass2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a PriorityClass
@@ -36292,6 +40768,20 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -36315,9 +40805,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -36348,6 +40851,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -36375,7 +40895,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodPresetWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodPresetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodPreset
@@ -36383,6 +40903,18 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -36466,7 +40998,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1PodPresetList>> ListNamespacedPodPresetWithHttpMessagesAsync(string namespaceParameter, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1PodPresetList>> ListNamespacedPodPresetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a PodPreset
@@ -36658,6 +41190,18 @@ namespace k8s
         /// <summary>
         /// list or watch objects of kind PodPreset
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -36741,7 +41285,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1PodPresetList>> ListPodPresetForAllNamespacesWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1PodPresetList>> ListPodPresetForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get information of a group
@@ -36768,6 +41312,20 @@ namespace k8s
         /// <summary>
         /// delete collection of StorageClass
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -36791,9 +41349,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -36824,6 +41395,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -36851,11 +41439,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionStorageClassWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionStorageClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind StorageClass
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -36939,7 +41539,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1StorageClassList>> ListStorageClassWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1StorageClassList>> ListStorageClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a StorageClass
@@ -37116,6 +41716,20 @@ namespace k8s
         /// <summary>
         /// delete collection of VolumeAttachment
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -37139,9 +41753,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -37172,6 +41799,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -37199,11 +41843,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionVolumeAttachmentWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionVolumeAttachmentWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind VolumeAttachment
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -37287,7 +41943,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1VolumeAttachmentList>> ListVolumeAttachmentWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1VolumeAttachmentList>> ListVolumeAttachmentWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a VolumeAttachment
@@ -37561,6 +42217,20 @@ namespace k8s
         /// <summary>
         /// delete collection of VolumeAttachment
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -37584,9 +42254,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -37617,6 +42300,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -37644,11 +42344,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionVolumeAttachment1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionVolumeAttachment1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind VolumeAttachment
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -37732,7 +42444,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1VolumeAttachmentList>> ListVolumeAttachment1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1VolumeAttachmentList>> ListVolumeAttachment1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a VolumeAttachment
@@ -37920,6 +42632,20 @@ namespace k8s
         /// <summary>
         /// delete collection of CSIDriver
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -37943,9 +42669,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -37976,6 +42715,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -38003,11 +42759,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSIDriverWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSIDriverWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CSIDriver
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -38091,7 +42859,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CSIDriverList>> ListCSIDriverWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CSIDriverList>> ListCSIDriverWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a CSIDriver
@@ -38268,6 +43036,20 @@ namespace k8s
         /// <summary>
         /// delete collection of CSINode
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -38291,9 +43073,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -38324,6 +43119,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -38351,11 +43163,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSINodeWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSINodeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CSINode
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -38439,7 +43263,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CSINodeList>> ListCSINodeWithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CSINodeList>> ListCSINodeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a CSINode
@@ -38616,6 +43440,20 @@ namespace k8s
         /// <summary>
         /// delete collection of StorageClass
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -38639,9 +43477,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -38672,6 +43523,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -38699,11 +43567,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionStorageClass1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionStorageClass1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind StorageClass
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -38787,7 +43667,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1StorageClassList>> ListStorageClass1WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1StorageClassList>> ListStorageClass1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a StorageClass
@@ -38964,6 +43844,20 @@ namespace k8s
         /// <summary>
         /// delete collection of VolumeAttachment
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -38987,9 +43881,22 @@ namespace k8s
         /// watch from the last resourceVersion value returned by the server
         /// and not miss any modifications.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
         /// </param>
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
@@ -39020,6 +43927,23 @@ namespace k8s
         /// of the object that was present at the time the first list result
         /// was calculated is returned.
         /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
         /// that particular version of a resource. Defaults to changes from the
@@ -39047,11 +43971,23 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionVolumeAttachment2WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionVolumeAttachment2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind VolumeAttachment
         /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        ///
+        /// This field is alpha and can be changed or removed without notice.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -39135,7 +44071,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1VolumeAttachmentList>> ListVolumeAttachment2WithHttpMessagesAsync(string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1VolumeAttachmentList>> ListVolumeAttachment2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a VolumeAttachment

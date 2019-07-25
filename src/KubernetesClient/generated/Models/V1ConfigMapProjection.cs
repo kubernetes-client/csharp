@@ -43,7 +43,7 @@ namespace k8s.Models
         /// contain the '..' path or start with '..'.</param>
         /// <param name="name">Name of the referent. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names</param>
-        /// <param name="optional">Specify whether the ConfigMap or it's keys
+        /// <param name="optional">Specify whether the ConfigMap or its keys
         /// must be defined</param>
         public V1ConfigMapProjection(IList<V1KeyToPath> items = default(IList<V1KeyToPath>), string name = default(string), bool? optional = default(bool?))
         {
@@ -79,7 +79,7 @@ namespace k8s.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets specify whether the ConfigMap or it's keys must be
+        /// Gets or sets specify whether the ConfigMap or its keys must be
         /// defined
         /// </summary>
         [JsonProperty(PropertyName = "optional")]

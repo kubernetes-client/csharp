@@ -34,11 +34,15 @@ namespace k8s.Models
         /// service. Required</param>
         /// <param name="path">`path` is an optional URL path which will be
         /// sent in any request to this service.</param>
-        public Apiextensionsv1beta1ServiceReference(string name, string namespaceProperty, string path = default(string))
+        /// <param name="port">If specified, the port on the service that
+        /// hosting webhook. Default to 443 for backward compatibility. `port`
+        /// should be a valid port number (1-65535, inclusive).</param>
+        public Apiextensionsv1beta1ServiceReference(string name, string namespaceProperty, string path = default(string), int? port = default(int?))
         {
             Name = name;
             NamespaceProperty = namespaceProperty;
             Path = path;
+            Port = port;
             CustomInit();
         }
 
@@ -65,6 +69,14 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "path")]
         public string Path { get; set; }
+
+        /// <summary>
+        /// Gets or sets if specified, the port on the service that hosting
+        /// webhook. Default to 443 for backward compatibility. `port` should
+        /// be a valid port number (1-65535, inclusive).
+        /// </summary>
+        [JsonProperty(PropertyName = "port")]
+        public int? Port { get; set; }
 
         /// <summary>
         /// Validate the object.

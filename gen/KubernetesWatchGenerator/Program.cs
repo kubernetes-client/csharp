@@ -65,6 +65,7 @@ namespace KubernetesWatchGenerator
                 "watchPolicyV1beta1PodSecurityPolicy",
                 "watchExtensionsV1beta1PodSecurityPolicy",
                 "watchExtensionsV1beta1NamespacedIngress",
+                "watchNamespacedIngress",
                 "watchExtensionsV1beta1NamespacedIngressList",
                 "watchNetworkingV1beta1NamespacedIngress",
                 "watchNetworkingV1beta1NamespacedIngressList",

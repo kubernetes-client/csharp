@@ -44,10 +44,14 @@ namespace k8s.Models
         /// <param name="labelSelectorPath">LabelSelectorPath defines the JSON
         /// path inside of a CustomResource that corresponds to
         /// Scale.Status.Selector. Only JSON paths without the array notation
-        /// are allowed. Must be a JSON Path under .status. Must be set to work
-        /// with HPA. If there is no value under the given path in the
-        /// CustomResource, the status label selector value in the /scale
-        /// subresource will default to the empty string.</param>
+        /// are allowed. Must be a JSON Path under .status or .spec. Must be
+        /// set to work with HPA. The field pointed by this JSON path must be a
+        /// string field (not a complex selector struct) which contains a
+        /// serialized label selector in string form. More info:
+        /// https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions#scale-subresource
+        /// If there is no value under the given path in the CustomResource,
+        /// the status label selector value in the /scale subresource will
+        /// default to the empty string.</param>
         public V1beta1CustomResourceSubresourceScale(string specReplicasPath, string statusReplicasPath, string labelSelectorPath = default(string))
         {
             LabelSelectorPath = labelSelectorPath;
@@ -65,10 +69,14 @@ namespace k8s.Models
         /// Gets or sets labelSelectorPath defines the JSON path inside of a
         /// CustomResource that corresponds to Scale.Status.Selector. Only JSON
         /// paths without the array notation are allowed. Must be a JSON Path
-        /// under .status. Must be set to work with HPA. If there is no value
-        /// under the given path in the CustomResource, the status label
-        /// selector value in the /scale subresource will default to the empty
-        /// string.
+        /// under .status or .spec. Must be set to work with HPA. The field
+        /// pointed by this JSON path must be a string field (not a complex
+        /// selector struct) which contains a serialized label selector in
+        /// string form. More info:
+        /// https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions#scale-subresource
+        /// If there is no value under the given path in the CustomResource,
+        /// the status label selector value in the /scale subresource will
+        /// default to the empty string.
         /// </summary>
         [JsonProperty(PropertyName = "labelSelectorPath")]
         public string LabelSelectorPath { get; set; }
