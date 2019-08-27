@@ -163,7 +163,7 @@ namespace k8s
             Action<WatchEventType, T> onEvent,
             Action<Exception> onError = null,
             Action onClosed = null,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             if (!(response.Response.Content is WatcherDelegatingHandler.LineSeparatedHttpContent content))
             {
@@ -189,7 +189,7 @@ namespace k8s
             Action<WatchEventType, T> onEvent,
             Action<Exception> onError = null,
             Action onClosed = null,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             return Watch((HttpOperationResponse)response, onEvent, onError, onClosed, cancellationToken);
         }
