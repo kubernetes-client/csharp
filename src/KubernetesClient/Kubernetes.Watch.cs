@@ -150,7 +150,7 @@ namespace k8s
             }
 
             var stream = await httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false);
-            StreamReader reader = new StreamReader(stream);
+            PeekableStreamReader reader = new PeekableStreamReader(stream);
 
             return new Watcher<T>(reader, onEvent, onError, onClosed);
         }

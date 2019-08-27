@@ -29,14 +29,14 @@ namespace k8s
         public bool Watching { get; private set; }
 
         private readonly CancellationTokenSource _cts;
-        private readonly StreamReader _streamReader;
+        private readonly IAsyncLineReader _lineReader;
         private readonly Task _watcherLoop;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Watcher{T}"/> class.
         /// </summary>
-        /// <param name="streamReader">
-        /// A <see cref="StreamReader"/> from which to read the events.
+        /// <param name="lineReader">
+        /// A <see cref="ILineReader"/> from which to read the events.
         /// </param>
         /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
@@ -47,14 +47,18 @@ namespace k8s
         /// <param name="onClosed">
         /// The action to invoke when the server closes the connection.
         /// </param>
-        public Watcher(StreamReader streamReader, Action<WatchEventType, T> onEvent, Action<Exception> onError, Action onClosed = null)
+        /// <param name="cancellationToken">
+        /// A token that can be used to cancel the read
+        /// </param>
+        public Watcher(IAsyncLineReader lineReader, Action<WatchEventType, T> onEvent, Action<Exception> onError,
+            Action onClosed = null, CancellationToken cancellationToken = default)
         {
-            _streamReader = streamReader;
+            _lineReader = lineReader;
             OnEvent += onEvent;
             OnError += onError;
             OnClosed += onClosed;
 
-            _cts = new CancellationTokenSource();
+            _cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
             _watcherLoop = this.WatcherLoop(_cts.Token);
         }
 
@@ -62,7 +66,7 @@ namespace k8s
         public void Dispose()
         {
             _cts.Cancel();
-            _streamReader.Dispose();
+            _lineReader.Dispose();
         }
 
         /// <summary>
@@ -98,7 +102,7 @@ namespace k8s
                 string line;
 
                 // ReadLineAsync will return null when we've reached the end of the stream.
-                while ((line = await this._streamReader.ReadLineAsync().ConfigureAwait(false)) != null)
+                while ((line = await this._lineReader.ReadLineAsync(cancellationToken).ConfigureAwait(false)) != null)
                 {
                     if (cancellationToken.IsCancellationRequested)
                     {
@@ -153,11 +157,13 @@ namespace k8s
         /// <param name="onClosed">
         /// The action to invoke when the server closes the connection.
         /// </param>
+        /// <param name="cancellationToken">A token that can be used to cancel the watch</param>
         /// <returns>a watch object</returns>
         public static Watcher<T> Watch<T>(this HttpOperationResponse response,
             Action<WatchEventType, T> onEvent,
             Action<Exception> onError = null,
-            Action onClosed = null)
+            Action onClosed = null,
+            CancellationToken cancellationToken = default)
         {
             if (!(response.Response.Content is WatcherDelegatingHandler.LineSeparatedHttpContent content))
             {
@@ -177,13 +183,119 @@ namespace k8s
         /// <param name="onClosed">
         /// The action to invoke when the server closes the connection.
         /// </param>
+        /// <param name="cancellationToken">A token that can be used to cancel the read</param>
         /// <returns>a watch object</returns>
         public static Watcher<T> Watch<T>(this HttpOperationResponse<T> response,
             Action<WatchEventType, T> onEvent,
             Action<Exception> onError = null,
-            Action onClosed = null)
+            Action onClosed = null,
+            CancellationToken cancellationToken = default)
         {
-            return Watch((HttpOperationResponse)response, onEvent, onError, onClosed);
+            return Watch((HttpOperationResponse)response, onEvent, onError, onClosed, cancellationToken);
+        }
+
+        /// <summary>
+        /// watch the call to api server with watch=true asynchronously
+        /// </summary>
+        /// <typeparam name="T">type of the event object</typeparam>
+        /// <param name="response">the api response</param>
+        /// <param name="onEvent">a callback when any event raised from api server</param>
+        /// <param name="onError">a callbak when any exception was caught during watching</param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
+        /// <param name="cancellationToken">A token that can be used to cancel the watch</param>
+        /// <returns>a watch object</returns>
+        public static async Task WatchAsync<T>(this HttpOperationResponse response,
+            CancellationToken cancellationToken,
+            Func<CancellationToken, WatchEventType, T, Task> onEvent,
+            Func<CancellationToken, Exception, Task> onError = null,
+            Func<CancellationToken, Task> onClosed = null)
+        {
+            if (!(response.Response.Content is WatcherDelegatingHandler.LineSeparatedHttpContent content))
+            {
+                throw new KubernetesClientException("not a watchable request or failed response");
+            }
+
+            try
+            {
+                string line;
+                // ReadLineAsync will return null when we've reached the end of the stream.
+                while ((line = await content.StreamReader.ReadLineAsync(cancellationToken).ConfigureAwait(false)) != null)
+                {
+                    if (cancellationToken.IsCancellationRequested)
+                    {
+                        return;
+                    }
+
+                    try
+                    {
+                        var genericEvent = SafeJsonConvert.DeserializeObject<k8s.Watcher<KubernetesObject>.WatchEvent>(line);
+
+                        if (genericEvent.Object.Kind == "Status")
+                        {
+                            var statusEvent = SafeJsonConvert.DeserializeObject<k8s.Watcher<V1Status>.WatchEvent>(line);
+                            if (onError != null)
+                            {
+                                var exception = new KubernetesException(statusEvent.Object);
+                                await onError(cancellationToken, exception).ConfigureAwait(false);
+                            }
+                        }
+                        else
+                        {
+                            var @event = SafeJsonConvert.DeserializeObject<k8s.Watcher<T>.WatchEvent>(line);
+                            if (onEvent != null)
+                            {
+                                await onEvent(cancellationToken, @event.Type, @event.Object).ConfigureAwait(false);
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        // error if deserialized failed or onevent throws
+                        if (onError != null)
+                        {
+                            await onError(cancellationToken, e).ConfigureAwait(false);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                // error when transport error, IOException ect
+                if (onError != null)
+                {
+                    await onError(cancellationToken, e).ConfigureAwait(false);
+                }
+            }
+            finally
+            {
+                if (onClosed != null)
+                {
+                    await onClosed(cancellationToken).ConfigureAwait(false);
+                }
+            }
+        }
+
+        /// <summary>
+        /// watch the call to api server with watch=true asynchronously
+        /// </summary>
+        /// <typeparam name="T">type of the event object</typeparam>
+        /// <param name="response">the api response</param>
+        /// <param name="onEvent">a callback when any event raised from api server</param>
+        /// <param name="onError">a callbak when any exception was caught during watching</param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
+        /// <param name="cancellationToken">A token that can be used to cancel the watch</param>
+        /// <returns>a watch object</returns>
+        public static Task WatchAsync<T>(this HttpOperationResponse<T> response,
+            CancellationToken cancellationToken,
+            Func<CancellationToken, WatchEventType, T, Task> onEvent,
+            Func<CancellationToken, Exception, Task> onError = null,
+            Func<CancellationToken, Task> onClosed = null)
+        {
+            return WatchAsync((HttpOperationResponse)response, cancellationToken, onEvent, onError, onClosed);
         }
     }
 }
