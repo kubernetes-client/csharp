@@ -65,6 +65,11 @@ namespace k8s
                 {
                     return null;
                 }
+                // consume any previously read data
+                if (_bufPos > 0)
+                {
+                    ShuffleConsumedBytes(_buf);
+                }
                 // make the buffer bigger if needed
                 if (_buf.Length - _bufLength < 512)
                 {
@@ -75,11 +80,7 @@ namespace k8s
                     }
                     byte[] newbuf = new byte[_buf.Length * 2];
                     ShuffleConsumedBytes(newbuf);
-                }
-                // consume any previously read data
-                else if (_bufPos > 0)
-                {
-                    ShuffleConsumedBytes(_buf);
+                    _buf = newbuf;
                 }
 
                 int read = await _stream.ReadAsync(_buf, _bufLength,
