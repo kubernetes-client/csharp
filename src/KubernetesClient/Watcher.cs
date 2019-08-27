@@ -51,7 +51,7 @@ namespace k8s
         /// A token that can be used to cancel the read
         /// </param>
         public Watcher(IAsyncLineReader lineReader, Action<WatchEventType, T> onEvent, Action<Exception> onError,
-            Action onClosed = null, CancellationToken cancellationToken = default)
+            Action onClosed = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             _lineReader = lineReader;
             OnEvent += onEvent;
