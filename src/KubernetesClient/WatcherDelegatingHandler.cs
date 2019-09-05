@@ -56,9 +56,12 @@ namespace k8s
                 StreamReader = new PeekableStreamReader(_originStream);
 
                 var firstLine = await StreamReader.PeekLineAsync(_cancellationToken);
-                var lineBytes = Encoding.UTF8.GetBytes(firstLine);
-                await stream.WriteAsync(lineBytes, 0, lineBytes.Length, _cancellationToken);
-                await stream.FlushAsync(_cancellationToken);
+                if (!string.IsNullOrEmpty(firstLine))
+                {
+                    var lineBytes = Encoding.UTF8.GetBytes(firstLine);
+                    await stream.WriteAsync(lineBytes, 0, lineBytes.Length, _cancellationToken);
+                    await stream.FlushAsync(_cancellationToken);
+                }
             }
 
             protected override bool TryComputeLength(out long length)
