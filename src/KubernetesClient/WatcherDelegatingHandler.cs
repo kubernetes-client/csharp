@@ -10,6 +10,15 @@ using Microsoft.AspNetCore.WebUtilities;
 namespace k8s
 {
     /// <summary>
+    /// Represents line separated http content returned from ?watch=true calls
+    /// </summary>
+    public interface ILineSeparatedHttpContent
+    {
+        /// <summary>A stream reader for the content</summary>
+        IAsyncLineReader StreamReader { get; }
+    }
+
+    /// <summary>
     /// This HttpDelegatingHandler is to rewrite the response and return first line to autorest client
     /// then use WatchExt to create a watch object which interact with the replaced http response to get watch works.
     /// </summary>
@@ -33,7 +42,7 @@ namespace k8s
             return originResponse;
         }
 
-        internal class LineSeparatedHttpContent : HttpContent
+        internal class LineSeparatedHttpContent : HttpContent, ILineSeparatedHttpContent
         {
             private readonly HttpContent _originContent;
             private Stream _originStream;
@@ -47,15 +56,16 @@ namespace k8s
                 _cancellationToken = cancellationToken;
             }
 
-            internal PeekableStreamReader StreamReader { get; private set; }
+            public IAsyncLineReader StreamReader { get; private set; }
 
             protected override async Task SerializeToStreamAsync(Stream stream, TransportContext context)
             {
                 _originStream = await _originContent.ReadAsStreamAsync();
 
-                StreamReader = new PeekableStreamReader(_originStream);
+                var peekableStreamReader = new PeekableStreamReader(_originStream);
+                StreamReader = peekableStreamReader;
 
-                var firstLine = await StreamReader.PeekLineAsync(_cancellationToken);
+                var firstLine = await peekableStreamReader.PeekLineAsync(_cancellationToken);
                 if (!string.IsNullOrEmpty(firstLine))
                 {
                     var lineBytes = Encoding.UTF8.GetBytes(firstLine);

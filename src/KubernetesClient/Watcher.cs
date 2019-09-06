@@ -165,7 +165,7 @@ namespace k8s
             Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (!(response.Response.Content is WatcherDelegatingHandler.LineSeparatedHttpContent content))
+            if (!(response.Response.Content is ILineSeparatedHttpContent content))
             {
                 throw new KubernetesClientException("not a watchable request or failed response");
             }
@@ -212,7 +212,7 @@ namespace k8s
             Func<CancellationToken, Exception, Task> onError = null,
             Func<CancellationToken, Task> onClosed = null)
         {
-            if (!(response.Response.Content is WatcherDelegatingHandler.LineSeparatedHttpContent content))
+            if (!(response.Response.Content is ILineSeparatedHttpContent content))
             {
                 throw new KubernetesClientException("not a watchable request or failed response");
             }
