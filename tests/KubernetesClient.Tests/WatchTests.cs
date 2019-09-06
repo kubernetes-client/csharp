@@ -13,6 +13,7 @@ using k8s.Models;
 using k8s.Tests.Mock;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Microsoft.Rest;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Nito.AsyncEx;
@@ -21,6 +22,72 @@ using Xunit.Abstractions;
 
 namespace k8s.Tests
 {
+    class MockLineStreamReader : IAsyncLineReader
+    {
+        private readonly List<string> _lines;
+        private readonly int _blockAtLine;
+        private readonly int _exceptionAtLine;
+        private int _pos;
+
+        public MockLineStreamReader(
+            IEnumerable<string> lines,
+            int blockAtLine = -1,
+            int exceptionAtLine = -1)
+        {
+            _blockAtLine = blockAtLine;
+            _exceptionAtLine = exceptionAtLine;
+            _lines = lines.ToList();
+        }
+
+        public async Task<string> ReadLineAsync(CancellationToken cancellationToken)
+        {
+            if (_exceptionAtLine == _pos)
+            {
+                throw new Exception("io failure");
+            }
+            if (_blockAtLine == _pos)
+            {
+                try
+                {
+                    await Task.Delay(-1, cancellationToken);
+                }
+                catch (OperationCanceledException)
+                {
+                }
+            }
+            return _pos < _lines.Count ? _lines[_pos++] : null;
+        }
+
+        public void Dispose()
+        {
+        }
+    }
+
+    class MockOtherHttpContent : HttpContent
+    {
+        protected override Task SerializeToStreamAsync(Stream stream, TransportContext context) =>
+            throw new NotImplementedException();
+
+        protected override bool TryComputeLength(out long length) =>
+            throw new NotImplementedException();
+    }
+
+    class MockLineSeparatedHttpContent : HttpContent, ILineSeparatedHttpContent
+    {
+        public IAsyncLineReader StreamReader { get; private set; }
+
+        public MockLineSeparatedHttpContent(IAsyncLineReader streamReader)
+        {
+            StreamReader = streamReader;
+        }
+
+        protected override Task SerializeToStreamAsync(Stream stream, TransportContext context) =>
+            Task.CompletedTask;
+
+        protected override bool TryComputeLength(out long length) =>
+            throw new NotImplementedException();
+    }
+
     public class WatchTests
     {
         private static readonly string MockAddedEventStreamLine = BuildWatchEventStreamLine(WatchEventType.Added);
@@ -28,6 +95,12 @@ namespace k8s.Tests
         private static readonly string MockModifiedStreamLine = BuildWatchEventStreamLine(WatchEventType.Modified);
         private static readonly string MockErrorStreamLine = BuildWatchEventStreamLine(WatchEventType.Error);
         private static readonly string MockBadStreamLine = "bad json";
+        private static readonly string MockStatusLine = JsonConvert.SerializeObject(
+            new Watcher<V1Status>.WatchEvent
+            {
+                Type = WatchEventType.Error,
+                Object = new V1Status(kind: "Status", reason: "test status")
+            }, new StringEnumConverter());
         private static readonly TimeSpan TestTimeout = TimeSpan.FromSeconds(150);
 
         private readonly ITestOutputHelper testOutput;
@@ -708,5 +781,143 @@ namespace k8s.Tests
             }
         }
 
+        [Fact]
+        public void WatchFailsWithIncorrectContentType()
+        {
+            var ct = CancellationToken.None;
+            var response = new HttpOperationResponse<V1Pod>
+            {
+                Response = new HttpResponseMessage
+                {
+                    Content = new MockOtherHttpContent()
+                }
+            };
+            Assert.ThrowsAsync<KubernetesClientException>(
+                async () => await response.WatchAsync(
+                    ct, (ct_, evt, pod) => Task.CompletedTask));
+        }
+
+        private HttpOperationResponse<V1Pod> MakeResponse(MockLineStreamReader reader)
+        {
+            var content = new MockLineSeparatedHttpContent(reader);
+            var response = new HttpOperationResponse<V1Pod>
+            {
+                Response = new HttpResponseMessage
+                {
+                    Content = content
+                }
+            };
+            return response;
+        }
+
+        [Fact]
+        public async Task WatchCanBeCancelled()
+        {
+            var reader = new MockLineStreamReader(new string[0], 0);
+            var response = MakeResponse(reader);
+            var cts = new CancellationTokenSource();
+            var task = response.WatchAsync(cts.Token, (ct, evt, pod) => Task.CompletedTask);
+            cts.Cancel();
+            await task;
+        }
+
+        [Fact]
+        public async Task WatchCanBeCancelledWithoutLSRReturningNull()
+        {
+            var reader = new MockLineStreamReader(new string[]
+            {
+                MockAddedEventStreamLine
+            }, 0);
+            var response = MakeResponse(reader);
+            var cts = new CancellationTokenSource();
+            var task = response.WatchAsync(cts.Token, (ct, evt, pod) => Task.CompletedTask);
+            cts.Cancel();
+            await task;
+        }
+
+        [Fact]
+        public async Task WatchStopsOnIoException()
+        {
+            var reader = new MockLineStreamReader(new string[0], -1, 0);
+            var response = MakeResponse(reader);
+            var cts = new CancellationTokenSource();
+
+            var events = new List<WatchEventType>();
+            var exceptions = new List<Exception>();
+            var onCloseCalled = false;
+
+            var task = response.WatchAsync(CancellationToken.None,
+                (ct, evt, pod) => Task.CompletedTask,
+                (ct, ex) =>
+                {
+                    exceptions.Add(ex);
+                    return Task.CompletedTask;
+                },
+                (ct) =>
+                {
+                    onCloseCalled = true;
+                    return Task.CompletedTask;
+                });
+            await task;
+
+            Assert.True(onCloseCalled);
+            Assert.Single(exceptions);
+            Assert.Equal("io failure", exceptions[0].Message);
+        }
+
+
+        [Fact]
+        public async Task WatchHandlesAllTypes()
+        {
+            var reader = new MockLineStreamReader(new[]
+            {
+                MockAddedEventStreamLine,
+                MockBadStreamLine,
+                MockModifiedStreamLine,
+                MockBadStreamLine,
+                MockDeletedStreamLine,
+                MockBadStreamLine,
+                MockErrorStreamLine,
+                MockStatusLine
+            });
+            var response = MakeResponse(reader);
+
+            var ct = CancellationToken.None;
+            var events = new List<WatchEventType>();
+            var exceptions = new List<Exception>();
+            var onCloseCalled = false;
+            await response.WatchAsync(ct,
+                (ct_, evt, pod) =>
+                {
+                    events.Add(evt);
+                    return Task.CompletedTask;
+                },
+                (ct_, ex) =>
+                {
+                    exceptions.Add(ex);
+                    return Task.CompletedTask;
+                },
+                (ct_) =>
+                {
+                    onCloseCalled = true;
+                    return Task.CompletedTask;
+                });
+
+            Assert.True(onCloseCalled);
+            Assert.Equal(new WatchEventType[]
+            {
+                WatchEventType.Added,
+                WatchEventType.Modified,
+                WatchEventType.Deleted,
+                WatchEventType.Error
+            }, events);
+            Assert.Equal(4, exceptions.Count);
+            Assert.IsType<JsonReaderException>(exceptions[0]);
+            Assert.IsType<JsonReaderException>(exceptions[1]);
+            Assert.IsType<JsonReaderException>(exceptions[2]);
+            Assert.IsType<KubernetesException>(exceptions[3]);
+            var k8se = (KubernetesException)exceptions[3];
+            Assert.Equal("test status", k8se.Status.Reason);
+        }
     }
 }

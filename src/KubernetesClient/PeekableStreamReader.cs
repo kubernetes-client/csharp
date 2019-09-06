@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace k8s
 {
-    internal class PeekableStreamReader : IAsyncLineReader
+    public class PeekableStreamReader : IAsyncLineReader
     {
+        private readonly int _maxLineLength;
         private readonly Queue<string> _peek = new Queue<string>();
         private Stream _stream;
         private byte[] _buf = new byte[4096];
@@ -16,8 +17,9 @@ namespace k8s
         private int _bufLength = 0;
         private bool _eof = false;
 
-        public PeekableStreamReader(Stream stream)
+        public PeekableStreamReader(Stream stream, int maxLineLength = Int32.MaxValue)
         {
+            _maxLineLength = maxLineLength;
             _stream = stream;
         }
 
@@ -39,21 +41,15 @@ namespace k8s
             }
         }
 
-        public async Task<string> ReadLineAsync(CancellationToken cancellationToken)
+        private async Task<string> ReadLineNoPeekAsync(CancellationToken cancellationToken)
         {
-            CheckDisposed();
 
-            if (_peek.Count > 0)
-            {
-                return _peek.Dequeue();
-            }
-
-            for (;;)
+            for (; ; )
             {
                 // read buffered data
                 if (_bufPos < _bufLength)
                 {
-                    int nlPos = _eof ? _bufLength - 1 : Array.IndexOf(_buf, (byte)'\n', _bufPos, _bufLength -_bufPos);
+                    int nlPos = _eof ? _bufLength - 1 : Array.IndexOf(_buf, (byte)'\n', _bufPos, _bufLength - _bufPos);
                     if (nlPos >= 0)
                     {
                         string result = Encoding.UTF8.GetString(_buf, _bufPos, nlPos - _bufPos + 1);
@@ -73,7 +69,7 @@ namespace k8s
                 // make the buffer bigger if needed
                 if (_buf.Length - _bufLength < 512)
                 {
-                    if (_buf.Length > Int32.MaxValue / 2)
+                    if (_buf.Length > _maxLineLength / 2)
                     {
                         throw new InvalidOperationException(
                             "trying to read a line > 2Gb from the server");
@@ -90,11 +86,22 @@ namespace k8s
             }
         }
 
+        public async Task<string> ReadLineAsync(CancellationToken cancellationToken)
+        {
+            CheckDisposed();
+
+            if (_peek.Count > 0)
+            {
+                return _peek.Dequeue();
+            }
+            return await ReadLineNoPeekAsync(cancellationToken);
+        }
+
         public async Task<string> PeekLineAsync(CancellationToken cancellationToken)
         {
             CheckDisposed();
 
-            var line = await ReadLineAsync(cancellationToken).ConfigureAwait(false);
+            var line = await ReadLineNoPeekAsync(cancellationToken).ConfigureAwait(false);
             _peek.Enqueue(line);
             return line;
         }
