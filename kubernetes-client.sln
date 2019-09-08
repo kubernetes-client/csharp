@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{B70AFB57-57C9-46DC-84BE-11B7DDD34B40}"
 EndProject
@@ -31,7 +31,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gen", "gen", "{879F8787-C3B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KubernetesWatchGenerator", "gen\KubernetesWatchGenerator\KubernetesWatchGenerator.csproj", "{542DC30E-FDF7-4A35-B026-6C21F435E8B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "patch", "examples\patch\patch.csproj", "{04DE2C84-117D-4E21-8B45-B7AE627697BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "patch", "examples\patch\patch.csproj", "{04DE2C84-117D-4E21-8B45-B7AE627697BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "httpClientFactory", "examples\httpClientFactory\httpClientFactory.csproj", "{A07314A0-02E8-4F36-B233-726D59D28F08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -175,6 +177,18 @@ Global
 		{04DE2C84-117D-4E21-8B45-B7AE627697BD}.Release|x64.Build.0 = Release|Any CPU
 		{04DE2C84-117D-4E21-8B45-B7AE627697BD}.Release|x86.ActiveCfg = Release|Any CPU
 		{04DE2C84-117D-4E21-8B45-B7AE627697BD}.Release|x86.Build.0 = Release|Any CPU
+		{A07314A0-02E8-4F36-B233-726D59D28F08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A07314A0-02E8-4F36-B233-726D59D28F08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A07314A0-02E8-4F36-B233-726D59D28F08}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A07314A0-02E8-4F36-B233-726D59D28F08}.Debug|x64.Build.0 = Debug|Any CPU
+		{A07314A0-02E8-4F36-B233-726D59D28F08}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A07314A0-02E8-4F36-B233-726D59D28F08}.Debug|x86.Build.0 = Debug|Any CPU
+		{A07314A0-02E8-4F36-B233-726D59D28F08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A07314A0-02E8-4F36-B233-726D59D28F08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A07314A0-02E8-4F36-B233-726D59D28F08}.Release|x64.ActiveCfg = Release|Any CPU
+		{A07314A0-02E8-4F36-B233-726D59D28F08}.Release|x64.Build.0 = Release|Any CPU
+		{A07314A0-02E8-4F36-B233-726D59D28F08}.Release|x86.ActiveCfg = Release|Any CPU
+		{A07314A0-02E8-4F36-B233-726D59D28F08}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -191,6 +205,7 @@ Global
 		{806AD0E5-833F-42FB-A870-4BCEE7F4B17F} = {8AF4A5C2-F0CE-47D5-A4C5-FE4AB83CA509}
 		{542DC30E-FDF7-4A35-B026-6C21F435E8B1} = {879F8787-C3BB-43F3-A92D-6D4C7D3A5285}
 		{04DE2C84-117D-4E21-8B45-B7AE627697BD} = {B70AFB57-57C9-46DC-84BE-11B7DDD34B40}
+		{A07314A0-02E8-4F36-B233-726D59D28F08} = {B70AFB57-57C9-46DC-84BE-11B7DDD34B40}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {049A763A-C891-4E8D-80CF-89DD3E22ADC7}
