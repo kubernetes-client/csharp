@@ -20,6 +20,25 @@ namespace k8s.Tests
         }
 
         [Fact]
+        public void CreateNullStreamThrows()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+                new PeekableStreamReader(null));
+        }
+
+        [Fact]
+        public void CreateNegativeMaxLineLengthThrows()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+            {
+                using (var ms = new MemoryStream())
+                {
+                    new PeekableStreamReader(ms, -1);
+                }
+            });
+        }
+
+        [Fact]
         public void PeekDisposedThrows()
         {
             using (var peekableStream = CreateStream("one\ntwo\nthree"))
@@ -94,10 +113,21 @@ namespace k8s.Tests
         }
 
         [Fact]
+        public async Task ReadLineOfMaximumLengthSucceeds()
+        {
+            var ct = CancellationToken.None;
+            var s = new string('X', 32767) + "\n";
+            using (var peekableStream = CreateStream(s, 32768))
+            {
+                Assert.Equal(s, await peekableStream.ReadLineAsync(ct));
+            }
+        }
+
+        [Fact]
         public void ReadLineBiggerThanMaxThrows()
         {
             var ct = CancellationToken.None;
-            using (var peekableStream = CreateStream(new string('6', 8192), 4096))
+            using (var peekableStream = CreateStream(new string('6', 32769), 32768))
             {
                 Assert.ThrowsAsync<InvalidOperationException>(
                     async () => await peekableStream.ReadLineAsync(ct));

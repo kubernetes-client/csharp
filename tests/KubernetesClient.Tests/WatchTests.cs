@@ -794,7 +794,8 @@ namespace k8s.Tests
             };
             Assert.ThrowsAsync<KubernetesClientException>(
                 async () => await response.WatchAsync(
-                    ct, (ct_, evt, pod) => Task.CompletedTask));
+                    (ct_, evt, pod) => Task.CompletedTask,
+                    cancellationToken: ct));
         }
 
         private HttpOperationResponse<V1Pod> MakeResponse(MockLineStreamReader reader)
@@ -816,7 +817,8 @@ namespace k8s.Tests
             var reader = new MockLineStreamReader(new string[0], 0);
             var response = MakeResponse(reader);
             var cts = new CancellationTokenSource();
-            var task = response.WatchAsync(cts.Token, (ct, evt, pod) => Task.CompletedTask);
+            var task = response.WatchAsync((ct, evt, pod) => Task.CompletedTask,
+                cancellationToken: cts.Token);
             cts.Cancel();
             await task;
         }
@@ -830,7 +832,8 @@ namespace k8s.Tests
             }, 0);
             var response = MakeResponse(reader);
             var cts = new CancellationTokenSource();
-            var task = response.WatchAsync(cts.Token, (ct, evt, pod) => Task.CompletedTask);
+            var task = response.WatchAsync((ct, evt, pod) => Task.CompletedTask,
+                cancellationToken: cts.Token);
             cts.Cancel();
             await task;
         }
@@ -846,7 +849,7 @@ namespace k8s.Tests
             var exceptions = new List<Exception>();
             var onCloseCalled = false;
 
-            var task = response.WatchAsync(CancellationToken.None,
+            var task = response.WatchAsync(
                 (ct, evt, pod) => Task.CompletedTask,
                 (ct, ex) =>
                 {
@@ -857,7 +860,7 @@ namespace k8s.Tests
                 {
                     onCloseCalled = true;
                     return Task.CompletedTask;
-                });
+                }, CancellationToken.None);
             await task;
 
             Assert.True(onCloseCalled);
@@ -886,7 +889,7 @@ namespace k8s.Tests
             var events = new List<WatchEventType>();
             var exceptions = new List<Exception>();
             var onCloseCalled = false;
-            await response.WatchAsync(ct,
+            await response.WatchAsync(
                 (ct_, evt, pod) =>
                 {
                     events.Add(evt);
@@ -901,7 +904,7 @@ namespace k8s.Tests
                 {
                     onCloseCalled = true;
                     return Task.CompletedTask;
-                });
+                }, ct);
 
             Assert.True(onCloseCalled);
             Assert.Equal(new WatchEventType[]

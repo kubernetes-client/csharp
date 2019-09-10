@@ -19,8 +19,14 @@ namespace k8s
 
         public PeekableStreamReader(Stream stream, int maxLineLength = Int32.MaxValue)
         {
+            // This is arbitrary, but ~8k lines are not abnormal
+            if (maxLineLength < 32768)
+            {
+                throw new ArgumentOutOfRangeException(nameof(maxLineLength),
+                    "The maximum line length must be at least 32768");
+            }
             _maxLineLength = maxLineLength;
-            _stream = stream;
+            _stream = stream ?? throw new ArgumentNullException(nameof(stream));
         }
 
         private void ShuffleConsumedBytes(byte[] dst)
@@ -67,14 +73,17 @@ namespace k8s
                     ShuffleConsumedBytes(_buf);
                 }
                 // make the buffer bigger if needed
-                if (_buf.Length - _bufLength < 512)
+                int left = _buf.Length - _bufLength;
+                if (left < 512)
                 {
-                    if (_buf.Length > _maxLineLength / 2)
+                    int newlen = Math.Min(_maxLineLength / 2, _buf.Length) * 2;
+                    if (newlen <= _buf.Length)
                     {
                         throw new InvalidOperationException(
-                            "trying to read a line > 2Gb from the server");
+                            "Reading from the stream failed because a line from the server was unexpectedly " +
+                            $"greater than the configured maximum line length of {_maxLineLength}");
                     }
-                    byte[] newbuf = new byte[_buf.Length * 2];
+                    byte[] newbuf = new byte[newlen];
                     ShuffleConsumedBytes(newbuf);
                     _buf = newbuf;
                 }
@@ -94,7 +103,7 @@ namespace k8s
             {
                 return _peek.Dequeue();
             }
-            return await ReadLineNoPeekAsync(cancellationToken);
+            return await ReadLineNoPeekAsync(cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<string> PeekLineAsync(CancellationToken cancellationToken)
@@ -107,6 +116,12 @@ namespace k8s
         }
 
         public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
         {
             if (_stream != null)
             {

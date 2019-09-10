@@ -36,7 +36,7 @@ namespace k8s
         /// Initializes a new instance of the <see cref="Watcher{T}"/> class.
         /// </summary>
         /// <param name="lineReader">
-        /// A <see cref="ILineReader"/> from which to read the events.
+        /// An <see cref="IAsyncLineReader"/> from which to read the events.
         /// </param>
         /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
@@ -207,10 +207,10 @@ namespace k8s
         /// <param name="cancellationToken">A token that can be used to cancel the watch</param>
         /// <returns>a watch object</returns>
         public static async Task WatchAsync<T>(this HttpOperationResponse response,
-            CancellationToken cancellationToken,
             Func<CancellationToken, WatchEventType, T, Task> onEvent,
             Func<CancellationToken, Exception, Task> onError = null,
-            Func<CancellationToken, Task> onClosed = null)
+            Func<CancellationToken, Task> onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             if (!(response.Response.Content is ILineSeparatedHttpContent content))
             {
@@ -290,12 +290,12 @@ namespace k8s
         /// <param name="cancellationToken">A token that can be used to cancel the watch</param>
         /// <returns>a watch object</returns>
         public static Task WatchAsync<T>(this HttpOperationResponse<T> response,
-            CancellationToken cancellationToken,
             Func<CancellationToken, WatchEventType, T, Task> onEvent,
             Func<CancellationToken, Exception, Task> onError = null,
-            Func<CancellationToken, Task> onClosed = null)
+            Func<CancellationToken, Task> onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
-            return WatchAsync((HttpOperationResponse)response, cancellationToken, onEvent, onError, onClosed);
+            return WatchAsync((HttpOperationResponse)response, onEvent, onError, onClosed, cancellationToken);
         }
     }
 }
