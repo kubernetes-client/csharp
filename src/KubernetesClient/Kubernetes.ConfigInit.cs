@@ -13,84 +13,68 @@ namespace k8s
 {
     public partial class Kubernetes
     {
-#if MONOANDROID8_1
         /// <summary>
         ///     Initializes a new instance of the <see cref="Kubernetes" /> class.
         /// </summary>
         /// <param name='config'>
-        ///     Optional. The delegating handlers to add to the http client pipeline.
+        ///     The kube config to use.
         /// </param>
-        /// <param name="handlers">
-        ///     Optional. The delegating handlers to add to the http client pipeline.
+        /// <param name="httpClient">
+        ///     The <see cref="HttpClient" /> to use for all requests.
         /// </param>
-        public Kubernetes(KubernetesClientConfiguration config, params DelegatingHandler[] handlers) : this(new Xamarin.Android.Net.AndroidClientHandler(), handlers)
+        public Kubernetes(KubernetesClientConfiguration config, HttpClient httpClient) : this(config, httpClient, false)
         {
-            if (string.IsNullOrWhiteSpace(config.Host))
-            {
-                throw new KubeConfigException("Host url must be set");
-            }
-
-            try
-            {
-                BaseUri = new Uri(config.Host);
-            }
-            catch (UriFormatException e)
-            {
-                throw new KubeConfigException("Bad host url", e);
-            }
-
-            CaCerts = config.SslCaCerts;
-            SkipTlsVerify = config.SkipTlsVerify;
-
-            if (BaseUri.Scheme == "https")
-            {
-                if (config.SkipTlsVerify)
-                {
-                    System.Net.ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) =>
-                    {
-                        return true;
-                    };
-                }
-                else
-                {
-                    if (CaCerts == null)
-                    {
-                        throw new KubeConfigException("a CA must be set when SkipTlsVerify === false");
-                    }
-
-                    var certList = new System.Collections.Generic.List<Java.Security.Cert.Certificate>();
-
-                    foreach (X509Certificate2 caCert in CaCerts)
-                    {
-                        using (System.IO.MemoryStream certStream = new System.IO.MemoryStream(caCert.RawData))
-                        {
-                            Java.Security.Cert.Certificate cert = Java.Security.Cert.CertificateFactory.GetInstance("X509").GenerateCertificate(certStream);
-
-                            certList.Add(cert);
-                        }
-                    }
-
-                    Xamarin.Android.Net.AndroidClientHandler handler = (Xamarin.Android.Net.AndroidClientHandler)this.HttpClientHandler;
-
-                    handler.TrustedCerts = certList;
-                }
-            }
-
-            // set credentails for the kubernernet client
-            SetCredentials(config, HttpClientHandler);
         }
-#else
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Kubernetes" /> class.
         /// </summary>
         /// <param name='config'>
-        ///     Optional. The delegating handlers to add to the http client pipeline.
+        ///     The kube config to use.
+        /// </param>
+        /// <param name="httpClient">
+        ///     The <see cref="HttpClient" /> to use for all requests.
+        /// </param>
+        /// <param name="disposeHttpClient">
+        ///     Whether or not the <see cref="Kubernetes"/> object should own the lifetime of <paramref name="httpClient"/>.
+        /// </param>
+        public Kubernetes(KubernetesClientConfiguration config, HttpClient httpClient, bool disposeHttpClient) : this(httpClient, disposeHttpClient)
+        {
+            ValidateConfig(config);
+            CaCerts = config.SslCaCerts;
+            SkipTlsVerify = config.SkipTlsVerify;
+            InitializeFromConfig(config);
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Kubernetes" /> class.
+        /// </summary>
+        /// <param name='config'>
+        ///     The kube config to use.
         /// </param>
         /// <param name="handlers">
         ///     Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        public Kubernetes(KubernetesClientConfiguration config, params DelegatingHandler[] handlers) : this(handlers)
+        public Kubernetes(KubernetesClientConfiguration config, params DelegatingHandler[] handlers)
+#if MONOANDROID8_1
+            : this(new Xamarin.Android.Net.AndroidClientHandler(), handlers)
+#else
+            : this(handlers)
+#endif
         {
+            ValidateConfig(config);
+            CaCerts = config.SslCaCerts;
+            SkipTlsVerify = config.SkipTlsVerify;
+            InitializeFromConfig(config);
+        }
+
+        private void ValidateConfig(KubernetesClientConfiguration config)
+        {
+            if (config == null)
+            {
+                throw new KubeConfigException("KubeConfig must be provided");
+            }
+
             if (string.IsNullOrWhiteSpace(config.Host))
             {
                 throw new KubeConfigException("Host url must be set");
@@ -104,10 +88,10 @@ namespace k8s
             {
                 throw new KubeConfigException("Bad host url", e);
             }
+        }
 
-            CaCerts = config.SslCaCerts;
-            SkipTlsVerify = config.SkipTlsVerify;
-
+        private void InitializeFromConfig(KubernetesClientConfiguration config)
+        {
             if (BaseUri.Scheme == "https")
             {
                 if (config.SkipTlsVerify)
@@ -115,7 +99,7 @@ namespace k8s
 #if NET452
                     ((WebRequestHandler) HttpClientHandler).ServerCertificateValidationCallback =
                         (sender, certificate, chain, sslPolicyErrors) => true;
-#elif XAMARINIOS1_0
+#elif XAMARINIOS1_0 || MONOANDROID8_1
                     System.Net.ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) =>
                     {
                         return true;
@@ -129,9 +113,8 @@ namespace k8s
                 {
                     if (CaCerts == null)
                     {
-                        throw new KubeConfigException("a CA must be set when SkipTlsVerify === false");
+                        throw new KubeConfigException("A CA must be set when SkipTlsVerify === false");
                     }
-
 #if NET452
                     ((WebRequestHandler) HttpClientHandler).ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
                     {
@@ -143,6 +126,22 @@ namespace k8s
                         var cert = new X509Certificate2(certificate);
                         return Kubernetes.CertificateValidationCallBack(sender, CaCerts, cert, chain, sslPolicyErrors);
                     };
+#elif MONOANDROID8_1
+                    var certList = new System.Collections.Generic.List<Java.Security.Cert.Certificate>();
+
+                    foreach (X509Certificate2 caCert in CaCerts)
+                    {
+                        using (var certStream = new System.IO.MemoryStream(caCert.RawData))
+                        {
+                            Java.Security.Cert.Certificate cert = Java.Security.Cert.CertificateFactory.GetInstance("X509").GenerateCertificate(certStream);
+
+                            certList.Add(cert);
+                        }
+                    }
+
+                    var handler = (Xamarin.Android.Net.AndroidClientHandler)this.HttpClientHandler;
+
+                    handler.TrustedCerts = certList;
 #else
                     HttpClientHandler.ServerCertificateCustomValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
                     {
@@ -155,7 +154,6 @@ namespace k8s
             // set credentails for the kubernernet client
             SetCredentials(config, HttpClientHandler);
         }
-#endif
 
         private X509Certificate2Collection CaCerts { get; }
 
