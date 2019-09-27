@@ -24,7 +24,7 @@ namespace portforward
         private async static Task Forward(IKubernetes client, V1Pod pod) {
             // Note this is single-threaded, it won't handle concurrent requests well...
             var webSocket = await client.WebSocketNamespacedPodPortForwardAsync(pod.Metadata.Name, "default", new int[] {80}, "v4.channel.k8s.io");
-            var demux = new StreamDemuxer(webSocket);
+            var demux = new StreamDemuxer(webSocket, StreamType.PortForward);
             demux.Start();
 
             var stream = demux.GetStream((byte?)0, (byte?)0);
@@ -37,6 +37,7 @@ namespace portforward
 
             Socket handler = null;
 
+            // Note this will only accept a single connection
             var accept = Task.Run(() => {
                 while (true) {
                     handler = listener.Accept();
@@ -61,6 +62,10 @@ namespace portforward
 
             await accept;
             await copy;
+            if (handler != null) {
+                handler.Close();
+            }
+            listener.Close();
         }
     }
 }
