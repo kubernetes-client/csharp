@@ -185,5 +185,17 @@ namespace k8s
         {
             return Watch((HttpOperationResponse)response, onEvent, onError, onClosed);
         }
+
+        public static async Task<Watcher<T>> WatchAsync<T, L>(this Task<HttpOperationResponse<L>> responseTask,
+            Action<WatchEventType, T> onEvent,
+            Action<Exception> onError = null,
+            Action onClosed = null)
+        {
+            var response = await responseTask;
+
+            return Watch(response, onEvent, onError, onClosed);
+        }
+
+
     }
 }
