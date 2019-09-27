@@ -9,6 +9,7 @@ using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
+using k8s.Models;
 
 namespace k8s
 {
@@ -34,6 +35,7 @@ namespace k8s
                 new DeserializerBuilder()
                 .WithNamingConvention(new CamelCaseNamingConvention())
                 .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
+                .WithTypeConverter(new IntOrStringYamlConverter())
                 .Build();
             var obj = deserializer.Deserialize<T>(content);
             return obj;
@@ -47,8 +49,10 @@ namespace k8s
 
             var serializer =
                 new SerializerBuilder()
+                .DisableAliases()
                 .WithNamingConvention(new CamelCaseNamingConvention())
                 .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
+                .WithTypeConverter(new IntOrStringYamlConverter())
                 .BuildValueSerializer();
             emitter.Emit(new StreamStart());
             emitter.Emit(new DocumentStart());
