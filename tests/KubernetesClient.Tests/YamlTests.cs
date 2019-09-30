@@ -7,7 +7,8 @@ using Xunit;
 
 namespace k8s.Tests
 {
-    public class YamlTests {
+    public class YamlTests
+    {
         [Fact]
         public void LoadFromString()
         {
@@ -184,7 +185,7 @@ spec:
         {
             using (var reader = new StringReader(s))
             {
-                for (;;)
+                for (; ; )
                 {
                     var line = reader.ReadLine();
                     if (line == null)
@@ -235,6 +236,63 @@ spec:
 
             Assert.Equal("cpu", cpuRequest.Key);
             Assert.Equal("500m", cpuRequest.Value.ToString());
+        }
+
+        [Fact]
+        public void LoadIntOrString()
+        {
+            var content = @"apiVersion: v1
+kind: Service
+spec:
+  ports:
+  - port: 3000
+    targetPort: 3000
+";
+
+            var obj = Yaml.LoadFromString<V1Service>(content);
+
+            Assert.Equal(3000, obj.Spec.Ports[0].Port);
+            Assert.Equal(3000, (int)obj.Spec.Ports[0].TargetPort);
+        }
+
+        [Fact]
+        public void SerializeIntOrString()
+        {
+            var content = @"apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: test
+  name: test-svc
+spec:
+  ports:
+  - port: 3000
+    targetPort: 3000";
+
+            Dictionary<string, string> labels = new Dictionary<string, string>
+                                                {
+                                                    {"app", "test"}
+                                                };
+            var obj = new V1Service
+            {
+                Kind = "Service",
+                Metadata = new V1ObjectMeta(labels: labels, name: "test-svc"),
+                ApiVersion = "v1",
+                Spec = new V1ServiceSpec
+                {
+                    Ports = new List<V1ServicePort>
+                                                       {
+                                                           new V1ServicePort
+                                                           {
+                                                               Port = 3000,
+                                                               TargetPort = 3000
+                                                           }
+                                                       }
+                }
+            };
+
+            var output = Yaml.SaveToString<V1Service>(obj);
+            Assert.Equal(output, content);
         }
     }
 }
