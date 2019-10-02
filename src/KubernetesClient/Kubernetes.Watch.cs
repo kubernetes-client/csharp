@@ -149,10 +149,12 @@ namespace k8s
                 throw ex;
             }
 
-            var stream = await httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false);
-            StreamReader reader = new StreamReader(stream);
+            return new Watcher<T>(async () => {
+                var stream = await httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false);
+                StreamReader reader = new StreamReader(stream);
 
-            return new Watcher<T>(reader, onEvent, onError, onClosed);
+                return reader;
+            }, onEvent, onError, onClosed);
         }
     }
 }

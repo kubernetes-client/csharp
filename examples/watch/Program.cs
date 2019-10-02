@@ -14,20 +14,20 @@ namespace watch
             IKubernetes client = new Kubernetes(config);
 
             var podlistResp = client.ListNamespacedPodWithHttpMessagesAsync("tester", watch: true);
-            var watchTask = podlistResp.WatchAsync<V1Pod, V1PodList>((type, item) =>
+            using (podlistResp.Watch<V1Pod, V1PodList>((type, item) =>
             {
                 Console.WriteLine("==on watch event==");
                 Console.WriteLine(type);
                 Console.WriteLine(item.Metadata.Name);
                 Console.WriteLine("==on watch event==");
-            });
-            Console.WriteLine("press ctrl + c to stop watching");
+            }))
+            {
+                Console.WriteLine("press ctrl + c to stop watching");
 
-            var ctrlc = new ManualResetEventSlim(false);
-            Console.CancelKeyPress += (sender, eventArgs) => ctrlc.Set();
-            ctrlc.Wait();
-
-            watchTask.Result.Dispose();
+                var ctrlc = new ManualResetEventSlim(false);
+                Console.CancelKeyPress += (sender, eventArgs) => ctrlc.Set();
+                ctrlc.Wait();
+            }
         }
     }
 }
