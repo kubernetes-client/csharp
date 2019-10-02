@@ -33,7 +33,7 @@ namespace k8s.Models
         /// * If Type is Error: *Status is recommended; other types may make
         /// sense
         /// depending on context.</param>
-        public V1WatchEvent(RuntimeRawExtension objectProperty, string type)
+        public V1WatchEvent(object objectProperty, string type)
         {
             ObjectProperty = objectProperty;
             Type = type;
@@ -55,7 +55,7 @@ namespace k8s.Models
         /// depending on context.
         /// </summary>
         [JsonProperty(PropertyName = "object")]
-        public RuntimeRawExtension ObjectProperty { get; set; }
+        public object ObjectProperty { get; set; }
 
         /// <summary>
         /// </summary>
@@ -77,10 +77,6 @@ namespace k8s.Models
             if (Type == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Type");
-            }
-            if (ObjectProperty != null)
-            {
-                ObjectProperty.Validate();
             }
         }
     }

@@ -33,14 +33,14 @@ namespace k8s.Models
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
         /// values. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#resources</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources</param>
         /// <param name="kind">Kind is a string value representing the REST
         /// resource this object represents. Servers may infer this from the
         /// endpoint the client submits requests to. Cannot be updated. In
         /// CamelCase. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</param>
         /// <param name="metadata">Standard list metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</param>
         public V1beta1LeaseList(IList<V1beta1Lease> items, string apiVersion = default(string), string kind = default(string), V1ListMeta metadata = default(V1ListMeta))
         {
             ApiVersion = apiVersion;
@@ -60,7 +60,7 @@ namespace k8s.Models
         /// representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
         /// values. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#resources
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
         [JsonProperty(PropertyName = "apiVersion")]
         public string ApiVersion { get; set; }
@@ -76,14 +76,14 @@ namespace k8s.Models
         /// this object represents. Servers may infer this from the endpoint
         /// the client submits requests to. Cannot be updated. In CamelCase.
         /// More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Gets or sets standard list metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ListMeta Metadata { get; set; }
@@ -99,16 +99,6 @@ namespace k8s.Models
             if (Items == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Items");
-            }
-            if (Items != null)
-            {
-                foreach (var element in Items)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
             }
         }
     }

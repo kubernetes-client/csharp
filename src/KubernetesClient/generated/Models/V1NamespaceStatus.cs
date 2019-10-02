@@ -7,6 +7,8 @@
 namespace k8s.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -25,11 +27,14 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1NamespaceStatus class.
         /// </summary>
+        /// <param name="conditions">Represents the latest available
+        /// observations of a namespace's current state.</param>
         /// <param name="phase">Phase is the current lifecycle phase of the
         /// namespace. More info:
         /// https://kubernetes.io/docs/tasks/administer-cluster/namespaces/</param>
-        public V1NamespaceStatus(string phase = default(string))
+        public V1NamespaceStatus(IList<V1NamespaceCondition> conditions = default(IList<V1NamespaceCondition>), string phase = default(string))
         {
+            Conditions = conditions;
             Phase = phase;
             CustomInit();
         }
@@ -38,6 +43,13 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets represents the latest available observations of a
+        /// namespace's current state.
+        /// </summary>
+        [JsonProperty(PropertyName = "conditions")]
+        public IList<V1NamespaceCondition> Conditions { get; set; }
 
         /// <summary>
         /// Gets or sets phase is the current lifecycle phase of the namespace.

@@ -35,9 +35,10 @@ namespace k8s.Models
         /// JSONSchemaProps or a boolean value. Defaults to true for the
         /// boolean property.</param>
         /// <param name="defaultProperty">default is a default value for
-        /// undefined object fields. Defaulting is an alpha feature under the
-        /// CustomResourceDefaulting feature gate. Defaulting requires
-        /// spec.preserveUnknownFields to be false.</param>
+        /// undefined object fields. Defaulting is a beta feature under the
+        /// CustomResourceDefaulting feature gate. CustomResourceDefinitions
+        /// with defaults must be created using the v1 (or newer)
+        /// CustomResourceDefinition API.</param>
         /// <param name="example">JSON represents any valid JSON value. These
         /// types are supported: bool, int64, float64, string, []interface{},
         /// map[string]interface{} and nil.</param>
@@ -66,6 +67,31 @@ namespace k8s.Models
         /// - type: integer
         /// - type: string
         /// - ... zero or more</param>
+        /// <param name="xKubernetesListMapKeys">x-kubernetes-list-map-keys
+        /// annotates an array with the x-kubernetes-list-type `map` by
+        /// specifying the keys used as the index of the map.
+        ///
+        /// This tag MUST only be used on lists that have the
+        /// "x-kubernetes-list-type" extension set to "map". Also, the values
+        /// specified for this attribute must be a scalar typed field of the
+        /// child structure (no nesting is supported).</param>
+        /// <param name="xKubernetesListType">x-kubernetes-list-type annotates
+        /// an array to further describe its topology. This extension must only
+        /// be used on lists and may have 3 possible values:
+        ///
+        /// 1) `atomic`: the list is treated as a single entity, like a scalar.
+        /// Atomic lists will be entirely replaced when updated. This extension
+        /// may be used on any type of list (struct, scalar, ...).
+        /// 2) `set`:
+        /// Sets are lists that must not have multiple items with the same
+        /// value. Each
+        /// value must be a scalar (or another atomic type).
+        /// 3) `map`:
+        /// These lists are like maps in that their elements have a non-index
+        /// key
+        /// used to identify them. Order is preserved upon merge. The map tag
+        /// must only be used on a list with elements of type object.
+        /// Defaults to atomic for arrays.</param>
         /// <param
         /// name="xKubernetesPreserveUnknownFields">x-kubernetes-preserve-unknown-fields
         /// stops the API server decoding step from pruning fields which are
@@ -74,7 +100,7 @@ namespace k8s.Models
         /// nested properties or additionalProperties are specified in the
         /// schema. This can either be true or undefined. False is
         /// forbidden.</param>
-        public V1beta1JSONSchemaProps(string refProperty = default(string), string schema = default(string), object additionalItems = default(object), object additionalProperties = default(object), IList<V1beta1JSONSchemaProps> allOf = default(IList<V1beta1JSONSchemaProps>), IList<V1beta1JSONSchemaProps> anyOf = default(IList<V1beta1JSONSchemaProps>), object defaultProperty = default(object), IDictionary<string, V1beta1JSONSchemaProps> definitions = default(IDictionary<string, V1beta1JSONSchemaProps>), IDictionary<string, object> dependencies = default(IDictionary<string, object>), string description = default(string), IList<object> enumProperty = default(IList<object>), object example = default(object), bool? exclusiveMaximum = default(bool?), bool? exclusiveMinimum = default(bool?), V1beta1ExternalDocumentation externalDocs = default(V1beta1ExternalDocumentation), string format = default(string), string id = default(string), object items = default(object), long? maxItems = default(long?), long? maxLength = default(long?), long? maxProperties = default(long?), double? maximum = default(double?), long? minItems = default(long?), long? minLength = default(long?), long? minProperties = default(long?), double? minimum = default(double?), double? multipleOf = default(double?), V1beta1JSONSchemaProps not = default(V1beta1JSONSchemaProps), bool? nullable = default(bool?), IList<V1beta1JSONSchemaProps> oneOf = default(IList<V1beta1JSONSchemaProps>), string pattern = default(string), IDictionary<string, V1beta1JSONSchemaProps> patternProperties = default(IDictionary<string, V1beta1JSONSchemaProps>), IDictionary<string, V1beta1JSONSchemaProps> properties = default(IDictionary<string, V1beta1JSONSchemaProps>), IList<string> required = default(IList<string>), string title = default(string), string type = default(string), bool? uniqueItems = default(bool?), bool? xKubernetesEmbeddedResource = default(bool?), bool? xKubernetesIntOrString = default(bool?), bool? xKubernetesPreserveUnknownFields = default(bool?))
+        public V1beta1JSONSchemaProps(string refProperty = default(string), string schema = default(string), object additionalItems = default(object), object additionalProperties = default(object), IList<V1beta1JSONSchemaProps> allOf = default(IList<V1beta1JSONSchemaProps>), IList<V1beta1JSONSchemaProps> anyOf = default(IList<V1beta1JSONSchemaProps>), object defaultProperty = default(object), IDictionary<string, V1beta1JSONSchemaProps> definitions = default(IDictionary<string, V1beta1JSONSchemaProps>), IDictionary<string, object> dependencies = default(IDictionary<string, object>), string description = default(string), IList<object> enumProperty = default(IList<object>), object example = default(object), bool? exclusiveMaximum = default(bool?), bool? exclusiveMinimum = default(bool?), V1beta1ExternalDocumentation externalDocs = default(V1beta1ExternalDocumentation), string format = default(string), string id = default(string), object items = default(object), long? maxItems = default(long?), long? maxLength = default(long?), long? maxProperties = default(long?), double? maximum = default(double?), long? minItems = default(long?), long? minLength = default(long?), long? minProperties = default(long?), double? minimum = default(double?), double? multipleOf = default(double?), V1beta1JSONSchemaProps not = default(V1beta1JSONSchemaProps), bool? nullable = default(bool?), IList<V1beta1JSONSchemaProps> oneOf = default(IList<V1beta1JSONSchemaProps>), string pattern = default(string), IDictionary<string, V1beta1JSONSchemaProps> patternProperties = default(IDictionary<string, V1beta1JSONSchemaProps>), IDictionary<string, V1beta1JSONSchemaProps> properties = default(IDictionary<string, V1beta1JSONSchemaProps>), IList<string> required = default(IList<string>), string title = default(string), string type = default(string), bool? uniqueItems = default(bool?), bool? xKubernetesEmbeddedResource = default(bool?), bool? xKubernetesIntOrString = default(bool?), IList<string> xKubernetesListMapKeys = default(IList<string>), string xKubernetesListType = default(string), bool? xKubernetesPreserveUnknownFields = default(bool?))
         {
             RefProperty = refProperty;
             Schema = schema;
@@ -115,6 +141,8 @@ namespace k8s.Models
             UniqueItems = uniqueItems;
             XKubernetesEmbeddedResource = xKubernetesEmbeddedResource;
             XKubernetesIntOrString = xKubernetesIntOrString;
+            XKubernetesListMapKeys = xKubernetesListMapKeys;
+            XKubernetesListType = xKubernetesListType;
             XKubernetesPreserveUnknownFields = xKubernetesPreserveUnknownFields;
             CustomInit();
         }
@@ -160,9 +188,10 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets default is a default value for undefined object
-        /// fields. Defaulting is an alpha feature under the
-        /// CustomResourceDefaulting feature gate. Defaulting requires
-        /// spec.preserveUnknownFields to be false.
+        /// fields. Defaulting is a beta feature under the
+        /// CustomResourceDefaulting feature gate. CustomResourceDefinitions
+        /// with defaults must be created using the v1 (or newer)
+        /// CustomResourceDefinition API.
         /// </summary>
         [JsonProperty(PropertyName = "default")]
         public object DefaultProperty { get; set; }
@@ -352,6 +381,41 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "x-kubernetes-int-or-string")]
         public bool? XKubernetesIntOrString { get; set; }
+
+        /// <summary>
+        /// Gets or sets x-kubernetes-list-map-keys annotates an array with the
+        /// x-kubernetes-list-type `map` by specifying the keys used as the
+        /// index of the map.
+        ///
+        /// This tag MUST only be used on lists that have the
+        /// "x-kubernetes-list-type" extension set to "map". Also, the values
+        /// specified for this attribute must be a scalar typed field of the
+        /// child structure (no nesting is supported).
+        /// </summary>
+        [JsonProperty(PropertyName = "x-kubernetes-list-map-keys")]
+        public IList<string> XKubernetesListMapKeys { get; set; }
+
+        /// <summary>
+        /// Gets or sets x-kubernetes-list-type annotates an array to further
+        /// describe its topology. This extension must only be used on lists
+        /// and may have 3 possible values:
+        ///
+        /// 1) `atomic`: the list is treated as a single entity, like a scalar.
+        /// Atomic lists will be entirely replaced when updated. This extension
+        /// may be used on any type of list (struct, scalar, ...).
+        /// 2) `set`:
+        /// Sets are lists that must not have multiple items with the same
+        /// value. Each
+        /// value must be a scalar (or another atomic type).
+        /// 3) `map`:
+        /// These lists are like maps in that their elements have a non-index
+        /// key
+        /// used to identify them. Order is preserved upon merge. The map tag
+        /// must only be used on a list with elements of type object.
+        /// Defaults to atomic for arrays.
+        /// </summary>
+        [JsonProperty(PropertyName = "x-kubernetes-list-type")]
+        public string XKubernetesListType { get; set; }
 
         /// <summary>
         /// Gets or sets x-kubernetes-preserve-unknown-fields stops the API

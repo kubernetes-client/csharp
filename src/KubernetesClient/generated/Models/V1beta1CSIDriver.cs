@@ -39,19 +39,19 @@ namespace k8s.Models
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
         /// values. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#resources</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources</param>
         /// <param name="kind">Kind is a string value representing the REST
         /// resource this object represents. Servers may infer this from the
         /// endpoint the client submits requests to. Cannot be updated. In
         /// CamelCase. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</param>
         /// <param name="metadata">Standard object metadata. metadata.Name
         /// indicates the name of the CSI driver that this object refers to; it
         /// MUST be the same name returned by the CSI GetPluginName() call for
         /// that driver. The driver name must be 63 characters or less,
         /// beginning and ending with an alphanumeric character ([a-z0-9A-Z])
         /// with dashes (-), dots (.), and alphanumerics between. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</param>
         public V1beta1CSIDriver(V1beta1CSIDriverSpec spec, string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta))
         {
             ApiVersion = apiVersion;
@@ -71,7 +71,7 @@ namespace k8s.Models
         /// representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
         /// values. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#resources
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
         [JsonProperty(PropertyName = "apiVersion")]
         public string ApiVersion { get; set; }
@@ -81,7 +81,7 @@ namespace k8s.Models
         /// this object represents. Servers may infer this from the endpoint
         /// the client submits requests to. Cannot be updated. In CamelCase.
         /// More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
         public string Kind { get; set; }
@@ -93,7 +93,7 @@ namespace k8s.Models
         /// The driver name must be 63 characters or less, beginning and ending
         /// with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), dots
         /// (.), and alphanumerics between. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ObjectMeta Metadata { get; set; }
@@ -115,10 +115,6 @@ namespace k8s.Models
             if (Spec == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Spec");
-            }
-            if (Metadata != null)
-            {
-                Metadata.Validate();
             }
         }
     }

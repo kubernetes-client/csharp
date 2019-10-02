@@ -39,10 +39,18 @@ namespace k8s.Models
         /// name of the GMSA credential spec to use. This field is alpha-level
         /// and is only honored by servers that enable the WindowsGMSA feature
         /// flag.</param>
-        public V1WindowsSecurityContextOptions(string gmsaCredentialSpec = default(string), string gmsaCredentialSpecName = default(string))
+        /// <param name="runAsUserName">The UserName in Windows to run the
+        /// entrypoint of the container process. Defaults to the user specified
+        /// in image metadata if unspecified. May also be set in
+        /// PodSecurityContext. If set in both SecurityContext and
+        /// PodSecurityContext, the value specified in SecurityContext takes
+        /// precedence. This field is alpha-level and it is only honored by
+        /// servers that enable the WindowsRunAsUserName feature flag.</param>
+        public V1WindowsSecurityContextOptions(string gmsaCredentialSpec = default(string), string gmsaCredentialSpecName = default(string), string runAsUserName = default(string))
         {
             GmsaCredentialSpec = gmsaCredentialSpec;
             GmsaCredentialSpecName = gmsaCredentialSpecName;
+            RunAsUserName = runAsUserName;
             CustomInit();
         }
 
@@ -68,6 +76,18 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "gmsaCredentialSpecName")]
         public string GmsaCredentialSpecName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the UserName in Windows to run the entrypoint of the
+        /// container process. Defaults to the user specified in image metadata
+        /// if unspecified. May also be set in PodSecurityContext. If set in
+        /// both SecurityContext and PodSecurityContext, the value specified in
+        /// SecurityContext takes precedence. This field is alpha-level and it
+        /// is only honored by servers that enable the WindowsRunAsUserName
+        /// feature flag.
+        /// </summary>
+        [JsonProperty(PropertyName = "runAsUserName")]
+        public string RunAsUserName { get; set; }
 
     }
 }

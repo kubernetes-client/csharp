@@ -41,8 +41,8 @@ namespace k8s.Models
         /// <param name="cephfs">CephFS represents a Ceph FS mount on the host
         /// that shares a pod's lifetime</param>
         /// <param name="cinder">Cinder represents a cinder volume attached and
-        /// mounted on kubelets host machine More info:
-        /// https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md</param>
+        /// mounted on kubelets host machine. More info:
+        /// https://examples.k8s.io/mysql-cinder-pd/README.md</param>
         /// <param name="configMap">ConfigMap represents a configMap that
         /// should populate this volume</param>
         /// <param name="csi">CSI (Container Storage Interface) represents
@@ -73,7 +73,7 @@ namespace k8s.Models
         /// EmptyDir into the Pod's container.</param>
         /// <param name="glusterfs">Glusterfs represents a Glusterfs mount on
         /// the host that shares a pod's lifetime. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md</param>
+        /// https://examples.k8s.io/volumes/glusterfs/README.md</param>
         /// <param name="hostPath">HostPath represents a pre-existing file or
         /// directory on the host machine that is directly exposed to the
         /// container. This is generally used for system agents or other
@@ -82,8 +82,7 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/storage/volumes#hostpath</param>
         /// <param name="iscsi">ISCSI represents an ISCSI Disk resource that is
         /// attached to a kubelet's host machine and then exposed to the pod.
-        /// More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/iscsi/README.md</param>
+        /// More info: https://examples.k8s.io/volumes/iscsi/README.md</param>
         /// <param name="nfs">NFS represents an NFS mount on the host that
         /// shares a pod's lifetime More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#nfs</param>
@@ -103,7 +102,7 @@ namespace k8s.Models
         /// host that shares a pod's lifetime</param>
         /// <param name="rbd">RBD represents a Rados Block Device mount on the
         /// host that shares a pod's lifetime. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md</param>
+        /// https://examples.k8s.io/volumes/rbd/README.md</param>
         /// <param name="scaleIO">ScaleIO represents a ScaleIO persistent
         /// volume attached and mounted on Kubernetes nodes.</param>
         /// <param name="secret">Secret represents a secret that should
@@ -184,8 +183,8 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets cinder represents a cinder volume attached and mounted
-        /// on kubelets host machine More info:
-        /// https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md
+        /// on kubelets host machine. More info:
+        /// https://examples.k8s.io/mysql-cinder-pd/README.md
         /// </summary>
         [JsonProperty(PropertyName = "cinder")]
         public V1CinderVolumeSource Cinder { get; set; }
@@ -263,7 +262,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets glusterfs represents a Glusterfs mount on the host
         /// that shares a pod's lifetime. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md
+        /// https://examples.k8s.io/volumes/glusterfs/README.md
         /// </summary>
         [JsonProperty(PropertyName = "glusterfs")]
         public V1GlusterfsVolumeSource Glusterfs { get; set; }
@@ -282,8 +281,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets ISCSI represents an ISCSI Disk resource that is
         /// attached to a kubelet's host machine and then exposed to the pod.
-        /// More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/iscsi/README.md
+        /// More info: https://examples.k8s.io/volumes/iscsi/README.md
         /// </summary>
         [JsonProperty(PropertyName = "iscsi")]
         public V1ISCSIVolumeSource Iscsi { get; set; }
@@ -344,7 +342,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets RBD represents a Rados Block Device mount on the host
         /// that shares a pod's lifetime. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md
+        /// https://examples.k8s.io/volumes/rbd/README.md
         /// </summary>
         [JsonProperty(PropertyName = "rbd")]
         public V1RBDVolumeSource Rbd { get; set; }

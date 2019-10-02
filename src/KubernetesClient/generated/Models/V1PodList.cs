@@ -29,19 +29,19 @@ namespace k8s.Models
         /// Initializes a new instance of the V1PodList class.
         /// </summary>
         /// <param name="items">List of pods. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
         /// values. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#resources</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources</param>
         /// <param name="kind">Kind is a string value representing the REST
         /// resource this object represents. Servers may infer this from the
         /// endpoint the client submits requests to. Cannot be updated. In
         /// CamelCase. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</param>
         /// <param name="metadata">Standard list metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</param>
         public V1PodList(IList<V1Pod> items, string apiVersion = default(string), string kind = default(string), V1ListMeta metadata = default(V1ListMeta))
         {
             ApiVersion = apiVersion;
@@ -61,14 +61,14 @@ namespace k8s.Models
         /// representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
         /// values. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#resources
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
         [JsonProperty(PropertyName = "apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
         /// Gets or sets list of pods. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md
         /// </summary>
         [JsonProperty(PropertyName = "items")]
         public IList<V1Pod> Items { get; set; }
@@ -78,14 +78,14 @@ namespace k8s.Models
         /// this object represents. Servers may infer this from the endpoint
         /// the client submits requests to. Cannot be updated. In CamelCase.
         /// More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Gets or sets standard list metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ListMeta Metadata { get; set; }

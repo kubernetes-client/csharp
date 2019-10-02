@@ -32,17 +32,17 @@ namespace k8s.Models
         /// class.
         /// </summary>
         /// <param name="volumeID">volume id used to identify the volume in
-        /// cinder More info:
-        /// https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md</param>
+        /// cinder. More info:
+        /// https://examples.k8s.io/mysql-cinder-pd/README.md</param>
         /// <param name="fsType">Filesystem type to mount. Must be a filesystem
         /// type supported by the host operating system. Examples: "ext4",
         /// "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
         /// More info:
-        /// https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md</param>
+        /// https://examples.k8s.io/mysql-cinder-pd/README.md</param>
         /// <param name="readOnlyProperty">Optional: Defaults to false
         /// (read/write). ReadOnly here will force the ReadOnly setting in
         /// VolumeMounts. More info:
-        /// https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md</param>
+        /// https://examples.k8s.io/mysql-cinder-pd/README.md</param>
         /// <param name="secretRef">Optional: points to a secret object
         /// containing parameters used to connect to OpenStack.</param>
         public V1CinderPersistentVolumeSource(string volumeID, string fsType = default(string), bool? readOnlyProperty = default(bool?), V1SecretReference secretRef = default(V1SecretReference))
@@ -63,7 +63,7 @@ namespace k8s.Models
         /// Gets or sets filesystem type to mount. Must be a filesystem type
         /// supported by the host operating system. Examples: "ext4", "xfs",
         /// "ntfs". Implicitly inferred to be "ext4" if unspecified. More info:
-        /// https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md
+        /// https://examples.k8s.io/mysql-cinder-pd/README.md
         /// </summary>
         [JsonProperty(PropertyName = "fsType")]
         public string FsType { get; set; }
@@ -71,7 +71,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets optional: Defaults to false (read/write). ReadOnly
         /// here will force the ReadOnly setting in VolumeMounts. More info:
-        /// https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md
+        /// https://examples.k8s.io/mysql-cinder-pd/README.md
         /// </summary>
         [JsonProperty(PropertyName = "readOnly")]
         public bool? ReadOnlyProperty { get; set; }
@@ -84,9 +84,8 @@ namespace k8s.Models
         public V1SecretReference SecretRef { get; set; }
 
         /// <summary>
-        /// Gets or sets volume id used to identify the volume in cinder More
-        /// info:
-        /// https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md
+        /// Gets or sets volume id used to identify the volume in cinder. More
+        /// info: https://examples.k8s.io/mysql-cinder-pd/README.md
         /// </summary>
         [JsonProperty(PropertyName = "volumeID")]
         public string VolumeID { get; set; }

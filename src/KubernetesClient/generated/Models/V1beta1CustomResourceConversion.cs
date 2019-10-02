@@ -31,25 +31,26 @@ namespace k8s.Models
         /// Initializes a new instance of the V1beta1CustomResourceConversion
         /// class.
         /// </summary>
-        /// <param name="strategy">`strategy` specifies the conversion
-        /// strategy. Allowed values are: - `None`: The converter only change
-        /// the apiVersion and would not touch any other field in the CR. -
-        /// `Webhook`: API Server will call to an external webhook to do the
-        /// conversion. Additional information
+        /// <param name="strategy">strategy specifies how custom resources are
+        /// converted between versions. Allowed values are: - `None`: The
+        /// converter only change the apiVersion and would not touch any other
+        /// field in the custom resource. - `Webhook`: API Server will call to
+        /// an external webhook to do the conversion. Additional information
         /// is needed for this option. This requires spec.preserveUnknownFields
-        /// to be false.</param>
-        /// <param name="conversionReviewVersions">ConversionReviewVersions is
+        /// to be false, and spec.conversion.webhookClientConfig to be
+        /// set.</param>
+        /// <param name="conversionReviewVersions">conversionReviewVersions is
         /// an ordered list of preferred `ConversionReview` versions the
-        /// Webhook expects. API server will try to use first version in the
+        /// Webhook expects. The API server will use the first version in the
         /// list which it supports. If none of the versions specified in this
-        /// list supported by API server, conversion will fail for this object.
-        /// If a persisted Webhook configuration specifies allowed versions and
-        /// does not include any versions known to the API Server, calls to the
-        /// webhook will fail. Default to `['v1beta1']`.</param>
-        /// <param name="webhookClientConfig">`webhookClientConfig` is the
+        /// list are supported by API server, conversion will fail for the
+        /// custom resource. If a persisted Webhook configuration specifies
+        /// allowed versions and does not include any versions known to the API
+        /// Server, calls to the webhook will fail. Defaults to
+        /// `["v1beta1"]`.</param>
+        /// <param name="webhookClientConfig">webhookClientConfig is the
         /// instructions for how to call the webhook if strategy is `Webhook`.
-        /// This field is alpha-level and is only honored by servers that
-        /// enable the CustomResourceWebhookConversion feature.</param>
+        /// Required when `strategy` is set to `Webhook`.</param>
         public V1beta1CustomResourceConversion(string strategy, IList<string> conversionReviewVersions = default(IList<string>), Apiextensionsv1beta1WebhookClientConfig webhookClientConfig = default(Apiextensionsv1beta1WebhookClientConfig))
         {
             ConversionReviewVersions = conversionReviewVersions;
@@ -65,34 +66,33 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets conversionReviewVersions is an ordered list of
-        /// preferred `ConversionReview` versions the Webhook expects. API
-        /// server will try to use first version in the list which it supports.
-        /// If none of the versions specified in this list supported by API
-        /// server, conversion will fail for this object. If a persisted
-        /// Webhook configuration specifies allowed versions and does not
-        /// include any versions known to the API Server, calls to the webhook
-        /// will fail. Default to `['v1beta1']`.
+        /// preferred `ConversionReview` versions the Webhook expects. The API
+        /// server will use the first version in the list which it supports. If
+        /// none of the versions specified in this list are supported by API
+        /// server, conversion will fail for the custom resource. If a
+        /// persisted Webhook configuration specifies allowed versions and does
+        /// not include any versions known to the API Server, calls to the
+        /// webhook will fail. Defaults to `["v1beta1"]`.
         /// </summary>
         [JsonProperty(PropertyName = "conversionReviewVersions")]
         public IList<string> ConversionReviewVersions { get; set; }
 
         /// <summary>
-        /// Gets or sets `strategy` specifies the conversion strategy. Allowed
-        /// values are: - `None`: The converter only change the apiVersion and
-        /// would not touch any other field in the CR. - `Webhook`: API Server
-        /// will call to an external webhook to do the conversion. Additional
-        /// information
+        /// Gets or sets strategy specifies how custom resources are converted
+        /// between versions. Allowed values are: - `None`: The converter only
+        /// change the apiVersion and would not touch any other field in the
+        /// custom resource. - `Webhook`: API Server will call to an external
+        /// webhook to do the conversion. Additional information
         /// is needed for this option. This requires spec.preserveUnknownFields
-        /// to be false.
+        /// to be false, and spec.conversion.webhookClientConfig to be set.
         /// </summary>
         [JsonProperty(PropertyName = "strategy")]
         public string Strategy { get; set; }
 
         /// <summary>
-        /// Gets or sets `webhookClientConfig` is the instructions for how to
-        /// call the webhook if strategy is `Webhook`. This field is
-        /// alpha-level and is only honored by servers that enable the
-        /// CustomResourceWebhookConversion feature.
+        /// Gets or sets webhookClientConfig is the instructions for how to
+        /// call the webhook if strategy is `Webhook`. Required when `strategy`
+        /// is set to `Webhook`.
         /// </summary>
         [JsonProperty(PropertyName = "webhookClientConfig")]
         public Apiextensionsv1beta1WebhookClientConfig WebhookClientConfig { get; set; }

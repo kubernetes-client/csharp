@@ -54,6 +54,14 @@ namespace k8s.Models
         /// whether information about services should be injected into pod's
         /// environment variables, matching the syntax of Docker links.
         /// Optional: Defaults to true.</param>
+        /// <param name="ephemeralContainers">List of ephemeral containers run
+        /// in this pod. Ephemeral containers may be run in an existing pod to
+        /// perform user-initiated actions such as debugging. This list cannot
+        /// be specified when creating a pod, and it cannot be modified by
+        /// updating the pod spec. In order to add an ephemeral container to an
+        /// existing pod, use the pod's ephemeralcontainers subresource. This
+        /// field is alpha-level and is only honored by servers that enable the
+        /// EphemeralContainers feature.</param>
         /// <param name="hostAliases">HostAliases is an optional list of hosts
         /// and IPs that will be injected into the pod's hosts file if
         /// specified. This is only valid for non-hostNetwork pods.</param>
@@ -80,13 +88,13 @@ namespace k8s.Models
         /// is considered to have failed and is handled according to its
         /// restartPolicy. The name for an init container or normal container
         /// must be unique among all containers. Init containers may not have
-        /// Lifecycle actions, Readiness probes, or Liveness probes. The
-        /// resourceRequirements of an init container are taken into account
-        /// during scheduling by finding the highest request/limit for each
-        /// resource type, and then using the max of of that value or the sum
-        /// of the normal containers. Limits are applied to init containers in
-        /// a similar fashion. Init containers cannot currently be added or
-        /// removed. Cannot be updated. More info:
+        /// Lifecycle actions, Readiness probes, Liveness probes, or Startup
+        /// probes. The resourceRequirements of an init container are taken
+        /// into account during scheduling by finding the highest request/limit
+        /// for each resource type, and then using the max of of that value or
+        /// the sum of the normal containers. Limits are applied to init
+        /// containers in a similar fashion. Init containers cannot currently
+        /// be added or removed. Cannot be updated. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/init-containers/</param>
         /// <param name="nodeName">NodeName is a request to schedule this pod
         /// onto a specific node. If it is non-empty, the scheduler simply
@@ -96,6 +104,19 @@ namespace k8s.Models
         /// true for the pod to fit on a node. Selector which must match a
         /// node's labels for the pod to be scheduled on that node. More info:
         /// https://kubernetes.io/docs/concepts/configuration/assign-pod-node/</param>
+        /// <param name="overhead">Overhead represents the resource overhead
+        /// associated with running a pod for a given RuntimeClass. This field
+        /// will be autopopulated at admission time by the RuntimeClass
+        /// admission controller. If the RuntimeClass admission controller is
+        /// enabled, overhead must not be set in Pod create requests. The
+        /// RuntimeClass admission controller will reject Pod create requests
+        /// which have the overhead already set. If RuntimeClass is configured
+        /// and selected in the PodSpec, Overhead will be set to the value
+        /// defined in the corresponding RuntimeClass, otherwise it will remain
+        /// unset and treated as zero. More info:
+        /// https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md
+        /// This field is alpha-level as of Kubernetes v1.16, and is only
+        /// honored by servers that enable the PodOverhead feature.</param>
         /// <param name="preemptionPolicy">PreemptionPolicy is the Policy for
         /// preempting pods with lower priority. One of Never,
         /// PreemptLowerPriority. Defaults to PreemptLowerPriority if unset.
@@ -167,10 +188,16 @@ namespace k8s.Models
         /// cleanup time for your process. Defaults to 30 seconds.</param>
         /// <param name="tolerations">If specified, the pod's
         /// tolerations.</param>
+        /// <param name="topologySpreadConstraints">TopologySpreadConstraints
+        /// describes how a group of pods ought to spread across topology
+        /// domains. Scheduler will schedule pods in a way which abides by the
+        /// constraints. This field is alpha-level and is only honored by
+        /// clusters that enables the EvenPodsSpread feature. All
+        /// topologySpreadConstraints are ANDed.</param>
         /// <param name="volumes">List of volumes that can be mounted by
         /// containers belonging to the pod. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes</param>
-        public V1PodSpec(IList<V1Container> containers, long? activeDeadlineSeconds = default(long?), V1Affinity affinity = default(V1Affinity), bool? automountServiceAccountToken = default(bool?), V1PodDNSConfig dnsConfig = default(V1PodDNSConfig), string dnsPolicy = default(string), bool? enableServiceLinks = default(bool?), IList<V1HostAlias> hostAliases = default(IList<V1HostAlias>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), string hostname = default(string), IList<V1LocalObjectReference> imagePullSecrets = default(IList<V1LocalObjectReference>), IList<V1Container> initContainers = default(IList<V1Container>), string nodeName = default(string), IDictionary<string, string> nodeSelector = default(IDictionary<string, string>), string preemptionPolicy = default(string), int? priority = default(int?), string priorityClassName = default(string), IList<V1PodReadinessGate> readinessGates = default(IList<V1PodReadinessGate>), string restartPolicy = default(string), string runtimeClassName = default(string), string schedulerName = default(string), V1PodSecurityContext securityContext = default(V1PodSecurityContext), string serviceAccount = default(string), string serviceAccountName = default(string), bool? shareProcessNamespace = default(bool?), string subdomain = default(string), long? terminationGracePeriodSeconds = default(long?), IList<V1Toleration> tolerations = default(IList<V1Toleration>), IList<V1Volume> volumes = default(IList<V1Volume>))
+        public V1PodSpec(IList<V1Container> containers, long? activeDeadlineSeconds = default(long?), V1Affinity affinity = default(V1Affinity), bool? automountServiceAccountToken = default(bool?), V1PodDNSConfig dnsConfig = default(V1PodDNSConfig), string dnsPolicy = default(string), bool? enableServiceLinks = default(bool?), IList<V1EphemeralContainer> ephemeralContainers = default(IList<V1EphemeralContainer>), IList<V1HostAlias> hostAliases = default(IList<V1HostAlias>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), string hostname = default(string), IList<V1LocalObjectReference> imagePullSecrets = default(IList<V1LocalObjectReference>), IList<V1Container> initContainers = default(IList<V1Container>), string nodeName = default(string), IDictionary<string, string> nodeSelector = default(IDictionary<string, string>), IDictionary<string, ResourceQuantity> overhead = default(IDictionary<string, ResourceQuantity>), string preemptionPolicy = default(string), int? priority = default(int?), string priorityClassName = default(string), IList<V1PodReadinessGate> readinessGates = default(IList<V1PodReadinessGate>), string restartPolicy = default(string), string runtimeClassName = default(string), string schedulerName = default(string), V1PodSecurityContext securityContext = default(V1PodSecurityContext), string serviceAccount = default(string), string serviceAccountName = default(string), bool? shareProcessNamespace = default(bool?), string subdomain = default(string), long? terminationGracePeriodSeconds = default(long?), IList<V1Toleration> tolerations = default(IList<V1Toleration>), IList<V1TopologySpreadConstraint> topologySpreadConstraints = default(IList<V1TopologySpreadConstraint>), IList<V1Volume> volumes = default(IList<V1Volume>))
         {
             ActiveDeadlineSeconds = activeDeadlineSeconds;
             Affinity = affinity;
@@ -179,6 +206,7 @@ namespace k8s.Models
             DnsConfig = dnsConfig;
             DnsPolicy = dnsPolicy;
             EnableServiceLinks = enableServiceLinks;
+            EphemeralContainers = ephemeralContainers;
             HostAliases = hostAliases;
             HostIPC = hostIPC;
             HostNetwork = hostNetwork;
@@ -188,6 +216,7 @@ namespace k8s.Models
             InitContainers = initContainers;
             NodeName = nodeName;
             NodeSelector = nodeSelector;
+            Overhead = overhead;
             PreemptionPolicy = preemptionPolicy;
             Priority = priority;
             PriorityClassName = priorityClassName;
@@ -202,6 +231,7 @@ namespace k8s.Models
             Subdomain = subdomain;
             TerminationGracePeriodSeconds = terminationGracePeriodSeconds;
             Tolerations = tolerations;
+            TopologySpreadConstraints = topologySpreadConstraints;
             Volumes = volumes;
             CustomInit();
         }
@@ -269,6 +299,19 @@ namespace k8s.Models
         public bool? EnableServiceLinks { get; set; }
 
         /// <summary>
+        /// Gets or sets list of ephemeral containers run in this pod.
+        /// Ephemeral containers may be run in an existing pod to perform
+        /// user-initiated actions such as debugging. This list cannot be
+        /// specified when creating a pod, and it cannot be modified by
+        /// updating the pod spec. In order to add an ephemeral container to an
+        /// existing pod, use the pod's ephemeralcontainers subresource. This
+        /// field is alpha-level and is only honored by servers that enable the
+        /// EphemeralContainers feature.
+        /// </summary>
+        [JsonProperty(PropertyName = "ephemeralContainers")]
+        public IList<V1EphemeralContainer> EphemeralContainers { get; set; }
+
+        /// <summary>
         /// Gets or sets hostAliases is an optional list of hosts and IPs that
         /// will be injected into the pod's hosts file if specified. This is
         /// only valid for non-hostNetwork pods.
@@ -324,13 +367,13 @@ namespace k8s.Models
         /// to have failed and is handled according to its restartPolicy. The
         /// name for an init container or normal container must be unique among
         /// all containers. Init containers may not have Lifecycle actions,
-        /// Readiness probes, or Liveness probes. The resourceRequirements of
-        /// an init container are taken into account during scheduling by
-        /// finding the highest request/limit for each resource type, and then
-        /// using the max of of that value or the sum of the normal containers.
-        /// Limits are applied to init containers in a similar fashion. Init
-        /// containers cannot currently be added or removed. Cannot be updated.
-        /// More info:
+        /// Readiness probes, Liveness probes, or Startup probes. The
+        /// resourceRequirements of an init container are taken into account
+        /// during scheduling by finding the highest request/limit for each
+        /// resource type, and then using the max of of that value or the sum
+        /// of the normal containers. Limits are applied to init containers in
+        /// a similar fashion. Init containers cannot currently be added or
+        /// removed. Cannot be updated. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
         /// </summary>
         [JsonProperty(PropertyName = "initContainers")]
@@ -353,6 +396,24 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "nodeSelector")]
         public IDictionary<string, string> NodeSelector { get; set; }
+
+        /// <summary>
+        /// Gets or sets overhead represents the resource overhead associated
+        /// with running a pod for a given RuntimeClass. This field will be
+        /// autopopulated at admission time by the RuntimeClass admission
+        /// controller. If the RuntimeClass admission controller is enabled,
+        /// overhead must not be set in Pod create requests. The RuntimeClass
+        /// admission controller will reject Pod create requests which have the
+        /// overhead already set. If RuntimeClass is configured and selected in
+        /// the PodSpec, Overhead will be set to the value defined in the
+        /// corresponding RuntimeClass, otherwise it will remain unset and
+        /// treated as zero. More info:
+        /// https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md
+        /// This field is alpha-level as of Kubernetes v1.16, and is only
+        /// honored by servers that enable the PodOverhead feature.
+        /// </summary>
+        [JsonProperty(PropertyName = "overhead")]
+        public IDictionary<string, ResourceQuantity> Overhead { get; set; }
 
         /// <summary>
         /// Gets or sets preemptionPolicy is the Policy for preempting pods
@@ -490,6 +551,16 @@ namespace k8s.Models
         public IList<V1Toleration> Tolerations { get; set; }
 
         /// <summary>
+        /// Gets or sets topologySpreadConstraints describes how a group of
+        /// pods ought to spread across topology domains. Scheduler will
+        /// schedule pods in a way which abides by the constraints. This field
+        /// is alpha-level and is only honored by clusters that enables the
+        /// EvenPodsSpread feature. All topologySpreadConstraints are ANDed.
+        /// </summary>
+        [JsonProperty(PropertyName = "topologySpreadConstraints")]
+        public IList<V1TopologySpreadConstraint> TopologySpreadConstraints { get; set; }
+
+        /// <summary>
         /// Gets or sets list of volumes that can be mounted by containers
         /// belonging to the pod. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes
@@ -523,9 +594,9 @@ namespace k8s.Models
                     }
                 }
             }
-            if (InitContainers != null)
+            if (EphemeralContainers != null)
             {
-                foreach (var element1 in InitContainers)
+                foreach (var element1 in EphemeralContainers)
                 {
                     if (element1 != null)
                     {
@@ -533,9 +604,9 @@ namespace k8s.Models
                     }
                 }
             }
-            if (ReadinessGates != null)
+            if (InitContainers != null)
             {
-                foreach (var element2 in ReadinessGates)
+                foreach (var element2 in InitContainers)
                 {
                     if (element2 != null)
                     {
@@ -543,13 +614,33 @@ namespace k8s.Models
                     }
                 }
             }
-            if (Volumes != null)
+            if (ReadinessGates != null)
             {
-                foreach (var element3 in Volumes)
+                foreach (var element3 in ReadinessGates)
                 {
                     if (element3 != null)
                     {
                         element3.Validate();
+                    }
+                }
+            }
+            if (TopologySpreadConstraints != null)
+            {
+                foreach (var element4 in TopologySpreadConstraints)
+                {
+                    if (element4 != null)
+                    {
+                        element4.Validate();
+                    }
+                }
+            }
+            if (Volumes != null)
+            {
+                foreach (var element5 in Volumes)
+                {
+                    if (element5 != null)
+                    {
+                        element5.Validate();
                     }
                 }
             }

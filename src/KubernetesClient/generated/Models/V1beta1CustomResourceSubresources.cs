@@ -28,10 +28,15 @@ namespace k8s.Models
         /// Initializes a new instance of the V1beta1CustomResourceSubresources
         /// class.
         /// </summary>
-        /// <param name="scale">Scale denotes the scale subresource for
-        /// CustomResources</param>
-        /// <param name="status">Status denotes the status subresource for
-        /// CustomResources</param>
+        /// <param name="scale">scale indicates the custom resource should
+        /// serve a `/scale` subresource that returns an `autoscaling/v1` Scale
+        /// object.</param>
+        /// <param name="status">status indicates the custom resource should
+        /// serve a `/status` subresource. When enabled: 1. requests to the
+        /// custom resource primary endpoint ignore changes to the `status`
+        /// stanza of the object. 2. requests to the custom resource `/status`
+        /// subresource ignore changes to anything other than the `status`
+        /// stanza of the object.</param>
         public V1beta1CustomResourceSubresources(V1beta1CustomResourceSubresourceScale scale = default(V1beta1CustomResourceSubresourceScale), object status = default(object))
         {
             Scale = scale;
@@ -45,15 +50,19 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets scale denotes the scale subresource for
-        /// CustomResources
+        /// Gets or sets scale indicates the custom resource should serve a
+        /// `/scale` subresource that returns an `autoscaling/v1` Scale object.
         /// </summary>
         [JsonProperty(PropertyName = "scale")]
         public V1beta1CustomResourceSubresourceScale Scale { get; set; }
 
         /// <summary>
-        /// Gets or sets status denotes the status subresource for
-        /// CustomResources
+        /// Gets or sets status indicates the custom resource should serve a
+        /// `/status` subresource. When enabled: 1. requests to the custom
+        /// resource primary endpoint ignore changes to the `status` stanza of
+        /// the object. 2. requests to the custom resource `/status`
+        /// subresource ignore changes to anything other than the `status`
+        /// stanza of the object.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public object Status { get; set; }

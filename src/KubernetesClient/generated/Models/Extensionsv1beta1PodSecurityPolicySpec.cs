@@ -46,9 +46,7 @@ namespace k8s.Models
         /// <param name="allowedCSIDrivers">AllowedCSIDrivers is a whitelist of
         /// inline CSI drivers that must be explicitly set to be embedded
         /// within a pod spec. An empty value indicates that any CSI driver can
-        /// be used for inline ephemeral volumes. This is an alpha field, and
-        /// is only honored if the API server enables the CSIInlineVolume
-        /// feature gate.</param>
+        /// be used for inline ephemeral volumes.</param>
         /// <param name="allowedCapabilities">allowedCapabilities is a list of
         /// capabilities that can be requested to add to the container.
         /// Capabilities in this field may be added at the pod author's
@@ -170,8 +168,7 @@ namespace k8s.Models
         /// Gets or sets allowedCSIDrivers is a whitelist of inline CSI drivers
         /// that must be explicitly set to be embedded within a pod spec. An
         /// empty value indicates that any CSI driver can be used for inline
-        /// ephemeral volumes. This is an alpha field, and is only honored if
-        /// the API server enables the CSIInlineVolume feature gate.
+        /// ephemeral volumes.
         /// </summary>
         [JsonProperty(PropertyName = "allowedCSIDrivers")]
         public IList<Extensionsv1beta1AllowedCSIDriver> AllowedCSIDrivers { get; set; }

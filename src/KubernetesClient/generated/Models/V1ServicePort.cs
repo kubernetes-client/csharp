@@ -29,9 +29,9 @@ namespace k8s.Models
         /// service.</param>
         /// <param name="name">The name of this port within the service. This
         /// must be a DNS_LABEL. All ports within a ServiceSpec must have
-        /// unique names. This maps to the 'Name' field in EndpointPort
-        /// objects. Optional if only one ServicePort is defined on this
-        /// service.</param>
+        /// unique names. When considering the endpoints for a Service, this
+        /// must match the 'name' field in the EndpointPort. Optional if only
+        /// one ServicePort is defined on this service.</param>
         /// <param name="nodePort">The port on each node on which this service
         /// is exposed when type=NodePort or LoadBalancer. Usually assigned by
         /// the system. If specified, it will be allocated to the service if
@@ -68,8 +68,9 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets the name of this port within the service. This must be
         /// a DNS_LABEL. All ports within a ServiceSpec must have unique names.
-        /// This maps to the 'Name' field in EndpointPort objects. Optional if
-        /// only one ServicePort is defined on this service.
+        /// When considering the endpoints for a Service, this must match the
+        /// 'name' field in the EndpointPort. Optional if only one ServicePort
+        /// is defined on this service.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

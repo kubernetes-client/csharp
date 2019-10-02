@@ -32,18 +32,18 @@ namespace k8s.Models
         /// </summary>
         /// <param name="endpoints">EndpointsName is the endpoint name that
         /// details Glusterfs topology. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md#create-a-pod</param>
+        /// https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod</param>
         /// <param name="path">Path is the Glusterfs volume path. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md#create-a-pod</param>
+        /// https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod</param>
         /// <param name="endpointsNamespace">EndpointsNamespace is the
         /// namespace that contains Glusterfs endpoint. If this field is empty,
         /// the EndpointNamespace defaults to the same namespace as the bound
         /// PVC. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md#create-a-pod</param>
+        /// https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod</param>
         /// <param name="readOnlyProperty">ReadOnly here will force the
         /// Glusterfs volume to be mounted with read-only permissions. Defaults
         /// to false. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md#create-a-pod</param>
+        /// https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod</param>
         public V1GlusterfsPersistentVolumeSource(string endpoints, string path, string endpointsNamespace = default(string), bool? readOnlyProperty = default(bool?))
         {
             Endpoints = endpoints;
@@ -61,7 +61,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets endpointsName is the endpoint name that details
         /// Glusterfs topology. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md#create-a-pod
+        /// https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
         /// </summary>
         [JsonProperty(PropertyName = "endpoints")]
         public string Endpoints { get; set; }
@@ -70,14 +70,14 @@ namespace k8s.Models
         /// Gets or sets endpointsNamespace is the namespace that contains
         /// Glusterfs endpoint. If this field is empty, the EndpointNamespace
         /// defaults to the same namespace as the bound PVC. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md#create-a-pod
+        /// https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
         /// </summary>
         [JsonProperty(PropertyName = "endpointsNamespace")]
         public string EndpointsNamespace { get; set; }
 
         /// <summary>
         /// Gets or sets path is the Glusterfs volume path. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md#create-a-pod
+        /// https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
         /// </summary>
         [JsonProperty(PropertyName = "path")]
         public string Path { get; set; }
@@ -85,7 +85,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets readOnly here will force the Glusterfs volume to be
         /// mounted with read-only permissions. Defaults to false. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md#create-a-pod
+        /// https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
         /// </summary>
         [JsonProperty(PropertyName = "readOnly")]
         public bool? ReadOnlyProperty { get; set; }

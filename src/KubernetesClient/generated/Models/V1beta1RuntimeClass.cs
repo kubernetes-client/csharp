@@ -45,20 +45,32 @@ namespace k8s.Models
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
         /// values. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#resources</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources</param>
         /// <param name="kind">Kind is a string value representing the REST
         /// resource this object represents. Servers may infer this from the
         /// endpoint the client submits requests to. Cannot be updated. In
         /// CamelCase. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</param>
         /// <param name="metadata">More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</param>
-        public V1beta1RuntimeClass(string handler, string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta))
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</param>
+        /// <param name="overhead">Overhead represents the resource overhead
+        /// associated with running a pod for a given RuntimeClass. For more
+        /// details, see
+        /// https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md
+        /// This field is alpha-level as of Kubernetes v1.15, and is only
+        /// honored by servers that enable the PodOverhead feature.</param>
+        /// <param name="scheduling">Scheduling holds the scheduling
+        /// constraints to ensure that pods running with this RuntimeClass are
+        /// scheduled to nodes that support it. If scheduling is nil, this
+        /// RuntimeClass is assumed to be supported by all nodes.</param>
+        public V1beta1RuntimeClass(string handler, string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), V1beta1Overhead overhead = default(V1beta1Overhead), V1beta1Scheduling scheduling = default(V1beta1Scheduling))
         {
             ApiVersion = apiVersion;
             Handler = handler;
             Kind = kind;
             Metadata = metadata;
+            Overhead = overhead;
+            Scheduling = scheduling;
             CustomInit();
         }
 
@@ -72,7 +84,7 @@ namespace k8s.Models
         /// representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
         /// values. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#resources
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
         [JsonProperty(PropertyName = "apiVersion")]
         public string ApiVersion { get; set; }
@@ -97,17 +109,36 @@ namespace k8s.Models
         /// this object represents. Servers may infer this from the endpoint
         /// the client submits requests to. Cannot be updated. In CamelCase.
         /// More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Gets or sets more info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ObjectMeta Metadata { get; set; }
+
+        /// <summary>
+        /// Gets or sets overhead represents the resource overhead associated
+        /// with running a pod for a given RuntimeClass. For more details, see
+        /// https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md
+        /// This field is alpha-level as of Kubernetes v1.15, and is only
+        /// honored by servers that enable the PodOverhead feature.
+        /// </summary>
+        [JsonProperty(PropertyName = "overhead")]
+        public V1beta1Overhead Overhead { get; set; }
+
+        /// <summary>
+        /// Gets or sets scheduling holds the scheduling constraints to ensure
+        /// that pods running with this RuntimeClass are scheduled to nodes
+        /// that support it. If scheduling is nil, this RuntimeClass is assumed
+        /// to be supported by all nodes.
+        /// </summary>
+        [JsonProperty(PropertyName = "scheduling")]
+        public V1beta1Scheduling Scheduling { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -120,10 +151,6 @@ namespace k8s.Models
             if (Handler == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Handler");
-            }
-            if (Metadata != null)
-            {
-                Metadata.Validate();
             }
         }
     }

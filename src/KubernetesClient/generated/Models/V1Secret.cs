@@ -32,7 +32,7 @@ namespace k8s.Models
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
         /// values. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#resources</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources</param>
         /// <param name="data">Data contains the secret data. Each key must
         /// consist of alphanumeric characters, '-', '_' or '.'. The serialized
         /// form of the secret data is a base64 encoded string, representing
@@ -42,9 +42,9 @@ namespace k8s.Models
         /// resource this object represents. Servers may infer this from the
         /// endpoint the client submits requests to. Cannot be updated. In
         /// CamelCase. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</param>
         /// <param name="metadata">Standard object's metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</param>
         /// <param name="stringData">stringData allows specifying non-binary
         /// secret data in string form. It is provided as a write-only
         /// convenience method. All keys and values are merged into the data
@@ -73,7 +73,7 @@ namespace k8s.Models
         /// representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
         /// values. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#resources
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
         [JsonProperty(PropertyName = "apiVersion")]
         public string ApiVersion { get; set; }
@@ -93,14 +93,14 @@ namespace k8s.Models
         /// this object represents. Servers may infer this from the endpoint
         /// the client submits requests to. Cannot be updated. In CamelCase.
         /// More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Gets or sets standard object's metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ObjectMeta Metadata { get; set; }
@@ -122,18 +122,5 @@ namespace k8s.Models
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Metadata != null)
-            {
-                Metadata.Validate();
-            }
-        }
     }
 }

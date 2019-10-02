@@ -34,22 +34,22 @@ namespace k8s.Models
         /// </summary>
         /// <param name="monitors">Required: Monitors is a collection of Ceph
         /// monitors More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it</param>
+        /// https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it</param>
         /// <param name="path">Optional: Used as the mounted root, rather than
         /// the full Ceph tree, default is /</param>
         /// <param name="readOnlyProperty">Optional: Defaults to false
         /// (read/write). ReadOnly here will force the ReadOnly setting in
         /// VolumeMounts. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it</param>
+        /// https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it</param>
         /// <param name="secretFile">Optional: SecretFile is the path to key
         /// ring for User, default is /etc/ceph/user.secret More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it</param>
+        /// https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it</param>
         /// <param name="secretRef">Optional: SecretRef is reference to the
         /// authentication secret for User, default is empty. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it</param>
+        /// https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it</param>
         /// <param name="user">Optional: User is the rados user name, default
         /// is admin More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it</param>
+        /// https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it</param>
         public V1CephFSPersistentVolumeSource(IList<string> monitors, string path = default(string), bool? readOnlyProperty = default(bool?), string secretFile = default(string), V1SecretReference secretRef = default(V1SecretReference), string user = default(string))
         {
             Monitors = monitors;
@@ -69,7 +69,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets required: Monitors is a collection of Ceph monitors
         /// More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it
+        /// https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
         /// </summary>
         [JsonProperty(PropertyName = "monitors")]
         public IList<string> Monitors { get; set; }
@@ -84,7 +84,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets optional: Defaults to false (read/write). ReadOnly
         /// here will force the ReadOnly setting in VolumeMounts. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it
+        /// https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
         /// </summary>
         [JsonProperty(PropertyName = "readOnly")]
         public bool? ReadOnlyProperty { get; set; }
@@ -92,7 +92,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets optional: SecretFile is the path to key ring for User,
         /// default is /etc/ceph/user.secret More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it
+        /// https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
         /// </summary>
         [JsonProperty(PropertyName = "secretFile")]
         public string SecretFile { get; set; }
@@ -100,7 +100,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets optional: SecretRef is reference to the authentication
         /// secret for User, default is empty. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it
+        /// https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
         /// </summary>
         [JsonProperty(PropertyName = "secretRef")]
         public V1SecretReference SecretRef { get; set; }
@@ -108,7 +108,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets optional: User is the rados user name, default is
         /// admin More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it
+        /// https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
         /// </summary>
         [JsonProperty(PropertyName = "user")]
         public string User { get; set; }

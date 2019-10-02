@@ -29,28 +29,29 @@ namespace k8s.Models
         /// Initializes a new instance of the
         /// V1beta1CustomResourceSubresourceScale class.
         /// </summary>
-        /// <param name="specReplicasPath">SpecReplicasPath defines the JSON
-        /// path inside of a CustomResource that corresponds to
-        /// Scale.Spec.Replicas. Only JSON paths without the array notation are
-        /// allowed. Must be a JSON Path under .spec. If there is no value
-        /// under the given path in the CustomResource, the /scale subresource
-        /// will return an error on GET.</param>
-        /// <param name="statusReplicasPath">StatusReplicasPath defines the
-        /// JSON path inside of a CustomResource that corresponds to
-        /// Scale.Status.Replicas. Only JSON paths without the array notation
-        /// are allowed. Must be a JSON Path under .status. If there is no
-        /// value under the given path in the CustomResource, the status
-        /// replica value in the /scale subresource will default to 0.</param>
-        /// <param name="labelSelectorPath">LabelSelectorPath defines the JSON
-        /// path inside of a CustomResource that corresponds to
-        /// Scale.Status.Selector. Only JSON paths without the array notation
-        /// are allowed. Must be a JSON Path under .status or .spec. Must be
-        /// set to work with HPA. The field pointed by this JSON path must be a
-        /// string field (not a complex selector struct) which contains a
-        /// serialized label selector in string form. More info:
+        /// <param name="specReplicasPath">specReplicasPath defines the JSON
+        /// path inside of a custom resource that corresponds to Scale
+        /// `spec.replicas`. Only JSON paths without the array notation are
+        /// allowed. Must be a JSON Path under `.spec`. If there is no value
+        /// under the given path in the custom resource, the `/scale`
+        /// subresource will return an error on GET.</param>
+        /// <param name="statusReplicasPath">statusReplicasPath defines the
+        /// JSON path inside of a custom resource that corresponds to Scale
+        /// `status.replicas`. Only JSON paths without the array notation are
+        /// allowed. Must be a JSON Path under `.status`. If there is no value
+        /// under the given path in the custom resource, the `status.replicas`
+        /// value in the `/scale` subresource will default to 0.</param>
+        /// <param name="labelSelectorPath">labelSelectorPath defines the JSON
+        /// path inside of a custom resource that corresponds to Scale
+        /// `status.selector`. Only JSON paths without the array notation are
+        /// allowed. Must be a JSON Path under `.status` or `.spec`. Must be
+        /// set to work with HorizontalPodAutoscaler. The field pointed by this
+        /// JSON path must be a string field (not a complex selector struct)
+        /// which contains a serialized label selector in string form. More
+        /// info:
         /// https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions#scale-subresource
-        /// If there is no value under the given path in the CustomResource,
-        /// the status label selector value in the /scale subresource will
+        /// If there is no value under the given path in the custom resource,
+        /// the `status.selector` value in the `/scale` subresource will
         /// default to the empty string.</param>
         public V1beta1CustomResourceSubresourceScale(string specReplicasPath, string statusReplicasPath, string labelSelectorPath = default(string))
         {
@@ -67,15 +68,15 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets labelSelectorPath defines the JSON path inside of a
-        /// CustomResource that corresponds to Scale.Status.Selector. Only JSON
-        /// paths without the array notation are allowed. Must be a JSON Path
-        /// under .status or .spec. Must be set to work with HPA. The field
-        /// pointed by this JSON path must be a string field (not a complex
-        /// selector struct) which contains a serialized label selector in
-        /// string form. More info:
+        /// custom resource that corresponds to Scale `status.selector`. Only
+        /// JSON paths without the array notation are allowed. Must be a JSON
+        /// Path under `.status` or `.spec`. Must be set to work with
+        /// HorizontalPodAutoscaler. The field pointed by this JSON path must
+        /// be a string field (not a complex selector struct) which contains a
+        /// serialized label selector in string form. More info:
         /// https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions#scale-subresource
-        /// If there is no value under the given path in the CustomResource,
-        /// the status label selector value in the /scale subresource will
+        /// If there is no value under the given path in the custom resource,
+        /// the `status.selector` value in the `/scale` subresource will
         /// default to the empty string.
         /// </summary>
         [JsonProperty(PropertyName = "labelSelectorPath")]
@@ -83,21 +84,22 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets specReplicasPath defines the JSON path inside of a
-        /// CustomResource that corresponds to Scale.Spec.Replicas. Only JSON
-        /// paths without the array notation are allowed. Must be a JSON Path
-        /// under .spec. If there is no value under the given path in the
-        /// CustomResource, the /scale subresource will return an error on GET.
+        /// custom resource that corresponds to Scale `spec.replicas`. Only
+        /// JSON paths without the array notation are allowed. Must be a JSON
+        /// Path under `.spec`. If there is no value under the given path in
+        /// the custom resource, the `/scale` subresource will return an error
+        /// on GET.
         /// </summary>
         [JsonProperty(PropertyName = "specReplicasPath")]
         public string SpecReplicasPath { get; set; }
 
         /// <summary>
         /// Gets or sets statusReplicasPath defines the JSON path inside of a
-        /// CustomResource that corresponds to Scale.Status.Replicas. Only JSON
-        /// paths without the array notation are allowed. Must be a JSON Path
-        /// under .status. If there is no value under the given path in the
-        /// CustomResource, the status replica value in the /scale subresource
-        /// will default to 0.
+        /// custom resource that corresponds to Scale `status.replicas`. Only
+        /// JSON paths without the array notation are allowed. Must be a JSON
+        /// Path under `.status`. If there is no value under the given path in
+        /// the custom resource, the `status.replicas` value in the `/scale`
+        /// subresource will default to 0.
         /// </summary>
         [JsonProperty(PropertyName = "statusReplicasPath")]
         public string StatusReplicasPath { get; set; }

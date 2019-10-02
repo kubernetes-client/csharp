@@ -40,7 +40,7 @@ namespace k8s.Models
         /// <param name="kind">The kind attribute of the resource associated
         /// with the status StatusReason. On some operations may differ from
         /// the requested resource Kind. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</param>
         /// <param name="name">The name attribute of the resource associated
         /// with the status StatusReason (when there is a single name which can
         /// be described).</param>
@@ -87,7 +87,7 @@ namespace k8s.Models
         /// Gets or sets the kind attribute of the resource associated with the
         /// status StatusReason. On some operations may differ from the
         /// requested resource Kind. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
         public string Kind { get; set; }

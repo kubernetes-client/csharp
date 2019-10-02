@@ -38,7 +38,7 @@ namespace k8s.Models
         /// this pod). This syntax is chosen only to have some well-defined way
         /// of referencing a part of an object.</param>
         /// <param name="kind">Kind of the referent. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</param>
         /// <param name="name">Name of the referent. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names</param>
         /// <param name="namespaceProperty">Namespace of the referent. More
@@ -46,7 +46,7 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/</param>
         /// <param name="resourceVersion">Specific resourceVersion to which
         /// this reference is made, if any. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency</param>
         /// <param name="uid">UID of the referent. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids</param>
         public V1ObjectReference(string apiVersion = default(string), string fieldPath = default(string), string kind = default(string), string name = default(string), string namespaceProperty = default(string), string resourceVersion = default(string), string uid = default(string))
@@ -88,7 +88,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets kind of the referent. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
         public string Kind { get; set; }
@@ -110,7 +110,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets specific resourceVersion to which this reference is
         /// made, if any. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
         /// </summary>
         [JsonProperty(PropertyName = "resourceVersion")]
         public string ResourceVersion { get; set; }

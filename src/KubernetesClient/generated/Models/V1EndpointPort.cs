@@ -26,9 +26,9 @@ namespace k8s.Models
         /// Initializes a new instance of the V1EndpointPort class.
         /// </summary>
         /// <param name="port">The port number of the endpoint.</param>
-        /// <param name="name">The name of this port (corresponds to
-        /// ServicePort.Name). Must be a DNS_LABEL. Optional only if one port
-        /// is defined.</param>
+        /// <param name="name">The name of this port.  This must match the
+        /// 'name' field in the corresponding ServicePort. Must be a DNS_LABEL.
+        /// Optional only if one port is defined.</param>
         /// <param name="protocol">The IP protocol for this port. Must be UDP,
         /// TCP, or SCTP. Default is TCP.</param>
         public V1EndpointPort(int port, string name = default(string), string protocol = default(string))
@@ -45,9 +45,9 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of this port (corresponds to
-        /// ServicePort.Name). Must be a DNS_LABEL. Optional only if one port
-        /// is defined.
+        /// Gets or sets the name of this port.  This must match the 'name'
+        /// field in the corresponding ServicePort. Must be a DNS_LABEL.
+        /// Optional only if one port is defined.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

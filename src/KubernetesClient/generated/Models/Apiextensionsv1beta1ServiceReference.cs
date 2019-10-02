@@ -28,15 +28,16 @@ namespace k8s.Models
         /// Initializes a new instance of the
         /// Apiextensionsv1beta1ServiceReference class.
         /// </summary>
-        /// <param name="name">`name` is the name of the service.
+        /// <param name="name">name is the name of the service.
         /// Required</param>
-        /// <param name="namespaceProperty">`namespace` is the namespace of the
+        /// <param name="namespaceProperty">namespace is the namespace of the
         /// service. Required</param>
-        /// <param name="path">`path` is an optional URL path which will be
-        /// sent in any request to this service.</param>
-        /// <param name="port">If specified, the port on the service that
-        /// hosting webhook. Default to 443 for backward compatibility. `port`
-        /// should be a valid port number (1-65535, inclusive).</param>
+        /// <param name="path">path is an optional URL path at which the
+        /// webhook will be contacted.</param>
+        /// <param name="port">port is an optional service port at which the
+        /// webhook will be contacted. `port` should be a valid port number
+        /// (1-65535, inclusive). Defaults to 443 for backward
+        /// compatibility.</param>
         public Apiextensionsv1beta1ServiceReference(string name, string namespaceProperty, string path = default(string), int? port = default(int?))
         {
             Name = name;
@@ -52,28 +53,28 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets `name` is the name of the service. Required
+        /// Gets or sets name is the name of the service. Required
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets `namespace` is the namespace of the service. Required
+        /// Gets or sets namespace is the namespace of the service. Required
         /// </summary>
         [JsonProperty(PropertyName = "namespace")]
         public string NamespaceProperty { get; set; }
 
         /// <summary>
-        /// Gets or sets `path` is an optional URL path which will be sent in
-        /// any request to this service.
+        /// Gets or sets path is an optional URL path at which the webhook will
+        /// be contacted.
         /// </summary>
         [JsonProperty(PropertyName = "path")]
         public string Path { get; set; }
 
         /// <summary>
-        /// Gets or sets if specified, the port on the service that hosting
-        /// webhook. Default to 443 for backward compatibility. `port` should
-        /// be a valid port number (1-65535, inclusive).
+        /// Gets or sets port is an optional service port at which the webhook
+        /// will be contacted. `port` should be a valid port number (1-65535,
+        /// inclusive). Defaults to 443 for backward compatibility.
         /// </summary>
         [JsonProperty(PropertyName = "port")]
         public int? Port { get; set; }

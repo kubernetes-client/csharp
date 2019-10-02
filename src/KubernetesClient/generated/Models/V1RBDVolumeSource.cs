@@ -30,9 +30,9 @@ namespace k8s.Models
         /// Initializes a new instance of the V1RBDVolumeSource class.
         /// </summary>
         /// <param name="image">The rados image name. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it</param>
+        /// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</param>
         /// <param name="monitors">A collection of Ceph monitors. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it</param>
+        /// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</param>
         /// <param name="fsType">Filesystem type of the volume that you want to
         /// mount. Tip: Ensure that the filesystem type is supported by the
         /// host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly
@@ -40,19 +40,19 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/storage/volumes#rbd</param>
         /// <param name="keyring">Keyring is the path to key ring for RBDUser.
         /// Default is /etc/ceph/keyring. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it</param>
+        /// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</param>
         /// <param name="pool">The rados pool name. Default is rbd. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it</param>
+        /// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</param>
         /// <param name="readOnlyProperty">ReadOnly here will force the
         /// ReadOnly setting in VolumeMounts. Defaults to false. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it</param>
+        /// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</param>
         /// <param name="secretRef">SecretRef is name of the authentication
         /// secret for RBDUser. If provided overrides keyring. Default is nil.
         /// More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it</param>
+        /// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</param>
         /// <param name="user">The rados user name. Default is admin. More
         /// info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it</param>
+        /// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</param>
         public V1RBDVolumeSource(string image, IList<string> monitors, string fsType = default(string), string keyring = default(string), string pool = default(string), bool? readOnlyProperty = default(bool?), V1LocalObjectReference secretRef = default(V1LocalObjectReference), string user = default(string))
         {
             FsType = fsType;
@@ -83,7 +83,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets the rados image name. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it
+        /// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
         /// </summary>
         [JsonProperty(PropertyName = "image")]
         public string Image { get; set; }
@@ -91,21 +91,21 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets keyring is the path to key ring for RBDUser. Default
         /// is /etc/ceph/keyring. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it
+        /// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
         /// </summary>
         [JsonProperty(PropertyName = "keyring")]
         public string Keyring { get; set; }
 
         /// <summary>
         /// Gets or sets a collection of Ceph monitors. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it
+        /// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
         /// </summary>
         [JsonProperty(PropertyName = "monitors")]
         public IList<string> Monitors { get; set; }
 
         /// <summary>
         /// Gets or sets the rados pool name. Default is rbd. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it
+        /// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
         /// </summary>
         [JsonProperty(PropertyName = "pool")]
         public string Pool { get; set; }
@@ -113,7 +113,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets readOnly here will force the ReadOnly setting in
         /// VolumeMounts. Defaults to false. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it
+        /// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
         /// </summary>
         [JsonProperty(PropertyName = "readOnly")]
         public bool? ReadOnlyProperty { get; set; }
@@ -121,14 +121,14 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets secretRef is name of the authentication secret for
         /// RBDUser. If provided overrides keyring. Default is nil. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it
+        /// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
         /// </summary>
         [JsonProperty(PropertyName = "secretRef")]
         public V1LocalObjectReference SecretRef { get; set; }
 
         /// <summary>
         /// Gets or sets the rados user name. Default is admin. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it
+        /// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
         /// </summary>
         [JsonProperty(PropertyName = "user")]
         public string User { get; set; }

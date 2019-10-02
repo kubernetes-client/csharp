@@ -11,8 +11,7 @@ namespace k8s.Models
 
     /// <summary>
     /// WebhookClientConfig contains the information to make a TLS connection
-    /// with the webhook. It has the same field as
-    /// admissionregistration.v1beta1.WebhookClientConfig.
+    /// with the webhook.
     /// </summary>
     public partial class Apiextensionsv1beta1WebhookClientConfig
     {
@@ -29,15 +28,15 @@ namespace k8s.Models
         /// Initializes a new instance of the
         /// Apiextensionsv1beta1WebhookClientConfig class.
         /// </summary>
-        /// <param name="caBundle">`caBundle` is a PEM encoded CA bundle which
+        /// <param name="caBundle">caBundle is a PEM encoded CA bundle which
         /// will be used to validate the webhook's server certificate. If
         /// unspecified, system trust roots on the apiserver are used.</param>
-        /// <param name="service">`service` is a reference to the service for
-        /// this webhook. Either `service` or `url` must be specified.
+        /// <param name="service">service is a reference to the service for
+        /// this webhook. Either service or url must be specified.
         ///
         /// If the webhook is running within the cluster, then you should use
         /// `service`.</param>
-        /// <param name="url">`url` gives the location of the webhook, in
+        /// <param name="url">url gives the location of the webhook, in
         /// standard URL form (`scheme://host:port/path`). Exactly one of `url`
         /// or `service` must be specified.
         ///
@@ -76,16 +75,16 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets `caBundle` is a PEM encoded CA bundle which will be
-        /// used to validate the webhook's server certificate. If unspecified,
+        /// Gets or sets caBundle is a PEM encoded CA bundle which will be used
+        /// to validate the webhook's server certificate. If unspecified,
         /// system trust roots on the apiserver are used.
         /// </summary>
         [JsonProperty(PropertyName = "caBundle")]
         public byte[] CaBundle { get; set; }
 
         /// <summary>
-        /// Gets or sets `service` is a reference to the service for this
-        /// webhook. Either `service` or `url` must be specified.
+        /// Gets or sets service is a reference to the service for this
+        /// webhook. Either service or url must be specified.
         ///
         /// If the webhook is running within the cluster, then you should use
         /// `service`.
@@ -94,9 +93,9 @@ namespace k8s.Models
         public Apiextensionsv1beta1ServiceReference Service { get; set; }
 
         /// <summary>
-        /// Gets or sets `url` gives the location of the webhook, in standard
-        /// URL form (`scheme://host:port/path`). Exactly one of `url` or
-        /// `service` must be specified.
+        /// Gets or sets url gives the location of the webhook, in standard URL
+        /// form (`scheme://host:port/path`). Exactly one of `url` or `service`
+        /// must be specified.
         ///
         /// The `host` should not refer to a service running in the cluster;
         /// use the `service` field instead. The host might be resolved via

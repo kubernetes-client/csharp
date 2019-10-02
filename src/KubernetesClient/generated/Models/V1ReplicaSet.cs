@@ -30,23 +30,23 @@ namespace k8s.Models
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
         /// values. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#resources</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources</param>
         /// <param name="kind">Kind is a string value representing the REST
         /// resource this object represents. Servers may infer this from the
         /// endpoint the client submits requests to. Cannot be updated. In
         /// CamelCase. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</param>
         /// <param name="metadata">If the Labels of a ReplicaSet are empty,
         /// they are defaulted to be the same as the Pod(s) that the ReplicaSet
         /// manages. Standard object's metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</param>
         /// <param name="spec">Spec defines the specification of the desired
         /// behavior of the ReplicaSet. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</param>
         /// <param name="status">Status is the most recently observed status of
         /// the ReplicaSet. This data may be out of date by some window of
         /// time. Populated by the system. Read-only. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</param>
         public V1ReplicaSet(string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), V1ReplicaSetSpec spec = default(V1ReplicaSetSpec), V1ReplicaSetStatus status = default(V1ReplicaSetStatus))
         {
             ApiVersion = apiVersion;
@@ -67,7 +67,7 @@ namespace k8s.Models
         /// representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
         /// values. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#resources
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
         [JsonProperty(PropertyName = "apiVersion")]
         public string ApiVersion { get; set; }
@@ -77,7 +77,7 @@ namespace k8s.Models
         /// this object represents. Servers may infer this from the endpoint
         /// the client submits requests to. Cannot be updated. In CamelCase.
         /// More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
         public string Kind { get; set; }
@@ -86,7 +86,7 @@ namespace k8s.Models
         /// Gets or sets if the Labels of a ReplicaSet are empty, they are
         /// defaulted to be the same as the Pod(s) that the ReplicaSet manages.
         /// Standard object's metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ObjectMeta Metadata { get; set; }
@@ -94,7 +94,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets spec defines the specification of the desired behavior
         /// of the ReplicaSet. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [JsonProperty(PropertyName = "spec")]
         public V1ReplicaSetSpec Spec { get; set; }
@@ -103,7 +103,7 @@ namespace k8s.Models
         /// Gets or sets status is the most recently observed status of the
         /// ReplicaSet. This data may be out of date by some window of time.
         /// Populated by the system. Read-only. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public V1ReplicaSetStatus Status { get; set; }
@@ -116,10 +116,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Metadata != null)
-            {
-                Metadata.Validate();
-            }
             if (Spec != null)
             {
                 Spec.Validate();

@@ -29,14 +29,15 @@ namespace k8s.Models
         /// Initializes a new instance of the
         /// V1beta1CustomResourceColumnDefinition class.
         /// </summary>
-        /// <param name="jSONPath">JSONPath is a simple JSON path, i.e. with
-        /// array notation.</param>
+        /// <param name="jSONPath">JSONPath is a simple JSON path (i.e. with
+        /// array notation) which is evaluated against each custom resource to
+        /// produce the value for this column.</param>
         /// <param name="name">name is a human readable name for the
         /// column.</param>
         /// <param name="type">type is an OpenAPI type definition for this
         /// column. See
         /// https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types
-        /// for more.</param>
+        /// for details.</param>
         /// <param name="description">description is a human readable
         /// description of this column.</param>
         /// <param name="format">format is an optional OpenAPI type definition
@@ -44,11 +45,11 @@ namespace k8s.Models
         /// identifier column to assist in clients identifying column is the
         /// resource name. See
         /// https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types
-        /// for more.</param>
+        /// for details.</param>
         /// <param name="priority">priority is an integer defining the relative
         /// importance of this column compared to others. Lower numbers are
         /// considered higher priority. Columns that may be omitted in limited
-        /// space scenarios should be given a higher priority.</param>
+        /// space scenarios should be given a priority greater than 0.</param>
         public V1beta1CustomResourceColumnDefinition(string jSONPath, string name, string type, string description = default(string), string format = default(string), int? priority = default(int?))
         {
             JSONPath = jSONPath;
@@ -66,8 +67,9 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets jSONPath is a simple JSON path, i.e. with array
-        /// notation.
+        /// Gets or sets jSONPath is a simple JSON path (i.e. with array
+        /// notation) which is evaluated against each custom resource to
+        /// produce the value for this column.
         /// </summary>
         [JsonProperty(PropertyName = "JSONPath")]
         public string JSONPath { get; set; }
@@ -85,7 +87,7 @@ namespace k8s.Models
         /// column to assist in clients identifying column is the resource
         /// name. See
         /// https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types
-        /// for more.
+        /// for details.
         /// </summary>
         [JsonProperty(PropertyName = "format")]
         public string Format { get; set; }
@@ -100,7 +102,7 @@ namespace k8s.Models
         /// Gets or sets priority is an integer defining the relative
         /// importance of this column compared to others. Lower numbers are
         /// considered higher priority. Columns that may be omitted in limited
-        /// space scenarios should be given a higher priority.
+        /// space scenarios should be given a priority greater than 0.
         /// </summary>
         [JsonProperty(PropertyName = "priority")]
         public int? Priority { get; set; }
@@ -109,7 +111,7 @@ namespace k8s.Models
         /// Gets or sets type is an OpenAPI type definition for this column.
         /// See
         /// https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types
-        /// for more.
+        /// for details.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
