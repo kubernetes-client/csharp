@@ -30,7 +30,7 @@ namespace k8s.Models
         /// </summary>
         /// <param name="apiVersion">API version of the referent.</param>
         /// <param name="kind">Kind of the referent. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</param>
         /// <param name="name">Name of the referent. More info:
         /// http://kubernetes.io/docs/user-guide/identifiers#names</param>
         /// <param name="uid">UID of the referent. More info:
@@ -84,7 +84,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets kind of the referent. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
         public string Kind { get; set; }

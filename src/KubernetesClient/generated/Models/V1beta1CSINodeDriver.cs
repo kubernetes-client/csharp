@@ -41,6 +41,8 @@ namespace k8s.Models
         /// volume to a specific node, it can use this field to refer to the
         /// node name using the ID that the storage system will understand,
         /// e.g. "nodeA" instead of "node1". This field is required.</param>
+        /// <param name="allocatable">allocatable represents the volume
+        /// resources of a node that are available for scheduling.</param>
         /// <param name="topologyKeys">topologyKeys is the list of keys
         /// supported by the driver. When a driver is initialized on a cluster,
         /// it provides a set of topology keys that it understands (e.g.
@@ -52,8 +54,9 @@ namespace k8s.Models
         /// should retrieve from the node object and pass back to the driver.
         /// It is possible for different nodes to use different topology keys.
         /// This can be empty if driver does not support topology.</param>
-        public V1beta1CSINodeDriver(string name, string nodeID, IList<string> topologyKeys = default(IList<string>))
+        public V1beta1CSINodeDriver(string name, string nodeID, V1beta1VolumeNodeResources allocatable = default(V1beta1VolumeNodeResources), IList<string> topologyKeys = default(IList<string>))
         {
+            Allocatable = allocatable;
             Name = name;
             NodeID = nodeID;
             TopologyKeys = topologyKeys;
@@ -64,6 +67,13 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets allocatable represents the volume resources of a node
+        /// that are available for scheduling.
+        /// </summary>
+        [JsonProperty(PropertyName = "allocatable")]
+        public V1beta1VolumeNodeResources Allocatable { get; set; }
 
         /// <summary>
         /// Gets or sets this is the name of the CSI driver that this object

@@ -35,6 +35,10 @@ namespace k8s.Models
         /// https://issues.k8s.io/61966</param>
         /// <param name="podCIDR">PodCIDR represents the pod IP range assigned
         /// to the node.</param>
+        /// <param name="podCIDRs">podCIDRs represents the IP ranges assigned
+        /// to the node for usage by Pods on that node. If this field is
+        /// specified, the 0th entry must match the podCIDR field. It may
+        /// contain at most 1 value for each of IPv4 and IPv6.</param>
         /// <param name="providerID">ID of the node assigned by the cloud
         /// provider in the format:
         /// &lt;ProviderName&gt;://&lt;ProviderSpecificNodeID&gt;</param>
@@ -43,11 +47,12 @@ namespace k8s.Models
         /// schedulability of new pods. By default, node is schedulable. More
         /// info:
         /// https://kubernetes.io/docs/concepts/nodes/node/#manual-node-administration</param>
-        public V1NodeSpec(V1NodeConfigSource configSource = default(V1NodeConfigSource), string externalID = default(string), string podCIDR = default(string), string providerID = default(string), IList<V1Taint> taints = default(IList<V1Taint>), bool? unschedulable = default(bool?))
+        public V1NodeSpec(V1NodeConfigSource configSource = default(V1NodeConfigSource), string externalID = default(string), string podCIDR = default(string), IList<string> podCIDRs = default(IList<string>), string providerID = default(string), IList<V1Taint> taints = default(IList<V1Taint>), bool? unschedulable = default(bool?))
         {
             ConfigSource = configSource;
             ExternalID = externalID;
             PodCIDR = podCIDR;
+            PodCIDRs = podCIDRs;
             ProviderID = providerID;
             Taints = taints;
             Unschedulable = unschedulable;
@@ -80,6 +85,15 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "podCIDR")]
         public string PodCIDR { get; set; }
+
+        /// <summary>
+        /// Gets or sets podCIDRs represents the IP ranges assigned to the node
+        /// for usage by Pods on that node. If this field is specified, the 0th
+        /// entry must match the podCIDR field. It may contain at most 1 value
+        /// for each of IPv4 and IPv6.
+        /// </summary>
+        [JsonProperty(PropertyName = "podCIDRs")]
+        public IList<string> PodCIDRs { get; set; }
 
         /// <summary>
         /// Gets or sets ID of the node assigned by the cloud provider in the

@@ -12,18 +12,20 @@ namespace k8s.Models
     /// <summary>
     /// ServiceReference holds a reference to Service.legacy.k8s.io
     /// </summary>
-    public partial class V1ServiceReference
+    public partial class Apiregistrationv1ServiceReference
     {
         /// <summary>
-        /// Initializes a new instance of the V1ServiceReference class.
+        /// Initializes a new instance of the Apiregistrationv1ServiceReference
+        /// class.
         /// </summary>
-        public V1ServiceReference()
+        public Apiregistrationv1ServiceReference()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the V1ServiceReference class.
+        /// Initializes a new instance of the Apiregistrationv1ServiceReference
+        /// class.
         /// </summary>
         /// <param name="name">Name is the name of the service</param>
         /// <param name="namespaceProperty">Namespace is the namespace of the
@@ -31,7 +33,7 @@ namespace k8s.Models
         /// <param name="port">If specified, the port on the service that
         /// hosting webhook. Default to 443 for backward compatibility. `port`
         /// should be a valid port number (1-65535, inclusive).</param>
-        public V1ServiceReference(string name = default(string), string namespaceProperty = default(string), int? port = default(int?))
+        public Apiregistrationv1ServiceReference(string name = default(string), string namespaceProperty = default(string), int? port = default(int?))
         {
             Name = name;
             NamespaceProperty = namespaceProperty;

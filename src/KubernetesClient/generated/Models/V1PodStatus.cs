@@ -35,6 +35,10 @@ namespace k8s.Models
         /// container in the manifest. Each entry is currently the output of
         /// `docker inspect`. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-and-container-status</param>
+        /// <param name="ephemeralContainerStatuses">Status for any ephemeral
+        /// containers that have run in this pod. This field is alpha-level and
+        /// is only populated by servers that enable the EphemeralContainers
+        /// feature.</param>
         /// <param name="hostIP">IP address of the host to which the pod is
         /// assigned. Empty if not yet scheduled.</param>
         /// <param name="initContainerStatuses">The list has one entry per init
@@ -79,6 +83,10 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-phase</param>
         /// <param name="podIP">IP address allocated to the pod. Routable at
         /// least within the cluster. Empty if not yet allocated.</param>
+        /// <param name="podIPs">podIPs holds the IP addresses allocated to the
+        /// pod. If this field is specified, the 0th entry must match the podIP
+        /// field. Pods may be allocated at most 1 value for each of IPv4 and
+        /// IPv6. This list is empty if no IPs have been allocated yet.</param>
         /// <param name="qosClass">The Quality of Service (QOS) classification
         /// assigned to the pod based on resource requirements See PodQOSClass
         /// type for available QOS classes More info:
@@ -88,16 +96,18 @@ namespace k8s.Models
         /// <param name="startTime">RFC 3339 date and time at which the object
         /// was acknowledged by the Kubelet. This is before the Kubelet pulled
         /// the container image(s) for the pod.</param>
-        public V1PodStatus(IList<V1PodCondition> conditions = default(IList<V1PodCondition>), IList<V1ContainerStatus> containerStatuses = default(IList<V1ContainerStatus>), string hostIP = default(string), IList<V1ContainerStatus> initContainerStatuses = default(IList<V1ContainerStatus>), string message = default(string), string nominatedNodeName = default(string), string phase = default(string), string podIP = default(string), string qosClass = default(string), string reason = default(string), System.DateTime? startTime = default(System.DateTime?))
+        public V1PodStatus(IList<V1PodCondition> conditions = default(IList<V1PodCondition>), IList<V1ContainerStatus> containerStatuses = default(IList<V1ContainerStatus>), IList<V1ContainerStatus> ephemeralContainerStatuses = default(IList<V1ContainerStatus>), string hostIP = default(string), IList<V1ContainerStatus> initContainerStatuses = default(IList<V1ContainerStatus>), string message = default(string), string nominatedNodeName = default(string), string phase = default(string), string podIP = default(string), IList<V1PodIP> podIPs = default(IList<V1PodIP>), string qosClass = default(string), string reason = default(string), System.DateTime? startTime = default(System.DateTime?))
         {
             Conditions = conditions;
             ContainerStatuses = containerStatuses;
+            EphemeralContainerStatuses = ephemeralContainerStatuses;
             HostIP = hostIP;
             InitContainerStatuses = initContainerStatuses;
             Message = message;
             NominatedNodeName = nominatedNodeName;
             Phase = phase;
             PodIP = podIP;
+            PodIPs = podIPs;
             QosClass = qosClass;
             Reason = reason;
             StartTime = startTime;
@@ -123,6 +133,14 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "containerStatuses")]
         public IList<V1ContainerStatus> ContainerStatuses { get; set; }
+
+        /// <summary>
+        /// Gets or sets status for any ephemeral containers that have run in
+        /// this pod. This field is alpha-level and is only populated by
+        /// servers that enable the EphemeralContainers feature.
+        /// </summary>
+        [JsonProperty(PropertyName = "ephemeralContainerStatuses")]
+        public IList<V1ContainerStatus> EphemeralContainerStatuses { get; set; }
 
         /// <summary>
         /// Gets or sets IP address of the host to which the pod is assigned.
@@ -196,6 +214,15 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "podIP")]
         public string PodIP { get; set; }
+
+        /// <summary>
+        /// Gets or sets podIPs holds the IP addresses allocated to the pod. If
+        /// this field is specified, the 0th entry must match the podIP field.
+        /// Pods may be allocated at most 1 value for each of IPv4 and IPv6.
+        /// This list is empty if no IPs have been allocated yet.
+        /// </summary>
+        [JsonProperty(PropertyName = "podIPs")]
+        public IList<V1PodIP> PodIPs { get; set; }
 
         /// <summary>
         /// Gets or sets the Quality of Service (QOS) classification assigned

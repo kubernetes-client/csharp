@@ -48,8 +48,11 @@ namespace k8s.Models
         /// how each type of metric must respond. If not set, the default
         /// metric will be set to 80% average CPU utilization.</param>
         /// <param name="minReplicas">minReplicas is the lower limit for the
-        /// number of replicas to which the autoscaler can scale down. It
-        /// defaults to 1 pod.</param>
+        /// number of replicas to which the autoscaler can scale down.  It
+        /// defaults to 1 pod.  minReplicas is allowed to be 0 if the alpha
+        /// feature gate HPAScaleToZero is enabled and at least one Object or
+        /// External metric is configured.  Scaling is active as long as at
+        /// least one metric value is available.</param>
         public V2beta2HorizontalPodAutoscalerSpec(int maxReplicas, V2beta2CrossVersionObjectReference scaleTargetRef, IList<V2beta2MetricSpec> metrics = default(IList<V2beta2MetricSpec>), int? minReplicas = default(int?))
         {
             MaxReplicas = maxReplicas;
@@ -88,8 +91,11 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets minReplicas is the lower limit for the number of
-        /// replicas to which the autoscaler can scale down. It defaults to 1
-        /// pod.
+        /// replicas to which the autoscaler can scale down.  It defaults to 1
+        /// pod.  minReplicas is allowed to be 0 if the alpha feature gate
+        /// HPAScaleToZero is enabled and at least one Object or External
+        /// metric is configured.  Scaling is active as long as at least one
+        /// metric value is available.
         /// </summary>
         [JsonProperty(PropertyName = "minReplicas")]
         public int? MinReplicas { get; set; }

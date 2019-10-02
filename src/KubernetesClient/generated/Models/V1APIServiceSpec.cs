@@ -71,7 +71,7 @@ namespace k8s.Models
         /// instead.</param>
         /// <param name="version">Version is the API version this server hosts.
         /// For example, "v1"</param>
-        public V1APIServiceSpec(int groupPriorityMinimum, V1ServiceReference service, int versionPriority, byte[] caBundle = default(byte[]), string group = default(string), bool? insecureSkipTLSVerify = default(bool?), string version = default(string))
+        public V1APIServiceSpec(int groupPriorityMinimum, Apiregistrationv1ServiceReference service, int versionPriority, byte[] caBundle = default(byte[]), string group = default(string), bool? insecureSkipTLSVerify = default(bool?), string version = default(string))
         {
             CaBundle = caBundle;
             Group = group;
@@ -133,7 +133,7 @@ namespace k8s.Models
         /// chain to be fulfilled.
         /// </summary>
         [JsonProperty(PropertyName = "service")]
-        public V1ServiceReference Service { get; set; }
+        public Apiregistrationv1ServiceReference Service { get; set; }
 
         /// <summary>
         /// Gets or sets version is the API version this server hosts.  For

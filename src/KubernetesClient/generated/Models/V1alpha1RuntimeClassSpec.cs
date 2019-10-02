@@ -40,9 +40,21 @@ namespace k8s.Models
         /// containers) will be used to run the containers in a pod. The
         /// RuntimeHandler must conform to the DNS Label (RFC 1123)
         /// requirements and is immutable.</param>
-        public V1alpha1RuntimeClassSpec(string runtimeHandler)
+        /// <param name="overhead">Overhead represents the resource overhead
+        /// associated with running a pod for a given RuntimeClass. For more
+        /// details, see
+        /// https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md
+        /// This field is alpha-level as of Kubernetes v1.15, and is only
+        /// honored by servers that enable the PodOverhead feature.</param>
+        /// <param name="scheduling">Scheduling holds the scheduling
+        /// constraints to ensure that pods running with this RuntimeClass are
+        /// scheduled to nodes that support it. If scheduling is nil, this
+        /// RuntimeClass is assumed to be supported by all nodes.</param>
+        public V1alpha1RuntimeClassSpec(string runtimeHandler, V1alpha1Overhead overhead = default(V1alpha1Overhead), V1alpha1Scheduling scheduling = default(V1alpha1Scheduling))
         {
+            Overhead = overhead;
             RuntimeHandler = runtimeHandler;
+            Scheduling = scheduling;
             CustomInit();
         }
 
@@ -50,6 +62,16 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets overhead represents the resource overhead associated
+        /// with running a pod for a given RuntimeClass. For more details, see
+        /// https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md
+        /// This field is alpha-level as of Kubernetes v1.15, and is only
+        /// honored by servers that enable the PodOverhead feature.
+        /// </summary>
+        [JsonProperty(PropertyName = "overhead")]
+        public V1alpha1Overhead Overhead { get; set; }
 
         /// <summary>
         /// Gets or sets runtimeHandler specifies the underlying runtime and
@@ -65,6 +87,15 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "runtimeHandler")]
         public string RuntimeHandler { get; set; }
+
+        /// <summary>
+        /// Gets or sets scheduling holds the scheduling constraints to ensure
+        /// that pods running with this RuntimeClass are scheduled to nodes
+        /// that support it. If scheduling is nil, this RuntimeClass is assumed
+        /// to be supported by all nodes.
+        /// </summary>
+        [JsonProperty(PropertyName = "scheduling")]
+        public V1alpha1Scheduling Scheduling { get; set; }
 
         /// <summary>
         /// Validate the object.

@@ -31,20 +31,19 @@ namespace k8s.Models
         /// Initializes a new instance of the
         /// V1beta1CustomResourceDefinitionStatus class.
         /// </summary>
-        /// <param name="acceptedNames">AcceptedNames are the names that are
-        /// actually being used to serve discovery They may be different than
+        /// <param name="acceptedNames">acceptedNames are the names that are
+        /// actually being used to serve discovery. They may be different than
         /// the names in spec.</param>
-        /// <param name="conditions">Conditions indicate state for particular
-        /// aspects of a CustomResourceDefinition</param>
-        /// <param name="storedVersions">StoredVersions are all versions of
+        /// <param name="storedVersions">storedVersions lists all versions of
         /// CustomResources that were ever persisted. Tracking these versions
         /// allows a migration path for stored versions in etcd. The field is
-        /// mutable so the migration controller can first finish a migration to
-        /// another version (i.e. that no old objects are left in the storage),
-        /// and then remove the rest of the versions from this list. None of
-        /// the versions in this list can be removed from the spec.Versions
-        /// field.</param>
-        public V1beta1CustomResourceDefinitionStatus(V1beta1CustomResourceDefinitionNames acceptedNames, IList<V1beta1CustomResourceDefinitionCondition> conditions, IList<string> storedVersions)
+        /// mutable so a migration controller can finish a migration to another
+        /// version (ensuring no old objects are left in storage), and then
+        /// remove the rest of the versions from this list. Versions may not be
+        /// removed from `spec.versions` while they exist in this list.</param>
+        /// <param name="conditions">conditions indicate state for particular
+        /// aspects of a CustomResourceDefinition</param>
+        public V1beta1CustomResourceDefinitionStatus(V1beta1CustomResourceDefinitionNames acceptedNames, IList<string> storedVersions, IList<V1beta1CustomResourceDefinitionCondition> conditions = default(IList<V1beta1CustomResourceDefinitionCondition>))
         {
             AcceptedNames = acceptedNames;
             Conditions = conditions;
@@ -59,7 +58,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets acceptedNames are the names that are actually being
-        /// used to serve discovery They may be different than the names in
+        /// used to serve discovery. They may be different than the names in
         /// spec.
         /// </summary>
         [JsonProperty(PropertyName = "acceptedNames")]
@@ -73,13 +72,13 @@ namespace k8s.Models
         public IList<V1beta1CustomResourceDefinitionCondition> Conditions { get; set; }
 
         /// <summary>
-        /// Gets or sets storedVersions are all versions of CustomResources
+        /// Gets or sets storedVersions lists all versions of CustomResources
         /// that were ever persisted. Tracking these versions allows a
         /// migration path for stored versions in etcd. The field is mutable so
-        /// the migration controller can first finish a migration to another
-        /// version (i.e. that no old objects are left in the storage), and
-        /// then remove the rest of the versions from this list. None of the
-        /// versions in this list can be removed from the spec.Versions field.
+        /// a migration controller can finish a migration to another version
+        /// (ensuring no old objects are left in storage), and then remove the
+        /// rest of the versions from this list. Versions may not be removed
+        /// from `spec.versions` while they exist in this list.
         /// </summary>
         [JsonProperty(PropertyName = "storedVersions")]
         public IList<string> StoredVersions { get; set; }
@@ -95,10 +94,6 @@ namespace k8s.Models
             if (AcceptedNames == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "AcceptedNames");
-            }
-            if (Conditions == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Conditions");
             }
             if (StoredVersions == null)
             {

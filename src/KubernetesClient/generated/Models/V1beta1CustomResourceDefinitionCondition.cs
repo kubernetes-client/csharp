@@ -29,16 +29,16 @@ namespace k8s.Models
         /// Initializes a new instance of the
         /// V1beta1CustomResourceDefinitionCondition class.
         /// </summary>
-        /// <param name="status">Status is the status of the condition. Can be
+        /// <param name="status">status is the status of the condition. Can be
         /// True, False, Unknown.</param>
-        /// <param name="type">Type is the type of the condition. Types include
+        /// <param name="type">type is the type of the condition. Types include
         /// Established, NamesAccepted and Terminating.</param>
-        /// <param name="lastTransitionTime">Last time the condition
-        /// transitioned from one status to another.</param>
-        /// <param name="message">Human-readable message indicating details
-        /// about last transition.</param>
-        /// <param name="reason">Unique, one-word, CamelCase reason for the
-        /// condition's last transition.</param>
+        /// <param name="lastTransitionTime">lastTransitionTime last time the
+        /// condition transitioned from one status to another.</param>
+        /// <param name="message">message is a human-readable message
+        /// indicating details about last transition.</param>
+        /// <param name="reason">reason is a unique, one-word, CamelCase reason
+        /// for the condition's last transition.</param>
         public V1beta1CustomResourceDefinitionCondition(string status, string type, System.DateTime? lastTransitionTime = default(System.DateTime?), string message = default(string), string reason = default(string))
         {
             LastTransitionTime = lastTransitionTime;
@@ -55,22 +55,22 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets last time the condition transitioned from one status
-        /// to another.
+        /// Gets or sets lastTransitionTime last time the condition
+        /// transitioned from one status to another.
         /// </summary>
         [JsonProperty(PropertyName = "lastTransitionTime")]
         public System.DateTime? LastTransitionTime { get; set; }
 
         /// <summary>
-        /// Gets or sets human-readable message indicating details about last
-        /// transition.
+        /// Gets or sets message is a human-readable message indicating details
+        /// about last transition.
         /// </summary>
         [JsonProperty(PropertyName = "message")]
         public string Message { get; set; }
 
         /// <summary>
-        /// Gets or sets unique, one-word, CamelCase reason for the condition's
-        /// last transition.
+        /// Gets or sets reason is a unique, one-word, CamelCase reason for the
+        /// condition's last transition.
         /// </summary>
         [JsonProperty(PropertyName = "reason")]
         public string Reason { get; set; }

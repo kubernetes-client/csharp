@@ -44,8 +44,8 @@ namespace k8s.Models
         /// <param name="cephfs">CephFS represents a Ceph FS mount on the host
         /// that shares a pod's lifetime</param>
         /// <param name="cinder">Cinder represents a cinder volume attached and
-        /// mounted on kubelets host machine More info:
-        /// https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md</param>
+        /// mounted on kubelets host machine. More info:
+        /// https://examples.k8s.io/mysql-cinder-pd/README.md</param>
         /// <param name="claimRef">ClaimRef is part of a bi-directional binding
         /// between PersistentVolume and PersistentVolumeClaim. Expected to be
         /// non-nil when bound. claim.VolumeName is the authoritative bind
@@ -69,7 +69,7 @@ namespace k8s.Models
         /// <param name="glusterfs">Glusterfs represents a Glusterfs volume
         /// that is attached to a host and exposed to the pod. Provisioned by
         /// an admin. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md</param>
+        /// https://examples.k8s.io/volumes/glusterfs/README.md</param>
         /// <param name="hostPath">HostPath represents a directory on the host.
         /// Provisioned by a developer or tester. This is useful for
         /// single-node development and testing only! On-host storage is not
@@ -107,7 +107,7 @@ namespace k8s.Models
         /// host that shares a pod's lifetime</param>
         /// <param name="rbd">RBD represents a Rados Block Device mount on the
         /// host that shares a pod's lifetime. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md</param>
+        /// https://examples.k8s.io/volumes/rbd/README.md</param>
         /// <param name="scaleIO">ScaleIO represents a ScaleIO persistent
         /// volume attached and mounted on Kubernetes nodes.</param>
         /// <param name="storageClassName">Name of StorageClass to which this
@@ -116,7 +116,7 @@ namespace k8s.Models
         /// <param name="storageos">StorageOS represents a StorageOS volume
         /// that is attached to the kubelet's host machine and mounted into the
         /// pod More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/storageos/README.md</param>
+        /// https://examples.k8s.io/volumes/storageos/README.md</param>
         /// <param name="volumeMode">volumeMode defines if a volume is intended
         /// to be used with a formatted filesystem or to remain in raw block
         /// state. Value of Filesystem is implied when not included in spec.
@@ -211,8 +211,8 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets cinder represents a cinder volume attached and mounted
-        /// on kubelets host machine More info:
-        /// https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md
+        /// on kubelets host machine. More info:
+        /// https://examples.k8s.io/mysql-cinder-pd/README.md
         /// </summary>
         [JsonProperty(PropertyName = "cinder")]
         public V1CinderPersistentVolumeSource Cinder { get; set; }
@@ -268,8 +268,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets glusterfs represents a Glusterfs volume that is
         /// attached to a host and exposed to the pod. Provisioned by an admin.
-        /// More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md
+        /// More info: https://examples.k8s.io/volumes/glusterfs/README.md
         /// </summary>
         [JsonProperty(PropertyName = "glusterfs")]
         public V1GlusterfsPersistentVolumeSource Glusterfs { get; set; }
@@ -360,7 +359,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets RBD represents a Rados Block Device mount on the host
         /// that shares a pod's lifetime. More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md
+        /// https://examples.k8s.io/volumes/rbd/README.md
         /// </summary>
         [JsonProperty(PropertyName = "rbd")]
         public V1RBDPersistentVolumeSource Rbd { get; set; }
@@ -383,8 +382,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets storageOS represents a StorageOS volume that is
         /// attached to the kubelet's host machine and mounted into the pod
-        /// More info:
-        /// https://releases.k8s.io/HEAD/examples/volumes/storageos/README.md
+        /// More info: https://examples.k8s.io/volumes/storageos/README.md
         /// </summary>
         [JsonProperty(PropertyName = "storageos")]
         public V1StorageOSPersistentVolumeSource Storageos { get; set; }

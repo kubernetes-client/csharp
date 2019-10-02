@@ -28,8 +28,8 @@ namespace k8s.Models
         /// Initializes a new instance of the V1beta1CustomResourceValidation
         /// class.
         /// </summary>
-        /// <param name="openAPIV3Schema">OpenAPIV3Schema is the OpenAPI v3
-        /// schema to be validated against.</param>
+        /// <param name="openAPIV3Schema">openAPIV3Schema is the OpenAPI v3
+        /// schema to use for validation and pruning.</param>
         public V1beta1CustomResourceValidation(V1beta1JSONSchemaProps openAPIV3Schema = default(V1beta1JSONSchemaProps))
         {
             OpenAPIV3Schema = openAPIV3Schema;
@@ -42,8 +42,8 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets openAPIV3Schema is the OpenAPI v3 schema to be
-        /// validated against.
+        /// Gets or sets openAPIV3Schema is the OpenAPI v3 schema to use for
+        /// validation and pruning.
         /// </summary>
         [JsonProperty(PropertyName = "openAPIV3Schema")]
         public V1beta1JSONSchemaProps OpenAPIV3Schema { get; set; }

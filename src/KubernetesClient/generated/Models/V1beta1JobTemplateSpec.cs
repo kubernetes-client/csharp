@@ -28,10 +28,10 @@ namespace k8s.Models
         /// </summary>
         /// <param name="metadata">Standard object's metadata of the jobs
         /// created from this template. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</param>
         /// <param name="spec">Specification of the desired behavior of the
         /// job. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status</param>
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</param>
         public V1beta1JobTemplateSpec(V1ObjectMeta metadata = default(V1ObjectMeta), V1JobSpec spec = default(V1JobSpec))
         {
             Metadata = metadata;
@@ -47,7 +47,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets standard object's metadata of the jobs created from
         /// this template. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ObjectMeta Metadata { get; set; }
@@ -55,7 +55,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets specification of the desired behavior of the job. More
         /// info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [JsonProperty(PropertyName = "spec")]
         public V1JobSpec Spec { get; set; }
@@ -68,10 +68,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Metadata != null)
-            {
-                Metadata.Validate();
-            }
             if (Spec != null)
             {
                 Spec.Validate();

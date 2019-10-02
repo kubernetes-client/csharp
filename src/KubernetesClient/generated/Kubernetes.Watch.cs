@@ -351,6 +351,50 @@ namespace k8s
         }
 
         /// <inheritdoc>
+        public Task<Watcher<V1MutatingWebhookConfiguration>> WatchMutatingWebhookConfigurationAsync(
+            string name,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1MutatingWebhookConfiguration> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}";
+            return WatchObjectAsync<V1MutatingWebhookConfiguration>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
+        public Task<Watcher<V1ValidatingWebhookConfiguration>> WatchValidatingWebhookConfigurationAsync(
+            string name,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1ValidatingWebhookConfiguration> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}";
+            return WatchObjectAsync<V1ValidatingWebhookConfiguration>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
         public Task<Watcher<V1beta1MutatingWebhookConfiguration>> WatchMutatingWebhookConfigurationAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -392,6 +436,28 @@ namespace k8s
         {
             string path = $"apis/admissionregistration.k8s.io/v1beta1/watch/validatingwebhookconfigurations/{name}";
             return WatchObjectAsync<V1beta1ValidatingWebhookConfiguration>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
+        public Task<Watcher<V1CustomResourceDefinition>> WatchCustomResourceDefinitionAsync(
+            string name,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1CustomResourceDefinition> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}";
+            return WatchObjectAsync<V1CustomResourceDefinition>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
         /// <inheritdoc>
@@ -939,6 +1005,29 @@ namespace k8s
         {
             string path = $"apis/coordination.k8s.io/v1beta1/watch/namespaces/{@namespace}/leases/{name}";
             return WatchObjectAsync<V1beta1Lease>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
+        public Task<Watcher<V1alpha1EndpointSlice>> WatchNamespacedEndpointSliceAsync(
+            string name,
+            string @namespace,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1alpha1EndpointSlice> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/discovery.k8s.io/v1alpha1/watch/namespaces/{@namespace}/endpointslices/{name}";
+            return WatchObjectAsync<V1alpha1EndpointSlice>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
         /// <inheritdoc>

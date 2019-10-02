@@ -43,9 +43,14 @@ namespace k8s.Models
         /// 'docker://&lt;container_id&gt;'.</param>
         /// <param name="lastState">Details about the container's last
         /// termination condition.</param>
+        /// <param name="started">Specifies whether the container has passed
+        /// its startup probe. Initialized as false, becomes true after
+        /// startupProbe is considered successful. Resets to false when the
+        /// container is restarted, or if kubelet loses state temporarily. Is
+        /// always true when no startupProbe is defined.</param>
         /// <param name="state">Details about the container's current
         /// condition.</param>
-        public V1ContainerStatus(string image, string imageID, string name, bool ready, int restartCount, string containerID = default(string), V1ContainerState lastState = default(V1ContainerState), V1ContainerState state = default(V1ContainerState))
+        public V1ContainerStatus(string image, string imageID, string name, bool ready, int restartCount, string containerID = default(string), V1ContainerState lastState = default(V1ContainerState), bool? started = default(bool?), V1ContainerState state = default(V1ContainerState))
         {
             ContainerID = containerID;
             Image = image;
@@ -54,6 +59,7 @@ namespace k8s.Models
             Name = name;
             Ready = ready;
             RestartCount = restartCount;
+            Started = started;
             State = state;
             CustomInit();
         }
@@ -113,6 +119,16 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "restartCount")]
         public int RestartCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether the container has passed its startup
+        /// probe. Initialized as false, becomes true after startupProbe is
+        /// considered successful. Resets to false when the container is
+        /// restarted, or if kubelet loses state temporarily. Is always true
+        /// when no startupProbe is defined.
+        /// </summary>
+        [JsonProperty(PropertyName = "started")]
+        public bool? Started { get; set; }
 
         /// <summary>
         /// Gets or sets details about the container's current condition.

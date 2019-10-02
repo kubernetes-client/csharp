@@ -35,8 +35,12 @@ namespace k8s.Models
         /// horizontal pod autoscaler will learn the current resource
         /// consumption and will set the desired number of pods by using its
         /// Scale subresource.</param>
-        /// <param name="minReplicas">lower limit for the number of pods that
-        /// can be set by the autoscaler, default 1.</param>
+        /// <param name="minReplicas">minReplicas is the lower limit for the
+        /// number of replicas to which the autoscaler can scale down.  It
+        /// defaults to 1 pod.  minReplicas is allowed to be 0 if the alpha
+        /// feature gate HPAScaleToZero is enabled and at least one Object or
+        /// External metric is configured.  Scaling is active as long as at
+        /// least one metric value is available.</param>
         /// <param name="targetCPUUtilizationPercentage">target average CPU
         /// utilization (represented as a percentage of requested CPU) over all
         /// the pods; if not specified the default autoscaling policy will be
@@ -63,8 +67,12 @@ namespace k8s.Models
         public int MaxReplicas { get; set; }
 
         /// <summary>
-        /// Gets or sets lower limit for the number of pods that can be set by
-        /// the autoscaler, default 1.
+        /// Gets or sets minReplicas is the lower limit for the number of
+        /// replicas to which the autoscaler can scale down.  It defaults to 1
+        /// pod.  minReplicas is allowed to be 0 if the alpha feature gate
+        /// HPAScaleToZero is enabled and at least one Object or External
+        /// metric is configured.  Scaling is active as long as at least one
+        /// metric value is available.
         /// </summary>
         [JsonProperty(PropertyName = "minReplicas")]
         public int? MinReplicas { get; set; }

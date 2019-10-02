@@ -1,5 +1,33 @@
 namespace k8s.Models
 {
+    public partial class V1MutatingWebhookConfiguration : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "MutatingWebhookConfiguration";
+        public const string KubeGroup = "admissionregistration.k8s.io";
+    }
+
+    public partial class V1MutatingWebhookConfigurationList : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "MutatingWebhookConfigurationList";
+        public const string KubeGroup = "admissionregistration.k8s.io";
+    }
+
+    public partial class V1ValidatingWebhookConfiguration : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "ValidatingWebhookConfiguration";
+        public const string KubeGroup = "admissionregistration.k8s.io";
+    }
+
+    public partial class V1ValidatingWebhookConfigurationList : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "ValidatingWebhookConfigurationList";
+        public const string KubeGroup = "admissionregistration.k8s.io";
+    }
+
     public partial class V1beta1MutatingWebhookConfiguration : IKubernetesObject
     {
         public const string KubeApiVersion = "v1beta1";
@@ -215,6 +243,13 @@ namespace k8s.Models
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "AuditSinkList";
         public const string KubeGroup = "auditregistration.k8s.io";
+    }
+
+    public partial class V1TokenRequest : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "TokenRequest";
+        public const string KubeGroup = "authentication.k8s.io";
     }
 
     public partial class V1TokenReview : IKubernetesObject
@@ -649,6 +684,20 @@ namespace k8s.Models
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ServiceList";
         public const string KubeGroup = "";
+    }
+
+    public partial class V1alpha1EndpointSlice : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1alpha1";
+        public const string KubeKind = "EndpointSlice";
+        public const string KubeGroup = "discovery.k8s.io";
+    }
+
+    public partial class V1alpha1EndpointSliceList : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1alpha1";
+        public const string KubeKind = "EndpointSliceList";
+        public const string KubeGroup = "discovery.k8s.io";
     }
 
     public partial class V1beta1Event : IKubernetesObject
@@ -1090,6 +1139,20 @@ namespace k8s.Models
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "VolumeAttachmentList";
         public const string KubeGroup = "storage.k8s.io";
+    }
+
+    public partial class V1CustomResourceDefinition : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "CustomResourceDefinition";
+        public const string KubeGroup = "apiextensions.k8s.io";
+    }
+
+    public partial class V1CustomResourceDefinitionList : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "CustomResourceDefinitionList";
+        public const string KubeGroup = "apiextensions.k8s.io";
     }
 
     public partial class V1beta1CustomResourceDefinition : IKubernetesObject

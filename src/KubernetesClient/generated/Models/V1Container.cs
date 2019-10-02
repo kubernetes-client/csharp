@@ -93,6 +93,16 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/policy/security-context/ More
         /// info:
         /// https://kubernetes.io/docs/tasks/configure-pod-container/security-context/</param>
+        /// <param name="startupProbe">StartupProbe indicates that the Pod has
+        /// successfully initialized. If specified, no other probes are
+        /// executed until this completes successfully. If this probe fails,
+        /// the Pod will be restarted, just as if the livenessProbe failed.
+        /// This can be used to provide different probe parameters at the
+        /// beginning of a Pod's lifecycle, when it might take a long time to
+        /// load data or warm a cache, than during steady-state operation. This
+        /// cannot be updated. This is an alpha feature enabled by the
+        /// StartupProbe feature flag. More info:
+        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes</param>
         /// <param name="stdin">Whether this container should allocate a buffer
         /// for stdin in the container runtime. If this is not set, reads from
         /// stdin in the container will always result in EOF. Default is
@@ -133,7 +143,7 @@ namespace k8s.Models
         /// specified, the container runtime's default will be used, which
         /// might be configured in the container image. Cannot be
         /// updated.</param>
-        public V1Container(string name, IList<string> args = default(IList<string>), IList<string> command = default(IList<string>), IList<V1EnvVar> env = default(IList<V1EnvVar>), IList<V1EnvFromSource> envFrom = default(IList<V1EnvFromSource>), string image = default(string), string imagePullPolicy = default(string), V1Lifecycle lifecycle = default(V1Lifecycle), V1Probe livenessProbe = default(V1Probe), IList<V1ContainerPort> ports = default(IList<V1ContainerPort>), V1Probe readinessProbe = default(V1Probe), V1ResourceRequirements resources = default(V1ResourceRequirements), V1SecurityContext securityContext = default(V1SecurityContext), bool? stdin = default(bool?), bool? stdinOnce = default(bool?), string terminationMessagePath = default(string), string terminationMessagePolicy = default(string), bool? tty = default(bool?), IList<V1VolumeDevice> volumeDevices = default(IList<V1VolumeDevice>), IList<V1VolumeMount> volumeMounts = default(IList<V1VolumeMount>), string workingDir = default(string))
+        public V1Container(string name, IList<string> args = default(IList<string>), IList<string> command = default(IList<string>), IList<V1EnvVar> env = default(IList<V1EnvVar>), IList<V1EnvFromSource> envFrom = default(IList<V1EnvFromSource>), string image = default(string), string imagePullPolicy = default(string), V1Lifecycle lifecycle = default(V1Lifecycle), V1Probe livenessProbe = default(V1Probe), IList<V1ContainerPort> ports = default(IList<V1ContainerPort>), V1Probe readinessProbe = default(V1Probe), V1ResourceRequirements resources = default(V1ResourceRequirements), V1SecurityContext securityContext = default(V1SecurityContext), V1Probe startupProbe = default(V1Probe), bool? stdin = default(bool?), bool? stdinOnce = default(bool?), string terminationMessagePath = default(string), string terminationMessagePolicy = default(string), bool? tty = default(bool?), IList<V1VolumeDevice> volumeDevices = default(IList<V1VolumeDevice>), IList<V1VolumeMount> volumeMounts = default(IList<V1VolumeMount>), string workingDir = default(string))
         {
             Args = args;
             Command = command;
@@ -148,6 +158,7 @@ namespace k8s.Models
             ReadinessProbe = readinessProbe;
             Resources = resources;
             SecurityContext = securityContext;
+            StartupProbe = startupProbe;
             Stdin = stdin;
             StdinOnce = stdinOnce;
             TerminationMessagePath = terminationMessagePath;
@@ -292,6 +303,21 @@ namespace k8s.Models
         public V1SecurityContext SecurityContext { get; set; }
 
         /// <summary>
+        /// Gets or sets startupProbe indicates that the Pod has successfully
+        /// initialized. If specified, no other probes are executed until this
+        /// completes successfully. If this probe fails, the Pod will be
+        /// restarted, just as if the livenessProbe failed. This can be used to
+        /// provide different probe parameters at the beginning of a Pod's
+        /// lifecycle, when it might take a long time to load data or warm a
+        /// cache, than during steady-state operation. This cannot be updated.
+        /// This is an alpha feature enabled by the StartupProbe feature flag.
+        /// More info:
+        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// </summary>
+        [JsonProperty(PropertyName = "startupProbe")]
+        public V1Probe StartupProbe { get; set; }
+
+        /// <summary>
         /// Gets or sets whether this container should allocate a buffer for
         /// stdin in the container runtime. If this is not set, reads from
         /// stdin in the container will always result in EOF. Default is false.
@@ -409,6 +435,10 @@ namespace k8s.Models
             if (ReadinessProbe != null)
             {
                 ReadinessProbe.Validate();
+            }
+            if (StartupProbe != null)
+            {
+                StartupProbe.Validate();
             }
             if (VolumeDevices != null)
             {

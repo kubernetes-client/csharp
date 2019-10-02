@@ -70,7 +70,11 @@ namespace k8s.Models
         /// PodSecurityContext.  If set in both SecurityContext and
         /// PodSecurityContext, the value specified in SecurityContext takes
         /// precedence.</param>
-        /// <param name="windowsOptions">Windows security options.</param>
+        /// <param name="windowsOptions">The Windows specific settings applied
+        /// to all containers. If unspecified, the options from the
+        /// PodSecurityContext will be used. If set in both SecurityContext and
+        /// PodSecurityContext, the value specified in SecurityContext takes
+        /// precedence.</param>
         public V1SecurityContext(bool? allowPrivilegeEscalation = default(bool?), V1Capabilities capabilities = default(V1Capabilities), bool? privileged = default(bool?), string procMount = default(string), bool? readOnlyRootFilesystem = default(bool?), long? runAsGroup = default(long?), bool? runAsNonRoot = default(bool?), long? runAsUser = default(long?), V1SELinuxOptions seLinuxOptions = default(V1SELinuxOptions), V1WindowsSecurityContextOptions windowsOptions = default(V1WindowsSecurityContextOptions))
         {
             AllowPrivilegeEscalation = allowPrivilegeEscalation;
@@ -176,7 +180,11 @@ namespace k8s.Models
         public V1SELinuxOptions SeLinuxOptions { get; set; }
 
         /// <summary>
-        /// Gets or sets windows security options.
+        /// Gets or sets the Windows specific settings applied to all
+        /// containers. If unspecified, the options from the PodSecurityContext
+        /// will be used. If set in both SecurityContext and
+        /// PodSecurityContext, the value specified in SecurityContext takes
+        /// precedence.
         /// </summary>
         [JsonProperty(PropertyName = "windowsOptions")]
         public V1WindowsSecurityContextOptions WindowsOptions { get; set; }

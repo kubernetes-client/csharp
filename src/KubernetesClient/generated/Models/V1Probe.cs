@@ -41,7 +41,8 @@ namespace k8s.Models
         /// probe. Default to 10 seconds. Minimum value is 1.</param>
         /// <param name="successThreshold">Minimum consecutive successes for
         /// the probe to be considered successful after having failed. Defaults
-        /// to 1. Must be 1 for liveness. Minimum value is 1.</param>
+        /// to 1. Must be 1 for liveness and startup. Minimum value is
+        /// 1.</param>
         /// <param name="tcpSocket">TCPSocket specifies an action involving a
         /// TCP port. TCP hooks not yet supported</param>
         /// <param name="timeoutSeconds">Number of seconds after which the
@@ -105,7 +106,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets minimum consecutive successes for the probe to be
         /// considered successful after having failed. Defaults to 1. Must be 1
-        /// for liveness. Minimum value is 1.
+        /// for liveness and startup. Minimum value is 1.
         /// </summary>
         [JsonProperty(PropertyName = "successThreshold")]
         public int? SuccessThreshold { get; set; }

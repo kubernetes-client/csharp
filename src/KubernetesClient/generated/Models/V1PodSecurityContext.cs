@@ -70,7 +70,11 @@ namespace k8s.Models
         /// <param name="sysctls">Sysctls hold a list of namespaced sysctls
         /// used for the pod. Pods with unsupported sysctls (by the container
         /// runtime) might fail to launch.</param>
-        /// <param name="windowsOptions">Windows security options.</param>
+        /// <param name="windowsOptions">The Windows specific settings applied
+        /// to all containers. If unspecified, the options within a container's
+        /// SecurityContext will be used. If set in both SecurityContext and
+        /// PodSecurityContext, the value specified in SecurityContext takes
+        /// precedence.</param>
         public V1PodSecurityContext(long? fsGroup = default(long?), long? runAsGroup = default(long?), bool? runAsNonRoot = default(bool?), long? runAsUser = default(long?), V1SELinuxOptions seLinuxOptions = default(V1SELinuxOptions), IList<long?> supplementalGroups = default(IList<long?>), IList<V1Sysctl> sysctls = default(IList<V1Sysctl>), V1WindowsSecurityContextOptions windowsOptions = default(V1WindowsSecurityContextOptions))
         {
             FsGroup = fsGroup;
@@ -164,7 +168,11 @@ namespace k8s.Models
         public IList<V1Sysctl> Sysctls { get; set; }
 
         /// <summary>
-        /// Gets or sets windows security options.
+        /// Gets or sets the Windows specific settings applied to all
+        /// containers. If unspecified, the options within a container's
+        /// SecurityContext will be used. If set in both SecurityContext and
+        /// PodSecurityContext, the value specified in SecurityContext takes
+        /// precedence.
         /// </summary>
         [JsonProperty(PropertyName = "windowsOptions")]
         public V1WindowsSecurityContextOptions WindowsOptions { get; set; }

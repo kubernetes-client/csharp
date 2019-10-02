@@ -30,36 +30,33 @@ namespace k8s.Models
         /// Initializes a new instance of the
         /// V1beta1CustomResourceDefinitionVersion class.
         /// </summary>
-        /// <param name="name">Name is the version name, e.g. “v1”, “v2beta1”,
-        /// etc.</param>
-        /// <param name="served">Served is a flag enabling/disabling this
+        /// <param name="name">name is the version name, e.g. “v1”, “v2beta1”,
+        /// etc. The custom resources are served under this version at
+        /// `/apis/&lt;group&gt;/&lt;version&gt;/...` if `served` is
+        /// true.</param>
+        /// <param name="served">served is a flag enabling/disabling this
         /// version from being served via REST APIs</param>
-        /// <param name="storage">Storage flags the version as storage version.
-        /// There must be exactly one flagged as storage version.</param>
-        /// <param name="additionalPrinterColumns">AdditionalPrinterColumns are
-        /// additional columns shown e.g. in kubectl next to the name. Defaults
-        /// to a created-at column. Top-level and per-version columns are
-        /// mutually exclusive. Per-version columns must not all be set to
-        /// identical values (top-level columns should be used instead) This
-        /// field is alpha-level and is only honored by servers that enable the
-        /// CustomResourceWebhookConversion feature. NOTE: CRDs created prior
-        /// to 1.13 populated the top-level additionalPrinterColumns field by
-        /// default. To apply an update that changes to per-version
-        /// additionalPrinterColumns, the top-level additionalPrinterColumns
-        /// field must be explicitly set to null</param>
-        /// <param name="schema">Schema describes the schema for CustomResource
-        /// used in validation, pruning, and defaulting. Top-level and
-        /// per-version schemas are mutually exclusive. Per-version schemas
-        /// must not all be set to identical values (top-level validation
-        /// schema should be used instead) This field is alpha-level and is
-        /// only honored by servers that enable the
-        /// CustomResourceWebhookConversion feature.</param>
-        /// <param name="subresources">Subresources describes the subresources
-        /// for CustomResource Top-level and per-version subresources are
-        /// mutually exclusive. Per-version subresources must not all be set to
-        /// identical values (top-level subresources should be used instead)
-        /// This field is alpha-level and is only honored by servers that
-        /// enable the CustomResourceWebhookConversion feature.</param>
+        /// <param name="storage">storage indicates this version should be used
+        /// when persisting custom resources to storage. There must be exactly
+        /// one version with storage=true.</param>
+        /// <param name="additionalPrinterColumns">additionalPrinterColumns
+        /// specifies additional columns returned in Table output. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables
+        /// for details. Top-level and per-version columns are mutually
+        /// exclusive. Per-version columns must not all be set to identical
+        /// values (top-level columns should be used instead). If no top-level
+        /// or per-version columns are specified, a single column displaying
+        /// the age of the custom resource is used.</param>
+        /// <param name="schema">schema describes the schema used for
+        /// validation and pruning of this version of the custom resource.
+        /// Top-level and per-version schemas are mutually exclusive.
+        /// Per-version schemas must not all be set to identical values
+        /// (top-level validation schema should be used instead).</param>
+        /// <param name="subresources">subresources specify what subresources
+        /// this version of the defined custom resource have. Top-level and
+        /// per-version subresources are mutually exclusive. Per-version
+        /// subresources must not all be set to identical values (top-level
+        /// subresources should be used instead).</param>
         public V1beta1CustomResourceDefinitionVersion(string name, bool served, bool storage, IList<V1beta1CustomResourceColumnDefinition> additionalPrinterColumns = default(IList<V1beta1CustomResourceColumnDefinition>), V1beta1CustomResourceValidation schema = default(V1beta1CustomResourceValidation), V1beta1CustomResourceSubresources subresources = default(V1beta1CustomResourceSubresources))
         {
             AdditionalPrinterColumns = additionalPrinterColumns;
@@ -77,34 +74,33 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets additionalPrinterColumns are additional columns shown
-        /// e.g. in kubectl next to the name. Defaults to a created-at column.
-        /// Top-level and per-version columns are mutually exclusive.
-        /// Per-version columns must not all be set to identical values
-        /// (top-level columns should be used instead) This field is
-        /// alpha-level and is only honored by servers that enable the
-        /// CustomResourceWebhookConversion feature. NOTE: CRDs created prior
-        /// to 1.13 populated the top-level additionalPrinterColumns field by
-        /// default. To apply an update that changes to per-version
-        /// additionalPrinterColumns, the top-level additionalPrinterColumns
-        /// field must be explicitly set to null
+        /// Gets or sets additionalPrinterColumns specifies additional columns
+        /// returned in Table output. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables
+        /// for details. Top-level and per-version columns are mutually
+        /// exclusive. Per-version columns must not all be set to identical
+        /// values (top-level columns should be used instead). If no top-level
+        /// or per-version columns are specified, a single column displaying
+        /// the age of the custom resource is used.
         /// </summary>
         [JsonProperty(PropertyName = "additionalPrinterColumns")]
         public IList<V1beta1CustomResourceColumnDefinition> AdditionalPrinterColumns { get; set; }
 
         /// <summary>
         /// Gets or sets name is the version name, e.g. “v1”, “v2beta1”, etc.
+        /// The custom resources are served under this version at
+        /// `/apis/&amp;lt;group&amp;gt;/&amp;lt;version&amp;gt;/...` if
+        /// `served` is true.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets schema describes the schema for CustomResource used in
-        /// validation, pruning, and defaulting. Top-level and per-version
-        /// schemas are mutually exclusive. Per-version schemas must not all be
-        /// set to identical values (top-level validation schema should be used
-        /// instead) This field is alpha-level and is only honored by servers
-        /// that enable the CustomResourceWebhookConversion feature.
+        /// Gets or sets schema describes the schema used for validation and
+        /// pruning of this version of the custom resource. Top-level and
+        /// per-version schemas are mutually exclusive. Per-version schemas
+        /// must not all be set to identical values (top-level validation
+        /// schema should be used instead).
         /// </summary>
         [JsonProperty(PropertyName = "schema")]
         public V1beta1CustomResourceValidation Schema { get; set; }
@@ -117,19 +113,19 @@ namespace k8s.Models
         public bool Served { get; set; }
 
         /// <summary>
-        /// Gets or sets storage flags the version as storage version. There
-        /// must be exactly one flagged as storage version.
+        /// Gets or sets storage indicates this version should be used when
+        /// persisting custom resources to storage. There must be exactly one
+        /// version with storage=true.
         /// </summary>
         [JsonProperty(PropertyName = "storage")]
         public bool Storage { get; set; }
 
         /// <summary>
-        /// Gets or sets subresources describes the subresources for
-        /// CustomResource Top-level and per-version subresources are mutually
-        /// exclusive. Per-version subresources must not all be set to
-        /// identical values (top-level subresources should be used instead)
-        /// This field is alpha-level and is only honored by servers that
-        /// enable the CustomResourceWebhookConversion feature.
+        /// Gets or sets subresources specify what subresources this version of
+        /// the defined custom resource have. Top-level and per-version
+        /// subresources are mutually exclusive. Per-version subresources must
+        /// not all be set to identical values (top-level subresources should
+        /// be used instead).
         /// </summary>
         [JsonProperty(PropertyName = "subresources")]
         public V1beta1CustomResourceSubresources Subresources { get; set; }
