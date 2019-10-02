@@ -94,7 +94,7 @@ namespace k8s.Tests
             var created = new AsyncManualResetEvent(false);
             var eventsReceived = new AsyncManualResetEvent(false);
 
-            using (var server = new MockKubeApiServer(testOutput: testOutput, async (httpContext) =>
+            using (var server = new MockKubeApiServer(testOutput, async httpContext =>
             {
                 // block until reponse watcher obj created
                 await created.WaitAsync();
