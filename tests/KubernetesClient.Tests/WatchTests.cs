@@ -66,11 +66,16 @@ namespace k8s.Tests
                 });
 
                 // did not pass watch param
-                var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default");
-                Assert.ThrowsAny<KubernetesClientException>(() =>
-                {
-                    listTask.Watch<V1Pod>((type, item) => { });
-                });
+                var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default");
+                var onErrorCalled = false;
+
+                using (listTask.Watch<V1Pod, V1PodList>((type, item) => { }, e => {
+                    onErrorCalled = true;
+                })) { }
+
+                await Task.Delay(TimeSpan.FromSeconds(1)); // delay for onerror to be called
+                Assert.True(onErrorCalled);
+                
 
                 // server did not response line by line
                 await Assert.ThrowsAnyAsync<Exception>(() =>
@@ -80,6 +85,41 @@ namespace k8s.Tests
                     // this line did not throw
                     // listTask.Watch<Corev1Pod>((type, item) => { });
                 });
+            }
+        }
+
+        [Fact]
+        public async Task AsyncWatcher()
+        {
+            var created = new AsyncManualResetEvent(false);
+            var eventsReceived = new AsyncManualResetEvent(false);
+
+            using (var server = new MockKubeApiServer(testOutput, async httpContext =>
+            {
+                // block until reponse watcher obj created
+                await created.WaitAsync();
+                await WriteStreamLine(httpContext, MockAddedEventStreamLine);
+                return false;
+            }))
+            {
+                var client = new Kubernetes(new KubernetesClientConfiguration
+                {
+                    Host = server.Uri.ToString()
+                });
+
+
+                var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
+                using (listTask.Watch<V1Pod, V1PodList>((type, item) => {
+                    eventsReceived.Set();
+                }))
+                {
+                    // here watcher is ready to use, but http server has not responsed yet.
+                    created.Set();
+                    await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout));
+                }
+
+                Assert.True(eventsReceived.IsSet);
+                Assert.True(created.IsSet);
             }
         }
 
@@ -119,7 +159,7 @@ namespace k8s.Tests
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
 
-                var watcher = listTask.Watch<V1Pod>(
+                var watcher = listTask.Watch<V1Pod, V1PodList>(
                     (type, item) =>
                     {
                         testOutput.WriteLine($"Watcher received '{type}' event.");
@@ -188,7 +228,7 @@ namespace k8s.Tests
 
                 var events = new HashSet<WatchEventType>();
 
-                var watcher = listTask.Watch<V1Pod>(
+                var watcher = listTask.Watch<V1Pod, V1PodList>(
                     (type, item) =>
                     {
                         events.Add(type);
@@ -256,7 +296,7 @@ namespace k8s.Tests
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
 
-                var watcher = listTask.Watch<V1Pod>(
+                var watcher = listTask.Watch<V1Pod, V1PodList>(
                     (type, item) =>
                     {
                         testOutput.WriteLine($"Watcher received '{type}' event.");
@@ -330,7 +370,7 @@ namespace k8s.Tests
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
 
-                var watcher = listTask.Watch<V1Pod>(
+                var watcher = listTask.Watch<V1Pod, V1PodList>(
                     (type, item) =>
                     {
                         testOutput.WriteLine($"Watcher received '{type}' event.");
@@ -396,7 +436,7 @@ namespace k8s.Tests
 
                 waitForException.Set();
                 Watcher<V1Pod> watcher;
-                watcher = listTask.Watch<V1Pod>(
+                watcher = listTask.Watch<V1Pod, V1PodList>(
                     onEvent: (type, item) => { },
                     onError: e =>
                     {
@@ -463,7 +503,7 @@ namespace k8s.Tests
 
                 var events = new HashSet<WatchEventType>();
 
-                var watcher = listTask.Watch<V1Pod>(
+                var watcher = listTask.Watch<V1Pod, V1PodList>(
                     (type, item) =>
                     {
                         events.Add(type);

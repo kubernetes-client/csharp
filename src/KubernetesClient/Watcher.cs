@@ -29,7 +29,9 @@ namespace k8s
         public bool Watching { get; private set; }
 
         private readonly CancellationTokenSource _cts;
-        private readonly StreamReader _streamReader;
+        private readonly Func<Task<StreamReader>> _streamReaderCreator;
+
+        private StreamReader _streamReader;
         private readonly Task _watcherLoop;
 
         /// <summary>
@@ -47,9 +49,9 @@ namespace k8s
         /// <param name="onClosed">
         /// The action to invoke when the server closes the connection.
         /// </param>
-        public Watcher(StreamReader streamReader, Action<WatchEventType, T> onEvent, Action<Exception> onError, Action onClosed = null)
+        public Watcher(Func<Task<StreamReader>> streamReaderCreator, Action<WatchEventType, T> onEvent, Action<Exception> onError, Action onClosed = null)
         {
-            _streamReader = streamReader;
+            _streamReaderCreator = streamReaderCreator;
             OnEvent += onEvent;
             OnError += onError;
             OnClosed += onClosed;
@@ -62,7 +64,7 @@ namespace k8s
         public void Dispose()
         {
             _cts.Cancel();
-            _streamReader.Dispose();
+            _streamReader?.Dispose();
         }
 
         /// <summary>
@@ -96,9 +98,10 @@ namespace k8s
             {
                 Watching = true;
                 string line;
+                _streamReader = await _streamReaderCreator();
 
                 // ReadLineAsync will return null when we've reached the end of the stream.
-                while ((line = await this._streamReader.ReadLineAsync().ConfigureAwait(false)) != null)
+                while ((line = await _streamReader.ReadLineAsync().ConfigureAwait(false)) != null)
                 {
                     if (cancellationToken.IsCancellationRequested)
                     {
@@ -147,6 +150,7 @@ namespace k8s
         /// create a watch object from a call to api server with watch=true
         /// </summary>
         /// <typeparam name="T">type of the event object</typeparam>
+        /// <typeparam name="L">type of the HttpOperationResponse object</typeparam>
         /// <param name="response">the api response</param>
         /// <param name="onEvent">a callback when any event raised from api server</param>
         /// <param name="onError">a callbak when any exception was caught during watching</param>
@@ -154,23 +158,28 @@ namespace k8s
         /// The action to invoke when the server closes the connection.
         /// </param>
         /// <returns>a watch object</returns>
-        public static Watcher<T> Watch<T>(this HttpOperationResponse response,
+        public static Watcher<T> Watch<T, L>(this Task<HttpOperationResponse<L>> responseTask,
             Action<WatchEventType, T> onEvent,
             Action<Exception> onError = null,
             Action onClosed = null)
         {
-            if (!(response.Response.Content is WatcherDelegatingHandler.LineSeparatedHttpContent content))
-            {
-                throw new KubernetesClientException("not a watchable request or failed response");
-            }
+            return new Watcher<T>(async () => {
+                var response = await responseTask;
 
-            return new Watcher<T>(content.StreamReader, onEvent, onError, onClosed);
+                if (!(response.Response.Content is WatcherDelegatingHandler.LineSeparatedHttpContent content))
+                {
+                    throw new KubernetesClientException("not a watchable request or failed response");
+                }
+
+                return content.StreamReader;
+                } , onEvent, onError, onClosed);
         }
 
         /// <summary>
         /// create a watch object from a call to api server with watch=true
         /// </summary>
         /// <typeparam name="T">type of the event object</typeparam>
+        /// <typeparam name="L">type of the HttpOperationResponse object</typeparam>
         /// <param name="response">the api response</param>
         /// <param name="onEvent">a callback when any event raised from api server</param>
         /// <param name="onError">a callbak when any exception was caught during watching</param>
@@ -178,12 +187,12 @@ namespace k8s
         /// The action to invoke when the server closes the connection.
         /// </param>
         /// <returns>a watch object</returns>
-        public static Watcher<T> Watch<T>(this HttpOperationResponse<T> response,
+        public static Watcher<T> Watch<T, L>(this HttpOperationResponse<L> response,
             Action<WatchEventType, T> onEvent,
             Action<Exception> onError = null,
             Action onClosed = null)
         {
-            return Watch((HttpOperationResponse)response, onEvent, onError, onClosed);
+            return Watch(Task.FromResult(response), onEvent, onError, onClosed);
         }
     }
 }

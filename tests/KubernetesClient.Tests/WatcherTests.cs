@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace k8s.Tests
@@ -21,7 +22,7 @@ namespace k8s.Tests
                 ManualResetEvent mre = new ManualResetEvent(false);
 
                 Watcher<V1Pod> watcher = new Watcher<V1Pod>(
-                    reader,
+                    () => Task.FromResult(reader),
                     null,
                     (exception) =>
                     {
