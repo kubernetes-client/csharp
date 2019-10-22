@@ -292,7 +292,7 @@ spec:
             };
 
             var output = Yaml.SaveToString<V1Service>(obj);
-            Assert.Equal(output, content);
+            Assert.True(ToLines(output).SequenceEqual(ToLines(content)));
         }
     }
 }
