@@ -6,7 +6,10 @@ namespace k8s
 {
     public partial class KubernetesClientConfiguration
     {
-        private const string ServiceAccountPath = "/var/run/secrets/kubernetes.io/serviceaccount/";
+        private static string ServiceAccountPath =
+            Path.Combine(new string[] {
+                "var", "run", "secrets", "kubernetes.io", "serviceaccount/"
+            });
         private const string ServiceAccountTokenKeyFileName = "token";
         private const string ServiceAccountRootCAKeyFileName = "ca.crt";
 
