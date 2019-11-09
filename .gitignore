@@ -2,6 +2,7 @@
 .vs
 obj/
 bin/
+**/TestResults
 
 # User-specific VS files
 *.suo

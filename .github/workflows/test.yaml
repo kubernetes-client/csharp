@@ -12,3 +12,7 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet }}
       - run: dotnet build
+
+on:
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
