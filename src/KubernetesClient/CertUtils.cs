@@ -74,7 +74,13 @@ namespace k8s
             }
 
             var cert = new X509CertificateParser().ReadCertificate(new MemoryStream(certData));
-
+            // key usage is a bit string, zero-th bit is 'digitalSignature'
+            // See https://www.alvestrand.no/objectid/2.5.29.15.html for more details.
+            if (cert != null && cert.GetKeyUsage() != null && !cert.GetKeyUsage()[0]) {
+                throw new Exception(
+                    "Client certificates must be marked for digital signing. " +
+                    "See https://github.com/kubernetes-client/csharp/issues/319");
+            }
             object obj;
             using (var reader = new StreamReader(new MemoryStream(keyData)))
             {
