@@ -9,3 +9,8 @@ bin/
 *.user
 *.userosscache
 *.sln.docstates
+
+tools/**
+!tools/packages.config
+
+artifacts/**
