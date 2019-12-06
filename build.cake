@@ -32,9 +32,6 @@ Task("Pack-NuGet")
 			Configuration = configuration,
             OutputDirectory = artifactsDir
         });
-
-    MoveFile($"./{artifactsDir}/KubernetesClient.{buildNumber}.nupkg",
-             $"./{artifactsDir}/Gearset.KubernetesClient.{buildNumber}.nupkg");
     });
 
 Task("Push-NuGet")
