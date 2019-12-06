@@ -1,8 +1,10 @@
+#addin Cake.GitVersioning
+
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 
 // Repository-specific variables for build tasks
-var buildNumber = EnvironmentVariable("build_number") ?? "0.0.5";
+var buildNumber = GitVersioningGetVersion().SemVer2;
 var artifactsDir = "./artifacts";
 var projectToPublish = "./src/KubernetesClient/KubernetesClient.csproj";
 var feedzKey = EnvironmentVariable("NUGET_FEEDZ_API_KEY");
@@ -28,8 +30,7 @@ Task("Pack-NuGet")
     .Does(() => {
         DotNetCorePack(projectToPublish, new DotNetCorePackSettings {
 			Configuration = configuration,
-            OutputDirectory = artifactsDir,
-			ArgumentCustomization = args => args.Append($"/p:Version={buildNumber}")
+            OutputDirectory = artifactsDir
         });
     });
 
