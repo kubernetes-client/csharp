@@ -32,6 +32,9 @@ Task("Pack-NuGet")
 			Configuration = configuration,
             OutputDirectory = artifactsDir
         });
+
+    MoveFile($"./{artifactsDir}/KubernetesClient.{buildNumber}.nupkg",
+             $"./{artifactsDir}/Gearset.KubernetesClient.{buildNumber}.nupkg");
     });
 
 Task("Push-NuGet")
@@ -40,7 +43,7 @@ Task("Push-NuGet")
         if (!String.IsNullOrEmpty (feedzKey)) {
             Information("Have a feedz key so pushing package");
 
-            DotNetCoreNuGetPush($"./{artifactsDir}/KubernetesClient.{buildNumber}.nupkg", new DotNetCoreNuGetPushSettings {
+            DotNetCoreNuGetPush($"./{artifactsDir}/Gearset.KubernetesClient.{buildNumber}.nupkg", new DotNetCoreNuGetPushSettings {
                 Source = "https://f.feedz.io/gearsethq/gearset-kubernetes-client/nuget",
                 ApiKey = feedzKey
             });
