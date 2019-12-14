@@ -12,24 +12,24 @@ namespace k8s.Models
     /// <summary>
     /// EndpointConditions represents the current condition of an endpoint.
     /// </summary>
-    public partial class V1alpha1EndpointConditions
+    public partial class V1beta1EndpointConditions
     {
         /// <summary>
-        /// Initializes a new instance of the V1alpha1EndpointConditions class.
+        /// Initializes a new instance of the V1beta1EndpointConditions class.
         /// </summary>
-        public V1alpha1EndpointConditions()
+        public V1beta1EndpointConditions()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the V1alpha1EndpointConditions class.
+        /// Initializes a new instance of the V1beta1EndpointConditions class.
         /// </summary>
         /// <param name="ready">ready indicates that this endpoint is prepared
         /// to receive traffic, according to whatever system is managing the
         /// endpoint. A nil value indicates an unknown state. In most cases
         /// consumers should interpret this unknown state as ready.</param>
-        public V1alpha1EndpointConditions(bool? ready = default(bool?))
+        public V1beta1EndpointConditions(bool? ready = default(bool?))
         {
             Ready = ready;
             CustomInit();

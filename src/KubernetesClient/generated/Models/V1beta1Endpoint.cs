@@ -15,26 +15,24 @@ namespace k8s.Models
     /// <summary>
     /// Endpoint represents a single logical "backend" implementing a service.
     /// </summary>
-    public partial class V1alpha1Endpoint
+    public partial class V1beta1Endpoint
     {
         /// <summary>
-        /// Initializes a new instance of the V1alpha1Endpoint class.
+        /// Initializes a new instance of the V1beta1Endpoint class.
         /// </summary>
-        public V1alpha1Endpoint()
+        public V1beta1Endpoint()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the V1alpha1Endpoint class.
+        /// Initializes a new instance of the V1beta1Endpoint class.
         /// </summary>
         /// <param name="addresses">addresses of this endpoint. The contents of
         /// this field are interpreted according to the corresponding
-        /// EndpointSlice addressType field. This allows for cases like
-        /// dual-stack (IPv4 and IPv6) networking. Consumers (e.g. kube-proxy)
-        /// must handle different types of addresses in the context of their
-        /// own capabilities. This must contain at least one address but no
-        /// more than 100.</param>
+        /// EndpointSlice addressType field. Consumers must handle different
+        /// types of addresses in the context of their own capabilities. This
+        /// must contain at least one address but no more than 100.</param>
         /// <param name="conditions">conditions contains information about the
         /// current status of the endpoint.</param>
         /// <param name="hostname">hostname of this endpoint. This field may be
@@ -62,7 +60,7 @@ namespace k8s.Models
         /// where the
         /// endpoint is located. This should match the corresponding node
         /// label.</param>
-        public V1alpha1Endpoint(IList<string> addresses, V1alpha1EndpointConditions conditions = default(V1alpha1EndpointConditions), string hostname = default(string), V1ObjectReference targetRef = default(V1ObjectReference), IDictionary<string, string> topology = default(IDictionary<string, string>))
+        public V1beta1Endpoint(IList<string> addresses, V1beta1EndpointConditions conditions = default(V1beta1EndpointConditions), string hostname = default(string), V1ObjectReference targetRef = default(V1ObjectReference), IDictionary<string, string> topology = default(IDictionary<string, string>))
         {
             Addresses = addresses;
             Conditions = conditions;
@@ -80,10 +78,9 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets addresses of this endpoint. The contents of this field
         /// are interpreted according to the corresponding EndpointSlice
-        /// addressType field. This allows for cases like dual-stack (IPv4 and
-        /// IPv6) networking. Consumers (e.g. kube-proxy) must handle different
-        /// types of addresses in the context of their own capabilities. This
-        /// must contain at least one address but no more than 100.
+        /// addressType field. Consumers must handle different types of
+        /// addresses in the context of their own capabilities. This must
+        /// contain at least one address but no more than 100.
         /// </summary>
         [JsonProperty(PropertyName = "addresses")]
         public IList<string> Addresses { get; set; }
@@ -93,7 +90,7 @@ namespace k8s.Models
         /// status of the endpoint.
         /// </summary>
         [JsonProperty(PropertyName = "conditions")]
-        public V1alpha1EndpointConditions Conditions { get; set; }
+        public V1beta1EndpointConditions Conditions { get; set; }
 
         /// <summary>
         /// Gets or sets hostname of this endpoint. This field may be used by

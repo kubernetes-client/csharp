@@ -40,7 +40,7 @@ namespace k8s.Models
         /// the custom resource.</param>
         /// <param name="scope">scope indicates whether the defined custom
         /// resource is cluster- or namespace-scoped. Allowed values are
-        /// `Cluster` and `Namespaced`. Default is `Namespaced`.</param>
+        /// `Cluster` and `Namespaced`.</param>
         /// <param name="versions">versions is the list of all API versions of
         /// the defined custom resource. Version names are used to compute the
         /// order in which served versions are listed in API discovery. If the
@@ -119,7 +119,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets scope indicates whether the defined custom resource is
         /// cluster- or namespace-scoped. Allowed values are `Cluster` and
-        /// `Namespaced`. Default is `Namespaced`.
+        /// `Namespaced`.
         /// </summary>
         [JsonProperty(PropertyName = "scope")]
         public string Scope { get; set; }
