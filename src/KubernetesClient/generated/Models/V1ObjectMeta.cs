@@ -77,7 +77,17 @@ namespace k8s.Models
         /// from the registry. Each entry is an identifier for the responsible
         /// component that will remove the entry from the list. If the
         /// deletionTimestamp of the object is non-nil, entries in this list
-        /// can only be removed.</param>
+        /// can only be removed. Finalizers may be processed and removed in any
+        /// order.  Order is NOT enforced because it introduces significant
+        /// risk of stuck finalizers. finalizers is a shared field, any actor
+        /// with permission can reorder it. If the finalizer list is processed
+        /// in order, then this can lead to a situation in which the component
+        /// responsible for the first finalizer in the list is waiting for a
+        /// signal (field value, external system, or other) produced by a
+        /// component responsible for a finalizer later in the list, resulting
+        /// in a deadlock. Without enforced ordering finalizers are free to
+        /// order amongst themselves and are not vulnerable to ordering changes
+        /// in the list.</param>
         /// <param name="generateName">GenerateName is an optional prefix, used
         /// by the server, to generate a unique name ONLY IF the Name field has
         /// not been provided. If this field is used, the name returned to the
@@ -254,6 +264,17 @@ namespace k8s.Models
         /// registry. Each entry is an identifier for the responsible component
         /// that will remove the entry from the list. If the deletionTimestamp
         /// of the object is non-nil, entries in this list can only be removed.
+        /// Finalizers may be processed and removed in any order.  Order is NOT
+        /// enforced because it introduces significant risk of stuck
+        /// finalizers. finalizers is a shared field, any actor with permission
+        /// can reorder it. If the finalizer list is processed in order, then
+        /// this can lead to a situation in which the component responsible for
+        /// the first finalizer in the list is waiting for a signal (field
+        /// value, external system, or other) produced by a component
+        /// responsible for a finalizer later in the list, resulting in a
+        /// deadlock. Without enforced ordering finalizers are free to order
+        /// amongst themselves and are not vulnerable to ordering changes in
+        /// the list.
         /// </summary>
         [JsonProperty(PropertyName = "finalizers")]
         public IList<string> Finalizers { get; set; }

@@ -6,29 +6,28 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// EndpointSliceList represents a list of endpoint slices
+    /// PriorityLevelConfiguration represents the configuration of a priority
+    /// level.
     /// </summary>
-    public partial class V1alpha1EndpointSliceList
+    public partial class V1alpha1PriorityLevelConfiguration
     {
         /// <summary>
-        /// Initializes a new instance of the V1alpha1EndpointSliceList class.
+        /// Initializes a new instance of the
+        /// V1alpha1PriorityLevelConfiguration class.
         /// </summary>
-        public V1alpha1EndpointSliceList()
+        public V1alpha1PriorityLevelConfiguration()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the V1alpha1EndpointSliceList class.
+        /// Initializes a new instance of the
+        /// V1alpha1PriorityLevelConfiguration class.
         /// </summary>
-        /// <param name="items">List of endpoint slices</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
@@ -39,13 +38,22 @@ namespace k8s.Models
         /// endpoint the client submits requests to. Cannot be updated. In
         /// CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</param>
-        /// <param name="metadata">Standard list metadata.</param>
-        public V1alpha1EndpointSliceList(IList<V1alpha1EndpointSlice> items, string apiVersion = default(string), string kind = default(string), V1ListMeta metadata = default(V1ListMeta))
+        /// <param name="metadata">`metadata` is the standard object's
+        /// metadata. More info:
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</param>
+        /// <param name="spec">`spec` is the specification of the desired
+        /// behavior of a "request-priority". More info:
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status</param>
+        /// <param name="status">`status` is the current status of a
+        /// "request-priority". More info:
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status</param>
+        public V1alpha1PriorityLevelConfiguration(string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), V1alpha1PriorityLevelConfigurationSpec spec = default(V1alpha1PriorityLevelConfigurationSpec), V1alpha1PriorityLevelConfigurationStatus status = default(V1alpha1PriorityLevelConfigurationStatus))
         {
             ApiVersion = apiVersion;
-            Items = items;
             Kind = kind;
             Metadata = metadata;
+            Spec = spec;
+            Status = status;
             CustomInit();
         }
 
@@ -65,12 +73,6 @@ namespace k8s.Models
         public string ApiVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets list of endpoint slices
-        /// </summary>
-        [JsonProperty(PropertyName = "items")]
-        public IList<V1alpha1EndpointSlice> Items { get; set; }
-
-        /// <summary>
         /// Gets or sets kind is a string value representing the REST resource
         /// this object represents. Servers may infer this from the endpoint
         /// the client submits requests to. Cannot be updated. In CamelCase.
@@ -81,32 +83,40 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// Gets or sets standard list metadata.
+        /// Gets or sets `metadata` is the standard object's metadata. More
+        /// info:
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
-        public V1ListMeta Metadata { get; set; }
+        public V1ObjectMeta Metadata { get; set; }
+
+        /// <summary>
+        /// Gets or sets `spec` is the specification of the desired behavior of
+        /// a "request-priority". More info:
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+        /// </summary>
+        [JsonProperty(PropertyName = "spec")]
+        public V1alpha1PriorityLevelConfigurationSpec Spec { get; set; }
+
+        /// <summary>
+        /// Gets or sets `status` is the current status of a
+        /// "request-priority". More info:
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public V1alpha1PriorityLevelConfigurationStatus Status { get; set; }
 
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (Items == null)
+            if (Spec != null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Items");
-            }
-            if (Items != null)
-            {
-                foreach (var element in Items)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
+                Spec.Validate();
             }
         }
     }

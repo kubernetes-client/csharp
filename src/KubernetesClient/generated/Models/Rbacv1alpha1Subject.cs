@@ -15,18 +15,18 @@ namespace k8s.Models
     /// binding applies to.  This can either hold a direct API object
     /// reference, or a value for non-objects such as user and group names.
     /// </summary>
-    public partial class V1alpha1Subject
+    public partial class Rbacv1alpha1Subject
     {
         /// <summary>
-        /// Initializes a new instance of the V1alpha1Subject class.
+        /// Initializes a new instance of the Rbacv1alpha1Subject class.
         /// </summary>
-        public V1alpha1Subject()
+        public Rbacv1alpha1Subject()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the V1alpha1Subject class.
+        /// Initializes a new instance of the Rbacv1alpha1Subject class.
         /// </summary>
         /// <param name="kind">Kind of object being referenced. Values defined
         /// by this API group are "User", "Group", and "ServiceAccount". If the
@@ -41,7 +41,7 @@ namespace k8s.Models
         /// If the object kind is non-namespace, such as "User" or "Group", and
         /// this value is not empty the Authorizer should report an
         /// error.</param>
-        public V1alpha1Subject(string kind, string name, string apiVersion = default(string), string namespaceProperty = default(string))
+        public Rbacv1alpha1Subject(string kind, string name, string apiVersion = default(string), string namespaceProperty = default(string))
         {
             ApiVersion = apiVersion;
             Kind = kind;

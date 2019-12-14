@@ -170,9 +170,7 @@ namespace k8s.Models
         /// containers will be able to view and signal processes from other
         /// containers in the same pod, and the first process in each container
         /// will not be assigned PID 1. HostPID and ShareProcessNamespace
-        /// cannot both be set. Optional: Default to false. This field is
-        /// beta-level and may be disabled with the PodShareProcessNamespace
-        /// feature.</param>
+        /// cannot both be set. Optional: Default to false.</param>
         /// <param name="subdomain">If specified, the fully qualified Pod
         /// hostname will be "&lt;hostname&gt;.&lt;subdomain&gt;.&lt;pod
         /// namespace&gt;.svc.&lt;cluster domain&gt;". If not specified, the
@@ -515,8 +513,7 @@ namespace k8s.Models
         /// view and signal processes from other containers in the same pod,
         /// and the first process in each container will not be assigned PID 1.
         /// HostPID and ShareProcessNamespace cannot both be set. Optional:
-        /// Default to false. This field is beta-level and may be disabled with
-        /// the PodShareProcessNamespace feature.
+        /// Default to false.
         /// </summary>
         [JsonProperty(PropertyName = "shareProcessNamespace")]
         public bool? ShareProcessNamespace { get; set; }

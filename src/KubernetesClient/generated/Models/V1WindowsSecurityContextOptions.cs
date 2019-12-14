@@ -44,8 +44,8 @@ namespace k8s.Models
         /// in image metadata if unspecified. May also be set in
         /// PodSecurityContext. If set in both SecurityContext and
         /// PodSecurityContext, the value specified in SecurityContext takes
-        /// precedence. This field is alpha-level and it is only honored by
-        /// servers that enable the WindowsRunAsUserName feature flag.</param>
+        /// precedence. This field is beta-level and may be disabled with the
+        /// WindowsRunAsUserName feature flag.</param>
         public V1WindowsSecurityContextOptions(string gmsaCredentialSpec = default(string), string gmsaCredentialSpecName = default(string), string runAsUserName = default(string))
         {
             GmsaCredentialSpec = gmsaCredentialSpec;
@@ -82,9 +82,8 @@ namespace k8s.Models
         /// container process. Defaults to the user specified in image metadata
         /// if unspecified. May also be set in PodSecurityContext. If set in
         /// both SecurityContext and PodSecurityContext, the value specified in
-        /// SecurityContext takes precedence. This field is alpha-level and it
-        /// is only honored by servers that enable the WindowsRunAsUserName
-        /// feature flag.
+        /// SecurityContext takes precedence. This field is beta-level and may
+        /// be disabled with the WindowsRunAsUserName feature flag.
         /// </summary>
         [JsonProperty(PropertyName = "runAsUserName")]
         public string RunAsUserName { get; set; }

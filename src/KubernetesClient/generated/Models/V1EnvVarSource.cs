@@ -29,7 +29,7 @@ namespace k8s.Models
         /// <param name="fieldRef">Selects a field of the pod: supports
         /// metadata.name, metadata.namespace, metadata.labels,
         /// metadata.annotations, spec.nodeName, spec.serviceAccountName,
-        /// status.hostIP, status.podIP.</param>
+        /// status.hostIP, status.podIP, status.podIPs.</param>
         /// <param name="resourceFieldRef">Selects a resource of the container:
         /// only resources limits and requests (limits.cpu, limits.memory,
         /// limits.ephemeral-storage, requests.cpu, requests.memory and
@@ -60,7 +60,7 @@ namespace k8s.Models
         /// Gets or sets selects a field of the pod: supports metadata.name,
         /// metadata.namespace, metadata.labels, metadata.annotations,
         /// spec.nodeName, spec.serviceAccountName, status.hostIP,
-        /// status.podIP.
+        /// status.podIP, status.podIPs.
         /// </summary>
         [JsonProperty(PropertyName = "fieldRef")]
         public V1ObjectFieldSelector FieldRef { get; set; }

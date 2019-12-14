@@ -714,16 +714,16 @@ namespace k8s.Models
         public const string KubeGroup = "";
     }
 
-    public partial class V1alpha1EndpointSlice : IKubernetesObject
+    public partial class V1beta1EndpointSlice : IKubernetesObject
     {
-        public const string KubeApiVersion = "v1alpha1";
+        public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "EndpointSlice";
         public const string KubeGroup = "discovery.k8s.io";
     }
 
-    public partial class V1alpha1EndpointSliceList : IKubernetesObject
+    public partial class V1beta1EndpointSliceList : IKubernetesObject
     {
-        public const string KubeApiVersion = "v1alpha1";
+        public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "EndpointSliceList";
         public const string KubeGroup = "discovery.k8s.io";
     }
@@ -838,6 +838,34 @@ namespace k8s.Models
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "Scale";
         public const string KubeGroup = "extensions";
+    }
+
+    public partial class V1alpha1FlowSchema : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1alpha1";
+        public const string KubeKind = "FlowSchema";
+        public const string KubeGroup = "flowcontrol.apiserver.k8s.io";
+    }
+
+    public partial class V1alpha1FlowSchemaList : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1alpha1";
+        public const string KubeKind = "FlowSchemaList";
+        public const string KubeGroup = "flowcontrol.apiserver.k8s.io";
+    }
+
+    public partial class V1alpha1PriorityLevelConfiguration : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1alpha1";
+        public const string KubeKind = "PriorityLevelConfiguration";
+        public const string KubeGroup = "flowcontrol.apiserver.k8s.io";
+    }
+
+    public partial class V1alpha1PriorityLevelConfigurationList : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1alpha1";
+        public const string KubeKind = "PriorityLevelConfigurationList";
+        public const string KubeGroup = "flowcontrol.apiserver.k8s.io";
     }
 
     public partial class V1NetworkPolicy : IKubernetesObject
@@ -1153,6 +1181,20 @@ namespace k8s.Models
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "PodPresetList";
         public const string KubeGroup = "settings.k8s.io";
+    }
+
+    public partial class V1CSINode : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "CSINode";
+        public const string KubeGroup = "storage.k8s.io";
+    }
+
+    public partial class V1CSINodeList : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "CSINodeList";
+        public const string KubeGroup = "storage.k8s.io";
     }
 
     public partial class V1StorageClass : IKubernetesObject

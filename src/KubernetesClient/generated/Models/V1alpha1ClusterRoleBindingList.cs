@@ -13,7 +13,9 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// ClusterRoleBindingList is a collection of ClusterRoleBindings
+    /// ClusterRoleBindingList is a collection of ClusterRoleBindings.
+    /// Deprecated in v1.17 in favor of rbac.authorization.k8s.io/v1
+    /// ClusterRoleBindings, and will no longer be served in v1.20.
     /// </summary>
     public partial class V1alpha1ClusterRoleBindingList
     {

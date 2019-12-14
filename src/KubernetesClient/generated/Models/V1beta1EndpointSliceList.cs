@@ -13,30 +13,22 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// EndpointSlice represents a subset of the endpoints that implement a
-    /// service. For a given service there may be multiple EndpointSlice
-    /// objects, selected by labels, which must be joined to produce the full
-    /// set of endpoints.
+    /// EndpointSliceList represents a list of endpoint slices
     /// </summary>
-    public partial class V1alpha1EndpointSlice
+    public partial class V1beta1EndpointSliceList
     {
         /// <summary>
-        /// Initializes a new instance of the V1alpha1EndpointSlice class.
+        /// Initializes a new instance of the V1beta1EndpointSliceList class.
         /// </summary>
-        public V1alpha1EndpointSlice()
+        public V1beta1EndpointSliceList()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the V1alpha1EndpointSlice class.
+        /// Initializes a new instance of the V1beta1EndpointSliceList class.
         /// </summary>
-        /// <param name="endpoints">endpoints is a list of unique endpoints in
-        /// this slice. Each slice may include a maximum of 1000
-        /// endpoints.</param>
-        /// <param name="addressType">addressType specifies the type of address
-        /// carried by this EndpointSlice. All addresses in this slice must be
-        /// the same type. Default is IP</param>
+        /// <param name="items">List of endpoint slices</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
@@ -47,21 +39,13 @@ namespace k8s.Models
         /// endpoint the client submits requests to. Cannot be updated. In
         /// CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</param>
-        /// <param name="metadata">Standard object's metadata.</param>
-        /// <param name="ports">ports specifies the list of network ports
-        /// exposed by each endpoint in this slice. Each port must have a
-        /// unique name. When ports is empty, it indicates that there are no
-        /// defined ports. When a port is defined with a nil port value, it
-        /// indicates "all ports". Each slice may include a maximum of 100
-        /// ports.</param>
-        public V1alpha1EndpointSlice(IList<V1alpha1Endpoint> endpoints, string addressType = default(string), string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), IList<V1alpha1EndpointPort> ports = default(IList<V1alpha1EndpointPort>))
+        /// <param name="metadata">Standard list metadata.</param>
+        public V1beta1EndpointSliceList(IList<V1beta1EndpointSlice> items, string apiVersion = default(string), string kind = default(string), V1ListMeta metadata = default(V1ListMeta))
         {
-            AddressType = addressType;
             ApiVersion = apiVersion;
-            Endpoints = endpoints;
+            Items = items;
             Kind = kind;
             Metadata = metadata;
-            Ports = ports;
             CustomInit();
         }
 
@@ -69,14 +53,6 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets addressType specifies the type of address carried by
-        /// this EndpointSlice. All addresses in this slice must be the same
-        /// type. Default is IP
-        /// </summary>
-        [JsonProperty(PropertyName = "addressType")]
-        public string AddressType { get; set; }
 
         /// <summary>
         /// Gets or sets aPIVersion defines the versioned schema of this
@@ -89,11 +65,10 @@ namespace k8s.Models
         public string ApiVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets endpoints is a list of unique endpoints in this slice.
-        /// Each slice may include a maximum of 1000 endpoints.
+        /// Gets or sets list of endpoint slices
         /// </summary>
-        [JsonProperty(PropertyName = "endpoints")]
-        public IList<V1alpha1Endpoint> Endpoints { get; set; }
+        [JsonProperty(PropertyName = "items")]
+        public IList<V1beta1EndpointSlice> Items { get; set; }
 
         /// <summary>
         /// Gets or sets kind is a string value representing the REST resource
@@ -106,20 +81,10 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// Gets or sets standard object's metadata.
+        /// Gets or sets standard list metadata.
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
-        public V1ObjectMeta Metadata { get; set; }
-
-        /// <summary>
-        /// Gets or sets ports specifies the list of network ports exposed by
-        /// each endpoint in this slice. Each port must have a unique name.
-        /// When ports is empty, it indicates that there are no defined ports.
-        /// When a port is defined with a nil port value, it indicates "all
-        /// ports". Each slice may include a maximum of 100 ports.
-        /// </summary>
-        [JsonProperty(PropertyName = "ports")]
-        public IList<V1alpha1EndpointPort> Ports { get; set; }
+        public V1ListMeta Metadata { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -129,13 +94,13 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Endpoints == null)
+            if (Items == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Endpoints");
+                throw new ValidationException(ValidationRules.CannotBeNull, "Items");
             }
-            if (Endpoints != null)
+            if (Items != null)
             {
-                foreach (var element in Endpoints)
+                foreach (var element in Items)
                 {
                     if (element != null)
                     {

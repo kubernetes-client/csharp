@@ -43,8 +43,8 @@ namespace k8s.Models
         /// which the container's volume should be mounted. Behaves similarly
         /// to SubPath but environment variable references $(VAR_NAME) are
         /// expanded using the container's environment. Defaults to ""
-        /// (volume's root). SubPathExpr and SubPath are mutually exclusive.
-        /// This field is beta in 1.15.</param>
+        /// (volume's root). SubPathExpr and SubPath are mutually
+        /// exclusive.</param>
         public V1VolumeMount(string mountPath, string name, string mountPropagation = default(string), bool? readOnlyProperty = default(bool?), string subPath = default(string), string subPathExpr = default(string))
         {
             MountPath = mountPath;
@@ -101,8 +101,7 @@ namespace k8s.Models
         /// container's volume should be mounted. Behaves similarly to SubPath
         /// but environment variable references $(VAR_NAME) are expanded using
         /// the container's environment. Defaults to "" (volume's root).
-        /// SubPathExpr and SubPath are mutually exclusive. This field is beta
-        /// in 1.15.
+        /// SubPathExpr and SubPath are mutually exclusive.
         /// </summary>
         [JsonProperty(PropertyName = "subPathExpr")]
         public string SubPathExpr { get; set; }
