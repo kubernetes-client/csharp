@@ -31,7 +31,8 @@ namespace httpClientFactory
                             return new Kubernetes(
                                 serviceProvider.GetRequiredService<KubernetesClientConfiguration>(),
                                 httpClient);
-                        });
+                        })
+                        .ConfigurePrimaryHttpMessageHandler(config.CreateDefaultHttpClientHandler);
 
                     // Add the class that uses the client
                     services.AddHostedService<PodListHostedService>();
