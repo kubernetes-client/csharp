@@ -43,7 +43,7 @@ namespace k8s
             ValidateConfig(config);
             CaCerts = config.SslCaCerts;
             SkipTlsVerify = config.SkipTlsVerify;
-            InitializeFromConfig(config);
+            SetCredentials(config); 
         }
 
         /// <summary>
@@ -151,8 +151,9 @@ namespace k8s
                 }
             }
 
-            // set credentails for the kubernernet client
-            SetCredentials(config, HttpClientHandler);
+            // set credentails for the kubernetes client
+            SetCredentials(config);
+            config.AddCertificates(HttpClientHandler);
         }
 
         private X509Certificate2Collection CaCerts { get; }
@@ -195,9 +196,7 @@ namespace k8s
         ///     Set credentials for the Client
         /// </summary>
         /// <param name="config">k8s client configuration</param>
-        /// <param name="handler">http client handler for the rest client</param>
-        /// <returns>Task</returns>
-        private void SetCredentials(KubernetesClientConfiguration config, HttpClientHandler handler)
+        private void SetCredentials(KubernetesClientConfiguration config)
         {
             // set the Credentails for token based auth
             if (!string.IsNullOrWhiteSpace(config.AccessToken))
@@ -211,25 +210,6 @@ namespace k8s
                     UserName = config.Username,
                     Password = config.Password
                 };
-            }
-
-#if XAMARINIOS1_0 || MONOANDROID8_1
-            // handle.ClientCertificates is not implemented in Xamarin.
-            return;
-#endif
-
-            if ((!string.IsNullOrWhiteSpace(config.ClientCertificateData) ||
-                    !string.IsNullOrWhiteSpace(config.ClientCertificateFilePath)) &&
-                    (!string.IsNullOrWhiteSpace(config.ClientCertificateKeyData) ||
-                    !string.IsNullOrWhiteSpace(config.ClientKeyFilePath)))
-            {
-                var cert = CertUtils.GeneratePfx(config);
-
-#if NET452
-                ((WebRequestHandler) handler).ClientCertificates.Add(cert);
-#else
-                handler.ClientCertificates.Add(cert);
-#endif
             }
         }
 
