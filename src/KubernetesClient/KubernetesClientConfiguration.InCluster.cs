@@ -8,7 +8,7 @@ namespace k8s
     {
         private static string ServiceAccountPath =
             Path.Combine(new string[] {
-                "var", "run", "secrets", "kubernetes.io", "serviceaccount/"
+                $"{Path.DirectorySeparatorChar}var", "run", "secrets", "kubernetes.io", "serviceaccount"
             });
         private const string ServiceAccountTokenKeyFileName = "token";
         private const string ServiceAccountRootCAKeyFileName = "ca.crt";
