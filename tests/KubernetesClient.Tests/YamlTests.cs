@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using k8s;
 using k8s.Models;
 using Xunit;
 
@@ -9,6 +10,31 @@ namespace k8s.Tests
 {
     public class YamlTests
     {
+        [Fact]
+        public void LoadAllFromString()
+        {
+            var content = @"apiVersion: v1
+kind: Pod
+metadata:
+  name: foo
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns";
+
+            var types = new Dictionary<String, Type>();
+            types.Add("v1/Pod", typeof(V1Pod));
+            types.Add("v1/Namespace", typeof(V1Namespace));
+
+            var objs = Yaml.LoadAllFromString(content, types);
+            Assert.Equal(objs.Count, 2);
+            Assert.IsType<V1Pod>(objs[0]);
+            Assert.IsType<V1Namespace>(objs[1]);
+            Assert.Equal(((V1Pod) objs[0]).Metadata.Name, "foo");
+            Assert.Equal(((V1Namespace) objs[1]).Metadata.Name, "ns");
+        }
+
         [Fact]
         public void LoadFromString()
         {
