@@ -18,6 +18,81 @@ namespace k8s
     /// </summary>
 
     public class Yaml {
+        /// <summary>
+        /// Load a collection of objects from a stream asynchronously
+        /// </summary>
+        /// <param name="stream">
+        /// The stream to load the objects from.
+        /// </param>
+        /// <param name="typeMap">
+        /// A map from <apiVersion>/<kind> to Type. For example "v1/Pod" -> typeof(V1Pod)
+        /// </param>
+        public static async Task<List<object>> LoadAllFromStreamAsync(Stream stream, Dictionary<String, Type> typeMap) {
+            var reader = new StreamReader(stream);
+            var content = await reader.ReadToEndAsync();
+            return LoadAllFromString(content, typeMap);
+        }
+
+        /// <summary>
+        /// Load a collection of objects from a file asynchronously
+        /// </summary>
+        /// <param name="fileName">
+        /// The name of the file to load from.
+        /// </param>
+        /// <param name="typeMap">
+        /// A map from <apiVersion>/<kind> to Type. For example "v1/Pod" -> typeof(V1Pod)
+        /// </param>
+
+        public static Task<List<object>> LoadAllFromFileAsync(String fileName, Dictionary<String, Type> typeMap)
+        {
+            var reader = File.Open(fileName, FileMode.Open);
+            return LoadAllFromStreamAsync(reader, typeMap);
+        }
+
+        /// <summary>
+        /// Load a collection of objects from a string
+        /// </summary>
+        /// <param name="content">
+        /// The string to load the objects from.
+        /// </param>
+        /// <param name="typeMap">
+        /// A map from <apiVersion>/<kind> to Type. For example "v1/Pod" -> typeof(V1Pod)
+        /// </param>
+
+        public static List<object> LoadAllFromString(String content, Dictionary<String, Type> typeMap) {
+            var deserializer =
+                new DeserializerBuilder()
+                    .WithNamingConvention(new CamelCaseNamingConvention())
+                    .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
+                    .WithTypeConverter(new IntOrStringYamlConverter())
+                    .IgnoreUnmatchedProperties()
+                    .Build();
+            var types = new List<Type>();
+            var parser = new Parser(new StringReader(content));
+            parser.Expect<StreamStart>();
+            while (parser.Accept<DocumentStart>()) {
+                var obj = deserializer.Deserialize<KubernetesObject>(parser);
+                types.Add(typeMap[obj.ApiVersion + "/" + obj.Kind]);
+            }
+
+            deserializer =
+                new DeserializerBuilder()
+                    .WithNamingConvention(new CamelCaseNamingConvention())
+                    .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
+                    .WithTypeConverter(new IntOrStringYamlConverter())
+                    .Build();
+            parser = new Parser(new StringReader(content));
+            parser.Expect<StreamStart>();
+            var ix = 0;
+            var results = new List<object>();
+            while (parser.Accept<DocumentStart>()) {
+                var objType = types[ix++];
+                var obj = deserializer.Deserialize(parser, objType);
+                results.Add(obj);
+            }
+            return results;
+        }
+
         public static async Task<T> LoadFromStreamAsync<T>(Stream stream) {
             var reader = new StreamReader(stream);
             var content = await reader.ReadToEndAsync();
