@@ -39,8 +39,7 @@ namespace k8s.informers
             Watcher = delegate(Action<WatchEventType, T> onEvent, Action<Exception> onError, Action onClosed)
                     {
 
-                        var l = client.List<T, L>(_nameSpace, _cancellationToken, watch:true);
-                        Console.WriteLine("About to watch");
+                        var l = client.List<T, L>(_nameSpace, _cancellationToken, watch:true);                        
                         return l.Watch(onEvent, onError, onClosed);                         
                     };
         }
