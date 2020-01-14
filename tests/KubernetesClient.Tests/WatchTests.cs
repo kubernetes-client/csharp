@@ -606,12 +606,10 @@ namespace k8s.Tests
         {
             var kubernetesConfig = KubernetesClientConfiguration.BuildConfigFromConfigFile(kubeconfigPath: @"C:\Users\frede\Source\Repos\cloud\minikube.config");
             var kubernetes = new Kubernetes(kubernetesConfig);
-
             var job = await kubernetes.CreateNamespacedJobAsync(
                 new V1Job()
                 {
                     ApiVersion = "batch/v1",
-                    Kind = V1Job.KubeKind,
                     Metadata = new V1ObjectMeta()
                     {
                         Name = nameof(WatcherIntegrationTest).ToLowerInvariant()
@@ -647,6 +645,7 @@ namespace k8s.Tests
                     }
                 },
                 "default");
+            job.Kind = job.KubeKind;
 
             Collection<Tuple<WatchEventType, V1Job>> events = new Collection<Tuple<WatchEventType, V1Job>>();
 
