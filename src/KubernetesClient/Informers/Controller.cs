@@ -64,7 +64,7 @@ namespace k8s.informers
             throw new NotImplementedException();
         }
 
-        private void controllerWorker(CancellationToken cancellationToken) 
+        private async Task controllerWorker(CancellationToken cancellationToken) 
         {   
             try {                
                 // We wait for either Q event or the cancellation event to happen. If the cancellation
@@ -95,7 +95,7 @@ namespace k8s.informers
                                 break;
                         }
                         // Ensure that we don't burn the CPU while trying to process the Q contents.
-                       Thread.Sleep(0);
+                       await Task.Yield();
                     }                               
                 }
                 if (cancellationToken.IsCancellationRequested) {
@@ -114,7 +114,7 @@ namespace k8s.informers
         {  
            _reflector.Run(cancellationToken);
             // Start the Controller thread.
-            var t = new Task(() => {controllerWorker(cancellationToken);});
+            var t = new Task(async () => {await controllerWorker(cancellationToken);});
             t.Start();  
         }
     }

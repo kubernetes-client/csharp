@@ -1,9 +1,8 @@
 using System;
 using System.Threading;
-using k8s.cache;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace k8s.informers
 {
@@ -29,7 +28,7 @@ namespace k8s.informers
             return (IList<T>)response.Body.GetType().GetProperty("Items").GetValue(response.Body, null);
         }
 
-        private void reflectorWorker(CancellationToken c) 
+        private async Task reflectorWorker(CancellationToken c) 
         {       
             try {            
                 var response = _listerWatcher.Lister().Result;
@@ -52,7 +51,7 @@ namespace k8s.informers
                             }
                         })){                          
                             while(!c.IsCancellationRequested) {                                
-                                Thread.Sleep(0);
+                                await Task.Yield();
                             }
                             if (c.IsCancellationRequested) {
                                 Console.WriteLine("Cancellation requested. Going out of reflector work loop.");
@@ -67,7 +66,7 @@ namespace k8s.informers
 
         public void Run(CancellationToken c)
         {
-            var t = new Task(() => {reflectorWorker(c);});
+            var t = new Task(async () => {await reflectorWorker(c);});
             t.Start();            
         }
     }
