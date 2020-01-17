@@ -45,7 +45,7 @@ namespace k8s
 
         public static Task<List<object>> LoadAllFromFileAsync(String fileName, Dictionary<String, Type> typeMap)
         {
-            var reader = File.Open(fileName, FileMode.Open);
+            var reader = File.OpenRead(fileName);
             return LoadAllFromStreamAsync(reader, typeMap);
         }
 
