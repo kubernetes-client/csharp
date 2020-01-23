@@ -9,35 +9,41 @@ namespace k8s.cache
     {
         private IThreadSafeStore _threadSafeStorage;
         private Func<IKubernetesObject, string> _metaNamespaceFunc;
-        public string MetaNamespaceKeyFunc(IKubernetesObject o) 
+        public string MetaNamespaceKeyFunc(IKubernetesObject o)
         {
-            try {
-                 var typedObject = (V1ObjectMeta)o.GetType().GetProperty("Metadata").GetValue(o, null);  
-                if (typedObject.NamespaceProperty == "") {
-                    return typedObject.Name;                
+            try
+            {
+                var typedObject = (V1ObjectMeta)o.GetType().GetProperty("Metadata").GetValue(o, null);
+                if (typedObject.NamespaceProperty == "")
+                {
+                    return typedObject.Name;
                 }
-                return typedObject.NamespaceProperty+"/"+typedObject.Name;
-            } catch (Exception ex) {
+                return typedObject.NamespaceProperty + "/" + typedObject.Name;
+            }
+            catch (Exception ex)
+            {
                 Console.WriteLine(ex);
                 return "";
-            }            
+            }
         }
 
-        public Store() {
+        public Store()
+        {
             _threadSafeStorage = new ThreadSafeStore();
             _metaNamespaceFunc = MetaNamespaceKeyFunc;
         }
         public void Add(IKubernetesObject o)
-        {            
-            var key = _metaNamespaceFunc(o);            
-            _threadSafeStorage.Add(key, o);            
+        {
+            var key = _metaNamespaceFunc(o);
+            _threadSafeStorage.Add(key, o);
         }
 
         public Tuple<IKubernetesObject, bool> Get(IKubernetesObject o)
         {
             var key = _metaNamespaceFunc(o);
             var val = _threadSafeStorage.Get(key);
-            if (val == null) {
+            if (val == null)
+            {
                 return new Tuple<IKubernetesObject, bool>(null, false);
             }
             return new Tuple<IKubernetesObject, bool>(val, true);
@@ -46,18 +52,19 @@ namespace k8s.cache
         public Tuple<IKubernetesObject, bool> GetByKey(string key)
         {
             var val = _threadSafeStorage.Get(key);
-            if (val == null) {
+            if (val == null)
+            {
                 return new Tuple<IKubernetesObject, bool>(null, false);
             }
             return new Tuple<IKubernetesObject, bool>(val, true);
         }
 
-        public List<IKubernetesObject> List()
+        public IReadOnlyList<IKubernetesObject> List()
         {
             return _threadSafeStorage.List();
         }
 
-        public List<String> ListKeys()
+        public IReadOnlyList<String> ListKeys()
         {
             return _threadSafeStorage.ListKeys();
         }
@@ -80,7 +87,7 @@ namespace k8s.cache
 
         public void Delete(IKubernetesObject o)
         {
-            var key = _metaNamespaceFunc(o);            
+            var key = _metaNamespaceFunc(o);
             _threadSafeStorage.Delete(key);
         }
     }
