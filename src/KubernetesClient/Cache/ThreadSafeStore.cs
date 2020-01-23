@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,59 +8,46 @@ namespace k8s.cache
 {
     public class ThreadSafeStore : IThreadSafeStore
     {
-        private static Mutex _storageLock;
-        private Dictionary<string, IKubernetesObject> _store;
+        private ConcurrentDictionary<string, IKubernetesObject> _store;
 
-        public ThreadSafeStore() {
-            _store = new Dictionary<string, IKubernetesObject>();
-            _storageLock = new Mutex();
+        public ThreadSafeStore()
+        {
+            _store = new ConcurrentDictionary<string, IKubernetesObject>();
         }
+
         public void Add(string key, IKubernetesObject value)
         {
-            _storageLock.WaitOne();           
-            try {                
-                if (_store.ContainsKey(key))
-                {
-                    _store[key] = value;
-                } else {
-                    _store.Add(key, value);            
-                }
-            } catch (Exception ex) {
-                Console.WriteLine(ex);    
-            }           
-            _storageLock.ReleaseMutex();            
+            if (!_store.TryAdd(key, value))
+            {
+                throw new Exception(String.Format("Could not add value for key: {0}", key));
+            }
         }
 
         public void Delete(string key)
         {
-            _storageLock.WaitOne();            
-            _store.Remove(key);            
-            _storageLock.ReleaseMutex();            
+            IKubernetesObject oldVal;
+            if (!_store.TryRemove(key, out oldVal))
+            {
+                // Could not remove the value. Raise an exception.
+                throw new Exception(String.Format("Could not remove value with key: {0}", key));
+            }
         }
 
         public IKubernetesObject Get(string key)
         {
-            _storageLock.WaitOne();
             IKubernetesObject v;
-            v = _store.TryGetValue(key,out v)? v : null;           
-            _storageLock.ReleaseMutex(); 
-            return v;            
+            v = _store.TryGetValue(key, out v) ? v : null;
+            return v;
         }
 
-        public List<IKubernetesObject> List()
+        public IReadOnlyList<IKubernetesObject> List()
         {
-            _storageLock.WaitOne();
-            var list = _store.Values.ToList();
-            _storageLock.ReleaseMutex(); 
-            return list;            
+            return _store.Values.ToList().AsReadOnly();
         }
 
-        public List<string> ListKeys()
+        public IReadOnlyList<string> ListKeys()
         {
-            _storageLock.WaitOne();
-            var list = _store.Keys.ToList();
-            _storageLock.ReleaseMutex(); 
-            return list;            
+            return _store.Keys.ToList().AsReadOnly();
         }
 
         public void Resync()
@@ -68,21 +56,14 @@ namespace k8s.cache
         }
 
         public IKubernetesObject Update(string key, IKubernetesObject value)
-        {            
-            IKubernetesObject retVal = null;
-            _storageLock.WaitOne();              
-            if (_store.ContainsKey(key))
+        {
+            IKubernetesObject oldVal = null;
+            _store.AddOrUpdate(key, value, (curKey, existingVal) =>
             {
-                retVal = _store[key];
-                _store[key] = value;
-            } else {
-                // Note: If we don't find it, we just add it.
-                // TODO - evaulate if we need to raise an exception for this
-                _store.Add(key, value);
-            }            
-            _storageLock.ReleaseMutex();     
-            return retVal;
+                oldVal = existingVal;
+                return value;
+            });
+            return oldVal;
         }
     }
 }
-
