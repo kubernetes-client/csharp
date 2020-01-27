@@ -144,6 +144,47 @@ namespace k8s
         }
     }
 
+    internal class WatchObservable<T> : IObservable<Tuple<WatchEventType,T>>
+    {
+        private readonly Watcher<T> _watcher;
+
+        public WatchObservable(Watcher<T> watcher)
+        {
+            _watcher = watcher;
+        }
+
+        private class Disposable : IDisposable
+        {
+            private readonly Action _dispose;
+
+            public Disposable(Action dispose)
+            {
+                _dispose = dispose;
+            }
+
+            public void Dispose()
+            {
+                _dispose();
+            }
+        }
+        public IDisposable Subscribe(IObserver<Tuple<WatchEventType,T>> observer)
+        {
+            Action<WatchEventType, T> onEvent = (type, obj) => observer.OnNext(Tuple.Create(type, obj));
+            
+            _watcher.OnEvent += onEvent; 
+            _watcher.OnError += observer.OnError; 
+            _watcher.OnClosed += observer.OnCompleted;
+
+            var subscriptionLifeline = new Disposable(() =>
+            {
+                _watcher.OnEvent -= onEvent;
+                _watcher.OnError -= observer.OnError;
+                _watcher.OnClosed -= observer.OnCompleted;
+            });
+            return subscriptionLifeline;
+        }
+
+    }
     public static class WatcherExt
     {
         /// <summary>
@@ -173,6 +214,11 @@ namespace k8s
 
                 return content.StreamReader;
                 } , onEvent, onError, onClosed);
+        }
+
+        public static IObservable<Tuple<WatchEventType,T>> AsObservable<T>(this Watcher<T> watcher)
+        {
+            return new WatchObservable<T>(watcher);
         }
 
         /// <summary>
