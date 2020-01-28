@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Reactive.Disposables;
 using System.Threading;
 using System.Threading.Tasks;
+using FluentAssertions;
 using k8s.Informer;
 using k8s.Informer.Cache;
 using k8s.Models;
@@ -75,14 +76,16 @@ namespace k8s.tests.Informer.Cache
                 foreach (var @event in _events)
                 {
                     observer.OnNext(@event);
+                    
                 }
+                observer.OnCompleted();
                 return Disposable.Empty;
             }
         }
         [Fact]
-        public void ControllerProcessDeltas()
+        public async Task ControllerProcessDeltas()
         {
-            // AtomicInteger receivingDeltasCount = new AtomicInteger(0);
+            int receivingDeltasCount = 0;
             var foo1 = new V1Pod
             {
                 Metadata = new V1ObjectMeta()
@@ -113,39 +116,14 @@ namespace k8s.tests.Informer.Cache
                     Metadata = new V1ListMeta(),
                     Items = new List<V1Pod>() {foo1, foo2, foo3}
                 };
-            var deltaFIFO = new DeltaFifo<V1Pod>(Caches.DeletionHandlingMetaNamespaceKeyFunc, new Cache<V1Pod>());
-
-            // AtomicBoolean runOnce = new AtomicBoolean(false);
+            var deltaFifo = new DeltaFifo<V1Pod>(Caches.DeletionHandlingMetaNamespaceKeyFunc, new Cache<V1Pod>());
             var watcher = new MockRunOnceListerWatcher<V1Pod, V1PodList>(podList, Tuple.Create(WatchEventType.Modified, foo3));
-            var controller = new Controller<V1Pod,V1PodList>(deltaFIFO,watcher, deltas => )
+            var controller = new Controller<V1Pod, V1PodList>(deltaFifo, watcher, deltas => Task.FromResult(receivingDeltasCount++));
+            await controller.StartAsync(CancellationToken.None);
+            await Task.Delay(100);
+            receivingDeltasCount.Should().Be(4);
+            await controller.StopAsync(CancellationToken.None);
             
-            //watcher.List(Arg.Any<CallGeneratorParams>()).Returns((CallInfo c) => !c.ReceivedCalls().Any() ? Task.FromResult(podList) : new TaskCompletionSource<V1PodList>().Task);
-            // watcher.List(Arg.Any<CallGeneratorParams>()).Returns(info => { return Task.FromResult(podList); });
-            // IListerWatcher<V1Pod, V1PodList> listerWatcher =
-            //     new MockRunOnceListerWatcher<V1Pod, V1PodList>(
-            //         podList, new Watch.Response<V1Pod>(EventType.MODIFIED.name(), foo3));
-            var controller =
-                    new Controller<V1Pod, V1PodList>(
-                deltaFIFO,
-                watcher,
-            deltas => receivingDeltasCount.incrementAndGet());
-            
-            //
-            // Thread controllerThread = new Thread(controller::run);
-            // controllerThread.setDaemon(true);
-            // controllerThread.start();
-            //
-            // // sleep 1s for processing all the deltas
-            // Thread.sleep(1000);
-            //
-            // try {
-            //     assertEquals(4, receivingDeltasCount.get());
-            //
-            // } catch (Throwable t) {
-            //     throw new RuntimeException(t);
-            // } finally {
-            //     controller.stop();
-            // }
         }
     }
 }

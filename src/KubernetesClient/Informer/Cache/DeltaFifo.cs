@@ -43,7 +43,7 @@ namespace k8s.Informer
 
         private void UpdateHasSynced()
         {
-            if(_populated && _initialPopulationCount == 0)
+            if(!_hasSyncedTcs.Task.IsCompleted && _populated && _initialPopulationCount == 0)
                 _hasSyncedTcs.SetResult(true);
         }
 
@@ -51,7 +51,7 @@ namespace k8s.Informer
 
         // only tracks keys, actual reader will pull the value at read time
         readonly Channel<string> _readerToWriterQueue = Channel.CreateUnbounded<string>();
-        private Dictionary<string, LinkedList<ObjectDelta>> _items = new Dictionary<string, LinkedList<ObjectDelta>>();
+        internal Dictionary<string, LinkedList<ObjectDelta>> Items { get; } = new Dictionary<string, LinkedList<ObjectDelta>>();
         private int _initialPopulationCount;
         private bool _populated;
 
@@ -69,12 +69,12 @@ namespace k8s.Informer
                 if (InitialPopulationCount > 0) {
                     InitialPopulationCount--;
                 }
-                if (!_items.ContainsKey(id)) {
+                if (!Items.ContainsKey(id)) {
                     // Item may have been deleted subsequently.
                     continue;
                 }
-                item = _items[id];
-                _items.Remove(id);
+                item = Items[id];
+                Items.Remove(id);
                 return true;
             }
             item = null;
@@ -87,7 +87,7 @@ namespace k8s.Informer
         }
         public void Add(TApi obj)
         {
-            _lock.AcquireWriterLock(TimeSpan.MaxValue);
+            _lock.AcquireWriterLock(Timeout.Infinite);
             try
             {
                 Populated = true;
@@ -101,7 +101,7 @@ namespace k8s.Informer
 
         public void Update(TApi obj)
         {
-            _lock.AcquireWriterLock(TimeSpan.MaxValue);
+            _lock.AcquireWriterLock(Timeout.Infinite);
             try
             {
                 Populated = true;
@@ -116,13 +116,13 @@ namespace k8s.Informer
         public void Delete(TApi obj)
         {
             var id = KeyOf(obj);
-            _lock.AcquireWriterLock(TimeSpan.MaxValue);
+            _lock.AcquireWriterLock(Timeout.Infinite);
             try
             {
                 Populated = true;
                 if (_knownObjects == null)
                 {
-                    if (_items.ContainsKey(id))
+                    if (Items.ContainsKey(id))
                     {
                         // Presumably, this was deleted when a relist happened.
                         // Don't provide a second report of the same deletion.
@@ -133,7 +133,7 @@ namespace k8s.Informer
                 {
                     // We only want to skip the "deletion" action if the object doesn't
                     // exist in knownObjects and it doesn't have corresponding item in items.
-                    if (_knownObjects[id] == null && !_items.ContainsKey(id))
+                    if (_knownObjects[id] == null && !Items.ContainsKey(id))
                     {
                         return;
                     }
@@ -161,19 +161,19 @@ namespace k8s.Informer
         {
             var id = KeyOf(obj);
 
-            var exists = _items.TryGetValue(id, out var deltas);
+            var exists = Items.TryGetValue(id, out var deltas);
             if (!exists) 
             {
                 deltas = new LinkedList<ObjectDelta>();
                 
             } 
-            deltas.AddFirst(obj);
+            deltas.AddLast(obj);
             
             var combinedDeltaList = CombineDeltas(deltas);
 
             if (combinedDeltaList?.Count > 0) 
             {
-                _items[id] = combinedDeltaList;
+                Items[id] = combinedDeltaList;
                 if (!exists) 
                 {
                     if(!_readerToWriterQueue.Writer.TryWrite(id))
@@ -182,7 +182,7 @@ namespace k8s.Informer
             } 
             else 
             {
-                _items.Remove(id);
+                Items.Remove(id);
             }
         }
 
@@ -200,7 +200,7 @@ namespace k8s.Informer
 
         public void Replace(List<TApi> list, string resourceVersion)
         {
-            _lock.AcquireWriterLock(TimeSpan.MaxValue);
+            _lock.AcquireWriterLock(Timeout.Infinite);
             try
             {
                 var keys = new HashSet<string>();
@@ -213,7 +213,7 @@ namespace k8s.Informer
 
                 if (_knownObjects == null) 
                 {
-                    foreach (var entry in _items) 
+                    foreach (var entry in Items) 
                     {
                         if (keys.Contains(entry.Key)) 
                         {
@@ -275,7 +275,7 @@ namespace k8s.Informer
 
         public void Resync()
         {
-            _lock.AcquireWriterLock(TimeSpan.MaxValue);
+            _lock.AcquireWriterLock(Timeout.Infinite);
             try
             {
                 if (_knownObjects == null) 
@@ -303,7 +303,7 @@ namespace k8s.Informer
             }
 
             var id = KeyOf(obj);
-            if(_items.TryGetValue(id, out var deltas) && deltas.Any())
+            if(Items.TryGetValue(id, out var deltas) && deltas.Any())
             {
                 return;
             }
@@ -317,7 +317,7 @@ namespace k8s.Informer
                 _lock.AcquireReaderLock(Timeout.Infinite);
                 try
                 {
-                    return _items.Select(x => x.Key).ToList();
+                    return Items.Select(x => x.Key).ToList();
                 }
                 finally
                 {
@@ -332,10 +332,10 @@ namespace k8s.Informer
         {
             get
             {
-                _lock.AcquireReaderLock(TimeSpan.MaxValue);
+                _lock.AcquireReaderLock(Timeout.Infinite);
                 try
                 {
-                    var deltas = _items.GetOrDefault(key);
+                    var deltas = Items.GetOrDefault(key);
                     if (deltas != null)
                     {
                         // returning a shallow copy
@@ -363,7 +363,7 @@ namespace k8s.Informer
             _lock.AcquireReaderLock(Timeout.Infinite);
             try
             {
-                return _items.Select(x => x.Value).ToList().GetEnumerator();
+                return Items.Select(x => x.Value).ToList().GetEnumerator();
             }
             finally
             {
@@ -379,8 +379,7 @@ namespace k8s.Informer
         
         // re-listing and watching can deliver the same update multiple times in any
         // order. This will combine the most recent two deltas if they are the same.
-        private LinkedList<ObjectDelta> CombineDeltas(
-            LinkedList<ObjectDelta> deltas) 
+        private LinkedList<ObjectDelta> CombineDeltas(LinkedList<ObjectDelta> deltas) 
         {
             if (deltas.Count < 2) 
             {
@@ -397,7 +396,7 @@ namespace k8s.Informer
                 {
                     newDeltas.AddLast(item);
                 }
-                newDeltas.AddFirst(@out);
+                newDeltas.AddLast(@out);
                 return newDeltas;
             }
             return deltas;

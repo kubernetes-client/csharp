@@ -88,7 +88,8 @@ namespace k8s.Informer.Cache
             while (!_cancellationTokenSource.IsCancellationRequested)
             {
                 await _reflector.StartAsync(_cancellationTokenSource.Token);
-                await _reflector.Running; // reflector may crash, so we'll just restart it
+                //todo: handle reflector crash
+                //await _reflector.Running; // reflector may crash, so we'll just restart it
                 await Task.Delay(DefaultPeriod);
             }
         }

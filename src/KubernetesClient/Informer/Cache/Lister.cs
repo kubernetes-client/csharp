@@ -30,7 +30,7 @@ namespace k8s.Informer.Cache
 
         public List<TApiType> List()
         {
-            if (_namespace?.Length == 0)
+            if (string.IsNullOrEmpty(_namespace))
             {
                 return _indexer.ToList();
             }

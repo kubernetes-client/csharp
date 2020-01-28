@@ -115,7 +115,7 @@ namespace k8s.Informer.Cache
             {
                 lock (_lock)
                 {
-                    return _items[key];
+                    return _items.GetOrDefault(key);
                 }
             }
         }
