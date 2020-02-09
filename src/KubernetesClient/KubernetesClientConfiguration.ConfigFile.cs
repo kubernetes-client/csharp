@@ -71,12 +71,27 @@ namespace k8s
         public static KubernetesClientConfiguration BuildConfigFromConfigFile(FileInfo kubeconfig,
             string currentContext = null, string masterUrl = null, bool useRelativePaths = true)
         {
+            return BuildConfigFromConfigFileAsync(kubeconfig, currentContext, masterUrl, useRelativePaths).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
+        /// </summary>
+        /// <param name="kubeconfig">Fileinfo of the kubeconfig, cannot be null</param>
+        /// <param name="currentContext">override the context in config file, set null if do not want to override</param>
+        /// <param name="masterUrl">override the kube api server endpoint, set null if do not want to override</param>
+        /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
+        /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
+
+        public static async Task<KubernetesClientConfiguration> BuildConfigFromConfigFileAsync(FileInfo kubeconfig,
+            string currentContext = null, string masterUrl = null, bool useRelativePaths = true)
+        {
             if (kubeconfig == null)
             {
                 throw new NullReferenceException(nameof(kubeconfig));
             }
 
-            var k8SConfig = LoadKubeConfig(kubeconfig, useRelativePaths);
+            var k8SConfig = await LoadKubeConfigAsync(kubeconfig, useRelativePaths);
             var k8SConfiguration = GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig);
 
             return k8SConfiguration;
@@ -91,6 +106,18 @@ namespace k8s
         public static KubernetesClientConfiguration BuildConfigFromConfigFile(Stream kubeconfig,
             string currentContext = null, string masterUrl = null)
         {
+            return BuildConfigFromConfigFileAsync(kubeconfig, currentContext, masterUrl).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
+        /// </summary>
+        /// <param name="kubeconfig">Stream of the kubeconfig, cannot be null</param>
+        /// <param name="currentContext">Override the current context in config, set null if do not want to override</param>
+        /// <param name="masterUrl">Override the Kubernetes API server endpoint, set null if do not want to override</param>
+        public static async Task<KubernetesClientConfiguration> BuildConfigFromConfigFileAsync(Stream kubeconfig,
+            string currentContext = null, string masterUrl = null)
+        {
             if (kubeconfig == null)
             {
                 throw new NullReferenceException(nameof(kubeconfig));
@@ -103,7 +130,7 @@ namespace k8s
 
             kubeconfig.Position = 0;
 
-            var k8SConfig = Yaml.LoadFromStreamAsync<K8SConfiguration>(kubeconfig).GetAwaiter().GetResult();
+            var k8SConfig = await Yaml.LoadFromStreamAsync<K8SConfiguration>(kubeconfig);
             var k8SConfiguration = GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig);
 
             return k8SConfiguration;
