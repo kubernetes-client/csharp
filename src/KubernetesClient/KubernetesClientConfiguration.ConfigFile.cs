@@ -1,6 +1,9 @@
 using System;
+#if NETCOREAPP
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Diagnostics;
+#endif
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -8,7 +11,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using k8s.Exceptions;
 using k8s.KubeConfigModels;
-using Newtonsoft.Json;
+
 
 namespace k8s
 {
@@ -359,6 +362,7 @@ namespace k8s
                 }
             }
 
+#if NETCOREAPP
             if (userDetails.UserCredentials.ExternalExecution != null)
             {
                 if (string.IsNullOrWhiteSpace(userDetails.UserCredentials.ExternalExecution.Command))
@@ -372,6 +376,7 @@ namespace k8s
 
                 userCredentialsFound = true;
             }
+#endif
 
             if (!userCredentialsFound)
             {
@@ -385,6 +390,7 @@ namespace k8s
             throw new KubeConfigException("Refresh not supported.");
         }
 
+#if NETCOREAPP
         /// <summary>
         /// Implementation of the proposal for out-of-tree client
         /// authentication providers as described here --
@@ -458,6 +464,7 @@ namespace k8s
             
 
         }
+#endif
 
         /// <summary>
         ///     Loads entire Kube Config from default or explicit file path
