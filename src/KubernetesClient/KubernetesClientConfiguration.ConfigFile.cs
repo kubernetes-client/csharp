@@ -400,7 +400,7 @@ namespace k8s
             var execInfo = new Dictionary<string, dynamic>
             {
                 {"apiVersion", config.ApiVersion},
-                {"kind", "ExecCredential"},
+                {"kind", "ExecCredentials"},
                 {"spec", new Dictionary<string, bool>
                 {
                     {"interactive", Environment.UserInteractive}
@@ -411,36 +411,52 @@ namespace k8s
 
             process.StartInfo.Environment.Add("KUBERNETES_EXEC_INFO",
                 JsonConvert.SerializeObject(execInfo));
-            foreach (var configEnvironmentVariableKey in config.EnvironmentVariables.Keys)
-                process.StartInfo.Environment.Add(configEnvironmentVariableKey,
-                    config.EnvironmentVariables[configEnvironmentVariableKey]);
+            
+            if (config.EnvironmentVariables != null)
+                foreach (var configEnvironmentVariableKey in config.EnvironmentVariables.Keys)
+                    process.StartInfo.Environment.Add(key: configEnvironmentVariableKey,
+                        value: config.EnvironmentVariables[configEnvironmentVariableKey]);
 
             process.StartInfo.FileName = config.Command;
             process.StartInfo.Arguments = string.Join(" ", config.Arguments);
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.RedirectStandardError = true;
             process.StartInfo.UseShellExecute = false;
-            process.StartInfo.CreateNoWindow = true;
 
-            process.Start();
-            process.WaitForExit();
+            try
+            {
+                process.Start();
+            }
+            catch (Exception ex)
+            {
+                throw new KubeConfigException($"external exec failed due to: {ex.Message}");
+            }
 
+            var stdout = process.StandardOutput.ReadToEnd();
             var stderr = process.StandardOutput.ReadToEnd();
             if (string.IsNullOrWhiteSpace(stderr) == false)
                 throw new KubeConfigException($"external exec failed due to: {stderr}");
 
-            var stdout = process.StandardOutput.ReadToEnd();
+            process.WaitForExit();
+
             try
             {
                 var responseObject = JsonConvert.DeserializeObject<ExecCredentialResponse>(stdout);
-                if (responseObject.ApiVersion != config.ApiVersion)
-                    throw  new KubeConfigException($"external exec failed because api version {responseObject.ApiVersion} does not match {config.ApiVersion}");
+                if (responseObject == null || responseObject.ApiVersion != config.ApiVersion)
+                    throw new KubeConfigException(
+                        $"external exec failed because api version {responseObject.ApiVersion} does not match {config.ApiVersion}");
                 return responseObject.Status["token"];
             }
             catch (JsonSerializationException ex)
             {
                 throw new KubeConfigException($"external exec failed due to failed deserialization process: {ex}");
             }
+            catch (Exception ex)
+            {
+                throw new KubeConfigException($"external exec failed due to uncaught exception: {ex}");
+            }
+
+            
 
         }
 
