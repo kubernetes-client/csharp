@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using k8s.Exceptions;
 using k8s.KubeConfigModels;
+using Newtonsoft.Json;
 
 namespace k8s
 {
@@ -28,15 +31,19 @@ namespace k8s
         /// <summary>
         ///     Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
         /// </summary>
-        public static KubernetesClientConfiguration BuildDefaultConfig() {
+        public static KubernetesClientConfiguration BuildDefaultConfig()
+        {
             var kubeconfig = Environment.GetEnvironmentVariable("KUBECONFIG");
-            if (kubeconfig != null) {
+            if (kubeconfig != null)
+            {
                 return BuildConfigFromConfigFile(kubeconfigPath: kubeconfig);
             }
-            if (File.Exists(KubeConfigDefaultLocation)) {
+            if (File.Exists(KubeConfigDefaultLocation))
+            {
                 return BuildConfigFromConfigFile(kubeconfigPath: KubeConfigDefaultLocation);
             }
-            if (IsInCluster()) {
+            if (IsInCluster())
+            {
                 return InClusterConfig();
             }
             var config = new KubernetesClientConfiguration();
@@ -214,7 +221,7 @@ namespace k8s
             Host = clusterDetails.ClusterEndpoint.Server;
             SkipTlsVerify = clusterDetails.ClusterEndpoint.SkipTlsVerify;
 
-            if(!Uri.TryCreate(Host, UriKind.Absolute, out Uri uri))
+            if (!Uri.TryCreate(Host, UriKind.Absolute, out Uri uri))
             {
                 throw new KubeConfigException($"Bad server host URL `{Host}` (cannot be parsed)");
             }
@@ -294,63 +301,77 @@ namespace k8s
                     switch (userDetails.UserCredentials.AuthProvider.Name)
                     {
                         case "azure":
-                        {
-                            var config = userDetails.UserCredentials.AuthProvider.Config;
-                            if (config.ContainsKey("expires-on"))
                             {
-                                var expiresOn = Int32.Parse(config["expires-on"]);
-                                DateTimeOffset expires;
-                                #if NET452
+                                var config = userDetails.UserCredentials.AuthProvider.Config;
+                                if (config.ContainsKey("expires-on"))
+                                {
+                                    var expiresOn = Int32.Parse(config["expires-on"]);
+                                    DateTimeOffset expires;
+#if NET452
                                 var epoch = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
                                 expires = epoch.AddSeconds(expiresOn);
-                                #else
-                                expires = DateTimeOffset.FromUnixTimeSeconds(expiresOn);
-                                #endif
+#else
+                                    expires = DateTimeOffset.FromUnixTimeSeconds(expiresOn);
+#endif
 
-                                if (DateTimeOffset.Compare(expires
-                                                         , DateTimeOffset.Now)
-                                 <= 0)
-                                {
-                                    var tenantId = config["tenant-id"];
-                                    var clientId = config["client-id"];
-                                    var apiServerId = config["apiserver-id"];
-                                    var refresh = config["refresh-token"];
-                                    var newToken = RenewAzureToken(tenantId
-                                                                 , clientId
-                                                                 , apiServerId
-                                                                 , refresh);
-                                    config["access-token"] = newToken;
-                                }
-                            }
-
-                            AccessToken = config["access-token"];
-                            userCredentialsFound = true;
-                            break;
-                        }
-                        case "gcp":
-                        {
-                            var config = userDetails.UserCredentials.AuthProvider.Config;
-                            const string keyExpire = "expiry";
-                            if (config.ContainsKey(keyExpire))
-                            {
-                                if (DateTimeOffset.TryParse(config[keyExpire]
-                                                          , out DateTimeOffset expires))
-                                {
                                     if (DateTimeOffset.Compare(expires
                                                              , DateTimeOffset.Now)
                                      <= 0)
                                     {
-                                        throw new KubeConfigException("Refresh not supported.");
+                                        var tenantId = config["tenant-id"];
+                                        var clientId = config["client-id"];
+                                        var apiServerId = config["apiserver-id"];
+                                        var refresh = config["refresh-token"];
+                                        var newToken = RenewAzureToken(tenantId
+                                                                     , clientId
+                                                                     , apiServerId
+                                                                     , refresh);
+                                        config["access-token"] = newToken;
                                     }
                                 }
-                            }
 
-                            AccessToken = config["access-token"];
-                            userCredentialsFound = true;
-                            break;
-                        }
+                                AccessToken = config["access-token"];
+                                userCredentialsFound = true;
+                                break;
+                            }
+                        case "gcp":
+                            {
+                                var config = userDetails.UserCredentials.AuthProvider.Config;
+                                const string keyExpire = "expiry";
+                                if (config.ContainsKey(keyExpire))
+                                {
+                                    if (DateTimeOffset.TryParse(config[keyExpire]
+                                                              , out DateTimeOffset expires))
+                                    {
+                                        if (DateTimeOffset.Compare(expires
+                                                                 , DateTimeOffset.Now)
+                                         <= 0)
+                                        {
+                                            throw new KubeConfigException("Refresh not supported.");
+                                        }
+                                    }
+                                }
+
+                                AccessToken = config["access-token"];
+                                userCredentialsFound = true;
+                                break;
+                            }
                     }
                 }
+            }
+
+            if (userDetails.UserCredentials.ExternalExecution != null)
+            {
+                if (string.IsNullOrWhiteSpace(userDetails.UserCredentials.ExternalExecution.Command))
+                    throw new KubeConfigException(
+                        "External command execution to receive user credentials must include a command to execute");
+                if (string.IsNullOrWhiteSpace(userDetails.UserCredentials.ExternalExecution.ApiVersion))
+                    throw new KubeConfigException("External command execution missing ApiVersion key");
+
+                var token = ExecuteExternalCommand(userDetails.UserCredentials.ExternalExecution);
+                AccessToken = token;
+
+                userCredentialsFound = true;
             }
 
             if (!userCredentialsFound)
@@ -363,6 +384,64 @@ namespace k8s
         public static string RenewAzureToken(string tenantId, string clientId, string apiServerId, string refresh)
         {
             throw new KubeConfigException("Refresh not supported.");
+        }
+
+        /// <summary>
+        /// Implementation of the proposal for out-of-tree client
+        /// authentication providers as described here --
+        /// https://github.com/kubernetes/community/blob/master/contributors/design-proposals/auth/kubectl-exec-plugins.md
+        /// Took inspiration from python exec_provider.py --
+        /// https://github.com/kubernetes-client/python-base/blob/master/config/exec_provider.py
+        /// </summary>
+        /// <param name="config">The external command execution configuration</param>
+        /// <returns>The token received from the external commmand execution</returns>
+        public static string ExecuteExternalCommand(ExternalExecution config)
+        {
+            var execInfo = new Dictionary<string, dynamic>
+            {
+                {"apiVersion", config.ApiVersion},
+                {"kind", "ExecCredential"},
+                {"spec", new Dictionary<string, bool>
+                {
+                    {"interactive", Environment.UserInteractive}
+                }}
+            };
+
+            var process = new Process();
+
+            process.StartInfo.Environment.Add("KUBERNETES_EXEC_INFO",
+                JsonConvert.SerializeObject(execInfo));
+            foreach (var configEnvironmentVariableKey in config.EnvironmentVariables.Keys)
+                process.StartInfo.Environment.Add(configEnvironmentVariableKey,
+                    config.EnvironmentVariables[configEnvironmentVariableKey]);
+
+            process.StartInfo.FileName = config.Command;
+            process.StartInfo.Arguments = string.Join(" ", config.Arguments);
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.RedirectStandardError = true;
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.CreateNoWindow = true;
+
+            process.Start();
+            process.WaitForExit();
+
+            var stderr = process.StandardOutput.ReadToEnd();
+            if (string.IsNullOrWhiteSpace(stderr) == false)
+                throw new KubeConfigException($"external exec failed due to: {stderr}");
+
+            var stdout = process.StandardOutput.ReadToEnd();
+            try
+            {
+                var responseObject = JsonConvert.DeserializeObject<ExecCredentialResponse>(stdout);
+                if (responseObject.ApiVersion != config.ApiVersion)
+                    throw  new KubeConfigException($"external exec failed because api version {responseObject.ApiVersion} does not match {config.ApiVersion}");
+                return responseObject.Status["token"];
+            }
+            catch (JsonSerializationException ex)
+            {
+                throw new KubeConfigException($"external exec failed due to failed deserialization process: {ex}");
+            }
+
         }
 
         /// <summary>

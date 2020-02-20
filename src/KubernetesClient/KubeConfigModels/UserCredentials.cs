@@ -80,5 +80,11 @@ namespace k8s.KubeConfigModels
         /// </summary>
         [YamlMember(Alias = "extensions")]
         public IDictionary<string, dynamic> Extensions { get; set; }
+
+        /// <summary>
+        /// Gets or sets external command and its arguments to receive user credentials
+        /// </summary>
+        [YamlMember(Alias = "exec")]
+        public ExternalExecution ExternalExecution { get; set; }
     }
 }
