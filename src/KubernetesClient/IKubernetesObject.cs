@@ -32,5 +32,7 @@ namespace k8s
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
         string Kind { get; set; }
+        
+        
     }
 }

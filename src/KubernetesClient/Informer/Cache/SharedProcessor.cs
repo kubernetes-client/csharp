@@ -15,7 +15,7 @@ namespace k8s.Informer.Cache
         private CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
         public async Task AddAndStartListener(ProcessorListener<TApiType> processorListener) 
         {
-            _lock.AcquireWriterLock(TimeSpan.MaxValue);
+            _lock.AcquireWriterLock(Timeout.Infinite);
             try 
             {
                 AddListenerLocked(processorListener);
@@ -28,7 +28,7 @@ namespace k8s.Informer.Cache
         }
         public Task AddListener(ProcessorListener<TApiType> processorListener) 
         {
-            _lock.AcquireWriterLock(TimeSpan.MaxValue);
+            _lock.AcquireWriterLock(Timeout.Infinite);
             try 
             {
                 AddListenerLocked(processorListener);
@@ -47,7 +47,7 @@ namespace k8s.Informer.Cache
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            _lock.AcquireReaderLock(TimeSpan.MaxValue);
+            _lock.AcquireReaderLock(Timeout.Infinite);
             _cancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(_cancellationTokenSource.Token, cancellationToken);
             try
             {
@@ -62,7 +62,7 @@ namespace k8s.Informer.Cache
         public async Task Distribute(ProcessorListener<TApiType>.Notification obj, bool isSync)
         {
             // todo: confirm if locks work fine with async/await. should work cuz context capture should drop us on the original thread
-            _lock.AcquireReaderLock(TimeSpan.MaxValue);
+            _lock.AcquireReaderLock(Timeout.Infinite);
             try 
             {
                 if (isSync) 
@@ -88,7 +88,7 @@ namespace k8s.Informer.Cache
         
         public bool ShouldResync() 
         {
-            _lock.AcquireWriterLock(TimeSpan.MaxValue);
+            _lock.AcquireWriterLock(Timeout.Infinite);
             var resyncNeeded = false;
             try 
             {
@@ -114,7 +114,7 @@ namespace k8s.Informer.Cache
 
         public async Task StopAsync(CancellationToken cancellationToken)
         {
-            _lock.AcquireWriterLock(TimeSpan.MaxValue);
+            _lock.AcquireWriterLock(Timeout.Infinite);
             try
             {
                 await Task.WhenAll(_listeners.Select(x => x.StopAsync(cancellationToken)));

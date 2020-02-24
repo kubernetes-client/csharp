@@ -97,7 +97,7 @@ namespace k8s.Informer.Cache
             return Task.CompletedTask;
         }
 
-        public async Task Add(Notification obj) 
+        public virtual async Task Add(Notification obj) 
         {
             if (obj == null) {
                 return;

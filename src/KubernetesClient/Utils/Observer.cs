@@ -10,9 +10,7 @@ namespace k8s.Utils
         
         public Observer(Action<T> onNext, Action<Exception> onError = null, Action onComplete = null)
         {
-            if(_onNext == null)
-                throw new ArgumentNullException(nameof(onNext));
-            _onNext = onNext;
+            _onNext = onNext ?? throw new ArgumentNullException(nameof(onNext));
             _onError = onError ?? OnErrorNoOp;
             _onComplete = onComplete ?? OnCompleteNoOp;
         }

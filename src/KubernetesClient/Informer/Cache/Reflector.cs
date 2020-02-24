@@ -20,59 +20,69 @@ namespace k8s.Informer.Cache
 
     private readonly IListerWatcher<TApi, TApiList> _listerWatcher;
 
-    private readonly IStore<LinkedList<DeltaFifo<TApi>.ObjectDelta>,TApi> _store;
+    private readonly IWriteStore<TApi> _store;
 
     private CancellationTokenSource _cancellationTokenSource;
 
-    public Reflector(IListerWatcher<TApi, TApiList> listerWatcher, IStore<LinkedList<DeltaFifo<TApi>.ObjectDelta>,TApi> store, ILogger<Reflector<TApi, TApiList>> log = null)
+    public Reflector(IListerWatcher<TApi, TApiList> listerWatcher, IWriteStore<TApi> store, ILogger<Reflector<TApi, TApiList>> log = null)
     {
       _listerWatcher = listerWatcher;
       _log = log;
       _store = store;
     }
 
-    public Task StartAsync(CancellationToken cancellationToken)
+    public async Task StartAsync(CancellationToken cancellationToken)
     {
       _cancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
       
       try
       {
-        _log?.LogInformation($"{typeof(TApi)}#Start listing and watching...");
-
-        //todo: see if underlying kubernetes shape objects can be exposed via interfaces
-        dynamic list = _listerWatcher.List(new CallGeneratorParams(false, null, TimeSpan.Zero));
-
-        V1ListMeta listMeta = list.Metadata;
-        var resourceVersion = listMeta.ResourceVersion;
-        IList<TApi> items = list.Items;
-        _log?.LogDebug($"{typeof(TApi)}#Extract resourceVersion {resourceVersion} list meta");
-
-        SyncWith(items.ToList(), resourceVersion);
-        LastSyncResourceVersion = resourceVersion;
-
-        _log?.LogDebug($"{typeof(TApi)}#Start watching with {LastSyncResourceVersion}...");
-        
-        // todo: review logic with java implementation as there's a retry logic for failed connection state, seems like entire watcher object will become unsable in .net verison as the stream would close
-        _watch =
-          _listerWatcher.Watch(
-              new CallGeneratorParams(
-                true,
-                LastSyncResourceVersion, TimeSpan.FromMinutes(5)))
-            .Subscribe(new Observer<Tuple<WatchEventType, TApi>>(
-              x => WatchHandler(x.Item1, x.Item2), 
-              exception => _cancellationTokenSource.Cancel(),
-              () => _cancellationTokenSource.Cancel()));
-        _cancellationTokenSource.Token.Register(() => _watch.Dispose());
+        await RunWatch();
       }
       catch (Exception e)
       {
         _log?.LogError($"{typeof(TApi)}#Failed to list-watch: {e}");
       }
-      
-      return Task.CompletedTask;
     }
 
-    
+    private async Task RunWatch()
+    {
+      _log?.LogInformation($"{typeof(TApi)}#Start listing and watching...");
+
+      //todo: see if underlying kubernetes shape objects can be exposed via interfaces
+      var response = await _listerWatcher.List(new CallGeneratorParams(false, null, TimeSpan.Zero));
+      dynamic listKubernetesObject = response.Body; 
+      V1ListMeta listMeta = listKubernetesObject.Metadata;
+      var resourceVersion = listMeta.ResourceVersion;
+      IList<TApi> items = listKubernetesObject.Items ?? new List<TApi>();
+      _log?.LogDebug($"{typeof(TApi)}#Extract resourceVersion {resourceVersion} list meta");
+
+        
+      SyncWith(items.ToList(), resourceVersion);
+      LastSyncResourceVersion = resourceVersion;
+
+      _log?.LogDebug($"{typeof(TApi)}#Start watching with {LastSyncResourceVersion}...");
+        
+      // todo: review logic with java implementation as there's a retry logic for failed connection state, seems like entire watcher object will become unsable in .net verison as the stream would close
+      _watch =
+        _listerWatcher.Watch(
+            new CallGeneratorParams(
+              true,
+              LastSyncResourceVersion, TimeSpan.FromMinutes(5)))
+          .Subscribe(new Observer<Tuple<WatchEventType, TApi>>(
+            x => WatchHandler(x.Item1, x.Item2), 
+            exception => _cancellationTokenSource.Cancel(),
+            () => _cancellationTokenSource.Cancel()));
+      
+      _cancellationTokenSource.Token.Register(() => _watch.Dispose());
+    }
+
+    private async Task RestartWatch()
+    {
+      _watch?.Dispose();
+      await Task.Delay(1000);
+      await RunWatch();
+    }
     
     public Task StopAsync(CancellationToken cancellationToken)
     {
