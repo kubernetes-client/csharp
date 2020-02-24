@@ -159,7 +159,7 @@ namespace k8s
             var k8SConfiguration = new KubernetesClientConfiguration();
 
             currentContext = currentContext ?? k8SConfig.CurrentContext;
-            // only init context if context if set
+            // only init context if context is set
             if (currentContext != null)
             {
                 k8SConfiguration.InitializeContext(k8SConfig, currentContext);
@@ -423,7 +423,8 @@ namespace k8s
                         value: config.EnvironmentVariables[configEnvironmentVariableKey]);
 
             process.StartInfo.FileName = config.Command;
-            process.StartInfo.Arguments = string.Join(" ", config.Arguments);
+            if (config.Arguments != null)
+                process.StartInfo.Arguments = string.Join(" ", config.Arguments);
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.RedirectStandardError = true;
             process.StartInfo.UseShellExecute = false;
