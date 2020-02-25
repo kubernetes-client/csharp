@@ -433,7 +433,7 @@ namespace k8s.Tests
 
                 var command = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "cmd.exe" : "echo";
 
-                string[] arguments;
+                var arguments = new string[] { };
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                     arguments = ($"/c echo {responseJson}").Split(" ");
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
