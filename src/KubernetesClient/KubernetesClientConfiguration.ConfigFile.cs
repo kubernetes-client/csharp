@@ -362,7 +362,7 @@ namespace k8s
                 }
             }
 
-#if NETCOREAPP
+#if NETCOREAPP2_1 
             if (userDetails.UserCredentials.ExternalExecution != null)
             {
                 if (string.IsNullOrWhiteSpace(userDetails.UserCredentials.ExternalExecution.Command))

@@ -170,8 +170,7 @@ namespace k8s.Tests
             }
         }
 
-#if NETCOREAPP2_1 // The functionality under test, here, is dependent on managed HTTP / WebSocket functionality in .NET Core 2.1 or newer.
-
+#if NETCOREAPP2_1 // The functionality under test, here, is dependent on managed HTTP / WebSocket & Diagnostics functionality in .NET Core 2.1 or newer.
         [Fact]
         public void Cert()
         {
@@ -279,9 +278,7 @@ namespace k8s.Tests
                 }
             }
         }
-#endif // NETCOREAPP2_1
 
-#if NETCOREAPP // Requires NET Core Process (Diagnostics) Functionality
         [Fact]
         public void ExternalToken()
         {
@@ -320,7 +317,7 @@ namespace k8s.Tests
                 }
             }
         }
-#endif // NETCOREAPP
+#endif // NETCOREAPP2_1
 
         [Fact]
         public void Token()
