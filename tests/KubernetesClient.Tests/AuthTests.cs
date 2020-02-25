@@ -432,9 +432,15 @@ namespace k8s.Tests
                 };
 
                 var command = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "cmd.exe" : "echo";
-                var arguments = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
-                    ? ($"/c echo {responseJson}").Split(" ")
-                    : new[] {responseJson};
+
+                string[] arguments;
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                    arguments = ($"/c echo {responseJson}").Split(" ");
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                    arguments = new[] {responseJson};
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                    arguments = new[] {"-nE", responseJson};
+
 
                 var users = new List<User>
                 {
