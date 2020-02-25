@@ -15,7 +15,6 @@ using k8s.Tests.Mock;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Https;
 using Microsoft.Rest;
-using Newtonsoft.Json;
 using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.Security;
@@ -420,10 +419,7 @@ namespace k8s.Tests
                 new Context {Name = name, ContextDetails = new ContextDetails {Cluster = name, User = username}}
             };
 
-            var responseObject = new ExecCredentialResponse
-            {
-                ApiVersion = "testingversion", Status = new Dictionary<string, string> {{"token", token}}
-            };
+            var responseJson = $"{{\"apiVersion\": \"testingversion\", \"status\": {{\"token\": \"{token}\"}}}}";
 
             {
                 var clusters = new List<Cluster>
@@ -437,8 +433,8 @@ namespace k8s.Tests
 
                 var command = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "cmd.exe" : "echo";
                 var arguments = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
-                    ? ($"/c echo {JsonConvert.SerializeObject(responseObject)}").Split(" ")
-                    : new[] {JsonConvert.SerializeObject(responseObject)};
+                    ? ($"/c echo {responseJson}").Split(" ")
+                    : new[] {responseJson};
 
                 var users = new List<User>
                 {
