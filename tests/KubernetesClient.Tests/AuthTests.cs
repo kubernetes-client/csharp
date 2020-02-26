@@ -279,7 +279,8 @@ namespace k8s.Tests
         }
 
 #endif // NETCOREAPP2_1
-#if NETSTANDARD
+
+#if NETSTANDARD2_0
         [Fact]
         public void ExternalToken()
         {
@@ -318,7 +319,7 @@ namespace k8s.Tests
                 }
             }
         }
-#endif // NETSTANDARD
+#endif // NETSTANDARD2_0
 
         [Fact]
         public void Token()
