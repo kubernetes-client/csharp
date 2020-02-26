@@ -16,11 +16,11 @@ namespace k8s.KubeConfigModels
         /// Environment variables to set when executing the plugin. Optional.
         /// </summary>
         [YamlMember(Alias = "env")]
-        public Dictionary<string, string> EnvironmentVariables { get; set; }
+        public IDictionary<string, string> EnvironmentVariables { get; set; }
         /// <summary>
         /// Arguments to pass when executing the plugin. Optional.
         /// </summary>
         [YamlMember(Alias = "args")]
-        public List<string> Arguments { get; set; }
+        public IList<string> Arguments { get; set; }
     }
 }

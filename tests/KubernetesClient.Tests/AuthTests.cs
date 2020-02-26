@@ -169,7 +169,7 @@ namespace k8s.Tests
             }
         }
 
-#if NETCOREAPP2_1 // The functionality under test, here, is dependent on managed HTTP / WebSocket & Diagnostics functionality in .NET Core 2.1 or newer.
+#if NETCOREAPP2_1 // The functionality under test, here, is dependent on managed HTTP / WebSocket in .NET Core 2.1 or newer.
         [Fact]
         public void Cert()
         {
@@ -278,6 +278,8 @@ namespace k8s.Tests
             }
         }
 
+#endif // NETCOREAPP2_1
+#if NETSTANDARD
         [Fact]
         public void ExternalToken()
         {
@@ -316,7 +318,7 @@ namespace k8s.Tests
                 }
             }
         }
-#endif // NETCOREAPP2_1
+#endif // NETSTANDARD
 
         [Fact]
         public void Token()
@@ -432,14 +434,14 @@ namespace k8s.Tests
                 };
 
                 var command = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "cmd.exe" : "echo";
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                    command = "printf";
 
                 var arguments = new string[] { };
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                     arguments = ($"/c echo {responseJson}").Split(" ");
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
                     arguments = new[] {responseJson};
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                    arguments = new[] {"-nE", responseJson};
 
 
                 var users = new List<User>

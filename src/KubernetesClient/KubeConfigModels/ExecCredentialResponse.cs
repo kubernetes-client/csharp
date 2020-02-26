@@ -10,6 +10,6 @@ namespace k8s.KubeConfigModels
         [JsonProperty("kind")]
         public string Kind { get; set; }
         [JsonProperty("status")]
-        public Dictionary<string, string> Status { get; set; }
+        public IDictionary<string, string> Status { get; set; }
     }
 }

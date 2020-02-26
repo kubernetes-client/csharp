@@ -362,7 +362,7 @@ namespace k8s
                 }
             }
 
-#if NETCOREAPP2_1 
+#if NETSTANDARD
             if (userDetails.UserCredentials.ExternalExecution != null)
             {
                 if (string.IsNullOrWhiteSpace(userDetails.UserCredentials.ExternalExecution.Command))
@@ -390,7 +390,7 @@ namespace k8s
             throw new KubeConfigException("Refresh not supported.");
         }
 
-#if NETCOREAPP
+#if NETSTANDARD
         /// <summary>
         /// Implementation of the proposal for out-of-tree client
         /// authentication providers as described here --
@@ -443,7 +443,8 @@ namespace k8s
             if (string.IsNullOrWhiteSpace(stderr) == false)
                 throw new KubeConfigException($"external exec failed due to: {stderr}");
 
-            process.WaitForExit();
+            // Wait for a maximum of 5 seconds, if a response takes longer probably something went wrong...
+            process.WaitForExit(5);
 
             try
             {
