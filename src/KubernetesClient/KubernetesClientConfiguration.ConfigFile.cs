@@ -1,5 +1,5 @@
 using System;
-#if NETCOREAPP
+#if NETSTANDARD
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Diagnostics;
