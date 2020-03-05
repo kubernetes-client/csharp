@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using k8s.KubeConfigModels;
 using k8s.Models;
 using k8s.Tests.Mock;
 using Microsoft.AspNetCore.Hosting;
@@ -168,8 +169,7 @@ namespace k8s.Tests
             }
         }
 
-#if NETCOREAPP2_1 // The functionality under test, here, is dependent on managed HTTP / WebSocket functionality in .NET Core 2.1 or newer.
-
+#if NETCOREAPP2_1 // The functionality under test, here, is dependent on managed HTTP / WebSocket in .NET Core 2.1 or newer.
         [Fact]
         public void Cert()
         {
@@ -280,6 +280,47 @@ namespace k8s.Tests
 
 #endif // NETCOREAPP2_1
 
+#if NETSTANDARD2_0
+        [Fact]
+        public void ExternalToken()
+        {
+            const string token = "testingtoken";
+            const string name = "testing_irrelevant";
+
+            using (var server = new MockKubeApiServer(testOutput, cxt =>
+            {
+                var header = cxt.Request.Headers["Authorization"].FirstOrDefault();
+
+                var expect = new AuthenticationHeaderValue("Bearer", token).ToString();
+
+                if (header != expect)
+                {
+                    cxt.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
+                    return Task.FromResult(false);
+                }
+
+                return Task.FromResult(true);
+            }))
+            {
+                {
+                    var kubernetesConfig = GetK8SConfiguration(server.Uri.ToString(), token, name);
+                    var clientConfig = KubernetesClientConfiguration.BuildConfigFromConfigObject(kubernetesConfig, name);
+                    var client = new Kubernetes(clientConfig);
+                    var listTask = ExecuteListPods(client);
+                    Assert.True(listTask.Response.IsSuccessStatusCode);
+                    Assert.Equal(1, listTask.Body.Items.Count);
+                }
+                {
+                    var kubernetesConfig = GetK8SConfiguration(server.Uri.ToString(), "wrong token", name);
+                    var clientConfig = KubernetesClientConfiguration.BuildConfigFromConfigObject(kubernetesConfig, name);
+                    var client = new Kubernetes(clientConfig);
+                    var listTask = ExecuteListPods(client);
+                    Assert.Equal(HttpStatusCode.Unauthorized, listTask.Response.StatusCode);
+                }
+            }
+        }
+#endif // NETSTANDARD2_0
+
         [Fact]
         public void Token()
         {
@@ -370,6 +411,59 @@ namespace k8s.Tests
             certificate = RSACertificateExtensions.CopyWithPrivateKey(certificate, rsa);
 
             return certificate;
+        }
+
+        private K8SConfiguration GetK8SConfiguration(string serverUri, string token, string name)
+        {
+            const string username = "testinguser";
+
+            var contexts = new List<Context>
+            {
+                new Context {Name = name, ContextDetails = new ContextDetails {Cluster = name, User = username}}
+            };
+
+            var responseJson = $"{{\"apiVersion\": \"testingversion\", \"status\": {{\"token\": \"{token}\"}}}}";
+
+            {
+                var clusters = new List<Cluster>
+                {
+                    new Cluster
+                    {
+                        Name = name,
+                        ClusterEndpoint = new ClusterEndpoint {SkipTlsVerify = true, Server = serverUri}
+                    }
+                };
+
+                var command = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "cmd.exe" : "echo";
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                    command = "printf";
+
+                var arguments = new string[] { };
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                    arguments = ($"/c echo {responseJson}").Split(" ");
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                    arguments = new[] {responseJson};
+
+
+                var users = new List<User>
+                {
+                    new User
+                    {
+                        Name = username,
+                        UserCredentials = new UserCredentials
+                        {
+                            ExternalExecution = new ExternalExecution
+                            {
+                                ApiVersion = "testingversion",
+                                Command = command,
+                                Arguments = arguments.ToList()
+                            }
+                        }
+                    }
+                };
+                var kubernetesConfig = new K8SConfiguration {Clusters = clusters, Users = users, Contexts = contexts};
+                return kubernetesConfig;
+            }
         }
     }
 }
