@@ -14,7 +14,7 @@ using Xunit.Abstractions;
 
 namespace k8s.Tests.Mock
 {
-    public class MockKubeApiServer : IDisposable
+    public sealed class MockKubeApiServer : IDisposable
     {
         // paste from minikube /api/v1/namespaces/default/pods
         public const string MockPodResponse =
