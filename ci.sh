@@ -31,7 +31,7 @@ echo Generating Code Coverage reports
 export PATH="$PATH:$HOME/.dotnet/tools"
 export DOTNET_ROOT=$(dirname $(realpath $(which dotnet))) # https://github.com/dotnet/cli/issues/9114#issuecomment-401670622
 dotnet tool install --global dotnet-reportgenerator-globaltool --version 4.0.15
-reportgenerator "-reports:**/*.opencover.xml" "-targetdir:coveragereport" "-reporttypes:HTMLInline;Cobertura"
+reportgenerator "-reports:**/*.opencover*.xml" "-targetdir:coveragereport" "-reporttypes:HTMLInline;Cobertura"
 
 ls coveragereport
 ls coveragereport/Cobertura.xml
