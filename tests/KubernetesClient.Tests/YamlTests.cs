@@ -28,11 +28,11 @@ metadata:
             types.Add("v1/Namespace", typeof(V1Namespace));
 
             var objs = Yaml.LoadAllFromString(content, types);
-            Assert.Equal(objs.Count, 2);
+            Assert.Equal(2, objs.Count);
             Assert.IsType<V1Pod>(objs[0]);
             Assert.IsType<V1Namespace>(objs[1]);
-            Assert.Equal(((V1Pod) objs[0]).Metadata.Name, "foo");
-            Assert.Equal(((V1Namespace) objs[1]).Metadata.Name, "ns");
+            Assert.Equal("foo", ((V1Pod) objs[0]).Metadata.Name);
+            Assert.Equal("ns", ((V1Namespace) objs[1]).Metadata.Name);
         }
 
         [Fact]

@@ -33,11 +33,6 @@ namespace k8s
         }
 
         public void AddCertificates(HttpClientHandler handler) {
-#if XAMARINIOS1_0 || MONOANDROID8_1
-            // handle.ClientCertificates is not implemented in Xamarin.
-            return;
-#endif
-
             if ((!string.IsNullOrWhiteSpace(this.ClientCertificateData) ||
                     !string.IsNullOrWhiteSpace(this.ClientCertificateFilePath)) &&
                     (!string.IsNullOrWhiteSpace(this.ClientCertificateKeyData) ||

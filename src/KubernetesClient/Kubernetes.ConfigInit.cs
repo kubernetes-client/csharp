@@ -56,11 +56,7 @@ namespace k8s
         ///     Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
         public Kubernetes(KubernetesClientConfiguration config, params DelegatingHandler[] handlers)
-#if MONOANDROID8_1
-            : this(new Xamarin.Android.Net.AndroidClientHandler(), handlers)
-#else
             : this(handlers)
-#endif
         {
             ValidateConfig(config);
             CaCerts = config.SslCaCerts;
@@ -162,7 +158,7 @@ namespace k8s
 
         partial void CustomInitialize()
         {
-#if NET452 || XAMARINIOS1_0 || MONOANDROID8_1
+#if NET452 
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
 #endif
             AppendDelegatingHandler<WatcherDelegatingHandler>();

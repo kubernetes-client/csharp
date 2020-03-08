@@ -1,8 +1,6 @@
 using k8s.Models;
 using System;
-#if !NETSTANDARD1_4
 using System.Runtime.Serialization;
-#endif
 
 namespace k8s
 {
@@ -58,7 +56,6 @@ namespace k8s
         {
         }
 
-#if !NETSTANDARD1_4
         /// <summary>
         /// Initializes a new instance of the <see cref="KubernetesException"/> class with serialized data.
         /// </summary>
@@ -74,7 +71,6 @@ namespace k8s
             : base(info, context)
         {
         }
-#endif
 
         /// <summary>
         /// Gets, when this exception was raised because of a Kubernetes status message, the underlying
