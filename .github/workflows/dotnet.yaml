@@ -22,7 +22,7 @@ jobs:
         with:
           path: tests/KubernetesClient.Tests/coverage.netcoreapp2.1.cobertura.xml
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          #minimum_coverage: 75      
+          minimum_coverage: 0
 
 on:
   pull_request:
