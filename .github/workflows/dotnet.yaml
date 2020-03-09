@@ -14,7 +14,7 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 3.1.101
+          dotnet-version: 2.2.108
       - run: dotnet build --configuration Release
       - name: test with dotnet
         run: dotnet test /p:CollectCoverage=true /p:Exclude="[KubernetesClient]k8s.Models.*" /p:Exclude="[KubernetesClient]k8s.Internal.*" /p:CollectCoverage=true /p:CoverletOutputFormat="cobertura"
