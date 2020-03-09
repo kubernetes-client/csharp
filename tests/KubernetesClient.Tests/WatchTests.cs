@@ -204,7 +204,7 @@ namespace k8s.Tests
         public async Task DisposeWatch()
         {
             var connectionClosed = new AsyncManualResetEvent();
-            var eventsReceived = new AsyncCountdownEvent(1);
+            var eventsReceived = new CountdownEvent(1);
             bool serverRunning = true;
 
             using (var server = new MockKubeApiServer(testOutput, async httpContext =>
@@ -238,7 +238,7 @@ namespace k8s.Tests
                 );
 
                 // wait at least an event
-                await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout));
+                await Task.WhenAny(Task.Run(() => eventsReceived.Wait()), Task.Delay(TestTimeout));
                 Assert.True(
                     eventsReceived.CurrentCount == 0,
                     "Timed out waiting for events."
