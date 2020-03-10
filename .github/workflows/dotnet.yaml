@@ -1,0 +1,29 @@
+name: .NET Core
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+    name: Dotnet build
+    steps:
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: 0
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 2.2.108
+      - run: dotnet build --configuration Release
+      - name: test with dotnet
+        run: dotnet test /p:CollectCoverage=true /p:Exclude="[KubernetesClient]k8s.Models.*" /p:Exclude="[KubernetesClient]k8s.Internal.*" /p:CollectCoverage=true /p:CoverletOutputFormat="cobertura"
+      - uses: 5monkeys/cobertura-action@master
+        with:
+          path: tests/KubernetesClient.Tests/coverage.netcoreapp2.1.cobertura.xml
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          minimum_coverage: 0
+
+on:
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
