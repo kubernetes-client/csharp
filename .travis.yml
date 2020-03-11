@@ -36,10 +36,10 @@ script:
 after_script:
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ./integration-tests.sh; fi
 
-deploy:
-  skip_cleanup: true
-  provider: script
-  script: dotnet nuget push src/KubernetesClient/bin/Release/KubernetesClient.*.nupkg --api-key $NUGET_API_KEY --source $NUGET_SOURCE
-  on:
-    branch: master
-    condition: '"x${NUGET_API_KEY}" != "x" && "x$NUGET_SOURCE" != "x" && "$TRAVIS_OS_NAME" == "linux"'
+# deploy:
+#   skip_cleanup: true
+#   provider: script
+#   script: dotnet nuget push src/KubernetesClient/bin/Release/KubernetesClient.*.nupkg --api-key $NUGET_API_KEY --source $NUGET_SOURCE
+#   on:
+#     branch: master
+#     condition: '"x${NUGET_API_KEY}" != "x" && "x$NUGET_SOURCE" != "x" && "$TRAVIS_OS_NAME" == "linux"'
