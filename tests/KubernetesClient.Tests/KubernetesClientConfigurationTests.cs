@@ -406,6 +406,13 @@ namespace k8s.Tests
             AssertConfigEqual(expectedCfg, cfg);
         }
 
+        [UIFact]
+        public void BuildConfigFromConfigFileInfoOnNonDefaultSynchronizationContext()
+        {
+            var fi = new FileInfo("assets/kubeconfig.yml");
+            KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, "federal-context", useRelativePaths: false);
+        }
+
         private void AssertConfigEqual(K8SConfiguration expected, K8SConfiguration actual)
         {
             Assert.Equal(expected.ApiVersion, actual.ApiVersion);

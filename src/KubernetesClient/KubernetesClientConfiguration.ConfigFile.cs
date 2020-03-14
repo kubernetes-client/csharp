@@ -100,7 +100,7 @@ namespace k8s
                 throw new NullReferenceException(nameof(kubeconfig));
             }
 
-            var k8SConfig = await LoadKubeConfigAsync(kubeconfig, useRelativePaths);
+            var k8SConfig = await LoadKubeConfigAsync(kubeconfig, useRelativePaths).ConfigureAwait(false);
             var k8SConfiguration = GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig);
 
             return k8SConfiguration;
@@ -139,7 +139,7 @@ namespace k8s
 
             kubeconfig.Position = 0;
 
-            var k8SConfig = await Yaml.LoadFromStreamAsync<K8SConfiguration>(kubeconfig);
+            var k8SConfig = await Yaml.LoadFromStreamAsync<K8SConfiguration>(kubeconfig).ConfigureAwait(false);
             var k8SConfiguration = GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig);
 
             return k8SConfiguration;
@@ -486,7 +486,7 @@ namespace k8s
         {
             var fileInfo = new FileInfo(kubeconfigPath ?? KubeConfigDefaultLocation);
 
-            return await LoadKubeConfigAsync(fileInfo, useRelativePaths);
+            return await LoadKubeConfigAsync(fileInfo, useRelativePaths).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -517,7 +517,7 @@ namespace k8s
 
             using (var stream = kubeconfig.OpenRead())
             {
-                var config = await Yaml.LoadFromStreamAsync<K8SConfiguration>(stream);
+                var config = await Yaml.LoadFromStreamAsync<K8SConfiguration>(stream).ConfigureAwait(false);
 
                 if (useRelativePaths)
                 {
@@ -547,7 +547,7 @@ namespace k8s
         /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
         public static async Task<K8SConfiguration> LoadKubeConfigAsync(Stream kubeconfigStream)
         {
-            return await Yaml.LoadFromStreamAsync<K8SConfiguration>(kubeconfigStream);
+            return await Yaml.LoadFromStreamAsync<K8SConfiguration>(kubeconfigStream).ConfigureAwait(false);
         }
 
         /// <summary>

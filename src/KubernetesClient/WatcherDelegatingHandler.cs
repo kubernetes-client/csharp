@@ -19,7 +19,7 @@ namespace k8s
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
             CancellationToken cancellationToken)
         {
-            var originResponse = await base.SendAsync(request, cancellationToken);
+            var originResponse = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
 
             if (originResponse.IsSuccessStatusCode)
             {
@@ -47,18 +47,18 @@ namespace k8s
 
             protected override async Task SerializeToStreamAsync(Stream stream, TransportContext context)
             {
-                _originStream = await _originContent.ReadAsStreamAsync();
+                _originStream = await _originContent.ReadAsStreamAsync().ConfigureAwait(false);
 
                 StreamReader = new PeekableStreamReader(_originStream);
 
-                var firstLine = await StreamReader.PeekLineAsync();
+                var firstLine = await StreamReader.PeekLineAsync().ConfigureAwait(false);
 
                 var writer = new StreamWriter(stream);
 
 //                using (writer) // leave open
                 {
-                    await writer.WriteAsync(firstLine);
-                    await writer.FlushAsync();
+                    await writer.WriteAsync(firstLine).ConfigureAwait(false);
+                    await writer.FlushAsync().ConfigureAwait(false);
                 }
             }
 
@@ -94,7 +94,7 @@ namespace k8s
             }
             public async Task<string> PeekLineAsync()
             {
-                var line = await ReadLineAsync();
+                var line = await ReadLineAsync().ConfigureAwait(false);
                 _buffer.Enqueue(line);
                 return line;
             }
