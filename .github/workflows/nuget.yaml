@@ -15,6 +15,8 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.2.108
+    - name: test with dotnet
+      run: dotnet test
     - name: pack
       run: dotnet pack --configuration Release src/KubernetesClient -o pkg
     - name: push

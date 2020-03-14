@@ -17,12 +17,12 @@ jobs:
           dotnet-version: 2.2.108
       - run: dotnet build --configuration Release
       - name: test with dotnet
-        run: dotnet test /p:CollectCoverage=true /p:Exclude="[KubernetesClient]k8s.Models.*" /p:Exclude="[KubernetesClient]k8s.Internal.*" /p:CollectCoverage=true /p:CoverletOutputFormat="cobertura"
-      - uses: 5monkeys/cobertura-action@master
-        with:
-          path: tests/KubernetesClient.Tests/coverage.netcoreapp2.1.cobertura.xml
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          minimum_coverage: 0
+        run: dotnet test /p:CollectCoverage=true /p:ExcludeByFile=\"**/KubernetesClient/generated/**/*.cs\" /p:CoverletOutputFormat="cobertura"
+      # - uses: 5monkeys/cobertura-action@master
+      #   with:
+      #     path: tests/KubernetesClient.Tests/coverage.netcoreapp2.1.cobertura.xml
+      #     repo_token: ${{ secrets.GITHUB_TOKEN }}
+      #     minimum_coverage: 0
 
 on:
   pull_request:
