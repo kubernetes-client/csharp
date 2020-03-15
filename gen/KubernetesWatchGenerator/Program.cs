@@ -30,7 +30,7 @@ namespace KubernetesWatchGenerator
             var swagger = await SwaggerDocument.FromFileAsync(Path.Combine(args[1], "swagger.json"));
             foreach (var (k, v) in swagger.Definitions)
             {
-                if (v.ExtensionData?["x-kubernetes-group-version-kind"] != null)
+                if (v.ExtensionData?.TryGetValue("x-kubernetes-group-version-kind", out var _) == true)
                 {
                     var groupVersionKindElements = (object[])v.ExtensionData["x-kubernetes-group-version-kind"];
                     var groupVersionKind = (Dictionary<string, object>)groupVersionKindElements[0];
