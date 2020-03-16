@@ -436,7 +436,6 @@ namespace k8s.Tests
         private void AssertContextEqual(Context expected, Context actual)
         {
             Assert.Equal(expected.Name, actual.Name);
-            Assert.Equal(expected.Namespace, actual.Namespace);
             Assert.Equal(expected.ContextDetails.Cluster, actual.ContextDetails.Cluster);
             Assert.Equal(expected.ContextDetails.User, actual.ContextDetails.User);
             Assert.Equal(expected.ContextDetails.Namespace, actual.ContextDetails.Namespace);

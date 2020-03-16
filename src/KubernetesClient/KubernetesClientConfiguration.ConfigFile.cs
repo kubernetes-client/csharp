@@ -209,7 +209,7 @@ namespace k8s
             SetUserDetails(k8SConfig, activeContext);
 
             // namespace
-            Namespace = activeContext.Namespace ?? activeContext.ContextDetails?.Namespace;
+            Namespace = activeContext.ContextDetails?.Namespace;
         }
 
         private void SetClusterDetails(K8SConfiguration k8SConfig, Context activeContext)
