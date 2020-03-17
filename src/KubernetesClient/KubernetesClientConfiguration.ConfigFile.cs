@@ -193,6 +193,13 @@ namespace k8s
                 throw new KubeConfigException($"CurrentContext: {currentContext} not found in contexts in kubeconfig");
             }
 
+            if (string.IsNullOrEmpty(activeContext.ContextDetails?.Cluster))
+            {
+                // This serves as validation for any of the properties of ContextDetails being set.
+                // Other locations in code assume that ContextDetails is non-null.
+                throw new KubeConfigException($"Cluster not set for context `{currentContext}` in kubeconfig");
+            }
+
             CurrentContext = activeContext.Name;
 
             // cluster
@@ -202,7 +209,7 @@ namespace k8s
             SetUserDetails(k8SConfig, activeContext);
 
             // namespace
-            Namespace = activeContext.Namespace;
+            Namespace = activeContext.ContextDetails?.Namespace;
         }
 
         private void SetClusterDetails(K8SConfiguration k8SConfig, Context activeContext)
@@ -254,7 +261,7 @@ namespace k8s
 
             if (userDetails == null)
             {
-                throw new KubeConfigException("User not found for context {activeContext.Name} in kubeconfig");
+                throw new KubeConfigException($"User not found for context {activeContext.Name} in kubeconfig");
             }
 
             if (userDetails.UserCredentials == null)

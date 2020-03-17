@@ -16,7 +16,7 @@ namespace k8s.KubeConfigModels
         public string Cluster { get; set; }
 
         /// <summary>
-        /// Gets or sets the anem of the user for this context.
+        /// Gets or sets the name of the user for this context.
         /// </summary>
         [YamlMember(Alias = "user")]
         public string User { get; set; }

@@ -22,6 +22,19 @@ namespace k8s.Tests
         }
 
         /// <summary>
+        ///     Check if namespace is properly loaded, per context
+        /// </summary>
+        [Theory]
+        [InlineData("federal-context", "chisel-ns")]
+        [InlineData("queen-anne-context", "saw-ns")]
+        public void ContextNamespace(string context, string @namespace)
+        {
+            var fi = new FileInfo("assets/kubeconfig.yml");
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, context, useRelativePaths: false);
+            Assert.Equal(@namespace, cfg.Namespace);
+        }
+
+        /// <summary>
         ///     Checks if user-based token is loaded properly from the config file, per context
         /// </summary>
         /// <param name="context"></param>
@@ -188,6 +201,16 @@ namespace k8s.Tests
             var fi = new FileInfo("assets/kubeconfig-no-context.yml");
             Assert.Throws<KubeConfigException>(() =>
                 KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, "context"));
+        }
+
+        /// <summary>
+        ///     Checks that a KubeConfigException is thrown when the current context exists but has no details specified
+        /// </summary>
+        [Fact]
+        public void ContextNoDetails()
+        {
+            var fi = new FileInfo("assets/kubeconfig.no-context-details.yml");
+            Assert.Throws<KubeConfigException>(() => KubernetesClientConfiguration.BuildConfigFromConfigFile(fi));
         }
 
         /// <summary>
@@ -413,7 +436,6 @@ namespace k8s.Tests
         private void AssertContextEqual(Context expected, Context actual)
         {
             Assert.Equal(expected.Name, actual.Name);
-            Assert.Equal(expected.Namespace, actual.Namespace);
             Assert.Equal(expected.ContextDetails.Cluster, actual.ContextDetails.Cluster);
             Assert.Equal(expected.ContextDetails.User, actual.ContextDetails.User);
             Assert.Equal(expected.ContextDetails.Namespace, actual.ContextDetails.Namespace);

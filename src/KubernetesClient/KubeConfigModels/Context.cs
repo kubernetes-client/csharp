@@ -1,5 +1,6 @@
 namespace k8s.KubeConfigModels
 {
+    using System;
     using YamlDotNet.Serialization;
 
     /// <summary>
@@ -19,6 +20,7 @@ namespace k8s.KubeConfigModels
         [YamlMember(Alias = "name")]
         public string Name { get; set; }
 
+        [Obsolete("This property is not set by the YAML config. Use ContextDetails.Namespace instead.")]
         [YamlMember(Alias = "namespace")]
         public string Namespace { get; set; }
     }
