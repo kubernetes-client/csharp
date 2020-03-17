@@ -665,6 +665,29 @@ namespace k8s
         }
 
         /// <inheritdoc>
+        public Task<Watcher<Appsv1beta1Deployment>> WatchNamespacedDeploymentAsync(
+            string name,
+            string @namespace,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, Appsv1beta1Deployment> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/apps/v1beta1/watch/namespaces/{@namespace}/deployments/{name}";
+            return WatchObjectAsync<Appsv1beta1Deployment>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
         public Task<Watcher<V1beta1StatefulSet>> WatchNamespacedStatefulSetAsync(
             string name,
             string @namespace,
@@ -731,6 +754,29 @@ namespace k8s
         {
             string path = $"apis/apps/v1beta2/watch/namespaces/{@namespace}/daemonsets/{name}";
             return WatchObjectAsync<V1beta2DaemonSet>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
+        public Task<Watcher<V1beta2Deployment>> WatchNamespacedDeploymentAsync(
+            string name,
+            string @namespace,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta2Deployment> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/apps/v1beta2/watch/namespaces/{@namespace}/deployments/{name}";
+            return WatchObjectAsync<V1beta2Deployment>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
         /// <inheritdoc>
@@ -1077,6 +1123,75 @@ namespace k8s
         }
 
         /// <inheritdoc>
+        public Task<Watcher<Extensionsv1beta1Deployment>> WatchNamespacedDeploymentAsync(
+            string name,
+            string @namespace,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, Extensionsv1beta1Deployment> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/extensions/v1beta1/watch/namespaces/{@namespace}/deployments/{name}";
+            return WatchObjectAsync<Extensionsv1beta1Deployment>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
+        public Task<Watcher<Extensionsv1beta1Ingress>> WatchNamespacedIngressAsync(
+            string name,
+            string @namespace,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, Extensionsv1beta1Ingress> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/extensions/v1beta1/watch/namespaces/{@namespace}/ingresses/{name}";
+            return WatchObjectAsync<Extensionsv1beta1Ingress>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
+        public Task<Watcher<V1beta1NetworkPolicy>> WatchNamespacedNetworkPolicyAsync(
+            string name,
+            string @namespace,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1NetworkPolicy> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/extensions/v1beta1/watch/namespaces/{@namespace}/networkpolicies/{name}";
+            return WatchObjectAsync<V1beta1NetworkPolicy>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
         public Task<Watcher<V1beta1ReplicaSet>> WatchNamespacedReplicaSetAsync(
             string name,
             string @namespace,
@@ -1100,6 +1215,28 @@ namespace k8s
         }
 
         /// <inheritdoc>
+        public Task<Watcher<Extensionsv1beta1PodSecurityPolicy>> WatchPodSecurityPolicyAsync(
+            string name,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, Extensionsv1beta1PodSecurityPolicy> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/extensions/v1beta1/watch/podsecuritypolicies/{name}";
+            return WatchObjectAsync<Extensionsv1beta1PodSecurityPolicy>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
         public Task<Watcher<V1NetworkPolicy>> WatchNamespacedNetworkPolicyAsync(
             string name,
             string @namespace,
@@ -1120,6 +1257,29 @@ namespace k8s
         {
             string path = $"apis/networking.k8s.io/v1/watch/namespaces/{@namespace}/networkpolicies/{name}";
             return WatchObjectAsync<V1NetworkPolicy>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
+        public Task<Watcher<Networkingv1beta1Ingress>> WatchNamespacedIngressAsync(
+            string name,
+            string @namespace,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, Networkingv1beta1Ingress> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/networking.k8s.io/v1beta1/watch/namespaces/{@namespace}/ingresses/{name}";
+            return WatchObjectAsync<Networkingv1beta1Ingress>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
         /// <inheritdoc>
@@ -1187,6 +1347,28 @@ namespace k8s
         {
             string path = $"apis/policy/v1beta1/watch/namespaces/{@namespace}/poddisruptionbudgets/{name}";
             return WatchObjectAsync<V1beta1PodDisruptionBudget>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc>
+        public Task<Watcher<Policyv1beta1PodSecurityPolicy>> WatchPodSecurityPolicyAsync(
+            string name,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, Policyv1beta1PodSecurityPolicy> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/policy/v1beta1/watch/podsecuritypolicies/{name}";
+            return WatchObjectAsync<Policyv1beta1PodSecurityPolicy>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
         /// <inheritdoc>

@@ -140,6 +140,34 @@ namespace k8s.Models
         public const string KubeGroup = "apps";
     }
 
+    public partial class Appsv1beta1Deployment : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "Deployment";
+        public const string KubeGroup = "apps";
+    }
+
+    public partial class Appsv1beta1DeploymentList : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "DeploymentList";
+        public const string KubeGroup = "apps";
+    }
+
+    public partial class Appsv1beta1DeploymentRollback : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "DeploymentRollback";
+        public const string KubeGroup = "apps";
+    }
+
+    public partial class Appsv1beta1Scale : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "Scale";
+        public const string KubeGroup = "apps";
+    }
+
     public partial class V1beta1StatefulSet : IKubernetesObject
     {
         public const string KubeApiVersion = "v1beta1";
@@ -728,6 +756,41 @@ namespace k8s.Models
         public const string KubeGroup = "extensions";
     }
 
+    public partial class Extensionsv1beta1Deployment : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "Deployment";
+        public const string KubeGroup = "extensions";
+    }
+
+    public partial class Extensionsv1beta1DeploymentList : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "DeploymentList";
+        public const string KubeGroup = "extensions";
+    }
+
+    public partial class Extensionsv1beta1DeploymentRollback : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "DeploymentRollback";
+        public const string KubeGroup = "extensions";
+    }
+
+    public partial class Extensionsv1beta1Ingress : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "Ingress";
+        public const string KubeGroup = "extensions";
+    }
+
+    public partial class Extensionsv1beta1IngressList : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "IngressList";
+        public const string KubeGroup = "extensions";
+    }
+
     public partial class V1beta1NetworkPolicy : IKubernetesObject
     {
         public const string KubeApiVersion = "v1beta1";
@@ -739,6 +802,20 @@ namespace k8s.Models
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "NetworkPolicyList";
+        public const string KubeGroup = "extensions";
+    }
+
+    public partial class Extensionsv1beta1PodSecurityPolicy : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "PodSecurityPolicy";
+        public const string KubeGroup = "extensions";
+    }
+
+    public partial class Extensionsv1beta1PodSecurityPolicyList : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "PodSecurityPolicyList";
         public const string KubeGroup = "extensions";
     }
 
@@ -756,6 +833,13 @@ namespace k8s.Models
         public const string KubeGroup = "extensions";
     }
 
+    public partial class Extensionsv1beta1Scale : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "Scale";
+        public const string KubeGroup = "extensions";
+    }
+
     public partial class V1NetworkPolicy : IKubernetesObject
     {
         public const string KubeApiVersion = "v1";
@@ -767,6 +851,20 @@ namespace k8s.Models
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "NetworkPolicyList";
+        public const string KubeGroup = "networking.k8s.io";
+    }
+
+    public partial class Networkingv1beta1Ingress : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "Ingress";
+        public const string KubeGroup = "networking.k8s.io";
+    }
+
+    public partial class Networkingv1beta1IngressList : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "IngressList";
         public const string KubeGroup = "networking.k8s.io";
     }
 
@@ -816,6 +914,20 @@ namespace k8s.Models
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "PodDisruptionBudgetList";
+        public const string KubeGroup = "policy";
+    }
+
+    public partial class Policyv1beta1PodSecurityPolicy : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "PodSecurityPolicy";
+        public const string KubeGroup = "policy";
+    }
+
+    public partial class Policyv1beta1PodSecurityPolicyList : IKubernetesObject
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "PodSecurityPolicyList";
         public const string KubeGroup = "policy";
     }
 

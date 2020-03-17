@@ -13,34 +13,38 @@ namespace KubernetesWatchGenerator
 {
     class Program
     {
+        static readonly Dictionary<string, string> ClassNameMap = new Dictionary<string, string>();
+
         static async Task Main(string[] args)
         {
             if (args.Length < 2)
             {
-                Console.Error.WriteLine($"usage {args[0]} path/to/csharp.settings");
+                Console.Error.WriteLine($"usage {args[0]} path/to/generated");
                 Environment.Exit(1);
             }
 
-            var (kubernetesBranch, outputDirectory) = LoadSettings(args[1]);
+            var outputDirectory = args[1];
 
-            var specUrl = $"https://raw.githubusercontent.com/kubernetes/kubernetes/{kubernetesBranch}/api/openapi-spec/swagger.json";
-            var specPath = $"{kubernetesBranch}-swagger.json";
-
-            // Download the Kubernetes spec, and cache it locally. Don't download it if already present in the cache.
-            if (!File.Exists(specPath))
+            // Read the spec trimmed
+            // here we cache all name in gen project for later use
+            var swagger = await SwaggerDocument.FromFileAsync(Path.Combine(args[1], "swagger.json"));
+            foreach (var (k, v) in swagger.Definitions)
             {
-                HttpClient client = new HttpClient();
-                using (var response = await client.GetAsync(specUrl, HttpCompletionOption.ResponseHeadersRead))
-                using (var stream = await response.Content.ReadAsStreamAsync())
-                using (var output = File.Open(specPath, FileMode.Create, FileAccess.ReadWrite))
+                if (v.ExtensionData?.TryGetValue("x-kubernetes-group-version-kind", out var _) == true)
                 {
-                    await stream.CopyToAsync(output);
+                    var groupVersionKindElements = (object[])v.ExtensionData["x-kubernetes-group-version-kind"];
+                    var groupVersionKind = (Dictionary<string, object>)groupVersionKindElements[0];
+
+                    var group = (string)groupVersionKind["group"];
+                    var kind = (string)groupVersionKind["kind"];
+                    var version = (string)groupVersionKind["version"];
+                    ClassNameMap[$"{group}_{kind}_{version}"] = ToPascalCase(k.Replace(".", ""));
                 }
             }
 
-            // Read the spec
-            var swagger = await SwaggerDocument.FromFileAsync(specPath);
 
+            // gen project removed all watch operations, so here we switch back to unprocessed version
+            swagger = await SwaggerDocument.FromFileAsync(Path.Combine(args[1], "swagger.json.unprocessed"));
 
             // Register helpers used in the templating.
             Helpers.Register(nameof(ToXmlDoc), ToXmlDoc);
@@ -58,17 +62,6 @@ namespace KubernetesWatchGenerator
             // That's usually because there are different version of the same object (e.g. for deployments).
             var blacklistedOperations = new HashSet<string>()
             {
-                "watchAppsV1beta1NamespacedDeployment",
-                "watchAppsV1beta2NamespacedDeployment",
-                "watchExtensionsV1beta1NamespacedDeployment",
-                "watchExtensionsV1beta1NamespacedNetworkPolicy",
-                "watchPolicyV1beta1PodSecurityPolicy",
-                "watchExtensionsV1beta1PodSecurityPolicy",
-                "watchExtensionsV1beta1NamespacedIngress",
-                "watchNamespacedIngress",
-                "watchExtensionsV1beta1NamespacedIngressList",
-                "watchNetworkingV1beta1NamespacedIngress",
-                "watchNetworkingV1beta1NamespacedIngressList",
             };
 
             var watchOperations = swagger.Operations.Where(
@@ -83,16 +76,7 @@ namespace KubernetesWatchGenerator
             // Generate the interface declarations
             var skippedTypes = new HashSet<string>()
             {
-                "V1beta1Deployment",
-                "V1beta1DeploymentList",
-                "V1beta1DeploymentRollback",
-                "V1beta1DeploymentRollback",
-                "V1beta1Scale",
-                "V1beta1PodSecurityPolicy",
-                "V1beta1PodSecurityPolicyList",
                 "V1WatchEvent",
-                "V1beta1Ingress",
-                "V1beta1IngressList"
             };
 
             var definitions = swagger.Definitions.Values
@@ -101,40 +85,7 @@ namespace KubernetesWatchGenerator
                     && d.ExtensionData.ContainsKey("x-kubernetes-group-version-kind")
                     && !skippedTypes.Contains(GetClassName(d)));
 
-            // Render.
-            Render.FileToFile("ModelExtensions.cs.template", definitions, $"{outputDirectory}ModelExtensions.cs");
-        }
-
-        private static (string kubernetesBranch, string outputDirectory) LoadSettings(string path)
-        {
-            var fileInfo = new FileInfo(path);
-
-            if (!fileInfo.Exists)
-            {
-                Console.Error.WriteLine("Cannot find csharp.settings");
-                Environment.Exit(1);
-            }
-
-            using (var s = new StreamReader(fileInfo.OpenRead()))
-            {
-                string l;
-                while ((l = s.ReadLine()) != null)
-                {
-                    if (l.Contains("KUBERNETES_BRANCH"))
-                    {
-                        var kubernetesBranch = l.Split("=")[1];
-                        var outputDirectory = Path.Combine(fileInfo.DirectoryName, @"src/KubernetesClient/generated/");
-
-                        Console.WriteLine($"Using branch {kubernetesBranch} output {outputDirectory}");
-
-                        return (kubernetesBranch, outputDirectory);
-                    }
-                }
-            }
-
-            Console.Error.WriteLine("Cannot find KUBERNETES_BRANCH in csharp.settings");
-            Environment.Exit(1);
-            return (null, null);
+            Render.FileToFile("ModelExtensions.cs.template", definitions, Path.Combine(outputDirectory, "ModelExtensions.cs"));
         }
 
         static void ToXmlDoc(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
@@ -150,7 +101,7 @@ namespace KubernetesWatchGenerator
                     {
                         if (!first)
                         {
-                            context.Write(Environment.NewLine);
+                            context.Write("\n");
                             context.Write("        /// ");
                         }
                         else
@@ -178,12 +129,16 @@ namespace KubernetesWatchGenerator
         static string GetClassName(SwaggerOperation watchOperation)
         {
             var groupVersionKind = (Dictionary<string, object>)watchOperation.ExtensionData["x-kubernetes-group-version-kind"];
+            return GetClassName(groupVersionKind);
+        }
+
+        private static string GetClassName(Dictionary<string, object> groupVersionKind)
+        {
             var group = (string)groupVersionKind["group"];
             var kind = (string)groupVersionKind["kind"];
             var version = (string)groupVersionKind["version"];
 
-            var className = $"{ToPascalCase(version)}{kind}";
-            return className;
+            return ClassNameMap[$"{group}_{kind}_{version}"];
         }
 
         private static string GetClassName(JsonSchema4 definition)
@@ -191,11 +146,7 @@ namespace KubernetesWatchGenerator
             var groupVersionKindElements = (object[])definition.ExtensionData["x-kubernetes-group-version-kind"];
             var groupVersionKind = (Dictionary<string, object>)groupVersionKindElements[0];
 
-            var group = groupVersionKind["group"] as string;
-            var version = groupVersionKind["version"] as string;
-            var kind = groupVersionKind["kind"] as string;
-
-            return $"{ToPascalCase(version)}{ToPascalCase(kind)}";
+            return GetClassName(groupVersionKind);
         }
 
         static void GetKind(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
@@ -350,7 +301,7 @@ namespace KubernetesWatchGenerator
         {
             string pathExpression = operation.Path;
 
-            if(pathExpression.StartsWith("/"))
+            if (pathExpression.StartsWith("/"))
             {
                 pathExpression = pathExpression.Substring(1);
             }
