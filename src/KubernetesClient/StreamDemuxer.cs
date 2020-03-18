@@ -57,7 +57,7 @@ namespace k8s
         /// </summary>
         public void Start()
         {
-            this.runLoop = Task.Run(() => this.RunLoop(this.cts.Token));
+            this.runLoop = Task.Run(async () => await this.RunLoop(this.cts.Token));
         }
 
         /// <inheritdoc/>

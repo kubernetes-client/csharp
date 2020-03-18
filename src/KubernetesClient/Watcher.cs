@@ -57,7 +57,7 @@ namespace k8s
             OnClosed += onClosed;
 
             _cts = new CancellationTokenSource();
-            _watcherLoop = Task.Run(() => this.WatcherLoop(_cts.Token));
+            _watcherLoop = Task.Run(async () => await this.WatcherLoop(_cts.Token));
         }
 
         /// <inheritdoc/>
