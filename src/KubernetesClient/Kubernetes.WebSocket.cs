@@ -273,7 +273,7 @@ namespace k8s
             {
                 // Copy the default (credential-related) request headers from the HttpClient to the WebSocket
                 HttpRequestMessage message = new HttpRequestMessage();
-                await this.Credentials.ProcessHttpRequestAsync(message, cancellationToken);
+                await this.Credentials.ProcessHttpRequestAsync(message, cancellationToken).ConfigureAwait(false);
 
                 foreach (var _header in message.Headers)
                 {

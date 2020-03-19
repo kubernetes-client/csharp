@@ -29,7 +29,7 @@ namespace k8s
         /// </param>
         public static async Task<List<object>> LoadAllFromStreamAsync(Stream stream, Dictionary<String, Type> typeMap) {
             var reader = new StreamReader(stream);
-            var content = await reader.ReadToEndAsync();
+            var content = await reader.ReadToEndAsync().ConfigureAwait(false);
             return LoadAllFromString(content, typeMap);
         }
 
@@ -95,13 +95,13 @@ namespace k8s
 
         public static async Task<T> LoadFromStreamAsync<T>(Stream stream) {
             var reader = new StreamReader(stream);
-            var content = await reader.ReadToEndAsync();
+            var content = await reader.ReadToEndAsync().ConfigureAwait(false);
             return LoadFromString<T>(content);
         }
 
         public static async Task<T> LoadFromFileAsync<T> (string file) {
             using (FileStream fs = File.OpenRead(file)) {
-                return await LoadFromStreamAsync<T>(fs);
+                return await LoadFromStreamAsync<T>(fs).ConfigureAwait(false);
             }
         }
 

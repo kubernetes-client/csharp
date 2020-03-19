@@ -1,5 +1,6 @@
 using System.IO;
 using System.Linq;
+using System.Threading;
 using k8s.Exceptions;
 using k8s.KubeConfigModels;
 using Xunit;
@@ -404,6 +405,17 @@ namespace k8s.Tests
 
             Assert.NotNull(cfg);
             AssertConfigEqual(expectedCfg, cfg);
+        }
+
+        /// <summary>
+        ///     Ensures Kube config file can be loaded from within a non-default <see cref="SynchronizationContext"/>.
+        ///     The use of <see cref="UIFactAttribute"/> ensures the test is run from within a UI-like <see cref="SynchronizationContext"/>.
+        /// </summary>
+        [UIFact]
+        public void BuildConfigFromConfigFileInfoOnNonDefaultSynchronizationContext()
+        {
+            var fi = new FileInfo("assets/kubeconfig.yml");
+            KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, "federal-context", useRelativePaths: false);
         }
 
         private void AssertConfigEqual(K8SConfiguration expected, K8SConfiguration actual)

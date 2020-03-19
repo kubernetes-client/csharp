@@ -57,7 +57,7 @@ namespace k8s
         /// </summary>
         public void Start()
         {
-            this.runLoop = this.RunLoop(this.cts.Token);
+            this.runLoop = Task.Run(async () => await this.RunLoop(this.cts.Token));
         }
 
         /// <inheritdoc/>
@@ -193,9 +193,6 @@ namespace k8s
 
         protected async Task RunLoop(CancellationToken cancellationToken)
         {
-            // This is a background task. Immediately yield to the caller.
-            await Task.Yield();
-
             // Get a 1KB buffer
             byte[] buffer = ArrayPool<byte>.Shared.Rent(1024 * 1024);
             // This maps remembers bytes skipped for each stream.
