@@ -45,32 +45,19 @@ namespace k8s
                 _cancellationToken = cancellationToken;
             }
 
-            public override void Flush()
-            {
-                _innerStream.Flush();
-            }
+            public override void Flush() => _innerStream.Flush();
 
-            public override int Read(byte[] buffer, int offset, int count)
-            {
-                return _innerStream.ReadAsync(buffer, offset, count, _cancellationToken).ConfigureAwait(false)
+            public override int Read(byte[] buffer, int offset, int count) =>
+                _innerStream.ReadAsync(buffer, offset, count, _cancellationToken).ConfigureAwait(false)
                     .GetAwaiter().GetResult();
-            }
 
-            public override long Seek(long offset, SeekOrigin origin)
-            {
-                return _innerStream.Seek(offset, origin);
-            }
+            public override long Seek(long offset, SeekOrigin origin) => _innerStream.Seek(offset, origin);
 
-            public override void SetLength(long value)
-            {
-                _innerStream.SetLength(value);
-            }
+            public override void SetLength(long value) => _innerStream.SetLength(value);
 
-            public override void Write(byte[] buffer, int offset, int count)
-            {
+            public override void Write(byte[] buffer, int offset, int count) =>
                 _innerStream.WriteAsync(buffer, offset, count, _cancellationToken).ConfigureAwait(false).GetAwaiter()
                     .GetResult();
-            }
 
             public override bool CanRead => _innerStream.CanRead;
 
@@ -111,11 +98,8 @@ namespace k8s
 
                 var writer = new StreamWriter(stream);
 
-                //                using (writer) // leave open
-                {
-                    await writer.WriteAsync(firstLine);
-                    await writer.FlushAsync();
-                }
+                await writer.WriteAsync(firstLine);
+                await writer.FlushAsync();
             }
 
             protected override bool TryComputeLength(out long length)
@@ -161,40 +145,19 @@ namespace k8s
                 return line;
             }
 
-            public override int Read()
-            {
-                throw new NotImplementedException();
-            }
+            public override int Read() => throw new NotImplementedException();
 
-            public override int Read(char[] buffer, int index, int count)
-            {
-                throw new NotImplementedException();
-            }
+            public override int Read(char[] buffer, int index, int count) => throw new NotImplementedException();
 
-            public override Task<int> ReadAsync(char[] buffer, int index, int count)
-            {
-                throw new NotImplementedException();
-            }
+            public override Task<int> ReadAsync(char[] buffer, int index, int count) => throw new NotImplementedException();
 
-            public override int ReadBlock(char[] buffer, int index, int count)
-            {
-                throw new NotImplementedException();
-            }
+            public override int ReadBlock(char[] buffer, int index, int count) => throw new NotImplementedException();
 
-            public override Task<int> ReadBlockAsync(char[] buffer, int index, int count)
-            {
-                throw new NotImplementedException();
-            }
+            public override Task<int> ReadBlockAsync(char[] buffer, int index, int count) => throw new NotImplementedException();
 
-            public override string ReadToEnd()
-            {
-                throw new NotImplementedException();
-            }
+            public override string ReadToEnd() => throw new NotImplementedException();
 
-            public override Task<string> ReadToEndAsync()
-            {
-                throw new NotImplementedException();
-            }
+            public override Task<string> ReadToEndAsync() => throw new NotImplementedException();
         }
     }
 }
