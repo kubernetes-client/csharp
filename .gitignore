@@ -9,3 +9,7 @@ bin/
 *.user
 *.userosscache
 *.sln.docstates
+
+# JetBrains Rider
+.idea/
+*.sln.iml
