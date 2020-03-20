@@ -69,13 +69,14 @@ namespace k8s.Tests
                 var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default");
                 var onErrorCalled = false;
 
-                using (listTask.Watch<V1Pod, V1PodList>((type, item) => { }, e => {
+                using (listTask.Watch<V1Pod, V1PodList>((type, item) => { }, e =>
+                {
                     onErrorCalled = true;
                 })) { }
 
                 await Task.Delay(TimeSpan.FromSeconds(1)); // delay for onerror to be called
                 Assert.True(onErrorCalled);
-                
+
 
                 // server did not response line by line
                 await Assert.ThrowsAnyAsync<Exception>(() =>
@@ -109,7 +110,8 @@ namespace k8s.Tests
 
 
                 var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
-                using (listTask.Watch<V1Pod, V1PodList>((type, item) => {
+                using (listTask.Watch<V1Pod, V1PodList>((type, item) =>
+                {
                     eventsReceived.Set();
                 }))
                 {
@@ -748,5 +750,35 @@ namespace k8s.Tests
             }
         }
 
+        [Fact]
+        public async Task WatchShouldCancelAfterRequested()
+        {
+            AsyncManualResetEvent serverShutdown = new AsyncManualResetEvent();
+
+            using (var server = new MockKubeApiServer(testOutput, async httpContext =>
+            {
+                httpContext.Response.StatusCode = 200;
+                await httpContext.Response.Body.FlushAsync();
+                await Task.Delay(TimeSpan.FromSeconds(5)); // The default timeout is 100 seconds
+
+                return true;
+            }, resp: ""))
+            {
+                var client = new Kubernetes(new KubernetesClientConfiguration
+                {
+                    Host = server.Uri.ToString()
+                });
+
+                var cts = new CancellationTokenSource();
+                cts.CancelAfter(TimeSpan.FromSeconds(2));
+
+                await Assert.ThrowsAnyAsync<TaskCanceledException>(async () =>
+                {
+                    await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true, cancellationToken: cts.Token);
+                });
+
+            }
+
+        }
     }
 }
