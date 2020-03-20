@@ -57,7 +57,7 @@ namespace k8s
             OnClosed += onClosed;
 
             _cts = new CancellationTokenSource();
-            _watcherLoop = this.WatcherLoop(_cts.Token);
+            _watcherLoop = Task.Run(async () => await this.WatcherLoop(_cts.Token));
         }
 
         /// <inheritdoc/>
@@ -91,14 +91,11 @@ namespace k8s
 
         private async Task WatcherLoop(CancellationToken cancellationToken)
         {
-            // Make sure we run async
-            await Task.Yield();
-
             try
             {
                 Watching = true;
                 string line;
-                _streamReader = await _streamReaderCreator();
+                _streamReader = await _streamReaderCreator().ConfigureAwait(false);
 
                 // ReadLineAsync will return null when we've reached the end of the stream.
                 while ((line = await _streamReader.ReadLineAsync().ConfigureAwait(false)) != null)
@@ -164,7 +161,7 @@ namespace k8s
             Action onClosed = null)
         {
             return new Watcher<T>(async () => {
-                var response = await responseTask;
+                var response = await responseTask.ConfigureAwait(false);
 
                 if (!(response.Response.Content is WatcherDelegatingHandler.LineSeparatedHttpContent content))
                 {
