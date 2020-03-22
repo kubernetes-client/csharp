@@ -48,16 +48,14 @@ namespace k8s
             public override void Flush() => _innerStream.Flush();
 
             public override int Read(byte[] buffer, int offset, int count) =>
-                _innerStream.ReadAsync(buffer, offset, count, _cancellationToken).ConfigureAwait(false)
-                    .GetAwaiter().GetResult();
+                _innerStream.ReadAsync(buffer, offset, count, _cancellationToken).GetAwaiter().GetResult();
 
             public override long Seek(long offset, SeekOrigin origin) => _innerStream.Seek(offset, origin);
 
             public override void SetLength(long value) => _innerStream.SetLength(value);
 
             public override void Write(byte[] buffer, int offset, int count) =>
-                _innerStream.WriteAsync(buffer, offset, count, _cancellationToken).ConfigureAwait(false).GetAwaiter()
-                    .GetResult();
+                _innerStream.WriteAsync(buffer, offset, count, _cancellationToken).GetAwaiter().GetResult();
 
             public override bool CanRead => _innerStream.CanRead;
 
