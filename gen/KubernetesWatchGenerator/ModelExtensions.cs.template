@@ -1,7 +1,7 @@
 namespace k8s.Models
 {
 {{#.}}
-    [KubernetesEntity(Group="{{GetGroup . }}", Kind="{{GetKind . }}", ApiVersion="{{GetApiVersion . }}")]
+    [KubernetesEntity(Group="{{GetGroup . }}", Kind="{{GetKind . }}", ApiVersion="{{GetApiVersion . }}", PluralName={{GetPlural .}})]
     public partial class {{GetClassName . }} : {{GetInterfaceName . }}
     {
         public const string KubeApiVersion = "{{GetApiVersion . }}";

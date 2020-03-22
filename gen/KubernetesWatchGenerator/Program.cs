@@ -18,6 +18,7 @@ namespace KubernetesWatchGenerator
         static readonly Dictionary<string, string> ClassNameMap = new Dictionary<string, string>();
         private static Dictionary<JsonSchema4, string> _schemaToNameMap;
         private static HashSet<string> _schemaDefinitionsInMultipleGroups;
+        private static Dictionary<string, string> _classNameToPluralMap;
 
         static async Task Main(string[] args)
         {
@@ -60,6 +61,24 @@ namespace KubernetesWatchGenerator
                 .SelectMany(x => x)
                 .Select(x => x.FullName)
                 .ToHashSet();
+
+            _classNameToPluralMap = swagger.Operations
+                .Where(x => x.Operation.OperationId.StartsWith("list"))
+                .Select(x => { return new {PluralName = x.Path.Split("/").Last(), ClassName = GetClassNameForSchemaDefinition(x.Operation.Responses["200"].ActualResponseSchema)}; })
+                .Distinct()
+                .ToDictionary(x => x.ClassName, x => x.PluralName);
+
+            // dictionary only contains "list" plural maps. assign the same plural names to entities those lists support
+            _classNameToPluralMap = _classNameToPluralMap
+                .Where(x => x.Key.EndsWith("List"))
+                .Select(x =>
+                    new {ClassName = x.Key.Remove(x.Key.Length - 4), PluralName = x.Value})
+                .ToDictionary(x => x.ClassName, x => x.PluralName)
+                .Union(_classNameToPluralMap)
+                .ToDictionary(x => x.Key, x => x.Value);
+
+
+
             // Register helpers used in the templating.
             Helpers.Register(nameof(ToXmlDoc), ToXmlDoc);
             Helpers.Register(nameof(GetClassName), GetClassName);
@@ -71,6 +90,7 @@ namespace KubernetesWatchGenerator
             Helpers.Register(nameof(GetGroup), GetGroup);
             Helpers.Register(nameof(GetApiVersion), GetApiVersion);
             Helpers.Register(nameof(GetKind), GetKind);
+            Helpers.Register(nameof(GetPlural), GetPlural);
 
             // Generate the Watcher operations
             // We skip operations where the name of the class in the C# client could not be determined correctly.
@@ -245,6 +265,24 @@ namespace KubernetesWatchGenerator
             var groupVersionKind = (Dictionary<string, object>)groupVersionKindElements[0];
 
             return groupVersionKind["kind"] as string;
+        }
+
+        static void GetPlural(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
+        {
+            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema4)
+            {
+                var plural = GetPlural(arguments[0] as JsonSchema4);
+                if(plural != null)
+                    context.Write($"\"{plural}\"");
+                else
+                    context.Write("null");
+            }
+        }
+
+        private static string GetPlural(JsonSchema4 definition)
+        {
+            var className = GetClassNameForSchemaDefinition(definition);
+            return _classNameToPluralMap.GetValueOrDefault(className, null);
         }
 
         static void GetGroup(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)

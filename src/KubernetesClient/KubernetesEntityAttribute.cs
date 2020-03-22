@@ -19,5 +19,9 @@ namespace k8s.Models
         /// The API Version this Kubernetes type belongs to
         /// </summary>
         public string ApiVersion { get; set; }
+        /// <summary>
+        /// The plural name of the entity
+        /// </summary>
+        public string PluralName { get; set; }
     }
 }
