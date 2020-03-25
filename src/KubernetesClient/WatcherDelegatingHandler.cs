@@ -105,16 +105,16 @@ namespace k8s
                 base.Dispose(disposing);
             }
 
-            private CancellationTokenSourceSlim CreateCancellationTokenSource(CancellationToken userCancellationToken)
+            private LinkedCancellationTokenSource CreateCancellationTokenSource(CancellationToken userCancellationToken)
             {
-                return new CancellationTokenSourceSlim(_cancellationToken, userCancellationToken);
+                return new LinkedCancellationTokenSource(_cancellationToken, userCancellationToken);
             }
 
-            private readonly struct CancellationTokenSourceSlim : IDisposable
+            private readonly struct LinkedCancellationTokenSource : IDisposable
             {
                 private readonly CancellationTokenSource _cancellationTokenSource;
 
-                public CancellationTokenSourceSlim(CancellationToken token1, CancellationToken token2)
+                public LinkedCancellationTokenSource(CancellationToken token1, CancellationToken token2)
                 {
                     if (token1.CanBeCanceled && token2.CanBeCanceled)
                     {
