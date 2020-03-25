@@ -96,6 +96,15 @@ namespace k8s
                 set => _innerStream.Position = value;
             }
 
+            protected override void Dispose(bool disposing)
+            {
+                if (disposing)
+                {
+                    _innerStream.Dispose();
+                }
+                base.Dispose(disposing);
+            }
+
             private CancellationTokenSourceSlim CreateCancellationTokenSource(CancellationToken userCancellationToken)
             {
                 return new CancellationTokenSourceSlim(_cancellationToken, userCancellationToken);
