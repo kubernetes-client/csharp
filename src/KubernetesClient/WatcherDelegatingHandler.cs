@@ -172,24 +172,18 @@ namespace k8s
             }
         }
 
-        internal class PeekableStreamReader : StreamReader
+        internal class PeekableStreamReader : TextReader
         {
-            private Queue<string> _buffer;
+            private readonly Queue<string> _buffer;
+            private readonly StreamReader _inner;
 
-            public PeekableStreamReader(Stream stream) : base(stream)
+            public PeekableStreamReader(Stream stream)
             {
                 _buffer = new Queue<string>();
+                _inner = new StreamReader(stream);
             }
 
-            public override string ReadLine()
-            {
-                if (_buffer.Count > 0)
-                {
-                    return _buffer.Dequeue();
-                }
-
-                return base.ReadLine();
-            }
+            public override string ReadLine() => throw new NotImplementedException();
 
             public override Task<string> ReadLineAsync()
             {
@@ -198,7 +192,7 @@ namespace k8s
                     return Task.FromResult(_buffer.Dequeue());
                 }
 
-                return base.ReadLineAsync();
+                return _inner.ReadLineAsync();
             }
 
             public async Task<string> PeekLineAsync()
@@ -221,6 +215,15 @@ namespace k8s
             public override string ReadToEnd() => throw new NotImplementedException();
 
             public override Task<string> ReadToEndAsync() => throw new NotImplementedException();
+
+            protected override void Dispose(bool disposing)
+            {
+                if (disposing)
+                {
+                    _inner.Dispose();
+                }
+                base.Dispose(disposing);
+            }
         }
     }
 }
