@@ -40,6 +40,13 @@ namespace k8s.Models
         ///
         /// If unset, the Kubelet will not modify the ownership and permissions
         /// of any volume.</param>
+        /// <param name="fsGroupChangePolicy">fsGroupChangePolicy defines
+        /// behavior of changing ownership and permission of the volume before
+        /// being exposed inside Pod. This field will only apply to volume
+        /// types which support fsGroup based ownership(and permissions). It
+        /// will have no effect on ephemeral volume types such as: secret,
+        /// configmaps and emptydir. Valid values are "OnRootMismatch" and
+        /// "Always". If not specified defaults to "Always".</param>
         /// <param name="runAsGroup">The GID to run the entrypoint of the
         /// container process. Uses runtime default if unset. May also be set
         /// in SecurityContext.  If set in both SecurityContext and
@@ -75,9 +82,10 @@ namespace k8s.Models
         /// SecurityContext will be used. If set in both SecurityContext and
         /// PodSecurityContext, the value specified in SecurityContext takes
         /// precedence.</param>
-        public V1PodSecurityContext(long? fsGroup = default(long?), long? runAsGroup = default(long?), bool? runAsNonRoot = default(bool?), long? runAsUser = default(long?), V1SELinuxOptions seLinuxOptions = default(V1SELinuxOptions), IList<long?> supplementalGroups = default(IList<long?>), IList<V1Sysctl> sysctls = default(IList<V1Sysctl>), V1WindowsSecurityContextOptions windowsOptions = default(V1WindowsSecurityContextOptions))
+        public V1PodSecurityContext(long? fsGroup = default(long?), string fsGroupChangePolicy = default(string), long? runAsGroup = default(long?), bool? runAsNonRoot = default(bool?), long? runAsUser = default(long?), V1SELinuxOptions seLinuxOptions = default(V1SELinuxOptions), IList<long?> supplementalGroups = default(IList<long?>), IList<V1Sysctl> sysctls = default(IList<V1Sysctl>), V1WindowsSecurityContextOptions windowsOptions = default(V1WindowsSecurityContextOptions))
         {
             FsGroup = fsGroup;
+            FsGroupChangePolicy = fsGroupChangePolicy;
             RunAsGroup = runAsGroup;
             RunAsNonRoot = runAsNonRoot;
             RunAsUser = runAsUser;
@@ -107,6 +115,18 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "fsGroup")]
         public long? FsGroup { get; set; }
+
+        /// <summary>
+        /// Gets or sets fsGroupChangePolicy defines behavior of changing
+        /// ownership and permission of the volume before being exposed inside
+        /// Pod. This field will only apply to volume types which support
+        /// fsGroup based ownership(and permissions). It will have no effect on
+        /// ephemeral volume types such as: secret, configmaps and emptydir.
+        /// Valid values are "OnRootMismatch" and "Always". If not specified
+        /// defaults to "Always".
+        /// </summary>
+        [JsonProperty(PropertyName = "fsGroupChangePolicy")]
+        public string FsGroupChangePolicy { get; set; }
 
         /// <summary>
         /// Gets or sets the GID to run the entrypoint of the container

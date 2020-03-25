@@ -108,6 +108,19 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies</param>
         /// <param name="sessionAffinityConfig">sessionAffinityConfig contains
         /// the configurations of session affinity.</param>
+        /// <param name="topologyKeys">topologyKeys is a preference-order list
+        /// of topology keys which implementations of services should use to
+        /// preferentially sort endpoints when accessing this Service, it can
+        /// not be used at the same time as externalTrafficPolicy=Local.
+        /// Topology keys must be valid label keys and at most 16 keys may be
+        /// specified. Endpoints are chosen based on the first topology key
+        /// with available backends. If this field is specified and all entries
+        /// have no backends that match the topology of the client, the service
+        /// has no backends for that client and connections should fail. The
+        /// special value "*" may be used to mean "any topology". This
+        /// catch-all value, if used, only makes sense as the last value in the
+        /// list. If this is not specified or empty, no topology constraints
+        /// will be applied.</param>
         /// <param name="type">type determines how the Service is exposed.
         /// Defaults to ClusterIP. Valid options are ExternalName, ClusterIP,
         /// NodePort, and LoadBalancer. "ExternalName" maps to the specified
@@ -122,7 +135,7 @@ namespace k8s.Models
         /// load-balancer (if supported in the current cloud) which routes to
         /// the clusterIP. More info:
         /// https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types</param>
-        public V1ServiceSpec(string clusterIP = default(string), IList<string> externalIPs = default(IList<string>), string externalName = default(string), string externalTrafficPolicy = default(string), int? healthCheckNodePort = default(int?), string ipFamily = default(string), string loadBalancerIP = default(string), IList<string> loadBalancerSourceRanges = default(IList<string>), IList<V1ServicePort> ports = default(IList<V1ServicePort>), bool? publishNotReadyAddresses = default(bool?), IDictionary<string, string> selector = default(IDictionary<string, string>), string sessionAffinity = default(string), V1SessionAffinityConfig sessionAffinityConfig = default(V1SessionAffinityConfig), string type = default(string))
+        public V1ServiceSpec(string clusterIP = default(string), IList<string> externalIPs = default(IList<string>), string externalName = default(string), string externalTrafficPolicy = default(string), int? healthCheckNodePort = default(int?), string ipFamily = default(string), string loadBalancerIP = default(string), IList<string> loadBalancerSourceRanges = default(IList<string>), IList<V1ServicePort> ports = default(IList<V1ServicePort>), bool? publishNotReadyAddresses = default(bool?), IDictionary<string, string> selector = default(IDictionary<string, string>), string sessionAffinity = default(string), V1SessionAffinityConfig sessionAffinityConfig = default(V1SessionAffinityConfig), IList<string> topologyKeys = default(IList<string>), string type = default(string))
         {
             ClusterIP = clusterIP;
             ExternalIPs = externalIPs;
@@ -137,6 +150,7 @@ namespace k8s.Models
             Selector = selector;
             SessionAffinity = sessionAffinity;
             SessionAffinityConfig = sessionAffinityConfig;
+            TopologyKeys = topologyKeys;
             Type = type;
             CustomInit();
         }
@@ -290,6 +304,23 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "sessionAffinityConfig")]
         public V1SessionAffinityConfig SessionAffinityConfig { get; set; }
+
+        /// <summary>
+        /// Gets or sets topologyKeys is a preference-order list of topology
+        /// keys which implementations of services should use to preferentially
+        /// sort endpoints when accessing this Service, it can not be used at
+        /// the same time as externalTrafficPolicy=Local. Topology keys must be
+        /// valid label keys and at most 16 keys may be specified. Endpoints
+        /// are chosen based on the first topology key with available backends.
+        /// If this field is specified and all entries have no backends that
+        /// match the topology of the client, the service has no backends for
+        /// that client and connections should fail. The special value "*" may
+        /// be used to mean "any topology". This catch-all value, if used, only
+        /// makes sense as the last value in the list. If this is not specified
+        /// or empty, no topology constraints will be applied.
+        /// </summary>
+        [JsonProperty(PropertyName = "topologyKeys")]
+        public IList<string> TopologyKeys { get; set; }
 
         /// <summary>
         /// Gets or sets type determines how the Service is exposed. Defaults

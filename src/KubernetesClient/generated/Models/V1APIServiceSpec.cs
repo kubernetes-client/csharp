@@ -6,7 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -39,11 +38,6 @@ namespace k8s.Models
         /// (v1.bar before v1.foo) We'd recommend something like: *.k8s.io
         /// (except extensions) at 18000 and PaaSes (OpenShift, Deis) are
         /// recommended to be in the 2000s</param>
-        /// <param name="service">Service is a reference to the service for
-        /// this API server.  It must communicate on port 443 If the Service is
-        /// nil, that means the handling for the API groupversion is handled
-        /// locally on this server. The call will simply delegate to the normal
-        /// handler chain to be fulfilled.</param>
         /// <param name="versionPriority">VersionPriority controls the ordering
         /// of this API version inside of its group.  Must be greater than
         /// zero. The primary sort is based on VersionPriority, ordered highest
@@ -69,9 +63,14 @@ namespace k8s.Models
         /// TLS certificate verification when communicating with this server.
         /// This is strongly discouraged.  You should use the CABundle
         /// instead.</param>
+        /// <param name="service">Service is a reference to the service for
+        /// this API server.  It must communicate on port 443 If the Service is
+        /// nil, that means the handling for the API groupversion is handled
+        /// locally on this server. The call will simply delegate to the normal
+        /// handler chain to be fulfilled.</param>
         /// <param name="version">Version is the API version this server hosts.
         /// For example, "v1"</param>
-        public V1APIServiceSpec(int groupPriorityMinimum, Apiregistrationv1ServiceReference service, int versionPriority, byte[] caBundle = default(byte[]), string group = default(string), bool? insecureSkipTLSVerify = default(bool?), string version = default(string))
+        public V1APIServiceSpec(int groupPriorityMinimum, int versionPriority, byte[] caBundle = default(byte[]), string group = default(string), bool? insecureSkipTLSVerify = default(bool?), Apiregistrationv1ServiceReference service = default(Apiregistrationv1ServiceReference), string version = default(string))
         {
             CaBundle = caBundle;
             Group = group;
@@ -166,15 +165,11 @@ namespace k8s.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (Service == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Service");
-            }
         }
     }
 }

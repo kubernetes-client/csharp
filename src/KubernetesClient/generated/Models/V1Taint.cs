@@ -34,8 +34,8 @@ namespace k8s.Models
         /// node.</param>
         /// <param name="timeAdded">TimeAdded represents the time at which the
         /// taint was added. It is only written for NoExecute taints.</param>
-        /// <param name="value">Required. The taint value corresponding to the
-        /// taint key.</param>
+        /// <param name="value">The taint value corresponding to the taint
+        /// key.</param>
         public V1Taint(string effect, string key, System.DateTime? timeAdded = default(System.DateTime?), string value = default(string))
         {
             Effect = effect;
@@ -72,8 +72,7 @@ namespace k8s.Models
         public System.DateTime? TimeAdded { get; set; }
 
         /// <summary>
-        /// Gets or sets required. The taint value corresponding to the taint
-        /// key.
+        /// Gets or sets the taint value corresponding to the taint key.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }

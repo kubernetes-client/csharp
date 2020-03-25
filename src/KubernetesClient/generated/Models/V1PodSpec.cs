@@ -170,9 +170,7 @@ namespace k8s.Models
         /// containers will be able to view and signal processes from other
         /// containers in the same pod, and the first process in each container
         /// will not be assigned PID 1. HostPID and ShareProcessNamespace
-        /// cannot both be set. Optional: Default to false. This field is
-        /// beta-level and may be disabled with the PodShareProcessNamespace
-        /// feature.</param>
+        /// cannot both be set. Optional: Default to false.</param>
         /// <param name="subdomain">If specified, the fully qualified Pod
         /// hostname will be "&lt;hostname&gt;.&lt;subdomain&gt;.&lt;pod
         /// namespace&gt;.svc.&lt;cluster domain&gt;". If not specified, the
@@ -191,9 +189,9 @@ namespace k8s.Models
         /// <param name="topologySpreadConstraints">TopologySpreadConstraints
         /// describes how a group of pods ought to spread across topology
         /// domains. Scheduler will schedule pods in a way which abides by the
-        /// constraints. This field is alpha-level and is only honored by
-        /// clusters that enables the EvenPodsSpread feature. All
-        /// topologySpreadConstraints are ANDed.</param>
+        /// constraints. This field is only honored by clusters that enable the
+        /// EvenPodsSpread feature. All topologySpreadConstraints are
+        /// ANDed.</param>
         /// <param name="volumes">List of volumes that can be mounted by
         /// containers belonging to the pod. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes</param>
@@ -515,8 +513,7 @@ namespace k8s.Models
         /// view and signal processes from other containers in the same pod,
         /// and the first process in each container will not be assigned PID 1.
         /// HostPID and ShareProcessNamespace cannot both be set. Optional:
-        /// Default to false. This field is beta-level and may be disabled with
-        /// the PodShareProcessNamespace feature.
+        /// Default to false.
         /// </summary>
         [JsonProperty(PropertyName = "shareProcessNamespace")]
         public bool? ShareProcessNamespace { get; set; }
@@ -554,8 +551,8 @@ namespace k8s.Models
         /// Gets or sets topologySpreadConstraints describes how a group of
         /// pods ought to spread across topology domains. Scheduler will
         /// schedule pods in a way which abides by the constraints. This field
-        /// is alpha-level and is only honored by clusters that enables the
-        /// EvenPodsSpread feature. All topologySpreadConstraints are ANDed.
+        /// is only honored by clusters that enable the EvenPodsSpread feature.
+        /// All topologySpreadConstraints are ANDed.
         /// </summary>
         [JsonProperty(PropertyName = "topologySpreadConstraints")]
         public IList<V1TopologySpreadConstraint> TopologySpreadConstraints { get; set; }

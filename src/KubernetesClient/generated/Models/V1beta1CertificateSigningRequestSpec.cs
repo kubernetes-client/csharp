@@ -37,6 +37,16 @@ namespace k8s.Models
         /// See user.Info interface for details.</param>
         /// <param name="groups">Group information about the requesting user.
         /// See user.Info interface for details.</param>
+        /// <param name="signerName">Requested signer for the request. It is a
+        /// qualified name in the form: `scope-hostname.io/name`. If empty, it
+        /// will be defaulted:
+        /// 1. If it's a kubelet client certificate, it is assigned
+        /// "kubernetes.io/kube-apiserver-client-kubelet".
+        /// 2. If it's a kubelet serving certificate, it is assigned
+        /// "kubernetes.io/kubelet-serving".
+        /// 3. Otherwise, it is assigned "kubernetes.io/legacy-unknown".
+        /// Distribution of trust for signers happens out of band. You can
+        /// select on this field using `spec.signerName`.</param>
         /// <param name="uid">UID information about the requesting user. See
         /// user.Info interface for details.</param>
         /// <param name="usages">allowedUsages specifies a set of usage
@@ -45,11 +55,12 @@ namespace k8s.Models
         /// https://tools.ietf.org/html/rfc5280#section-4.2.1.12</param>
         /// <param name="username">Information about the requesting user. See
         /// user.Info interface for details.</param>
-        public V1beta1CertificateSigningRequestSpec(byte[] request, IDictionary<string, IList<string>> extra = default(IDictionary<string, IList<string>>), IList<string> groups = default(IList<string>), string uid = default(string), IList<string> usages = default(IList<string>), string username = default(string))
+        public V1beta1CertificateSigningRequestSpec(byte[] request, IDictionary<string, IList<string>> extra = default(IDictionary<string, IList<string>>), IList<string> groups = default(IList<string>), string signerName = default(string), string uid = default(string), IList<string> usages = default(IList<string>), string username = default(string))
         {
             Extra = extra;
             Groups = groups;
             Request = request;
+            SignerName = signerName;
             Uid = uid;
             Usages = usages;
             Username = username;
@@ -80,6 +91,21 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "request")]
         public byte[] Request { get; set; }
+
+        /// <summary>
+        /// Gets or sets requested signer for the request. It is a qualified
+        /// name in the form: `scope-hostname.io/name`. If empty, it will be
+        /// defaulted:
+        /// 1. If it's a kubelet client certificate, it is assigned
+        /// "kubernetes.io/kube-apiserver-client-kubelet".
+        /// 2. If it's a kubelet serving certificate, it is assigned
+        /// "kubernetes.io/kubelet-serving".
+        /// 3. Otherwise, it is assigned "kubernetes.io/legacy-unknown".
+        /// Distribution of trust for signers happens out of band. You can
+        /// select on this field using `spec.signerName`.
+        /// </summary>
+        [JsonProperty(PropertyName = "signerName")]
+        public string SignerName { get; set; }
 
         /// <summary>
         /// Gets or sets UID information about the requesting user. See

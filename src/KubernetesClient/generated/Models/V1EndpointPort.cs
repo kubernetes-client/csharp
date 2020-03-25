@@ -26,13 +26,21 @@ namespace k8s.Models
         /// Initializes a new instance of the V1EndpointPort class.
         /// </summary>
         /// <param name="port">The port number of the endpoint.</param>
+        /// <param name="appProtocol">The application protocol for this port.
+        /// This field follows standard Kubernetes label syntax. Un-prefixed
+        /// names are reserved for IANA standard service names (as per RFC-6335
+        /// and http://www.iana.org/assignments/service-names). Non-standard
+        /// protocols should use prefixed names such as
+        /// mycompany.com/my-custom-protocol. Field can be enabled with
+        /// ServiceAppProtocol feature gate.</param>
         /// <param name="name">The name of this port.  This must match the
         /// 'name' field in the corresponding ServicePort. Must be a DNS_LABEL.
         /// Optional only if one port is defined.</param>
         /// <param name="protocol">The IP protocol for this port. Must be UDP,
         /// TCP, or SCTP. Default is TCP.</param>
-        public V1EndpointPort(int port, string name = default(string), string protocol = default(string))
+        public V1EndpointPort(int port, string appProtocol = default(string), string name = default(string), string protocol = default(string))
         {
+            AppProtocol = appProtocol;
             Name = name;
             Port = port;
             Protocol = protocol;
@@ -43,6 +51,18 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets the application protocol for this port. This field
+        /// follows standard Kubernetes label syntax. Un-prefixed names are
+        /// reserved for IANA standard service names (as per RFC-6335 and
+        /// http://www.iana.org/assignments/service-names). Non-standard
+        /// protocols should use prefixed names such as
+        /// mycompany.com/my-custom-protocol. Field can be enabled with
+        /// ServiceAppProtocol feature gate.
+        /// </summary>
+        [JsonProperty(PropertyName = "appProtocol")]
+        public string AppProtocol { get; set; }
 
         /// <summary>
         /// Gets or sets the name of this port.  This must match the 'name'

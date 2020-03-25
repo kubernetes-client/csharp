@@ -44,6 +44,11 @@ namespace k8s.Models
         /// keys stored in Data must not overlap with the keys in the
         /// BinaryData field, this is enforced during validation
         /// process.</param>
+        /// <param name="immutable">Immutable, if set to true, ensures that
+        /// data stored in the ConfigMap cannot be updated (only object
+        /// metadata can be modified). If not set to true, the field can be
+        /// modified at any time. Defaulted to nil. This is an alpha field
+        /// enabled by ImmutableEphemeralVolumes feature gate.</param>
         /// <param name="kind">Kind is a string value representing the REST
         /// resource this object represents. Servers may infer this from the
         /// endpoint the client submits requests to. Cannot be updated. In
@@ -51,11 +56,12 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</param>
         /// <param name="metadata">Standard object's metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</param>
-        public V1ConfigMap(string apiVersion = default(string), IDictionary<string, byte[]> binaryData = default(IDictionary<string, byte[]>), IDictionary<string, string> data = default(IDictionary<string, string>), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta))
+        public V1ConfigMap(string apiVersion = default(string), IDictionary<string, byte[]> binaryData = default(IDictionary<string, byte[]>), IDictionary<string, string> data = default(IDictionary<string, string>), bool? immutable = default(bool?), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta))
         {
             ApiVersion = apiVersion;
             BinaryData = binaryData;
             Data = data;
+            Immutable = immutable;
             Kind = kind;
             Metadata = metadata;
             CustomInit();
@@ -96,6 +102,16 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "data")]
         public IDictionary<string, string> Data { get; set; }
+
+        /// <summary>
+        /// Gets or sets immutable, if set to true, ensures that data stored in
+        /// the ConfigMap cannot be updated (only object metadata can be
+        /// modified). If not set to true, the field can be modified at any
+        /// time. Defaulted to nil. This is an alpha field enabled by
+        /// ImmutableEphemeralVolumes feature gate.
+        /// </summary>
+        [JsonProperty(PropertyName = "immutable")]
+        public bool? Immutable { get; set; }
 
         /// <summary>
         /// Gets or sets kind is a string value representing the REST resource

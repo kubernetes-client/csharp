@@ -39,13 +39,11 @@ namespace k8s.Models
         /// group will be allowed.</param>
         /// <param name="nonResourceURLs">NonResourceURLs is a set of partial
         /// urls that a user should have access to.  *s are allowed, but only
-        /// as the full, final step in the path This name is intentionally
-        /// different than the internal type so that the DefaultConvert works
-        /// nicely and because the ordering may be different. Since
-        /// non-resource URLs are not namespaced, this field is only applicable
-        /// for ClusterRoles referenced from a ClusterRoleBinding. Rules can
-        /// either apply to API resources (such as "pods" or "secrets") or
-        /// non-resource URL paths (such as "/api"),  but not both.</param>
+        /// as the full, final step in the path Since non-resource URLs are not
+        /// namespaced, this field is only applicable for ClusterRoles
+        /// referenced from a ClusterRoleBinding. Rules can either apply to API
+        /// resources (such as "pods" or "secrets") or non-resource URL paths
+        /// (such as "/api"),  but not both.</param>
         /// <param name="resourceNames">ResourceNames is an optional white list
         /// of names that the rule applies to.  An empty set means that
         /// everything is allowed.</param>
@@ -78,13 +76,11 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets nonResourceURLs is a set of partial urls that a user
         /// should have access to.  *s are allowed, but only as the full, final
-        /// step in the path This name is intentionally different than the
-        /// internal type so that the DefaultConvert works nicely and because
-        /// the ordering may be different. Since non-resource URLs are not
-        /// namespaced, this field is only applicable for ClusterRoles
-        /// referenced from a ClusterRoleBinding. Rules can either apply to API
-        /// resources (such as "pods" or "secrets") or non-resource URL paths
-        /// (such as "/api"),  but not both.
+        /// step in the path Since non-resource URLs are not namespaced, this
+        /// field is only applicable for ClusterRoles referenced from a
+        /// ClusterRoleBinding. Rules can either apply to API resources (such
+        /// as "pods" or "secrets") or non-resource URL paths (such as "/api"),
+        /// but not both.
         /// </summary>
         [JsonProperty(PropertyName = "nonResourceURLs")]
         public IList<string> NonResourceURLs { get; set; }

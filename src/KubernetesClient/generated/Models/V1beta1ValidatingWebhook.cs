@@ -132,7 +132,7 @@ namespace k8s.Models
         /// ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks are never
         /// called on admission requests for ValidatingWebhookConfiguration and
         /// MutatingWebhookConfiguration objects.</param>
-        /// <param name="sideEffects">SideEffects states whether this webhookk
+        /// <param name="sideEffects">SideEffects states whether this webhook
         /// has side effects. Acceptable values are: Unknown, None, Some,
         /// NoneOnDryRun Webhooks with side effects MUST implement a
         /// reconciliation system, since a request may be rejected by a future
@@ -306,7 +306,7 @@ namespace k8s.Models
         public IList<V1beta1RuleWithOperations> Rules { get; set; }
 
         /// <summary>
-        /// Gets or sets sideEffects states whether this webhookk has side
+        /// Gets or sets sideEffects states whether this webhook has side
         /// effects. Acceptable values are: Unknown, None, Some, NoneOnDryRun
         /// Webhooks with side effects MUST implement a reconciliation system,
         /// since a request may be rejected by a future step in the admission

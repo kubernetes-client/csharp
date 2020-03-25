@@ -75,8 +75,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -192,8 +190,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -292,8 +288,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -392,8 +386,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -492,8 +484,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -592,8 +582,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -754,8 +742,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -889,8 +875,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -1179,8 +1163,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -1314,8 +1296,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -1604,8 +1584,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -1739,8 +1717,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -2029,8 +2005,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -2164,8 +2138,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -2454,8 +2426,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -2589,8 +2559,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -2758,7 +2726,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedPersistentVolumeClaimWithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PersistentVolumeClaim>> DeleteNamespacedPersistentVolumeClaimWithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read the specified PersistentVolumeClaim
@@ -2974,8 +2942,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -3109,8 +3075,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -3278,7 +3242,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedPodWithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Pod>> DeleteNamespacedPodWithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read the specified Pod
@@ -3628,6 +3592,18 @@ namespace k8s
         /// <param name='follow'>
         /// Follow the log stream of the pod. Defaults to false.
         /// </param>
+        /// <param name='insecureSkipTLSVerifyBackend'>
+        /// insecureSkipTLSVerifyBackend indicates that the apiserver should
+        /// not confirm the validity of the serving certificate of the backend
+        /// it is connecting to.  This will make the HTTPS connection between
+        /// the apiserver and the backend insecure. This means the apiserver
+        /// cannot verify the log data it is receiving came from the real
+        /// kubelet.  If the kubelet is configured to verify the apiserver's
+        /// TLS credentials, it does not mean the connection to the real
+        /// kubelet is vulnerable to a man in the middle attack (e.g. an
+        /// attacker could not intercept the actual log data coming from the
+        /// real kubelet).
+        /// </param>
         /// <param name='limitBytes'>
         /// If set, the number of bytes to read from the server before
         /// terminating the log output. This may not display a complete final
@@ -3662,7 +3638,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Stream>> ReadNamespacedPodLogWithHttpMessagesAsync(string name, string namespaceParameter, string container = default(string), bool? follow = default(bool?), int? limitBytes = default(int?), string pretty = default(string), bool? previous = default(bool?), int? sinceSeconds = default(int?), int? tailLines = default(int?), bool? timestamps = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ReadNamespacedPodLogWithHttpMessagesAsync(string name, string namespaceParameter, string container = default(string), bool? follow = default(bool?), bool? insecureSkipTLSVerifyBackend = default(bool?), int? limitBytes = default(int?), string pretty = default(string), bool? previous = default(bool?), int? sinceSeconds = default(int?), int? tailLines = default(int?), bool? timestamps = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect GET requests to portforward of Pod
@@ -4072,8 +4048,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -4207,8 +4181,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -4376,7 +4348,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedPodTemplateWithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PodTemplate>> DeleteNamespacedPodTemplateWithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read the specified PodTemplate
@@ -4497,8 +4469,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -4632,8 +4602,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -5112,8 +5080,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -5247,8 +5213,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -5416,7 +5380,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedResourceQuotaWithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ResourceQuota>> DeleteNamespacedResourceQuotaWithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read the specified ResourceQuota
@@ -5632,8 +5596,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -5767,8 +5729,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -6057,8 +6017,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -6192,8 +6150,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -6361,7 +6317,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedServiceAccountWithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ServiceAccount>> DeleteNamespacedServiceAccountWithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read the specified ServiceAccount
@@ -6516,8 +6472,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -7465,8 +7419,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -7597,8 +7549,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -8177,8 +8127,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -8277,8 +8225,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -8409,8 +8355,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -8572,7 +8516,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeletePersistentVolumeWithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PersistentVolume>> DeletePersistentVolumeWithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read the specified PersistentVolume
@@ -8767,8 +8711,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -8867,8 +8809,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -8967,8 +8907,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -9067,8 +9005,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -9167,8 +9103,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -9267,8 +9201,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -9367,8 +9299,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -9500,8 +9430,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -9632,8 +9560,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -9904,8 +9830,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -10036,8 +9960,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -10319,8 +10241,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -10451,8 +10371,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -10723,8 +10641,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -10855,8 +10771,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -11149,8 +11063,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -11281,8 +11193,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -11650,8 +11560,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -11782,8 +11690,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -12162,8 +12068,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -12294,8 +12198,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -12663,8 +12565,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -12795,8 +12695,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -13175,8 +13073,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -13275,8 +13171,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -13375,8 +13269,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -13478,8 +13370,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -13613,8 +13503,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -13903,8 +13791,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -14038,8 +13924,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -14423,8 +14307,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -14558,8 +14440,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -15038,8 +14918,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -15173,8 +15051,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -15653,8 +15529,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -15788,8 +15662,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -16265,8 +16137,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -16365,8 +16235,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -16454,5307 +16322,6 @@ namespace k8s
         Task<HttpOperationResponse<V1StatefulSetList>> ListStatefulSetForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// get available resources
-        /// </summary>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources8WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind ControllerRevision
-        /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1ControllerRevisionList>> ListControllerRevisionForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind Deployment
-        /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Appsv1beta1DeploymentList>> ListDeploymentForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete collection of ControllerRevision
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedControllerRevision1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind ControllerRevision
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1ControllerRevisionList>> ListNamespacedControllerRevision1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// create a ControllerRevision
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1ControllerRevision>> CreateNamespacedControllerRevision1WithHttpMessagesAsync(V1beta1ControllerRevision body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete a ControllerRevision
-        /// </summary>
-        /// <param name='name'>
-        /// name of the ControllerRevision
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedControllerRevision1WithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read the specified ControllerRevision
-        /// </summary>
-        /// <param name='name'>
-        /// name of the ControllerRevision
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='exact'>
-        /// Should the export be exact.  Exact export maintains
-        /// cluster-specific fields like 'Namespace'. Deprecated. Planned for
-        /// removal in 1.18.
-        /// </param>
-        /// <param name='export'>
-        /// Should this value be exported.  Export strips fields that a user
-        /// can not specify. Deprecated. Planned for removal in 1.18.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1ControllerRevision>> ReadNamespacedControllerRevision1WithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update the specified ControllerRevision
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the ControllerRevision
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1ControllerRevision>> PatchNamespacedControllerRevision1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace the specified ControllerRevision
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the ControllerRevision
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1ControllerRevision>> ReplaceNamespacedControllerRevision1WithHttpMessagesAsync(V1beta1ControllerRevision body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete collection of Deployment
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDeployment1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind Deployment
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Appsv1beta1DeploymentList>> ListNamespacedDeployment1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// create a Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Appsv1beta1Deployment>> CreateNamespacedDeployment1WithHttpMessagesAsync(Appsv1beta1Deployment body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete a Deployment
-        /// </summary>
-        /// <param name='name'>
-        /// name of the Deployment
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedDeployment1WithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read the specified Deployment
-        /// </summary>
-        /// <param name='name'>
-        /// name of the Deployment
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='exact'>
-        /// Should the export be exact.  Exact export maintains
-        /// cluster-specific fields like 'Namespace'. Deprecated. Planned for
-        /// removal in 1.18.
-        /// </param>
-        /// <param name='export'>
-        /// Should this value be exported.  Export strips fields that a user
-        /// can not specify. Deprecated. Planned for removal in 1.18.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Appsv1beta1Deployment>> ReadNamespacedDeployment1WithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update the specified Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Deployment
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Appsv1beta1Deployment>> PatchNamespacedDeployment1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace the specified Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Deployment
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Appsv1beta1Deployment>> ReplaceNamespacedDeployment1WithHttpMessagesAsync(Appsv1beta1Deployment body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// create rollback of a Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the DeploymentRollback
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> CreateNamespacedDeploymentRollbackWithHttpMessagesAsync(Appsv1beta1DeploymentRollback body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read scale of the specified Deployment
-        /// </summary>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Appsv1beta1Scale>> ReadNamespacedDeploymentScale1WithHttpMessagesAsync(string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update scale of the specified Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Appsv1beta1Scale>> PatchNamespacedDeploymentScale1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace scale of the specified Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Appsv1beta1Scale>> ReplaceNamespacedDeploymentScale1WithHttpMessagesAsync(Appsv1beta1Scale body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read status of the specified Deployment
-        /// </summary>
-        /// <param name='name'>
-        /// name of the Deployment
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Appsv1beta1Deployment>> ReadNamespacedDeploymentStatus1WithHttpMessagesAsync(string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update status of the specified Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Deployment
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Appsv1beta1Deployment>> PatchNamespacedDeploymentStatus1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace status of the specified Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Deployment
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Appsv1beta1Deployment>> ReplaceNamespacedDeploymentStatus1WithHttpMessagesAsync(Appsv1beta1Deployment body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete collection of StatefulSet
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedStatefulSet1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind StatefulSet
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1StatefulSetList>> ListNamespacedStatefulSet1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// create a StatefulSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1StatefulSet>> CreateNamespacedStatefulSet1WithHttpMessagesAsync(V1beta1StatefulSet body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete a StatefulSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the StatefulSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedStatefulSet1WithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read the specified StatefulSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the StatefulSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='exact'>
-        /// Should the export be exact.  Exact export maintains
-        /// cluster-specific fields like 'Namespace'. Deprecated. Planned for
-        /// removal in 1.18.
-        /// </param>
-        /// <param name='export'>
-        /// Should this value be exported.  Export strips fields that a user
-        /// can not specify. Deprecated. Planned for removal in 1.18.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1StatefulSet>> ReadNamespacedStatefulSet1WithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update the specified StatefulSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the StatefulSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1StatefulSet>> PatchNamespacedStatefulSet1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace the specified StatefulSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the StatefulSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1StatefulSet>> ReplaceNamespacedStatefulSet1WithHttpMessagesAsync(V1beta1StatefulSet body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read scale of the specified StatefulSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Appsv1beta1Scale>> ReadNamespacedStatefulSetScale1WithHttpMessagesAsync(string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update scale of the specified StatefulSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Appsv1beta1Scale>> PatchNamespacedStatefulSetScale1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace scale of the specified StatefulSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Appsv1beta1Scale>> ReplaceNamespacedStatefulSetScale1WithHttpMessagesAsync(Appsv1beta1Scale body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read status of the specified StatefulSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the StatefulSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1StatefulSet>> ReadNamespacedStatefulSetStatus1WithHttpMessagesAsync(string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update status of the specified StatefulSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the StatefulSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1StatefulSet>> PatchNamespacedStatefulSetStatus1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace status of the specified StatefulSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the StatefulSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1StatefulSet>> ReplaceNamespacedStatefulSetStatus1WithHttpMessagesAsync(V1beta1StatefulSet body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind StatefulSet
-        /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1StatefulSetList>> ListStatefulSetForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// get available resources
-        /// </summary>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources9WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind ControllerRevision
-        /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2ControllerRevisionList>> ListControllerRevisionForAllNamespaces2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind DaemonSet
-        /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2DaemonSetList>> ListDaemonSetForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind Deployment
-        /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2DeploymentList>> ListDeploymentForAllNamespaces2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete collection of ControllerRevision
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedControllerRevision2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind ControllerRevision
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2ControllerRevisionList>> ListNamespacedControllerRevision2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// create a ControllerRevision
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2ControllerRevision>> CreateNamespacedControllerRevision2WithHttpMessagesAsync(V1beta2ControllerRevision body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete a ControllerRevision
-        /// </summary>
-        /// <param name='name'>
-        /// name of the ControllerRevision
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedControllerRevision2WithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read the specified ControllerRevision
-        /// </summary>
-        /// <param name='name'>
-        /// name of the ControllerRevision
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='exact'>
-        /// Should the export be exact.  Exact export maintains
-        /// cluster-specific fields like 'Namespace'. Deprecated. Planned for
-        /// removal in 1.18.
-        /// </param>
-        /// <param name='export'>
-        /// Should this value be exported.  Export strips fields that a user
-        /// can not specify. Deprecated. Planned for removal in 1.18.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2ControllerRevision>> ReadNamespacedControllerRevision2WithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update the specified ControllerRevision
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the ControllerRevision
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2ControllerRevision>> PatchNamespacedControllerRevision2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace the specified ControllerRevision
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the ControllerRevision
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2ControllerRevision>> ReplaceNamespacedControllerRevision2WithHttpMessagesAsync(V1beta2ControllerRevision body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete collection of DaemonSet
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDaemonSet1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind DaemonSet
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2DaemonSetList>> ListNamespacedDaemonSet1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// create a DaemonSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2DaemonSet>> CreateNamespacedDaemonSet1WithHttpMessagesAsync(V1beta2DaemonSet body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete a DaemonSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the DaemonSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedDaemonSet1WithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read the specified DaemonSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the DaemonSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='exact'>
-        /// Should the export be exact.  Exact export maintains
-        /// cluster-specific fields like 'Namespace'. Deprecated. Planned for
-        /// removal in 1.18.
-        /// </param>
-        /// <param name='export'>
-        /// Should this value be exported.  Export strips fields that a user
-        /// can not specify. Deprecated. Planned for removal in 1.18.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2DaemonSet>> ReadNamespacedDaemonSet1WithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update the specified DaemonSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the DaemonSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2DaemonSet>> PatchNamespacedDaemonSet1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace the specified DaemonSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the DaemonSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2DaemonSet>> ReplaceNamespacedDaemonSet1WithHttpMessagesAsync(V1beta2DaemonSet body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read status of the specified DaemonSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the DaemonSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2DaemonSet>> ReadNamespacedDaemonSetStatus1WithHttpMessagesAsync(string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update status of the specified DaemonSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the DaemonSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2DaemonSet>> PatchNamespacedDaemonSetStatus1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace status of the specified DaemonSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the DaemonSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2DaemonSet>> ReplaceNamespacedDaemonSetStatus1WithHttpMessagesAsync(V1beta2DaemonSet body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete collection of Deployment
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDeployment2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind Deployment
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2DeploymentList>> ListNamespacedDeployment2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// create a Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2Deployment>> CreateNamespacedDeployment2WithHttpMessagesAsync(V1beta2Deployment body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete a Deployment
-        /// </summary>
-        /// <param name='name'>
-        /// name of the Deployment
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedDeployment2WithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read the specified Deployment
-        /// </summary>
-        /// <param name='name'>
-        /// name of the Deployment
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='exact'>
-        /// Should the export be exact.  Exact export maintains
-        /// cluster-specific fields like 'Namespace'. Deprecated. Planned for
-        /// removal in 1.18.
-        /// </param>
-        /// <param name='export'>
-        /// Should this value be exported.  Export strips fields that a user
-        /// can not specify. Deprecated. Planned for removal in 1.18.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2Deployment>> ReadNamespacedDeployment2WithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update the specified Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Deployment
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2Deployment>> PatchNamespacedDeployment2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace the specified Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Deployment
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2Deployment>> ReplaceNamespacedDeployment2WithHttpMessagesAsync(V1beta2Deployment body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read scale of the specified Deployment
-        /// </summary>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2Scale>> ReadNamespacedDeploymentScale2WithHttpMessagesAsync(string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update scale of the specified Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2Scale>> PatchNamespacedDeploymentScale2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace scale of the specified Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2Scale>> ReplaceNamespacedDeploymentScale2WithHttpMessagesAsync(V1beta2Scale body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read status of the specified Deployment
-        /// </summary>
-        /// <param name='name'>
-        /// name of the Deployment
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2Deployment>> ReadNamespacedDeploymentStatus2WithHttpMessagesAsync(string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update status of the specified Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Deployment
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2Deployment>> PatchNamespacedDeploymentStatus2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace status of the specified Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Deployment
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2Deployment>> ReplaceNamespacedDeploymentStatus2WithHttpMessagesAsync(V1beta2Deployment body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete collection of ReplicaSet
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedReplicaSet1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind ReplicaSet
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2ReplicaSetList>> ListNamespacedReplicaSet1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// create a ReplicaSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2ReplicaSet>> CreateNamespacedReplicaSet1WithHttpMessagesAsync(V1beta2ReplicaSet body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete a ReplicaSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the ReplicaSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedReplicaSet1WithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read the specified ReplicaSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the ReplicaSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='exact'>
-        /// Should the export be exact.  Exact export maintains
-        /// cluster-specific fields like 'Namespace'. Deprecated. Planned for
-        /// removal in 1.18.
-        /// </param>
-        /// <param name='export'>
-        /// Should this value be exported.  Export strips fields that a user
-        /// can not specify. Deprecated. Planned for removal in 1.18.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2ReplicaSet>> ReadNamespacedReplicaSet1WithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update the specified ReplicaSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the ReplicaSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2ReplicaSet>> PatchNamespacedReplicaSet1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace the specified ReplicaSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the ReplicaSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2ReplicaSet>> ReplaceNamespacedReplicaSet1WithHttpMessagesAsync(V1beta2ReplicaSet body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read scale of the specified ReplicaSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2Scale>> ReadNamespacedReplicaSetScale1WithHttpMessagesAsync(string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update scale of the specified ReplicaSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2Scale>> PatchNamespacedReplicaSetScale1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace scale of the specified ReplicaSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2Scale>> ReplaceNamespacedReplicaSetScale1WithHttpMessagesAsync(V1beta2Scale body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read status of the specified ReplicaSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the ReplicaSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2ReplicaSet>> ReadNamespacedReplicaSetStatus1WithHttpMessagesAsync(string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update status of the specified ReplicaSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the ReplicaSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2ReplicaSet>> PatchNamespacedReplicaSetStatus1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace status of the specified ReplicaSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the ReplicaSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2ReplicaSet>> ReplaceNamespacedReplicaSetStatus1WithHttpMessagesAsync(V1beta2ReplicaSet body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete collection of StatefulSet
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedStatefulSet2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind StatefulSet
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2StatefulSetList>> ListNamespacedStatefulSet2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// create a StatefulSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2StatefulSet>> CreateNamespacedStatefulSet2WithHttpMessagesAsync(V1beta2StatefulSet body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete a StatefulSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the StatefulSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedStatefulSet2WithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read the specified StatefulSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the StatefulSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='exact'>
-        /// Should the export be exact.  Exact export maintains
-        /// cluster-specific fields like 'Namespace'. Deprecated. Planned for
-        /// removal in 1.18.
-        /// </param>
-        /// <param name='export'>
-        /// Should this value be exported.  Export strips fields that a user
-        /// can not specify. Deprecated. Planned for removal in 1.18.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2StatefulSet>> ReadNamespacedStatefulSet2WithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update the specified StatefulSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the StatefulSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2StatefulSet>> PatchNamespacedStatefulSet2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace the specified StatefulSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the StatefulSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2StatefulSet>> ReplaceNamespacedStatefulSet2WithHttpMessagesAsync(V1beta2StatefulSet body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read scale of the specified StatefulSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2Scale>> ReadNamespacedStatefulSetScale2WithHttpMessagesAsync(string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update scale of the specified StatefulSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2Scale>> PatchNamespacedStatefulSetScale2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace scale of the specified StatefulSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2Scale>> ReplaceNamespacedStatefulSetScale2WithHttpMessagesAsync(V1beta2Scale body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read status of the specified StatefulSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the StatefulSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2StatefulSet>> ReadNamespacedStatefulSetStatus2WithHttpMessagesAsync(string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update status of the specified StatefulSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the StatefulSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2StatefulSet>> PatchNamespacedStatefulSetStatus2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace status of the specified StatefulSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the StatefulSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2StatefulSet>> ReplaceNamespacedStatefulSetStatus2WithHttpMessagesAsync(V1beta2StatefulSet body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind ReplicaSet
-        /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2ReplicaSetList>> ListReplicaSetForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind StatefulSet
-        /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta2StatefulSetList>> ListStatefulSetForAllNamespaces2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// get information of a group
         /// </summary>
         /// <param name='customHeaders'>
@@ -21774,7 +16341,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources10WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources8WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of AuditSink
@@ -21788,8 +16355,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -21920,8 +16485,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -22200,7 +16763,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources11WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources9WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a TokenReview
@@ -22239,7 +16802,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources12WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources10WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a TokenReview
@@ -22289,7 +16852,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources13WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources11WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a LocalSubjectAccessReview
@@ -22415,7 +16978,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources14WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources12WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a LocalSubjectAccessReview
@@ -22552,7 +17115,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources15WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources13WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -22566,8 +17129,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -22669,8 +17230,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -22804,8 +17363,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -23183,7 +17740,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources16WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources14WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -23197,8 +17754,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -23300,8 +17855,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -23435,8 +17988,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -23814,7 +18365,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources17WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources15WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -23828,8 +18379,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -23931,8 +18480,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -24066,8 +18613,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -24456,7 +19001,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources18WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources16WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Job
@@ -24470,8 +19015,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -24573,8 +19116,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -24708,8 +19249,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -25087,7 +19626,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources19WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources17WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CronJob
@@ -25101,8 +19640,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -25204,8 +19741,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -25339,8 +19874,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -25718,7 +20251,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources20WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources18WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CronJob
@@ -25732,8 +20265,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -25835,8 +20366,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -25970,8 +20499,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -26360,7 +20887,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources21WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources19WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of CertificateSigningRequest
@@ -26374,8 +20901,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -26506,8 +21031,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -26903,7 +21426,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources22WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources20WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Lease
@@ -26917,8 +21440,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -27020,8 +21541,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -27155,8 +21674,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -27439,7 +21956,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources23WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources21WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Lease
@@ -27453,8 +21970,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -27556,8 +22071,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -27691,8 +22204,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -27986,7 +22497,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources24WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources22WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind EndpointSlice
@@ -28000,8 +22511,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -28086,7 +22595,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1EndpointSliceList>> ListEndpointSliceForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1EndpointSliceList>> ListEndpointSliceForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of EndpointSlice
@@ -28103,8 +22612,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -28238,8 +22745,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -28324,7 +22829,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1EndpointSliceList>> ListNamespacedEndpointSliceWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1EndpointSliceList>> ListNamespacedEndpointSliceWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create an EndpointSlice
@@ -28355,7 +22860,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1EndpointSlice>> CreateNamespacedEndpointSliceWithHttpMessagesAsync(V1alpha1EndpointSlice body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1EndpointSlice>> CreateNamespacedEndpointSliceWithHttpMessagesAsync(V1beta1EndpointSlice body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete an EndpointSlice
@@ -28436,7 +22941,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1EndpointSlice>> ReadNamespacedEndpointSliceWithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1EndpointSlice>> ReadNamespacedEndpointSliceWithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified EndpointSlice
@@ -28477,7 +22982,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1EndpointSlice>> PatchNamespacedEndpointSliceWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1EndpointSlice>> PatchNamespacedEndpointSliceWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified EndpointSlice
@@ -28511,7 +23016,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1EndpointSlice>> ReplaceNamespacedEndpointSliceWithHttpMessagesAsync(V1alpha1EndpointSlice body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1EndpointSlice>> ReplaceNamespacedEndpointSliceWithHttpMessagesAsync(V1beta1EndpointSlice body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get information of a group
@@ -28533,7 +23038,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources25WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources23WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Event
@@ -28547,8 +23052,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -28650,8 +23153,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -28785,8 +23286,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -29080,207 +23579,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources26WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind DaemonSet
-        /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1DaemonSetList>> ListDaemonSetForAllNamespaces2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind Deployment
-        /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1DeploymentList>> ListDeploymentForAllNamespaces3WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources24WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Ingress
@@ -29294,8 +23593,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -29383,1175 +23680,6 @@ namespace k8s
         Task<HttpOperationResponse<Extensionsv1beta1IngressList>> ListIngressForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// delete collection of DaemonSet
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDaemonSet2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind DaemonSet
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1DaemonSetList>> ListNamespacedDaemonSet2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// create a DaemonSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1DaemonSet>> CreateNamespacedDaemonSet2WithHttpMessagesAsync(V1beta1DaemonSet body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete a DaemonSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the DaemonSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedDaemonSet2WithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read the specified DaemonSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the DaemonSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='exact'>
-        /// Should the export be exact.  Exact export maintains
-        /// cluster-specific fields like 'Namespace'. Deprecated. Planned for
-        /// removal in 1.18.
-        /// </param>
-        /// <param name='export'>
-        /// Should this value be exported.  Export strips fields that a user
-        /// can not specify. Deprecated. Planned for removal in 1.18.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1DaemonSet>> ReadNamespacedDaemonSet2WithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update the specified DaemonSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the DaemonSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1DaemonSet>> PatchNamespacedDaemonSet2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace the specified DaemonSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the DaemonSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1DaemonSet>> ReplaceNamespacedDaemonSet2WithHttpMessagesAsync(V1beta1DaemonSet body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read status of the specified DaemonSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the DaemonSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1DaemonSet>> ReadNamespacedDaemonSetStatus2WithHttpMessagesAsync(string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update status of the specified DaemonSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the DaemonSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1DaemonSet>> PatchNamespacedDaemonSetStatus2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace status of the specified DaemonSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the DaemonSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1DaemonSet>> ReplaceNamespacedDaemonSetStatus2WithHttpMessagesAsync(V1beta1DaemonSet body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete collection of Deployment
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDeployment3WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind Deployment
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1DeploymentList>> ListNamespacedDeployment3WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// create a Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Deployment>> CreateNamespacedDeployment3WithHttpMessagesAsync(Extensionsv1beta1Deployment body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete a Deployment
-        /// </summary>
-        /// <param name='name'>
-        /// name of the Deployment
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedDeployment3WithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read the specified Deployment
-        /// </summary>
-        /// <param name='name'>
-        /// name of the Deployment
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='exact'>
-        /// Should the export be exact.  Exact export maintains
-        /// cluster-specific fields like 'Namespace'. Deprecated. Planned for
-        /// removal in 1.18.
-        /// </param>
-        /// <param name='export'>
-        /// Should this value be exported.  Export strips fields that a user
-        /// can not specify. Deprecated. Planned for removal in 1.18.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Deployment>> ReadNamespacedDeployment3WithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update the specified Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Deployment
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Deployment>> PatchNamespacedDeployment3WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace the specified Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Deployment
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Deployment>> ReplaceNamespacedDeployment3WithHttpMessagesAsync(Extensionsv1beta1Deployment body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// create rollback of a Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the DeploymentRollback
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> CreateNamespacedDeploymentRollback1WithHttpMessagesAsync(Extensionsv1beta1DeploymentRollback body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read scale of the specified Deployment
-        /// </summary>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Scale>> ReadNamespacedDeploymentScale3WithHttpMessagesAsync(string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update scale of the specified Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Scale>> PatchNamespacedDeploymentScale3WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace scale of the specified Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Scale>> ReplaceNamespacedDeploymentScale3WithHttpMessagesAsync(Extensionsv1beta1Scale body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read status of the specified Deployment
-        /// </summary>
-        /// <param name='name'>
-        /// name of the Deployment
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Deployment>> ReadNamespacedDeploymentStatus3WithHttpMessagesAsync(string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update status of the specified Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Deployment
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Deployment>> PatchNamespacedDeploymentStatus3WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace status of the specified Deployment
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Deployment
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Deployment>> ReplaceNamespacedDeploymentStatus3WithHttpMessagesAsync(Extensionsv1beta1Deployment body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// delete collection of Ingress
         /// </summary>
         /// <param name='namespaceParameter'>
@@ -30566,8 +23694,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -30701,8 +23827,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -31072,6 +24196,1022 @@ namespace k8s
         Task<HttpOperationResponse<Extensionsv1beta1Ingress>> ReplaceNamespacedIngressStatusWithHttpMessagesAsync(Extensionsv1beta1Ingress body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// get information of a group
+        /// </summary>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup14WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// get available resources
+        /// </summary>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources25WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete collection of FlowSchema
+        /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// When specified with a watch call, shows changes that occur after
+        /// that particular version of a resource. Defaults to changes from the
+        /// beginning of history. When specified for list: - if unset, then the
+        /// result is returned from remote storage based on quorum-read flag; -
+        /// if it's 0, then we simply return what we currently have in cache,
+        /// no guarantee; - if set to non zero, then the result is at least as
+        /// fresh as given rv.
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='watch'>
+        /// Watch for changes to the described resources and return them as a
+        /// stream of add, update, and remove notifications. Specify
+        /// resourceVersion.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionFlowSchemaWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// list or watch objects of kind FlowSchema
+        /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// When specified with a watch call, shows changes that occur after
+        /// that particular version of a resource. Defaults to changes from the
+        /// beginning of history. When specified for list: - if unset, then the
+        /// result is returned from remote storage based on quorum-read flag; -
+        /// if it's 0, then we simply return what we currently have in cache,
+        /// no guarantee; - if set to non zero, then the result is at least as
+        /// fresh as given rv.
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='watch'>
+        /// Watch for changes to the described resources and return them as a
+        /// stream of add, update, and remove notifications. Specify
+        /// resourceVersion.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1alpha1FlowSchemaList>> ListFlowSchemaWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// create a FlowSchema
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1alpha1FlowSchema>> CreateFlowSchemaWithHttpMessagesAsync(V1alpha1FlowSchema body, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete a FlowSchema
+        /// </summary>
+        /// <param name='name'>
+        /// name of the FlowSchema
+        /// </param>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteFlowSchemaWithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read the specified FlowSchema
+        /// </summary>
+        /// <param name='name'>
+        /// name of the FlowSchema
+        /// </param>
+        /// <param name='exact'>
+        /// Should the export be exact.  Exact export maintains
+        /// cluster-specific fields like 'Namespace'. Deprecated. Planned for
+        /// removal in 1.18.
+        /// </param>
+        /// <param name='export'>
+        /// Should this value be exported.  Export strips fields that a user
+        /// can not specify. Deprecated. Planned for removal in 1.18.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1alpha1FlowSchema>> ReadFlowSchemaWithHttpMessagesAsync(string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update the specified FlowSchema
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the FlowSchema
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1alpha1FlowSchema>> PatchFlowSchemaWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace the specified FlowSchema
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the FlowSchema
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1alpha1FlowSchema>> ReplaceFlowSchemaWithHttpMessagesAsync(V1alpha1FlowSchema body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read status of the specified FlowSchema
+        /// </summary>
+        /// <param name='name'>
+        /// name of the FlowSchema
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1alpha1FlowSchema>> ReadFlowSchemaStatusWithHttpMessagesAsync(string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update status of the specified FlowSchema
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the FlowSchema
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1alpha1FlowSchema>> PatchFlowSchemaStatusWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace status of the specified FlowSchema
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the FlowSchema
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1alpha1FlowSchema>> ReplaceFlowSchemaStatusWithHttpMessagesAsync(V1alpha1FlowSchema body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete collection of PriorityLevelConfiguration
+        /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// When specified with a watch call, shows changes that occur after
+        /// that particular version of a resource. Defaults to changes from the
+        /// beginning of history. When specified for list: - if unset, then the
+        /// result is returned from remote storage based on quorum-read flag; -
+        /// if it's 0, then we simply return what we currently have in cache,
+        /// no guarantee; - if set to non zero, then the result is at least as
+        /// fresh as given rv.
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='watch'>
+        /// Watch for changes to the described resources and return them as a
+        /// stream of add, update, and remove notifications. Specify
+        /// resourceVersion.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityLevelConfigurationWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// list or watch objects of kind PriorityLevelConfiguration
+        /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// When specified with a watch call, shows changes that occur after
+        /// that particular version of a resource. Defaults to changes from the
+        /// beginning of history. When specified for list: - if unset, then the
+        /// result is returned from remote storage based on quorum-read flag; -
+        /// if it's 0, then we simply return what we currently have in cache,
+        /// no guarantee; - if set to non zero, then the result is at least as
+        /// fresh as given rv.
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='watch'>
+        /// Watch for changes to the described resources and return them as a
+        /// stream of add, update, and remove notifications. Specify
+        /// resourceVersion.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1alpha1PriorityLevelConfigurationList>> ListPriorityLevelConfigurationWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// create a PriorityLevelConfiguration
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1alpha1PriorityLevelConfiguration>> CreatePriorityLevelConfigurationWithHttpMessagesAsync(V1alpha1PriorityLevelConfiguration body, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete a PriorityLevelConfiguration
+        /// </summary>
+        /// <param name='name'>
+        /// name of the PriorityLevelConfiguration
+        /// </param>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeletePriorityLevelConfigurationWithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read the specified PriorityLevelConfiguration
+        /// </summary>
+        /// <param name='name'>
+        /// name of the PriorityLevelConfiguration
+        /// </param>
+        /// <param name='exact'>
+        /// Should the export be exact.  Exact export maintains
+        /// cluster-specific fields like 'Namespace'. Deprecated. Planned for
+        /// removal in 1.18.
+        /// </param>
+        /// <param name='export'>
+        /// Should this value be exported.  Export strips fields that a user
+        /// can not specify. Deprecated. Planned for removal in 1.18.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1alpha1PriorityLevelConfiguration>> ReadPriorityLevelConfigurationWithHttpMessagesAsync(string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update the specified PriorityLevelConfiguration
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the PriorityLevelConfiguration
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1alpha1PriorityLevelConfiguration>> PatchPriorityLevelConfigurationWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace the specified PriorityLevelConfiguration
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the PriorityLevelConfiguration
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1alpha1PriorityLevelConfiguration>> ReplacePriorityLevelConfigurationWithHttpMessagesAsync(V1alpha1PriorityLevelConfiguration body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read status of the specified PriorityLevelConfiguration
+        /// </summary>
+        /// <param name='name'>
+        /// name of the PriorityLevelConfiguration
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1alpha1PriorityLevelConfiguration>> ReadPriorityLevelConfigurationStatusWithHttpMessagesAsync(string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update status of the specified PriorityLevelConfiguration
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the PriorityLevelConfiguration
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1alpha1PriorityLevelConfiguration>> PatchPriorityLevelConfigurationStatusWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace status of the specified PriorityLevelConfiguration
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the PriorityLevelConfiguration
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1alpha1PriorityLevelConfiguration>> ReplacePriorityLevelConfigurationStatusWithHttpMessagesAsync(V1alpha1PriorityLevelConfiguration body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// get information of a group
+        /// </summary>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup15WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// get available resources
+        /// </summary>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources26WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// delete collection of NetworkPolicy
         /// </summary>
         /// <param name='namespaceParameter'>
@@ -31086,8 +25226,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -31221,8 +25359,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -31307,7 +25443,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1NetworkPolicyList>> ListNamespacedNetworkPolicyWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1NetworkPolicyList>> ListNamespacedNetworkPolicyWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a NetworkPolicy
@@ -31338,7 +25474,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1NetworkPolicy>> CreateNamespacedNetworkPolicyWithHttpMessagesAsync(V1beta1NetworkPolicy body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1NetworkPolicy>> CreateNamespacedNetworkPolicyWithHttpMessagesAsync(V1NetworkPolicy body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete a NetworkPolicy
@@ -31419,7 +25555,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1NetworkPolicy>> ReadNamespacedNetworkPolicyWithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1NetworkPolicy>> ReadNamespacedNetworkPolicyWithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified NetworkPolicy
@@ -31460,7 +25596,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1NetworkPolicy>> PatchNamespacedNetworkPolicyWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1NetworkPolicy>> PatchNamespacedNetworkPolicyWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified NetworkPolicy
@@ -31494,717 +25630,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1NetworkPolicy>> ReplaceNamespacedNetworkPolicyWithHttpMessagesAsync(V1beta1NetworkPolicy body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete collection of ReplicaSet
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedReplicaSet2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind ReplicaSet
-        /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1ReplicaSetList>> ListNamespacedReplicaSet2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// create a ReplicaSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1ReplicaSet>> CreateNamespacedReplicaSet2WithHttpMessagesAsync(V1beta1ReplicaSet body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete a ReplicaSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the ReplicaSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedReplicaSet2WithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read the specified ReplicaSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the ReplicaSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='exact'>
-        /// Should the export be exact.  Exact export maintains
-        /// cluster-specific fields like 'Namespace'. Deprecated. Planned for
-        /// removal in 1.18.
-        /// </param>
-        /// <param name='export'>
-        /// Should this value be exported.  Export strips fields that a user
-        /// can not specify. Deprecated. Planned for removal in 1.18.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1ReplicaSet>> ReadNamespacedReplicaSet2WithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update the specified ReplicaSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the ReplicaSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1ReplicaSet>> PatchNamespacedReplicaSet2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace the specified ReplicaSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the ReplicaSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1ReplicaSet>> ReplaceNamespacedReplicaSet2WithHttpMessagesAsync(V1beta1ReplicaSet body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read scale of the specified ReplicaSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Scale>> ReadNamespacedReplicaSetScale2WithHttpMessagesAsync(string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update scale of the specified ReplicaSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Scale>> PatchNamespacedReplicaSetScale2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace scale of the specified ReplicaSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Scale>> ReplaceNamespacedReplicaSetScale2WithHttpMessagesAsync(Extensionsv1beta1Scale body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read status of the specified ReplicaSet
-        /// </summary>
-        /// <param name='name'>
-        /// name of the ReplicaSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1ReplicaSet>> ReadNamespacedReplicaSetStatus2WithHttpMessagesAsync(string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update status of the specified ReplicaSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the ReplicaSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1ReplicaSet>> PatchNamespacedReplicaSetStatus2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace status of the specified ReplicaSet
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the ReplicaSet
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1ReplicaSet>> ReplaceNamespacedReplicaSetStatus2WithHttpMessagesAsync(V1beta1ReplicaSet body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read scale of the specified ReplicationControllerDummy
-        /// </summary>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Scale>> ReadNamespacedReplicationControllerDummyScaleWithHttpMessagesAsync(string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update scale of the specified ReplicationControllerDummy
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Scale>> PatchNamespacedReplicationControllerDummyScaleWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace scale of the specified ReplicationControllerDummy
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the Scale
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Scale>> ReplaceNamespacedReplicationControllerDummyScaleWithHttpMessagesAsync(Extensionsv1beta1Scale body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1NetworkPolicy>> ReplaceNamespacedNetworkPolicyWithHttpMessagesAsync(V1NetworkPolicy body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind NetworkPolicy
@@ -32218,8 +25644,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -32304,522 +25728,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1NetworkPolicyList>> ListNetworkPolicyForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete collection of PodSecurityPolicy
-        /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionPodSecurityPolicyWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind PodSecurityPolicy
-        /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1PodSecurityPolicyList>> ListPodSecurityPolicyWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// create a PodSecurityPolicy
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1PodSecurityPolicy>> CreatePodSecurityPolicyWithHttpMessagesAsync(Extensionsv1beta1PodSecurityPolicy body, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete a PodSecurityPolicy
-        /// </summary>
-        /// <param name='name'>
-        /// name of the PodSecurityPolicy
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeletePodSecurityPolicyWithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read the specified PodSecurityPolicy
-        /// </summary>
-        /// <param name='name'>
-        /// name of the PodSecurityPolicy
-        /// </param>
-        /// <param name='exact'>
-        /// Should the export be exact.  Exact export maintains
-        /// cluster-specific fields like 'Namespace'. Deprecated. Planned for
-        /// removal in 1.18.
-        /// </param>
-        /// <param name='export'>
-        /// Should this value be exported.  Export strips fields that a user
-        /// can not specify. Deprecated. Planned for removal in 1.18.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1PodSecurityPolicy>> ReadPodSecurityPolicyWithHttpMessagesAsync(string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update the specified PodSecurityPolicy
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the PodSecurityPolicy
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1PodSecurityPolicy>> PatchPodSecurityPolicyWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace the specified PodSecurityPolicy
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the PodSecurityPolicy
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1PodSecurityPolicy>> ReplacePodSecurityPolicyWithHttpMessagesAsync(Extensionsv1beta1PodSecurityPolicy body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind ReplicaSet
-        /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1beta1ReplicaSetList>> ListReplicaSetForAllNamespaces2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// get information of a group
-        /// </summary>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup14WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1NetworkPolicyList>> ListNetworkPolicyForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -32833,11 +25742,8 @@ namespace k8s
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources27WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// delete collection of NetworkPolicy
+        /// delete collection of IngressClass
         /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
         /// <param name='allowWatchBookmarks'>
         /// allowWatchBookmarks requests watch events with type "BOOKMARK".
         /// Servers that do not implement bookmarks may ignore this flag and
@@ -32847,8 +25753,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -32965,14 +25869,11 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedNetworkPolicy1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionIngressClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// list or watch objects of kind NetworkPolicy
+        /// list or watch objects of kind IngressClass
         /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
         /// <param name='allowWatchBookmarks'>
         /// allowWatchBookmarks requests watch events with type "BOOKMARK".
         /// Servers that do not implement bookmarks may ignore this flag and
@@ -32982,8 +25883,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -33068,15 +25967,12 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1NetworkPolicyList>> ListNamespacedNetworkPolicy1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1IngressClassList>> ListIngressClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// create a NetworkPolicy
+        /// create an IngressClass
         /// </summary>
         /// <param name='body'>
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name='dryRun'>
         /// When present, indicates that modifications should not be persisted.
@@ -33099,16 +25995,13 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1NetworkPolicy>> CreateNamespacedNetworkPolicy1WithHttpMessagesAsync(V1NetworkPolicy body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1IngressClass>> CreateIngressClassWithHttpMessagesAsync(V1beta1IngressClass body, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// delete a NetworkPolicy
+        /// delete an IngressClass
         /// </summary>
         /// <param name='name'>
-        /// name of the NetworkPolicy
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
+        /// name of the IngressClass
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -33151,16 +26044,13 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedNetworkPolicy1WithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteIngressClassWithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// read the specified NetworkPolicy
+        /// read the specified IngressClass
         /// </summary>
         /// <param name='name'>
-        /// name of the NetworkPolicy
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
+        /// name of the IngressClass
         /// </param>
         /// <param name='exact'>
         /// Should the export be exact.  Exact export maintains
@@ -33180,18 +26070,15 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1NetworkPolicy>> ReadNamespacedNetworkPolicy1WithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1IngressClass>> ReadIngressClassWithHttpMessagesAsync(string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// partially update the specified NetworkPolicy
+        /// partially update the specified IngressClass
         /// </summary>
         /// <param name='body'>
         /// </param>
         /// <param name='name'>
-        /// name of the NetworkPolicy
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
+        /// name of the IngressClass
         /// </param>
         /// <param name='dryRun'>
         /// When present, indicates that modifications should not be persisted.
@@ -33221,18 +26108,15 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1NetworkPolicy>> PatchNamespacedNetworkPolicy1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1IngressClass>> PatchIngressClassWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// replace the specified NetworkPolicy
+        /// replace the specified IngressClass
         /// </summary>
         /// <param name='body'>
         /// </param>
         /// <param name='name'>
-        /// name of the NetworkPolicy
-        /// </param>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
+        /// name of the IngressClass
         /// </param>
         /// <param name='dryRun'>
         /// When present, indicates that modifications should not be persisted.
@@ -33255,118 +26139,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1NetworkPolicy>> ReplaceNamespacedNetworkPolicy1WithHttpMessagesAsync(V1NetworkPolicy body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind NetworkPolicy
-        /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        ///
-        /// This field is beta.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1NetworkPolicyList>> ListNetworkPolicyForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// get available resources
-        /// </summary>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources28WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1IngressClass>> ReplaceIngressClassWithHttpMessagesAsync(V1beta1IngressClass body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Ingress
@@ -33380,8 +26153,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -33483,8 +26254,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -33618,8 +26387,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -33997,7 +26764,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup15WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup16WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -34008,7 +26775,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources29WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources28WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of RuntimeClass
@@ -34022,8 +26789,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -34154,8 +26919,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -34423,7 +27186,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources30WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources29WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of RuntimeClass
@@ -34437,8 +27200,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -34569,8 +27330,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -34838,7 +27597,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup16WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup17WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -34849,7 +27608,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources31WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources30WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of PodDisruptionBudget
@@ -34866,8 +27625,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -35001,8 +27758,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -35383,8 +28138,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -35483,8 +28236,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -35601,7 +28352,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionPodSecurityPolicy1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPodSecurityPolicyWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodSecurityPolicy
@@ -35615,8 +28366,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -35701,7 +28450,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Policyv1beta1PodSecurityPolicyList>> ListPodSecurityPolicy1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1PodSecurityPolicyList>> ListPodSecurityPolicyWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a PodSecurityPolicy
@@ -35729,7 +28478,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Policyv1beta1PodSecurityPolicy>> CreatePodSecurityPolicy1WithHttpMessagesAsync(Policyv1beta1PodSecurityPolicy body, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1PodSecurityPolicy>> CreatePodSecurityPolicyWithHttpMessagesAsync(V1beta1PodSecurityPolicy body, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete a PodSecurityPolicy
@@ -35778,7 +28527,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeletePodSecurityPolicy1WithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1PodSecurityPolicy>> DeletePodSecurityPolicyWithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read the specified PodSecurityPolicy
@@ -35804,7 +28553,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Policyv1beta1PodSecurityPolicy>> ReadPodSecurityPolicy1WithHttpMessagesAsync(string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1PodSecurityPolicy>> ReadPodSecurityPolicyWithHttpMessagesAsync(string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified PodSecurityPolicy
@@ -35842,7 +28591,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Policyv1beta1PodSecurityPolicy>> PatchPodSecurityPolicy1WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1PodSecurityPolicy>> PatchPodSecurityPolicyWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified PodSecurityPolicy
@@ -35873,7 +28622,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Policyv1beta1PodSecurityPolicy>> ReplacePodSecurityPolicy1WithHttpMessagesAsync(Policyv1beta1PodSecurityPolicy body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1PodSecurityPolicy>> ReplacePodSecurityPolicyWithHttpMessagesAsync(V1beta1PodSecurityPolicy body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get information of a group
@@ -35884,7 +28633,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup17WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup18WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -35895,7 +28644,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources32WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources31WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of ClusterRoleBinding
@@ -35909,8 +28658,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -36041,8 +28788,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -36304,8 +29049,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -36436,8 +29179,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -36702,8 +29443,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -36837,8 +29576,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -37118,8 +29855,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -37253,8 +29988,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -37531,8 +30264,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -37631,8 +30362,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -37728,7 +30457,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources33WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources32WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of ClusterRoleBinding
@@ -37742,8 +30471,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -37874,8 +30601,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -38137,8 +30862,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -38269,8 +30992,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -38535,8 +31256,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -38670,8 +31389,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -38951,8 +31668,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -39086,8 +31801,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -39364,8 +32077,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -39464,8 +32175,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -39561,7 +32270,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources34WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources33WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of ClusterRoleBinding
@@ -39575,8 +32284,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -39707,8 +32414,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -39970,8 +32675,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -40102,8 +32805,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -40368,8 +33069,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -40503,8 +33202,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -40784,8 +33481,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -40919,8 +33614,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -41197,8 +33890,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -41297,8 +33988,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -41394,7 +34083,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup18WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup19WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -41405,7 +34094,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources35WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources34WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of PriorityClass
@@ -41419,8 +34108,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -41551,8 +34238,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -41820,7 +34505,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources36WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources35WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of PriorityClass
@@ -41834,8 +34519,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -41966,8 +34649,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -42235,7 +34916,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources37WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources36WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of PriorityClass
@@ -42249,8 +34930,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -42381,8 +35060,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -42650,7 +35327,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup19WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup20WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -42661,7 +35338,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources38WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources37WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of PodPreset
@@ -42678,8 +35355,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -42813,8 +35488,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -43100,8 +35773,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -43197,7 +35868,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup20WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup21WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -43208,7 +35879,807 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources39WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources38WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete collection of CSIDriver
+        /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// When specified with a watch call, shows changes that occur after
+        /// that particular version of a resource. Defaults to changes from the
+        /// beginning of history. When specified for list: - if unset, then the
+        /// result is returned from remote storage based on quorum-read flag; -
+        /// if it's 0, then we simply return what we currently have in cache,
+        /// no guarantee; - if set to non zero, then the result is at least as
+        /// fresh as given rv.
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='watch'>
+        /// Watch for changes to the described resources and return them as a
+        /// stream of add, update, and remove notifications. Specify
+        /// resourceVersion.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSIDriverWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// list or watch objects of kind CSIDriver
+        /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// When specified with a watch call, shows changes that occur after
+        /// that particular version of a resource. Defaults to changes from the
+        /// beginning of history. When specified for list: - if unset, then the
+        /// result is returned from remote storage based on quorum-read flag; -
+        /// if it's 0, then we simply return what we currently have in cache,
+        /// no guarantee; - if set to non zero, then the result is at least as
+        /// fresh as given rv.
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='watch'>
+        /// Watch for changes to the described resources and return them as a
+        /// stream of add, update, and remove notifications. Specify
+        /// resourceVersion.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1CSIDriverList>> ListCSIDriverWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// create a CSIDriver
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1CSIDriver>> CreateCSIDriverWithHttpMessagesAsync(V1CSIDriver body, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete a CSIDriver
+        /// </summary>
+        /// <param name='name'>
+        /// name of the CSIDriver
+        /// </param>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1CSIDriver>> DeleteCSIDriverWithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read the specified CSIDriver
+        /// </summary>
+        /// <param name='name'>
+        /// name of the CSIDriver
+        /// </param>
+        /// <param name='exact'>
+        /// Should the export be exact.  Exact export maintains
+        /// cluster-specific fields like 'Namespace'. Deprecated. Planned for
+        /// removal in 1.18.
+        /// </param>
+        /// <param name='export'>
+        /// Should this value be exported.  Export strips fields that a user
+        /// can not specify. Deprecated. Planned for removal in 1.18.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1CSIDriver>> ReadCSIDriverWithHttpMessagesAsync(string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update the specified CSIDriver
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the CSIDriver
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1CSIDriver>> PatchCSIDriverWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace the specified CSIDriver
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the CSIDriver
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1CSIDriver>> ReplaceCSIDriverWithHttpMessagesAsync(V1CSIDriver body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete collection of CSINode
+        /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// When specified with a watch call, shows changes that occur after
+        /// that particular version of a resource. Defaults to changes from the
+        /// beginning of history. When specified for list: - if unset, then the
+        /// result is returned from remote storage based on quorum-read flag; -
+        /// if it's 0, then we simply return what we currently have in cache,
+        /// no guarantee; - if set to non zero, then the result is at least as
+        /// fresh as given rv.
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='watch'>
+        /// Watch for changes to the described resources and return them as a
+        /// stream of add, update, and remove notifications. Specify
+        /// resourceVersion.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSINodeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// list or watch objects of kind CSINode
+        /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// When specified with a watch call, shows changes that occur after
+        /// that particular version of a resource. Defaults to changes from the
+        /// beginning of history. When specified for list: - if unset, then the
+        /// result is returned from remote storage based on quorum-read flag; -
+        /// if it's 0, then we simply return what we currently have in cache,
+        /// no guarantee; - if set to non zero, then the result is at least as
+        /// fresh as given rv.
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='watch'>
+        /// Watch for changes to the described resources and return them as a
+        /// stream of add, update, and remove notifications. Specify
+        /// resourceVersion.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1CSINodeList>> ListCSINodeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// create a CSINode
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1CSINode>> CreateCSINodeWithHttpMessagesAsync(V1CSINode body, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete a CSINode
+        /// </summary>
+        /// <param name='name'>
+        /// name of the CSINode
+        /// </param>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1CSINode>> DeleteCSINodeWithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read the specified CSINode
+        /// </summary>
+        /// <param name='name'>
+        /// name of the CSINode
+        /// </param>
+        /// <param name='exact'>
+        /// Should the export be exact.  Exact export maintains
+        /// cluster-specific fields like 'Namespace'. Deprecated. Planned for
+        /// removal in 1.18.
+        /// </param>
+        /// <param name='export'>
+        /// Should this value be exported.  Export strips fields that a user
+        /// can not specify. Deprecated. Planned for removal in 1.18.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1CSINode>> ReadCSINodeWithHttpMessagesAsync(string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update the specified CSINode
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the CSINode
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1CSINode>> PatchCSINodeWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace the specified CSINode
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the CSINode
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1CSINode>> ReplaceCSINodeWithHttpMessagesAsync(V1CSINode body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of StorageClass
@@ -43222,8 +36693,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -43354,8 +36823,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -43517,7 +36984,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteStorageClassWithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1StorageClass>> DeleteStorageClassWithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read the specified StorageClass
@@ -43626,8 +37093,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -43758,8 +37223,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -43921,7 +37384,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteVolumeAttachmentWithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1VolumeAttachment>> DeleteVolumeAttachmentWithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read the specified VolumeAttachment
@@ -44113,7 +37576,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources40WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources39WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of VolumeAttachment
@@ -44127,8 +37590,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -44259,8 +37720,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -44422,7 +37881,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteVolumeAttachment1WithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1VolumeAttachment>> DeleteVolumeAttachment1WithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read the specified VolumeAttachment
@@ -44528,7 +37987,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources41WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources40WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of CSIDriver
@@ -44542,8 +38001,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -44660,7 +38117,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSIDriverWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSIDriver1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CSIDriver
@@ -44674,8 +38131,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -44760,7 +38215,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CSIDriverList>> ListCSIDriverWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CSIDriverList>> ListCSIDriver1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a CSIDriver
@@ -44788,7 +38243,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CSIDriver>> CreateCSIDriverWithHttpMessagesAsync(V1beta1CSIDriver body, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CSIDriver>> CreateCSIDriver1WithHttpMessagesAsync(V1beta1CSIDriver body, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete a CSIDriver
@@ -44837,7 +38292,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCSIDriverWithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CSIDriver>> DeleteCSIDriver1WithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read the specified CSIDriver
@@ -44863,7 +38318,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CSIDriver>> ReadCSIDriverWithHttpMessagesAsync(string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CSIDriver>> ReadCSIDriver1WithHttpMessagesAsync(string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified CSIDriver
@@ -44901,7 +38356,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CSIDriver>> PatchCSIDriverWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CSIDriver>> PatchCSIDriver1WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified CSIDriver
@@ -44932,7 +38387,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CSIDriver>> ReplaceCSIDriverWithHttpMessagesAsync(V1beta1CSIDriver body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CSIDriver>> ReplaceCSIDriver1WithHttpMessagesAsync(V1beta1CSIDriver body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of CSINode
@@ -44946,8 +38401,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -45064,7 +38517,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSINodeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSINode1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CSINode
@@ -45078,8 +38531,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -45164,7 +38615,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CSINodeList>> ListCSINodeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CSINodeList>> ListCSINode1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a CSINode
@@ -45192,7 +38643,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CSINode>> CreateCSINodeWithHttpMessagesAsync(V1beta1CSINode body, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CSINode>> CreateCSINode1WithHttpMessagesAsync(V1beta1CSINode body, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete a CSINode
@@ -45241,7 +38692,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCSINodeWithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CSINode>> DeleteCSINode1WithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read the specified CSINode
@@ -45267,7 +38718,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CSINode>> ReadCSINodeWithHttpMessagesAsync(string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CSINode>> ReadCSINode1WithHttpMessagesAsync(string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified CSINode
@@ -45305,7 +38756,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CSINode>> PatchCSINodeWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CSINode>> PatchCSINode1WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified CSINode
@@ -45336,7 +38787,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CSINode>> ReplaceCSINodeWithHttpMessagesAsync(V1beta1CSINode body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CSINode>> ReplaceCSINode1WithHttpMessagesAsync(V1beta1CSINode body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of StorageClass
@@ -45350,8 +38801,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -45482,8 +38931,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -45645,7 +39092,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteStorageClass1WithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1StorageClass>> DeleteStorageClass1WithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read the specified StorageClass
@@ -45754,8 +39201,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -45886,8 +39331,6 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
-        ///
-        /// This field is beta.
         /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
@@ -46049,7 +39492,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteVolumeAttachment2WithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1VolumeAttachment>> DeleteVolumeAttachment2WithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read the specified VolumeAttachment
@@ -46222,6 +39665,29 @@ namespace k8s
         /// The custom resource's plural name. For TPRs this would be lowercase
         /// plural kind.
         /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
@@ -46229,6 +39695,31 @@ namespace k8s
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
         /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
@@ -46256,7 +39747,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> ListNamespacedCustomObjectWithHttpMessagesAsync(string group, string version, string namespaceParameter, string plural, string fieldSelector = default(string), string labelSelector = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> ListNamespacedCustomObjectWithHttpMessagesAsync(string group, string version, string namespaceParameter, string plural, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Creates a cluster scoped Custom object
@@ -46298,6 +39789,29 @@ namespace k8s
         /// The custom resource's plural name. For TPRs this would be lowercase
         /// plural kind.
         /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
         /// <param name='fieldSelector'>
         /// A selector to restrict the list of returned objects by their
         /// fields. Defaults to everything.
@@ -46305,6 +39819,31 @@ namespace k8s
         /// <param name='labelSelector'>
         /// A selector to restrict the list of returned objects by their
         /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
         /// When specified with a watch call, shows changes that occur after
@@ -46332,7 +39871,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> ListClusterCustomObjectWithHttpMessagesAsync(string group, string version, string plural, string fieldSelector = default(string), string labelSelector = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> ListClusterCustomObjectWithHttpMessagesAsync(string group, string version, string plural, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the cluster scoped specified custom object
@@ -46474,8 +40013,6 @@ namespace k8s
         /// <summary>
         /// Deletes the specified namespace scoped custom object
         /// </summary>
-        /// <param name='body'>
-        /// </param>
         /// <param name='group'>
         /// the custom resource's group
         /// </param>
@@ -46491,6 +40028,8 @@ namespace k8s
         /// </param>
         /// <param name='name'>
         /// the custom object's name
+        /// </param>
+        /// <param name='body'>
         /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
@@ -46518,7 +40057,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> DeleteNamespacedCustomObjectWithHttpMessagesAsync(V1DeleteOptions body, string group, string version, string namespaceParameter, string plural, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> DeleteNamespacedCustomObjectWithHttpMessagesAsync(string group, string version, string namespaceParameter, string plural, string name, V1DeleteOptions body = default(V1DeleteOptions), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Returns a namespace scoped custom object
@@ -46767,8 +40306,6 @@ namespace k8s
         /// <summary>
         /// Deletes the specified cluster scoped custom object
         /// </summary>
-        /// <param name='body'>
-        /// </param>
         /// <param name='group'>
         /// the custom resource's group
         /// </param>
@@ -46781,6 +40318,8 @@ namespace k8s
         /// </param>
         /// <param name='name'>
         /// the custom object's name
+        /// </param>
+        /// <param name='body'>
         /// </param>
         /// <param name='gracePeriodSeconds'>
         /// The duration in seconds before the object should be deleted. Value
@@ -46808,7 +40347,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> DeleteClusterCustomObjectWithHttpMessagesAsync(V1DeleteOptions body, string group, string version, string plural, string name, int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> DeleteClusterCustomObjectWithHttpMessagesAsync(string group, string version, string plural, string name, V1DeleteOptions body = default(V1DeleteOptions), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Returns a cluster scoped custom object

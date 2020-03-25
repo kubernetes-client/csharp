@@ -36,8 +36,8 @@ namespace k8s.Models
         /// loadbalancer controller fulfilling this Ingress, if left
         /// unspecified.</param>
         /// <param name="secretName">SecretName is the name of the secret used
-        /// to terminate SSL traffic on 443. Field is left optional to allow
-        /// SSL routing based on SNI hostname alone. If the SNI host in a
+        /// to terminate TLS traffic on port 443. Field is left optional to
+        /// allow TLS routing based on SNI hostname alone. If the SNI host in a
         /// listener conflicts with the "Host" header field used by an
         /// IngressRule, the SNI host is used for termination and value of the
         /// Host header is used for routing.</param>
@@ -65,8 +65,8 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets secretName is the name of the secret used to terminate
-        /// SSL traffic on 443. Field is left optional to allow SSL routing
-        /// based on SNI hostname alone. If the SNI host in a listener
+        /// TLS traffic on port 443. Field is left optional to allow TLS
+        /// routing based on SNI hostname alone. If the SNI host in a listener
         /// conflicts with the "Host" header field used by an IngressRule, the
         /// SNI host is used for termination and value of the Host header is
         /// used for routing.

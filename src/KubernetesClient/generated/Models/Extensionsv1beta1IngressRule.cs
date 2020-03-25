@@ -32,9 +32,9 @@ namespace k8s.Models
         /// </summary>
         /// <param name="host">Host is the fully qualified domain name of a
         /// network host, as defined by RFC 3986. Note the following deviations
-        /// from the "host" part of the URI as defined in the RFC: 1. IPs are
-        /// not allowed. Currently an IngressRuleValue can only apply to the
-        /// IP in the Spec of the parent Ingress.
+        /// from the "host" part of the URI as defined in RFC 3986: 1. IPs are
+        /// not allowed. Currently an IngressRuleValue can only apply to
+        /// the IP in the Spec of the parent Ingress.
         /// 2. The `:` delimiter is not respected because ports are not
         /// allowed.
         /// Currently the port of an Ingress is implicitly :80 for http and
@@ -42,7 +42,19 @@ namespace k8s.Models
         /// Both these may change in the future. Incoming requests are matched
         /// against the host before the IngressRuleValue. If the host is
         /// unspecified, the Ingress routes all traffic based on the specified
-        /// IngressRuleValue.</param>
+        /// IngressRuleValue.
+        ///
+        /// Host can be "precise" which is a domain name without the
+        /// terminating dot of a network host (e.g. "foo.bar.com") or
+        /// "wildcard", which is a domain name prefixed with a single wildcard
+        /// label (e.g. "*.foo.com"). The wildcard character '*' must appear by
+        /// itself as the first DNS label and matches only a single label. You
+        /// cannot have a wildcard label by itself (e.g. Host == "*"). Requests
+        /// will be matched against the Host field in the following way: 1. If
+        /// Host is precise, the request matches this rule if the http host
+        /// header is equal to Host. 2. If Host is a wildcard, then the request
+        /// matches this rule if the http host header is to equal to the suffix
+        /// (removing the first label) of the wildcard rule.</param>
         public Extensionsv1beta1IngressRule(string host = default(string), Extensionsv1beta1HTTPIngressRuleValue http = default(Extensionsv1beta1HTTPIngressRuleValue))
         {
             Host = host;
@@ -58,9 +70,9 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets host is the fully qualified domain name of a network
         /// host, as defined by RFC 3986. Note the following deviations from
-        /// the "host" part of the URI as defined in the RFC: 1. IPs are not
-        /// allowed. Currently an IngressRuleValue can only apply to the
-        /// IP in the Spec of the parent Ingress.
+        /// the "host" part of the URI as defined in RFC 3986: 1. IPs are not
+        /// allowed. Currently an IngressRuleValue can only apply to
+        /// the IP in the Spec of the parent Ingress.
         /// 2. The `:` delimiter is not respected because ports are not
         /// allowed.
         /// Currently the port of an Ingress is implicitly :80 for http and
@@ -69,6 +81,18 @@ namespace k8s.Models
         /// against the host before the IngressRuleValue. If the host is
         /// unspecified, the Ingress routes all traffic based on the specified
         /// IngressRuleValue.
+        ///
+        /// Host can be "precise" which is a domain name without the
+        /// terminating dot of a network host (e.g. "foo.bar.com") or
+        /// "wildcard", which is a domain name prefixed with a single wildcard
+        /// label (e.g. "*.foo.com"). The wildcard character '*' must appear by
+        /// itself as the first DNS label and matches only a single label. You
+        /// cannot have a wildcard label by itself (e.g. Host == "*"). Requests
+        /// will be matched against the Host field in the following way: 1. If
+        /// Host is precise, the request matches this rule if the http host
+        /// header is equal to Host. 2. If Host is a wildcard, then the request
+        /// matches this rule if the http host header is to equal to the suffix
+        /// (removing the first label) of the wildcard rule.
         /// </summary>
         [JsonProperty(PropertyName = "host")]
         public string Host { get; set; }
