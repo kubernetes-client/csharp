@@ -62,11 +62,6 @@ namespace k8s
                 throw new ArgumentOutOfRangeException(nameof(command));
             }
 
-            if (command == null)
-            {
-                throw new ArgumentNullException(nameof(command));
-            }
-
             var commandArray = command.ToArray();
             foreach (var c in commandArray)
             {
