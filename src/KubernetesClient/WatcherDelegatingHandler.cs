@@ -45,7 +45,8 @@ namespace k8s
                 _cancellationToken = cancellationToken;
             }
 
-            public override void Flush() => _innerStream.Flush();
+            public override void Flush() =>
+                _innerStream.FlushAsync(_cancellationToken).GetAwaiter().GetResult();
 
             public override async Task FlushAsync(CancellationToken cancellationToken)
             {
