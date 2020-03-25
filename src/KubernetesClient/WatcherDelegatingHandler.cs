@@ -47,8 +47,24 @@ namespace k8s
 
             public override void Flush() => _innerStream.Flush();
 
+            public override async Task FlushAsync(CancellationToken cancellationToken)
+            {
+                using (var cancellationTokenSource = CreateCancellationTokenSource(cancellationToken))
+                {
+                    await _innerStream.FlushAsync(cancellationTokenSource.Token).ConfigureAwait(false);
+                }
+            }
+
             public override int Read(byte[] buffer, int offset, int count) =>
                 _innerStream.ReadAsync(buffer, offset, count, _cancellationToken).GetAwaiter().GetResult();
+
+            public override async Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
+            {
+                using (var cancellationTokenSource = CreateCancellationTokenSource(cancellationToken))
+                {
+                    return await _innerStream.ReadAsync(buffer, offset, count, cancellationTokenSource.Token).ConfigureAwait(false);
+                }
+            }
 
             public override long Seek(long offset, SeekOrigin origin) => _innerStream.Seek(offset, origin);
 
@@ -56,6 +72,14 @@ namespace k8s
 
             public override void Write(byte[] buffer, int offset, int count) =>
                 _innerStream.WriteAsync(buffer, offset, count, _cancellationToken).GetAwaiter().GetResult();
+
+            public override async Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
+            {
+                using (var cancellationTokenSource = CreateCancellationTokenSource(cancellationToken))
+                {
+                    await _innerStream.WriteAsync(buffer, offset, count, cancellationTokenSource.Token).ConfigureAwait(false);
+                }
+            }
 
             public override bool CanRead => _innerStream.CanRead;
 
@@ -69,6 +93,37 @@ namespace k8s
             {
                 get => _innerStream.Position;
                 set => _innerStream.Position = value;
+            }
+
+            private CancellationTokenSourceSlim CreateCancellationTokenSource(CancellationToken userCancellationToken)
+            {
+                return new CancellationTokenSourceSlim(_cancellationToken, userCancellationToken);
+            }
+
+            private readonly struct CancellationTokenSourceSlim : IDisposable
+            {
+                private readonly CancellationTokenSource _cancellationTokenSource;
+
+                public CancellationTokenSourceSlim(CancellationToken token1, CancellationToken token2)
+                {
+                    if (token1.CanBeCanceled && token2.CanBeCanceled)
+                    {
+                        _cancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(token1, token2);
+                        Token = _cancellationTokenSource.Token;
+                    }
+                    else
+                    {
+                        _cancellationTokenSource = null;
+                        Token = token1.CanBeCanceled ? token1 : token2;
+                    }
+                }
+
+                public CancellationToken Token { get; }
+
+                public void Dispose()
+                {
+                    _cancellationTokenSource?.Dispose();
+                }
             }
         }
 
