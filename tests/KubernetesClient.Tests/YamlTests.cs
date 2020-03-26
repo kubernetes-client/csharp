@@ -291,5 +291,29 @@ spec:
             var output = Yaml.SaveToString<V1Service>(obj);
             Assert.True(ToLines(output).SequenceEqual(ToLines(content)));
         }
+
+        [Fact]
+        public void EnvVariableAndAnnotationsShouldBeStrings()
+        {
+            var content = @"apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    should-be-string: ""true""
+  name: cpu-demo
+spec:
+  containers:
+  - env:
+    - name: PORT
+      value: ""3000""
+    name: cpu-demo-ctr
+    image: vish/stress";
+            var obj = Yaml.LoadFromString<V1Pod>(content);
+            Assert.NotNull(obj?.Spec?.Containers);
+            var container = Assert.Single(obj.Spec.Containers);
+            Assert.NotNull(container.Env);
+            var objStr = Yaml.SaveToString(obj);
+            Assert.Equal(content, objStr);
+        }
     }
 }
