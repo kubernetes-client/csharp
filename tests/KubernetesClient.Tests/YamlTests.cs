@@ -293,21 +293,19 @@ spec:
         }
 
         [Fact]
-        public void EnvVariableAndAnnotationsShouldBeStrings()
+        public void EnvVariableShouldBeStrings()
         {
             var content = @"apiVersion: v1
 kind: Pod
 metadata:
-  annotations:
-    should-be-string: ""true""
   name: cpu-demo
 spec:
   containers:
   - env:
     - name: PORT
       value: ""3000""
-    name: cpu-demo-ctr
-    image: vish/stress";
+    image: vish/stress
+    name: cpu-demo-ctr";
             var obj = Yaml.LoadFromString<V1Pod>(content);
             Assert.NotNull(obj?.Spec?.Containers);
             var container = Assert.Single(obj.Spec.Containers);
