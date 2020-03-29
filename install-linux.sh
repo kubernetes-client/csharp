@@ -5,7 +5,9 @@ curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microso
 sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
 sudo apt-get -qq update
-sudo apt-get install -y dotnet-sdk-2.2
+sudo apt-get install -y dotnet-runtime-2.0.9
+sudo apt-get install -y dotnet-runtime-2.1
+sudo apt-get install -y dotnet-sdk-3.1
 
 echo 'Installing kubectl'
 curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.13.4/bin/linux/amd64/kubectl

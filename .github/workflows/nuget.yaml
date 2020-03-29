@@ -11,10 +11,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Setup .NET Core
+    - name: Setup dotnet SDK 3.1
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 2.2.108
+        dotnet-version: 3.1.201
     - name: test with dotnet
       run: dotnet test
     - name: pack
