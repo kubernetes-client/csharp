@@ -45,10 +45,27 @@ namespace k8s
                 _cancellationToken = cancellationToken;
             }
 
-            public override void Flush() => _innerStream.Flush();
+            public override void Flush() =>
+                _innerStream.FlushAsync(_cancellationToken).GetAwaiter().GetResult();
+
+            public override async Task FlushAsync(CancellationToken cancellationToken)
+            {
+                using (var cancellationTokenSource = CreateCancellationTokenSource(cancellationToken))
+                {
+                    await _innerStream.FlushAsync(cancellationTokenSource.Token).ConfigureAwait(false);
+                }
+            }
 
             public override int Read(byte[] buffer, int offset, int count) =>
                 _innerStream.ReadAsync(buffer, offset, count, _cancellationToken).GetAwaiter().GetResult();
+
+            public override async Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
+            {
+                using (var cancellationTokenSource = CreateCancellationTokenSource(cancellationToken))
+                {
+                    return await _innerStream.ReadAsync(buffer, offset, count, cancellationTokenSource.Token).ConfigureAwait(false);
+                }
+            }
 
             public override long Seek(long offset, SeekOrigin origin) => _innerStream.Seek(offset, origin);
 
@@ -56,6 +73,14 @@ namespace k8s
 
             public override void Write(byte[] buffer, int offset, int count) =>
                 _innerStream.WriteAsync(buffer, offset, count, _cancellationToken).GetAwaiter().GetResult();
+
+            public override async Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
+            {
+                using (var cancellationTokenSource = CreateCancellationTokenSource(cancellationToken))
+                {
+                    await _innerStream.WriteAsync(buffer, offset, count, cancellationTokenSource.Token).ConfigureAwait(false);
+                }
+            }
 
             public override bool CanRead => _innerStream.CanRead;
 
@@ -69,6 +94,46 @@ namespace k8s
             {
                 get => _innerStream.Position;
                 set => _innerStream.Position = value;
+            }
+
+            protected override void Dispose(bool disposing)
+            {
+                if (disposing)
+                {
+                    _innerStream.Dispose();
+                }
+                base.Dispose(disposing);
+            }
+
+            private LinkedCancellationTokenSource CreateCancellationTokenSource(CancellationToken userCancellationToken)
+            {
+                return new LinkedCancellationTokenSource(_cancellationToken, userCancellationToken);
+            }
+
+            private readonly struct LinkedCancellationTokenSource : IDisposable
+            {
+                private readonly CancellationTokenSource _cancellationTokenSource;
+
+                public LinkedCancellationTokenSource(CancellationToken token1, CancellationToken token2)
+                {
+                    if (token1.CanBeCanceled && token2.CanBeCanceled)
+                    {
+                        _cancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(token1, token2);
+                        Token = _cancellationTokenSource.Token;
+                    }
+                    else
+                    {
+                        _cancellationTokenSource = null;
+                        Token = token1.CanBeCanceled ? token1 : token2;
+                    }
+                }
+
+                public CancellationToken Token { get; }
+
+                public void Dispose()
+                {
+                    _cancellationTokenSource?.Dispose();
+                }
             }
         }
 
@@ -107,24 +172,18 @@ namespace k8s
             }
         }
 
-        internal class PeekableStreamReader : StreamReader
+        internal class PeekableStreamReader : TextReader
         {
-            private Queue<string> _buffer;
+            private readonly Queue<string> _buffer;
+            private readonly StreamReader _inner;
 
-            public PeekableStreamReader(Stream stream) : base(stream)
+            public PeekableStreamReader(Stream stream)
             {
                 _buffer = new Queue<string>();
+                _inner = new StreamReader(stream);
             }
 
-            public override string ReadLine()
-            {
-                if (_buffer.Count > 0)
-                {
-                    return _buffer.Dequeue();
-                }
-
-                return base.ReadLine();
-            }
+            public override string ReadLine() => throw new NotImplementedException();
 
             public override Task<string> ReadLineAsync()
             {
@@ -133,7 +192,7 @@ namespace k8s
                     return Task.FromResult(_buffer.Dequeue());
                 }
 
-                return base.ReadLineAsync();
+                return _inner.ReadLineAsync();
             }
 
             public async Task<string> PeekLineAsync()
@@ -156,6 +215,15 @@ namespace k8s
             public override string ReadToEnd() => throw new NotImplementedException();
 
             public override Task<string> ReadToEndAsync() => throw new NotImplementedException();
+
+            protected override void Dispose(bool disposing)
+            {
+                if (disposing)
+                {
+                    _inner.Dispose();
+                }
+                base.Dispose(disposing);
+            }
         }
     }
 }
