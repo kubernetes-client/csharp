@@ -11,6 +11,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+      with:
+        fetch-depth: 0
     - name: Setup dotnet runtime 2.0.9
       uses: actions/setup-dotnet@v1
       with:
