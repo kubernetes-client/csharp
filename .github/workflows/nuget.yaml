@@ -28,8 +28,9 @@ jobs:
     - name: Setup SxS dotnet
       if: matrix.os == 'windows-latest'
       run: |
-        robocopy %DOTNET_ROOT:3.1.201=2.1.805% %DOTNET_ROOT% /E /XC /XN /XO
-        robocopy %DOTNET_ROOT:3.1.201=2.1.202% %DOTNET_ROOT% /E /XC /XN /XO
+        (robocopy %DOTNET_ROOT:3.1.201=2.1.805% %DOTNET_ROOT% /E /XC /XN /XO) ^& if %ERRORLEVEL% geq 8 exit /B %ERRORLEVEL%
+        (robocopy %DOTNET_ROOT:3.1.201=2.1.202% %DOTNET_ROOT% /E /XC /XN /XO) ^& if %ERRORLEVEL% geq 8 exit /B %ERRORLEVEL%
+        exit /B 0
       shell: cmd
     - name: Test
       run: dotnet test
