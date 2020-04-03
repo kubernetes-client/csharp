@@ -33,8 +33,9 @@ jobs:
         if: matrix.os != 'windows-latest'
         run: |
           rsync --archive --ignore-existing ${DOTNET_ROOT/3.1.201/2.1.805}/ ${DOTNET_ROOT/3.1.201/2.1.202}/ $DOTNET_ROOT
-      - run: dotnet build --configuration Release
-      - name: test with dotnet
+      - name: Build
+        run: dotnet build --configuration Release
+      - name: Test
         run: dotnet test /p:CollectCoverage=true /p:ExcludeByFile=\"**/KubernetesClient/generated/**/*.cs\" /p:CoverletOutputFormat="cobertura"
       # - uses: 5monkeys/cobertura-action@master
       #   with:
