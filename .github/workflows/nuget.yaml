@@ -11,10 +11,24 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: Setup dotnet runtime 2.0.9
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.1.202
+    - name: Setup dotnet runtime 2.1.17
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.1.805
     - name: Setup dotnet SDK 3.1
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.201
+    - name: Setup SxS dotnet
+      if: matrix.os == 'windows-latest'
+      run: |
+        robocopy %DOTNET_ROOT:3.1.201=2.1.805% %DOTNET_ROOT% /E /XC /XN /XO
+        robocopy %DOTNET_ROOT:3.1.201=2.1.202% %DOTNET_ROOT% /E /XC /XN /XO
+      shell: cmd
     - name: test with dotnet
       run: dotnet test
     - name: pack
