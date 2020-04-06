@@ -306,8 +306,11 @@ namespace k8s
             {
                 throw new ArgumentNullException(nameof(config));
             }
-
-            if (!string.IsNullOrEmpty(config.AccessToken))
+            if (config.TokenProvider != null)
+            {
+                return new TokenCredentials(config.TokenProvider);
+            }
+            else if (!string.IsNullOrEmpty(config.AccessToken))
             {
                 return new TokenCredentials(config.AccessToken);
             }
