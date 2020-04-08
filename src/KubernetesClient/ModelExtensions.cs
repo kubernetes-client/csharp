@@ -7,6 +7,17 @@ namespace k8s.Models
 {
     public static class ModelExtensions
     {
+        /// <summary>Adds the given finalizer to a Kubernetes object if it doesn't already exist.</summary>
+        /// <returns>Returns true if the finalizer was added and false if it already existed.</returns>
+        public static bool AddFinalizer(this IMetadata<V1ObjectMeta> obj, string finalizer)
+        {
+            if(string.IsNullOrEmpty(finalizer)) throw new ArgumentNullException(nameof(finalizer));
+            if(obj.EnsureMetadata().Finalizers == null) obj.Metadata.Finalizers = new List<string>();
+            if(obj.Metadata.Finalizers.Contains(finalizer)) return false;
+            obj.Metadata.Finalizers.Add(finalizer);
+            return true;
+        }
+
         /// <summary>Extracts the Kubernetes API group from the <see cref="IKubernetesObject.ApiVersion"/>.</summary>
         public static string ApiGroup(this IKubernetesObject obj)
         {
@@ -76,6 +87,24 @@ namespace k8s.Models
         /// <summary>Gets the annotations of a Kubernetes object.</summary>
         public static IDictionary<string, string> Annotations(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.Annotations;
 
+        /// <summary>Creates a <see cref="V1OwnerReference"/> that refers to the given object.</summary>
+        public static V1OwnerReference CreateOwnerReference(this IKubernetesObject<V1ObjectMeta> obj, bool? controller = null, bool? blockDeletion = null)
+        {
+            if(obj == null) throw new ArgumentNullException(nameof(obj));
+            string apiVersion = obj.ApiVersion, kind = obj.Kind; // default to using the API version and kind from the object
+            if(string.IsNullOrEmpty(apiVersion) || string.IsNullOrEmpty(kind)) // but if either of them is missing...
+            {
+                object[] attrs = obj.GetType().GetCustomAttributes(typeof(KubernetesEntityAttribute), true);
+                if(attrs.Length == 0) throw new ArgumentException("Unable to determine the object's API version and Kind.");
+                var attr = (KubernetesEntityAttribute)attrs[0];
+                (apiVersion, kind) = (string.IsNullOrEmpty(attr.Group) ? attr.ApiVersion : attr.Group + "/" + attr.ApiVersion, attr.Kind);
+            }
+            return new V1OwnerReference()
+            {
+                ApiVersion = apiVersion, Kind = kind, Name = obj.Name(), Uid = obj.Uid(), Controller = controller, BlockOwnerDeletion = blockDeletion
+            };
+        }
+
         /// <summary>Gets the creation time of a Kubernetes object, or null if it hasn't been created yet.</summary>
         public static DateTime? CreationTimestamp(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.CreationTimestamp;
 
@@ -88,6 +117,9 @@ namespace k8s.Models
             if(obj.Metadata == null) obj.Metadata = new V1ObjectMeta();
             return obj.Metadata;
         }
+
+        /// <summary>Gets the <see cref="V1ObjectMeta.Finalizers"/> of a Kubernetes object.</summary>
+        public static IList<string> Finalizers(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.Finalizers;
 
         /// <summary>Gets the index of the <see cref="V1OwnerReference"/> that matches the given object, or -1 if no such
         /// reference could be found.
@@ -149,6 +181,13 @@ namespace k8s.Models
             };
         }
 
+        /// <summary>Determines whether the Kubernetes object has the given finalizer.</summary>
+        public static bool HasFinalizer(this IMetadata<V1ObjectMeta> obj, string finalizer)
+        {
+            if(string.IsNullOrEmpty(finalizer)) throw new ArgumentNullException(nameof(finalizer));
+            return obj.Finalizers() != null && obj.Metadata.Finalizers.Contains(finalizer);
+        }
+
         /// <summary>Gets the labels of a Kubernetes object.</summary>
         public static IDictionary<string, string> Labels(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.Labels;
 
@@ -160,6 +199,53 @@ namespace k8s.Models
 
         /// <summary>Gets the owner references of a Kubernetes object.</summary>
         public static IList<V1OwnerReference> OwnerReferences(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.OwnerReferences;
+
+        /// <summary>Removes the given finalizer from a Kubernetes object if it exists.</summary>
+        /// <returns>Returns true if the finalizer was removed and false if it didn't exist.</returns>
+        public static bool RemoveFinalizer(this IMetadata<V1ObjectMeta> obj, string finalizer)
+        {
+            if(string.IsNullOrEmpty(finalizer)) throw new ArgumentNullException(nameof(finalizer));
+            return obj.Finalizers() != null && obj.Metadata.Finalizers.Remove(finalizer);
+        }
+
+        /// <summary>Removes the first <see cref="V1OwnerReference"/> that matches the given object and returns it, or returns null if no
+        /// matching reference could be found.
+        /// </summary>
+        public static V1OwnerReference RemoveOwnerReference(this IMetadata<V1ObjectMeta> obj, IKubernetesObject<V1ObjectMeta> owner)
+        {
+            int index = obj.FindOwnerReference(owner);
+            V1OwnerReference ownerRef = index >= 0 ? obj.Metadata.OwnerReferences[index] : null;
+            if(index >= 0) obj.Metadata.OwnerReferences.RemoveAt(index);
+            return ownerRef;
+        }
+
+        /// <summary>Removes all <see cref="V1OwnerReference">owner references</see> that match the given predicate, and returns true if
+        /// any were removed.
+        /// </summary>
+        public static bool RemoveOwnerReferences(this IMetadata<V1ObjectMeta> obj, Predicate<V1OwnerReference> predicate)
+        {
+            if(predicate == null) throw new ArgumentNullException(nameof(predicate));
+            bool removed = false;
+            IList<V1OwnerReference> refs = obj.Metadata?.OwnerReferences;
+            if(refs != null)
+            {
+                for(int i = refs.Count-1; i >= 0; i--)
+                {
+                    if(predicate(refs[i]))
+                    {
+                        refs.RemoveAt(i);
+                        removed = true;
+                    }
+                }
+            }
+            return removed;
+        }
+
+        /// <summary>Removes all <see cref="V1OwnerReference">owner references</see> that match the given object, and returns true if
+        /// any were removed.
+        /// </summary>
+        public static bool RemoveOwnerReferences(this IMetadata<V1ObjectMeta> obj, IKubernetesObject<V1ObjectMeta> owner) =>
+            RemoveOwnerReferences(obj, r => r.Matches(owner));
 
         /// <summary>Gets the resource version of a Kubernetes object.</summary>
         public static string ResourceVersion(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.ResourceVersion;
@@ -190,6 +276,13 @@ namespace k8s.Models
         {
             if(meta.Annotations == null) meta.Annotations = new Dictionary<string, string>();
             return meta.Annotations;
+        }
+
+        /// <summary>Ensures that the <see cref="V1ObjectMeta.Finalizers"/> field is not null, and returns it.</summary>
+        public static IList<string> EnsureFinalizers(this V1ObjectMeta meta)
+        {
+            if(meta.Finalizers == null) meta.Finalizers = new List<string>();
+            return meta.Finalizers;
         }
 
         /// <summary>Ensures that the <see cref="V1ObjectMeta.Labels"/> field is not null, and returns it.</summary>
