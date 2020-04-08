@@ -199,7 +199,7 @@ namespace k8s
         }
 
         /// <summary>
-        ///     Set credentials for the Client
+        ///     Set credentials for the Client based on the config
         /// </summary>
         private void SetCredentials()
         {

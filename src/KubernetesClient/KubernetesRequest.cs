@@ -18,18 +18,40 @@ namespace k8s
     public sealed class KubernetesRequest : ICloneable
     {
         /// <summary>Initializes a <see cref="KubernetesRequest"/> based on a <see cref="KubernetesClient"/>.</summary>
-        public KubernetesRequest(Kubernetes client) : this(client.config, client.HttpClient, client.Scheme) { }
+        public KubernetesRequest(Kubernetes client)
+        {
+            if(client == null) throw new ArgumentNullException(nameof(client));
+            (baseUri, config, this.client) = (client.BaseUri.ToString(), client.config, client.HttpClient);
+            Scheme(client.Scheme);
+        }
 
         /// <summary>Initializes a <see cref="KubernetesRequest"/> based on a <see cref="KubernetesClientConfiguration"/> and
-        /// <see cref="HttpClient"/>.
+        /// an <see cref="HttpClient"/>.
         /// </summary>
+        /// <param name="config">The <see cref="KubernetesClientConfiguration"/> used to connect to Kubernetes</param>
+        /// <param name="client">The <see cref="HttpClient"/> used to make the request, or null to use the default client</param>
+        /// <param name="scheme">The <see cref="KubernetesScheme"/> used to map types to their Kubernetes group, version, and kind</param>
         /// <remarks>Any necessary SSL configuration must have already been applied to the <paramref name="client"/>.</remarks>
-        public KubernetesRequest(KubernetesClientConfiguration config, HttpClient client, KubernetesScheme scheme = null)
+        public KubernetesRequest(KubernetesClientConfiguration config, HttpClient client = null, KubernetesScheme scheme = null)
         {
-            if(config == null) throw new ArgumentNullException(nameof(config));
-            if(string.IsNullOrEmpty(config.Host)) throw new ArgumentException("The kubernetes host must be provided.");
-            this.config = config;
-            this.client = client ?? throw new ArgumentNullException(nameof(client));
+            this.config = config ?? throw new ArgumentNullException(nameof(config));
+            this.client = client ?? new HttpClient();
+            this.baseUri = config.Host;
+            if(string.IsNullOrEmpty(this.baseUri)) throw new ArgumentException(nameof(config)+".Host");
+            Scheme(scheme);
+        }
+
+        /// <summary>Initializes a <see cref="KubernetesRequest"/> based on a <see cref="Uri"/> and an <see cref="HttpClient"/>.</summary>
+        /// <param name="baseUri">The absolute base URI of the Kubernetes API server</param>
+        /// <param name="client">The <see cref="HttpClient"/> used to make the request, or null to use the default client</param>
+        /// <param name="scheme">The <see cref="KubernetesScheme"/> used to map types to their Kubernetes group, version, and kind</param>
+        /// <remarks>Any necessary SSL configuration must have already been applied to the <paramref name="client"/>.</remarks>
+        public KubernetesRequest(Uri baseUri, HttpClient client = null, KubernetesScheme scheme = null)
+        {
+            if(baseUri == null) throw new ArgumentNullException(nameof(baseUri));
+            if(!baseUri.IsAbsoluteUri) throw new ArgumentException("The base URI must be absolute.", nameof(baseUri));
+            this.baseUri = baseUri.ToString();
+            this.client = client ?? new HttpClient();
             Scheme(scheme);
         }
 
@@ -39,11 +61,23 @@ namespace k8s
         /// <summary>Sets the value of the Accept header, or null or empty to use the default of application/json.</summary>
         public KubernetesRequest Accept(string mediaType) { _accept = NormalizeEmpty(mediaType); return this; }
 
-        /// <summary>Adds a query-string parameter to the request. Multiple headers with the same name can be set this way.</summary>
-        public KubernetesRequest AddHeader(string key, string value) => Add(ref headers, key, value);
+        /// <summary>Adds a header to the request. Multiple header values with the same name can be set this way.</summary>
+        public KubernetesRequest AddHeader(string key, string value) => Add(ref headers, CheckHeaderName(key), value);
+
+        /// <summary>Adds a header to the request.</summary>
+        public KubernetesRequest AddHeader(string key, IEnumerable<string> values) => Add(ref headers, CheckHeaderName(key), values);
+
+        /// <summary>Adds a header to the request.</summary>
+        public KubernetesRequest AddHeader(string key, params string[] values) => Add(ref headers, CheckHeaderName(key), values);
 
         /// <summary>Adds a query-string parameter to the request. Multiple parameters with the same name can be set this way.</summary>
         public KubernetesRequest AddQuery(string key, string value) => Add(ref query, key, value);
+
+        /// <summary>Adds query-string parameters to the request.</summary>
+        public KubernetesRequest AddQuery(string key, IEnumerable<string> values) => Add(ref query, key, values);
+
+        /// <summary>Adds query-string parameters to the request.</summary>
+        public KubernetesRequest AddQuery(string key, params string[] values) => Add(ref query, key, values);
 
         /// <summary>Gets the body to be sent to the server.</summary>
         public object Body() => _body;
@@ -53,18 +87,19 @@ namespace k8s
         /// </summary>
         public KubernetesRequest Body(object body) { _body = body; return this; }
 
+        /// <summary>Clears custom header values with the given name.</summary>
+        public KubernetesRequest ClearHeader(string headerName)
+        {
+            if(headerName == null) throw new ArgumentNullException(nameof(headerName));
+            CheckHeaderName(headerName);
+            if(headers != null) headers.Remove(headerName);
+            return this;
+        }
+
         /// <summary>Clears all custom header values.</summary>
         public KubernetesRequest ClearHeaders()
         {
             if(headers != null) headers.Clear();
-            return this;
-        }
-
-        /// <summary>Clears custom header values with the given name.</summary>
-        public KubernetesRequest ClearHeaders(string headerName)
-        {
-            if(headerName == null) throw new ArgumentNullException(nameof(headerName));
-            if(headers != null) headers.Remove(headerName);
             return this;
         }
 
@@ -116,7 +151,7 @@ namespace k8s
         public KubernetesRequest Put() => Method(HttpMethod.Put);
 
         /// <summary>Sets the value of the "dryRun" query-string parameter, as a boolean.</summary>
-        public bool DryRun() => string.IsNullOrEmpty(GetQuery("dryRun"));
+        public bool DryRun() => !string.IsNullOrEmpty(GetQuery("dryRun"));
 
         /// <summary>Sets the value of the "dryRun" query-string parameter to "All" or removes it.</summary>
         public KubernetesRequest DryRun(bool dryRun) => SetQuery("dryRun", dryRun ? "All" : null);
@@ -277,13 +312,13 @@ namespace k8s
         public string Name() => _name;
 
         /// <summary>Sets the name of the top-level Kubernetes resource to access, or null or empty to not access a specific object.</summary>
-        public KubernetesRequest Name(string name) { _name = name; return this; }
+        public KubernetesRequest Name(string name) { _name = NormalizeEmpty(name); return this; }
 
         /// <summary>Gets the Kubernetes namespace to access.</summary>
         public string Namespace() => _ns;
 
         /// <summary>Sets the Kubernetes namespace to access, or null or empty to not access a namespaced object.</summary>
-        public KubernetesRequest Namespace(string ns) { _ns = ns; return this; }
+        public KubernetesRequest Namespace(string ns) { _ns = NormalizeEmpty(ns); return this; }
 
         /// <summary>Gets the raw URL to access, relative to the configured Kubernetes host and not including the query string, or
         /// null if the URL will be constructed piecemeal based on the other properties.
@@ -291,7 +326,7 @@ namespace k8s
         public string RawUri() => _rawUri;
 
         /// <summary>Sets the raw URL to access, relative to the configured Kubernetes host and not including the query string, or
-        /// null or empty to construct the URI piecemeal based on the other properties.
+        /// null or empty to construct the URI piecemeal based on the other properties. The URI must begin with a slash.
         /// </summary>
         public KubernetesRequest RawUri(string uri)
         {
@@ -355,6 +390,7 @@ namespace k8s
         {
             if(modify == null) throw new ArgumentNullException(nameof(modify));
             if(_watchVersion != null) throw new InvalidOperationException("Watches cannot be updated.");
+            KubernetesRequest putReq = null;
             while(true)
             {
                 if(obj == null) // if we need to load the resource...
@@ -367,13 +403,12 @@ namespace k8s
                 cancelToken.ThrowIfCancellationRequested();
                 // if the resource is missing or no changes are needed, return it as-is
                 if(obj == null || !await modify(obj, cancelToken).ConfigureAwait(false)) return obj;
-                HttpRequestMessage updateMsg = CreateRequestMessage(); // otherwise, update it with a PUT request
-                updateMsg.Method = HttpMethod.Put;
-                KubernetesResponse resp = new KubernetesResponse(await client.SendAsync(updateMsg, cancelToken).ConfigureAwait(false));
+                if(putReq == null) putReq = Clone().Put();
+                KubernetesResponse resp = await putReq.Body(obj).ExecuteAsync(cancelToken).ConfigureAwait(false);  // otherwise, update it
                 if(resp.StatusCode != HttpStatusCode.Conflict) // if there was no conflict, return the result
                 {
                     if(resp.IsNotFound && !failIfMissing) return null;
-                    else if(resp.IsError) throw new KubernetesException(await resp.GetErrorAsync().ConfigureAwait(false));
+                    else if(resp.IsError) throw new KubernetesException(await resp.GetStatusAsync().ConfigureAwait(false));
                     else return await resp.GetBodyAsync<T>().ConfigureAwait(false);
                 }
                 obj = null; // otherwise, there was a conflict, so reload the item
@@ -406,14 +441,7 @@ namespace k8s
         }
 
         /// <summary>Sets a custom header value, or deletes it if the value is null.</summary>
-        public KubernetesRequest SetHeader(string headerName, string value)
-        {
-            if(headerName == "Accept" || headerName == "Content-Type")
-            {
-                throw new ArgumentException("The header must be set using the corresponding property.");
-            }
-            return Set(ref headers, headerName, value);
-        }
+        public KubernetesRequest SetHeader(string headerName, string value) => Set(ref headers, CheckHeaderName(headerName), value);
 
         /// <summary>Sets a query-string value, or deletes it if the value is null.</summary>
         public KubernetesRequest SetQuery(string key, string value) => Set(ref query, key, value);
@@ -490,6 +518,19 @@ namespace k8s
             return this;
         }
 
+        /// <summary>Adds a value to the query string or headers.</summary>
+        KubernetesRequest Add(ref Dictionary<string, List<string>> dict, string key, IEnumerable<string> values)
+        {
+            if(string.IsNullOrEmpty(key)) throw new ArgumentNullException(nameof(key));
+            if(values != null)
+            {
+                if(dict == null) dict = new Dictionary<string, List<string>>();
+                if(!dict.TryGetValue(key, out List<string> list)) dict[key] = list = new List<string>();
+                list.AddRange(values);
+            }
+            return this;
+        }
+
         /// <summary>Sets a value in the query string or headers.</summary>
         KubernetesRequest Set(ref Dictionary<string,List<string>> dict, string key, string value)
         {
@@ -507,11 +548,11 @@ namespace k8s
             var req = new HttpRequestMessage(Method(), GetRequestUri());
 
             // add the headers
-            if(!string.IsNullOrEmpty(config.AccessToken))
+            if(!string.IsNullOrEmpty(config?.AccessToken))
             {
                 req.Headers.Authorization = new AuthenticationHeaderValue("Bearer", config.AccessToken);
             }
-            else if(!string.IsNullOrEmpty(config.Username))
+            else if(!string.IsNullOrEmpty(config?.Username))
             {
                 req.Headers.Authorization = new AuthenticationHeaderValue("Basic",
                     Convert.ToBase64String(Encoding.UTF8.GetBytes(config.Username + ":" + config.Password)));
@@ -545,7 +586,7 @@ namespace k8s
                 req.Content.Headers.ContentType = new MediaTypeHeaderValue(_mediaType ?? "application/json") { CharSet = "UTF-8" };
                 if(contentHeaders != null && contentHeaders.Count != 0) // go through the headers we couldn't set on the request
                 {
-                    foreach(KeyValuePair<string,List<string>> pair in contentHeaders)
+                    foreach(KeyValuePair<string, List<string>> pair in contentHeaders)
                     {
                         if(!req.Content.Headers.TryAddWithoutValidation(pair.Key, pair.Value)) // if we can't set it on the content either...
                         {
@@ -562,7 +603,7 @@ namespace k8s
             cancelToken.ThrowIfCancellationRequested();
             KubernetesResponse resp = new KubernetesResponse(await client.SendAsync(msg, cancelToken).ConfigureAwait(false));
             if(resp.IsNotFound && !failIfMissing) return default(T);
-            else if(resp.IsError) throw new KubernetesException(await resp.GetErrorAsync().ConfigureAwait(false));
+            else if(resp.IsError) throw new KubernetesException(await resp.GetStatusAsync().ConfigureAwait(false));
             else return await resp.GetBodyAsync<T>().ConfigureAwait(false);
         }
 
@@ -575,14 +616,15 @@ namespace k8s
 
             // construct the request URL
             var sb = new StringBuilder();
-            sb.Append(config.Host);
-            if(sb[sb.Length-1] != '/') sb.Append('/');
+            sb.Append(baseUri);
             if(_rawUri != null) // if a raw URL was given, use it
             {
+                if(sb[sb.Length-1] == '/') sb.Length--; // the raw URI starts with a slash, so ensure the base URI doesn't end with one
                 sb.Append(_rawUri);
             }
             else // otherwise, construct it piecemeal
             {
+                if(sb[sb.Length-1] != '/') sb.Append('/'); // ensure the base URI ends with a slash
                 if(_group != null) sb.Append("apis/").Append(_group);
                 else sb.Append("api");
                 sb.Append('/').Append(_version ?? "v1");
@@ -591,24 +633,24 @@ namespace k8s
                 if(_name != null) sb.Append('/').Append(_name);
                 if(_subresource != null) sb.Append('/').Append(_subresource);
             }
+            bool firstParam = true;
             if(query != null) // then add the query string, if any
             {
-                bool first = true;
                 foreach(KeyValuePair<string,List<string>> pair in query)
                 {
                     string key = Uri.EscapeDataString(pair.Key);
                     foreach(string value in pair.Value)
                     {
-                        sb.Append(first ? '?' : '&').Append(key).Append('=');
+                        sb.Append(firstParam ? '?' : '&').Append(key).Append('=');
                         if(!string.IsNullOrEmpty(value)) sb.Append(Uri.EscapeDataString(value));
-                        first = false;
+                        firstParam = false;
                     }
                 }
-                if(_watchVersion != null)
-                {
-                    sb.Append(first ? '?' : '&').Append("watch=1");
-                    if(_watchVersion.Length != 0) sb.Append("&resourceVersion=").Append(_watchVersion);
-                }
+            }
+            if(_watchVersion != null)
+            {
+                sb.Append(firstParam ? '?' : '&').Append("watch=1");
+                if(_watchVersion.Length != 0) sb.Append("&resourceVersion=").Append(_watchVersion);
             }
             return sb.ToString();
         }
@@ -616,6 +658,7 @@ namespace k8s
         object ICloneable.Clone() => Clone();
 
         readonly HttpClient client;
+        readonly string baseUri;
         readonly KubernetesClientConfiguration config;
         Dictionary<string, List<string>> headers, query;
         string _accept = "application/json", _mediaType = "application/json";
@@ -624,6 +667,15 @@ namespace k8s
         HttpMethod _method;
         KubernetesScheme _scheme;
         bool _streamResponse;
+
+        static string CheckHeaderName(string name)
+        {
+            if(name == "Accept" || name == "Content-Type")
+            {
+                throw new ArgumentException($"The {name} header must be set using the corresponding property.");
+            }
+            return name;
+        }
 
         static string NormalizeEmpty(string value) => string.IsNullOrEmpty(value) ? null : value; // normalizes empty strings to null
     }
@@ -650,19 +702,6 @@ namespace k8s
 
         /// <inheritdoc/>
         public void Dispose() => Message.Dispose();
-
-        /// <summary>Deserializes the response body as a <see cref="V1Status"/> object, or creates one from the status code if the
-        /// response body is not a JSON object.
-        /// </summary>
-        public async Task<V1Status> GetErrorAsync()
-        {
-            try { return await GetBodyAsync<V1Status>().ConfigureAwait(false); }
-            catch(JsonException) { }
-            return new V1Status()
-            {
-                Status = IsError ? "Failure" : "Success", Code = (int)StatusCode, Reason = StatusCode.ToString(), Message = body
-            };
-        }
 
         /// <summary>Returns the response body as a string.</summary>
         public async Task<string> GetBodyAsync()
@@ -705,6 +744,23 @@ namespace k8s
                 return default(T);
             }
             return JsonConvert.DeserializeObject<T>(body, Kubernetes.DefaultJsonSettings);
+        }
+
+        /// <summary>Deserializes the response body as a <see cref="V1Status"/> object, or creates one from the status code if the
+        /// response body is not a JSON object.
+        /// </summary>
+        public async Task<V1Status> GetStatusAsync()
+        {
+            try
+            {
+                var status = await GetBodyAsync<V1Status>().ConfigureAwait(false);
+                if(status != null && (status.Status == "Success" || status.Status == "Failure")) return status;
+            }
+            catch(JsonException) { }
+            return new V1Status()
+            {
+                Status = IsError ? "Failure" : "Success", Code = (int)StatusCode, Reason = StatusCode.ToString(), Message = body
+            };
         }
 
         string body;

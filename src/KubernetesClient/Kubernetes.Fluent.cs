@@ -27,14 +27,7 @@ namespace k8s
         /// <summary>Creates a new <see cref="KubernetesRequest"/> to access the given type of object with an optional name and namespace.</summary>
         public KubernetesRequest New<T>(string ns = null, string name = null) => New(null, typeof(T), ns, name);
 
-        /// <summary>Creates a new <see cref="KubernetesRequest"/> to access the given type of object with an optional name and namespace.</summary>
-        public KubernetesRequest New<T>(HttpMethod method, string ns = null, string name = null) =>
-            New(method, typeof(T), ns, name);
-
         /// <summary>Creates a new <see cref="KubernetesRequest"/> to access the given object.</summary>
         public KubernetesRequest New(IKubernetesObject obj, bool setBody = true) => new KubernetesRequest(this).Set(obj, setBody);
-
-        /// <summary>Creates a new <see cref="KubernetesRequest"/> to access the given object.</summary>
-        public KubernetesRequest New(HttpMethod method, IKubernetesObject obj, bool setBody = true) => New(method).Set(obj, setBody);
     }
 }
