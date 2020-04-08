@@ -12,9 +12,15 @@ namespace k8s.Models
         /// <returns>Returns true if the finalizer was added and false if it already existed.</returns>
         public static bool AddFinalizer(this IMetadata<V1ObjectMeta> obj, string finalizer)
         {
+<<<<<<< HEAD
             if (string.IsNullOrEmpty(finalizer)) throw new ArgumentNullException(nameof(finalizer));
             if (EnsureMetadata(obj).Finalizers == null) obj.Metadata.Finalizers = new List<string>();
             if (obj.Metadata.Finalizers.Contains(finalizer)) return false;
+=======
+            if(string.IsNullOrEmpty(finalizer)) throw new ArgumentNullException(nameof(finalizer));
+            if(obj.EnsureMetadata().Finalizers == null) obj.Metadata.Finalizers = new List<string>();
+            if(obj.Metadata.Finalizers.Contains(finalizer)) return false;
+>>>>>>> Merge from modelExtensions
             obj.Metadata.Finalizers.Add(finalizer);
             return true;
         }
@@ -95,6 +101,7 @@ namespace k8s.Models
         /// <summary>Gets the annotations of a Kubernetes object.</summary>
         public static IDictionary<string, string> Annotations(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.Annotations;
 
+<<<<<<< HEAD
         /// <summary>Creates a <see cref="V1ObjectReference"/> that refers to the given object.</summary>
         public static V1ObjectReference CreateObjectReference(this IKubernetesObject<V1ObjectMeta> obj)
         {
@@ -111,6 +118,8 @@ namespace k8s.Models
             };
         }
 
+=======
+>>>>>>> Merge from modelExtensions
         /// <summary>Creates a <see cref="V1OwnerReference"/> that refers to the given object.</summary>
         public static V1OwnerReference CreateOwnerReference(this IKubernetesObject<V1ObjectMeta> obj, bool? controller = null, bool? blockDeletion = null)
         {
@@ -211,9 +220,18 @@ namespace k8s.Models
             return obj.Finalizers() != null && obj.Metadata.Finalizers.Contains(finalizer);
         }
 
+<<<<<<< HEAD
         /// <summary>Determines whether one object is owned by another.</summary>
         public static bool IsOwnedBy(this IMetadata<V1ObjectMeta> obj, IKubernetesObject<V1ObjectMeta> owner) =>
             FindOwnerReference(obj, owner) >= 0;
+=======
+        /// <summary>Determines whether the Kubernetes object has the given finalizer.</summary>
+        public static bool HasFinalizer(this IMetadata<V1ObjectMeta> obj, string finalizer)
+        {
+            if(string.IsNullOrEmpty(finalizer)) throw new ArgumentNullException(nameof(finalizer));
+            return obj.Finalizers() != null && obj.Metadata.Finalizers.Contains(finalizer);
+        }
+>>>>>>> Merge from modelExtensions
 
         /// <summary>Gets the labels of a Kubernetes object.</summary>
         public static IDictionary<string, string> Labels(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.Labels;
@@ -231,8 +249,12 @@ namespace k8s.Models
         /// <returns>Returns true if the finalizer was removed and false if it didn't exist.</returns>
         public static bool RemoveFinalizer(this IMetadata<V1ObjectMeta> obj, string finalizer)
         {
+<<<<<<< HEAD
             if (obj == null) throw new ArgumentNullException(nameof(obj));
             if (string.IsNullOrEmpty(finalizer)) throw new ArgumentNullException(nameof(finalizer));
+=======
+            if(string.IsNullOrEmpty(finalizer)) throw new ArgumentNullException(nameof(finalizer));
+>>>>>>> Merge from modelExtensions
             return obj.Finalizers() != null && obj.Metadata.Finalizers.Remove(finalizer);
         }
 
@@ -241,9 +263,15 @@ namespace k8s.Models
         /// </summary>
         public static V1OwnerReference RemoveOwnerReference(this IMetadata<V1ObjectMeta> obj, IKubernetesObject<V1ObjectMeta> owner)
         {
+<<<<<<< HEAD
             int index = FindOwnerReference(obj, owner);
             V1OwnerReference ownerRef = index >= 0 ? obj.Metadata.OwnerReferences[index] : null;
             if (index >= 0) obj.Metadata.OwnerReferences.RemoveAt(index);
+=======
+            int index = obj.FindOwnerReference(owner);
+            V1OwnerReference ownerRef = index >= 0 ? obj.Metadata.OwnerReferences[index] : null;
+            if(index >= 0) obj.Metadata.OwnerReferences.RemoveAt(index);
+>>>>>>> Merge from modelExtensions
             return ownerRef;
         }
 
@@ -252,6 +280,7 @@ namespace k8s.Models
         /// </summary>
         public static bool RemoveOwnerReferences(this IMetadata<V1ObjectMeta> obj, Predicate<V1OwnerReference> predicate)
         {
+<<<<<<< HEAD
             if (obj == null) throw new ArgumentNullException(nameof(obj));
             if (predicate == null) throw new ArgumentNullException(nameof(predicate));
             bool removed = false;
@@ -261,6 +290,16 @@ namespace k8s.Models
                 for (int i = refs.Count-1; i >= 0; i--)
                 {
                     if (predicate(refs[i]))
+=======
+            if(predicate == null) throw new ArgumentNullException(nameof(predicate));
+            bool removed = false;
+            IList<V1OwnerReference> refs = obj.Metadata?.OwnerReferences;
+            if(refs != null)
+            {
+                for(int i = refs.Count-1; i >= 0; i--)
+                {
+                    if(predicate(refs[i]))
+>>>>>>> Merge from modelExtensions
                     {
                         refs.RemoveAt(i);
                         removed = true;
@@ -311,8 +350,12 @@ namespace k8s.Models
         /// <summary>Ensures that the <see cref="V1ObjectMeta.Finalizers"/> field is not null, and returns it.</summary>
         public static IList<string> EnsureFinalizers(this V1ObjectMeta meta)
         {
+<<<<<<< HEAD
             if (meta == null) throw new ArgumentNullException(nameof(meta));
             if (meta.Finalizers == null) meta.Finalizers = new List<string>();
+=======
+            if(meta.Finalizers == null) meta.Finalizers = new List<string>();
+>>>>>>> Merge from modelExtensions
             return meta.Finalizers;
         }
 
