@@ -102,10 +102,7 @@ namespace k8s.Models
             string apiVersion = obj.ApiVersion, kind = obj.Kind; // default to using the API version and kind from the object
             if (string.IsNullOrEmpty(apiVersion) || string.IsNullOrEmpty(kind)) // but if either of them is missing...
             {
-                object[] attrs = obj.GetType().GetCustomAttributes(typeof(KubernetesEntityAttribute), true);
-                if (attrs.Length == 0) throw new ArgumentException("Unable to determine the object's API version and Kind.");
-                var attr = (KubernetesEntityAttribute)attrs[0];
-                (apiVersion, kind) = (string.IsNullOrEmpty(attr.Group) ? attr.ApiVersion : attr.Group + "/" + attr.ApiVersion, attr.Kind);
+                KubernetesScheme.Default.GetVK(obj.GetType(), out apiVersion, out kind); // get it from the default scheme
             }
             return new V1ObjectReference()
             {
@@ -117,14 +114,11 @@ namespace k8s.Models
         /// <summary>Creates a <see cref="V1OwnerReference"/> that refers to the given object.</summary>
         public static V1OwnerReference CreateOwnerReference(this IKubernetesObject<V1ObjectMeta> obj, bool? controller = null, bool? blockDeletion = null)
         {
-            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            if(obj == null) throw new ArgumentNullException(nameof(obj));
             string apiVersion = obj.ApiVersion, kind = obj.Kind; // default to using the API version and kind from the object
-            if (string.IsNullOrEmpty(apiVersion) || string.IsNullOrEmpty(kind)) // but if either of them is missing...
+            if(string.IsNullOrEmpty(apiVersion) || string.IsNullOrEmpty(kind)) // but if either of them is missing...
             {
-                object[] attrs = obj.GetType().GetCustomAttributes(typeof(KubernetesEntityAttribute), true);
-                if (attrs.Length == 0) throw new ArgumentException("Unable to determine the object's API version and Kind.");
-                var attr = (KubernetesEntityAttribute)attrs[0];
-                (apiVersion, kind) = (string.IsNullOrEmpty(attr.Group) ? attr.ApiVersion : attr.Group + "/" + attr.ApiVersion, attr.Kind);
+                KubernetesScheme.Default.GetVK(obj.GetType(), out apiVersion, out kind); // get it from the default scheme
             }
             return new V1OwnerReference()
             {
