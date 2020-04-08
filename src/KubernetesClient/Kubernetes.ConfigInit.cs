@@ -8,6 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 using k8s.Exceptions;
 using k8s.Models;
 using Microsoft.Rest;
+using Newtonsoft.Json;
 
 namespace k8s
 {
@@ -41,9 +42,8 @@ namespace k8s
         public Kubernetes(KubernetesClientConfiguration config, HttpClient httpClient, bool disposeHttpClient) : this(httpClient, disposeHttpClient)
         {
             ValidateConfig(config);
-            CaCerts = config.SslCaCerts;
-            SkipTlsVerify = config.SkipTlsVerify;
-            SetCredentials(config); 
+            this.config = config;
+            SetCredentials();
         }
 
         /// <summary>
@@ -59,10 +59,24 @@ namespace k8s
             : this(handlers)
         {
             ValidateConfig(config);
-            CaCerts = config.SslCaCerts;
-            SkipTlsVerify = config.SkipTlsVerify;
-            InitializeFromConfig(config);
+            this.config = config;
+            InitializeFromConfig();
         }
+
+        /// <summary>Gets or sets the <see cref="KubernetesScheme"/> used to map types to their Kubernetes groups, versions, and kinds.
+        /// The default is <see cref="KubernetesScheme.Default"/>.
+        /// </summary>
+        /// <summary>Gets or sets the <see cref="KubernetesScheme"/> used to map types to their Kubernetes groups, version, and kinds.</summary>
+        public KubernetesScheme Scheme
+        {
+            get => _scheme;
+            set
+            {
+                if(value == null) throw new ArgumentNullException(nameof(Scheme));
+                _scheme = value;
+            }
+        }
+
 
         private void ValidateConfig(KubernetesClientConfiguration config)
         {
@@ -86,7 +100,7 @@ namespace k8s
             }
         }
 
-        private void InitializeFromConfig(KubernetesClientConfiguration config)
+        private void InitializeFromConfig()
         {
             if (BaseUri.Scheme == "https")
             {
@@ -107,25 +121,25 @@ namespace k8s
                 }
                 else
                 {
-                    if (CaCerts == null)
+                    if (config.SslCaCerts == null)
                     {
                         throw new KubeConfigException("A CA must be set when SkipTlsVerify === false");
                     }
 #if NET452
                     ((WebRequestHandler) HttpClientHandler).ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
                     {
-                        return Kubernetes.CertificateValidationCallBack(sender, CaCerts, certificate, chain, sslPolicyErrors);
+                        return Kubernetes.CertificateValidationCallBack(sender, config.SslCaCerts, certificate, chain, sslPolicyErrors);
                     };
 #elif XAMARINIOS1_0
                     System.Net.ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) =>
                     {
                         var cert = new X509Certificate2(certificate);
-                        return Kubernetes.CertificateValidationCallBack(sender, CaCerts, cert, chain, sslPolicyErrors);
+                        return Kubernetes.CertificateValidationCallBack(sender, config.SslCaCerts, cert, chain, sslPolicyErrors);
                     };
 #elif MONOANDROID8_1
                     var certList = new System.Collections.Generic.List<Java.Security.Cert.Certificate>();
 
-                    foreach (X509Certificate2 caCert in CaCerts)
+                    foreach (X509Certificate2 caCert in config.SslCaCerts)
                     {
                         using (var certStream = new System.IO.MemoryStream(caCert.RawData))
                         {
@@ -141,20 +155,16 @@ namespace k8s
 #else
                     HttpClientHandler.ServerCertificateCustomValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
                     {
-                        return Kubernetes.CertificateValidationCallBack(sender, CaCerts, certificate, chain, sslPolicyErrors);
+                        return Kubernetes.CertificateValidationCallBack(sender, config.SslCaCerts, certificate, chain, sslPolicyErrors);
                     };
 #endif
                 }
             }
 
-            // set credentails for the kubernetes client
-            SetCredentials(config);
+            // set credentials for the kubernetes client
+            SetCredentials();
             config.AddCertificates(HttpClientHandler);
         }
-
-        private X509Certificate2Collection CaCerts { get; }
-
-        private bool SkipTlsVerify { get; }
 
         partial void CustomInitialize()
         {
@@ -191,8 +201,7 @@ namespace k8s
         /// <summary>
         ///     Set credentials for the Client
         /// </summary>
-        /// <param name="config">k8s client configuration</param>
-        private void SetCredentials(KubernetesClientConfiguration config)
+        private void SetCredentials()
         {
             // set the Credentails for token based auth
             if (!string.IsNullOrWhiteSpace(config.AccessToken))
@@ -208,6 +217,9 @@ namespace k8s
                 };
             }
         }
+
+        internal readonly KubernetesClientConfiguration config;
+        private KubernetesScheme _scheme = KubernetesScheme.Default;
 
         /// <summary>
         ///     SSl Cert Validation Callback
@@ -264,5 +276,16 @@ namespace k8s
             // In all other cases, return false.
             return false;
         }
+
+        /// <summary>Creates the JSON serializer settings used for serializing request bodies and deserializing responses.</summary>
+        public static JsonSerializerSettings CreateSerializerSettings()
+        {
+            var settings = new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore };
+            settings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
+            return settings;
+        }
+
+        /// <summary>Gets the <see cref="JsonSerializerSettings"/> used to serialize and deserialize Kubernetes objects.</summary>
+        internal static readonly JsonSerializerSettings DefaultJsonSettings = CreateSerializerSettings();
     }
 }
