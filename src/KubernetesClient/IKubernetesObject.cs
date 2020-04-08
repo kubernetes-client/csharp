@@ -33,4 +33,10 @@ namespace k8s
         [JsonProperty(PropertyName = "kind")]
         string Kind { get; set; }
     }
+
+    /// <summary>Represents a generic Kubernetes object that has an API version, a kind, and metadata.</summary>
+    /// <typeparam name="TMetadata"></typeparam>
+    public interface IKubernetesObject<TMetadata> : IKubernetesObject, IMetadata<TMetadata>
+    {
+    }
 }
