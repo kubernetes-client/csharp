@@ -92,7 +92,7 @@ namespace k8s.Models
         /// <summary>Gets the index of the <see cref="V1OwnerReference"/> that matches the given object, or -1 if no such
         /// reference could be found.
         /// </summary>
-        public static int FindOwnerRef(this IMetadata<V1ObjectMeta> obj, IKubernetesObject<V1ObjectMeta> owner)
+        public static int FindOwnerReference(this IMetadata<V1ObjectMeta> obj, IKubernetesObject<V1ObjectMeta> owner)
         {
             var ownerRefs = obj.OwnerReferences();
             if(ownerRefs != null)
@@ -131,13 +131,13 @@ namespace k8s.Models
         }
 
         /// <summary>Creates a <see cref="V1ObjectReference"/> that refers to the given object.</summary>
-        public static V1ObjectReference GetObjectReference<T>(this T obj) where T : IKubernetesObject, IMetadata<V1ObjectMeta>
+        public static V1ObjectReference GetObjectReference(this IKubernetesObject<V1ObjectMeta> obj)
         {
             if(obj == null) throw new ArgumentNullException(nameof(obj));
             string apiVersion = obj.ApiVersion, kind = obj.Kind; // default to using the API version and kind from the object
             if(string.IsNullOrEmpty(apiVersion) || string.IsNullOrEmpty(kind)) // but if either of them is missing...
             {
-                object[] attrs = typeof(T).GetCustomAttributes(typeof(KubernetesEntityAttribute), true);
+                object[] attrs = obj.GetType().GetCustomAttributes(typeof(KubernetesEntityAttribute), true);
                 if(attrs.Length == 0) throw new ArgumentException("Unable to determine the object's API version and Kind.");
                 var attr = (KubernetesEntityAttribute)attrs[0];
                 (apiVersion, kind) = (string.IsNullOrEmpty(attr.Group) ? attr.ApiVersion : attr.Group + "/" + attr.ApiVersion, attr.Kind);
