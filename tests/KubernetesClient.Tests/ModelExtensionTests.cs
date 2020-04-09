@@ -20,10 +20,12 @@ namespace k8s.Tests
             Assert.Null(pod.CreationTimestamp());
             Assert.Null(pod.DeletionTimestamp());
             Assert.Null(pod.Finalizers());
+            Assert.Equal(-1, pod.FindOwnerReference(r => true));
             Assert.Null(pod.Generation());
             Assert.Null(pod.GetAnnotation("x"));
             Assert.Null(pod.GetController());
             Assert.Null(pod.GetLabel("x"));
+            Assert.Null(pod.GetOwnerReference(r => true));
             Assert.False(pod.HasFinalizer("x"));
             Assert.Null(pod.Labels());
             Assert.Null(pod.Name());
@@ -105,7 +107,7 @@ namespace k8s.Tests
             // test object references
             var pod = new V1Pod() { ApiVersion = "abc/xyz", Kind = "sometimes" };
             pod.Metadata = new V1ObjectMeta() { Name = "name", NamespaceProperty = "ns", ResourceVersion = "ver", Uid = "id" };
-            var objr = pod.GetObjectReference();
+            var objr = pod.CreateObjectReference();
             Assert.Equal(pod.ApiVersion, objr.ApiVersion);
             Assert.Equal(pod.Kind, objr.Kind);
             Assert.Equal(pod.Name(), objr.Name);
@@ -115,7 +117,7 @@ namespace k8s.Tests
             Assert.True(objr.Matches(pod));
 
             (pod.ApiVersion, pod.Kind) = (null, null);
-            objr = pod.GetObjectReference();
+            objr = pod.CreateObjectReference();
             Assert.Equal("v1", objr.ApiVersion);
             Assert.Equal("Pod", objr.Kind);
             Assert.False(objr.Matches(pod));
@@ -153,6 +155,8 @@ namespace k8s.Tests
             svc.AddOwnerReference(ownr);
             Assert.Equal(0, svc.FindOwnerReference(pod));
             Assert.Equal(-1, svc.FindOwnerReference(svc));
+            Assert.Same(ownr, svc.GetOwnerReference(pod));
+            Assert.Null(svc.GetOwnerReference(svc));
             Assert.Null(svc.GetController());
             svc.OwnerReferences()[0].Controller = true;
             Assert.Same(ownr, svc.GetController());
