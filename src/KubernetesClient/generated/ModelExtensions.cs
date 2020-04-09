@@ -1,7 +1,7 @@
 namespace k8s.Models
 {
     [KubernetesEntity(Group="admissionregistration.k8s.io", Kind="MutatingWebhookConfiguration", ApiVersion="v1", PluralName="mutatingwebhookconfigurations")]
-    public partial class V1MutatingWebhookConfiguration : IKubernetesObject, IMetadata<V1ObjectMeta>
+    public partial class V1MutatingWebhookConfiguration : IKubernetesObject<V1ObjectMeta>
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "MutatingWebhookConfiguration";
@@ -9,7 +9,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="admissionregistration.k8s.io", Kind="MutatingWebhookConfigurationList", ApiVersion="v1", PluralName="mutatingwebhookconfigurations")]
-    public partial class V1MutatingWebhookConfigurationList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1MutatingWebhookConfiguration>, IValidate
+    public partial class V1MutatingWebhookConfigurationList : IKubernetesObject<V1ListMeta>, IItems<V1MutatingWebhookConfiguration>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "MutatingWebhookConfigurationList";
@@ -17,7 +17,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="admissionregistration.k8s.io", Kind="ValidatingWebhookConfiguration", ApiVersion="v1", PluralName="validatingwebhookconfigurations")]
-    public partial class V1ValidatingWebhookConfiguration : IKubernetesObject, IMetadata<V1ObjectMeta>
+    public partial class V1ValidatingWebhookConfiguration : IKubernetesObject<V1ObjectMeta>
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ValidatingWebhookConfiguration";
@@ -25,7 +25,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="admissionregistration.k8s.io", Kind="ValidatingWebhookConfigurationList", ApiVersion="v1", PluralName="validatingwebhookconfigurations")]
-    public partial class V1ValidatingWebhookConfigurationList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1ValidatingWebhookConfiguration>, IValidate
+    public partial class V1ValidatingWebhookConfigurationList : IKubernetesObject<V1ListMeta>, IItems<V1ValidatingWebhookConfiguration>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ValidatingWebhookConfigurationList";
@@ -33,7 +33,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="admissionregistration.k8s.io", Kind="MutatingWebhookConfiguration", ApiVersion="v1beta1", PluralName="mutatingwebhookconfigurations")]
-    public partial class V1beta1MutatingWebhookConfiguration : IKubernetesObject, IMetadata<V1ObjectMeta>
+    public partial class V1beta1MutatingWebhookConfiguration : IKubernetesObject<V1ObjectMeta>
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "MutatingWebhookConfiguration";
@@ -41,7 +41,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="admissionregistration.k8s.io", Kind="MutatingWebhookConfigurationList", ApiVersion="v1beta1", PluralName="mutatingwebhookconfigurations")]
-    public partial class V1beta1MutatingWebhookConfigurationList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1MutatingWebhookConfiguration>, IValidate
+    public partial class V1beta1MutatingWebhookConfigurationList : IKubernetesObject<V1ListMeta>, IItems<V1beta1MutatingWebhookConfiguration>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "MutatingWebhookConfigurationList";
@@ -49,7 +49,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="admissionregistration.k8s.io", Kind="ValidatingWebhookConfiguration", ApiVersion="v1beta1", PluralName="validatingwebhookconfigurations")]
-    public partial class V1beta1ValidatingWebhookConfiguration : IKubernetesObject, IMetadata<V1ObjectMeta>
+    public partial class V1beta1ValidatingWebhookConfiguration : IKubernetesObject<V1ObjectMeta>
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "ValidatingWebhookConfiguration";
@@ -57,7 +57,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="admissionregistration.k8s.io", Kind="ValidatingWebhookConfigurationList", ApiVersion="v1beta1", PluralName="validatingwebhookconfigurations")]
-    public partial class V1beta1ValidatingWebhookConfigurationList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1ValidatingWebhookConfiguration>, IValidate
+    public partial class V1beta1ValidatingWebhookConfigurationList : IKubernetesObject<V1ListMeta>, IItems<V1beta1ValidatingWebhookConfiguration>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "ValidatingWebhookConfigurationList";
@@ -65,7 +65,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="ControllerRevision", ApiVersion="v1", PluralName="controllerrevisions")]
-    public partial class V1ControllerRevision : IKubernetesObject, IMetadata<V1ObjectMeta>, IValidate
+    public partial class V1ControllerRevision : IKubernetesObject<V1ObjectMeta>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ControllerRevision";
@@ -73,7 +73,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="ControllerRevisionList", ApiVersion="v1", PluralName="controllerrevisions")]
-    public partial class V1ControllerRevisionList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1ControllerRevision>, IValidate
+    public partial class V1ControllerRevisionList : IKubernetesObject<V1ListMeta>, IItems<V1ControllerRevision>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ControllerRevisionList";
@@ -81,7 +81,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="DaemonSet", ApiVersion="v1", PluralName="daemonsets")]
-    public partial class V1DaemonSet : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1DaemonSetSpec>, IValidate
+    public partial class V1DaemonSet : IKubernetesObject<V1ObjectMeta>, ISpec<V1DaemonSetSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "DaemonSet";
@@ -89,7 +89,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="DaemonSetList", ApiVersion="v1", PluralName="daemonsets")]
-    public partial class V1DaemonSetList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1DaemonSet>, IValidate
+    public partial class V1DaemonSetList : IKubernetesObject<V1ListMeta>, IItems<V1DaemonSet>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "DaemonSetList";
@@ -97,7 +97,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="Deployment", ApiVersion="v1", PluralName="deployments")]
-    public partial class V1Deployment : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1DeploymentSpec>, IValidate
+    public partial class V1Deployment : IKubernetesObject<V1ObjectMeta>, ISpec<V1DeploymentSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "Deployment";
@@ -105,7 +105,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="DeploymentList", ApiVersion="v1", PluralName="deployments")]
-    public partial class V1DeploymentList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1Deployment>, IValidate
+    public partial class V1DeploymentList : IKubernetesObject<V1ListMeta>, IItems<V1Deployment>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "DeploymentList";
@@ -113,7 +113,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="ReplicaSet", ApiVersion="v1", PluralName="replicasets")]
-    public partial class V1ReplicaSet : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1ReplicaSetSpec>, IValidate
+    public partial class V1ReplicaSet : IKubernetesObject<V1ObjectMeta>, ISpec<V1ReplicaSetSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ReplicaSet";
@@ -121,7 +121,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="ReplicaSetList", ApiVersion="v1", PluralName="replicasets")]
-    public partial class V1ReplicaSetList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1ReplicaSet>, IValidate
+    public partial class V1ReplicaSetList : IKubernetesObject<V1ListMeta>, IItems<V1ReplicaSet>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ReplicaSetList";
@@ -129,7 +129,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="StatefulSet", ApiVersion="v1", PluralName="statefulsets")]
-    public partial class V1StatefulSet : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1StatefulSetSpec>, IValidate
+    public partial class V1StatefulSet : IKubernetesObject<V1ObjectMeta>, ISpec<V1StatefulSetSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "StatefulSet";
@@ -137,7 +137,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="StatefulSetList", ApiVersion="v1", PluralName="statefulsets")]
-    public partial class V1StatefulSetList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1StatefulSet>, IValidate
+    public partial class V1StatefulSetList : IKubernetesObject<V1ListMeta>, IItems<V1StatefulSet>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "StatefulSetList";
@@ -145,7 +145,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="ControllerRevision", ApiVersion="v1beta1", PluralName="controllerrevisions")]
-    public partial class V1beta1ControllerRevision : IKubernetesObject, IMetadata<V1ObjectMeta>, IValidate
+    public partial class V1beta1ControllerRevision : IKubernetesObject<V1ObjectMeta>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "ControllerRevision";
@@ -153,7 +153,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="ControllerRevisionList", ApiVersion="v1beta1", PluralName="controllerrevisions")]
-    public partial class V1beta1ControllerRevisionList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1ControllerRevision>, IValidate
+    public partial class V1beta1ControllerRevisionList : IKubernetesObject<V1ListMeta>, IItems<V1beta1ControllerRevision>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "ControllerRevisionList";
@@ -161,7 +161,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="Deployment", ApiVersion="v1beta1", PluralName="deployments")]
-    public partial class Appsv1beta1Deployment : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<Appsv1beta1DeploymentSpec>, IValidate
+    public partial class Appsv1beta1Deployment : IKubernetesObject<V1ObjectMeta>, ISpec<Appsv1beta1DeploymentSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "Deployment";
@@ -169,7 +169,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="DeploymentList", ApiVersion="v1beta1", PluralName="deployments")]
-    public partial class Appsv1beta1DeploymentList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<Appsv1beta1Deployment>, IValidate
+    public partial class Appsv1beta1DeploymentList : IKubernetesObject<V1ListMeta>, IItems<Appsv1beta1Deployment>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "DeploymentList";
@@ -185,7 +185,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="Scale", ApiVersion="v1beta1", PluralName=null)]
-    public partial class Appsv1beta1Scale : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<Appsv1beta1ScaleSpec>, IValidate
+    public partial class Appsv1beta1Scale : IKubernetesObject<V1ObjectMeta>, ISpec<Appsv1beta1ScaleSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "Scale";
@@ -193,7 +193,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="StatefulSet", ApiVersion="v1beta1", PluralName="statefulsets")]
-    public partial class V1beta1StatefulSet : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta1StatefulSetSpec>, IValidate
+    public partial class V1beta1StatefulSet : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1StatefulSetSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "StatefulSet";
@@ -201,7 +201,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="StatefulSetList", ApiVersion="v1beta1", PluralName="statefulsets")]
-    public partial class V1beta1StatefulSetList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1StatefulSet>, IValidate
+    public partial class V1beta1StatefulSetList : IKubernetesObject<V1ListMeta>, IItems<V1beta1StatefulSet>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "StatefulSetList";
@@ -209,7 +209,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="ControllerRevision", ApiVersion="v1beta2", PluralName="controllerrevisions")]
-    public partial class V1beta2ControllerRevision : IKubernetesObject, IMetadata<V1ObjectMeta>, IValidate
+    public partial class V1beta2ControllerRevision : IKubernetesObject<V1ObjectMeta>, IValidate
     {
         public const string KubeApiVersion = "v1beta2";
         public const string KubeKind = "ControllerRevision";
@@ -217,7 +217,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="ControllerRevisionList", ApiVersion="v1beta2", PluralName="controllerrevisions")]
-    public partial class V1beta2ControllerRevisionList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta2ControllerRevision>, IValidate
+    public partial class V1beta2ControllerRevisionList : IKubernetesObject<V1ListMeta>, IItems<V1beta2ControllerRevision>, IValidate
     {
         public const string KubeApiVersion = "v1beta2";
         public const string KubeKind = "ControllerRevisionList";
@@ -225,7 +225,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="DaemonSet", ApiVersion="v1beta2", PluralName="daemonsets")]
-    public partial class V1beta2DaemonSet : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta2DaemonSetSpec>, IValidate
+    public partial class V1beta2DaemonSet : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta2DaemonSetSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta2";
         public const string KubeKind = "DaemonSet";
@@ -233,7 +233,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="DaemonSetList", ApiVersion="v1beta2", PluralName="daemonsets")]
-    public partial class V1beta2DaemonSetList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta2DaemonSet>, IValidate
+    public partial class V1beta2DaemonSetList : IKubernetesObject<V1ListMeta>, IItems<V1beta2DaemonSet>, IValidate
     {
         public const string KubeApiVersion = "v1beta2";
         public const string KubeKind = "DaemonSetList";
@@ -241,7 +241,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="Deployment", ApiVersion="v1beta2", PluralName="deployments")]
-    public partial class V1beta2Deployment : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta2DeploymentSpec>, IValidate
+    public partial class V1beta2Deployment : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta2DeploymentSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta2";
         public const string KubeKind = "Deployment";
@@ -249,7 +249,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="DeploymentList", ApiVersion="v1beta2", PluralName="deployments")]
-    public partial class V1beta2DeploymentList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta2Deployment>, IValidate
+    public partial class V1beta2DeploymentList : IKubernetesObject<V1ListMeta>, IItems<V1beta2Deployment>, IValidate
     {
         public const string KubeApiVersion = "v1beta2";
         public const string KubeKind = "DeploymentList";
@@ -257,7 +257,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="ReplicaSet", ApiVersion="v1beta2", PluralName="replicasets")]
-    public partial class V1beta2ReplicaSet : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta2ReplicaSetSpec>, IValidate
+    public partial class V1beta2ReplicaSet : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta2ReplicaSetSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta2";
         public const string KubeKind = "ReplicaSet";
@@ -265,7 +265,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="ReplicaSetList", ApiVersion="v1beta2", PluralName="replicasets")]
-    public partial class V1beta2ReplicaSetList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta2ReplicaSet>, IValidate
+    public partial class V1beta2ReplicaSetList : IKubernetesObject<V1ListMeta>, IItems<V1beta2ReplicaSet>, IValidate
     {
         public const string KubeApiVersion = "v1beta2";
         public const string KubeKind = "ReplicaSetList";
@@ -273,7 +273,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="Scale", ApiVersion="v1beta2", PluralName=null)]
-    public partial class V1beta2Scale : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta2ScaleSpec>, IValidate
+    public partial class V1beta2Scale : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta2ScaleSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta2";
         public const string KubeKind = "Scale";
@@ -281,7 +281,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="StatefulSet", ApiVersion="v1beta2", PluralName="statefulsets")]
-    public partial class V1beta2StatefulSet : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta2StatefulSetSpec>, IValidate
+    public partial class V1beta2StatefulSet : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta2StatefulSetSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta2";
         public const string KubeKind = "StatefulSet";
@@ -289,7 +289,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apps", Kind="StatefulSetList", ApiVersion="v1beta2", PluralName="statefulsets")]
-    public partial class V1beta2StatefulSetList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta2StatefulSet>, IValidate
+    public partial class V1beta2StatefulSetList : IKubernetesObject<V1ListMeta>, IItems<V1beta2StatefulSet>, IValidate
     {
         public const string KubeApiVersion = "v1beta2";
         public const string KubeKind = "StatefulSetList";
@@ -297,7 +297,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="auditregistration.k8s.io", Kind="AuditSink", ApiVersion="v1alpha1", PluralName="auditsinks")]
-    public partial class V1alpha1AuditSink : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1alpha1AuditSinkSpec>, IValidate
+    public partial class V1alpha1AuditSink : IKubernetesObject<V1ObjectMeta>, ISpec<V1alpha1AuditSinkSpec>, IValidate
     {
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "AuditSink";
@@ -305,7 +305,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="auditregistration.k8s.io", Kind="AuditSinkList", ApiVersion="v1alpha1", PluralName="auditsinks")]
-    public partial class V1alpha1AuditSinkList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1alpha1AuditSink>, IValidate
+    public partial class V1alpha1AuditSinkList : IKubernetesObject<V1ListMeta>, IItems<V1alpha1AuditSink>, IValidate
     {
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "AuditSinkList";
@@ -313,7 +313,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="authentication.k8s.io", Kind="TokenRequest", ApiVersion="v1", PluralName=null)]
-    public partial class V1TokenRequest : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1TokenRequestSpec>, IValidate
+    public partial class V1TokenRequest : IKubernetesObject<V1ObjectMeta>, ISpec<V1TokenRequestSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "TokenRequest";
@@ -321,7 +321,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="authentication.k8s.io", Kind="TokenReview", ApiVersion="v1", PluralName=null)]
-    public partial class V1TokenReview : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1TokenReviewSpec>, IValidate
+    public partial class V1TokenReview : IKubernetesObject<V1ObjectMeta>, ISpec<V1TokenReviewSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "TokenReview";
@@ -329,7 +329,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="authentication.k8s.io", Kind="TokenReview", ApiVersion="v1beta1", PluralName=null)]
-    public partial class V1beta1TokenReview : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta1TokenReviewSpec>, IValidate
+    public partial class V1beta1TokenReview : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1TokenReviewSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "TokenReview";
@@ -337,7 +337,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="authorization.k8s.io", Kind="LocalSubjectAccessReview", ApiVersion="v1", PluralName=null)]
-    public partial class V1LocalSubjectAccessReview : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1SubjectAccessReviewSpec>, IValidate
+    public partial class V1LocalSubjectAccessReview : IKubernetesObject<V1ObjectMeta>, ISpec<V1SubjectAccessReviewSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "LocalSubjectAccessReview";
@@ -345,7 +345,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="authorization.k8s.io", Kind="SelfSubjectAccessReview", ApiVersion="v1", PluralName=null)]
-    public partial class V1SelfSubjectAccessReview : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1SelfSubjectAccessReviewSpec>, IValidate
+    public partial class V1SelfSubjectAccessReview : IKubernetesObject<V1ObjectMeta>, ISpec<V1SelfSubjectAccessReviewSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "SelfSubjectAccessReview";
@@ -353,7 +353,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="authorization.k8s.io", Kind="SelfSubjectRulesReview", ApiVersion="v1", PluralName=null)]
-    public partial class V1SelfSubjectRulesReview : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1SelfSubjectRulesReviewSpec>, IValidate
+    public partial class V1SelfSubjectRulesReview : IKubernetesObject<V1ObjectMeta>, ISpec<V1SelfSubjectRulesReviewSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "SelfSubjectRulesReview";
@@ -361,7 +361,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="authorization.k8s.io", Kind="SubjectAccessReview", ApiVersion="v1", PluralName=null)]
-    public partial class V1SubjectAccessReview : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1SubjectAccessReviewSpec>, IValidate
+    public partial class V1SubjectAccessReview : IKubernetesObject<V1ObjectMeta>, ISpec<V1SubjectAccessReviewSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "SubjectAccessReview";
@@ -369,7 +369,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="authorization.k8s.io", Kind="LocalSubjectAccessReview", ApiVersion="v1beta1", PluralName=null)]
-    public partial class V1beta1LocalSubjectAccessReview : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta1SubjectAccessReviewSpec>, IValidate
+    public partial class V1beta1LocalSubjectAccessReview : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1SubjectAccessReviewSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "LocalSubjectAccessReview";
@@ -377,7 +377,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="authorization.k8s.io", Kind="SelfSubjectAccessReview", ApiVersion="v1beta1", PluralName=null)]
-    public partial class V1beta1SelfSubjectAccessReview : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta1SelfSubjectAccessReviewSpec>, IValidate
+    public partial class V1beta1SelfSubjectAccessReview : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1SelfSubjectAccessReviewSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "SelfSubjectAccessReview";
@@ -385,7 +385,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="authorization.k8s.io", Kind="SelfSubjectRulesReview", ApiVersion="v1beta1", PluralName=null)]
-    public partial class V1beta1SelfSubjectRulesReview : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta1SelfSubjectRulesReviewSpec>, IValidate
+    public partial class V1beta1SelfSubjectRulesReview : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1SelfSubjectRulesReviewSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "SelfSubjectRulesReview";
@@ -393,7 +393,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="authorization.k8s.io", Kind="SubjectAccessReview", ApiVersion="v1beta1", PluralName=null)]
-    public partial class V1beta1SubjectAccessReview : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta1SubjectAccessReviewSpec>, IValidate
+    public partial class V1beta1SubjectAccessReview : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1SubjectAccessReviewSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "SubjectAccessReview";
@@ -401,7 +401,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="autoscaling", Kind="HorizontalPodAutoscaler", ApiVersion="v1", PluralName="horizontalpodautoscalers")]
-    public partial class V1HorizontalPodAutoscaler : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1HorizontalPodAutoscalerSpec>, IValidate
+    public partial class V1HorizontalPodAutoscaler : IKubernetesObject<V1ObjectMeta>, ISpec<V1HorizontalPodAutoscalerSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "HorizontalPodAutoscaler";
@@ -409,7 +409,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="autoscaling", Kind="HorizontalPodAutoscalerList", ApiVersion="v1", PluralName="horizontalpodautoscalers")]
-    public partial class V1HorizontalPodAutoscalerList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1HorizontalPodAutoscaler>, IValidate
+    public partial class V1HorizontalPodAutoscalerList : IKubernetesObject<V1ListMeta>, IItems<V1HorizontalPodAutoscaler>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "HorizontalPodAutoscalerList";
@@ -417,7 +417,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="autoscaling", Kind="Scale", ApiVersion="v1", PluralName=null)]
-    public partial class V1Scale : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1ScaleSpec>, IValidate
+    public partial class V1Scale : IKubernetesObject<V1ObjectMeta>, ISpec<V1ScaleSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "Scale";
@@ -425,7 +425,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="autoscaling", Kind="HorizontalPodAutoscaler", ApiVersion="v2beta1", PluralName="horizontalpodautoscalers")]
-    public partial class V2beta1HorizontalPodAutoscaler : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V2beta1HorizontalPodAutoscalerSpec>, IValidate
+    public partial class V2beta1HorizontalPodAutoscaler : IKubernetesObject<V1ObjectMeta>, ISpec<V2beta1HorizontalPodAutoscalerSpec>, IValidate
     {
         public const string KubeApiVersion = "v2beta1";
         public const string KubeKind = "HorizontalPodAutoscaler";
@@ -433,7 +433,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="autoscaling", Kind="HorizontalPodAutoscalerList", ApiVersion="v2beta1", PluralName="horizontalpodautoscalers")]
-    public partial class V2beta1HorizontalPodAutoscalerList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V2beta1HorizontalPodAutoscaler>, IValidate
+    public partial class V2beta1HorizontalPodAutoscalerList : IKubernetesObject<V1ListMeta>, IItems<V2beta1HorizontalPodAutoscaler>, IValidate
     {
         public const string KubeApiVersion = "v2beta1";
         public const string KubeKind = "HorizontalPodAutoscalerList";
@@ -441,7 +441,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="autoscaling", Kind="HorizontalPodAutoscaler", ApiVersion="v2beta2", PluralName="horizontalpodautoscalers")]
-    public partial class V2beta2HorizontalPodAutoscaler : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V2beta2HorizontalPodAutoscalerSpec>, IValidate
+    public partial class V2beta2HorizontalPodAutoscaler : IKubernetesObject<V1ObjectMeta>, ISpec<V2beta2HorizontalPodAutoscalerSpec>, IValidate
     {
         public const string KubeApiVersion = "v2beta2";
         public const string KubeKind = "HorizontalPodAutoscaler";
@@ -449,7 +449,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="autoscaling", Kind="HorizontalPodAutoscalerList", ApiVersion="v2beta2", PluralName="horizontalpodautoscalers")]
-    public partial class V2beta2HorizontalPodAutoscalerList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V2beta2HorizontalPodAutoscaler>, IValidate
+    public partial class V2beta2HorizontalPodAutoscalerList : IKubernetesObject<V1ListMeta>, IItems<V2beta2HorizontalPodAutoscaler>, IValidate
     {
         public const string KubeApiVersion = "v2beta2";
         public const string KubeKind = "HorizontalPodAutoscalerList";
@@ -457,7 +457,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="batch", Kind="Job", ApiVersion="v1", PluralName="jobs")]
-    public partial class V1Job : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1JobSpec>, IValidate
+    public partial class V1Job : IKubernetesObject<V1ObjectMeta>, ISpec<V1JobSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "Job";
@@ -465,7 +465,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="batch", Kind="JobList", ApiVersion="v1", PluralName="jobs")]
-    public partial class V1JobList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1Job>, IValidate
+    public partial class V1JobList : IKubernetesObject<V1ListMeta>, IItems<V1Job>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "JobList";
@@ -473,7 +473,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="batch", Kind="CronJob", ApiVersion="v1beta1", PluralName="cronjobs")]
-    public partial class V1beta1CronJob : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta1CronJobSpec>, IValidate
+    public partial class V1beta1CronJob : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1CronJobSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "CronJob";
@@ -481,7 +481,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="batch", Kind="CronJobList", ApiVersion="v1beta1", PluralName="cronjobs")]
-    public partial class V1beta1CronJobList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1CronJob>, IValidate
+    public partial class V1beta1CronJobList : IKubernetesObject<V1ListMeta>, IItems<V1beta1CronJob>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "CronJobList";
@@ -489,7 +489,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="batch", Kind="CronJob", ApiVersion="v2alpha1", PluralName="cronjobs")]
-    public partial class V2alpha1CronJob : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V2alpha1CronJobSpec>, IValidate
+    public partial class V2alpha1CronJob : IKubernetesObject<V1ObjectMeta>, ISpec<V2alpha1CronJobSpec>, IValidate
     {
         public const string KubeApiVersion = "v2alpha1";
         public const string KubeKind = "CronJob";
@@ -497,7 +497,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="batch", Kind="CronJobList", ApiVersion="v2alpha1", PluralName="cronjobs")]
-    public partial class V2alpha1CronJobList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V2alpha1CronJob>, IValidate
+    public partial class V2alpha1CronJobList : IKubernetesObject<V1ListMeta>, IItems<V2alpha1CronJob>, IValidate
     {
         public const string KubeApiVersion = "v2alpha1";
         public const string KubeKind = "CronJobList";
@@ -505,7 +505,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="certificates.k8s.io", Kind="CertificateSigningRequest", ApiVersion="v1beta1", PluralName="certificatesigningrequests")]
-    public partial class V1beta1CertificateSigningRequest : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta1CertificateSigningRequestSpec>, IValidate
+    public partial class V1beta1CertificateSigningRequest : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1CertificateSigningRequestSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "CertificateSigningRequest";
@@ -513,7 +513,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="certificates.k8s.io", Kind="CertificateSigningRequestList", ApiVersion="v1beta1", PluralName="certificatesigningrequests")]
-    public partial class V1beta1CertificateSigningRequestList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1CertificateSigningRequest>, IValidate
+    public partial class V1beta1CertificateSigningRequestList : IKubernetesObject<V1ListMeta>, IItems<V1beta1CertificateSigningRequest>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "CertificateSigningRequestList";
@@ -521,7 +521,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="coordination.k8s.io", Kind="Lease", ApiVersion="v1", PluralName="leases")]
-    public partial class V1Lease : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1LeaseSpec>
+    public partial class V1Lease : IKubernetesObject<V1ObjectMeta>, ISpec<V1LeaseSpec>
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "Lease";
@@ -529,7 +529,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="coordination.k8s.io", Kind="LeaseList", ApiVersion="v1", PluralName="leases")]
-    public partial class V1LeaseList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1Lease>, IValidate
+    public partial class V1LeaseList : IKubernetesObject<V1ListMeta>, IItems<V1Lease>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "LeaseList";
@@ -537,7 +537,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="coordination.k8s.io", Kind="Lease", ApiVersion="v1beta1", PluralName="leases")]
-    public partial class V1beta1Lease : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta1LeaseSpec>
+    public partial class V1beta1Lease : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1LeaseSpec>
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "Lease";
@@ -545,7 +545,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="coordination.k8s.io", Kind="LeaseList", ApiVersion="v1beta1", PluralName="leases")]
-    public partial class V1beta1LeaseList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1Lease>, IValidate
+    public partial class V1beta1LeaseList : IKubernetesObject<V1ListMeta>, IItems<V1beta1Lease>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "LeaseList";
@@ -553,7 +553,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="Binding", ApiVersion="v1", PluralName=null)]
-    public partial class V1Binding : IKubernetesObject, IMetadata<V1ObjectMeta>, IValidate
+    public partial class V1Binding : IKubernetesObject<V1ObjectMeta>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "Binding";
@@ -561,7 +561,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="ComponentStatus", ApiVersion="v1", PluralName="componentstatuses")]
-    public partial class V1ComponentStatus : IKubernetesObject, IMetadata<V1ObjectMeta>
+    public partial class V1ComponentStatus : IKubernetesObject<V1ObjectMeta>
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ComponentStatus";
@@ -569,7 +569,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="ComponentStatusList", ApiVersion="v1", PluralName="componentstatuses")]
-    public partial class V1ComponentStatusList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1ComponentStatus>, IValidate
+    public partial class V1ComponentStatusList : IKubernetesObject<V1ListMeta>, IItems<V1ComponentStatus>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ComponentStatusList";
@@ -577,7 +577,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="ConfigMap", ApiVersion="v1", PluralName="configmaps")]
-    public partial class V1ConfigMap : IKubernetesObject, IMetadata<V1ObjectMeta>
+    public partial class V1ConfigMap : IKubernetesObject<V1ObjectMeta>
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ConfigMap";
@@ -585,7 +585,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="ConfigMapList", ApiVersion="v1", PluralName="configmaps")]
-    public partial class V1ConfigMapList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1ConfigMap>, IValidate
+    public partial class V1ConfigMapList : IKubernetesObject<V1ListMeta>, IItems<V1ConfigMap>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ConfigMapList";
@@ -593,7 +593,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="Endpoints", ApiVersion="v1", PluralName="endpoints")]
-    public partial class V1Endpoints : IKubernetesObject, IMetadata<V1ObjectMeta>
+    public partial class V1Endpoints : IKubernetesObject<V1ObjectMeta>
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "Endpoints";
@@ -601,7 +601,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="EndpointsList", ApiVersion="v1", PluralName="endpoints")]
-    public partial class V1EndpointsList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1Endpoints>, IValidate
+    public partial class V1EndpointsList : IKubernetesObject<V1ListMeta>, IItems<V1Endpoints>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "EndpointsList";
@@ -609,7 +609,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="Event", ApiVersion="v1", PluralName="events")]
-    public partial class V1Event : IKubernetesObject, IMetadata<V1ObjectMeta>, IValidate
+    public partial class V1Event : IKubernetesObject<V1ObjectMeta>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "Event";
@@ -617,7 +617,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="EventList", ApiVersion="v1", PluralName="events")]
-    public partial class V1EventList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1Event>, IValidate
+    public partial class V1EventList : IKubernetesObject<V1ListMeta>, IItems<V1Event>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "EventList";
@@ -625,7 +625,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="LimitRange", ApiVersion="v1", PluralName="limitranges")]
-    public partial class V1LimitRange : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1LimitRangeSpec>, IValidate
+    public partial class V1LimitRange : IKubernetesObject<V1ObjectMeta>, ISpec<V1LimitRangeSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "LimitRange";
@@ -633,7 +633,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="LimitRangeList", ApiVersion="v1", PluralName="limitranges")]
-    public partial class V1LimitRangeList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1LimitRange>, IValidate
+    public partial class V1LimitRangeList : IKubernetesObject<V1ListMeta>, IItems<V1LimitRange>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "LimitRangeList";
@@ -641,7 +641,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="Namespace", ApiVersion="v1", PluralName="namespaces")]
-    public partial class V1Namespace : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1NamespaceSpec>
+    public partial class V1Namespace : IKubernetesObject<V1ObjectMeta>, ISpec<V1NamespaceSpec>
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "Namespace";
@@ -649,7 +649,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="NamespaceList", ApiVersion="v1", PluralName="namespaces")]
-    public partial class V1NamespaceList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1Namespace>, IValidate
+    public partial class V1NamespaceList : IKubernetesObject<V1ListMeta>, IItems<V1Namespace>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "NamespaceList";
@@ -657,7 +657,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="Node", ApiVersion="v1", PluralName="nodes")]
-    public partial class V1Node : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1NodeSpec>, IValidate
+    public partial class V1Node : IKubernetesObject<V1ObjectMeta>, ISpec<V1NodeSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "Node";
@@ -665,7 +665,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="NodeList", ApiVersion="v1", PluralName="nodes")]
-    public partial class V1NodeList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1Node>, IValidate
+    public partial class V1NodeList : IKubernetesObject<V1ListMeta>, IItems<V1Node>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "NodeList";
@@ -673,7 +673,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="PersistentVolume", ApiVersion="v1", PluralName="persistentvolumes")]
-    public partial class V1PersistentVolume : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1PersistentVolumeSpec>, IValidate
+    public partial class V1PersistentVolume : IKubernetesObject<V1ObjectMeta>, ISpec<V1PersistentVolumeSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "PersistentVolume";
@@ -681,7 +681,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="PersistentVolumeClaim", ApiVersion="v1", PluralName="persistentvolumeclaims")]
-    public partial class V1PersistentVolumeClaim : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1PersistentVolumeClaimSpec>, IValidate
+    public partial class V1PersistentVolumeClaim : IKubernetesObject<V1ObjectMeta>, ISpec<V1PersistentVolumeClaimSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "PersistentVolumeClaim";
@@ -689,7 +689,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="PersistentVolumeClaimList", ApiVersion="v1", PluralName="persistentvolumeclaims")]
-    public partial class V1PersistentVolumeClaimList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1PersistentVolumeClaim>, IValidate
+    public partial class V1PersistentVolumeClaimList : IKubernetesObject<V1ListMeta>, IItems<V1PersistentVolumeClaim>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "PersistentVolumeClaimList";
@@ -697,7 +697,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="PersistentVolumeList", ApiVersion="v1", PluralName="persistentvolumes")]
-    public partial class V1PersistentVolumeList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1PersistentVolume>, IValidate
+    public partial class V1PersistentVolumeList : IKubernetesObject<V1ListMeta>, IItems<V1PersistentVolume>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "PersistentVolumeList";
@@ -705,7 +705,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="Pod", ApiVersion="v1", PluralName="pods")]
-    public partial class V1Pod : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1PodSpec>, IValidate
+    public partial class V1Pod : IKubernetesObject<V1ObjectMeta>, ISpec<V1PodSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "Pod";
@@ -713,7 +713,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="PodList", ApiVersion="v1", PluralName="pods")]
-    public partial class V1PodList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1Pod>, IValidate
+    public partial class V1PodList : IKubernetesObject<V1ListMeta>, IItems<V1Pod>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "PodList";
@@ -721,7 +721,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="PodTemplate", ApiVersion="v1", PluralName="podtemplates")]
-    public partial class V1PodTemplate : IKubernetesObject, IMetadata<V1ObjectMeta>, IValidate
+    public partial class V1PodTemplate : IKubernetesObject<V1ObjectMeta>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "PodTemplate";
@@ -729,7 +729,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="PodTemplateList", ApiVersion="v1", PluralName="podtemplates")]
-    public partial class V1PodTemplateList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1PodTemplate>, IValidate
+    public partial class V1PodTemplateList : IKubernetesObject<V1ListMeta>, IItems<V1PodTemplate>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "PodTemplateList";
@@ -737,7 +737,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="ReplicationController", ApiVersion="v1", PluralName="replicationcontrollers")]
-    public partial class V1ReplicationController : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1ReplicationControllerSpec>, IValidate
+    public partial class V1ReplicationController : IKubernetesObject<V1ObjectMeta>, ISpec<V1ReplicationControllerSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ReplicationController";
@@ -745,7 +745,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="ReplicationControllerList", ApiVersion="v1", PluralName="replicationcontrollers")]
-    public partial class V1ReplicationControllerList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1ReplicationController>, IValidate
+    public partial class V1ReplicationControllerList : IKubernetesObject<V1ListMeta>, IItems<V1ReplicationController>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ReplicationControllerList";
@@ -753,7 +753,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="ResourceQuota", ApiVersion="v1", PluralName="resourcequotas")]
-    public partial class V1ResourceQuota : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1ResourceQuotaSpec>
+    public partial class V1ResourceQuota : IKubernetesObject<V1ObjectMeta>, ISpec<V1ResourceQuotaSpec>
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ResourceQuota";
@@ -761,7 +761,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="ResourceQuotaList", ApiVersion="v1", PluralName="resourcequotas")]
-    public partial class V1ResourceQuotaList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1ResourceQuota>, IValidate
+    public partial class V1ResourceQuotaList : IKubernetesObject<V1ListMeta>, IItems<V1ResourceQuota>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ResourceQuotaList";
@@ -769,7 +769,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="Secret", ApiVersion="v1", PluralName="secrets")]
-    public partial class V1Secret : IKubernetesObject, IMetadata<V1ObjectMeta>
+    public partial class V1Secret : IKubernetesObject<V1ObjectMeta>
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "Secret";
@@ -777,7 +777,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="SecretList", ApiVersion="v1", PluralName="secrets")]
-    public partial class V1SecretList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1Secret>, IValidate
+    public partial class V1SecretList : IKubernetesObject<V1ListMeta>, IItems<V1Secret>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "SecretList";
@@ -785,7 +785,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="Service", ApiVersion="v1", PluralName="services")]
-    public partial class V1Service : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1ServiceSpec>
+    public partial class V1Service : IKubernetesObject<V1ObjectMeta>, ISpec<V1ServiceSpec>
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "Service";
@@ -793,7 +793,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="ServiceAccount", ApiVersion="v1", PluralName="serviceaccounts")]
-    public partial class V1ServiceAccount : IKubernetesObject, IMetadata<V1ObjectMeta>
+    public partial class V1ServiceAccount : IKubernetesObject<V1ObjectMeta>
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ServiceAccount";
@@ -801,7 +801,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="ServiceAccountList", ApiVersion="v1", PluralName="serviceaccounts")]
-    public partial class V1ServiceAccountList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1ServiceAccount>, IValidate
+    public partial class V1ServiceAccountList : IKubernetesObject<V1ListMeta>, IItems<V1ServiceAccount>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ServiceAccountList";
@@ -809,7 +809,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="ServiceList", ApiVersion="v1", PluralName="services")]
-    public partial class V1ServiceList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1Service>, IValidate
+    public partial class V1ServiceList : IKubernetesObject<V1ListMeta>, IItems<V1Service>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ServiceList";
@@ -817,7 +817,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="discovery.k8s.io", Kind="EndpointSlice", ApiVersion="v1alpha1", PluralName="endpointslices")]
-    public partial class V1alpha1EndpointSlice : IKubernetesObject, IMetadata<V1ObjectMeta>, IValidate
+    public partial class V1alpha1EndpointSlice : IKubernetesObject<V1ObjectMeta>, IValidate
     {
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "EndpointSlice";
@@ -825,7 +825,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="discovery.k8s.io", Kind="EndpointSliceList", ApiVersion="v1alpha1", PluralName="endpointslices")]
-    public partial class V1alpha1EndpointSliceList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1alpha1EndpointSlice>, IValidate
+    public partial class V1alpha1EndpointSliceList : IKubernetesObject<V1ListMeta>, IItems<V1alpha1EndpointSlice>, IValidate
     {
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "EndpointSliceList";
@@ -833,7 +833,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="events.k8s.io", Kind="Event", ApiVersion="v1beta1", PluralName="events")]
-    public partial class V1beta1Event : IKubernetesObject, IMetadata<V1ObjectMeta>, IValidate
+    public partial class V1beta1Event : IKubernetesObject<V1ObjectMeta>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "Event";
@@ -841,7 +841,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="events.k8s.io", Kind="EventList", ApiVersion="v1beta1", PluralName="events")]
-    public partial class V1beta1EventList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1Event>, IValidate
+    public partial class V1beta1EventList : IKubernetesObject<V1ListMeta>, IItems<V1beta1Event>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "EventList";
@@ -849,7 +849,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="extensions", Kind="DaemonSet", ApiVersion="v1beta1", PluralName="daemonsets")]
-    public partial class V1beta1DaemonSet : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta1DaemonSetSpec>, IValidate
+    public partial class V1beta1DaemonSet : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1DaemonSetSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "DaemonSet";
@@ -857,7 +857,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="extensions", Kind="DaemonSetList", ApiVersion="v1beta1", PluralName="daemonsets")]
-    public partial class V1beta1DaemonSetList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1DaemonSet>, IValidate
+    public partial class V1beta1DaemonSetList : IKubernetesObject<V1ListMeta>, IItems<V1beta1DaemonSet>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "DaemonSetList";
@@ -865,7 +865,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="extensions", Kind="Deployment", ApiVersion="v1beta1", PluralName="deployments")]
-    public partial class Extensionsv1beta1Deployment : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<Extensionsv1beta1DeploymentSpec>, IValidate
+    public partial class Extensionsv1beta1Deployment : IKubernetesObject<V1ObjectMeta>, ISpec<Extensionsv1beta1DeploymentSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "Deployment";
@@ -873,7 +873,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="extensions", Kind="DeploymentList", ApiVersion="v1beta1", PluralName="deployments")]
-    public partial class Extensionsv1beta1DeploymentList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<Extensionsv1beta1Deployment>, IValidate
+    public partial class Extensionsv1beta1DeploymentList : IKubernetesObject<V1ListMeta>, IItems<Extensionsv1beta1Deployment>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "DeploymentList";
@@ -889,7 +889,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="extensions", Kind="Ingress", ApiVersion="v1beta1", PluralName="ingresses")]
-    public partial class Extensionsv1beta1Ingress : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<Extensionsv1beta1IngressSpec>, IValidate
+    public partial class Extensionsv1beta1Ingress : IKubernetesObject<V1ObjectMeta>, ISpec<Extensionsv1beta1IngressSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "Ingress";
@@ -897,7 +897,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="extensions", Kind="IngressList", ApiVersion="v1beta1", PluralName="ingresses")]
-    public partial class Extensionsv1beta1IngressList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<Extensionsv1beta1Ingress>, IValidate
+    public partial class Extensionsv1beta1IngressList : IKubernetesObject<V1ListMeta>, IItems<Extensionsv1beta1Ingress>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "IngressList";
@@ -905,7 +905,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="extensions", Kind="NetworkPolicy", ApiVersion="v1beta1", PluralName="networkpolicies")]
-    public partial class V1beta1NetworkPolicy : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta1NetworkPolicySpec>, IValidate
+    public partial class V1beta1NetworkPolicy : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1NetworkPolicySpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "NetworkPolicy";
@@ -913,7 +913,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="extensions", Kind="NetworkPolicyList", ApiVersion="v1beta1", PluralName="networkpolicies")]
-    public partial class V1beta1NetworkPolicyList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1NetworkPolicy>, IValidate
+    public partial class V1beta1NetworkPolicyList : IKubernetesObject<V1ListMeta>, IItems<V1beta1NetworkPolicy>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "NetworkPolicyList";
@@ -921,7 +921,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="extensions", Kind="PodSecurityPolicy", ApiVersion="v1beta1", PluralName="podsecuritypolicies")]
-    public partial class Extensionsv1beta1PodSecurityPolicy : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<Extensionsv1beta1PodSecurityPolicySpec>, IValidate
+    public partial class Extensionsv1beta1PodSecurityPolicy : IKubernetesObject<V1ObjectMeta>, ISpec<Extensionsv1beta1PodSecurityPolicySpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "PodSecurityPolicy";
@@ -929,7 +929,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="extensions", Kind="PodSecurityPolicyList", ApiVersion="v1beta1", PluralName="podsecuritypolicies")]
-    public partial class Extensionsv1beta1PodSecurityPolicyList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<Extensionsv1beta1PodSecurityPolicy>, IValidate
+    public partial class Extensionsv1beta1PodSecurityPolicyList : IKubernetesObject<V1ListMeta>, IItems<Extensionsv1beta1PodSecurityPolicy>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "PodSecurityPolicyList";
@@ -937,7 +937,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="extensions", Kind="ReplicaSet", ApiVersion="v1beta1", PluralName="replicasets")]
-    public partial class V1beta1ReplicaSet : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta1ReplicaSetSpec>, IValidate
+    public partial class V1beta1ReplicaSet : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1ReplicaSetSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "ReplicaSet";
@@ -945,7 +945,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="extensions", Kind="ReplicaSetList", ApiVersion="v1beta1", PluralName="replicasets")]
-    public partial class V1beta1ReplicaSetList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1ReplicaSet>, IValidate
+    public partial class V1beta1ReplicaSetList : IKubernetesObject<V1ListMeta>, IItems<V1beta1ReplicaSet>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "ReplicaSetList";
@@ -953,7 +953,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="extensions", Kind="Scale", ApiVersion="v1beta1", PluralName=null)]
-    public partial class Extensionsv1beta1Scale : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<Extensionsv1beta1ScaleSpec>, IValidate
+    public partial class Extensionsv1beta1Scale : IKubernetesObject<V1ObjectMeta>, ISpec<Extensionsv1beta1ScaleSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "Scale";
@@ -961,7 +961,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="networking.k8s.io", Kind="NetworkPolicy", ApiVersion="v1", PluralName="networkpolicies")]
-    public partial class V1NetworkPolicy : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1NetworkPolicySpec>, IValidate
+    public partial class V1NetworkPolicy : IKubernetesObject<V1ObjectMeta>, ISpec<V1NetworkPolicySpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "NetworkPolicy";
@@ -969,7 +969,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="networking.k8s.io", Kind="NetworkPolicyList", ApiVersion="v1", PluralName="networkpolicies")]
-    public partial class V1NetworkPolicyList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1NetworkPolicy>, IValidate
+    public partial class V1NetworkPolicyList : IKubernetesObject<V1ListMeta>, IItems<V1NetworkPolicy>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "NetworkPolicyList";
@@ -977,7 +977,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="networking.k8s.io", Kind="Ingress", ApiVersion="v1beta1", PluralName="ingresses")]
-    public partial class Networkingv1beta1Ingress : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<Networkingv1beta1IngressSpec>, IValidate
+    public partial class Networkingv1beta1Ingress : IKubernetesObject<V1ObjectMeta>, ISpec<Networkingv1beta1IngressSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "Ingress";
@@ -985,7 +985,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="networking.k8s.io", Kind="IngressList", ApiVersion="v1beta1", PluralName="ingresses")]
-    public partial class Networkingv1beta1IngressList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<Networkingv1beta1Ingress>, IValidate
+    public partial class Networkingv1beta1IngressList : IKubernetesObject<V1ListMeta>, IItems<Networkingv1beta1Ingress>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "IngressList";
@@ -993,7 +993,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="node.k8s.io", Kind="RuntimeClass", ApiVersion="v1alpha1", PluralName="runtimeclasses")]
-    public partial class V1alpha1RuntimeClass : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1alpha1RuntimeClassSpec>, IValidate
+    public partial class V1alpha1RuntimeClass : IKubernetesObject<V1ObjectMeta>, ISpec<V1alpha1RuntimeClassSpec>, IValidate
     {
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "RuntimeClass";
@@ -1001,7 +1001,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="node.k8s.io", Kind="RuntimeClassList", ApiVersion="v1alpha1", PluralName="runtimeclasses")]
-    public partial class V1alpha1RuntimeClassList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1alpha1RuntimeClass>, IValidate
+    public partial class V1alpha1RuntimeClassList : IKubernetesObject<V1ListMeta>, IItems<V1alpha1RuntimeClass>, IValidate
     {
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "RuntimeClassList";
@@ -1009,7 +1009,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="node.k8s.io", Kind="RuntimeClass", ApiVersion="v1beta1", PluralName="runtimeclasses")]
-    public partial class V1beta1RuntimeClass : IKubernetesObject, IMetadata<V1ObjectMeta>, IValidate
+    public partial class V1beta1RuntimeClass : IKubernetesObject<V1ObjectMeta>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "RuntimeClass";
@@ -1017,7 +1017,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="node.k8s.io", Kind="RuntimeClassList", ApiVersion="v1beta1", PluralName="runtimeclasses")]
-    public partial class V1beta1RuntimeClassList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1RuntimeClass>, IValidate
+    public partial class V1beta1RuntimeClassList : IKubernetesObject<V1ListMeta>, IItems<V1beta1RuntimeClass>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "RuntimeClassList";
@@ -1025,7 +1025,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="policy", Kind="Eviction", ApiVersion="v1beta1", PluralName=null)]
-    public partial class V1beta1Eviction : IKubernetesObject, IMetadata<V1ObjectMeta>
+    public partial class V1beta1Eviction : IKubernetesObject<V1ObjectMeta>
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "Eviction";
@@ -1033,7 +1033,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="policy", Kind="PodDisruptionBudget", ApiVersion="v1beta1", PluralName="poddisruptionbudgets")]
-    public partial class V1beta1PodDisruptionBudget : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta1PodDisruptionBudgetSpec>, IValidate
+    public partial class V1beta1PodDisruptionBudget : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1PodDisruptionBudgetSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "PodDisruptionBudget";
@@ -1041,7 +1041,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="policy", Kind="PodDisruptionBudgetList", ApiVersion="v1beta1", PluralName="poddisruptionbudgets")]
-    public partial class V1beta1PodDisruptionBudgetList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1PodDisruptionBudget>, IValidate
+    public partial class V1beta1PodDisruptionBudgetList : IKubernetesObject<V1ListMeta>, IItems<V1beta1PodDisruptionBudget>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "PodDisruptionBudgetList";
@@ -1049,7 +1049,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="policy", Kind="PodSecurityPolicy", ApiVersion="v1beta1", PluralName="podsecuritypolicies")]
-    public partial class Policyv1beta1PodSecurityPolicy : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<Policyv1beta1PodSecurityPolicySpec>, IValidate
+    public partial class Policyv1beta1PodSecurityPolicy : IKubernetesObject<V1ObjectMeta>, ISpec<Policyv1beta1PodSecurityPolicySpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "PodSecurityPolicy";
@@ -1057,7 +1057,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="policy", Kind="PodSecurityPolicyList", ApiVersion="v1beta1", PluralName="podsecuritypolicies")]
-    public partial class Policyv1beta1PodSecurityPolicyList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<Policyv1beta1PodSecurityPolicy>, IValidate
+    public partial class Policyv1beta1PodSecurityPolicyList : IKubernetesObject<V1ListMeta>, IItems<Policyv1beta1PodSecurityPolicy>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "PodSecurityPolicyList";
@@ -1065,7 +1065,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="ClusterRole", ApiVersion="v1", PluralName="clusterroles")]
-    public partial class V1ClusterRole : IKubernetesObject, IMetadata<V1ObjectMeta>
+    public partial class V1ClusterRole : IKubernetesObject<V1ObjectMeta>
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ClusterRole";
@@ -1073,7 +1073,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="ClusterRoleBinding", ApiVersion="v1", PluralName="clusterrolebindings")]
-    public partial class V1ClusterRoleBinding : IKubernetesObject, IMetadata<V1ObjectMeta>, IValidate
+    public partial class V1ClusterRoleBinding : IKubernetesObject<V1ObjectMeta>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ClusterRoleBinding";
@@ -1081,7 +1081,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="ClusterRoleBindingList", ApiVersion="v1", PluralName="clusterrolebindings")]
-    public partial class V1ClusterRoleBindingList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1ClusterRoleBinding>, IValidate
+    public partial class V1ClusterRoleBindingList : IKubernetesObject<V1ListMeta>, IItems<V1ClusterRoleBinding>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ClusterRoleBindingList";
@@ -1089,7 +1089,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="ClusterRoleList", ApiVersion="v1", PluralName="clusterroles")]
-    public partial class V1ClusterRoleList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1ClusterRole>, IValidate
+    public partial class V1ClusterRoleList : IKubernetesObject<V1ListMeta>, IItems<V1ClusterRole>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "ClusterRoleList";
@@ -1097,7 +1097,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="Role", ApiVersion="v1", PluralName="roles")]
-    public partial class V1Role : IKubernetesObject, IMetadata<V1ObjectMeta>
+    public partial class V1Role : IKubernetesObject<V1ObjectMeta>
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "Role";
@@ -1105,7 +1105,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="RoleBinding", ApiVersion="v1", PluralName="rolebindings")]
-    public partial class V1RoleBinding : IKubernetesObject, IMetadata<V1ObjectMeta>, IValidate
+    public partial class V1RoleBinding : IKubernetesObject<V1ObjectMeta>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "RoleBinding";
@@ -1113,7 +1113,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="RoleBindingList", ApiVersion="v1", PluralName="rolebindings")]
-    public partial class V1RoleBindingList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1RoleBinding>, IValidate
+    public partial class V1RoleBindingList : IKubernetesObject<V1ListMeta>, IItems<V1RoleBinding>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "RoleBindingList";
@@ -1121,7 +1121,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="RoleList", ApiVersion="v1", PluralName="roles")]
-    public partial class V1RoleList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1Role>, IValidate
+    public partial class V1RoleList : IKubernetesObject<V1ListMeta>, IItems<V1Role>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "RoleList";
@@ -1129,7 +1129,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="ClusterRole", ApiVersion="v1alpha1", PluralName="clusterroles")]
-    public partial class V1alpha1ClusterRole : IKubernetesObject, IMetadata<V1ObjectMeta>
+    public partial class V1alpha1ClusterRole : IKubernetesObject<V1ObjectMeta>
     {
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "ClusterRole";
@@ -1137,7 +1137,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="ClusterRoleBinding", ApiVersion="v1alpha1", PluralName="clusterrolebindings")]
-    public partial class V1alpha1ClusterRoleBinding : IKubernetesObject, IMetadata<V1ObjectMeta>, IValidate
+    public partial class V1alpha1ClusterRoleBinding : IKubernetesObject<V1ObjectMeta>, IValidate
     {
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "ClusterRoleBinding";
@@ -1145,7 +1145,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="ClusterRoleBindingList", ApiVersion="v1alpha1", PluralName="clusterrolebindings")]
-    public partial class V1alpha1ClusterRoleBindingList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1alpha1ClusterRoleBinding>, IValidate
+    public partial class V1alpha1ClusterRoleBindingList : IKubernetesObject<V1ListMeta>, IItems<V1alpha1ClusterRoleBinding>, IValidate
     {
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "ClusterRoleBindingList";
@@ -1153,7 +1153,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="ClusterRoleList", ApiVersion="v1alpha1", PluralName="clusterroles")]
-    public partial class V1alpha1ClusterRoleList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1alpha1ClusterRole>, IValidate
+    public partial class V1alpha1ClusterRoleList : IKubernetesObject<V1ListMeta>, IItems<V1alpha1ClusterRole>, IValidate
     {
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "ClusterRoleList";
@@ -1161,7 +1161,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="Role", ApiVersion="v1alpha1", PluralName="roles")]
-    public partial class V1alpha1Role : IKubernetesObject, IMetadata<V1ObjectMeta>
+    public partial class V1alpha1Role : IKubernetesObject<V1ObjectMeta>
     {
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "Role";
@@ -1169,7 +1169,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="RoleBinding", ApiVersion="v1alpha1", PluralName="rolebindings")]
-    public partial class V1alpha1RoleBinding : IKubernetesObject, IMetadata<V1ObjectMeta>, IValidate
+    public partial class V1alpha1RoleBinding : IKubernetesObject<V1ObjectMeta>, IValidate
     {
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "RoleBinding";
@@ -1177,7 +1177,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="RoleBindingList", ApiVersion="v1alpha1", PluralName="rolebindings")]
-    public partial class V1alpha1RoleBindingList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1alpha1RoleBinding>, IValidate
+    public partial class V1alpha1RoleBindingList : IKubernetesObject<V1ListMeta>, IItems<V1alpha1RoleBinding>, IValidate
     {
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "RoleBindingList";
@@ -1185,7 +1185,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="RoleList", ApiVersion="v1alpha1", PluralName="roles")]
-    public partial class V1alpha1RoleList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1alpha1Role>, IValidate
+    public partial class V1alpha1RoleList : IKubernetesObject<V1ListMeta>, IItems<V1alpha1Role>, IValidate
     {
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "RoleList";
@@ -1193,7 +1193,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="ClusterRole", ApiVersion="v1beta1", PluralName="clusterroles")]
-    public partial class V1beta1ClusterRole : IKubernetesObject, IMetadata<V1ObjectMeta>
+    public partial class V1beta1ClusterRole : IKubernetesObject<V1ObjectMeta>
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "ClusterRole";
@@ -1201,7 +1201,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="ClusterRoleBinding", ApiVersion="v1beta1", PluralName="clusterrolebindings")]
-    public partial class V1beta1ClusterRoleBinding : IKubernetesObject, IMetadata<V1ObjectMeta>, IValidate
+    public partial class V1beta1ClusterRoleBinding : IKubernetesObject<V1ObjectMeta>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "ClusterRoleBinding";
@@ -1209,7 +1209,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="ClusterRoleBindingList", ApiVersion="v1beta1", PluralName="clusterrolebindings")]
-    public partial class V1beta1ClusterRoleBindingList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1ClusterRoleBinding>, IValidate
+    public partial class V1beta1ClusterRoleBindingList : IKubernetesObject<V1ListMeta>, IItems<V1beta1ClusterRoleBinding>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "ClusterRoleBindingList";
@@ -1217,7 +1217,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="ClusterRoleList", ApiVersion="v1beta1", PluralName="clusterroles")]
-    public partial class V1beta1ClusterRoleList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1ClusterRole>, IValidate
+    public partial class V1beta1ClusterRoleList : IKubernetesObject<V1ListMeta>, IItems<V1beta1ClusterRole>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "ClusterRoleList";
@@ -1225,7 +1225,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="Role", ApiVersion="v1beta1", PluralName="roles")]
-    public partial class V1beta1Role : IKubernetesObject, IMetadata<V1ObjectMeta>
+    public partial class V1beta1Role : IKubernetesObject<V1ObjectMeta>
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "Role";
@@ -1233,7 +1233,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="RoleBinding", ApiVersion="v1beta1", PluralName="rolebindings")]
-    public partial class V1beta1RoleBinding : IKubernetesObject, IMetadata<V1ObjectMeta>, IValidate
+    public partial class V1beta1RoleBinding : IKubernetesObject<V1ObjectMeta>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "RoleBinding";
@@ -1241,7 +1241,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="RoleBindingList", ApiVersion="v1beta1", PluralName="rolebindings")]
-    public partial class V1beta1RoleBindingList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1RoleBinding>, IValidate
+    public partial class V1beta1RoleBindingList : IKubernetesObject<V1ListMeta>, IItems<V1beta1RoleBinding>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "RoleBindingList";
@@ -1249,7 +1249,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="rbac.authorization.k8s.io", Kind="RoleList", ApiVersion="v1beta1", PluralName="roles")]
-    public partial class V1beta1RoleList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1Role>, IValidate
+    public partial class V1beta1RoleList : IKubernetesObject<V1ListMeta>, IItems<V1beta1Role>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "RoleList";
@@ -1257,7 +1257,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="scheduling.k8s.io", Kind="PriorityClass", ApiVersion="v1", PluralName="priorityclasses")]
-    public partial class V1PriorityClass : IKubernetesObject, IMetadata<V1ObjectMeta>, IValidate
+    public partial class V1PriorityClass : IKubernetesObject<V1ObjectMeta>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "PriorityClass";
@@ -1265,7 +1265,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="scheduling.k8s.io", Kind="PriorityClassList", ApiVersion="v1", PluralName="priorityclasses")]
-    public partial class V1PriorityClassList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1PriorityClass>, IValidate
+    public partial class V1PriorityClassList : IKubernetesObject<V1ListMeta>, IItems<V1PriorityClass>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "PriorityClassList";
@@ -1273,7 +1273,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="scheduling.k8s.io", Kind="PriorityClass", ApiVersion="v1alpha1", PluralName="priorityclasses")]
-    public partial class V1alpha1PriorityClass : IKubernetesObject, IMetadata<V1ObjectMeta>, IValidate
+    public partial class V1alpha1PriorityClass : IKubernetesObject<V1ObjectMeta>, IValidate
     {
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "PriorityClass";
@@ -1281,7 +1281,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="scheduling.k8s.io", Kind="PriorityClassList", ApiVersion="v1alpha1", PluralName="priorityclasses")]
-    public partial class V1alpha1PriorityClassList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1alpha1PriorityClass>, IValidate
+    public partial class V1alpha1PriorityClassList : IKubernetesObject<V1ListMeta>, IItems<V1alpha1PriorityClass>, IValidate
     {
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "PriorityClassList";
@@ -1289,7 +1289,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="scheduling.k8s.io", Kind="PriorityClass", ApiVersion="v1beta1", PluralName="priorityclasses")]
-    public partial class V1beta1PriorityClass : IKubernetesObject, IMetadata<V1ObjectMeta>, IValidate
+    public partial class V1beta1PriorityClass : IKubernetesObject<V1ObjectMeta>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "PriorityClass";
@@ -1297,7 +1297,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="scheduling.k8s.io", Kind="PriorityClassList", ApiVersion="v1beta1", PluralName="priorityclasses")]
-    public partial class V1beta1PriorityClassList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1PriorityClass>, IValidate
+    public partial class V1beta1PriorityClassList : IKubernetesObject<V1ListMeta>, IItems<V1beta1PriorityClass>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "PriorityClassList";
@@ -1305,7 +1305,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="settings.k8s.io", Kind="PodPreset", ApiVersion="v1alpha1", PluralName="podpresets")]
-    public partial class V1alpha1PodPreset : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1alpha1PodPresetSpec>
+    public partial class V1alpha1PodPreset : IKubernetesObject<V1ObjectMeta>, ISpec<V1alpha1PodPresetSpec>
     {
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "PodPreset";
@@ -1313,7 +1313,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="settings.k8s.io", Kind="PodPresetList", ApiVersion="v1alpha1", PluralName="podpresets")]
-    public partial class V1alpha1PodPresetList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1alpha1PodPreset>, IValidate
+    public partial class V1alpha1PodPresetList : IKubernetesObject<V1ListMeta>, IItems<V1alpha1PodPreset>, IValidate
     {
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "PodPresetList";
@@ -1321,7 +1321,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="storage.k8s.io", Kind="StorageClass", ApiVersion="v1", PluralName="storageclasses")]
-    public partial class V1StorageClass : IKubernetesObject, IMetadata<V1ObjectMeta>, IValidate
+    public partial class V1StorageClass : IKubernetesObject<V1ObjectMeta>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "StorageClass";
@@ -1329,7 +1329,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="storage.k8s.io", Kind="StorageClassList", ApiVersion="v1", PluralName="storageclasses")]
-    public partial class V1StorageClassList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1StorageClass>, IValidate
+    public partial class V1StorageClassList : IKubernetesObject<V1ListMeta>, IItems<V1StorageClass>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "StorageClassList";
@@ -1337,7 +1337,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="storage.k8s.io", Kind="VolumeAttachment", ApiVersion="v1", PluralName="volumeattachments")]
-    public partial class V1VolumeAttachment : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1VolumeAttachmentSpec>, IValidate
+    public partial class V1VolumeAttachment : IKubernetesObject<V1ObjectMeta>, ISpec<V1VolumeAttachmentSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "VolumeAttachment";
@@ -1345,7 +1345,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="storage.k8s.io", Kind="VolumeAttachmentList", ApiVersion="v1", PluralName="volumeattachments")]
-    public partial class V1VolumeAttachmentList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1VolumeAttachment>, IValidate
+    public partial class V1VolumeAttachmentList : IKubernetesObject<V1ListMeta>, IItems<V1VolumeAttachment>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "VolumeAttachmentList";
@@ -1353,7 +1353,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="storage.k8s.io", Kind="VolumeAttachment", ApiVersion="v1alpha1", PluralName="volumeattachments")]
-    public partial class V1alpha1VolumeAttachment : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1alpha1VolumeAttachmentSpec>, IValidate
+    public partial class V1alpha1VolumeAttachment : IKubernetesObject<V1ObjectMeta>, ISpec<V1alpha1VolumeAttachmentSpec>, IValidate
     {
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "VolumeAttachment";
@@ -1361,7 +1361,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="storage.k8s.io", Kind="VolumeAttachmentList", ApiVersion="v1alpha1", PluralName="volumeattachments")]
-    public partial class V1alpha1VolumeAttachmentList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1alpha1VolumeAttachment>, IValidate
+    public partial class V1alpha1VolumeAttachmentList : IKubernetesObject<V1ListMeta>, IItems<V1alpha1VolumeAttachment>, IValidate
     {
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "VolumeAttachmentList";
@@ -1369,7 +1369,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="storage.k8s.io", Kind="CSIDriver", ApiVersion="v1beta1", PluralName="csidrivers")]
-    public partial class V1beta1CSIDriver : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta1CSIDriverSpec>, IValidate
+    public partial class V1beta1CSIDriver : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1CSIDriverSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "CSIDriver";
@@ -1377,7 +1377,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="storage.k8s.io", Kind="CSIDriverList", ApiVersion="v1beta1", PluralName="csidrivers")]
-    public partial class V1beta1CSIDriverList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1CSIDriver>, IValidate
+    public partial class V1beta1CSIDriverList : IKubernetesObject<V1ListMeta>, IItems<V1beta1CSIDriver>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "CSIDriverList";
@@ -1385,7 +1385,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="storage.k8s.io", Kind="CSINode", ApiVersion="v1beta1", PluralName="csinodes")]
-    public partial class V1beta1CSINode : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta1CSINodeSpec>, IValidate
+    public partial class V1beta1CSINode : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1CSINodeSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "CSINode";
@@ -1393,7 +1393,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="storage.k8s.io", Kind="CSINodeList", ApiVersion="v1beta1", PluralName="csinodes")]
-    public partial class V1beta1CSINodeList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1CSINode>, IValidate
+    public partial class V1beta1CSINodeList : IKubernetesObject<V1ListMeta>, IItems<V1beta1CSINode>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "CSINodeList";
@@ -1401,7 +1401,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="storage.k8s.io", Kind="StorageClass", ApiVersion="v1beta1", PluralName="storageclasses")]
-    public partial class V1beta1StorageClass : IKubernetesObject, IMetadata<V1ObjectMeta>, IValidate
+    public partial class V1beta1StorageClass : IKubernetesObject<V1ObjectMeta>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "StorageClass";
@@ -1409,7 +1409,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="storage.k8s.io", Kind="StorageClassList", ApiVersion="v1beta1", PluralName="storageclasses")]
-    public partial class V1beta1StorageClassList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1StorageClass>, IValidate
+    public partial class V1beta1StorageClassList : IKubernetesObject<V1ListMeta>, IItems<V1beta1StorageClass>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "StorageClassList";
@@ -1417,7 +1417,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="storage.k8s.io", Kind="VolumeAttachment", ApiVersion="v1beta1", PluralName="volumeattachments")]
-    public partial class V1beta1VolumeAttachment : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta1VolumeAttachmentSpec>, IValidate
+    public partial class V1beta1VolumeAttachment : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1VolumeAttachmentSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "VolumeAttachment";
@@ -1425,7 +1425,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="storage.k8s.io", Kind="VolumeAttachmentList", ApiVersion="v1beta1", PluralName="volumeattachments")]
-    public partial class V1beta1VolumeAttachmentList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1VolumeAttachment>, IValidate
+    public partial class V1beta1VolumeAttachmentList : IKubernetesObject<V1ListMeta>, IItems<V1beta1VolumeAttachment>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "VolumeAttachmentList";
@@ -1433,7 +1433,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apiextensions.k8s.io", Kind="CustomResourceDefinition", ApiVersion="v1", PluralName="customresourcedefinitions")]
-    public partial class V1CustomResourceDefinition : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1CustomResourceDefinitionSpec>, IValidate
+    public partial class V1CustomResourceDefinition : IKubernetesObject<V1ObjectMeta>, ISpec<V1CustomResourceDefinitionSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "CustomResourceDefinition";
@@ -1441,7 +1441,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apiextensions.k8s.io", Kind="CustomResourceDefinitionList", ApiVersion="v1", PluralName="customresourcedefinitions")]
-    public partial class V1CustomResourceDefinitionList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1CustomResourceDefinition>, IValidate
+    public partial class V1CustomResourceDefinitionList : IKubernetesObject<V1ListMeta>, IItems<V1CustomResourceDefinition>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "CustomResourceDefinitionList";
@@ -1449,7 +1449,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apiextensions.k8s.io", Kind="CustomResourceDefinition", ApiVersion="v1beta1", PluralName="customresourcedefinitions")]
-    public partial class V1beta1CustomResourceDefinition : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta1CustomResourceDefinitionSpec>, IValidate
+    public partial class V1beta1CustomResourceDefinition : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1CustomResourceDefinitionSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "CustomResourceDefinition";
@@ -1457,7 +1457,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apiextensions.k8s.io", Kind="CustomResourceDefinitionList", ApiVersion="v1beta1", PluralName="customresourcedefinitions")]
-    public partial class V1beta1CustomResourceDefinitionList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1CustomResourceDefinition>, IValidate
+    public partial class V1beta1CustomResourceDefinitionList : IKubernetesObject<V1ListMeta>, IItems<V1beta1CustomResourceDefinition>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "CustomResourceDefinitionList";
@@ -1505,7 +1505,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="Status", ApiVersion="v1", PluralName=null)]
-    public partial class V1Status : IKubernetesObject, IMetadata<V1ListMeta>
+    public partial class V1Status : IKubernetesObject<V1ListMeta>
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "Status";
@@ -1513,7 +1513,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apiregistration.k8s.io", Kind="APIService", ApiVersion="v1", PluralName="apiservices")]
-    public partial class V1APIService : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1APIServiceSpec>, IValidate
+    public partial class V1APIService : IKubernetesObject<V1ObjectMeta>, ISpec<V1APIServiceSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "APIService";
@@ -1521,7 +1521,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apiregistration.k8s.io", Kind="APIServiceList", ApiVersion="v1", PluralName="apiservices")]
-    public partial class V1APIServiceList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1APIService>, IValidate
+    public partial class V1APIServiceList : IKubernetesObject<V1ListMeta>, IItems<V1APIService>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "APIServiceList";
@@ -1529,7 +1529,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apiregistration.k8s.io", Kind="APIService", ApiVersion="v1beta1", PluralName="apiservices")]
-    public partial class V1beta1APIService : IKubernetesObject, IMetadata<V1ObjectMeta>, ISpec<V1beta1APIServiceSpec>, IValidate
+    public partial class V1beta1APIService : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1APIServiceSpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "APIService";
@@ -1537,7 +1537,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="apiregistration.k8s.io", Kind="APIServiceList", ApiVersion="v1beta1", PluralName="apiservices")]
-    public partial class V1beta1APIServiceList : IKubernetesObject, IMetadata<V1ListMeta>, IItems<V1beta1APIService>, IValidate
+    public partial class V1beta1APIServiceList : IKubernetesObject<V1ListMeta>, IItems<V1beta1APIService>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "APIServiceList";
