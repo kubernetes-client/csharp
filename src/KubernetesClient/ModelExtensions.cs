@@ -5,15 +5,16 @@ using System.Net;
 
 namespace k8s.Models
 {
+    /// <summary>Adds convenient extensions for Kubernetes objects.</summary>
     public static class ModelExtensions
     {
         /// <summary>Adds the given finalizer to a Kubernetes object if it doesn't already exist.</summary>
         /// <returns>Returns true if the finalizer was added and false if it already existed.</returns>
         public static bool AddFinalizer(this IMetadata<V1ObjectMeta> obj, string finalizer)
         {
-            if(string.IsNullOrEmpty(finalizer)) throw new ArgumentNullException(nameof(finalizer));
-            if(obj.EnsureMetadata().Finalizers == null) obj.Metadata.Finalizers = new List<string>();
-            if(obj.Metadata.Finalizers.Contains(finalizer)) return false;
+            if (string.IsNullOrEmpty(finalizer)) throw new ArgumentNullException(nameof(finalizer));
+            if (EnsureMetadata(obj).Finalizers == null) obj.Metadata.Finalizers = new List<string>();
+            if (obj.Metadata.Finalizers.Contains(finalizer)) return false;
             obj.Metadata.Finalizers.Add(finalizer);
             return true;
         }
@@ -21,8 +22,8 @@ namespace k8s.Models
         /// <summary>Extracts the Kubernetes API group from the <see cref="IKubernetesObject.ApiVersion"/>.</summary>
         public static string ApiGroup(this IKubernetesObject obj)
         {
-            if(obj == null) throw new ArgumentNullException(nameof(obj));
-            if(obj.ApiVersion == null) return null;
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            if (obj.ApiVersion == null) return null;
             int slash = obj.ApiVersion.IndexOf('/');
             return slash < 0 ? string.Empty : obj.ApiVersion.Substring(0, slash);
         }
@@ -30,8 +31,8 @@ namespace k8s.Models
         /// <summary>Extracts the Kubernetes API version (excluding the group) from the <see cref="IKubernetesObject.ApiVersion"/>.</summary>
         public static string ApiGroupVersion(this IKubernetesObject obj)
         {
-            if(obj == null) throw new ArgumentNullException(nameof(obj));
-            if(obj.ApiVersion == null) return null;
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            if (obj.ApiVersion == null) return null;
             int slash = obj.ApiVersion.IndexOf('/');
             return slash < 0 ? obj.ApiVersion : obj.ApiVersion.Substring(slash+1);
         }
@@ -40,22 +41,22 @@ namespace k8s.Models
         public static (string, string) ApiGroupAndVersion(this IKubernetesObject obj)
         {
             string group, version;
-            obj.GetApiGroupAndVersion(out group, out version);
+            GetApiGroupAndVersion(obj, out group, out version);
             return (group, version);
         }
 
         /// <summary>Splits the Kubernetes API version into the group and version.</summary>
         public static void GetApiGroupAndVersion(this IKubernetesObject obj, out string group, out string version)
         {
-            if(obj == null) throw new ArgumentNullException(nameof(obj));
-            if(obj.ApiVersion == null)
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            if (obj.ApiVersion == null)
             {
                 group = version = null;
             }
             else
             {
                 int slash = obj.ApiVersion.IndexOf('/');
-                if(slash < 0) (group, version) = (string.Empty, obj.ApiVersion);
+                if (slash < 0) (group, version) = (string.Empty, obj.ApiVersion);
                 else (group, version) = (obj.ApiVersion.Substring(0, slash), obj.ApiVersion.Substring(slash+1));
             }
         }
@@ -66,7 +67,8 @@ namespace k8s.Models
         /// <summary>Ensures that the <see cref="V1ListMeta"/> metadata field is set, and returns it.</summary>
         public static V1ListMeta EnsureMetadata(this IMetadata<V1ListMeta> obj)
         {
-            if(obj.Metadata == null) obj.Metadata = new V1ListMeta();
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            if (obj.Metadata == null) obj.Metadata = new V1ListMeta();
             return obj.Metadata;
         }
 
@@ -78,24 +80,49 @@ namespace k8s.Models
         /// </summary>
         public static void AddOwnerReference(this IMetadata<V1ObjectMeta> obj, V1OwnerReference ownerRef)
         {
-            if(obj == null) throw new ArgumentNullException(nameof(obj));
-            if(ownerRef == null) throw new ArgumentNullException(nameof(ownerRef));
-            if(obj.EnsureMetadata().OwnerReferences == null) obj.Metadata.OwnerReferences = new List<V1OwnerReference>();
+            if (ownerRef == null) throw new ArgumentNullException(nameof(ownerRef));
+            if (EnsureMetadata(obj).OwnerReferences == null) obj.Metadata.OwnerReferences = new List<V1OwnerReference>();
             obj.Metadata.OwnerReferences.Add(ownerRef);
         }
+
+        /// <summary>Adds an owner reference to the object. No attempt is made to ensure the reference is correct or fits with the
+        /// other references.
+        /// </summary>
+        public static void AddOwnerReference(
+            this IMetadata<V1ObjectMeta> obj, IKubernetesObject<V1ObjectMeta> owner, bool? controller = null, bool? blockDeletion = null) =>
+            AddOwnerReference(obj, CreateOwnerReference(owner, controller, blockDeletion));
 
         /// <summary>Gets the annotations of a Kubernetes object.</summary>
         public static IDictionary<string, string> Annotations(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.Annotations;
 
+        /// <summary>Creates a <see cref="V1ObjectReference"/> that refers to the given object.</summary>
+        public static V1ObjectReference CreateObjectReference(this IKubernetesObject<V1ObjectMeta> obj)
+        {
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            string apiVersion = obj.ApiVersion, kind = obj.Kind; // default to using the API version and kind from the object
+            if (string.IsNullOrEmpty(apiVersion) || string.IsNullOrEmpty(kind)) // but if either of them is missing...
+            {
+                object[] attrs = obj.GetType().GetCustomAttributes(typeof(KubernetesEntityAttribute), true);
+                if (attrs.Length == 0) throw new ArgumentException("Unable to determine the object's API version and Kind.");
+                var attr = (KubernetesEntityAttribute)attrs[0];
+                (apiVersion, kind) = (string.IsNullOrEmpty(attr.Group) ? attr.ApiVersion : attr.Group + "/" + attr.ApiVersion, attr.Kind);
+            }
+            return new V1ObjectReference()
+            {
+                ApiVersion = apiVersion, Kind = kind, Name = obj.Name(), NamespaceProperty = obj.Namespace(), Uid = obj.Uid(),
+                ResourceVersion = obj.ResourceVersion()
+            };
+        }
+
         /// <summary>Creates a <see cref="V1OwnerReference"/> that refers to the given object.</summary>
         public static V1OwnerReference CreateOwnerReference(this IKubernetesObject<V1ObjectMeta> obj, bool? controller = null, bool? blockDeletion = null)
         {
-            if(obj == null) throw new ArgumentNullException(nameof(obj));
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
             string apiVersion = obj.ApiVersion, kind = obj.Kind; // default to using the API version and kind from the object
-            if(string.IsNullOrEmpty(apiVersion) || string.IsNullOrEmpty(kind)) // but if either of them is missing...
+            if (string.IsNullOrEmpty(apiVersion) || string.IsNullOrEmpty(kind)) // but if either of them is missing...
             {
                 object[] attrs = obj.GetType().GetCustomAttributes(typeof(KubernetesEntityAttribute), true);
-                if(attrs.Length == 0) throw new ArgumentException("Unable to determine the object's API version and Kind.");
+                if (attrs.Length == 0) throw new ArgumentException("Unable to determine the object's API version and Kind.");
                 var attr = (KubernetesEntityAttribute)attrs[0];
                 (apiVersion, kind) = (string.IsNullOrEmpty(attr.Group) ? attr.ApiVersion : attr.Group + "/" + attr.ApiVersion, attr.Kind);
             }
@@ -114,7 +141,8 @@ namespace k8s.Models
         /// <summary>Ensures that the <see cref="V1ObjectMeta"/> metadata field is set, and returns it.</summary>
         public static V1ObjectMeta EnsureMetadata(this IMetadata<V1ObjectMeta> obj)
         {
-            if(obj.Metadata == null) obj.Metadata = new V1ObjectMeta();
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            if (obj.Metadata == null) obj.Metadata = new V1ObjectMeta();
             return obj.Metadata;
         }
 
@@ -124,14 +152,22 @@ namespace k8s.Models
         /// <summary>Gets the index of the <see cref="V1OwnerReference"/> that matches the given object, or -1 if no such
         /// reference could be found.
         /// </summary>
-        public static int FindOwnerReference(this IMetadata<V1ObjectMeta> obj, IKubernetesObject<V1ObjectMeta> owner)
+        public static int FindOwnerReference(this IMetadata<V1ObjectMeta> obj, IKubernetesObject<V1ObjectMeta> owner) =>
+            FindOwnerReference(obj, r => r.Matches(owner));
+
+        /// <summary>Gets the index of the <see cref="V1OwnerReference"/> that matches the given predicate, or -1 if no such
+        /// reference could be found.
+        /// </summary>
+        public static int FindOwnerReference(this IMetadata<V1ObjectMeta> obj, Predicate<V1OwnerReference> predicate)
         {
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
             var ownerRefs = obj.OwnerReferences();
-            if(ownerRefs != null)
+            if (ownerRefs != null)
             {
-                for(int i = 0; i < ownerRefs.Count; i++)
+                for (int i = 0; i < ownerRefs.Count; i++)
                 {
-                    if(ownerRefs[i].Matches(owner)) return i;
+                    if (predicate(ownerRefs[i])) return i;
                 }
             }
             return -1;
@@ -143,8 +179,8 @@ namespace k8s.Models
         /// <summary>Returns the given annotation from a Kubernetes object or null if the annotation was not found.</summary>
         public static string GetAnnotation(this IMetadata<V1ObjectMeta> obj, string key)
         {
-            if(obj == null) throw new ArgumentNullException(nameof(obj));
-            if(key == null) throw new ArgumentNullException(nameof(key));
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            if (key == null) throw new ArgumentNullException(nameof(key));
             IDictionary<string, string> annotations = obj.Annotations();
             return annotations != null && annotations.TryGetValue(key, out string value) ? value : null;
         }
@@ -156,37 +192,34 @@ namespace k8s.Models
         /// <summary>Returns the given label from a Kubernetes object or null if the label was not found.</summary>
         public static string GetLabel(this IMetadata<V1ObjectMeta> obj, string key)
         {
-            if(obj == null) throw new ArgumentNullException(nameof(obj));
-            if(key == null) throw new ArgumentNullException(nameof(key));
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            if (key == null) throw new ArgumentNullException(nameof(key));
             IDictionary<string, string> labels = obj.Labels();
             return labels != null && labels.TryGetValue(key, out string value) ? value : null;
         }
 
-        /// <summary>Creates a <see cref="V1ObjectReference"/> that refers to the given object.</summary>
-        public static V1ObjectReference GetObjectReference(this IKubernetesObject<V1ObjectMeta> obj)
+        /// <summary>Gets <see cref="V1OwnerReference"/> that matches the given object, or null if no matching reference exists.</summary>
+        public static V1OwnerReference GetOwnerReference(this IMetadata<V1ObjectMeta> obj, IKubernetesObject<V1ObjectMeta> owner) =>
+            GetOwnerReference(obj, r => r.Matches(owner));
+
+        /// <summary>Gets the <see cref="V1OwnerReference"/> that matches the given predicate, or null if no matching reference exists.</summary>
+        public static V1OwnerReference GetOwnerReference(this IMetadata<V1ObjectMeta> obj, Predicate<V1OwnerReference> predicate)
         {
-            if(obj == null) throw new ArgumentNullException(nameof(obj));
-            string apiVersion = obj.ApiVersion, kind = obj.Kind; // default to using the API version and kind from the object
-            if(string.IsNullOrEmpty(apiVersion) || string.IsNullOrEmpty(kind)) // but if either of them is missing...
-            {
-                object[] attrs = obj.GetType().GetCustomAttributes(typeof(KubernetesEntityAttribute), true);
-                if(attrs.Length == 0) throw new ArgumentException("Unable to determine the object's API version and Kind.");
-                var attr = (KubernetesEntityAttribute)attrs[0];
-                (apiVersion, kind) = (string.IsNullOrEmpty(attr.Group) ? attr.ApiVersion : attr.Group + "/" + attr.ApiVersion, attr.Kind);
-            }
-            return new V1ObjectReference()
-            {
-                ApiVersion = apiVersion, Kind = kind, Name = obj.Name(), NamespaceProperty = obj.Namespace(), Uid = obj.Uid(),
-                ResourceVersion = obj.ResourceVersion()
-            };
+            int index = FindOwnerReference(obj, predicate);
+            return index >= 0 ? obj.Metadata.OwnerReferences[index] : null;
         }
 
         /// <summary>Determines whether the Kubernetes object has the given finalizer.</summary>
         public static bool HasFinalizer(this IMetadata<V1ObjectMeta> obj, string finalizer)
         {
-            if(string.IsNullOrEmpty(finalizer)) throw new ArgumentNullException(nameof(finalizer));
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            if (string.IsNullOrEmpty(finalizer)) throw new ArgumentNullException(nameof(finalizer));
             return obj.Finalizers() != null && obj.Metadata.Finalizers.Contains(finalizer);
         }
+
+        /// <summary>Determines whether one object is owned by another.</summary>
+        public static bool IsOwnedBy(this IMetadata<V1ObjectMeta> obj, IKubernetesObject<V1ObjectMeta> owner) =>
+            FindOwnerReference(obj, owner) >= 0;
 
         /// <summary>Gets the labels of a Kubernetes object.</summary>
         public static IDictionary<string, string> Labels(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.Labels;
@@ -204,7 +237,8 @@ namespace k8s.Models
         /// <returns>Returns true if the finalizer was removed and false if it didn't exist.</returns>
         public static bool RemoveFinalizer(this IMetadata<V1ObjectMeta> obj, string finalizer)
         {
-            if(string.IsNullOrEmpty(finalizer)) throw new ArgumentNullException(nameof(finalizer));
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            if (string.IsNullOrEmpty(finalizer)) throw new ArgumentNullException(nameof(finalizer));
             return obj.Finalizers() != null && obj.Metadata.Finalizers.Remove(finalizer);
         }
 
@@ -213,9 +247,9 @@ namespace k8s.Models
         /// </summary>
         public static V1OwnerReference RemoveOwnerReference(this IMetadata<V1ObjectMeta> obj, IKubernetesObject<V1ObjectMeta> owner)
         {
-            int index = obj.FindOwnerReference(owner);
+            int index = FindOwnerReference(obj, owner);
             V1OwnerReference ownerRef = index >= 0 ? obj.Metadata.OwnerReferences[index] : null;
-            if(index >= 0) obj.Metadata.OwnerReferences.RemoveAt(index);
+            if (index >= 0) obj.Metadata.OwnerReferences.RemoveAt(index);
             return ownerRef;
         }
 
@@ -224,14 +258,15 @@ namespace k8s.Models
         /// </summary>
         public static bool RemoveOwnerReferences(this IMetadata<V1ObjectMeta> obj, Predicate<V1OwnerReference> predicate)
         {
-            if(predicate == null) throw new ArgumentNullException(nameof(predicate));
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
             bool removed = false;
             IList<V1OwnerReference> refs = obj.Metadata?.OwnerReferences;
-            if(refs != null)
+            if (refs != null)
             {
-                for(int i = refs.Count-1; i >= 0; i--)
+                for (int i = refs.Count-1; i >= 0; i--)
                 {
-                    if(predicate(refs[i]))
+                    if (predicate(refs[i]))
                     {
                         refs.RemoveAt(i);
                         removed = true;
@@ -253,18 +288,18 @@ namespace k8s.Models
         /// <summary>Sets or removes an annotation on a Kubernetes object.</summary>
         public static void SetAnnotation(this IMetadata<V1ObjectMeta> obj, string key, string value)
         {
-            if(obj == null) throw new ArgumentNullException(nameof(obj));
-            if(key == null) throw new ArgumentNullException(nameof(key));
-            if(value != null) obj.EnsureMetadata().EnsureAnnotations()[key] = value;
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            if (key == null) throw new ArgumentNullException(nameof(key));
+            if (value != null) obj.EnsureMetadata().EnsureAnnotations()[key] = value;
             else obj.Metadata?.Annotations?.Remove(key);
         }
 
         /// <summary>Sets or removes a label on a Kubernetes object.</summary>
         public static void SetLabel(this IMetadata<V1ObjectMeta> obj, string key, string value)
         {
-            if(obj == null) throw new ArgumentNullException(nameof(obj));
-            if(key == null) throw new ArgumentNullException(nameof(key));
-            if(value != null) obj.EnsureMetadata().EnsureLabels()[key] = value;
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            if (key == null) throw new ArgumentNullException(nameof(key));
+            if (value != null) obj.EnsureMetadata().EnsureLabels()[key] = value;
             else obj.Metadata?.Labels?.Remove(key);
         }
 
@@ -274,21 +309,24 @@ namespace k8s.Models
         /// <summary>Ensures that the <see cref="V1ObjectMeta.Annotations"/> field is not null, and returns it.</summary>
         public static IDictionary<string, string> EnsureAnnotations(this V1ObjectMeta meta)
         {
-            if(meta.Annotations == null) meta.Annotations = new Dictionary<string, string>();
+            if (meta == null) throw new ArgumentNullException(nameof(meta));
+            if (meta.Annotations == null) meta.Annotations = new Dictionary<string, string>();
             return meta.Annotations;
         }
 
         /// <summary>Ensures that the <see cref="V1ObjectMeta.Finalizers"/> field is not null, and returns it.</summary>
         public static IList<string> EnsureFinalizers(this V1ObjectMeta meta)
         {
-            if(meta.Finalizers == null) meta.Finalizers = new List<string>();
+            if (meta == null) throw new ArgumentNullException(nameof(meta));
+            if (meta.Finalizers == null) meta.Finalizers = new List<string>();
             return meta.Finalizers;
         }
 
         /// <summary>Ensures that the <see cref="V1ObjectMeta.Labels"/> field is not null, and returns it.</summary>
         public static IDictionary<string, string> EnsureLabels(this V1ObjectMeta meta)
         {
-            if(meta.Labels == null) meta.Labels = new Dictionary<string, string>();
+            if (meta == null) throw new ArgumentNullException(nameof(meta));
+            if (meta.Labels == null) meta.Labels = new Dictionary<string, string>();
             return meta.Labels;
         }
 
@@ -301,8 +339,8 @@ namespace k8s.Models
         /// <summary>Determines whether an object reference references the given object.</summary>
         public static bool Matches(this V1ObjectReference objref, IKubernetesObject<V1ObjectMeta> obj)
         {
-            if(objref == null) throw new ArgumentNullException(nameof(objref));
-            if(obj == null) throw new ArgumentNullException(nameof(obj));
+            if (objref == null) throw new ArgumentNullException(nameof(objref));
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
             return objref.ApiVersion == obj.ApiVersion && objref.Kind == obj.Kind && objref.Name == obj.Name() && objref.Uid == obj.Uid() &&
                    objref.NamespaceProperty == obj.Namespace();
         }
@@ -310,8 +348,8 @@ namespace k8s.Models
         /// <summary>Determines whether an owner reference references the given object.</summary>
         public static bool Matches(this V1OwnerReference owner, IKubernetesObject<V1ObjectMeta> obj)
         {
-            if(owner == null) throw new ArgumentNullException(nameof(owner));
-            if(obj == null) throw new ArgumentNullException(nameof(obj));
+            if (owner == null) throw new ArgumentNullException(nameof(owner));
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
             return owner.ApiVersion == obj.ApiVersion && owner.Kind == obj.Kind && owner.Name == obj.Name() && owner.Uid == obj.Uid();
         }
     }
@@ -322,7 +360,7 @@ namespace k8s.Models
         public override string ToString()
         {
             string reason = Reason;
-            if(string.IsNullOrEmpty(reason) && Code.GetValueOrDefault() != 0)
+            if (string.IsNullOrEmpty(reason) && Code.GetValueOrDefault() != 0)
             {
                 reason = ((HttpStatusCode)Code.Value).ToString();
             }
