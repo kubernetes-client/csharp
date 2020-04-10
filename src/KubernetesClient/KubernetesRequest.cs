@@ -453,6 +453,17 @@ namespace k8s
         /// <inheritdoc/>
         public override string ToString() => Method().Method + " " + GetRequestUri();
 
+        /// <summary>Creates a <see cref="Watch{T}"/> that watches for changes to the item or list of items represented by this request.</summary>
+        /// <typeparam name="T">The type of item to watch for changes to</typeparam>
+        /// <param name="initialVersion">The initial version to watch for. This will be used to set the <see cref="WatchVersion(string)"/>
+        /// before creating the watch. If null or empty, the watch will start from the current version. The default is null.
+        /// </param>
+        /// <param name="isListWatch">Indicates whether the request will return a list of possibly multiple items (true) or only a single item
+        /// (false). If null, the default value will be false if <see cref="Name()"/> is set and true if <see cref="Name()"/> is not set.
+        /// </param>
+        public Watch<T> ToWatch<T>(string initialVersion = null, bool? isListWatch = null) where T : IKubernetesObject, IMetadata<V1ObjectMeta>
+            => new Watch<T>(this, initialVersion, isListWatch);
+
         /// <summary>Gets the resource type access (e.g. "pods").</summary>
         public string Type() => _type;
 
