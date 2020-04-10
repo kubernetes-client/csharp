@@ -72,7 +72,7 @@ namespace k8s
             get => _scheme;
             set
             {
-                if(value == null) throw new ArgumentNullException(nameof(Scheme));
+                if (value == null) throw new ArgumentNullException(nameof(Scheme));
                 _scheme = value;
             }
         }
@@ -278,12 +278,12 @@ namespace k8s
         /// </summary>
         internal static ServiceClientCredentials CreateCredentials(KubernetesClientConfiguration config)
         {
-            if(config == null) throw new ArgumentNullException(nameof(config));
-            if(!string.IsNullOrEmpty(config.AccessToken))
+            if (config == null) throw new ArgumentNullException(nameof(config));
+            if (!string.IsNullOrEmpty(config.AccessToken))
             {
                 return new TokenCredentials(config.AccessToken);
             }
-            else if(!string.IsNullOrEmpty(config.Username))
+            else if (!string.IsNullOrEmpty(config.Username))
             {
                 return new BasicAuthenticationCredentials() { UserName = config.Username, Password = config.Password };
             }

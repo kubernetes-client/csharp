@@ -15,7 +15,7 @@ namespace k8s
         /// <summary>Gets the Kubernetes group, version, kind, and API path segment for the given type of object.</summary>
         public void GetGVK(Type type, out string group, out string version, out string kind, out string path)
         {
-            if(!TryGetGVK(type, out group, out version, out kind, out path))
+            if (!TryGetGVK(type, out group, out version, out kind, out path))
             {
                 throw new ArgumentException($"The GVK of type {type.Name} is unknown.");
             }
@@ -79,7 +79,7 @@ namespace k8s
         /// <summary>Removes GVK information about the given type of object.</summary>
         public void RemoveGVK(Type type)
         {
-            lock(gvks) gvks.Remove(type);
+            lock (gvks) gvks.Remove(type);
         }
 
         /// <summary>Removes GVK information about the given type of object.</summary>
@@ -88,11 +88,11 @@ namespace k8s
         /// <summary>Sets GVK information for the given type of object.</summary>
         public void SetGVK(Type type, string group, string version, string kind, string path)
         {
-            if(type == null) throw new ArgumentNullException(nameof(type));
-            if(string.IsNullOrEmpty(version)) throw new ArgumentNullException(nameof(version));
-            if(string.IsNullOrEmpty(kind)) throw new ArgumentNullException(nameof(kind));
-            if(string.IsNullOrEmpty(path)) throw new ArgumentNullException(nameof(path));
-            lock(gvks) gvks[type] = Tuple.Create(group ?? string.Empty, version, kind, path);
+            if (type == null) throw new ArgumentNullException(nameof(type));
+            if (string.IsNullOrEmpty(version)) throw new ArgumentNullException(nameof(version));
+            if (string.IsNullOrEmpty(kind)) throw new ArgumentNullException(nameof(kind));
+            if (string.IsNullOrEmpty(path)) throw new ArgumentNullException(nameof(path));
+            lock (gvks) gvks[type] = Tuple.Create(group ?? string.Empty, version, kind, path);
         }
 
         /// <summary>Sets GVK information for the given type of object.</summary>
@@ -106,13 +106,13 @@ namespace k8s
         /// <summary>Gets the Kubernetes group, version, kind, and API path segment for the given type of object.</summary>
         public bool TryGetGVK(Type type, out string group, out string version, out string kind, out string path)
         {
-            if(type == null) throw new ArgumentNullException(nameof(type));
-            lock(gvks)
+            if (type == null) throw new ArgumentNullException(nameof(type));
+            lock (gvks)
             {
-                if(!gvks.TryGetValue(type, out Tuple<string,string,string,string> gvk))
+                if (!gvks.TryGetValue(type, out Tuple<string,string,string,string> gvk))
                 {
                     var attr = type.GetCustomAttribute<k8s.Models.KubernetesEntityAttribute>(); // newer types have this attribute
-                    if(attr != null)
+                    if (attr != null)
                     {
                         gvk = Tuple.Create(attr.Group, attr.ApiVersion, attr.Kind, attr.PluralName);
                     }
@@ -120,7 +120,7 @@ namespace k8s
                     {
                         const BindingFlags Flags = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static;
                         FieldInfo kindf = type.GetField("KubeKind", Flags), versionf = type.GetField("KubeApiVersion", Flags);
-                        if(kindf != null && versionf != null)
+                        if (kindf != null && versionf != null)
                         {
                             FieldInfo groupf = type.GetField("KubeGroup", Flags);
                             string k = (string)kindf.GetValue(null);
@@ -131,7 +131,7 @@ namespace k8s
                     gvks[type] = gvk;
                 }
 
-                if(gvk != null)
+                if (gvk != null)
                 {
                     (group, version, kind, path) = gvk;
                     return true;
@@ -161,7 +161,7 @@ namespace k8s
         /// </summary>
         public bool TryGetVK(Type type, out string apiVersion, out string kind, out string path)
         {
-            if(TryGetGVK(type, out string group, out string version, out kind, out path))
+            if (TryGetGVK(type, out string group, out string version, out kind, out path))
             {
                 apiVersion = string.IsNullOrEmpty(group) ? version : group + "/" + version;
                 return true;
@@ -188,8 +188,8 @@ namespace k8s
         /// <summary>Attempts to guess a type's API path segment based on its kind.</summary>
         internal static string GuessPath(string kind)
         {
-            if(string.IsNullOrEmpty(kind)) return null;
-            if(kind.Length > 4 && kind.EndsWith("List")) kind = kind.Substring(0, kind.Length-4); // e.g. PodList -> Pod
+            if (string.IsNullOrEmpty(kind)) return null;
+            if (kind.Length > 4 && kind.EndsWith("List")) kind = kind.Substring(0, kind.Length-4); // e.g. PodList -> Pod
             kind = kind.ToLowerInvariant(); // e.g. Pod -> pod
             return kind + (kind[kind.Length-1] == 's' ? "es" : "s"); // e.g. pod -> pods
         }

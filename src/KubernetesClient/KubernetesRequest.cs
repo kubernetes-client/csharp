@@ -21,7 +21,7 @@ namespace k8s
         /// <summary>Initializes a <see cref="KubernetesRequest"/> based on a <see cref="KubernetesClient"/>.</summary>
         public KubernetesRequest(Kubernetes client)
         {
-            if(client == null) throw new ArgumentNullException(nameof(client));
+            if (client == null) throw new ArgumentNullException(nameof(client));
             (baseUri, credentials, this.client) = (client.BaseUri.ToString(), client.Credentials, client.HttpClient);
             Scheme(client.Scheme);
         }
@@ -39,9 +39,9 @@ namespace k8s
         /// <remarks>Any necessary SSL configuration must have already been applied to the <paramref name="client"/>.</remarks>
         public KubernetesRequest(KubernetesClientConfiguration config, HttpClient client = null, KubernetesScheme scheme = null)
         {
-            if(config == null) throw new ArgumentNullException(nameof(config));
+            if (config == null) throw new ArgumentNullException(nameof(config));
             this.baseUri = config.Host;
-            if(string.IsNullOrEmpty(this.baseUri)) throw new ArgumentException(nameof(config)+".Host");
+            if (string.IsNullOrEmpty(this.baseUri)) throw new ArgumentException(nameof(config)+".Host");
             credentials = Kubernetes.CreateCredentials(config);
             this.client = client ?? new HttpClient();
             Scheme(scheme);
@@ -61,8 +61,8 @@ namespace k8s
         /// <remarks>Any necessary SSL configuration must have already been applied to the <paramref name="client"/>.</remarks>
         public KubernetesRequest(Uri baseUri, ServiceClientCredentials credentials = null, HttpClient client = null, KubernetesScheme scheme = null)
         {
-            if(baseUri == null) throw new ArgumentNullException(nameof(baseUri));
-            if(!baseUri.IsAbsoluteUri) throw new ArgumentException("The base URI must be absolute.", nameof(baseUri));
+            if (baseUri == null) throw new ArgumentNullException(nameof(baseUri));
+            if (!baseUri.IsAbsoluteUri) throw new ArgumentException("The base URI must be absolute.", nameof(baseUri));
             (this.baseUri, this.credentials, this.client) = (baseUri.ToString(), credentials, client = client ?? new HttpClient());
             Scheme(scheme);
         }
@@ -102,31 +102,31 @@ namespace k8s
         /// <summary>Clears custom header values with the given name.</summary>
         public KubernetesRequest ClearHeader(string headerName)
         {
-            if(headerName == null) throw new ArgumentNullException(nameof(headerName));
+            if (headerName == null) throw new ArgumentNullException(nameof(headerName));
             CheckHeaderName(headerName);
-            if(headers != null) headers.Remove(headerName);
+            if (headers != null) headers.Remove(headerName);
             return this;
         }
 
         /// <summary>Clears all custom header values.</summary>
         public KubernetesRequest ClearHeaders()
         {
-            if(headers != null) headers.Clear();
+            if (headers != null) headers.Clear();
             return this;
         }
 
         /// <summary>Clears all query-string parameters.</summary>
         public KubernetesRequest ClearQuery()
         {
-            if(query != null) query.Clear();
+            if (query != null) query.Clear();
             return this;
         }
 
         /// <summary>Clears all query-string parameters with the given key.</summary>
         public KubernetesRequest ClearQuery(string key)
         {
-            if(key == null) throw new ArgumentNullException(nameof(key));
-            if(query != null) query.Remove(key);
+            if (key == null) throw new ArgumentNullException(nameof(key));
+            if (query != null) query.Remove(key);
             return this;
         }
 
@@ -134,15 +134,15 @@ namespace k8s
         public KubernetesRequest Clone()
         {
             var clone = (KubernetesRequest)MemberwiseClone();
-            if(headers != null)
+            if (headers != null)
             {
                 clone.headers = new Dictionary<string, List<string>>(headers.Count);
-                foreach(KeyValuePair<string, List<string>> pair in headers) clone.headers.Add(pair.Key, new List<string>(pair.Value));
+                foreach (KeyValuePair<string, List<string>> pair in headers) clone.headers.Add(pair.Key, new List<string>(pair.Value));
             }
-            if(query != null)
+            if (query != null)
             {
                 clone.query = new Dictionary<string, List<string>>(query.Count);
-                foreach(KeyValuePair<string, List<string>> pair in query) clone.query.Add(pair.Key, new List<string>(pair.Value));
+                foreach (KeyValuePair<string, List<string>> pair in query) clone.query.Add(pair.Key, new List<string>(pair.Value));
             }
             return clone;
         }
@@ -195,7 +195,7 @@ namespace k8s
         /// <exception cref="KubernetesException">Thrown if the response was any error besides 404 Not Found.</exception>
         public async Task<T> ExecuteAsync<T>(bool failIfMissing, CancellationToken cancelToken = default)
         {
-            if(_watchVersion != null) throw new InvalidOperationException("Watch requests cannot be deserialized all at once.");
+            if (_watchVersion != null) throw new InvalidOperationException("Watch requests cannot be deserialized all at once.");
             cancelToken.ThrowIfCancellationRequested();
             HttpRequestMessage reqMsg = await CreateRequestMessage(cancelToken).ConfigureAwait(false);
             return await ExecuteMessageAsync<T>(reqMsg, failIfMissing, cancelToken).ConfigureAwait(false);
@@ -220,7 +220,7 @@ namespace k8s
         public string GetHeader(string key)
         {
             List<string> values = null;
-            if(headers != null) headers.TryGetValue(key, out values);
+            if (headers != null) headers.TryGetValue(key, out values);
             return values == null || values.Count == 0 ? null : values.Count == 1 ? values[0] :
                 throw new InvalidOperationException($"There are multiple query-string parameters named '{key}'.");
         }
@@ -230,7 +230,7 @@ namespace k8s
         public List<string> GetHeaderValues(string key)
         {
             List<string> values = null;
-            if(headers != null) headers.TryGetValue(key, out values);
+            if (headers != null) headers.TryGetValue(key, out values);
             return values;
         }
 
@@ -248,7 +248,7 @@ namespace k8s
         public List<string> GetQueryValues(string key)
         {
             List<string> values = null;
-            if(query != null) query.TryGetValue(key, out values);
+            if (query != null) query.TryGetValue(key, out values);
             return values;
         }
 
@@ -268,9 +268,9 @@ namespace k8s
         /// </remarks>
         public KubernetesRequest GVK(IKubernetesObject obj)
         {
-            if(obj == null) throw new ArgumentNullException();
+            if (obj == null) throw new ArgumentNullException();
             GVK(obj.GetType());
-            if(!string.IsNullOrEmpty(obj.ApiVersion)) // if the object has an API version set, use it...
+            if (!string.IsNullOrEmpty(obj.ApiVersion)) // if the object has an API version set, use it...
             {
                 int slash = obj.ApiVersion.IndexOf('/'); // the ApiVersion field is in the form "version" or "group/version"
                 Group(slash >= 0 ? obj.ApiVersion.Substring(0, slash) : null).Version(obj.ApiVersion.Substring(slash+1));
@@ -290,7 +290,7 @@ namespace k8s
         /// </summary>
         public KubernetesRequest GVK(Type type)
         {
-            if(type == null) throw new ArgumentNullException(nameof(type));
+            if (type == null) throw new ArgumentNullException(nameof(type));
             _scheme.GetGVK(type, out string group, out string version, out string kind, out string path);
             return Group(NormalizeEmpty(group)).Version(version).Type(path);
         }
@@ -344,7 +344,7 @@ namespace k8s
         public KubernetesRequest RawUri(string uri)
         {
             uri = NormalizeEmpty(uri);
-            if(uri != null && uri[0] != '/') throw new ArgumentException("The URI must begin with a slash.");
+            if (uri != null && uri[0] != '/') throw new ArgumentException("The URI must begin with a slash.");
             _rawUri = uri;
             return this;
         }
@@ -384,7 +384,7 @@ namespace k8s
         public Task<T> ReplaceAsync<T>(T obj, Func<T,bool> modify, bool failIfMissing = false, CancellationToken cancelToken = default)
             where T : class
         {
-            if(modify == null) throw new ArgumentNullException(nameof(modify));
+            if (modify == null) throw new ArgumentNullException(nameof(modify));
             return ReplaceAsync(obj, (o,ct) => Task.FromResult(modify(o)), failIfMissing, cancelToken);
         }
 
@@ -401,12 +401,12 @@ namespace k8s
             T obj, Func<T,CancellationToken,Task<bool>> modify, bool failIfMissing = false, CancellationToken cancelToken = default)
             where T : class
         {
-            if(modify == null) throw new ArgumentNullException(nameof(modify));
-            if(_watchVersion != null) throw new InvalidOperationException("Watches cannot be updated.");
+            if (modify == null) throw new ArgumentNullException(nameof(modify));
+            if (_watchVersion != null) throw new InvalidOperationException("Watches cannot be updated.");
             KubernetesRequest putReq = null;
-            while(true)
+            while (true)
             {
-                if(obj == null) // if we need to load the resource...
+                if (obj == null) // if we need to load the resource...
                 {
                     cancelToken.ThrowIfCancellationRequested();
                     HttpRequestMessage getMsg = await CreateRequestMessage(cancelToken).ConfigureAwait(false); // load it with a GET request
@@ -415,13 +415,13 @@ namespace k8s
                 }
                 cancelToken.ThrowIfCancellationRequested();
                 // if the resource is missing or no changes are needed, return it as-is
-                if(obj == null || !await modify(obj, cancelToken).ConfigureAwait(false)) return obj;
-                if(putReq == null) putReq = Clone().Put();
+                if (obj == null || !await modify(obj, cancelToken).ConfigureAwait(false)) return obj;
+                if (putReq == null) putReq = Clone().Put();
                 KubernetesResponse resp = await putReq.Body(obj).ExecuteAsync(cancelToken).ConfigureAwait(false);  // otherwise, update it
-                if(resp.StatusCode != HttpStatusCode.Conflict) // if there was no conflict, return the result
+                if (resp.StatusCode != HttpStatusCode.Conflict) // if there was no conflict, return the result
                 {
-                    if(resp.IsNotFound && !failIfMissing) return null;
-                    else if(resp.IsError) throw new KubernetesException(await resp.GetStatusAsync().ConfigureAwait(false));
+                    if (resp.IsNotFound && !failIfMissing) return null;
+                    else if (resp.IsError) throw new KubernetesException(await resp.GetStatusAsync().ConfigureAwait(false));
                     else return await resp.GetBodyAsync<T>().ConfigureAwait(false);
                 }
                 obj = null; // otherwise, there was a conflict, so reload the item
@@ -447,9 +447,9 @@ namespace k8s
         public KubernetesRequest Set(IKubernetesObject obj, bool setBody = true)
         {
             GVK(obj);
-            if(setBody) Body(obj);
+            if (setBody) Body(obj);
             var kobj = obj as IMetadata<V1ObjectMeta>;
-            if(kobj != null) Namespace(kobj.Namespace()).Name(!string.IsNullOrEmpty(kobj.Uid()) ? kobj.Name() : null);
+            if (kobj != null) Namespace(kobj.Namespace()).Name(!string.IsNullOrEmpty(kobj.Uid()) ? kobj.Name() : null);
             return this;
         }
 
@@ -524,9 +524,9 @@ namespace k8s
         /// <summary>Adds a value to the query string or headers.</summary>
         KubernetesRequest Add(ref Dictionary<string,List<string>> dict, string key, string value)
         {
-            if(string.IsNullOrEmpty(key)) throw new ArgumentNullException(nameof(key));
-            if(dict == null) dict = new Dictionary<string, List<string>>();
-            if(!dict.TryGetValue(key, out List<string> values)) dict[key] = values = new List<string>();
+            if (string.IsNullOrEmpty(key)) throw new ArgumentNullException(nameof(key));
+            if (dict == null) dict = new Dictionary<string, List<string>>();
+            if (!dict.TryGetValue(key, out List<string> values)) dict[key] = values = new List<string>();
             values.Add(value);
             return this;
         }
@@ -534,11 +534,11 @@ namespace k8s
         /// <summary>Adds a value to the query string or headers.</summary>
         KubernetesRequest Add(ref Dictionary<string, List<string>> dict, string key, IEnumerable<string> values)
         {
-            if(string.IsNullOrEmpty(key)) throw new ArgumentNullException(nameof(key));
-            if(values != null)
+            if (string.IsNullOrEmpty(key)) throw new ArgumentNullException(nameof(key));
+            if (values != null)
             {
-                if(dict == null) dict = new Dictionary<string, List<string>>();
-                if(!dict.TryGetValue(key, out List<string> list)) dict[key] = list = new List<string>();
+                if (dict == null) dict = new Dictionary<string, List<string>>();
+                if (!dict.TryGetValue(key, out List<string> list)) dict[key] = list = new List<string>();
                 list.AddRange(values);
             }
             return this;
@@ -547,9 +547,9 @@ namespace k8s
         /// <summary>Sets a value in the query string or headers.</summary>
         KubernetesRequest Set(ref Dictionary<string,List<string>> dict, string key, string value)
         {
-            if(string.IsNullOrEmpty(key)) throw new ArgumentNullException(nameof(key));
+            if (string.IsNullOrEmpty(key)) throw new ArgumentNullException(nameof(key));
             dict = dict ?? new Dictionary<string, List<string>>();
-            if(!dict.TryGetValue(key, out List<string> values)) dict[key] = values = new List<string>();
+            if (!dict.TryGetValue(key, out List<string> values)) dict[key] = values = new List<string>();
             values.Clear();
             values.Add(value);
             return this;
@@ -563,17 +563,17 @@ namespace k8s
 #endif
         {
             var req = new HttpRequestMessage(Method(), GetRequestUri());
-            if(credentials != null) await credentials.ProcessHttpRequestAsync(req, cancelToken).ConfigureAwait(false);
+            if (credentials != null) await credentials.ProcessHttpRequestAsync(req, cancelToken).ConfigureAwait(false);
 
             // add the headers
-            if(_accept != null) req.Headers.Add("Accept", _accept);
+            if (_accept != null) req.Headers.Add("Accept", _accept);
             List<KeyValuePair<string,List<string>>> contentHeaders = null;
-            if(headers != null && headers.Count != 0) // add custom headers
+            if (headers != null && headers.Count != 0) // add custom headers
             {
                 contentHeaders = new List<KeyValuePair<string,List<string>>>(); // some headers must be added to .Content.Headers. track them
-                foreach(KeyValuePair<string,List<string>> pair in headers)
+                foreach (KeyValuePair<string,List<string>> pair in headers)
                 {
-                    if(!req.Headers.TryAddWithoutValidation(pair.Key, pair.Value)) // if it's not legal to set this header on the request...
+                    if (!req.Headers.TryAddWithoutValidation(pair.Key, pair.Value)) // if it's not legal to set this header on the request...
                     {
                         contentHeaders.Add(new KeyValuePair<string,List<string>>(pair.Key, pair.Value)); // assume we should set it on the content
                         break;
@@ -582,21 +582,21 @@ namespace k8s
             }
 
             // add the body, if any
-            if(_body != null)
+            if (_body != null)
             {
-                if(_body is byte[] bytes) req.Content = new ByteArrayContent(bytes);
-                else if(_body is Stream stream) req.Content = new StreamContent(stream);
+                if (_body is byte[] bytes) req.Content = new ByteArrayContent(bytes);
+                else if (_body is Stream stream) req.Content = new StreamContent(stream);
                 else
                 {
                     req.Content = new StringContent(
                         _body as string ?? JsonConvert.SerializeObject(_body, Kubernetes.DefaultJsonSettings), Encoding.UTF8);
                 }
                 req.Content.Headers.ContentType = new MediaTypeHeaderValue(_mediaType ?? "application/json") { CharSet = "UTF-8" };
-                if(contentHeaders != null && contentHeaders.Count != 0) // go through the headers we couldn't set on the request
+                if (contentHeaders != null && contentHeaders.Count != 0) // go through the headers we couldn't set on the request
                 {
-                    foreach(KeyValuePair<string, List<string>> pair in contentHeaders)
+                    foreach (KeyValuePair<string, List<string>> pair in contentHeaders)
                     {
-                        if(!req.Content.Headers.TryAddWithoutValidation(pair.Key, pair.Value)) // if we can't set it on the content either...
+                        if (!req.Content.Headers.TryAddWithoutValidation(pair.Key, pair.Value)) // if we can't set it on the content either...
                         {
                             throw new InvalidOperationException($"{pair.Value} is a response header and cannot be set on the request.");
                         }
@@ -610,14 +610,14 @@ namespace k8s
         {
             cancelToken.ThrowIfCancellationRequested();
             KubernetesResponse resp = new KubernetesResponse(await client.SendAsync(msg, cancelToken).ConfigureAwait(false));
-            if(resp.IsNotFound && !failIfMissing) return default(T);
-            else if(resp.IsError) throw new KubernetesException(await resp.GetStatusAsync().ConfigureAwait(false));
+            if (resp.IsNotFound && !failIfMissing) return default(T);
+            else if (resp.IsError) throw new KubernetesException(await resp.GetStatusAsync().ConfigureAwait(false));
             else return await resp.GetBodyAsync<T>().ConfigureAwait(false);
         }
 
         string GetRequestUri()
         {
-            if(_rawUri != null && (_group ?? _name ?? _ns ?? _subresource ?? _type ?? _version) != null)
+            if (_rawUri != null && (_group ?? _name ?? _ns ?? _subresource ?? _type ?? _version) != null)
             {
                 throw new InvalidOperationException("You cannot use both raw and piecemeal URIs.");
             }
@@ -625,40 +625,40 @@ namespace k8s
             // construct the request URL
             var sb = new StringBuilder();
             sb.Append(baseUri);
-            if(_rawUri != null) // if a raw URL was given, use it
+            if (_rawUri != null) // if a raw URL was given, use it
             {
-                if(sb[sb.Length-1] == '/') sb.Length--; // the raw URI starts with a slash, so ensure the base URI doesn't end with one
+                if (sb[sb.Length-1] == '/') sb.Length--; // the raw URI starts with a slash, so ensure the base URI doesn't end with one
                 sb.Append(_rawUri);
             }
             else // otherwise, construct it piecemeal
             {
-                if(sb[sb.Length-1] != '/') sb.Append('/'); // ensure the base URI ends with a slash
-                if(_group != null) sb.Append("apis/").Append(_group);
+                if (sb[sb.Length-1] != '/') sb.Append('/'); // ensure the base URI ends with a slash
+                if (_group != null) sb.Append("apis/").Append(_group);
                 else sb.Append("api");
                 sb.Append('/').Append(_version ?? "v1");
-                if(_ns != null) sb.Append("/namespaces/").Append(_ns);
+                if (_ns != null) sb.Append("/namespaces/").Append(_ns);
                 sb.Append('/').Append(_type);
-                if(_name != null) sb.Append('/').Append(_name);
-                if(_subresource != null) sb.Append('/').Append(_subresource);
+                if (_name != null) sb.Append('/').Append(_name);
+                if (_subresource != null) sb.Append('/').Append(_subresource);
             }
             bool firstParam = true;
-            if(query != null) // then add the query string, if any
+            if (query != null) // then add the query string, if any
             {
-                foreach(KeyValuePair<string,List<string>> pair in query)
+                foreach (KeyValuePair<string,List<string>> pair in query)
                 {
                     string key = Uri.EscapeDataString(pair.Key);
-                    foreach(string value in pair.Value)
+                    foreach (string value in pair.Value)
                     {
                         sb.Append(firstParam ? '?' : '&').Append(key).Append('=');
-                        if(!string.IsNullOrEmpty(value)) sb.Append(Uri.EscapeDataString(value));
+                        if (!string.IsNullOrEmpty(value)) sb.Append(Uri.EscapeDataString(value));
                         firstParam = false;
                     }
                 }
             }
-            if(_watchVersion != null)
+            if (_watchVersion != null)
             {
                 sb.Append(firstParam ? '?' : '&').Append("watch=1");
-                if(_watchVersion.Length != 0) sb.Append("&resourceVersion=").Append(_watchVersion);
+                if (_watchVersion.Length != 0) sb.Append("&resourceVersion=").Append(_watchVersion);
             }
             return sb.ToString();
         }
@@ -678,7 +678,7 @@ namespace k8s
 
         static string CheckHeaderName(string name)
         {
-            if(name == "Accept" || name == "Content-Type")
+            if (name == "Accept" || name == "Content-Type")
             {
                 throw new ArgumentException($"The {name} header must be set using the corresponding property.");
             }
@@ -714,7 +714,7 @@ namespace k8s
         /// <summary>Returns the response body as a string.</summary>
         public async Task<string> GetBodyAsync()
         {
-            if(body == null)
+            if (body == null)
             {
                 body = Message.Content != null ? await Message.Content.ReadAsStringAsync().ConfigureAwait(false) : string.Empty;
             }
@@ -729,9 +729,9 @@ namespace k8s
         public async Task<object> GetBodyAsync(Type type, bool failIfEmpty = false)
         {
             string body = await GetBodyAsync().ConfigureAwait(false);
-            if(string.IsNullOrWhiteSpace(body))
+            if (string.IsNullOrWhiteSpace(body))
             {
-                if(!failIfEmpty) throw new InvalidOperationException("The response body was empty.");
+                if (!failIfEmpty) throw new InvalidOperationException("The response body was empty.");
                 return null;
             }
             return JsonConvert.DeserializeObject(body, type, Kubernetes.DefaultJsonSettings);
@@ -746,9 +746,9 @@ namespace k8s
         public async Task<T> GetBodyAsync<T>(bool failIfEmpty = false)
         {
             string body = await GetBodyAsync().ConfigureAwait(false);
-            if(string.IsNullOrWhiteSpace(body))
+            if (string.IsNullOrWhiteSpace(body))
             {
-                if(failIfEmpty) throw new InvalidOperationException("The response body was empty.");
+                if (failIfEmpty) throw new InvalidOperationException("The response body was empty.");
                 return default(T);
             }
             return JsonConvert.DeserializeObject<T>(body, Kubernetes.DefaultJsonSettings);
@@ -762,9 +762,9 @@ namespace k8s
             try
             {
                 var status = await GetBodyAsync<V1Status>().ConfigureAwait(false);
-                if(status != null && (status.Status == "Success" || status.Status == "Failure")) return status;
+                if (status != null && (status.Status == "Success" || status.Status == "Failure")) return status;
             }
-            catch(JsonException) { }
+            catch (JsonException) { }
             return new V1Status()
             {
                 Status = IsError ? "Failure" : "Success", Code = (int)StatusCode, Reason = StatusCode.ToString(), Message = body
