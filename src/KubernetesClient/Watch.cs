@@ -440,7 +440,7 @@ namespace k8s
                 while(buffer.Length != 0 && (charRead != charWrite || await EnsureDataAsync().ConfigureAwait(false)))
                 {
                     int toRead = Math.Min(buffer.Length, charWrite-charRead);
-                    charBuffer.AsMemory(0, toRead).CopyTo(buffer);
+                    charBuffer.AsSpan(charRead, toRead).CopyTo(buffer.Span);
                     totalRead += toRead;
                     charRead += toRead;
                     if (!block) break;
@@ -449,17 +449,17 @@ namespace k8s
                 return totalRead;
             }
 #else
-            async Task<int> ReadAsync(char[] buffer, int index, int length, bool block)
+            async Task<int> ReadAsync(char[] buffer, int index, int count, bool block)
             {
                 int start = index;
-                while(length != 0 && (charRead != charWrite || await EnsureDataAsync().ConfigureAwait(false)))
+                while(count != 0 && (charRead != charWrite || await EnsureDataAsync().ConfigureAwait(false)))
                 {
-                    int toRead = Math.Min(length, charWrite-charRead);
-                    Array.Copy(charBuffer, 0, buffer, index, toRead);
+                    int toRead = Math.Min(count, charWrite-charRead);
+                    Array.Copy(charBuffer, charRead, buffer, index, toRead);
                     charRead += toRead;
                     index += toRead;
                     if (!block) break;
-                    length -= toRead;
+                    count -= toRead;
                 }
                 return index - start;
             }
