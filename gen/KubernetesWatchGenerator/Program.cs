@@ -3,11 +3,8 @@ using NSwag;
 using Nustache.Core;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace KubernetesWatchGenerator
@@ -227,10 +224,13 @@ namespace KubernetesWatchGenerator
             var kind = groupVersionKind["kind"] as string;
             var className = GetClassName(definition);
             var interfaces = new List<string>();
-            interfaces.Add("IKubernetesObject");
             if (definition.Properties.TryGetValue("metadata", out var metadataProperty))
             {
-                interfaces.Add($"IMetadata<{GetClassNameForSchemaDefinition(metadataProperty.Reference)}>");
+                interfaces.Add($"IKubernetesObject<{GetClassNameForSchemaDefinition(metadataProperty.Reference)}>");
+            }
+            else
+            {
+                interfaces.Add("IKubernetesObject");
             }
 
             if (definition.Properties.TryGetValue("items", out var itemsProperty))

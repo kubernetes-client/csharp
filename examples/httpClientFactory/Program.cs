@@ -32,7 +32,8 @@ namespace httpClientFactory
                                 serviceProvider.GetRequiredService<KubernetesClientConfiguration>(),
                                 httpClient);
                         })
-                        .ConfigurePrimaryHttpMessageHandler(config.CreateDefaultHttpClientHandler);
+                        .ConfigurePrimaryHttpMessageHandler(config.CreateDefaultHttpClientHandler)
+                        .AddHttpMessageHandler(KubernetesClientConfiguration.CreateWatchHandler);
 
                     // Add the class that uses the client
                     services.AddHostedService<PodListHostedService>();

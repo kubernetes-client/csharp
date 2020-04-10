@@ -14,7 +14,7 @@ namespace k8s
             {
                 if(this.SkipTlsVerify)
                 {
-                    httpClientHandler.ServerCertificateCustomValidationCallback = 
+                    httpClientHandler.ServerCertificateCustomValidationCallback =
                         (sender, certificate, chain, sslPolicyErrors) => true;
                 }
                 else
@@ -47,5 +47,7 @@ namespace k8s
 #endif
             }
         }
+
+        public static DelegatingHandler CreateWatchHandler() => new WatcherDelegatingHandler();
     }
 }

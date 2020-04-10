@@ -772,13 +772,11 @@ namespace k8s.Tests
                 var cts = new CancellationTokenSource();
                 cts.CancelAfter(TimeSpan.FromSeconds(2));
 
-                await Assert.ThrowsAnyAsync<TaskCanceledException>(async () =>
+                await Assert.ThrowsAnyAsync<OperationCanceledException>(async () =>
                 {
                     await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true, cancellationToken: cts.Token);
                 });
-
             }
-
         }
     }
 }
