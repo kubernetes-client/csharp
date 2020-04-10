@@ -295,7 +295,7 @@ namespace k8s
 
             // deserialize the watch event
             var e = new WatchEvent<T>();
-            bool gotType = false;
+            bool gotType = false, gotObject = false;
             while (true)
             {
 #if !NET452
@@ -303,7 +303,7 @@ namespace k8s
 #else
                 if (!reader.Read()) throw EOFError(); // move to the next property, if any
 #endif
-                if (reader.TokenType == JsonToken.EndObject) break;
+                if (reader.TokenType != JsonToken.PropertyName) break;
                 string name = (string)reader.Value;
 #if !NET452
                 if (!await reader.ReadAsync(cancelToken).ConfigureAwait(false)) throw EOFError(); // move to the property value
@@ -320,6 +320,7 @@ namespace k8s
                     if (!gotType) throw new JsonSerializationException("Expected type property before object.");
                     if (e.Type != WatchEventType.Error) e.Object = serializer.Deserialize<T>(reader);
                     else e.Error = serializer.Deserialize<V1Status>(reader);
+                    gotObject = true;
                 }
                 else
                 {
@@ -330,7 +331,7 @@ namespace k8s
 #endif
                 }
             }
-            if (!gotType) throw new JsonSerializationException("The stream does not appear to contain watch events.");
+            if (!gotObject) throw new JsonSerializationException("The stream does not appear to contain watch events.");
             return e;
         }
 
