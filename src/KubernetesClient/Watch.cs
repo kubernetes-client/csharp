@@ -158,7 +158,7 @@ namespace k8s
                                     {
                                         if (item.ApiVersion == null) item.ApiVersion = guessedApiVersion;
                                         if (item.Kind == null) item.Kind = guessedKind;
-                                        EventReceived(this, WatchEventType.Added, item);
+                                        EventReceived?.Invoke(this, WatchEventType.Added, item);
                                     }
                                 }
                                 InitialListSent?.Invoke(this);
@@ -298,18 +298,10 @@ namespace k8s
             bool gotType = false, gotObject = false;
             while (true)
             {
-#if !NET452
-                if (!await reader.ReadAsync(cancelToken).ConfigureAwait(false)) throw EOFError(); // move to the next property, if any
-#else
                 if (!reader.Read()) throw EOFError(); // move to the next property, if any
-#endif
                 if (reader.TokenType != JsonToken.PropertyName) break;
                 string name = (string)reader.Value;
-#if !NET452
-                if (!await reader.ReadAsync(cancelToken).ConfigureAwait(false)) throw EOFError(); // move to the property value
-#else
                 if (!reader.Read()) throw EOFError(); // move to the property value
-#endif
                 if (name == "type")
                 {
                     e.Type = (WatchEventType)Enum.Parse(typeof(WatchEventType), (string)reader.Value, true);
@@ -324,11 +316,7 @@ namespace k8s
                 }
                 else
                 {
-#if !NET452
-                    await reader.SkipAsync(cancelToken).ConfigureAwait(false); // move to the next property, if any
-#else
                     reader.Skip(); // move to the next property, if any
-#endif
                 }
             }
             if (!gotObject) throw new JsonSerializationException("The stream does not appear to contain watch events.");
