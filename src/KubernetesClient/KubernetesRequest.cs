@@ -285,6 +285,17 @@ namespace k8s
         /// <summary>Sets the Kubernetes namespace to access, or null or empty to not access a namespaced object.</summary>
         public KubernetesRequest Namespace(string ns) { _ns = ns; return this; }
 
+        /// <summary>Gets whether to use the old-style Kubernetes watch (e.g. /api/v1/watch/...) rather than the new-style watch.</summary>
+        public bool OldStyleWatch() => _oldStyleWatch;
+
+        /// <summary>Sets whether to use the old-style Kubernetes watch (e.g. /api/v1/watch/...) rather than the new-style watch.</summary>
+        /// <remarks>If set to false (the default), Kubernetes requires you to use a list request combined with a field selector to watch
+        /// a single item. If set to true, you can watch an item with a GET request to the specific item. If used with the the
+        /// <see cref="Watch{T}"/> class, it's generally not necessary to set this property because the watch class will usually apply a
+        /// suitable default.
+        /// </remarks>
+        public KubernetesRequest OldStyleWatch(bool value) { _oldStyleWatch = value; return this; }
+
         /// <summary>Gets the raw URL to access, relative to the configured Kubernetes host and not including the query string, or
         /// null if the URL will be constructed piecemeal based on the other properties.
         /// </summary>
@@ -597,7 +608,8 @@ namespace k8s
                 if(_group != null) sb.Append("apis/").Append(_group);
                 else sb.Append("api");
                 sb.Append('/').Append(_version ?? "v1");
-                if(_ns != null) sb.Append("/namespaces/").Append(_ns);
+                if (_oldStyleWatch) sb.Append("/watch");
+                if (_ns != null) sb.Append("/namespaces/").Append(_ns);
                 sb.Append('/').Append(_type);
                 if(_name != null) sb.Append('/').Append(_name);
                 if(_subresource != null) sb.Append('/').Append(_subresource);
@@ -634,7 +646,7 @@ namespace k8s
         object _body;
         HttpMethod _method;
         KubernetesScheme _scheme;
-        bool _streamResponse;
+        bool _oldStyleWatch, _streamResponse;
 
         static string NormalizeEmpty(string value) => string.IsNullOrEmpty(value) ? null : value; // normalizes empty strings to null
     }

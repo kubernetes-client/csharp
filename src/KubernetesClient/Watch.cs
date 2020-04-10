@@ -17,11 +17,32 @@ namespace k8s
         /// <param name="request">A <see cref="KubernetesRequest"/> that selects the item or list of items to watch</param>
         /// <param name="initialVersion">The resource version to resume from, or null to start from the current version</param>
         /// <param name="isListWatch">The value of the <see cref="IsListWatch"/> property, or null to use the default</param>
-        public Watch(KubernetesRequest request, string initialVersion = null, bool? isListWatch = null)
+        /// <param name="exactRequest">If true, no modifications will be made to the <paramref name="request"/>. If false, common modifications
+        /// will be made (although the original request will not be modified). See the remarks for details. The default is false.
+        /// </param>
+        /// <remarks>If <paramref name="exactRequest"/> is false, heuristics will be used to configure the request for watching as follows.
+        /// If <see cref="IsListWatch"/> is true, the "allowWatchBookmarks" query-string parameter will be set to true. Otherwise, if the
+        /// <see cref="KubernetesRequest.Name()"/> property is set but the <see cref="KubernetesRequest.Subresource()"/> property is not set,
+        /// an attempt will be made to configure the query for watching a single item. If the query has no
+        /// <see cref="KubernetesRequest.FieldSelector()"/> set, the name property will be replaced by a field selector that matches the name.
+        /// Otherwise, the <see cref="KubernetesRequest.OldStyleWatch(bool)"/> property will be set to true to allow watching the named item.
+        /// </remarks>
+        public Watch(KubernetesRequest request, string initialVersion = null, bool? isListWatch = null, bool exactRequest = false)
         {
             this.req = request?.Clone() ?? throw new ArgumentNullException();
             IsListWatch = isListWatch ?? req.Name() == null;
-            if (IsListWatch) req.AddQuery("allowWatchBookmarks", "true");
+            if (!exactRequest)
+            {
+                if (IsListWatch)
+                {
+                    req.SetQuery("allowWatchBookmarks", "true");
+                }
+                else if (req.Name() != null && req.Subresource() == null)
+                {
+                    if(req.FieldSelector() == null) req.OldStyleWatch(false).FieldSelector("metadata.name="+req.Name()).Name(null);
+                    else req.OldStyleWatch(true);
+                }
+            }
             LastVersion = initialVersion;
         }
 
@@ -265,7 +286,8 @@ namespace k8s
 
             // deserialize the watch event
             var e = new WatchEvent<T>();
-            for (bool gotType = false;;)
+            bool gotType = false;
+            while (true)
             {
                 reader.Read(); // move to the next property, if any
                 if (reader.TokenType != JsonToken.PropertyName) break;
@@ -287,6 +309,7 @@ namespace k8s
                     reader.Skip();
                 }
             }
+            if(!gotType) throw new JsonSerializationException("The stream does not appear to contain watch events.");
             return e;
         }
 
