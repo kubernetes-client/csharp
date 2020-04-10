@@ -38,6 +38,7 @@ namespace k8s.Tests
                     if(set)
                     {
                         set = false;
+                        e.Reset();
                         break;
                     }
                 }
@@ -55,6 +56,7 @@ namespace k8s.Tests
                 if(set)
                 {
                     set = false;
+                    e.Reset();
                     return Task.CompletedTask;
                 }
             }

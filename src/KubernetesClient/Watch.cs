@@ -59,7 +59,7 @@ namespace k8s
         /// from a known version, including when a resource version is passed to the constructor, it may not obtain an initial set of items
         /// and this event will not be raised.
         /// </summary>
-        public event Action<Watch<T>> InitialList;
+        public event Action<Watch<T>> InitialListSent;
 
         /// <summary>Raised after the watch is opened.</summary>
         public event Action<Watch<T>> Opened;
@@ -135,8 +135,8 @@ namespace k8s
                         else // if the response was successful, then the watch is open...
                         {
                             bool reset = LastVersion == null || list != null;
-                            if (reset && Reset != null) Reset(this); // if we may have lost events, let the client know
-                            if (Opened != null) Opened(this);
+                            if (reset) Reset?.Invoke(this); // if we may have lost events, let the client know
+                            Opened?.Invoke(this);
                             wasOpen = true; // since it was opened, we have to call OnClosed later
                             // if we started a new watch based on a list, send out the initial events from the list.
                             // otherwise, the initial event(s) will be sent from the watch
@@ -161,7 +161,7 @@ namespace k8s
                                         EventReceived(this, WatchEventType.Added, item);
                                     }
                                 }
-                                if (InitialList != null) InitialList(this);
+                                InitialListSent?.Invoke(this);
                             }
                             list = null; // the initial list may be large, so help out the garbage collector, maybe
                             using (var watchReader = new WatchReader<T>(response))
@@ -179,7 +179,7 @@ namespace k8s
                                         }
                                         else // otherwise, if the error was unknown...
                                         {
-                                            if (Error != null) Error(this, null, e.Error); // report and ignore it
+                                            Error?.Invoke(this, null, e.Error); // report and ignore it
                                         }
                                     }
                                     else // otherwise, no error occurred. update our version number and inform the client
@@ -187,9 +187,9 @@ namespace k8s
                                         LastVersion = e.Object.Metadata.ResourceVersion;
                                         if (e.Type != WatchEventType.Bookmark) // if it's a "real" event...
                                         {
-                                            if (EventReceived != null) EventReceived(this, e.Type, e.Object); // let the user know
+                                            EventReceived?.Invoke(this, e.Type, e.Object); // let the user know
                                             // if we're not in list mode, then the first event completes the initial list
-                                            if (firstItem && reset && !IsListWatch && InitialList != null) InitialList(this);
+                                            if (firstItem && reset && !IsListWatch) InitialListSent?.Invoke(this);
                                             firstItem = false;
                                         }
                                     }
@@ -199,22 +199,23 @@ namespace k8s
                     }
                 }
                 catch (OperationCanceledException) { }
+                catch (EndOfStreamException) { } // treat a sudden stream closure the same way we treat closure in between events
                 catch (Exception ex)
                 {
-                    if (Error != null) Error(this, ex, null);
+                    Error?.Invoke(this, ex, null);
                     try { await Task.Delay(OpenRetryTime, cts.Token).ConfigureAwait(false); }
                     catch (OperationCanceledException) { }
                 }
                 finally
                 {
-                    if (wasOpen && Closed != null) Closed(this);
+                    if (wasOpen) Closed?.Invoke(this);
                 }
             }
         }
 
         async Task ReportErrorAndWait(KubernetesResponse response)
         {
-            if (Error != null) Error(this, null, await response.GetStatusAsync().ConfigureAwait(false));
+            Error?.Invoke(this, null, await response.GetStatusAsync().ConfigureAwait(false));
             await Task.Delay(OpenRetryTime, cts.Token).ConfigureAwait(false); // and wait before trying again
         }
 
@@ -281,7 +282,7 @@ namespace k8s
             try
             {
                 streamReader.CancelToken = cancelToken;
-#if NETCOREAPP2_1
+#if !NET452
                 if (!await reader.ReadAsync(cancelToken).ConfigureAwait(false)) return null; // wait for the next event
 #else
                 if (!reader.Read()) return null; // wait for the next event
@@ -297,10 +298,18 @@ namespace k8s
             bool gotType = false;
             while (true)
             {
-                reader.Read(); // move to the next property, if any
-                if (reader.TokenType != JsonToken.PropertyName) break;
+#if !NET452
+                if (!await reader.ReadAsync(cancelToken).ConfigureAwait(false)) throw EOFError(); // move to the next property, if any
+#else
+                if (!reader.Read()) throw EOFError(); // move to the next property, if any
+#endif
+                if (reader.TokenType == JsonToken.EndObject) break;
                 string name = (string)reader.Value;
-                reader.Read(); // move to the property value
+#if !NET452
+                if (!await reader.ReadAsync(cancelToken).ConfigureAwait(false)) throw EOFError(); // move to the property value
+#else
+                if (!reader.Read()) throw EOFError(); // move to the property value
+#endif
                 if (name == "type")
                 {
                     e.Type = (WatchEventType)Enum.Parse(typeof(WatchEventType), (string)reader.Value, true);
@@ -314,7 +323,11 @@ namespace k8s
                 }
                 else
                 {
-                    reader.Skip();
+#if !NET452
+                    await reader.SkipAsync(cancelToken).ConfigureAwait(false); // move to the next property, if any
+#else
+                    reader.Skip(); // move to the next property, if any
+#endif
                 }
             }
             if (!gotType) throw new JsonSerializationException("The stream does not appear to contain watch events.");
@@ -382,15 +395,8 @@ namespace k8s
             {
                 if (charRead == charWrite)
                 {
-                    charRead = charWrite = 0;
-                    do
-                    {
-                        int bytesRead;
-                        try { bytesRead = stream.ReadAsync(byteBuffer, 0, byteBuffer.Length, CancelToken).GetAwaiter().GetResult(); }
-                        catch (OperationCanceledException) { bytesRead = 0; } // non-async callers aren't expecting OperationCanceledException
-                        if (bytesRead == 0) return false;
-                        charWrite = decoder.GetChars(byteBuffer, 0, bytesRead, charBuffer, 0);
-                    } while(charWrite == 0);
+                    try { return EnsureDataAsync().GetAwaiter().GetResult(); }
+                    catch (OperationCanceledException) { return false; } // non-async callers aren't expecting OperationCanceledException
                 }
                 return true;
             }
@@ -477,6 +483,8 @@ namespace k8s
         JsonTextReader reader;
         JsonSerializer serializer;
         CancelableStreamReader streamReader;
+
+        static EndOfStreamException EOFError() => new EndOfStreamException("Unexpected end of the watch stream.");
     }
 #endregion
 }

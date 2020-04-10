@@ -118,7 +118,7 @@ namespace k8s.Tests
                 w.Closed += _ => closeCount++;
                 w.Error += (_, ex, err) => error = err;
                 w.EventReceived += (_, t, o) => events.Add(new WatchEvent<V1Pod>() { Type = t, Object = o });
-                w.InitialList += _ => initialListCount++;
+                w.InitialListSent += _ => initialListCount++;
                 w.Opened += _ => openCount++;
                 w.Reset += _ => resetCount++;
 
@@ -258,7 +258,7 @@ namespace k8s.Tests
                 w.Closed += _ => closeCount++;
                 w.Error += (_, ex, err) => error = err;
                 w.EventReceived += (_, t, o) => events.Add(new WatchEvent<V1Pod>() { Type = t, Object = o });
-                w.InitialList += _ => initialListCount++;
+                w.InitialListSent += _ => initialListCount++;
                 w.Opened += _ => openCount++;
                 w.Reset += _ => resetCount++;
 
