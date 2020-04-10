@@ -55,9 +55,9 @@ namespace k8s
         /// <summary>Raised when an error occurs, either an exception or a failure status.</summary>
         public event Action<Watch<T>, Exception, V1Status> Error;
 
-        /// <summary>Raised after the initial list of item events has been sent when operating in list-watching mode (i.e.
-        /// when <see cref="IsListWatch"/> is true). If a resource version is passed to the constructor, the watch will attempt to
-        /// resume without obtaining an initial list, and this event may not be raised.
+        /// <summary>Raised after the initial set of item events has been sent after the watch is reset and opened. If the watch resumes
+        /// from a known version, including when a resource version is passed to the constructor, it may not obtain an initial set of items
+        /// and this event will not be raised.
         /// </summary>
         public event Action<Watch<T>> InitialList;
 
@@ -134,7 +134,8 @@ namespace k8s
                         }
                         else // if the response was successful, then the watch is open...
                         {
-                            if ((LastVersion == null || list != null) && Reset != null) Reset(this); // if we may have lost events, let the client know
+                            bool reset = LastVersion == null || list != null;
+                            if (reset && Reset != null) Reset(this); // if we may have lost events, let the client know
                             if (Opened != null) Opened(this);
                             wasOpen = true; // since it was opened, we have to call OnClosed later
                             // if we started a new watch based on a list, send out the initial events from the list.
@@ -143,8 +144,8 @@ namespace k8s
                             {
                                 if (EventReceived != null)
                                 {
-                                    // annoyingly, Kubernetes may exclude the API version and kind from items in lists and the list itself
-                                    // only has the API version (of the list). the kind is the kind of the list (e.g. PodList). 
+                                    // annoyingly, Kubernetes may exclude the API version and kind from items in lists. the list itself
+                                    // only has the API version (of the list), and the kind is the kind of the list (e.g. PodList)
                                     string guessedApiVersion, guessedKind;
                                     if (!req.Scheme().TryGetVK(typeof(T), out guessedApiVersion, out guessedKind)) // so try to get them from the scheme
                                     {
@@ -166,6 +167,7 @@ namespace k8s
                             using (var watchReader = new WatchReader<T>(response))
                             {
                                 WatchEvent<T> e;
+                                bool firstItem = true;
                                 while((e = await watchReader.ReadAsync(cts.Token).ConfigureAwait(false)) != null)
                                 {
                                     if (e.Type == WatchEventType.Error) // if an error occurred...
@@ -183,7 +185,13 @@ namespace k8s
                                     else // otherwise, no error occurred. update our version number and inform the client
                                     {
                                         LastVersion = e.Object.Metadata.ResourceVersion;
-                                        if (e.Type != WatchEventType.Bookmark && EventReceived != null) EventReceived(this, e.Type, e.Object);
+                                        if (e.Type != WatchEventType.Bookmark) // if it's a "real" event...
+                                        {
+                                            if (EventReceived != null) EventReceived(this, e.Type, e.Object); // let the user know
+                                            // if we're not in list mode, then the first event completes the initial list
+                                            if (firstItem && reset && !IsListWatch && InitialList != null) InitialList(this);
+                                            firstItem = false;
+                                        }
                                     }
                                 }
                             }

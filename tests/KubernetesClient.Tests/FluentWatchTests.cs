@@ -114,10 +114,11 @@ namespace k8s.Tests
             {
                 var events = new BlockingCollection<WatchEvent<V1Pod>>();
                 V1Status error = null;
-                int closeCount = 0, openCount = 0, resetCount = 0;
+                int closeCount = 0, initialListCount = 0, openCount = 0, resetCount = 0;
                 w.Closed += _ => closeCount++;
                 w.Error += (_, ex, err) => error = err;
                 w.EventReceived += (_, t, o) => events.Add(new WatchEvent<V1Pod>() { Type = t, Object = o });
+                w.InitialList += _ => initialListCount++;
                 w.Opened += _ => openCount++;
                 w.Reset += _ => resetCount++;
 
@@ -125,6 +126,7 @@ namespace k8s.Tests
                 Task runTask = w.Run(cts.Token);
                 Assert.Null(w.LastVersion);
                 Assert.True(pipeResetEvent.WaitOne(5000)); // wait for the initial connection
+                Assert.Equal(0, initialListCount);
 
                 // add some events and check that we receive them all
                 var pod = c.New<V1Pod>("ns", "name");
@@ -156,6 +158,7 @@ namespace k8s.Tests
                 Assert.False(events.TryTake(out we, 100));
                 Assert.Equal("4", w.LastVersion);
                 Assert.Equal(0, closeCount);
+                Assert.Equal(1, initialListCount);
                 Assert.Equal(1, openCount);
                 Assert.Equal(1, resetCount);
 
@@ -169,6 +172,7 @@ namespace k8s.Tests
                 Assert.Equal("4", we.Object.ResourceVersion());
                 Assert.False(events.TryTake(out we, 100));
                 Assert.Equal(1, closeCount);
+                Assert.Equal(2, initialListCount);
                 Assert.Equal(2, openCount);
                 Assert.Equal(2, resetCount);
                 Assert.Equal("4", w.LastVersion);
@@ -182,6 +186,7 @@ namespace k8s.Tests
                 Assert.Equal("4", we.Object.ResourceVersion());
                 Assert.False(events.TryTake(out we, 100));
                 Assert.Equal(1, closeCount); // it should not cause a reconnection
+                Assert.Equal(2, initialListCount);
                 Assert.Equal(2, openCount);
                 Assert.Equal(2, resetCount);
                 Assert.Equal("4", w.LastVersion);
@@ -199,6 +204,7 @@ namespace k8s.Tests
                 Assert.Equal("4", we.Object.ResourceVersion());
                 Assert.False(events.TryTake(out we, 100));
                 Assert.Equal(2, closeCount);
+                Assert.Equal(2, initialListCount);
                 Assert.Equal(3, openCount);
                 Assert.Equal(2, resetCount); // the version should not be reset
                 Assert.Null(error);
@@ -248,10 +254,11 @@ namespace k8s.Tests
             {
                 var events = new BlockingCollection<WatchEvent<V1Pod>>();
                 V1Status error = null;
-                int closeCount = 0, openCount = 0, resetCount = 0;
+                int closeCount = 0, openCount = 0, initialListCount = 0, resetCount = 0;
                 w.Closed += _ => closeCount++;
                 w.Error += (_, ex, err) => error = err;
                 w.EventReceived += (_, t, o) => events.Add(new WatchEvent<V1Pod>() { Type = t, Object = o });
+                w.InitialList += _ => initialListCount++;
                 w.Opened += _ => openCount++;
                 w.Reset += _ => resetCount++;
 
@@ -292,6 +299,7 @@ namespace k8s.Tests
                 Assert.False(events.TryTake(out we, 100));
                 Assert.Equal("13", w.LastVersion);
                 Assert.Equal(0, closeCount);
+                Assert.Equal(1, initialListCount);
                 Assert.Equal(1, openCount);
                 Assert.Equal(1, resetCount);
 
@@ -307,6 +315,7 @@ namespace k8s.Tests
                 Assert.Equal("13", we.Object.ResourceVersion());
                 Assert.False(events.TryTake(out we, 100));
                 Assert.Equal(1, closeCount);
+                Assert.Equal(2, initialListCount);
                 Assert.Equal(2, openCount);
                 Assert.Equal(2, resetCount);
                 Assert.Equal("13", w.LastVersion);
@@ -321,6 +330,7 @@ namespace k8s.Tests
                 Assert.Equal("14", we.Object.ResourceVersion());
                 Assert.False(events.TryTake(out we, 100));
                 Assert.Equal(1, closeCount); // it should not cause a reconnection
+                Assert.Equal(2, initialListCount);
                 Assert.Equal(2, openCount);
                 Assert.Equal(2, resetCount);
                 Assert.Equal("14", w.LastVersion);
@@ -340,6 +350,7 @@ namespace k8s.Tests
                 Assert.Equal("15", w.LastVersion);
                 Assert.False(events.TryTake(out we, 100)); // we should not get events from the initial list
                 Assert.Equal(2, closeCount);
+                Assert.Equal(2, initialListCount);
                 Assert.Equal(3, openCount);
                 Assert.Equal(2, resetCount); // the version should not be reset
                 Assert.Null(error);
