@@ -5,9 +5,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using k8s.Models;
+using k8s.Tests.Mock;
 using Newtonsoft.Json;
 using Xunit;
 
@@ -19,7 +19,7 @@ namespace k8s.Tests
         public void TestRequestProperties()
         {
             var testScheme = new KubernetesScheme();
-            var r = new KubernetesRequest(new Uri("http://somewhere"), new HttpClient(), testScheme);
+            var r = new KubernetesRequest(new Uri("http://somewhere"), scheme: testScheme);
 
             // verify the initial values
             Assert.Equal("application/json", r.Accept());
@@ -184,7 +184,7 @@ namespace k8s.Tests
         [Fact]
         public void TestRequestQuery()
         {
-            var r = new KubernetesRequest(new Uri("http://somewhere"), new HttpClient());
+            var r = new KubernetesRequest(new Uri("http://somewhere"));
 
             // test basic query-string operations
             Assert.Null(r.GetQuery("k"));
@@ -218,7 +218,7 @@ namespace k8s.Tests
         [Fact]
         public void TestRequestHeaders()
         {
-            var r = new KubernetesRequest(new Uri("http://somewhere"), new HttpClient());
+            var r = new KubernetesRequest(new Uri("http://somewhere"));
 
             // test basic header operations
             Assert.Null(r.GetHeader("k"));
@@ -253,10 +253,10 @@ namespace k8s.Tests
         [Fact]
         public async Task TestExecution()
         {
-            var h = new MockHandler(_ => new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("{\"apiVersion\":\"xyz\"}") });
+            var h = new MockHttpHandler(_ => new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("{\"apiVersion\":\"xyz\"}") });
             var c = new Kubernetes(new KubernetesClientConfiguration() { Host = "http://localhost:8080" }, new HttpClient(h));
 
-            await c.New<V1Pod>().AddHeader("Test", "yes").AddQuery("x", "a", "b c").Body("hello").ExecuteAsync();
+            await c.Request<V1Pod>().AddHeader("Test", "yes").AddQuery("x", "a", "b c").Body("hello").ExecuteAsync();
             Assert.Equal(HttpMethod.Get, h.Request.Method);
             Assert.Equal(new Uri("http://localhost:8080/api/v1/pods?x=a&x=b%20c"), h.Request.RequestUri);
             Assert.Equal("yes", h.Request.Headers.GetValues("Test").Single());
@@ -265,7 +265,7 @@ namespace k8s.Tests
             Assert.Equal("hello", await h.Request.Content.ReadAsStringAsync());
 
             var res = new CustomNew() { ApiVersion = "abc" };
-            await c.New<CustomNew>("ns", "name")
+            await c.Request<CustomNew>("ns", "name")
                 .Accept("text/plain").MediaType("text/rtf").Delete().DryRun(true).Body(res).Status().ExecuteAsync();
             Assert.Equal(HttpMethod.Delete, h.Request.Method);
             Assert.Equal(new Uri("http://localhost:8080/apis/cgrp/v3/namespaces/ns/newz/name/status?dryRun=All"), h.Request.RequestUri);
@@ -273,74 +273,74 @@ namespace k8s.Tests
             Assert.Equal("text/rtf; charset=UTF-8", h.Request.Content.Headers.ContentType.ToString());
             Assert.Equal("{\"apiVersion\":\"abc\"}", await h.Request.Content.ReadAsStringAsync());
 
-            await c.New().RawUri("/foobar").Post().LabelSelector("ls").WatchVersion("3").Body(Encoding.UTF8.GetBytes("bytes")).ExecuteAsync();
+            await c.Request().RawUri("/foobar").Post().LabelSelector("ls").WatchVersion("3").Body(Encoding.UTF8.GetBytes("bytes")).ExecuteAsync();
             Assert.Equal(HttpMethod.Post, h.Request.Method);
             Assert.Equal(new Uri("http://localhost:8080/foobar?labelSelector=ls&watch=1&resourceVersion=3"), h.Request.RequestUri);
             Assert.Equal("bytes", await h.Request.Content.ReadAsStringAsync());
 
-            await c.New().RawUri("/foobar/").WatchVersion("").Body(new MemoryStream(Encoding.UTF8.GetBytes("streaming"))).ExecuteAsync();
+            await c.Request().RawUri("/foobar/").WatchVersion("").Body(new MemoryStream(Encoding.UTF8.GetBytes("streaming"))).ExecuteAsync();
             Assert.Equal(new Uri("http://localhost:8080/foobar/?watch=1"), h.Request.RequestUri);
             Assert.Equal("streaming", await h.Request.Content.ReadAsStringAsync());
 
-            await Assert.ThrowsAsync<InvalidOperationException>(() => c.New().Name("x").RawUri("/y").ExecuteAsync()); // can't use raw and non-raw
+            await Assert.ThrowsAsync<InvalidOperationException>(() => c.Request().Name("x").RawUri("/y").ExecuteAsync()); // can't use raw and non-raw
 
             c = new Kubernetes(new KubernetesClientConfiguration() { Host = "http://localhost:8080", AccessToken = "token" }, new HttpClient(h));
-            await c.New().ExecuteAsync();
+            await c.Request().ExecuteAsync();
             Assert.Equal(new Uri("http://localhost:8080/api/v1/"), h.Request.RequestUri);
             Assert.Equal("Bearer token", h.Request.Headers.Authorization.ToString());
 
             c = new Kubernetes(new KubernetesClientConfiguration() { Host = "http://localhost:8080", Username = "joe" }, new HttpClient(h));
-            await c.New().ExecuteAsync();
+            await c.Request().ExecuteAsync();
             Assert.Equal("Basic am9lOg==", h.Request.Headers.Authorization.ToString());
 
-            res = await c.New().ExecuteAsync<CustomNew>();
+            res = await c.Request().ExecuteAsync<CustomNew>();
             Assert.Equal("xyz", res.ApiVersion);
 
-            h = new MockHandler(_ => new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("") });
+            h = new MockHttpHandler(_ => new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("") });
             c = new Kubernetes(new KubernetesClientConfiguration() { Host = "http://localhost:8080" }, new HttpClient(h));
-            res = await c.New().ExecuteAsync<CustomNew>();
+            res = await c.Request().ExecuteAsync<CustomNew>();
             Assert.Null(res);
-            res = await c.New().ExecuteAsync<CustomNew>(failIfMissing: true); // missing only refers to 404 Not Found
+            res = await c.Request().ExecuteAsync<CustomNew>(failIfMissing: true); // missing only refers to 404 Not Found
             Assert.Null(res);
 
-            h = new MockHandler(_ => new HttpResponseMessage(HttpStatusCode.NotFound) { Content = new StringContent("{}") });
+            h = new MockHttpHandler(_ => new HttpResponseMessage(HttpStatusCode.NotFound) { Content = new StringContent("{}") });
             c = new Kubernetes(new KubernetesClientConfiguration() { Host = "http://localhost:8080" }, new HttpClient(h));
-            res = await c.New().ExecuteAsync<CustomNew>();
+            res = await c.Request().ExecuteAsync<CustomNew>();
             Assert.Null(res);
-            await Assert.ThrowsAsync<KubernetesException>(() => c.New().ExecuteAsync<CustomNew>(failIfMissing: true));
+            await Assert.ThrowsAsync<KubernetesException>(() => c.Request().ExecuteAsync<CustomNew>(failIfMissing: true));
 
-            h = new MockHandler(_ => new HttpResponseMessage(HttpStatusCode.BadRequest) { Content = new StringContent("{}") });
+            h = new MockHttpHandler(_ => new HttpResponseMessage(HttpStatusCode.BadRequest) { Content = new StringContent("{}") });
             c = new Kubernetes(new KubernetesClientConfiguration() { Host = "http://localhost:8080" }, new HttpClient(h));
-            await Assert.ThrowsAsync<KubernetesException>(() => c.New().ExecuteAsync<CustomNew>());
+            await Assert.ThrowsAsync<KubernetesException>(() => c.Request().ExecuteAsync<CustomNew>());
         }
 
         [Fact]
-        public void TestNew()
+        public void TestNewRequest()
         {
-            var c = new Kubernetes(new Uri("http://somewhere"), new Microsoft.Rest.TokenCredentials("token"), new MockHandler(null));
+            var c = new Kubernetes(new Uri("http://somewhere"), new Microsoft.Rest.TokenCredentials("token"), new MockHttpHandler(null));
             c.Scheme = new KubernetesScheme();
             c.Scheme.SetGVK(typeof(CustomOld), "group", "version", "Custom", "customs");
 
-            // test New(HttpMethod = null)
-            var r = c.New();
+            // test c.Request(HttpMethod = null)
+            var r = c.Request();
             Assert.Same(HttpMethod.Get, r.Method());
-            r = c.New(HttpMethod.Delete);
+            r = c.Request(HttpMethod.Delete);
             Assert.Same(HttpMethod.Delete, r.Method());
 
-            // test New(Type)
-            r = c.New(typeof(V1MutatingWebhookConfiguration));
+            // test c.Request(Type)
+            r = c.Request(typeof(V1MutatingWebhookConfiguration));
             Assert.Equal("admissionregistration.k8s.io", r.Group());
             Assert.Equal("v1", r.Version());
             Assert.Equal("mutatingwebhookconfigurations", r.Type());
-            r = c.New(typeof(CustomOld)); // ensure it defaults to the scheme from the client
+            r = c.Request(typeof(CustomOld)); // ensure it defaults to the scheme from the client
             Assert.Same(c.Scheme, r.Scheme());
             Assert.Equal("group", r.Group());
             Assert.Equal("version", r.Version());
             Assert.Equal("customs", r.Type());
 
-            // test c.New(obj, bool)
+            // test c.Request(obj, bool)
             var res = new CustomNew() { ApiVersion = "coolstuff/v7", Kind = "yep", Metadata = new V1ObjectMeta() { Name = "name", NamespaceProperty = "ns" } };
-            r = c.New(res);
+            r = c.Request(res);
             Assert.Equal("coolstuff", r.Group());
             Assert.Equal("v7", r.Version());
             Assert.Equal("newz", r.Type());
@@ -349,23 +349,23 @@ namespace k8s.Tests
             Assert.Same(res, r.Body());
 
             res.Metadata.Uid = "id";
-            r = c.New(res, setBody: false);
+            r = c.Request(res, setBody: false);
             Assert.Equal("name", r.Name());
             Assert.Null(r.Body());
 
-            // test c.New(HttpMethod, Type, string, string)
-            r = c.New(null, typeof(V1PodList), "ns", "name");
+            // test c.Request(HttpMethod, Type, string, string)
+            r = c.Request(null, typeof(V1PodList), "ns", "name");
             Assert.Same(HttpMethod.Get, r.Method());
             Assert.Null(r.Group());
             Assert.Equal("v1", r.Version());
             Assert.Equal("pods", r.Type());
             Assert.Equal("name", r.Name());
             Assert.Equal("ns", r.Namespace());
-            r = c.New(HttpMethod.Delete, typeof(V1PodList), "ns", "name");
+            r = c.Request(HttpMethod.Delete, typeof(V1PodList), "ns", "name");
             Assert.Same(HttpMethod.Delete, r.Method());
 
-            // test c.New(HttpMethod, string, string, string, string, string)
-            r = c.New(HttpMethod.Put, "type", "ns", "name", "group", "version");
+            // test c.Request(HttpMethod, string, string, string, string, string)
+            r = c.Request(HttpMethod.Put, "type", "ns", "name", "group", "version");
             Assert.Same(HttpMethod.Put, r.Method());
             Assert.Equal("type", r.Type());
             Assert.Equal("ns", r.Namespace());
@@ -373,9 +373,9 @@ namespace k8s.Tests
             Assert.Equal("group", r.Group());
             Assert.Equal("version", r.Version());
 
-            // test c.New<T>(string, string)
+            // test c.Request<T>(string, string)
             c.Scheme = KubernetesScheme.Default;
-            r = c.New<CustomOld>("ns", "name");
+            r = c.Request<CustomOld>("ns", "name");
             Assert.Equal("v0", r.Version());
             Assert.Equal("ogrp", r.Group());
             Assert.Equal("nos", r.Type());
@@ -388,7 +388,7 @@ namespace k8s.Tests
         {
             string value = "{}";
             bool conflict = true;
-            var h = new MockHandler(req =>
+            var h = new MockHttpHandler(req =>
             {
                 if(value == null)
                 {
@@ -413,23 +413,23 @@ namespace k8s.Tests
             var c = new Kubernetes(new KubernetesClientConfiguration() { Host = "http://localhost:8080" }, new HttpClient(h));
 
             int i = 0;
-            var res = await c.New().ReplaceAsync<CustomNew>(r => { r.SetAnnotation("a", (i++).ToString(CultureInfo.InvariantCulture)); return true; });
+            var res = await c.Request().ReplaceAsync<CustomNew>(r => { r.SetAnnotation("a", (i++).ToString(CultureInfo.InvariantCulture)); return true; });
             Assert.Equal("1", res.GetAnnotation("a"));
 
-            res = await c.New().ReplaceAsync<CustomNew>(r => { r.SetAnnotation("b", "x"); return true; });
+            res = await c.Request().ReplaceAsync<CustomNew>(r => { r.SetAnnotation("b", "x"); return true; });
             Assert.Equal("1", res.GetAnnotation("a"));
             Assert.Equal("x", res.GetAnnotation("b"));
 
-            res = await c.New().ReplaceAsync<CustomNew>(r => { r.SetAnnotation("c", "y"); return false; });
+            res = await c.Request().ReplaceAsync<CustomNew>(r => { r.SetAnnotation("c", "y"); return false; });
             Assert.Equal("x", res.GetAnnotation("b"));
             Assert.Equal("y", res.GetAnnotation("c"));
 
-            res = await c.New().ReplaceAsync<CustomNew>(r => false);
+            res = await c.Request().ReplaceAsync<CustomNew>(r => false);
             Assert.Equal("x", res.GetAnnotation("b"));
             Assert.Null(res.GetAnnotation("c"));
 
             value = null;
-            res = await c.New().ReplaceAsync<CustomNew>(r => { r.SetAnnotation("a", "x"); return true; });
+            res = await c.Request().ReplaceAsync<CustomNew>(r => { r.SetAnnotation("a", "x"); return true; });
             Assert.Null(res);
         }
 
@@ -488,21 +488,6 @@ namespace k8s.Tests
             public string ApiVersion { get; set; }
             public string Kind { get; set; }
             public V1ObjectMeta Metadata { get; set; }
-        }
-
-        class MockHandler : HttpClientHandler
-        {
-            public MockHandler(Func<HttpRequestMessage,HttpResponseMessage> respFunc) => this.respFunc = respFunc;
-
-            public HttpRequestMessage Request;
-
-            protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-            {
-                Request = request;
-                return Task.FromResult(respFunc(request));
-            }
-
-            readonly Func<HttpRequestMessage,HttpResponseMessage> respFunc;
         }
     }
 }

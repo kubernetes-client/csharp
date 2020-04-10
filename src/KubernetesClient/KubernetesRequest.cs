@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using k8s.Models;
+using Microsoft.Rest;
 using Newtonsoft.Json;
 
 namespace k8s
@@ -21,7 +22,7 @@ namespace k8s
         public KubernetesRequest(Kubernetes client)
         {
             if(client == null) throw new ArgumentNullException(nameof(client));
-            (baseUri, config, this.client) = (client.BaseUri.ToString(), client.config, client.HttpClient);
+            (baseUri, credentials, this.client) = (client.BaseUri.ToString(), client.Credentials, client.HttpClient);
             Scheme(client.Scheme);
         }
 
@@ -29,29 +30,40 @@ namespace k8s
         /// an <see cref="HttpClient"/>.
         /// </summary>
         /// <param name="config">The <see cref="KubernetesClientConfiguration"/> used to connect to Kubernetes</param>
-        /// <param name="client">The <see cref="HttpClient"/> used to make the request, or null to use the default client</param>
-        /// <param name="scheme">The <see cref="KubernetesScheme"/> used to map types to their Kubernetes group, version, and kind</param>
+        /// <param name="client">The <see cref="HttpClient"/> used to make the request, or null to use the default client. The default
+        /// is null.
+        /// </param>
+        /// <param name="scheme">The <see cref="KubernetesScheme"/> used to map types to their Kubernetes group, version, and kind, or
+        /// null to use the default scheme. The default is null.
+        /// </param>
         /// <remarks>Any necessary SSL configuration must have already been applied to the <paramref name="client"/>.</remarks>
         public KubernetesRequest(KubernetesClientConfiguration config, HttpClient client = null, KubernetesScheme scheme = null)
         {
-            this.config = config ?? throw new ArgumentNullException(nameof(config));
-            this.client = client ?? new HttpClient();
+            if(config == null) throw new ArgumentNullException(nameof(config));
             this.baseUri = config.Host;
             if(string.IsNullOrEmpty(this.baseUri)) throw new ArgumentException(nameof(config)+".Host");
+            credentials = Kubernetes.CreateCredentials(config);
+            this.client = client ?? new HttpClient();
             Scheme(scheme);
         }
 
         /// <summary>Initializes a <see cref="KubernetesRequest"/> based on a <see cref="Uri"/> and an <see cref="HttpClient"/>.</summary>
         /// <param name="baseUri">The absolute base URI of the Kubernetes API server</param>
-        /// <param name="client">The <see cref="HttpClient"/> used to make the request, or null to use the default client</param>
-        /// <param name="scheme">The <see cref="KubernetesScheme"/> used to map types to their Kubernetes group, version, and kind</param>
+        /// <param name="credentials">The <see cref="ServiceClientCredentials"/> used to connect to Kubernetes, or null if no credentials
+        /// of that type are needed. The default is null.
+        /// </param>
+        /// <param name="client">The <see cref="HttpClient"/> used to make the request, or null to use the default client. The default
+        /// is null.
+        /// </param>
+        /// <param name="scheme">The <see cref="KubernetesScheme"/> used to map types to their Kubernetes group, version, and kind, or
+        /// null to use the default scheme. The default is null.
+        /// </param>
         /// <remarks>Any necessary SSL configuration must have already been applied to the <paramref name="client"/>.</remarks>
-        public KubernetesRequest(Uri baseUri, HttpClient client = null, KubernetesScheme scheme = null)
+        public KubernetesRequest(Uri baseUri, ServiceClientCredentials credentials = null, HttpClient client = null, KubernetesScheme scheme = null)
         {
             if(baseUri == null) throw new ArgumentNullException(nameof(baseUri));
             if(!baseUri.IsAbsoluteUri) throw new ArgumentException("The base URI must be absolute.", nameof(baseUri));
-            this.baseUri = baseUri.ToString();
-            this.client = client ?? new HttpClient();
+            (this.baseUri, this.credentials, this.client) = (baseUri.ToString(), credentials, client = client ?? new HttpClient());
             Scheme(scheme);
         }
 
@@ -162,7 +174,7 @@ namespace k8s
         public async Task<KubernetesResponse> ExecuteAsync(CancellationToken cancelToken = default)
         {
             cancelToken.ThrowIfCancellationRequested();
-            HttpRequestMessage req = CreateRequestMessage();
+            HttpRequestMessage req = await CreateRequestMessage(cancelToken).ConfigureAwait(false);
             // requests like watches may not send a body immediately, so return as soon as we've got the response headers
             var completion = _streamResponse || _watchVersion != null ?
                 HttpCompletionOption.ResponseHeadersRead : HttpCompletionOption.ResponseContentRead;
@@ -181,11 +193,12 @@ namespace k8s
         /// </param>
         /// <param name="cancelToken">A <see cref="CancellationToken"/> that can be used to cancel the request</param>
         /// <exception cref="KubernetesException">Thrown if the response was any error besides 404 Not Found.</exception>
-        public Task<T> ExecuteAsync<T>(bool failIfMissing, CancellationToken cancelToken = default)
+        public async Task<T> ExecuteAsync<T>(bool failIfMissing, CancellationToken cancelToken = default)
         {
             if(_watchVersion != null) throw new InvalidOperationException("Watch requests cannot be deserialized all at once.");
             cancelToken.ThrowIfCancellationRequested();
-            return ExecuteMessageAsync<T>(CreateRequestMessage(), failIfMissing, cancelToken);
+            HttpRequestMessage reqMsg = await CreateRequestMessage(cancelToken).ConfigureAwait(false);
+            return await ExecuteMessageAsync<T>(reqMsg, failIfMissing, cancelToken).ConfigureAwait(false);
         }
 
         /// <summary>Gets the "fieldManager" query-string parameter, or null if there is no field manager.</summary>
@@ -396,7 +409,7 @@ namespace k8s
                 if(obj == null) // if we need to load the resource...
                 {
                     cancelToken.ThrowIfCancellationRequested();
-                    HttpRequestMessage getMsg = CreateRequestMessage(); // load it with a GET request
+                    HttpRequestMessage getMsg = await CreateRequestMessage(cancelToken).ConfigureAwait(false); // load it with a GET request
                     getMsg.Method = HttpMethod.Get;
                     obj = await ExecuteMessageAsync<T>(getMsg, failIfMissing, cancelToken).ConfigureAwait(false);
                 }
@@ -543,21 +556,16 @@ namespace k8s
         }
 
         /// <summary>Creates an <see cref="HttpRequestMessage"/> representing the current request.</summary>
-        HttpRequestMessage CreateRequestMessage()
+#if NETCOREAPP2_1
+        async ValueTask<HttpRequestMessage> CreateRequestMessage(CancellationToken cancelToken)
+#else
+        async Task<HttpRequestMessage> CreateRequestMessage(CancellationToken cancelToken)
+#endif
         {
             var req = new HttpRequestMessage(Method(), GetRequestUri());
+            if(credentials != null) await credentials.ProcessHttpRequestAsync(req, cancelToken).ConfigureAwait(false);
 
             // add the headers
-            if(!string.IsNullOrEmpty(config?.AccessToken))
-            {
-                req.Headers.Authorization = new AuthenticationHeaderValue("Bearer", config.AccessToken);
-            }
-            else if(!string.IsNullOrEmpty(config?.Username))
-            {
-                req.Headers.Authorization = new AuthenticationHeaderValue("Basic",
-                    Convert.ToBase64String(Encoding.UTF8.GetBytes(config.Username + ":" + config.Password)));
-            }
-
             if(_accept != null) req.Headers.Add("Accept", _accept);
             List<KeyValuePair<string,List<string>>> contentHeaders = null;
             if(headers != null && headers.Count != 0) // add custom headers
@@ -659,7 +667,7 @@ namespace k8s
 
         readonly HttpClient client;
         readonly string baseUri;
-        readonly KubernetesClientConfiguration config;
+        readonly ServiceClientCredentials credentials;
         Dictionary<string, List<string>> headers, query;
         string _accept = "application/json", _mediaType = "application/json";
         string _group, _name, _ns, _rawUri, _subresource, _type, _version, _watchVersion;
@@ -679,9 +687,9 @@ namespace k8s
 
         static string NormalizeEmpty(string value) => string.IsNullOrEmpty(value) ? null : value; // normalizes empty strings to null
     }
-    #endregion
+#endregion
 
-    #region KubernetesResponse
+#region KubernetesResponse
     /// <summary>Represents a response to a <see cref="KubernetesRequest"/>.</summary>
     public sealed class KubernetesResponse : IDisposable
     {
@@ -765,5 +773,5 @@ namespace k8s
 
         string body;
     }
-    #endregion
+#endregion
 }

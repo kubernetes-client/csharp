@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using k8s.Models;
 
 namespace k8s
 {
@@ -49,6 +50,31 @@ namespace k8s
         /// </summary>
         public void GetVK<T>(out string apiVersion, out string kind, out string path) =>
             GetVK(typeof(T), out apiVersion, out kind, out path);
+
+        /// <summary>Creates a new Kubernetes object of the given type and sets its <see cref="IKubernetesObject.ApiVersion"/> and
+        /// <see cref="IKubernetesObject.Kind"/>.
+        /// </summary>
+        public T New<T>() where T : IKubernetesObject, new()
+        {
+            string apiVersion, kind;
+            GetVK(typeof(T), out apiVersion, out kind);
+            return new T() { ApiVersion = apiVersion, Kind = kind };
+        }
+
+        /// <summary>Creates a new Kubernetes object of the given type and sets its <see cref="IKubernetesObject.ApiVersion"/>,
+        /// <see cref="IKubernetesObject.Kind"/>, and <see cref="V1ObjectMeta.Name"/>.
+        /// </summary>
+        public T New<T>(string name) where T : IKubernetesObject<V1ObjectMeta>, new() => New<T>(null, name);
+
+        /// <summary>Creates a new Kubernetes object of the given type and sets its <see cref="IKubernetesObject.ApiVersion"/>,
+        /// <see cref="IKubernetesObject.Kind"/>, <see cref="V1ObjectMeta.Namespace"/>, and <see cref="V1ObjectMeta.Name"/>.
+        /// </summary>
+        public T New<T>(string ns, string name) where T : IKubernetesObject<V1ObjectMeta>, new()
+        {
+            T obj = New<T>();
+            obj.Metadata = new V1ObjectMeta() { NamespaceProperty = ns, Name = name };
+            return obj;
+        }
 
         /// <summary>Removes GVK information about the given type of object.</summary>
         public void RemoveGVK(Type type)

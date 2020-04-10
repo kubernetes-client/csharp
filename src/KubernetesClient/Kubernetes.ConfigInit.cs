@@ -203,19 +203,7 @@ namespace k8s
         /// </summary>
         private void SetCredentials()
         {
-            // set the Credentails for token based auth
-            if (!string.IsNullOrWhiteSpace(config.AccessToken))
-            {
-                Credentials = new TokenCredentials(config.AccessToken);
-            }
-            else if (!string.IsNullOrWhiteSpace(config.Username) && !string.IsNullOrWhiteSpace(config.Password))
-            {
-                Credentials = new BasicAuthenticationCredentials
-                {
-                    UserName = config.Username,
-                    Password = config.Password
-                };
-            }
+            Credentials = CreateCredentials(config);
         }
 
         internal readonly KubernetesClientConfiguration config;
@@ -283,6 +271,23 @@ namespace k8s
             var settings = new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore };
             settings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
             return settings;
+        }
+
+        /// <summary>Creates <see cref="ServiceClientCredentials"/> from a Kubernetes configuration, or returns null if the configuration
+        /// contains no credentials of that type.
+        /// </summary>
+        internal static ServiceClientCredentials CreateCredentials(KubernetesClientConfiguration config)
+        {
+            if(config == null) throw new ArgumentNullException(nameof(config));
+            if(!string.IsNullOrEmpty(config.AccessToken))
+            {
+                return new TokenCredentials(config.AccessToken);
+            }
+            else if(!string.IsNullOrEmpty(config.Username))
+            {
+                return new BasicAuthenticationCredentials() { UserName = config.Username, Password = config.Password };
+            }
+            return null;
         }
 
         /// <summary>Gets the <see cref="JsonSerializerSettings"/> used to serialize and deserialize Kubernetes objects.</summary>
