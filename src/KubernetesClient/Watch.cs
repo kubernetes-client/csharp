@@ -39,7 +39,7 @@ namespace k8s
                 }
                 else if (req.Name() != null && req.Subresource() == null)
                 {
-                    if(req.FieldSelector() == null) req.OldStyleWatch(false).FieldSelector("metadata.name="+req.Name()).Name(null);
+                    if (req.FieldSelector() == null) req.OldStyleWatch(false).FieldSelector("metadata.name="+req.Name()).Name(null);
                     else req.OldStyleWatch(true);
                 }
             }
@@ -251,7 +251,7 @@ namespace k8s
         public WatchReader(HttpResponseMessage response)
         {
             Response = response ?? throw new ArgumentNullException(nameof(response));
-            if(response.Content == null && !IsError) throw new ArgumentException("The response has no content.");
+            if (response.Content == null && !IsError) throw new ArgumentException("The response has no content.");
         }
 
         /// <summary>Initializes a new <see cref="WatchReader{T}"/> from a <see cref="Stream"/> containing a watch stream.</summary>
@@ -317,7 +317,7 @@ namespace k8s
                     reader.Skip();
                 }
             }
-            if(!gotType) throw new JsonSerializationException("The stream does not appear to contain watch events.");
+            if (!gotType) throw new JsonSerializationException("The stream does not appear to contain watch events.");
             return e;
         }
 
