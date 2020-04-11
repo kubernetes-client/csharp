@@ -38,6 +38,11 @@ namespace k8s.Models
         /// form of the secret data is a base64 encoded string, representing
         /// the arbitrary (possibly non-string) data value here. Described in
         /// https://tools.ietf.org/html/rfc4648#section-4</param>
+        /// <param name="immutable">Immutable, if set to true, ensures that
+        /// data stored in the Secret cannot be updated (only object metadata
+        /// can be modified). If not set to true, the field can be modified at
+        /// any time. Defaulted to nil. This is an alpha field enabled by
+        /// ImmutableEphemeralVolumes feature gate.</param>
         /// <param name="kind">Kind is a string value representing the REST
         /// resource this object represents. Servers may infer this from the
         /// endpoint the client submits requests to. Cannot be updated. In
@@ -52,10 +57,11 @@ namespace k8s.Models
         /// when reading from the API.</param>
         /// <param name="type">Used to facilitate programmatic handling of
         /// secret data.</param>
-        public V1Secret(string apiVersion = default(string), IDictionary<string, byte[]> data = default(IDictionary<string, byte[]>), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), IDictionary<string, string> stringData = default(IDictionary<string, string>), string type = default(string))
+        public V1Secret(string apiVersion = default(string), IDictionary<string, byte[]> data = default(IDictionary<string, byte[]>), bool? immutable = default(bool?), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), IDictionary<string, string> stringData = default(IDictionary<string, string>), string type = default(string))
         {
             ApiVersion = apiVersion;
             Data = data;
+            Immutable = immutable;
             Kind = kind;
             Metadata = metadata;
             StringData = stringData;
@@ -87,6 +93,16 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "data")]
         public IDictionary<string, byte[]> Data { get; set; }
+
+        /// <summary>
+        /// Gets or sets immutable, if set to true, ensures that data stored in
+        /// the Secret cannot be updated (only object metadata can be
+        /// modified). If not set to true, the field can be modified at any
+        /// time. Defaulted to nil. This is an alpha field enabled by
+        /// ImmutableEphemeralVolumes feature gate.
+        /// </summary>
+        [JsonProperty(PropertyName = "immutable")]
+        public bool? Immutable { get; set; }
 
         /// <summary>
         /// Gets or sets kind is a string value representing the REST resource

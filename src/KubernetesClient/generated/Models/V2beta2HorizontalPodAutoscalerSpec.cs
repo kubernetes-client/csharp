@@ -38,6 +38,10 @@ namespace k8s.Models
         /// resource to scale, and is used to the pods for which metrics should
         /// be collected, as well as to actually change the replica
         /// count.</param>
+        /// <param name="behavior">behavior configures the scaling behavior of
+        /// the target in both Up and Down directions (scaleUp and scaleDown
+        /// fields respectively). If not set, the default HPAScalingRules for
+        /// scale up and scale down are used.</param>
         /// <param name="metrics">metrics contains the specifications for which
         /// to use to calculate the desired replica count (the maximum replica
         /// count across all metrics will be used).  The desired replica count
@@ -53,8 +57,9 @@ namespace k8s.Models
         /// feature gate HPAScaleToZero is enabled and at least one Object or
         /// External metric is configured.  Scaling is active as long as at
         /// least one metric value is available.</param>
-        public V2beta2HorizontalPodAutoscalerSpec(int maxReplicas, V2beta2CrossVersionObjectReference scaleTargetRef, IList<V2beta2MetricSpec> metrics = default(IList<V2beta2MetricSpec>), int? minReplicas = default(int?))
+        public V2beta2HorizontalPodAutoscalerSpec(int maxReplicas, V2beta2CrossVersionObjectReference scaleTargetRef, V2beta2HorizontalPodAutoscalerBehavior behavior = default(V2beta2HorizontalPodAutoscalerBehavior), IList<V2beta2MetricSpec> metrics = default(IList<V2beta2MetricSpec>), int? minReplicas = default(int?))
         {
+            Behavior = behavior;
             MaxReplicas = maxReplicas;
             Metrics = metrics;
             MinReplicas = minReplicas;
@@ -66,6 +71,15 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets behavior configures the scaling behavior of the target
+        /// in both Up and Down directions (scaleUp and scaleDown fields
+        /// respectively). If not set, the default HPAScalingRules for scale up
+        /// and scale down are used.
+        /// </summary>
+        [JsonProperty(PropertyName = "behavior")]
+        public V2beta2HorizontalPodAutoscalerBehavior Behavior { get; set; }
 
         /// <summary>
         /// Gets or sets maxReplicas is the upper limit for the number of

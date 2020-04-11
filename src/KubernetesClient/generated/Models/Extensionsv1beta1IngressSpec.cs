@@ -34,6 +34,17 @@ namespace k8s.Models
         /// 'rules' must be specified. This field is optional to allow the
         /// loadbalancer controller or defaulting logic to specify a global
         /// default.</param>
+        /// <param name="ingressClassName">IngressClassName is the name of the
+        /// IngressClass cluster resource. The associated IngressClass defines
+        /// which controller will implement the resource. This replaces the
+        /// deprecated `kubernetes.io/ingress.class` annotation. For backwards
+        /// compatibility, when that annotation is set, it must be given
+        /// precedence over this field. The controller may emit a warning if
+        /// the field and annotation have different values. Implementations of
+        /// this API should ignore Ingresses without a class specified. An
+        /// IngressClass resource may be marked as default, which can be used
+        /// to set a default value for this field. For more information, refer
+        /// to the IngressClass documentation.</param>
         /// <param name="rules">A list of host rules used to configure the
         /// Ingress. If unspecified, or no rule matches, all traffic is sent to
         /// the default backend.</param>
@@ -43,9 +54,10 @@ namespace k8s.Models
         /// according to the hostname specified through the SNI TLS extension,
         /// if the ingress controller fulfilling the ingress supports
         /// SNI.</param>
-        public Extensionsv1beta1IngressSpec(Extensionsv1beta1IngressBackend backend = default(Extensionsv1beta1IngressBackend), IList<Extensionsv1beta1IngressRule> rules = default(IList<Extensionsv1beta1IngressRule>), IList<Extensionsv1beta1IngressTLS> tls = default(IList<Extensionsv1beta1IngressTLS>))
+        public Extensionsv1beta1IngressSpec(Extensionsv1beta1IngressBackend backend = default(Extensionsv1beta1IngressBackend), string ingressClassName = default(string), IList<Extensionsv1beta1IngressRule> rules = default(IList<Extensionsv1beta1IngressRule>), IList<Extensionsv1beta1IngressTLS> tls = default(IList<Extensionsv1beta1IngressTLS>))
         {
             Backend = backend;
+            IngressClassName = ingressClassName;
             Rules = rules;
             Tls = tls;
             CustomInit();
@@ -64,6 +76,22 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "backend")]
         public Extensionsv1beta1IngressBackend Backend { get; set; }
+
+        /// <summary>
+        /// Gets or sets ingressClassName is the name of the IngressClass
+        /// cluster resource. The associated IngressClass defines which
+        /// controller will implement the resource. This replaces the
+        /// deprecated `kubernetes.io/ingress.class` annotation. For backwards
+        /// compatibility, when that annotation is set, it must be given
+        /// precedence over this field. The controller may emit a warning if
+        /// the field and annotation have different values. Implementations of
+        /// this API should ignore Ingresses without a class specified. An
+        /// IngressClass resource may be marked as default, which can be used
+        /// to set a default value for this field. For more information, refer
+        /// to the IngressClass documentation.
+        /// </summary>
+        [JsonProperty(PropertyName = "ingressClassName")]
+        public string IngressClassName { get; set; }
 
         /// <summary>
         /// Gets or sets a list of host rules used to configure the Ingress. If

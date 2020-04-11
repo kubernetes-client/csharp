@@ -6,6 +6,7 @@
 
 namespace k8s.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -28,6 +29,8 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1LimitRangeItem class.
         /// </summary>
+        /// <param name="type">Type of resource that this limit applies
+        /// to.</param>
         /// <param name="defaultProperty">Default resource requirement limit
         /// value by resource name if resource limit is omitted.</param>
         /// <param name="defaultRequest">DefaultRequest is the default resource
@@ -42,9 +45,7 @@ namespace k8s.Models
         /// the named resource.</param>
         /// <param name="min">Min usage constraints on this kind by resource
         /// name.</param>
-        /// <param name="type">Type of resource that this limit applies
-        /// to.</param>
-        public V1LimitRangeItem(IDictionary<string, ResourceQuantity> defaultProperty = default(IDictionary<string, ResourceQuantity>), IDictionary<string, ResourceQuantity> defaultRequest = default(IDictionary<string, ResourceQuantity>), IDictionary<string, ResourceQuantity> max = default(IDictionary<string, ResourceQuantity>), IDictionary<string, ResourceQuantity> maxLimitRequestRatio = default(IDictionary<string, ResourceQuantity>), IDictionary<string, ResourceQuantity> min = default(IDictionary<string, ResourceQuantity>), string type = default(string))
+        public V1LimitRangeItem(string type, IDictionary<string, ResourceQuantity> defaultProperty = default(IDictionary<string, ResourceQuantity>), IDictionary<string, ResourceQuantity> defaultRequest = default(IDictionary<string, ResourceQuantity>), IDictionary<string, ResourceQuantity> max = default(IDictionary<string, ResourceQuantity>), IDictionary<string, ResourceQuantity> maxLimitRequestRatio = default(IDictionary<string, ResourceQuantity>), IDictionary<string, ResourceQuantity> min = default(IDictionary<string, ResourceQuantity>))
         {
             DefaultProperty = defaultProperty;
             DefaultRequest = defaultRequest;
@@ -101,5 +102,18 @@ namespace k8s.Models
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (Type == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Type");
+            }
+        }
     }
 }

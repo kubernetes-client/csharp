@@ -61,6 +61,16 @@ namespace k8s.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Limits");
             }
+            if (Limits != null)
+            {
+                foreach (var element in Limits)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
         }
     }
 }

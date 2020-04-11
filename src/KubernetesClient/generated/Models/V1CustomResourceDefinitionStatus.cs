@@ -6,7 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -34,6 +33,8 @@ namespace k8s.Models
         /// <param name="acceptedNames">acceptedNames are the names that are
         /// actually being used to serve discovery. They may be different than
         /// the names in spec.</param>
+        /// <param name="conditions">conditions indicate state for particular
+        /// aspects of a CustomResourceDefinition</param>
         /// <param name="storedVersions">storedVersions lists all versions of
         /// CustomResources that were ever persisted. Tracking these versions
         /// allows a migration path for stored versions in etcd. The field is
@@ -41,9 +42,7 @@ namespace k8s.Models
         /// version (ensuring no old objects are left in storage), and then
         /// remove the rest of the versions from this list. Versions may not be
         /// removed from `spec.versions` while they exist in this list.</param>
-        /// <param name="conditions">conditions indicate state for particular
-        /// aspects of a CustomResourceDefinition</param>
-        public V1CustomResourceDefinitionStatus(V1CustomResourceDefinitionNames acceptedNames, IList<string> storedVersions, IList<V1CustomResourceDefinitionCondition> conditions = default(IList<V1CustomResourceDefinitionCondition>))
+        public V1CustomResourceDefinitionStatus(V1CustomResourceDefinitionNames acceptedNames = default(V1CustomResourceDefinitionNames), IList<V1CustomResourceDefinitionCondition> conditions = default(IList<V1CustomResourceDefinitionCondition>), IList<string> storedVersions = default(IList<string>))
         {
             AcceptedNames = acceptedNames;
             Conditions = conditions;
@@ -86,19 +85,11 @@ namespace k8s.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (AcceptedNames == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "AcceptedNames");
-            }
-            if (StoredVersions == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "StoredVersions");
-            }
             if (AcceptedNames != null)
             {
                 AcceptedNames.Validate();

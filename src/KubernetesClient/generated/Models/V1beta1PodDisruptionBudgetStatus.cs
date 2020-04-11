@@ -52,9 +52,9 @@ namespace k8s.Models
         /// number of entries in the map may indicate problems with pod
         /// deletions.</param>
         /// <param name="observedGeneration">Most recent generation observed
-        /// when updating this PDB status. PodDisruptionsAllowed and other
-        /// status informatio is valid only if observedGeneration equals to
-        /// PDB's object generation.</param>
+        /// when updating this PDB status. DisruptionsAllowed and other status
+        /// information is valid only if observedGeneration equals to PDB's
+        /// object generation.</param>
         public V1beta1PodDisruptionBudgetStatus(int currentHealthy, int desiredHealthy, int disruptionsAllowed, int expectedPods, IDictionary<string, System.DateTime?> disruptedPods = default(IDictionary<string, System.DateTime?>), long? observedGeneration = default(long?))
         {
             CurrentHealthy = currentHealthy;
@@ -115,7 +115,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets most recent generation observed when updating this PDB
-        /// status. PodDisruptionsAllowed and other status informatio is valid
+        /// status. DisruptionsAllowed and other status information is valid
         /// only if observedGeneration equals to PDB's object generation.
         /// </summary>
         [JsonProperty(PropertyName = "observedGeneration")]

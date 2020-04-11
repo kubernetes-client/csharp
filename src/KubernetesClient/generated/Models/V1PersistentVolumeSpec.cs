@@ -119,8 +119,8 @@ namespace k8s.Models
         /// https://examples.k8s.io/volumes/storageos/README.md</param>
         /// <param name="volumeMode">volumeMode defines if a volume is intended
         /// to be used with a formatted filesystem or to remain in raw block
-        /// state. Value of Filesystem is implied when not included in spec.
-        /// This is a beta feature.</param>
+        /// state. Value of Filesystem is implied when not included in
+        /// spec.</param>
         /// <param name="vsphereVolume">VsphereVolume represents a vSphere
         /// volume attached and mounted on kubelets host machine</param>
         public V1PersistentVolumeSpec(IList<string> accessModes = default(IList<string>), V1AWSElasticBlockStoreVolumeSource awsElasticBlockStore = default(V1AWSElasticBlockStoreVolumeSource), V1AzureDiskVolumeSource azureDisk = default(V1AzureDiskVolumeSource), V1AzureFilePersistentVolumeSource azureFile = default(V1AzureFilePersistentVolumeSource), IDictionary<string, ResourceQuantity> capacity = default(IDictionary<string, ResourceQuantity>), V1CephFSPersistentVolumeSource cephfs = default(V1CephFSPersistentVolumeSource), V1CinderPersistentVolumeSource cinder = default(V1CinderPersistentVolumeSource), V1ObjectReference claimRef = default(V1ObjectReference), V1CSIPersistentVolumeSource csi = default(V1CSIPersistentVolumeSource), V1FCVolumeSource fc = default(V1FCVolumeSource), V1FlexPersistentVolumeSource flexVolume = default(V1FlexPersistentVolumeSource), V1FlockerVolumeSource flocker = default(V1FlockerVolumeSource), V1GCEPersistentDiskVolumeSource gcePersistentDisk = default(V1GCEPersistentDiskVolumeSource), V1GlusterfsPersistentVolumeSource glusterfs = default(V1GlusterfsPersistentVolumeSource), V1HostPathVolumeSource hostPath = default(V1HostPathVolumeSource), V1ISCSIPersistentVolumeSource iscsi = default(V1ISCSIPersistentVolumeSource), V1LocalVolumeSource local = default(V1LocalVolumeSource), IList<string> mountOptions = default(IList<string>), V1NFSVolumeSource nfs = default(V1NFSVolumeSource), V1VolumeNodeAffinity nodeAffinity = default(V1VolumeNodeAffinity), string persistentVolumeReclaimPolicy = default(string), V1PhotonPersistentDiskVolumeSource photonPersistentDisk = default(V1PhotonPersistentDiskVolumeSource), V1PortworxVolumeSource portworxVolume = default(V1PortworxVolumeSource), V1QuobyteVolumeSource quobyte = default(V1QuobyteVolumeSource), V1RBDPersistentVolumeSource rbd = default(V1RBDPersistentVolumeSource), V1ScaleIOPersistentVolumeSource scaleIO = default(V1ScaleIOPersistentVolumeSource), string storageClassName = default(string), V1StorageOSPersistentVolumeSource storageos = default(V1StorageOSPersistentVolumeSource), string volumeMode = default(string), V1VsphereVirtualDiskVolumeSource vsphereVolume = default(V1VsphereVirtualDiskVolumeSource))
@@ -390,8 +390,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets volumeMode defines if a volume is intended to be used
         /// with a formatted filesystem or to remain in raw block state. Value
-        /// of Filesystem is implied when not included in spec. This is a beta
-        /// feature.
+        /// of Filesystem is implied when not included in spec.
         /// </summary>
         [JsonProperty(PropertyName = "volumeMode")]
         public string VolumeMode { get; set; }

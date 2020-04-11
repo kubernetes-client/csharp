@@ -27,6 +27,13 @@ namespace k8s.Models
         /// </summary>
         /// <param name="port">The port that will be exposed by this
         /// service.</param>
+        /// <param name="appProtocol">The application protocol for this port.
+        /// This field follows standard Kubernetes label syntax. Un-prefixed
+        /// names are reserved for IANA standard service names (as per RFC-6335
+        /// and http://www.iana.org/assignments/service-names). Non-standard
+        /// protocols should use prefixed names such as
+        /// mycompany.com/my-custom-protocol. Field can be enabled with
+        /// ServiceAppProtocol feature gate.</param>
         /// <param name="name">The name of this port within the service. This
         /// must be a DNS_LABEL. All ports within a ServiceSpec must have
         /// unique names. When considering the endpoints for a Service, this
@@ -50,8 +57,9 @@ namespace k8s.Models
         /// clusterIP=None, and should be omitted or set equal to the 'port'
         /// field. More info:
         /// https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service</param>
-        public V1ServicePort(int port, string name = default(string), int? nodePort = default(int?), string protocol = default(string), IntstrIntOrString targetPort = default(IntstrIntOrString))
+        public V1ServicePort(int port, string appProtocol = default(string), string name = default(string), int? nodePort = default(int?), string protocol = default(string), IntstrIntOrString targetPort = default(IntstrIntOrString))
         {
+            AppProtocol = appProtocol;
             Name = name;
             NodePort = nodePort;
             Port = port;
@@ -64,6 +72,18 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets the application protocol for this port. This field
+        /// follows standard Kubernetes label syntax. Un-prefixed names are
+        /// reserved for IANA standard service names (as per RFC-6335 and
+        /// http://www.iana.org/assignments/service-names). Non-standard
+        /// protocols should use prefixed names such as
+        /// mycompany.com/my-custom-protocol. Field can be enabled with
+        /// ServiceAppProtocol feature gate.
+        /// </summary>
+        [JsonProperty(PropertyName = "appProtocol")]
+        public string AppProtocol { get; set; }
 
         /// <summary>
         /// Gets or sets the name of this port within the service. This must be

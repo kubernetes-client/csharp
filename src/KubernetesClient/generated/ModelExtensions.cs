@@ -144,158 +144,6 @@ namespace k8s.Models
         public const string KubeGroup = "apps";
     }
 
-    [KubernetesEntity(Group="apps", Kind="ControllerRevision", ApiVersion="v1beta1", PluralName="controllerrevisions")]
-    public partial class V1beta1ControllerRevision : IKubernetesObject<V1ObjectMeta>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "ControllerRevision";
-        public const string KubeGroup = "apps";
-    }
-
-    [KubernetesEntity(Group="apps", Kind="ControllerRevisionList", ApiVersion="v1beta1", PluralName="controllerrevisions")]
-    public partial class V1beta1ControllerRevisionList : IKubernetesObject<V1ListMeta>, IItems<V1beta1ControllerRevision>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "ControllerRevisionList";
-        public const string KubeGroup = "apps";
-    }
-
-    [KubernetesEntity(Group="apps", Kind="Deployment", ApiVersion="v1beta1", PluralName="deployments")]
-    public partial class Appsv1beta1Deployment : IKubernetesObject<V1ObjectMeta>, ISpec<Appsv1beta1DeploymentSpec>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "Deployment";
-        public const string KubeGroup = "apps";
-    }
-
-    [KubernetesEntity(Group="apps", Kind="DeploymentList", ApiVersion="v1beta1", PluralName="deployments")]
-    public partial class Appsv1beta1DeploymentList : IKubernetesObject<V1ListMeta>, IItems<Appsv1beta1Deployment>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "DeploymentList";
-        public const string KubeGroup = "apps";
-    }
-
-    [KubernetesEntity(Group="apps", Kind="DeploymentRollback", ApiVersion="v1beta1", PluralName=null)]
-    public partial class Appsv1beta1DeploymentRollback : IKubernetesObject, IValidate
-    {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "DeploymentRollback";
-        public const string KubeGroup = "apps";
-    }
-
-    [KubernetesEntity(Group="apps", Kind="Scale", ApiVersion="v1beta1", PluralName=null)]
-    public partial class Appsv1beta1Scale : IKubernetesObject<V1ObjectMeta>, ISpec<Appsv1beta1ScaleSpec>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "Scale";
-        public const string KubeGroup = "apps";
-    }
-
-    [KubernetesEntity(Group="apps", Kind="StatefulSet", ApiVersion="v1beta1", PluralName="statefulsets")]
-    public partial class V1beta1StatefulSet : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1StatefulSetSpec>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "StatefulSet";
-        public const string KubeGroup = "apps";
-    }
-
-    [KubernetesEntity(Group="apps", Kind="StatefulSetList", ApiVersion="v1beta1", PluralName="statefulsets")]
-    public partial class V1beta1StatefulSetList : IKubernetesObject<V1ListMeta>, IItems<V1beta1StatefulSet>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "StatefulSetList";
-        public const string KubeGroup = "apps";
-    }
-
-    [KubernetesEntity(Group="apps", Kind="ControllerRevision", ApiVersion="v1beta2", PluralName="controllerrevisions")]
-    public partial class V1beta2ControllerRevision : IKubernetesObject<V1ObjectMeta>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta2";
-        public const string KubeKind = "ControllerRevision";
-        public const string KubeGroup = "apps";
-    }
-
-    [KubernetesEntity(Group="apps", Kind="ControllerRevisionList", ApiVersion="v1beta2", PluralName="controllerrevisions")]
-    public partial class V1beta2ControllerRevisionList : IKubernetesObject<V1ListMeta>, IItems<V1beta2ControllerRevision>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta2";
-        public const string KubeKind = "ControllerRevisionList";
-        public const string KubeGroup = "apps";
-    }
-
-    [KubernetesEntity(Group="apps", Kind="DaemonSet", ApiVersion="v1beta2", PluralName="daemonsets")]
-    public partial class V1beta2DaemonSet : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta2DaemonSetSpec>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta2";
-        public const string KubeKind = "DaemonSet";
-        public const string KubeGroup = "apps";
-    }
-
-    [KubernetesEntity(Group="apps", Kind="DaemonSetList", ApiVersion="v1beta2", PluralName="daemonsets")]
-    public partial class V1beta2DaemonSetList : IKubernetesObject<V1ListMeta>, IItems<V1beta2DaemonSet>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta2";
-        public const string KubeKind = "DaemonSetList";
-        public const string KubeGroup = "apps";
-    }
-
-    [KubernetesEntity(Group="apps", Kind="Deployment", ApiVersion="v1beta2", PluralName="deployments")]
-    public partial class V1beta2Deployment : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta2DeploymentSpec>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta2";
-        public const string KubeKind = "Deployment";
-        public const string KubeGroup = "apps";
-    }
-
-    [KubernetesEntity(Group="apps", Kind="DeploymentList", ApiVersion="v1beta2", PluralName="deployments")]
-    public partial class V1beta2DeploymentList : IKubernetesObject<V1ListMeta>, IItems<V1beta2Deployment>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta2";
-        public const string KubeKind = "DeploymentList";
-        public const string KubeGroup = "apps";
-    }
-
-    [KubernetesEntity(Group="apps", Kind="ReplicaSet", ApiVersion="v1beta2", PluralName="replicasets")]
-    public partial class V1beta2ReplicaSet : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta2ReplicaSetSpec>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta2";
-        public const string KubeKind = "ReplicaSet";
-        public const string KubeGroup = "apps";
-    }
-
-    [KubernetesEntity(Group="apps", Kind="ReplicaSetList", ApiVersion="v1beta2", PluralName="replicasets")]
-    public partial class V1beta2ReplicaSetList : IKubernetesObject<V1ListMeta>, IItems<V1beta2ReplicaSet>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta2";
-        public const string KubeKind = "ReplicaSetList";
-        public const string KubeGroup = "apps";
-    }
-
-    [KubernetesEntity(Group="apps", Kind="Scale", ApiVersion="v1beta2", PluralName=null)]
-    public partial class V1beta2Scale : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta2ScaleSpec>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta2";
-        public const string KubeKind = "Scale";
-        public const string KubeGroup = "apps";
-    }
-
-    [KubernetesEntity(Group="apps", Kind="StatefulSet", ApiVersion="v1beta2", PluralName="statefulsets")]
-    public partial class V1beta2StatefulSet : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta2StatefulSetSpec>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta2";
-        public const string KubeKind = "StatefulSet";
-        public const string KubeGroup = "apps";
-    }
-
-    [KubernetesEntity(Group="apps", Kind="StatefulSetList", ApiVersion="v1beta2", PluralName="statefulsets")]
-    public partial class V1beta2StatefulSetList : IKubernetesObject<V1ListMeta>, IItems<V1beta2StatefulSet>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta2";
-        public const string KubeKind = "StatefulSetList";
-        public const string KubeGroup = "apps";
-    }
-
     [KubernetesEntity(Group="auditregistration.k8s.io", Kind="AuditSink", ApiVersion="v1alpha1", PluralName="auditsinks")]
     public partial class V1alpha1AuditSink : IKubernetesObject<V1ObjectMeta>, ISpec<V1alpha1AuditSinkSpec>, IValidate
     {
@@ -816,18 +664,18 @@ namespace k8s.Models
         public const string KubeGroup = "";
     }
 
-    [KubernetesEntity(Group="discovery.k8s.io", Kind="EndpointSlice", ApiVersion="v1alpha1", PluralName="endpointslices")]
-    public partial class V1alpha1EndpointSlice : IKubernetesObject<V1ObjectMeta>, IValidate
+    [KubernetesEntity(Group="discovery.k8s.io", Kind="EndpointSlice", ApiVersion="v1beta1", PluralName="endpointslices")]
+    public partial class V1beta1EndpointSlice : IKubernetesObject<V1ObjectMeta>, IValidate
     {
-        public const string KubeApiVersion = "v1alpha1";
+        public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "EndpointSlice";
         public const string KubeGroup = "discovery.k8s.io";
     }
 
-    [KubernetesEntity(Group="discovery.k8s.io", Kind="EndpointSliceList", ApiVersion="v1alpha1", PluralName="endpointslices")]
-    public partial class V1alpha1EndpointSliceList : IKubernetesObject<V1ListMeta>, IItems<V1alpha1EndpointSlice>, IValidate
+    [KubernetesEntity(Group="discovery.k8s.io", Kind="EndpointSliceList", ApiVersion="v1beta1", PluralName="endpointslices")]
+    public partial class V1beta1EndpointSliceList : IKubernetesObject<V1ListMeta>, IItems<V1beta1EndpointSlice>, IValidate
     {
-        public const string KubeApiVersion = "v1alpha1";
+        public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "EndpointSliceList";
         public const string KubeGroup = "discovery.k8s.io";
     }
@@ -848,46 +696,6 @@ namespace k8s.Models
         public const string KubeGroup = "events.k8s.io";
     }
 
-    [KubernetesEntity(Group="extensions", Kind="DaemonSet", ApiVersion="v1beta1", PluralName="daemonsets")]
-    public partial class V1beta1DaemonSet : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1DaemonSetSpec>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "DaemonSet";
-        public const string KubeGroup = "extensions";
-    }
-
-    [KubernetesEntity(Group="extensions", Kind="DaemonSetList", ApiVersion="v1beta1", PluralName="daemonsets")]
-    public partial class V1beta1DaemonSetList : IKubernetesObject<V1ListMeta>, IItems<V1beta1DaemonSet>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "DaemonSetList";
-        public const string KubeGroup = "extensions";
-    }
-
-    [KubernetesEntity(Group="extensions", Kind="Deployment", ApiVersion="v1beta1", PluralName="deployments")]
-    public partial class Extensionsv1beta1Deployment : IKubernetesObject<V1ObjectMeta>, ISpec<Extensionsv1beta1DeploymentSpec>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "Deployment";
-        public const string KubeGroup = "extensions";
-    }
-
-    [KubernetesEntity(Group="extensions", Kind="DeploymentList", ApiVersion="v1beta1", PluralName="deployments")]
-    public partial class Extensionsv1beta1DeploymentList : IKubernetesObject<V1ListMeta>, IItems<Extensionsv1beta1Deployment>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "DeploymentList";
-        public const string KubeGroup = "extensions";
-    }
-
-    [KubernetesEntity(Group="extensions", Kind="DeploymentRollback", ApiVersion="v1beta1", PluralName=null)]
-    public partial class Extensionsv1beta1DeploymentRollback : IKubernetesObject, IValidate
-    {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "DeploymentRollback";
-        public const string KubeGroup = "extensions";
-    }
-
     [KubernetesEntity(Group="extensions", Kind="Ingress", ApiVersion="v1beta1", PluralName="ingresses")]
     public partial class Extensionsv1beta1Ingress : IKubernetesObject<V1ObjectMeta>, ISpec<Extensionsv1beta1IngressSpec>, IValidate
     {
@@ -904,60 +712,36 @@ namespace k8s.Models
         public const string KubeGroup = "extensions";
     }
 
-    [KubernetesEntity(Group="extensions", Kind="NetworkPolicy", ApiVersion="v1beta1", PluralName="networkpolicies")]
-    public partial class V1beta1NetworkPolicy : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1NetworkPolicySpec>, IValidate
+    [KubernetesEntity(Group="flowcontrol.apiserver.k8s.io", Kind="FlowSchema", ApiVersion="v1alpha1", PluralName="flowschemas")]
+    public partial class V1alpha1FlowSchema : IKubernetesObject<V1ObjectMeta>, ISpec<V1alpha1FlowSchemaSpec>, IValidate
     {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "NetworkPolicy";
-        public const string KubeGroup = "extensions";
+        public const string KubeApiVersion = "v1alpha1";
+        public const string KubeKind = "FlowSchema";
+        public const string KubeGroup = "flowcontrol.apiserver.k8s.io";
     }
 
-    [KubernetesEntity(Group="extensions", Kind="NetworkPolicyList", ApiVersion="v1beta1", PluralName="networkpolicies")]
-    public partial class V1beta1NetworkPolicyList : IKubernetesObject<V1ListMeta>, IItems<V1beta1NetworkPolicy>, IValidate
+    [KubernetesEntity(Group="flowcontrol.apiserver.k8s.io", Kind="FlowSchemaList", ApiVersion="v1alpha1", PluralName="flowschemas")]
+    public partial class V1alpha1FlowSchemaList : IKubernetesObject<V1ListMeta>, IItems<V1alpha1FlowSchema>, IValidate
     {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "NetworkPolicyList";
-        public const string KubeGroup = "extensions";
+        public const string KubeApiVersion = "v1alpha1";
+        public const string KubeKind = "FlowSchemaList";
+        public const string KubeGroup = "flowcontrol.apiserver.k8s.io";
     }
 
-    [KubernetesEntity(Group="extensions", Kind="PodSecurityPolicy", ApiVersion="v1beta1", PluralName="podsecuritypolicies")]
-    public partial class Extensionsv1beta1PodSecurityPolicy : IKubernetesObject<V1ObjectMeta>, ISpec<Extensionsv1beta1PodSecurityPolicySpec>, IValidate
+    [KubernetesEntity(Group="flowcontrol.apiserver.k8s.io", Kind="PriorityLevelConfiguration", ApiVersion="v1alpha1", PluralName="prioritylevelconfigurations")]
+    public partial class V1alpha1PriorityLevelConfiguration : IKubernetesObject<V1ObjectMeta>, ISpec<V1alpha1PriorityLevelConfigurationSpec>, IValidate
     {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "PodSecurityPolicy";
-        public const string KubeGroup = "extensions";
+        public const string KubeApiVersion = "v1alpha1";
+        public const string KubeKind = "PriorityLevelConfiguration";
+        public const string KubeGroup = "flowcontrol.apiserver.k8s.io";
     }
 
-    [KubernetesEntity(Group="extensions", Kind="PodSecurityPolicyList", ApiVersion="v1beta1", PluralName="podsecuritypolicies")]
-    public partial class Extensionsv1beta1PodSecurityPolicyList : IKubernetesObject<V1ListMeta>, IItems<Extensionsv1beta1PodSecurityPolicy>, IValidate
+    [KubernetesEntity(Group="flowcontrol.apiserver.k8s.io", Kind="PriorityLevelConfigurationList", ApiVersion="v1alpha1", PluralName="prioritylevelconfigurations")]
+    public partial class V1alpha1PriorityLevelConfigurationList : IKubernetesObject<V1ListMeta>, IItems<V1alpha1PriorityLevelConfiguration>, IValidate
     {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "PodSecurityPolicyList";
-        public const string KubeGroup = "extensions";
-    }
-
-    [KubernetesEntity(Group="extensions", Kind="ReplicaSet", ApiVersion="v1beta1", PluralName="replicasets")]
-    public partial class V1beta1ReplicaSet : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1ReplicaSetSpec>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "ReplicaSet";
-        public const string KubeGroup = "extensions";
-    }
-
-    [KubernetesEntity(Group="extensions", Kind="ReplicaSetList", ApiVersion="v1beta1", PluralName="replicasets")]
-    public partial class V1beta1ReplicaSetList : IKubernetesObject<V1ListMeta>, IItems<V1beta1ReplicaSet>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "ReplicaSetList";
-        public const string KubeGroup = "extensions";
-    }
-
-    [KubernetesEntity(Group="extensions", Kind="Scale", ApiVersion="v1beta1", PluralName=null)]
-    public partial class Extensionsv1beta1Scale : IKubernetesObject<V1ObjectMeta>, ISpec<Extensionsv1beta1ScaleSpec>, IValidate
-    {
-        public const string KubeApiVersion = "v1beta1";
-        public const string KubeKind = "Scale";
-        public const string KubeGroup = "extensions";
+        public const string KubeApiVersion = "v1alpha1";
+        public const string KubeKind = "PriorityLevelConfigurationList";
+        public const string KubeGroup = "flowcontrol.apiserver.k8s.io";
     }
 
     [KubernetesEntity(Group="networking.k8s.io", Kind="NetworkPolicy", ApiVersion="v1", PluralName="networkpolicies")]
@@ -981,6 +765,22 @@ namespace k8s.Models
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "Ingress";
+        public const string KubeGroup = "networking.k8s.io";
+    }
+
+    [KubernetesEntity(Group="networking.k8s.io", Kind="IngressClass", ApiVersion="v1beta1", PluralName="ingressclasses")]
+    public partial class V1beta1IngressClass : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1IngressClassSpec>, IValidate
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "IngressClass";
+        public const string KubeGroup = "networking.k8s.io";
+    }
+
+    [KubernetesEntity(Group="networking.k8s.io", Kind="IngressClassList", ApiVersion="v1beta1", PluralName="ingressclasses")]
+    public partial class V1beta1IngressClassList : IKubernetesObject<V1ListMeta>, IItems<V1beta1IngressClass>, IValidate
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "IngressClassList";
         public const string KubeGroup = "networking.k8s.io";
     }
 
@@ -1049,7 +849,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="policy", Kind="PodSecurityPolicy", ApiVersion="v1beta1", PluralName="podsecuritypolicies")]
-    public partial class Policyv1beta1PodSecurityPolicy : IKubernetesObject<V1ObjectMeta>, ISpec<Policyv1beta1PodSecurityPolicySpec>, IValidate
+    public partial class V1beta1PodSecurityPolicy : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1PodSecurityPolicySpec>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "PodSecurityPolicy";
@@ -1057,7 +857,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="policy", Kind="PodSecurityPolicyList", ApiVersion="v1beta1", PluralName="podsecuritypolicies")]
-    public partial class Policyv1beta1PodSecurityPolicyList : IKubernetesObject<V1ListMeta>, IItems<Policyv1beta1PodSecurityPolicy>, IValidate
+    public partial class V1beta1PodSecurityPolicyList : IKubernetesObject<V1ListMeta>, IItems<V1beta1PodSecurityPolicy>, IValidate
     {
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "PodSecurityPolicyList";
@@ -1318,6 +1118,38 @@ namespace k8s.Models
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "PodPresetList";
         public const string KubeGroup = "settings.k8s.io";
+    }
+
+    [KubernetesEntity(Group="storage.k8s.io", Kind="CSIDriver", ApiVersion="v1", PluralName="csidrivers")]
+    public partial class V1CSIDriver : IKubernetesObject<V1ObjectMeta>, ISpec<V1CSIDriverSpec>, IValidate
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "CSIDriver";
+        public const string KubeGroup = "storage.k8s.io";
+    }
+
+    [KubernetesEntity(Group="storage.k8s.io", Kind="CSIDriverList", ApiVersion="v1", PluralName="csidrivers")]
+    public partial class V1CSIDriverList : IKubernetesObject<V1ListMeta>, IItems<V1CSIDriver>, IValidate
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "CSIDriverList";
+        public const string KubeGroup = "storage.k8s.io";
+    }
+
+    [KubernetesEntity(Group="storage.k8s.io", Kind="CSINode", ApiVersion="v1", PluralName="csinodes")]
+    public partial class V1CSINode : IKubernetesObject<V1ObjectMeta>, ISpec<V1CSINodeSpec>, IValidate
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "CSINode";
+        public const string KubeGroup = "storage.k8s.io";
+    }
+
+    [KubernetesEntity(Group="storage.k8s.io", Kind="CSINodeList", ApiVersion="v1", PluralName="csinodes")]
+    public partial class V1CSINodeList : IKubernetesObject<V1ListMeta>, IItems<V1CSINode>, IValidate
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "CSINodeList";
+        public const string KubeGroup = "storage.k8s.io";
     }
 
     [KubernetesEntity(Group="storage.k8s.io", Kind="StorageClass", ApiVersion="v1", PluralName="storageclasses")]

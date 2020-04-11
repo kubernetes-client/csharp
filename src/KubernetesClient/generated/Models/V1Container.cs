@@ -100,7 +100,7 @@ namespace k8s.Models
         /// This can be used to provide different probe parameters at the
         /// beginning of a Pod's lifecycle, when it might take a long time to
         /// load data or warm a cache, than during steady-state operation. This
-        /// cannot be updated. This is an alpha feature enabled by the
+        /// cannot be updated. This is a beta feature enabled by the
         /// StartupProbe feature flag. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes</param>
         /// <param name="stdin">Whether this container should allocate a buffer
@@ -135,8 +135,7 @@ namespace k8s.Models
         /// <param name="tty">Whether this container should allocate a TTY for
         /// itself, also requires 'stdin' to be true. Default is false.</param>
         /// <param name="volumeDevices">volumeDevices is the list of block
-        /// devices to be used by the container. This is a beta
-        /// feature.</param>
+        /// devices to be used by the container.</param>
         /// <param name="volumeMounts">Pod volumes to mount into the
         /// container's filesystem. Cannot be updated.</param>
         /// <param name="workingDir">Container's working directory. If not
@@ -310,7 +309,7 @@ namespace k8s.Models
         /// provide different probe parameters at the beginning of a Pod's
         /// lifecycle, when it might take a long time to load data or warm a
         /// cache, than during steady-state operation. This cannot be updated.
-        /// This is an alpha feature enabled by the StartupProbe feature flag.
+        /// This is a beta feature enabled by the StartupProbe feature flag.
         /// More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>
@@ -372,7 +371,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets volumeDevices is the list of block devices to be used
-        /// by the container. This is a beta feature.
+        /// by the container.
         /// </summary>
         [JsonProperty(PropertyName = "volumeDevices")]
         public IList<V1VolumeDevice> VolumeDevices { get; set; }
