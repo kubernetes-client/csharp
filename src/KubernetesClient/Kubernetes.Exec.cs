@@ -20,13 +20,15 @@ namespace k8s
                 throw new ArgumentNullException(nameof(action));
             }
 
-            Stream stdIn = new PipeStream(), stdOut = new PipeStream(), stdErr = new PipeStream();
+            PipeStream stdIn = new PipeStream(), stdOut = new PipeStream(), stdErr = new PipeStream();
             Task<V1Status> execTask = Request<V1Pod>(@namespace, name).Body(stdIn)
                 .ExecCommandAsync(command.First(), command.Skip(1).ToArray(), container, stdOut, stdErr, tty, false, cancellationToken);
-            await action(stdIn, stdOut, stdErr).ConfigureAwait(false);
-            stdIn.Dispose(); // close STDIN just in case the action failed to do so and the remote process is waiting for it
+            Task actionTask = action(stdIn, stdOut, stdErr);
             var status = await execTask.ConfigureAwait(false);
-            if (status.Code.Value < 0)
+            stdOut.Close(); // complete the output streams in case the action is blocked waiting for them
+            stdErr.Close();
+            await actionTask.ConfigureAwait(false);
+            if (status.Code.Value < 0) // if the exit code is unknown, throw an exception
             {
                 throw new KubernetesException(status);
             }

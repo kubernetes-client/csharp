@@ -190,7 +190,7 @@ namespace k8s
             V1Status status = await new SPDYExec(spdyConn, headers, stdin, stdout, stderr).RunAsync(cancelToken).ConfigureAwait(false);
             if (throwOnFailure && status.Status == "Failure") throw new KubernetesException(status);
             return status;
-    }
+        }
 
         /// <summary>Executes the request and returns the deserialized response body (or the default value of type
         /// <typeparamref name="T"/> if the response was 404 Not Found).

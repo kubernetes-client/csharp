@@ -369,11 +369,13 @@ namespace k8s
 
     #region PipeStream
     /// <summary>Represents a stream backed by a <see cref="Pipe"/>. Data written to the stream can be read back out.</summary>
-    /// <remarks>The stream supports a single reader and single writer operating in parallel.</remarks>
+    /// <remarks>The stream supports a single reader and single writer operating in parallel. After the stream is closed, the remaining
+    /// data can still be read from it.
+    /// </remarks>
     sealed class PipeStream : Stream
     {
-        public PipeStream() : this(new Pipe(), true) { }
-        public PipeStream(Pipe pipe, bool ownPipe) => (this.readPipe, this.ownPipe) = (pipe, ownPipe);
+        public PipeStream() : this(new Pipe()) { }
+        public PipeStream(Pipe pipe) => this.readPipe = pipe ?? throw new ArgumentNullException(nameof(pipe));
 
         /// <inheritdoc/>
         public override bool CanRead => true;
@@ -382,7 +384,7 @@ namespace k8s
         public override bool CanSeek => false;
 
         /// <inheritdoc/>
-        public override bool CanWrite => false;
+        public override bool CanWrite => true;
 
         /// <inheritdoc/>
         /// <remarks>This property is not supported and throws <see cref="NotSupportedException"/>.</remarks>
@@ -393,41 +395,23 @@ namespace k8s
         public override long Position { get => throw new NotSupportedException(); set => throw new NotSupportedException(); }
 
         /// <inheritdoc/>
-        public override void Flush() => AssertNotDisposed(); // TODO: should we make Flush wait until data has been sent over the wire?
-
-        /// <summary>Queues data that can later be read from the stream.</summary>
-        public void QueueData(byte[] data, int count) => readPipe.Write(data, 0, count);
-
-        /// <summary>Queues data that can later be read from the stream.</summary>
-        public void QueueData(ReadOnlySpan<byte> data) => readPipe.Write(data);
+        public override void Flush() { }
 
         /// <inheritdoc/>
-        public override int Read(byte[] buffer, int offset, int count)
-        {
-            AssertNotDisposed();
-            return readPipe.Read(buffer, offset, count);
-        }
+        public override int Read(byte[] buffer, int offset, int count) => readPipe.Read(buffer, offset, count);
 
 #if NETCOREAPP2_1
         /// <inheritdoc/>
-        public override int Read(Span<byte> buffer)
-        {
-            AssertNotDisposed();
-            return readPipe.Read(buffer);
-        }
+        public override int Read(Span<byte> buffer) => readPipe.Read(buffer);
 
         /// <inheritdoc/>
-        public override ValueTask<int> ReadAsync(Memory<byte> buffer, CancellationToken cancellationToken = default)
-        {
-            AssertNotDisposed();
-            return readPipe.ReadAsync(buffer, cancellationToken);
-        }
+        public override ValueTask<int> ReadAsync(Memory<byte> buffer, CancellationToken cancellationToken = default) =>
+            readPipe.ReadAsync(buffer, cancellationToken);
 #endif
 
         /// <inheritdoc/>
         public override Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancelToken)
         {
-            AssertNotDisposed();
 #if NETCOREAPP2_1
             return readPipe.ReadAsync(buffer, offset, count, cancelToken).AsTask();
 #else
@@ -444,27 +428,31 @@ namespace k8s
         public override void SetLength(long value) => throw new NotSupportedException();
 
         /// <inheritdoc/>
-        public override void Write(byte[] buffer, int offset, int count) => throw new NotSupportedException();
+        public override void Write(byte[] buffer, int offset, int count) => readPipe.Write(buffer, offset, count);
+
+        /// <inheritdoc/>
+        public override Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
+        {
+            readPipe.Write(buffer, offset, count);
+            return Task.FromResult(false);
+        }
 
 #if NETCOREAPP2_1
         /// <inheritdoc/>
-        public override void Write(ReadOnlySpan<byte> buffer) => throw new NotSupportedException();
+        public override void Write(ReadOnlySpan<byte> buffer) => readPipe.Write(buffer);
+
+        /// <inheritdoc/>
+        public override ValueTask WriteAsync(ReadOnlyMemory<byte> buffer, CancellationToken cancellationToken = default)
+        {
+            readPipe.Write(buffer.Span);
+            return default;
+        }
 #endif
 
         /// <inheritdoc/>
-        protected override void Dispose(bool manuallyDisposed)
-        {
-            disposed = true;
-            if(ownPipe) readPipe.Dispose();
-        }
-
-        void AssertNotDisposed()
-        {
-            if(disposed) throw new ObjectDisposedException(GetType().Name);
-        }
+        protected override void Dispose(bool manuallyDisposed) => readPipe.Finish();
 
         readonly Pipe readPipe;
-        bool disposed, ownPipe;
     }
 #endregion
 }
