@@ -5,11 +5,15 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.WebSockets;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using k8s.Models;
 using Newtonsoft.Json;
+using SPDY;
 
 namespace k8s
 {
@@ -133,6 +137,60 @@ namespace k8s
                 HttpCompletionOption.ResponseHeadersRead : HttpCompletionOption.ResponseContentRead;
             return new KubernetesResponse(await client.SendAsync(req, completion, cancelToken).ConfigureAwait(false));
         }
+
+        /// <summary>Opens a stream to the "exec" subresource to execute a command and sends the body, if any, as standard input.</summary>
+        /// <param name="command">The command to execute</param>
+        /// <param name="args">The arguments to the command, or null if there are no arguments. The default is null.</param>
+        /// <param name="container">The container to execute the command on, or null or empty if there's only one container.
+        /// The default is null.
+        /// </param>
+        /// <param name="stdout">A <see cref="Stream"/> to which the standard output stream should be copied, or null if the standard
+        /// output stream is unwanted. The default is null.
+        /// </param>
+        /// <param name="stderr">A <see cref="Stream"/> to which the standard error stream should be copied, or null if the standard
+        /// error stream is unwanted. The default is null.
+        /// </param>
+        /// <param name="tty">If true, the command will be executed with its inputs and outputs configured as a virtual TTY.
+        /// The default is false.
+        /// </param>
+        /// <param name="throwOnFailure">If true, an exception will be thrown if the command terminates with a non-zero exit code
+        /// or otherwise fails with an error. The default is true.
+        /// </param>
+        /// <param name="cancelToken">A <see cref="CancellationToken"/> that can be used to cancel the execution</param>
+        /// <returns>Returns a <see cref="V1Status"/> indicating the result of the command execution. The <see cref="V1Status.Code"/>
+        /// property will contain the exit code, or -1 if the exit code is unknown.
+        /// </returns>
+        public async Task<V1Status> ExecCommandAsync(
+            string command, string[] args = null, string container = null, Stream stdout = null, Stream stderr = null,
+            bool tty = false, bool throwOnFailure = true, CancellationToken cancelToken = default)
+        {
+            if (string.IsNullOrEmpty(command)) throw new ArgumentNullException(nameof(command));
+            if (_watchVersion != null) throw new InvalidOperationException("WatchVersion is incompatible with exec.");
+            var req = Clone().Subresource("exec").Post().SetQuery("container", NormalizeEmpty(container))
+                .SetQuery("stdin", _body != null ? "1" : "0").SetQuery("stdout", stdout != null ? "1" : "0")
+                .SetQuery("stderr", stderr != null ? "1" : "0").SetQuery("tty", tty ? "1" : "0")
+                .SetQuery("command", command).AddQuery("command", args);
+            // NOTE: a bug in Kubernetes prevents protocol negotiation when sending multiple versions, so just send one.
+            // v4 is implemented in all supported Kubernetes versions anyway. see https://github.com/kubernetes/kubernetes/issues/89849
+            req.SetHeader("X-Stream-Protocol-Version", "v4.channel.k8s.io");
+
+            Stream stdin = null; // if there's a body, get a stream for it
+            if (_body != null)
+            {
+                stdin = _body as Stream;
+                if (stdin == null)
+                {
+                    stdin = new MemoryStream(_body as byte[] ?? Encoding.UTF8.GetBytes(
+                        _body as string ?? JsonConvert.SerializeObject(_body, Kubernetes.DefaultJsonSettings)));
+                }
+            }
+            // open the SPDY connection and execute the command. we use SPDY because of a flaw in the Kubernetes web sockets protocol:
+            // https://github.com/kubernetes/kubernetes/issues/89899
+            var (spdyConn, headers) = await req.OpenSPDYAsync(cancelToken).ConfigureAwait(false);
+            V1Status status = await new SPDYExec(spdyConn, headers, stdin, stdout, stderr).RunAsync(cancelToken).ConfigureAwait(false);
+            if (throwOnFailure && status.Status == "Failure") throw new KubernetesException(status);
+            return status;
+    }
 
         /// <summary>Executes the request and returns the deserialized response body (or the default value of type
         /// <typeparamref name="T"/> if the response was 404 Not Found).
@@ -284,6 +342,46 @@ namespace k8s
 
         /// <summary>Sets the Kubernetes namespace to access, or null or empty to not access a namespaced object.</summary>
         public KubernetesRequest Namespace(string ns) { _ns = ns; return this; }
+
+        /// <summary>Opens a <see cref="SPDYConnection"/> to the resource described by the request, but does not send the body.</summary>
+        /// <returns>Returns the <see cref="SPDYConnection"/> and the response headers.</returns>
+        public async Task<ValueTuple<SPDYConnection, HttpResponseHeaders>> OpenSPDYAsync(CancellationToken cancelToken = default)
+        {
+            cancelToken.ThrowIfCancellationRequested();
+            var req = Clone().Accept("*/*").SetHeader("Connection", "Upgrade").SetHeader("Upgrade", "SPDY/3.1").Body(null).StreamResponse(true);
+            HttpRequestMessage reqMsg = await req.CreateRequestMessage(cancelToken).ConfigureAwait(false);
+            HttpResponseMessage respMsg = await client.SendAsync(reqMsg, HttpCompletionOption.ResponseHeadersRead, cancelToken).ConfigureAwait(false);
+            if (respMsg.StatusCode != HttpStatusCode.SwitchingProtocols)
+            {
+                throw new HttpRequestException(
+                    "Unable to upgrade to SPDY/3.1 connection. " + await respMsg.Content.ReadAsStringAsync().ConfigureAwait(false));
+            }
+
+            Stream stream = await respMsg.Content.ReadAsStreamAsync().ConfigureAwait(false);
+#if NET452
+            if (!stream.CanWrite) stream = new RawHttpStream(stream); // if it's writable, assume we can use it. otherwise, try to get the raw stream
+#endif
+            return (new SPDYConnection(stream, "3.1"), respMsg.Headers);
+        }
+
+#if NETCOREAPP2_1 || NETSTANDARD2_1
+        /// <summary>Opens a <see cref="WebSocket"/> to the resource described by the request, but does not send the body.</summary>
+        /// <returns>Returns the <see cref="WebSocket"/> and the response headers.</returns>
+        public async Task<ValueTuple<WebSocket, HttpResponseHeaders>> OpenWebSocketAsync(string subprotocol = null, CancellationToken cancelToken = default)
+        {
+            cancelToken.ThrowIfCancellationRequested();
+            var req = Clone().Accept("*/*").SetHeader("Connection", "Upgrade").SetHeader("Upgrade", "websocket").Body(null).StreamResponse(true);
+            HttpRequestMessage reqMsg = await req.CreateRequestMessage(cancelToken).ConfigureAwait(false);
+            HttpResponseMessage respMsg = await client.SendAsync(reqMsg, HttpCompletionOption.ResponseHeadersRead, cancelToken).ConfigureAwait(false);
+            if(respMsg.StatusCode != HttpStatusCode.SwitchingProtocols)
+            {
+                throw new HttpRequestException(
+                    "Unable to upgrade to web socket connection. " + await respMsg.Content.ReadAsStringAsync().ConfigureAwait(false));
+            }
+            Stream stream = await respMsg.Content.ReadAsStreamAsync().ConfigureAwait(false);
+            return (WebSocket.CreateFromStream(stream, false, subprotocol, WebSocket.DefaultKeepAliveInterval), respMsg.Headers);
+        }
+#endif
 
         /// <summary>Gets the raw URL to access, relative to the configured Kubernetes host and not including the query string, or
         /// null if the URL will be constructed piecemeal based on the other properties.
@@ -479,6 +577,69 @@ namespace k8s
         /// was true).
         /// </summary>
         public KubernetesRequest WatchVersion(string resourceVersion) { _watchVersion = resourceVersion; return this; }
+
+#if NET452
+        #region RawHttpStream
+        /// <summary>A stream that provides access to a writable HTTP stream when given a read-only response stream.</summary>
+        // HACK: .NET Framework's response stream is not only read-only, it's empty when used with an upgraded connection. so we have
+        // this hacky class to extract a writable stream from it via reflection
+        sealed class RawHttpStream : Stream
+        {
+            public RawHttpStream(Stream responseStream)
+            {
+                this.responseStream = responseStream; // keep a reference to the response stream to prevent it from being garbage-collected
+                const BindingFlags Flags = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public;
+                object o = responseStream.GetType().BaseType.GetField("innerStream", Flags)?.GetValue(responseStream); // ReadOnlyStream -> WebExceptionWrapperStream
+                o = o?.GetType().BaseType.GetField("innerStream", Flags)?.GetValue(o); // WebExceptionWrapperStream -> ConnectStream
+                o = o?.GetType().GetProperty("Connection", Flags)?.GetValue(o); // ConnectStream -> Connection
+                rawStream = (Stream)o?.GetType().GetProperty("NetworkStream", Flags)?.GetValue(o); // Connection -> NetworkStream
+                if(rawStream == null) throw new NotSupportedException("Unable to retrieve the raw connection stream.");
+            }
+
+            public override bool CanRead => rawStream.CanRead; // why oh why doesn't a delegating stream exist in the framework already?
+            public override bool CanSeek => rawStream.CanSeek;
+            public override bool CanTimeout => rawStream.CanTimeout;
+            public override bool CanWrite => rawStream.CanWrite;
+            public override long Length => rawStream.Length;
+            public override long Position { get => rawStream.Position; set => rawStream.Position = value; }
+            public override int ReadTimeout { get => rawStream.ReadTimeout; set => rawStream.ReadTimeout = value; }
+            public override int WriteTimeout { get => rawStream.WriteTimeout; set => rawStream.WriteTimeout = value; }
+
+            public override IAsyncResult BeginRead(byte[] buffer, int offset, int count, AsyncCallback callback, object state) =>
+                rawStream.BeginRead(buffer, offset, count, callback, state);
+
+            public override IAsyncResult BeginWrite(byte[] buffer, int offset, int count, AsyncCallback callback, object state) =>
+                rawStream.BeginWrite(buffer, offset, count, callback, state);
+
+            public override Task CopyToAsync(Stream destination, int bufferSize, CancellationToken cancellationToken) =>
+                rawStream.CopyToAsync(destination, bufferSize, cancellationToken);
+
+            public override int EndRead(IAsyncResult asyncResult) => rawStream.EndRead(asyncResult);
+            public override void EndWrite(IAsyncResult asyncResult) => rawStream.EndWrite(asyncResult);
+            public override void Flush() => rawStream.Flush();
+            public override Task FlushAsync(CancellationToken cancellationToken) => rawStream.FlushAsync(cancellationToken);
+            public override int Read(byte[] buffer, int offset, int count) => rawStream.Read(buffer, offset, count);
+            public override int ReadByte() => rawStream.ReadByte();
+            public override Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken) =>
+                rawStream.ReadAsync(buffer, offset, count, cancellationToken);
+
+            public override long Seek(long offset, SeekOrigin origin) => rawStream.Seek(offset, origin);
+            public override void SetLength(long value) => rawStream.SetLength(value);
+            public override void Write(byte[] buffer, int offset, int count) => rawStream.Write(buffer, offset, count);
+            public override void WriteByte(byte value) => rawStream.WriteByte(value);
+            public override Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken) =>
+                rawStream.WriteAsync(buffer, offset, count, cancellationToken);
+
+            protected override void Dispose(bool disposing)
+            {
+                base.Dispose(disposing);
+                responseStream.Dispose();
+            }
+
+            readonly Stream responseStream, rawStream;
+        }
+        #endregion
+#endif
 
         /// <summary>Adds a value to the query string or headers.</summary>
         KubernetesRequest Add(ref Dictionary<string,List<string>> dict, string key, string value)

@@ -5,9 +5,11 @@ using System.Threading;
 
 namespace k8s
 {
-    // There may be already an async implementation that we can use:
-    // https://github.com/StephenCleary/AsyncEx/wiki/AsyncProducerConsumerQueue
-    // However, they focus on individual objects and may not be a good choice for use with fixed-with byte buffers
+    // Pipe could be used instead for an async implementation. However, since this class is public there's no telling whether somebody
+    // has referenced it, so removing this class would be a breaking change. Neither could we easily replace the implementation of
+    // this class with Pipe's implementation, since this class exposes various public members (like WriteWaterMark and the OnResize event)
+    // that don't make sense in Pipe's context. (It seems they are used for unit testing, but unfortunately they were made public rather
+    // than internal, so removing them is a breaking change.)
 
     /// <summary>
     /// Represents a bounded buffer. A dedicated thread can send bytes to this buffer (the producer); while another thread can

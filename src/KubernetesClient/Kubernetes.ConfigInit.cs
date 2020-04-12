@@ -56,8 +56,8 @@ namespace k8s
         ///     Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
         public Kubernetes(KubernetesClientConfiguration config, params DelegatingHandler[] handlers)
-            : this(handlers)
         {
+            CreateHttpClient(handlers);
             ValidateConfig(config);
             this.config = config;
             InitializeFromConfig();
@@ -77,6 +77,18 @@ namespace k8s
             }
         }
 
+        // TODO: uncomment if we update to a later version of Microsoft.Rest.ClientRuntime
+        /*/// <inheritdoc/>
+        protected override DelegatingHandler CreateHttpHandlerPipeline(HttpClientHandler httpClientHandler, params DelegatingHandler[] handlers)
+        {
+            HttpMessageHandler rootHandler = RemoveRetryHandler(base.CreateHttpHandlerPipeline(httpClientHandler, handlers));
+            return rootHandler as DelegatingHandler ?? new ForwardingHandler(rootHandler);
+        }
+
+        private sealed class ForwardingHandler : DelegatingHandler
+        {
+            public ForwardingHandler(HttpMessageHandler handler) : base(handler) { }
+        }*/
 
         private void ValidateConfig(KubernetesClientConfiguration config)
         {
@@ -171,6 +183,7 @@ namespace k8s
 #if NET452 
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
 #endif
+            FirstMessageHandler = RemoveRetryHandler(FirstMessageHandler);
             AppendDelegatingHandler<WatcherDelegatingHandler>();
             DeserializationSettings.Converters.Add(new V1Status.V1StatusObjectViewConverter());
         }
@@ -178,8 +191,13 @@ namespace k8s
         private void AppendDelegatingHandler<T>() where T : DelegatingHandler, new()
         {
             var cur = FirstMessageHandler as DelegatingHandler;
+            if (cur == null)
+            {
+                FirstMessageHandler = new T() { InnerHandler = FirstMessageHandler };
+                return;
+            }
 
-            while (cur != null)
+            do
             {
                 var next = cur.InnerHandler as DelegatingHandler;
 
@@ -195,7 +213,52 @@ namespace k8s
                 }
 
                 cur = next;
+            } while (cur != null);
+        }
+
+        // NOTE: this method replicates the logic that the base ServiceClient uses except that it doesn't insert the RetryDelegatingHandler.
+        // (see RemoveRetryHandler below for why we don't want it.) it seems that depending on your framework version and/or
+        // Microsoft.Rest.ClientRuntime version and/or which constructor gets called, there are at least two ways that the retry handler
+        // gets added: 1) when the HTTP client is constructed (handled here), 2) in CreateHttpHandlerPipeline (handled in an override), and
+        // possibly 3) based on the handlers set in CustomInitialize
+        private void CreateHttpClient(DelegatingHandler[] handlers)
+        {
+            FirstMessageHandler = HttpClientHandler = CreateRootHandler();
+            if(handlers != null)
+            {
+                for(int i = handlers.Length - 1; i >= 0; i--)
+                {
+                    DelegatingHandler handler = handlers[i];
+                    while(handler.InnerHandler is DelegatingHandler d) handler = d;
+                    handler.InnerHandler = FirstMessageHandler;
+                    FirstMessageHandler = handlers[i];
+                }
             }
+            HttpClient = new HttpClient(FirstMessageHandler, false);
+        }
+
+        /// <summary>Removes the retry handler added by the Microsoft.Rest.ClientRuntime.</summary>
+        // NOTE: we remove the RetryDelegatingHandler for two reasons. first, it has a very broad definition of what's considered a failed
+        // request. it considers everything outside 2xx to be failed, including 1xx (e.g. 101 Switching Protocols) and 3xx. and, it wants to
+        // retry 4xx errors, almost none of which are really retriable except 429 Too Many Requests and /maybe/ 423 Locked (but we're not
+        // dealing with WebDAV here). really, i don't think we want retry in a Kubernetes client, and as for 429 Too Many Requests, there's
+        // already a separate RetryAfterDelegatingHandler installed to handle 429 requests. a further problem with the RetryDelegatingHandler
+        // is that upon seeing a non-2xx status code it tries to read the entire response body as a string. this doesn't work well with
+        // streaming responses like watches and upgraded (SPDY / web socket) connections.
+        private HttpMessageHandler RemoveRetryHandler(HttpMessageHandler rootHandler)
+        {
+            for (DelegatingHandler prev = null, handler = rootHandler as DelegatingHandler; handler != null;)
+            {
+                if (handler is RetryDelegatingHandler)
+                {
+                    if (prev == null) rootHandler = handler.InnerHandler; // if 'handler' is at the head of the chain, just return the next item
+                    else prev.InnerHandler = handler.InnerHandler; // otherwise, unlink 'handler' from the chain
+                    break;
+                }
+                prev = handler;
+                handler = handler.InnerHandler as DelegatingHandler;
+            }
+            return rootHandler;
         }
 
         /// <summary>

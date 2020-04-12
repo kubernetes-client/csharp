@@ -20,31 +20,17 @@ namespace k8s
                 throw new ArgumentNullException(nameof(action));
             }
 
-            try
+            Stream stdIn = new PipeStream(), stdOut = new PipeStream(), stdErr = new PipeStream();
+            Task<V1Status> execTask = Request<V1Pod>(@namespace, name).Body(stdIn)
+                .ExecCommandAsync(command.First(), command.Skip(1).ToArray(), container, stdOut, stdErr, tty, false, cancellationToken);
+            await action(stdIn, stdOut, stdErr).ConfigureAwait(false);
+            stdIn.Dispose(); // close STDIN just in case the action failed to do so and the remote process is waiting for it
+            var status = await execTask.ConfigureAwait(false);
+            if (status.Code.Value < 0)
             {
-                using (var muxedStream = await this.MuxedStreamNamespacedPodExecAsync(name: name, @namespace: @namespace, command: command, container: container, tty: tty, cancellationToken: cancellationToken).ConfigureAwait(false))
-                using (Stream stdIn = muxedStream.GetStream(null, ChannelIndex.StdIn))
-                using (Stream stdOut= muxedStream.GetStream(ChannelIndex.StdOut, null))
-                using (Stream stdErr = muxedStream.GetStream(ChannelIndex.StdErr, null))
-                using (Stream error = muxedStream.GetStream(ChannelIndex.Error, null))
-                using (StreamReader errorReader = new StreamReader(error))
-                {
-                    muxedStream.Start();
-
-                    await action(stdIn, stdOut, stdErr).ConfigureAwait(false);
-
-                    var errors = await errorReader.ReadToEndAsync().ConfigureAwait(false);
-
-                    // StatusError is defined here:
-                    // https://github.com/kubernetes/kubernetes/blob/068e1642f63a1a8c48c16c18510e8854a4f4e7c5/staging/src/k8s.io/apimachinery/pkg/api/errors/errors.go#L37
-                    var returnMessage = SafeJsonConvert.DeserializeObject<V1Status>(errors);
-                    return GetExitCodeOrThrow(returnMessage);
-                }
+                throw new KubernetesException(status);
             }
-            catch (HttpOperationException httpEx) when (httpEx.Body is V1Status)
-            {
-                throw new KubernetesException((V1Status)httpEx.Body);
-            }
+            return status.Code.Value;
         }
 
         /// <summary>
