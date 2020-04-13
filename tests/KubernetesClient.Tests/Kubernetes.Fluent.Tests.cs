@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using k8s.Fluent;
 using k8s.Models;
 using k8s.Tests.Mock;
 using Newtonsoft.Json;
