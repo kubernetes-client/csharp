@@ -451,7 +451,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void MergeKubeConfigWork()
+        public void MergeKubeConfigWorks()
         {
             var firstPath = Path.GetFullPath("assets/kubeconfig.as-user-extra.yml");
             var secondPath = Path.GetFullPath("assets/kubeconfig.yml");
@@ -465,17 +465,17 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void MergeKubeConfigWithSameNameDoesNotMerge()
+        public void CurrentContextMerge()
         {
-            var firstPath = Path.GetFullPath("assets/kubeconfig.as-user-extra.yml");
-            var secondPath = Path.GetFullPath("assets/kubeconfig.yml");
+            var firstPath = Path.GetFullPath("assets/kubeconfig.no-current-context.yml");
+            var secondPath = Path.GetFullPath("assets/kubeconfig.no-user.yml");
             var filePath = string.Concat(firstPath, RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ";" : ":", secondPath);
 
             Environment.SetEnvironmentVariable("KUBECONFIG", filePath);
             var cfg = KubernetesClientConfiguration.LoadKubeConfigFromEnvironmentVariable();
 
             // Merged file has 6 users now.
-            Assert.Equal(6, cfg.Users.Count());
+            Assert.NotNull(cfg.CurrentContext);
         }
 
         /// <summary>
