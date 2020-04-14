@@ -573,8 +573,9 @@ namespace k8s
         /// <summary>
         ///    Loads Kube Config from KUBECONFIG environment variable
         /// </summary>
+        /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
         /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
-        public static K8SConfiguration LoadKubeConfigFromEnvironmentVariable()
+        public static K8SConfiguration LoadKubeConfigFromEnvironmentVariable(string environmentVariable = "KUBECONFIG", bool useRelativePaths = true)
         {
             return LoadKubeConfigFromEnvironmentVariableAsync().GetAwaiter().GetResult();
         }
@@ -582,10 +583,11 @@ namespace k8s
         /// <summary>
         ///    Loads Kube Config from KUBECONFIG environment variable
         /// </summary>
+        /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
         /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
-        public static async Task<K8SConfiguration> LoadKubeConfigFromEnvironmentVariableAsync()
+        public static async Task<K8SConfiguration> LoadKubeConfigFromEnvironmentVariableAsync(string environmentVariable = "KUBECONFIG", bool useRelativePaths = true)
         {
-            var kubeconfig = Environment.GetEnvironmentVariable("KUBECONFIG");
+            var kubeconfig = Environment.GetEnvironmentVariable(environmentVariable);
 
             if (kubeconfig == null)
             {
@@ -595,11 +597,11 @@ namespace k8s
             var configList = kubeconfig.Split(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ';' : ':');
             if (configList.Length > 1)
             {
-                var basek8SConfig = await LoadKubeConfigAsync(configList[0]).ConfigureAwait(false);
+                var basek8SConfig = await LoadKubeConfigAsync(configList[0], useRelativePaths).ConfigureAwait(false);
 
                 for (var i = 1; i < configList.Length; i++)
                 {
-                    var mergek8SConfig = await LoadKubeConfigAsync(configList[i]).ConfigureAwait(false);
+                    var mergek8SConfig = await LoadKubeConfigAsync(configList[i], useRelativePaths).ConfigureAwait(false);
                     MergeKubeConfig(basek8SConfig, mergek8SConfig);
                 }
 
@@ -607,7 +609,7 @@ namespace k8s
             }
             else
             {
-                return await LoadKubeConfigAsync(kubeconfig);
+                return await LoadKubeConfigAsync(kubeconfig, useRelativePaths);
             }
         }
 
