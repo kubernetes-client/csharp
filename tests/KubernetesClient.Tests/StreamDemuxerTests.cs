@@ -5,7 +5,7 @@ using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using k8s.tests.Mock;
+using k8s.Tests.Mock;
 using Xunit;
 using Xunit.Abstractions;
 

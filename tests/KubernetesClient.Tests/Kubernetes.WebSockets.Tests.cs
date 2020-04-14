@@ -2,7 +2,7 @@
  * These tests are only for the netstandard version of the client (there are separate tests for netcoreapp that connect to a local test-hosted server).
  */
 
-using k8s.tests.Mock;
+using k8s.Tests.Mock;
 using Microsoft.Rest;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace k8s.tests
+namespace k8s.Tests
 {
     public class KubernetesExecTests
     {

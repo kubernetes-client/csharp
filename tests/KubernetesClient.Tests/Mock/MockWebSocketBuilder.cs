@@ -8,7 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace k8s.tests.Mock
+namespace k8s.Tests.Mock
 {
     public class MockWebSocketBuilder : WebSocketBuilder
     {

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <IsPackable>false</IsPackable>
-    <RootNamespace>k8s.tests</RootNamespace>
+    <RootNamespace>k8s.Tests</RootNamespace>
     <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
   </PropertyGroup>
 
