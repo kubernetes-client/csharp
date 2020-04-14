@@ -37,28 +37,16 @@ namespace k8s
         ///     Then, it checks whether it is executing inside a cluster and will use <see cref="InClusterConfig()" />.
         ///     Finally, if nothing else exists, it creates a default config with localhost:8080 as host.
         /// </summary>
+        /// <remarks>
+        ///     If multiple 
+        /// </remarks>
         public static KubernetesClientConfiguration BuildDefaultConfig()
         {
             var kubeconfig = Environment.GetEnvironmentVariable("KUBECONFIG");
             if (kubeconfig != null)
             {
-                var configList = kubeconfig.Split(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ';' : ':');
-                if (configList.Length > 1)
-                {
-                    var basek8SConfig = LoadKubeConfigAsync(configList[0]).ConfigureAwait(false).GetAwaiter().GetResult();
-
-                    for (var i = 1; i < configList.Length; i++)
-                    {
-                        var mergek8SConfig = LoadKubeConfigAsync(configList[0]).ConfigureAwait(false).GetAwaiter().GetResult();
-                        MergeKubeConfig(basek8SConfig, mergek8SConfig);
-                    }
-
-                    return BuildConfigFromConfigObject(basek8SConfig);
-                }
-                else
-                {
-                    return BuildConfigFromConfigFile(kubeconfigPath: kubeconfig);
-                }
+                var k8sConfig = LoadKubeConfigFromEnvironmentVariable();
+                return BuildConfigFromConfigObject(k8sConfig);
             }
 
             if (File.Exists(KubeConfigDefaultLocation))
@@ -580,6 +568,47 @@ namespace k8s
         public static K8SConfiguration LoadKubeConfig(Stream kubeconfigStream)
         {
             return LoadKubeConfigAsync(kubeconfigStream).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        ///    Loads Kube Config from KUBECONFIG environment variable
+        /// </summary>
+        /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
+        public static K8SConfiguration LoadKubeConfigFromEnvironmentVariable()
+        {
+            return LoadKubeConfigFromEnvironmentVariableAsync().GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        ///    Loads Kube Config from KUBECONFIG environment variable
+        /// </summary>
+        /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
+        public static async Task<K8SConfiguration> LoadKubeConfigFromEnvironmentVariableAsync()
+        {
+            var kubeconfig = Environment.GetEnvironmentVariable("KUBECONFIG");
+
+            if (kubeconfig == null)
+            {
+                throw new KubeConfigException($"Environment variable KUBECONFIG is empty.");
+            }
+
+            var configList = kubeconfig.Split(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ';' : ':');
+            if (configList.Length > 1)
+            {
+                var basek8SConfig = await LoadKubeConfigAsync(configList[0]).ConfigureAwait(false);
+
+                for (var i = 1; i < configList.Length; i++)
+                {
+                    var mergek8SConfig = await LoadKubeConfigAsync(configList[i]).ConfigureAwait(false);
+                    MergeKubeConfig(basek8SConfig, mergek8SConfig);
+                }
+
+                return basek8SConfig;
+            }
+            else
+            {
+                return await LoadKubeConfigAsync(kubeconfig);
+            }
         }
 
         /// <summary>

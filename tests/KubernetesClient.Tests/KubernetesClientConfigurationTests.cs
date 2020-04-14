@@ -414,9 +414,8 @@ namespace k8s.Tests
         {
             // BuildDefaultConfig assumes UseRelativePaths: true, which isn't
             // done by any tests.
-            var filePath = Path.GetFullPath("assets/kubeconfig-relative-paths.yml");
+            var filePath = Path.GetFullPath("assets/kubeconfig.relative.yml");
 
-            // TODO set environment variable if test parallelism is on.
             Environment.SetEnvironmentVariable("KUBECONFIG", filePath);
             var cfg = KubernetesClientConfiguration.BuildDefaultConfig();
 
@@ -424,16 +423,59 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void LoadSameKubeConfigFromEnvironmentVariableUnmodified()
+        public void LoadK8ConfigFromEnvironmentVariable()
         {
-            var txt = File.ReadAllText("assets/kubeconfig-relative-paths.yml");
+            var txt = File.ReadAllText("assets/kubeconfig.yml");
             var expectedCfg = Yaml.LoadFromString<K8SConfiguration>(txt);
 
-            var filePath = Path.GetFullPath("assets/kubeconfig-relative-paths.yml");
+            var filePath = Path.GetFullPath("assets/kubeconfig.yml");
+            Environment.SetEnvironmentVariable("KUBECONFIG", filePath);
+            var cfg = KubernetesClientConfiguration.LoadKubeConfigFromEnvironmentVariable();
+
+            AssertConfigEqual(expectedCfg, cfg);
+        }
+
+        [Fact]
+        public void LoadSameKubeConfigFromEnvironmentVariableUnmodified()
+        {
+            var txt = File.ReadAllText("assets/kubeconfig.yml");
+            var expectedCfg = Yaml.LoadFromString<K8SConfiguration>(txt);
+
+            var filePath = Path.GetFullPath("assets/kubeconfig.yml");
             filePath = string.Concat(filePath, RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ";" : ":", filePath);
 
             Environment.SetEnvironmentVariable("KUBECONFIG", filePath);
-            var cfg = KubernetesClientConfiguration.BuildDefaultConfig();
+            var cfg = KubernetesClientConfiguration.LoadKubeConfigFromEnvironmentVariable();
+
+            AssertConfigEqual(expectedCfg, cfg);
+        }
+
+        [Fact]
+        public void MergeKubeConfigWork()
+        {
+            var firstPath = Path.GetFullPath("assets/kubeconfig.as-user-extra.yml");
+            var secondPath = Path.GetFullPath("assets/kubeconfig.yml");
+            var filePath = string.Concat(firstPath, RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ";" : ":", secondPath);
+
+            Environment.SetEnvironmentVariable("KUBECONFIG", filePath);
+            var cfg = KubernetesClientConfiguration.LoadKubeConfigFromEnvironmentVariable();
+
+            // Merged file has 6 users now.
+            Assert.Equal(6, cfg.Users.Count());
+        }
+
+        [Fact]
+        public void MergeKubeConfigWithSameNameDoesNotMerge()
+        {
+            var firstPath = Path.GetFullPath("assets/kubeconfig.as-user-extra.yml");
+            var secondPath = Path.GetFullPath("assets/kubeconfig.yml");
+            var filePath = string.Concat(firstPath, RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ";" : ":", secondPath);
+
+            Environment.SetEnvironmentVariable("KUBECONFIG", filePath);
+            var cfg = KubernetesClientConfiguration.LoadKubeConfigFromEnvironmentVariable();
+
+            // Merged file has 6 users now.
+            Assert.Equal(6, cfg.Users.Count());
         }
 
         /// <summary>
