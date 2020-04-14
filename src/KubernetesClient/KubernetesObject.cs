@@ -21,6 +21,7 @@ namespace k8s
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#resources
         /// </summary>
         [JsonProperty(PropertyName = "apiVersion")]
+        [NJsonSchema.Annotations.JsonSchemaIgnore]
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -31,6 +32,7 @@ namespace k8s
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
+        [NJsonSchema.Annotations.JsonSchemaIgnore]
         public string Kind { get; set; }
     }
 }

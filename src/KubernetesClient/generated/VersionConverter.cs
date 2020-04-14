@@ -155,6 +155,4 @@ namespace k8s.Versioning
                 cfg.CreateMap<V1beta1VolumeNodeResources, V1VolumeNodeResources>().ReverseMap();
         }
     }
-
-
 }

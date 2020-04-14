@@ -16,8 +16,9 @@ namespace k8s.Tests
 
             Utilities.AddQueryParameter(sb, "key", "value");
             Utilities.AddQueryParameter(sb, "key", "a=b");
-            Utilities.AddQueryParameter(sb, "+key", null);
-            Utilities.AddQueryParameter(sb, "ekey", "");
+            Utilities.AddQueryParameter(sb, "+key", (string)null, true);
+            Utilities.AddQueryParameter(sb, "ekey", "", true);
+            Utilities.AddQueryParameter(sb, "fkey", "", false);
             Assert.Equal("?key=value&key=a%3Db&%2Bkey=&ekey=", sb.ToString());
         }
     }
