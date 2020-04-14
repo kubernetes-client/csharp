@@ -1,7 +1,7 @@
 using System;
+using System.Collections.Generic;
 #if NETSTANDARD2_0
 using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.Diagnostics;
 #endif
 using System.IO;
@@ -42,21 +42,39 @@ namespace k8s
             var kubeconfig = Environment.GetEnvironmentVariable("KUBECONFIG");
             if (kubeconfig != null)
             {
-                return BuildConfigFromConfigFile(kubeconfigPath: kubeconfig);
+                var configList = kubeconfig.Split(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ';' : ':');
+                if (configList.Length > 1)
+                {
+                    var basek8SConfig = LoadKubeConfigAsync(configList[0]).ConfigureAwait(false).GetAwaiter().GetResult();
+
+                    for (var i = 1; i < configList.Length; i++)
+                    {
+                        var mergek8SConfig = LoadKubeConfigAsync(configList[0]).ConfigureAwait(false).GetAwaiter().GetResult();
+                        MergeKubeConfig(basek8SConfig, mergek8SConfig);
+                    }
+
+                    return BuildConfigFromConfigObject(basek8SConfig);
+                }
+                else
+                {
+                    return BuildConfigFromConfigFile(kubeconfigPath: kubeconfig);
+                }
             }
+
             if (File.Exists(KubeConfigDefaultLocation))
             {
                 return BuildConfigFromConfigFile(kubeconfigPath: KubeConfigDefaultLocation);
             }
+
             if (IsInCluster())
             {
                 return InClusterConfig();
             }
+
             var config = new KubernetesClientConfiguration();
             config.Host = "http://localhost:8080";
             return config;
         }
-
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
@@ -591,6 +609,96 @@ namespace k8s
             else
             {
                 return Path.Combine(Path.GetDirectoryName(configuration.FileName), path);
+            }
+        }
+
+        private static void MergeKubeConfig(K8SConfiguration basek8SConfig, K8SConfiguration mergek8SConfig)
+        {
+            // For scalar values, prefer local values 
+            basek8SConfig.ApiVersion = basek8SConfig.ApiVersion ?? mergek8SConfig.ApiVersion;
+            basek8SConfig.CurrentContext = basek8SConfig.CurrentContext ?? mergek8SConfig.CurrentContext;
+            basek8SConfig.FileName = basek8SConfig.FileName ?? mergek8SConfig.FileName;
+            basek8SConfig.Kind = basek8SConfig.Kind ?? mergek8SConfig.Kind;
+
+            // For Dictionaries, prefer first if not present in second.
+            if (mergek8SConfig.Preferences != null && mergek8SConfig.Preferences.Count > 0)
+            {
+                foreach (var preference in mergek8SConfig.Preferences)
+                {
+                    if (basek8SConfig.Preferences?.ContainsKey(preference.Key) == false)
+                    {
+                        basek8SConfig.Preferences[preference.Key] = preference.Value;
+                    }
+                }
+            }
+
+            if (mergek8SConfig.Extensions != null && mergek8SConfig.Extensions.Count > 0)
+            {
+                foreach (var extension in mergek8SConfig.Extensions)
+                {
+                    if (basek8SConfig.Extensions?.ContainsKey(extension.Key) == false)
+                    {
+                        basek8SConfig.Extensions[extension.Key] = extension.Value;
+                    }
+                }
+            }
+
+            // For IEnumerable, use name as unique identifier for whether we should insert or not.
+            if (mergek8SConfig.Contexts != null && mergek8SConfig.Contexts.Count() > 0)
+            {
+                var contexts = new List<Context>();
+                if (basek8SConfig.Contexts != null)
+                {
+                    contexts.AddRange(basek8SConfig.Contexts);
+                }
+
+                foreach (var context in mergek8SConfig.Contexts)
+                {
+                    if (basek8SConfig.Contexts?.FirstOrDefault(o => o.Name == context.Name) == null)
+                    {
+                        contexts.Add(context);
+                    }
+                }
+
+                basek8SConfig.Contexts = contexts;
+            }
+
+            if (mergek8SConfig.Clusters != null && mergek8SConfig.Clusters.Count() > 0)
+            {
+                var clusters = new List<Cluster>();
+                if (basek8SConfig.Clusters != null)
+                {
+                    clusters.AddRange(basek8SConfig.Clusters);
+                }
+
+                foreach (var cluster in mergek8SConfig.Clusters)
+                {
+                    if (basek8SConfig.Clusters?.FirstOrDefault(o => o.Name == cluster.Name) == null)
+                    {
+                        clusters.Add(cluster);
+                    }
+                }
+
+                basek8SConfig.Clusters = clusters;
+            }
+
+            if (mergek8SConfig.Users != null && mergek8SConfig.Users.Count() > 0)
+            {
+                var users = new List<User>();
+                if (basek8SConfig.Users != null)
+                {
+                    users.AddRange(basek8SConfig.Users);
+                }
+
+                foreach (var user in mergek8SConfig.Users)
+                {
+                    if (basek8SConfig.Users?.FirstOrDefault(o => o.Name == user.Name) == null)
+                    {
+                        users.Add(user);
+                    }
+                }
+
+                basek8SConfig.Users = users;
             }
         }
     }

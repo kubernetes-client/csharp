@@ -1,5 +1,7 @@
+using System;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
 using k8s.Exceptions;
 using k8s.KubeConfigModels;
@@ -405,6 +407,33 @@ namespace k8s.Tests
 
             Assert.NotNull(cfg);
             AssertConfigEqual(expectedCfg, cfg);
+        }
+
+        [Fact]
+        public void LoadKubeConfigFromEnvironmentVariable()
+        {
+            // BuildDefaultConfig assumes UseRelativePaths: true, which isn't
+            // done by any tests.
+            var filePath = Path.GetFullPath("assets/kubeconfig-relative-paths.yml");
+
+            // TODO set environment variable if test parallelism is on.
+            Environment.SetEnvironmentVariable("KUBECONFIG", filePath);
+            var cfg = KubernetesClientConfiguration.BuildDefaultConfig();
+
+            Assert.NotNull(cfg);
+        }
+
+        [Fact]
+        public void LoadSameKubeConfigFromEnvironmentVariableUnmodified()
+        {
+            var txt = File.ReadAllText("assets/kubeconfig-relative-paths.yml");
+            var expectedCfg = Yaml.LoadFromString<K8SConfiguration>(txt);
+
+            var filePath = Path.GetFullPath("assets/kubeconfig-relative-paths.yml");
+            filePath = string.Concat(filePath, RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ";" : ":", filePath);
+
+            Environment.SetEnvironmentVariable("KUBECONFIG", filePath);
+            var cfg = KubernetesClientConfiguration.BuildDefaultConfig();
         }
 
         /// <summary>
