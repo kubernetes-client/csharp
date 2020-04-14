@@ -4,5 +4,5 @@
   "publicReleaseRefSpec": [
     "^refs/heads/master$" // we release out of master
   ],
-  "pathFilters": [":^/src"]
+  "pathFilters": [".", "../KubernetesClient"]
 }

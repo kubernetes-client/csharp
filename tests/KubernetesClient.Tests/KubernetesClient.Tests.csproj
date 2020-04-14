@@ -12,6 +12,7 @@
 
   <ItemGroup>
       <PackageReference Include="FluentAssertions" Version="5.10.3" />
+      <PackageReference Include="System.Interactive.Async" Version="4.0.0" />
       <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9">
           <!-- this is due to aspnet core 2.1 is not compatible with our code -->
           <AllowExplicitVersion>true</AllowExplicitVersion>
@@ -20,6 +21,10 @@
       <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
       <PackageReference Include="System.Reactive" Version="4.3.2" />
       <PackageReference Include="Nito.AsyncEx" Version="5.0.0" />
+
+      <PackageReference Include="FluentAssertions" Version="5.10.2" />
+      <PackageReference Include="NSubstitute" Version="4.2.1" />
+      <PackageReference Include="Microsoft.Reactive.Testing" Version="4.3.2" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
@@ -37,6 +42,7 @@
     </PackageReference>
 
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1" />
+    <PackageReference Include="WireMock.Net" Version="1.2.1" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
     <PackageReference Include="Xunit.StaFact" Version="0.3.18" />

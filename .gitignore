@@ -3,6 +3,7 @@
 obj/
 bin/
 **/TestResults
+pkg/**
 
 # User-specific VS files
 *.suo
@@ -13,3 +14,4 @@ bin/
 # JetBrains Rider
 .idea/
 *.sln.iml
+examples/informers/Dockerfile

@@ -1,3 +1,6 @@
+using System;
+using System.Reflection;
+using k8s.Models;
 using Newtonsoft.Json;
 
 namespace k8s
@@ -32,5 +35,6 @@ namespace k8s
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
         public string Kind { get; set; }
+
     }
 }

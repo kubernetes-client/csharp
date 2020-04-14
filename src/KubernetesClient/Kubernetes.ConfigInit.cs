@@ -187,8 +187,12 @@ namespace k8s
         private void AppendDelegatingHandler<T>() where T : DelegatingHandler, new()
         {
             var cur = FirstMessageHandler as DelegatingHandler;
-
-            while (cur != null)
+            if (cur == null)
+            {
+                FirstMessageHandler = new T();
+                return;
+            }
+            while (true)
             {
                 var next = cur.InnerHandler as DelegatingHandler;
 

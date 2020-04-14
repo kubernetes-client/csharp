@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>..\..\src\KubernetesClient\kubernetes-client.snk</AssemblyOriginatorKeyFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="CompareNETObjects" Version="4.65.0" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.2" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.2" />
+        <PackageReference Include="NMica" Version="2.0.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\KubernetesClient.DependencyInjection\KubernetesClient.DependencyInjection.csproj" />
+    </ItemGroup>
+</Project>

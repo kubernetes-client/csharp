@@ -35,5 +35,9 @@ jobs:
       run: dotnet test
     - name: Pack
       run: dotnet pack --configuration Release src/KubernetesClient -o pkg
+    - name: Pack
+      run: dotnet pack --configuration Release src/KubernetesClient.Informers -o pkg
+    - name: Pack
+      run: dotnet pack --configuration Release src/KubernetesClient.DependencyInjection -o pkg
     - name: Push
       run: dotnet nuget push pkg\*.nupkg -s https://www.nuget.org/ -k ${{ secrets.nuget_api_key }}

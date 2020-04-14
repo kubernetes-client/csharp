@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "K8SControllerExample": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

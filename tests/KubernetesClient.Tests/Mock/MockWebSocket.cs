@@ -1,9 +1,9 @@
-using Nito.AsyncEx;
 using System;
 using System.Collections.Concurrent;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
+using Nito.AsyncEx;
 
 namespace k8s.Tests.Mock
 {
