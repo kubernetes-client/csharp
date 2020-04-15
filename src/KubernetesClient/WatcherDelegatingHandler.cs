@@ -21,11 +21,11 @@ namespace k8s
         {
             var originResponse = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
 
-            if (originResponse.IsSuccessStatusCode)
+            if (originResponse.IsSuccessStatusCode && request.Method == HttpMethod.Get) // watches are GETs so we can exclude non-GET requests
             {
-                var query = QueryHelpers.ParseQuery(request.RequestUri.Query);
-
-                if (query.TryGetValue("watch", out var values) && values.Any(v => v == "true"))
+                string query = request.RequestUri.Query;
+                int index = query.IndexOf("watch=true");
+                if(index > 0 && (query[index-1] == '?' || query[index-1] == '&'))
                 {
                     originResponse.Content = new LineSeparatedHttpContent(originResponse.Content, cancellationToken);
                 }
