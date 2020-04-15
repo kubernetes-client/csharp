@@ -591,26 +591,19 @@ namespace k8s
 
             if (kubeconfig == null)
             {
-                throw new KubeConfigException($"Environment variable KUBECONFIG is empty.");
+                throw new KubeConfigException($"Environment variable {environmentVariable} is empty.");
             }
 
             var configList = kubeconfig.Split(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ';' : ':');
-            if (configList.Length > 1)
-            {
-                var basek8SConfig = await LoadKubeConfigAsync(configList[0], useRelativePaths).ConfigureAwait(false);
+            var basek8SConfig = await LoadKubeConfigAsync(configList[0], useRelativePaths).ConfigureAwait(false);
 
-                for (var i = 1; i < configList.Length; i++)
-                {
-                    var mergek8SConfig = await LoadKubeConfigAsync(configList[i], useRelativePaths).ConfigureAwait(false);
-                    MergeKubeConfig(basek8SConfig, mergek8SConfig);
-                }
-
-                return basek8SConfig;
-            }
-            else
+            for (var i = 1; i < configList.Length; i++)
             {
-                return await LoadKubeConfigAsync(kubeconfig, useRelativePaths);
+                var mergek8SConfig = await LoadKubeConfigAsync(configList[i], useRelativePaths).ConfigureAwait(false);
+                MergeKubeConfig(basek8SConfig, mergek8SConfig);
             }
+
+            return basek8SConfig;
         }
 
         /// <summary>
@@ -646,7 +639,6 @@ namespace k8s
         private static void MergeKubeConfig(K8SConfiguration basek8SConfig, K8SConfiguration mergek8SConfig)
         {
             // For scalar values, prefer local values 
-            basek8SConfig.ApiVersion = basek8SConfig.ApiVersion ?? mergek8SConfig.ApiVersion;
             basek8SConfig.CurrentContext = basek8SConfig.CurrentContext ?? mergek8SConfig.CurrentContext;
             basek8SConfig.FileName = basek8SConfig.FileName ?? mergek8SConfig.FileName;
             basek8SConfig.Kind = basek8SConfig.Kind ?? mergek8SConfig.Kind;
@@ -672,26 +664,6 @@ namespace k8s
                         basek8SConfig.Extensions[extension.Key] = extension.Value;
                     }
                 }
-            }
-
-            // For IEnumerable, use name as unique identifier for whether we should insert or not.
-            if (mergek8SConfig.Contexts != null && mergek8SConfig.Contexts.Count() > 0)
-            {
-                var contexts = new List<Context>();
-                if (basek8SConfig.Contexts != null)
-                {
-                    contexts.AddRange(basek8SConfig.Contexts);
-                }
-
-                foreach (var context in mergek8SConfig.Contexts)
-                {
-                    if (basek8SConfig.Contexts?.FirstOrDefault(o => o.Name == context.Name) == null)
-                    {
-                        contexts.Add(context);
-                    }
-                }
-
-                basek8SConfig.Contexts = contexts;
             }
 
             if (mergek8SConfig.Clusters != null && mergek8SConfig.Clusters.Count() > 0)
