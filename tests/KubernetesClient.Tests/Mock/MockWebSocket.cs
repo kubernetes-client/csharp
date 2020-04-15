@@ -5,7 +5,7 @@ using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace k8s.tests.Mock
+namespace k8s.Tests.Mock
 {
     public class MockWebSocket : WebSocket
     {
@@ -20,7 +20,7 @@ namespace k8s.tests.Mock
         {
             this.subProtocol = subProtocol;
         }
-        
+
         public void SetState(WebSocketState state)
         {
             this.state = state;
