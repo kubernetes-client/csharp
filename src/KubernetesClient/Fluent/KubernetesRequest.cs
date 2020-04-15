@@ -402,25 +402,22 @@ namespace k8s.Fluent
         {
             if (modify == null) throw new ArgumentNullException(nameof(modify));
             if (_watchVersion != null) throw new InvalidOperationException("Watches cannot be updated.");
-            KubernetesRequest putReq = null;
-            while (true)
+            KubernetesRequest req = Clone();
+            while(true)
             {
-                if (obj == null) // if we need to load the resource...
+                if(obj == null) // if we need to load the resource...
                 {
-                    cancelToken.ThrowIfCancellationRequested();
-                    HttpRequestMessage getMsg = await CreateRequestMessage(cancelToken).ConfigureAwait(false); // load it with a GET request
-                    getMsg.Method = HttpMethod.Get;
-                    obj = await ExecuteMessageAsync<T>(getMsg, failIfMissing, cancelToken).ConfigureAwait(false);
+                    cancelToken.ThrowIfCancellationRequested(); // load it with a GET request
+                    obj = await req.Get().Body(null).ExecuteAsync<T>(failIfMissing, cancelToken).ConfigureAwait(false);
                 }
                 cancelToken.ThrowIfCancellationRequested();
-                // if the resource is missing or no changes are needed, return it as-is
-                if (obj == null || !await modify(obj, cancelToken).ConfigureAwait(false)) return obj;
-                if (putReq == null) putReq = Clone().Put();
-                KubernetesResponse resp = await putReq.Body(obj).ExecuteAsync(cancelToken).ConfigureAwait(false);  // otherwise, update it
-                if (resp.StatusCode != HttpStatusCode.Conflict) // if there was no conflict, return the result
+                // if the resource is missing or no changes are needed, return it as-is. otherwise, update it with a PUT request
+                if(obj == null || !await modify(obj, cancelToken).ConfigureAwait(false)) return obj;
+                KubernetesResponse resp = await req.Put().Body(obj).ExecuteAsync(cancelToken).ConfigureAwait(false);
+                if(resp.StatusCode != HttpStatusCode.Conflict) // if there was no conflict, return the result
                 {
-                    if (resp.IsNotFound && !failIfMissing) return null;
-                    else if (resp.IsError) throw new KubernetesException(await resp.GetStatusAsync().ConfigureAwait(false));
+                    if(resp.IsNotFound && !failIfMissing) return null;
+                    else if(resp.IsError) throw new KubernetesException(await resp.GetStatusAsync().ConfigureAwait(false));
                     else return await resp.GetBodyAsync<T>().ConfigureAwait(false);
                 }
                 obj = null; // otherwise, there was a conflict, so reload the item
