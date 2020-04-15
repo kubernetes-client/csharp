@@ -353,8 +353,9 @@ namespace k8s
             HttpResponseMessage respMsg = await client.SendAsync(reqMsg, HttpCompletionOption.ResponseHeadersRead, cancelToken).ConfigureAwait(false);
             if (respMsg.StatusCode != HttpStatusCode.SwitchingProtocols)
             {
-                throw new HttpRequestException(
-                    "Unable to upgrade to SPDY/3.1 connection. " + await respMsg.Content.ReadAsStringAsync().ConfigureAwait(false));
+                throw new KubernetesException(new V1Status() {
+                    Status = "Failure", Code = (int)respMsg.StatusCode, Reason = respMsg.StatusCode.ToString(),
+                    Message = "Unable to upgrade to SPDY/3.1 connection. " + await respMsg.Content.ReadAsStringAsync().ConfigureAwait(false) });
             }
 
             Stream stream = await respMsg.Content.ReadAsStreamAsync().ConfigureAwait(false);
@@ -375,8 +376,9 @@ namespace k8s
             HttpResponseMessage respMsg = await client.SendAsync(reqMsg, HttpCompletionOption.ResponseHeadersRead, cancelToken).ConfigureAwait(false);
             if(respMsg.StatusCode != HttpStatusCode.SwitchingProtocols)
             {
-                throw new HttpRequestException(
-                    "Unable to upgrade to web socket connection. " + await respMsg.Content.ReadAsStringAsync().ConfigureAwait(false));
+                throw new KubernetesException(new V1Status() {
+                    Status = "Failure", Code = (int)respMsg.StatusCode, Reason = respMsg.StatusCode.ToString(),
+                    Message = "Unable to upgrade to web socket connection. " + await respMsg.Content.ReadAsStringAsync().ConfigureAwait(false) });
             }
             Stream stream = await respMsg.Content.ReadAsStreamAsync().ConfigureAwait(false);
             return (WebSocket.CreateFromStream(stream, false, subprotocol, WebSocket.DefaultKeepAliveInterval), respMsg.Headers);
