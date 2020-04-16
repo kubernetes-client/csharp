@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Concurrent;
 using System.Linq;
 using System.Net;
@@ -44,6 +45,33 @@ namespace k8s
 
         internal static bool IsValidKubernetesName(this string value) => !Regex.IsMatch(value, "^[a-z0-9-]+$");
 
+        // Convert the string to camel case.
+        public static string ToCamelCase(this string value)
+        {
+            // If there are 0 or 1 characters, just return the string.
+            if (value == null || value.Length < 2)
+            {
+                return value;
+            }
+
+            // Split the string into words.
+            var words = value.Split(
+                new char[0],
+                StringSplitOptions.RemoveEmptyEntries);
+
+            // Combine the words.
+            var result = words[0].ToLower();
+            for (var i = 1; i < words.Length; i++)
+            {
+                result +=
+                    words[i].Substring(0, 1).ToUpper() +
+                    words[i].Substring(1);
+            }
+
+            return result;
+        }
+
+        public static bool In<T>(this T obj, params T[] values) => ((IList)values).Contains(obj);
 
     }
 }
