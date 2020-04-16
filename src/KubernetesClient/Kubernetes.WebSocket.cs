@@ -1,5 +1,4 @@
 using k8s.Models;
-using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Rest;
 using Microsoft.Rest.Serialization;
 using System;
@@ -14,6 +13,7 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Text;
 
 namespace k8s
 {
@@ -102,27 +102,23 @@ namespace k8s
 
             uriBuilder.Path += $"api/v1/namespaces/{@namespace}/pods/{name}/exec";
 
-            var query = string.Empty;
+            var query = new StringBuilder();
 
             foreach (var c in command)
             {
-                query = QueryHelpers.AddQueryString(query, "command", c);
+                Utilities.AddQueryParameter(query, "command", c);
             }
 
-            if (container != null)
+            if (!string.IsNullOrEmpty(container))
             {
-                query = QueryHelpers.AddQueryString(query, "container", Uri.EscapeDataString(container));
+                Utilities.AddQueryParameter(query, "container", container);
             }
 
-            query = QueryHelpers.AddQueryString(query, new Dictionary<string, string>
-            {
-                {"stderr", stderr ? "1" : "0"},
-                {"stdin", stdin ? "1" : "0"},
-                {"stdout", stdout ? "1" : "0"},
-                {"tty", tty ? "1" : "0"}
-            }).TrimStart('?');
-
-            uriBuilder.Query = query;
+            query.Append("&stderr=").Append(stderr ? '1' : '0'); // the query string is guaranteed not to be empty here because it has a 'command' param
+            query.Append("&stdin=").Append(stdin ? '1' : '0');
+            query.Append("&stdout=").Append(stdout ? '1' : '0');
+            query.Append("&tty=").Append(tty ? '1' : '0');
+            uriBuilder.Query = query.ToString(1, query.Length-1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
 
             return this.StreamConnectAsync(uriBuilder.Uri, _invocationId, webSocketSubProtol, customHeaders, cancellationToken);
         }
