@@ -56,9 +56,10 @@ namespace k8s
         ///     Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
         public Kubernetes(KubernetesClientConfiguration config, params DelegatingHandler[] handlers)
-            : this(handlers)
         {
+            Initialize();
             ValidateConfig(config);
+            CreateHttpClient(handlers);
             CaCerts = config.SslCaCerts;
             SkipTlsVerify = config.SkipTlsVerify;
             InitializeFromConfig(config);
@@ -161,8 +162,13 @@ namespace k8s
 #if NET452 
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
 #endif
-            AppendDelegatingHandler<WatcherDelegatingHandler>();
             DeserializationSettings.Converters.Add(new V1Status.V1StatusObjectViewConverter());
+        }
+
+        /// <summary>A <see cref="DelegatingHandler"/> that simply forwards a request with no further processing.</summary>
+        private sealed class ForwardingHandler : DelegatingHandler
+        {
+            public ForwardingHandler(HttpMessageHandler handler) : base(handler) { }
         }
 
         private void AppendDelegatingHandler<T>() where T : DelegatingHandler, new()
@@ -186,6 +192,32 @@ namespace k8s
 
                 cur = next;
             }
+        }
+
+        // NOTE: this method replicates the logic that the base ServiceClient uses except that it doesn't insert the RetryDelegatingHandler
+        // and it does insert the WatcherDelegatingHandler. we don't want the RetryDelegatingHandler because it has a very broad definition
+        // of what requests have failed. it considers everything outside 2xx to be failed, including 1xx (e.g. 101 Switching Protocols) and
+        // 3xx. in particular, this prevents upgraded connections and certain generic/custom requests from working.
+        private void CreateHttpClient(DelegatingHandler[] handlers)
+        {
+            FirstMessageHandler = HttpClientHandler = CreateRootHandler();
+            if (handlers == null || handlers.Length == 0)
+            {
+                // ensure we have at least one DelegatingHandler so AppendDelegatingHandler will work
+                FirstMessageHandler = new ForwardingHandler(HttpClientHandler);
+            }
+            else
+            {
+                for (int i = handlers.Length - 1; i >= 0; i--)
+                {
+                    DelegatingHandler handler = handlers[i];
+                    while (handler.InnerHandler is DelegatingHandler d) handler = d;
+                    handler.InnerHandler = FirstMessageHandler;
+                    FirstMessageHandler = handlers[i];
+                }
+            }
+            AppendDelegatingHandler<WatcherDelegatingHandler>();
+            HttpClient = new HttpClient(FirstMessageHandler, false);
         }
 
         /// <summary>
