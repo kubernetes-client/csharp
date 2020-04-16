@@ -87,7 +87,7 @@ namespace k8s
                 Utilities.AddQueryParameter(query, "resourceVersion", resourceVersion);
             }
 
-            uriBuilder.Query = query.ToString(1, query.Length-1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
+            uriBuilder.Query = query.Length == 0 ? "" : query.ToString(1, query.Length-1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
 
             // Create HTTP transport objects
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, uriBuilder.ToString());

@@ -14,6 +14,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Text;
+using System.Globalization;
 
 namespace k8s
 {
@@ -167,14 +168,13 @@ namespace k8s
 
             uriBuilder.Path += $"api/v1/namespaces/{@namespace}/pods/{name}/portforward";
 
-            var q = "";
+            var q = new StringBuilder();
             foreach (var port in ports)
             {
-                q = QueryHelpers.AddQueryString(q, "ports", $"{port}");
+                if (q.Length != 0) q.Append('&');
+                q.Append("ports=").Append(port.ToString(CultureInfo.InvariantCulture));
             }
-            uriBuilder.Query = q.TrimStart('?');
-
-
+            uriBuilder.Query = q.ToString();
 
             return StreamConnectAsync(uriBuilder.Uri, _invocationId, webSocketSubProtocol, customHeaders, cancellationToken);
         }
@@ -222,14 +222,13 @@ namespace k8s
 
             uriBuilder.Path += $"api/v1/namespaces/{@namespace}/pods/{name}/attach";
 
-            uriBuilder.Query = QueryHelpers.AddQueryString(string.Empty, new Dictionary<string, string>
-            {
-                { "container", container},
-                { "stderr", stderr ? "1": "0"},
-                { "stdin", stdin ? "1": "0"},
-                { "stdout", stdout ? "1": "0"},
-                { "tty", tty ? "1": "0"}
-            }).TrimStart('?');
+            var query = new StringBuilder();
+            query.Append("?stderr=").Append(stderr ? '1' : '0');
+            query.Append("&stdin=").Append(stdin ? '1' : '0');
+            query.Append("&stdout=").Append(stdout ? '1' : '0');
+            query.Append("&tty=").Append(tty ? '1' : '0');
+            Utilities.AddQueryParameter(query, "container", container);
+            uriBuilder.Query = query.ToString(1, query.Length-1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
 
             return StreamConnectAsync(uriBuilder.Uri, _invocationId, webSocketSubProtol, customHeaders, cancellationToken);
         }
