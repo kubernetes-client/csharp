@@ -57,6 +57,7 @@ namespace k8s
         /// </param>
         public Kubernetes(KubernetesClientConfiguration config, params DelegatingHandler[] handlers)
         {
+            Initialize();
             ValidateConfig(config);
             CreateHttpClient(handlers);
             CaCerts = config.SslCaCerts;
