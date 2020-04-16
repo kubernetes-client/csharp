@@ -63,7 +63,13 @@ namespace k8s.Tests
             DateTime ts = DateTime.UtcNow, ts2 = DateTime.Now;
             pod.Metadata = new V1ObjectMeta()
             {
-                CreationTimestamp = ts, DeletionTimestamp = ts2, Generation = 1, Name = "name", NamespaceProperty = "ns", ResourceVersion = "42", Uid = "id"
+                CreationTimestamp = ts,
+                DeletionTimestamp = ts2,
+                Generation = 1,
+                Name = "name",
+                NamespaceProperty = "ns",
+                ResourceVersion = "42",
+                Uid = "id"
             };
             Assert.Equal(ts, pod.CreationTimestamp().Value);
             Assert.Equal(ts2, pod.DeletionTimestamp().Value);

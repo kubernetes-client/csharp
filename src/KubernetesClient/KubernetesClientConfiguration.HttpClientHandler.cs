@@ -54,5 +54,6 @@ namespace k8s
         }
 
         public static DelegatingHandler CreateWatchHandler() => new WatcherDelegatingHandler();
+        public static DelegatingHandler CreateWatchHandler(TimeSpan timeout) => new WatcherDelegatingHandler(timeout);
     }
 }

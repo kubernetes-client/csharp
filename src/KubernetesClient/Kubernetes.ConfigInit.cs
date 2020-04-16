@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading;
 using k8s.Exceptions;
 using k8s.Models;
 using Microsoft.Rest;
@@ -233,6 +234,7 @@ namespace k8s
 
             AppendDelegatingHandler<WatcherDelegatingHandler>();
             HttpClient = new HttpClient(FirstMessageHandler, false);
+            HttpClient.Timeout = Timeout.InfiniteTimeSpan; // timeout logic will be handled by WatcherDelegatingHandler
         }
 
         /// <summary>

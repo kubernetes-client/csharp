@@ -12,12 +12,49 @@ namespace k8s
     /// <summary>
     /// This HttpDelegatingHandler is to rewrite the response and return first line to autorest client
     /// then use WatchExt to create a watch object which interact with the replaced http response to get watch works.
+    ///
+    /// This handler should be added when using externally managed <see cref="HttpClient"/> with <see cref="Kubernetes"/>.
+    /// It replaces the default Timeout behavior by ensuring that any request that is a watch does not timeout.
+    /// When using this handler, the <see cref="HttpClient.Timeout"/> should be set <see cref="Timeout.InfiniteTimeSpan"/>
+    /// and the desired actual timeout for non-watch requests should be passed as part of the <see cref="TimeoutHandler"/> constructor.
     /// </summary>
     internal class WatcherDelegatingHandler : DelegatingHandler
     {
+        private readonly TimeSpan _timeout;
+        private static TimeSpan DefaultTimeout = TimeSpan.FromSeconds(100); // 100 is the default for HttpClient
+
+        public WatcherDelegatingHandler() : this(DefaultTimeout)
+        {
+        }
+
+        public WatcherDelegatingHandler(TimeSpan timeout)
+        {
+            _timeout = timeout;
+        }
+
+        public WatcherDelegatingHandler(HttpMessageHandler innerHandler, TimeSpan timeout = default) : base(innerHandler)
+        {
+            _timeout = timeout != default ? timeout : DefaultTimeout;
+        }
+
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
             CancellationToken cancellationToken)
         {
+            var isWatch = false;
+            if (request.Method == HttpMethod.Get)
+            {
+                string query = request.RequestUri.Query;
+                int index = query.IndexOf("watch=true");
+                if (index > 0 && (query[index - 1] == '&' || query[index - 1] == '?'))
+                    isWatch = true;
+            }
+
+            if (!isWatch)
+            {
+                var cts = new CancellationTokenSource(_timeout);
+                cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, cts.Token).Token;
+            }
+
             var originResponse = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
 
             if (originResponse.IsSuccessStatusCode && request.Method == HttpMethod.Get) // all watches are GETs, so we can ignore others
