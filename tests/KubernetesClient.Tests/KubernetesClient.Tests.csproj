@@ -1,11 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <IsPackable>false</IsPackable>
+    <LangVersion>8</LangVersion>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\src\KubernetesClient\kubernetes-client.snk</AssemblyOriginatorKeyFile>
     <RootNamespace>k8s.Tests</RootNamespace>
     <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
+      <PackageReference Include="FluentAssertions" Version="5.10.3" />
       <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9">
           <!-- this is due to aspnet core 2.1 is not compatible with our code -->
           <AllowExplicitVersion>true</AllowExplicitVersion>
