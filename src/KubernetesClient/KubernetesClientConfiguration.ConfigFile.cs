@@ -31,7 +31,11 @@ namespace k8s
         public string CurrentContext { get; private set; }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
+        ///     Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from default locations
+        ///     If the KUBECONFIG environment variable is set, then that will be used.
+        ///     Next, it looks for a config file at <see cref="KubeConfigDefaultLocation"/>.
+        ///     Then, it checks whether it is executing inside a cluster and will use <see cref="InClusterConfig()" />.
+        ///     Finally, if nothing else exists, it creates a default config with localhost:8080 as host.
         /// </summary>
         public static KubernetesClientConfiguration BuildDefaultConfig()
         {
