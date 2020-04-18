@@ -353,18 +353,4 @@ namespace k8s.Models
             return owner.ApiVersion == obj.ApiVersion && owner.Kind == obj.Kind && owner.Name == obj.Name() && owner.Uid == obj.Uid();
         }
     }
-
-    public partial class V1Status
-    {
-        /// <summary>Converts a <see cref="V1Status"/> object representing an error into a short description of the error.</summary>
-        public override string ToString()
-        {
-            string reason = Reason;
-            if (string.IsNullOrEmpty(reason) && Code.GetValueOrDefault() != 0)
-            {
-                reason = ((HttpStatusCode)Code.Value).ToString();
-            }
-            return string.IsNullOrEmpty(Message) ? reason : string.IsNullOrEmpty(reason) ? Message : $"{reason} - {Message}";
-        }
-    }
 }
