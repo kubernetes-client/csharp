@@ -224,22 +224,7 @@ namespace k8s
         ///     Set credentials for the Client
         /// </summary>
         /// <param name="config">k8s client configuration</param>
-        private void SetCredentials(KubernetesClientConfiguration config)
-        {
-            // set the Credentails for token based auth
-            if (!string.IsNullOrWhiteSpace(config.AccessToken))
-            {
-                Credentials = new TokenCredentials(config.AccessToken);
-            }
-            else if (!string.IsNullOrWhiteSpace(config.Username) && !string.IsNullOrWhiteSpace(config.Password))
-            {
-                Credentials = new BasicAuthenticationCredentials
-                {
-                    UserName = config.Username,
-                    Password = config.Password
-                };
-            }
-        }
+        private void SetCredentials(KubernetesClientConfiguration config) => Credentials = CreateCredentials(config);
 
         /// <summary>
         ///     SSl Cert Validation Callback
@@ -295,6 +280,23 @@ namespace k8s
 
             // In all other cases, return false.
             return false;
+        }
+
+        /// <summary>Creates <see cref="ServiceClientCredentials"/> based on the given config, or returns null if no such credentials are
+        /// needed.
+        /// </summary>
+        public static ServiceClientCredentials CreateCredentials(KubernetesClientConfiguration config)
+        {
+            if (config == null) throw new ArgumentNullException(nameof(config));
+            if (!string.IsNullOrEmpty(config.AccessToken))
+            {
+                return new TokenCredentials(config.AccessToken);
+            }
+            else if (!string.IsNullOrEmpty(config.Username))
+            {
+                return new BasicAuthenticationCredentials() { UserName = config.Username, Password = config.Password };
+            }
+            return null;
         }
     }
 }
