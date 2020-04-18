@@ -5,8 +5,6 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\src\KubernetesClient\kubernetes-client.snk</AssemblyOriginatorKeyFile>
     <RootNamespace>k8s.Tests</RootNamespace>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>../../src/KubernetesClient/kubernetes-client.snk</AssemblyOriginatorKeyFile>
     <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
   </PropertyGroup>
 
