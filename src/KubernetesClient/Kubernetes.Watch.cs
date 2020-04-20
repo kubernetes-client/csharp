@@ -1,10 +1,10 @@
-using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Rest;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -43,53 +43,51 @@ namespace k8s
 
             uriBuilder.Path += path;
 
-            var query = string.Empty;
-
+            var query = new StringBuilder();
             // Don't sent watch, because setting that value will cause the WatcherDelegatingHandler to kick in. That class
             // "eats" the first line, which is something we don't want.
             // query = QueryHelpers.AddQueryString(query, "watch", "true");
-
-            if (@continue != null)
+            if(@continue != null)
             {
-                query = QueryHelpers.AddQueryString(query, "continue", Uri.EscapeDataString(@continue));
+                Utilities.AddQueryParameter(query, "continue", @continue);
             }
 
-            if (fieldSelector != null)
+            if (!string.IsNullOrEmpty(fieldSelector))
             {
-                query = QueryHelpers.AddQueryString(query, "fieldSelector", Uri.EscapeDataString(fieldSelector));
+                Utilities.AddQueryParameter(query, "fieldSelector", fieldSelector);
             }
 
             if (includeUninitialized != null)
             {
-                query = QueryHelpers.AddQueryString(query, "includeUninitialized", includeUninitialized.Value ? "true" : "false");
+                Utilities.AddQueryParameter(query, "includeUninitialized", includeUninitialized.Value ? "true" : "false");
             }
 
-            if (labelSelector != null)
+            if (!string.IsNullOrEmpty(labelSelector))
             {
-                query = QueryHelpers.AddQueryString(query, "labelSelector", Uri.EscapeDataString(labelSelector));
+                Utilities.AddQueryParameter(query, "labelSelector", labelSelector);
             }
 
             if (limit != null)
             {
-                query = QueryHelpers.AddQueryString(query, "limit", limit.Value.ToString());
+                Utilities.AddQueryParameter(query, "limit", limit.Value.ToString());
             }
 
             if (pretty != null)
             {
-                query = QueryHelpers.AddQueryString(query, "pretty", pretty.Value ? "true" : "false");
+                Utilities.AddQueryParameter(query, "pretty", pretty.Value ? "true" : "false");
             }
 
             if (timeoutSeconds != null)
             {
-                query = QueryHelpers.AddQueryString(query, "timeoutSeconds", timeoutSeconds.Value.ToString());
+                Utilities.AddQueryParameter(query, "timeoutSeconds", timeoutSeconds.Value.ToString());
             }
 
-            if (resourceVersion != null)
+            if (!string.IsNullOrEmpty(resourceVersion))
             {
-                query = QueryHelpers.AddQueryString(query, "resourceVersion", resourceVersion);
+                Utilities.AddQueryParameter(query, "resourceVersion", resourceVersion);
             }
 
-            uriBuilder.Query = query;
+            uriBuilder.Query = query.Length == 0 ? "" : query.ToString(1, query.Length-1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
 
             // Create HTTP transport objects
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, uriBuilder.ToString());
