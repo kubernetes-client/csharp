@@ -415,23 +415,31 @@ namespace k8s.Tests
             // BuildDefaultConfig assumes UseRelativePaths: true, which isn't
             // done by any tests.
             var filePath = Path.GetFullPath("assets/kubeconfig.relative.yml");
+            var environmentVariable = "KUBECONFIG_LoadKubeConfigFromEnvironmentVariable";
 
-            Environment.SetEnvironmentVariable("KUBECONFIG", filePath);
+            Environment.SetEnvironmentVariable(environmentVariable, filePath);
+            KubernetesClientConfiguration.KubeConfigEnvironmentVariable = environmentVariable;
+
             var cfg = KubernetesClientConfiguration.BuildDefaultConfig();
 
             Assert.NotNull(cfg);
         }
 
         [Fact]
-        public void LoadK8ConfigFromEnvironmentVariable()
+        public void LoadKubeConfigFromEnvironmentVariable_MultipleConfigs()
         {
-            var txt = File.ReadAllText("assets/kubeconfig.yml");
-            var expectedCfg = Yaml.LoadFromString<K8SConfiguration>(txt);
+            // This test makes sure that a list of environment variables works (no exceptions),
+            // doesn't check validity of configuration, which is done in other tests.
 
-            var filePath = Path.GetFullPath("assets/kubeconfig.yml");
-            var cfg = KubernetesClientConfiguration.LoadKubeConfigAsync();
+            var filePath = Path.GetFullPath("assets/kubeconfig.relative.yml");
+            var environmentVariable = "KUBECONFIG_LoadKubeConfigFromEnvironmentVariable_MultipleConfigs";
 
-            //AssertConfigEqual(expectedCfg, cfg);
+            Environment.SetEnvironmentVariable(environmentVariable, string.Concat(filePath, RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ';' : ':', filePath));
+            KubernetesClientConfiguration.KubeConfigEnvironmentVariable = environmentVariable;
+
+            var cfg = KubernetesClientConfiguration.BuildDefaultConfig();
+
+            Assert.NotNull(cfg);
         }
 
         [Fact]
@@ -448,7 +456,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void MergeKubeConfigWorks()
+        public void MergeKubeConfigNoDuplicates()
         {
             var firstPath = Path.GetFullPath("assets/kubeconfig.as-user-extra.yml");
             var secondPath = Path.GetFullPath("assets/kubeconfig.yml");
@@ -457,17 +465,18 @@ namespace k8s.Tests
 
             // Merged file has 6 users now.
             Assert.Equal(6, cfg.Users.Count());
+            Assert.Equal(5, cfg.Clusters.Count());
+            Assert.Equal(5, cfg.Contexts.Count());
         }
 
         [Fact]
-        public void CurrentContextMerge()
+        public void ContextFromSecondWorks()
         {
             var firstPath = Path.GetFullPath("assets/kubeconfig.no-current-context.yml");
             var secondPath = Path.GetFullPath("assets/kubeconfig.no-user.yml");
 
             var cfg = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo[] { new FileInfo(firstPath), new FileInfo(secondPath) });
 
-            // Merged file has 6 users now.
             Assert.NotNull(cfg.CurrentContext);
         }
 

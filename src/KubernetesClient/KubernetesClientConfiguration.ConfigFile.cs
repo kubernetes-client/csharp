@@ -30,6 +30,9 @@ namespace k8s
         /// </summary>
         public string CurrentContext { get; private set; }
 
+        // For testing
+        internal static string KubeConfigEnvironmentVariable { get; set; } = "KUBECONFIG";
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from default locations
         ///     If the KUBECONFIG environment variable is set, then that will be used.
@@ -43,7 +46,7 @@ namespace k8s
         /// </remarks>
         public static KubernetesClientConfiguration BuildDefaultConfig()
         {
-            var kubeconfig = Environment.GetEnvironmentVariable("KUBECONFIG");
+            var kubeconfig = Environment.GetEnvironmentVariable(KubeConfigEnvironmentVariable);
             if (kubeconfig != null)
             {
                 var configList = kubeconfig.Split(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ';' : ':').Select((s) => new FileInfo(s));
@@ -583,7 +586,7 @@ namespace k8s
         ///     The kube config files will be merges into a single <see cref="K8SConfiguration"/>, where first occurence wins.
         ///     See https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#merging-kubeconfig-files.
         /// </remarks>
-        public static K8SConfiguration LoadKubeConfig(FileInfo[] kubeConfigs, bool useRelativePaths = true)
+        internal static K8SConfiguration LoadKubeConfig(FileInfo[] kubeConfigs, bool useRelativePaths = true)
         {
             return LoadKubeConfigAsync(kubeConfigs, useRelativePaths).GetAwaiter().GetResult();
         }
@@ -599,7 +602,7 @@ namespace k8s
         ///     The kube config files will be merges into a single <see cref="K8SConfiguration"/>, where first occurence wins.
         ///     See https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#merging-kubeconfig-files.
         /// </remarks>
-        public static async Task<K8SConfiguration> LoadKubeConfigAsync(FileInfo[] kubeConfigs, bool useRelativePaths = true)
+        internal static async Task<K8SConfiguration> LoadKubeConfigAsync(FileInfo[] kubeConfigs, bool useRelativePaths = true)
         {
             var basek8SConfig = await LoadKubeConfigAsync(kubeConfigs[0], useRelativePaths).ConfigureAwait(false);
 
@@ -696,7 +699,7 @@ namespace k8s
                 foreach (var item in mergeList)
                 {
                     var name = getNameFunc(item);
-                    if (mapping.ContainsKey(name))
+                    if (!mapping.ContainsKey(name))
                     {
                         mapping[name] = item;
                     }
