@@ -263,7 +263,6 @@ namespace k8s.Tests
                     await Task.Yield();
                 }
 
-                Assert.Empty(events);
                 Assert.False(watcher.Watching);
                 Assert.True(connectionClosed.IsSet);
             }
