@@ -105,45 +105,27 @@ namespace k8s.Tests
         public void TestReferences()
         {
             // test object references
-            var pod = new V1Pod() { ApiVersion = "abc/xyz", Kind = "sometimes" };
+            var pod = new V1Pod() { ApiVersion = "v1", Kind = "Pod" };
             pod.Metadata = new V1ObjectMeta() { Name = "name", NamespaceProperty = "ns", ResourceVersion = "ver", Uid = "id" };
-            var objr = pod.CreateObjectReference();
-            Assert.Equal(pod.ApiVersion, objr.ApiVersion);
-            Assert.Equal(pod.Kind, objr.Kind);
-            Assert.Equal(pod.Name(), objr.Name);
-            Assert.Equal(pod.Namespace(), objr.NamespaceProperty);
-            Assert.Equal(pod.ResourceVersion(), objr.ResourceVersion);
-            Assert.Equal(pod.Uid(), objr.Uid);
+
+            var objr = new V1ObjectReference() { ApiVersion = pod.ApiVersion, Kind = pod.Kind, Name = pod.Name(), NamespaceProperty = pod.Namespace(), Uid = pod.Uid() };
             Assert.True(objr.Matches(pod));
 
             (pod.ApiVersion, pod.Kind) = (null, null);
-            objr = pod.CreateObjectReference();
-            Assert.Equal("v1", objr.ApiVersion);
-            Assert.Equal("Pod", objr.Kind);
             Assert.False(objr.Matches(pod));
-            (pod.ApiVersion, pod.Kind) = (objr.ApiVersion, objr.Kind);
+            (pod.ApiVersion, pod.Kind) = ("v1", "Pod");
             Assert.True(objr.Matches(pod));
             pod.Metadata.Name = "nome";
             Assert.False(objr.Matches(pod));
 
             // test owner references
             (pod.ApiVersion, pod.Kind) = ("abc/xyz", "sometimes");
-            var ownr = pod.CreateOwnerReference(true, false);
-            Assert.Equal(pod.ApiVersion, ownr.ApiVersion);
-            Assert.Equal(pod.Kind, ownr.Kind);
-            Assert.Equal(pod.Name(), ownr.Name);
-            Assert.Equal(pod.Uid(), ownr.Uid);
-            Assert.True(ownr.Controller.Value);
-            Assert.False(ownr.BlockOwnerDeletion.Value);
+            var ownr = new V1OwnerReference() { ApiVersion = "abc/xyz", Kind = "sometimes", Name = pod.Name(), Uid = pod.Uid() };
             Assert.True(ownr.Matches(pod));
 
             (pod.ApiVersion, pod.Kind) = (null, null);
             Assert.False(ownr.Matches(pod));
-            ownr = pod.CreateOwnerReference();
-            Assert.Equal("v1", ownr.ApiVersion);
-            Assert.Equal("Pod", ownr.Kind);
-            Assert.Null(ownr.Controller);
-            Assert.Null(ownr.BlockOwnerDeletion);
+            (ownr.ApiVersion, ownr.Kind) = ("v1", "Pod");
             Assert.False(ownr.Matches(pod));
             (pod.ApiVersion, pod.Kind) = (ownr.ApiVersion, ownr.Kind);
             Assert.True(ownr.Matches(pod));
@@ -162,14 +144,42 @@ namespace k8s.Tests
             Assert.Same(ownr, svc.GetController());
             Assert.Same(ownr, svc.RemoveOwnerReference(pod));
             Assert.Equal(0, svc.OwnerReferences().Count);
-            svc.AddOwnerReference(pod.CreateOwnerReference(true));
-            svc.AddOwnerReference(pod.CreateOwnerReference(false));
-            svc.AddOwnerReference(pod.CreateOwnerReference());
+            svc.AddOwnerReference(new V1OwnerReference() { ApiVersion = pod.ApiVersion, Kind = pod.Kind, Name = pod.Name(), Uid = pod.Uid(), Controller = true });
+            svc.AddOwnerReference(new V1OwnerReference() { ApiVersion = pod.ApiVersion, Kind = pod.Kind, Name = pod.Name(), Uid = pod.Uid(), Controller = false });
+            svc.AddOwnerReference(new V1OwnerReference() { ApiVersion = pod.ApiVersion, Kind = pod.Kind, Name = pod.Name(), Uid = pod.Uid() });
             Assert.Equal(3, svc.OwnerReferences().Count);
             Assert.NotNull(svc.RemoveOwnerReference(pod));
             Assert.Equal(2, svc.OwnerReferences().Count);
             Assert.True(svc.RemoveOwnerReferences(pod));
             Assert.Equal(0, svc.OwnerReferences().Count);
+        }
+
+        [Fact]
+        public void TestV1Status()
+        {
+            var s = new V1Status() { Status = "Success" };
+            Assert.Equal("Success", s.ToString());
+
+            s = new V1Status() { Status = "Failure" };
+            Assert.Equal("Failure", s.ToString());
+
+            s = new V1Status() { Status = "Failure", Reason = "BombExploded" };
+            Assert.Equal("BombExploded", s.ToString());
+
+            s = new V1Status() { Status = "Failure", Message = "Something bad happened." };
+            Assert.Equal("Something bad happened.", s.ToString());
+
+            s = new V1Status() { Status = "Failure", Code = 400 };
+            Assert.Equal("BadRequest", s.ToString());
+
+            s = new V1Status() { Status = "Failure", Code = 911 };
+            Assert.Equal("911", s.ToString());
+
+            s = new V1Status() { Status = "Failure", Code = 400, Message = "It's all messed up." };
+            Assert.Equal("BadRequest - It's all messed up.", s.ToString());
+
+            s = new V1Status() { Status = "Failure", Code = 400, Reason = "IllegalValue", Message = "You're breaking the LAW!", };
+            Assert.Equal("IllegalValue - You're breaking the LAW!", s.ToString());
         }
     }
 }
