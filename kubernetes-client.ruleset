@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="kubernetes-client" ToolsVersion="10.0">
+
+  <!-- https://github.com/DotNetAnalyzers/StyleCopAnalyzers/tree/master/documentation -->
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+    <Rule Id="SA1027" Action="Error" />
+  </Rules>
+</RuleSet>

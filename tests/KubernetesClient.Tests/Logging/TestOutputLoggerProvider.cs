@@ -11,13 +11,13 @@ namespace k8s.Tests.Logging
         : ILoggerProvider
     {
         /// <summary>
-        /// 	Create a new <see cref="TestOutputLoggerProvider"/>.
+        ///     Create a new <see cref="TestOutputLoggerProvider"/>.
         /// </summary>
         /// <param name="testOutput">
         ///     The output for the current test.
         /// </param>
         /// <param name="minLogLevel">
-        /// 	The logger's minimum log level.
+        ///     The logger's minimum log level.
         /// </param>
         public TestOutputLoggerProvider(ITestOutputHelper testOutput, LogLevel minLogLevel)
         {
@@ -41,7 +41,7 @@ namespace k8s.Tests.Logging
         ITestOutputHelper TestOutput { get; }
 
         /// <summary>
-        /// 	The logger's minimum log level.
+        ///     The logger's minimum log level.
         /// </summary>
         public LogLevel MinLogLevel { get; }
 
