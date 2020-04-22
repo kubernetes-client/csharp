@@ -102,8 +102,8 @@ namespace KubernetesWatchGenerator
                 && !blacklistedOperations.Contains(o.Operation.OperationId)).ToArray();
 
             // Render.
-            Render.FileToFile("IKubernetes.Watch.cs.template", watchOperations, $"{outputDirectory}IKubernetes.Watch.cs");
-            Render.FileToFile("Kubernetes.Watch.cs.template", watchOperations, $"{outputDirectory}Kubernetes.Watch.cs");
+            Render.FileToFile("IKubernetes.Watch.cs.template", watchOperations, Path.Combine(outputDirectory, "IKubernetes.Watch.cs"));
+            Render.FileToFile("Kubernetes.Watch.cs.template", watchOperations, Path.Combine(outputDirectory, "Kubernetes.Watch.cs"));
 
             // Generate the interface declarations
             var skippedTypes = new HashSet<string>()
