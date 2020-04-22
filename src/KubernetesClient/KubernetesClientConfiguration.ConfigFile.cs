@@ -1,7 +1,7 @@
 using System;
+using System.Collections.Generic;
 #if NETSTANDARD2_0
 using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.Diagnostics;
 #endif
 using System.IO;
@@ -30,6 +30,9 @@ namespace k8s
         /// </summary>
         public string CurrentContext { get; private set; }
 
+        // For testing
+        internal static string KubeConfigEnvironmentVariable { get; set; } = "KUBECONFIG";
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from default locations
         ///     If the KUBECONFIG environment variable is set, then that will be used.
@@ -37,26 +40,34 @@ namespace k8s
         ///     Then, it checks whether it is executing inside a cluster and will use <see cref="InClusterConfig()" />.
         ///     Finally, if nothing else exists, it creates a default config with localhost:8080 as host.
         /// </summary>
+        /// <remarks>
+        ///     If multiple kubeconfig files are specified in the KUBECONFIG environment variable,
+        ///     merges the files, where first occurence wins. See https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#merging-kubeconfig-files.
+        /// </remarks>
         public static KubernetesClientConfiguration BuildDefaultConfig()
         {
-            var kubeconfig = Environment.GetEnvironmentVariable("KUBECONFIG");
+            var kubeconfig = Environment.GetEnvironmentVariable(KubeConfigEnvironmentVariable);
             if (kubeconfig != null)
             {
-                return BuildConfigFromConfigFile(kubeconfigPath: kubeconfig);
+                var configList = kubeconfig.Split(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ';' : ':').Select((s) => new FileInfo(s));
+                var k8sConfig = LoadKubeConfig(configList.ToArray());
+                return BuildConfigFromConfigObject(k8sConfig);
             }
+
             if (File.Exists(KubeConfigDefaultLocation))
             {
                 return BuildConfigFromConfigFile(kubeconfigPath: KubeConfigDefaultLocation);
             }
+
             if (IsInCluster())
             {
                 return InClusterConfig();
             }
+
             var config = new KubernetesClientConfiguration();
             config.Host = "http://localhost:8080";
             return config;
         }
-
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
@@ -565,6 +576,46 @@ namespace k8s
         }
 
         /// <summary>
+        ///     Loads Kube Config
+        /// </summary>
+        /// <param name="kubeconfigs">List of kube config file contents</param>
+        /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
+        /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
+        /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
+        /// <remarks>
+        ///     The kube config files will be merges into a single <see cref="K8SConfiguration"/>, where first occurence wins.
+        ///     See https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#merging-kubeconfig-files.
+        /// </remarks>
+        internal static K8SConfiguration LoadKubeConfig(FileInfo[] kubeConfigs, bool useRelativePaths = true)
+        {
+            return LoadKubeConfigAsync(kubeConfigs, useRelativePaths).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        ///     Loads Kube Config
+        /// </summary>
+        /// <param name="kubeconfigs">List of kube config file contents</param>
+        /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
+        /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
+        /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
+        /// <remarks>
+        ///     The kube config files will be merges into a single <see cref="K8SConfiguration"/>, where first occurence wins.
+        ///     See https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#merging-kubeconfig-files.
+        /// </remarks>
+        internal static async Task<K8SConfiguration> LoadKubeConfigAsync(FileInfo[] kubeConfigs, bool useRelativePaths = true)
+        {
+            var basek8SConfig = await LoadKubeConfigAsync(kubeConfigs[0], useRelativePaths).ConfigureAwait(false);
+
+            for (var i = 1; i < kubeConfigs.Length; i++)
+            {
+                var mergek8SConfig = await LoadKubeConfigAsync(kubeConfigs[i], useRelativePaths).ConfigureAwait(false);
+                MergeKubeConfig(basek8SConfig, mergek8SConfig);
+            }
+
+            return basek8SConfig;
+        }
+
+        /// <summary>
         /// Tries to get the full path to a file referenced from the Kubernetes configuration.
         /// </summary>
         /// <param name="configuration">
@@ -592,6 +643,77 @@ namespace k8s
             {
                 return Path.Combine(Path.GetDirectoryName(configuration.FileName), path);
             }
+        }
+
+        /// <summary>
+        /// Merges kube config files together, preferring configuration present in the base config over the merge config.
+        /// </summary>
+        /// <param name="basek8SConfig">The <see cref="K8SConfiguration"/> to merge into</param>
+        /// <param name="mergek8SConfig">The <see cref="K8SConfiguration"/> to merge from</param>
+        private static void MergeKubeConfig(K8SConfiguration basek8SConfig, K8SConfiguration mergek8SConfig)
+        {
+            // For scalar values, prefer local values 
+            basek8SConfig.CurrentContext = basek8SConfig.CurrentContext ?? mergek8SConfig.CurrentContext;
+            basek8SConfig.FileName = basek8SConfig.FileName ?? mergek8SConfig.FileName;
+
+            // Kinds must match in kube config, otherwise throw.
+            if (basek8SConfig.Kind != mergek8SConfig.Kind)
+            {
+                throw new KubeConfigException($"kubeconfig \"kind\" are different between {basek8SConfig.FileName} and {mergek8SConfig.FileName}");
+            }
+
+            if (mergek8SConfig.Preferences != null)
+            {
+                foreach (var preference in mergek8SConfig.Preferences)
+                {
+                    if (basek8SConfig.Preferences?.ContainsKey(preference.Key) == false)
+                    {
+                        basek8SConfig.Preferences[preference.Key] = preference.Value;
+                    }
+                }
+            }
+
+            if (mergek8SConfig.Extensions != null)
+            {
+                foreach (var extension in mergek8SConfig.Extensions)
+                {
+                    if (basek8SConfig.Extensions?.ContainsKey(extension.Key) == false)
+                    {
+                        basek8SConfig.Extensions[extension.Key] = extension.Value;
+                    }
+                }
+            }
+
+            // Note, Clusters, Contexts, and Extensions are map-like in config despite being represented as a list here:
+            // https://github.com/kubernetes/client-go/blob/ede92e0fe62deed512d9ceb8bf4186db9f3776ff/tools/clientcmd/api/types.go#L238
+            basek8SConfig.Clusters = MergeLists(basek8SConfig.Clusters, mergek8SConfig.Clusters, (s) => s.Name);
+            basek8SConfig.Users = MergeLists(basek8SConfig.Users, mergek8SConfig.Users, (s) => s.Name);
+            basek8SConfig.Contexts = MergeLists(basek8SConfig.Contexts, mergek8SConfig.Contexts, (s) => s.Name);
+        }
+
+        private static IEnumerable<T> MergeLists<T>(IEnumerable<T> baseList, IEnumerable<T> mergeList, Func<T, string> getNameFunc)
+        {
+            if (mergeList != null && mergeList.Count() > 0)
+            {
+                var mapping = new Dictionary<string, T>();
+                foreach (var item in baseList)
+                {
+                    mapping[getNameFunc(item)] = item;
+                }
+
+                foreach (var item in mergeList)
+                {
+                    var name = getNameFunc(item);
+                    if (!mapping.ContainsKey(name))
+                    {
+                        mapping[name] = item;
+                    }
+                }
+
+                return mapping.Values;
+            }
+
+            return baseList;
         }
     }
 }
