@@ -16,7 +16,7 @@ namespace k8s.KubeConfigModels
         /// Gets or sets general information to be use for CLI interactions
         /// </summary>
         [YamlMember(Alias = "preferences")]
-        public IDictionary<string, object> Preferences{ get; set; }
+        public IDictionary<string, object> Preferences { get; set; }
 
         [YamlMember(Alias = "apiVersion")]
         public string ApiVersion { get; set; }

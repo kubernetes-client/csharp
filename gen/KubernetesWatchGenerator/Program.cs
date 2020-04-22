@@ -51,9 +51,9 @@ namespace KubernetesWatchGenerator
             _schemaDefinitionsInMultipleGroups = _schemaToNameMap.Values.Select(x =>
             {
                 var parts = x.Split(".");
-                return new {FullName = x, Name = parts[parts.Length - 1], Version = parts[parts.Length - 2], Group = parts[parts.Length - 3]};
+                return new { FullName = x, Name = parts[parts.Length - 1], Version = parts[parts.Length - 2], Group = parts[parts.Length - 3] };
             })
-                .GroupBy(x => new {x.Name, x.Version})
+                .GroupBy(x => new { x.Name, x.Version })
                 .Where(x => x.Count() > 1)
                 .SelectMany(x => x)
                 .Select(x => x.FullName)
@@ -61,7 +61,7 @@ namespace KubernetesWatchGenerator
 
             _classNameToPluralMap = swagger.Operations
                 .Where(x => x.Operation.OperationId.StartsWith("list"))
-                .Select(x => { return new {PluralName = x.Path.Split("/").Last(), ClassName = GetClassNameForSchemaDefinition(x.Operation.Responses["200"].ActualResponseSchema)}; })
+                .Select(x => { return new { PluralName = x.Path.Split("/").Last(), ClassName = GetClassNameForSchemaDefinition(x.Operation.Responses["200"].ActualResponseSchema) }; })
                 .Distinct()
                 .ToDictionary(x => x.ClassName, x => x.PluralName);
 
@@ -69,7 +69,7 @@ namespace KubernetesWatchGenerator
             _classNameToPluralMap = _classNameToPluralMap
                 .Where(x => x.Key.EndsWith("List"))
                 .Select(x =>
-                    new {ClassName = x.Key.Remove(x.Key.Length - 4), PluralName = x.Value})
+                    new { ClassName = x.Key.Remove(x.Key.Length - 4), PluralName = x.Value })
                 .ToDictionary(x => x.ClassName, x => x.PluralName)
                 .Union(_classNameToPluralMap)
                 .ToDictionary(x => x.Key, x => x.Value);
@@ -119,7 +119,7 @@ namespace KubernetesWatchGenerator
 
             var modelsDir = Path.Combine(outputDirectory, "Models");
             _classesWithValidation = Directory.EnumerateFiles(modelsDir)
-                .Select(x => new {Class = Path.GetFileNameWithoutExtension(x), Content = File.ReadAllText(x)})
+                .Select(x => new { Class = Path.GetFileNameWithoutExtension(x), Content = File.ReadAllText(x) })
                 .Where(x => x.Content.Contains("public virtual void Validate()"))
                 .Select(x => x.Class)
                 .ToHashSet();
@@ -244,7 +244,7 @@ namespace KubernetesWatchGenerator
                 interfaces.Add($"ISpec<{GetClassNameForSchemaDefinition(specProperty.Reference)}>");
             }
 
-            if(_classesWithValidation.Contains(className))
+            if (_classesWithValidation.Contains(className))
                 interfaces.Add("IValidate");
             var result = string.Join(", ", interfaces);
             return result;
@@ -272,7 +272,7 @@ namespace KubernetesWatchGenerator
             if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema4)
             {
                 var plural = GetPlural(arguments[0] as JsonSchema4);
-                if(plural != null)
+                if (plural != null)
                     context.Write($"\"{plural}\"");
                 else
                     context.Write("null");

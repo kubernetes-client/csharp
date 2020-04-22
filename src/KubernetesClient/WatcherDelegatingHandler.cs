@@ -24,7 +24,7 @@ namespace k8s
             {
                 string query = request.RequestUri.Query;
                 int index = query.IndexOf("watch=true");
-                if (index > 0 && (query[index-1] == '&' || query[index-1] == '?'))
+                if (index > 0 && (query[index - 1] == '&' || query[index - 1] == '?'))
                 {
                     originResponse.Content = new LineSeparatedHttpContent(originResponse.Content, cancellationToken);
                 }

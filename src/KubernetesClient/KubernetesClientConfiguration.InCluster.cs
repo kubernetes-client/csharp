@@ -32,7 +32,8 @@ namespace k8s
 
         public static KubernetesClientConfiguration InClusterConfig()
         {
-            if (!IsInCluster()) {            
+            if (!IsInCluster())
+            {
                 throw new KubeConfigException(
                     "unable to load in-cluster configuration, KUBERNETES_SERVICE_HOST and KUBERNETES_SERVICE_PORT must be defined");
             }

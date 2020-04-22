@@ -8,34 +8,47 @@ namespace @namespace
 {
     class NamespaceExample
     {
-        static void ListNamespaces(IKubernetes client) {
+        static void ListNamespaces(IKubernetes client)
+        {
             var list = client.ListNamespace();
-            foreach (var item in list.Items) {
+            foreach (var item in list.Items)
+            {
                 Console.WriteLine(item.Metadata.Name);
             }
-            if (list.Items.Count == 0) {
+            if (list.Items.Count == 0)
+            {
                 Console.WriteLine("Empty!");
             }
         }
 
-        static async Task DeleteAsync(IKubernetes client, string name, int delayMillis) {
-            while (true) {
+        static async Task DeleteAsync(IKubernetes client, string name, int delayMillis)
+        {
+            while (true)
+            {
                 await Task.Delay(delayMillis);
                 try
                 {
                     await client.ReadNamespaceAsync(name);
-                } catch (AggregateException ex) {
-                    foreach (var innerEx in ex.InnerExceptions) {
-                        if (innerEx is Microsoft.Rest.HttpOperationException) {
+                }
+                catch (AggregateException ex)
+                {
+                    foreach (var innerEx in ex.InnerExceptions)
+                    {
+                        if (innerEx is Microsoft.Rest.HttpOperationException)
+                        {
                             var code = ((Microsoft.Rest.HttpOperationException)innerEx).Response.StatusCode;
-                            if (code == HttpStatusCode.NotFound) {
+                            if (code == HttpStatusCode.NotFound)
+                            {
                                 return;
                             }
                             throw ex;
                         }
                     }
-                } catch (Microsoft.Rest.HttpOperationException ex) {
-                    if (ex.Response.StatusCode == HttpStatusCode.NotFound) {
+                }
+                catch (Microsoft.Rest.HttpOperationException ex)
+                {
+                    if (ex.Response.StatusCode == HttpStatusCode.NotFound)
+                    {
                         return;
                     }
                     throw ex;
@@ -43,7 +56,8 @@ namespace @namespace
             }
         }
 
-        static void Delete(IKubernetes client, string name, int delayMillis) {
+        static void Delete(IKubernetes client, string name, int delayMillis)
+        {
             DeleteAsync(client, name, delayMillis).Wait();
         }
 

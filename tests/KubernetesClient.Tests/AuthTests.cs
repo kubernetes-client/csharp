@@ -173,7 +173,8 @@ namespace k8s.Tests
         [Fact]
         public void Cert()
         {
-            if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) {
+            if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
                 // TODO: This test fails on OS X for some reason. Figure out why...
                 return;
             }
@@ -442,7 +443,7 @@ namespace k8s.Tests
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                     arguments = ($"/c echo {responseJson}").Split(" ");
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                    arguments = new[] {responseJson};
+                    arguments = new[] { responseJson };
 
 
                 var users = new List<User>
@@ -461,7 +462,7 @@ namespace k8s.Tests
                         }
                     }
                 };
-                var kubernetesConfig = new K8SConfiguration {Clusters = clusters, Users = users, Contexts = contexts};
+                var kubernetesConfig = new K8SConfiguration { Clusters = clusters, Users = users, Contexts = contexts };
                 return kubernetesConfig;
             }
         }

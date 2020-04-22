@@ -14,7 +14,8 @@ namespace logs
             Console.WriteLine("Starting Request!");
 
             var list = client.ListNamespacedPod("default");
-            if (list.Items.Count == 0) {
+            if (list.Items.Count == 0)
+            {
                 Console.WriteLine("No pods!");
                 return;
             }

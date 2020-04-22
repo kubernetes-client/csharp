@@ -3,16 +3,18 @@ using System.Net.Http;
 
 namespace k8s
 {
-    public partial class KubernetesClientConfiguration {
-        public HttpClientHandler CreateDefaultHttpClientHandler() {
+    public partial class KubernetesClientConfiguration
+    {
+        public HttpClientHandler CreateDefaultHttpClientHandler()
+        {
             var httpClientHandler = new HttpClientHandler();
 
 #if !NET452
             var uriScheme = new Uri(this.Host).Scheme;
 
-            if(uriScheme == "https")
+            if (uriScheme == "https")
             {
-                if(this.SkipTlsVerify)
+                if (this.SkipTlsVerify)
                 {
                     httpClientHandler.ServerCertificateCustomValidationCallback =
                         (sender, certificate, chain, sslPolicyErrors) => true;
@@ -32,7 +34,8 @@ namespace k8s
             return httpClientHandler;
         }
 
-        public void AddCertificates(HttpClientHandler handler) {
+        public void AddCertificates(HttpClientHandler handler)
+        {
             if ((!string.IsNullOrWhiteSpace(this.ClientCertificateData) ||
                     !string.IsNullOrWhiteSpace(this.ClientCertificateFilePath)) &&
                     (!string.IsNullOrWhiteSpace(this.ClientCertificateKeyData) ||

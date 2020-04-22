@@ -17,7 +17,8 @@ namespace k8s
     /// This is a utility class that helps you load objects from YAML files.
     /// </summary>
 
-    public class Yaml {
+    public class Yaml
+    {
         /// <summary>
         /// Load a collection of objects from a stream asynchronously
         /// </summary>
@@ -27,7 +28,8 @@ namespace k8s
         /// <param name="typeMap">
         /// A map from <apiVersion>/<kind> to Type. For example "v1/Pod" -> typeof(V1Pod)
         /// </param>
-        public static async Task<List<object>> LoadAllFromStreamAsync(Stream stream, Dictionary<String, Type> typeMap) {
+        public static async Task<List<object>> LoadAllFromStreamAsync(Stream stream, Dictionary<String, Type> typeMap)
+        {
             var reader = new StreamReader(stream);
             var content = await reader.ReadToEndAsync().ConfigureAwait(false);
             return LoadAllFromString(content, typeMap);
@@ -59,7 +61,8 @@ namespace k8s
         /// A map from <apiVersion>/<kind> to Type. For example "v1/Pod" -> typeof(V1Pod)
         /// </param>
 
-        public static List<object> LoadAllFromString(String content, Dictionary<String, Type> typeMap) {
+        public static List<object> LoadAllFromString(String content, Dictionary<String, Type> typeMap)
+        {
             var deserializer =
                 new DeserializerBuilder()
                     .WithNamingConvention(new CamelCaseNamingConvention())
@@ -70,7 +73,8 @@ namespace k8s
             var types = new List<Type>();
             var parser = new Parser(new StringReader(content));
             parser.Expect<StreamStart>();
-            while (parser.Accept<DocumentStart>()) {
+            while (parser.Accept<DocumentStart>())
+            {
                 var obj = deserializer.Deserialize<KubernetesObject>(parser);
                 types.Add(typeMap[obj.ApiVersion + "/" + obj.Kind]);
             }
@@ -85,7 +89,8 @@ namespace k8s
             parser.Expect<StreamStart>();
             var ix = 0;
             var results = new List<object>();
-            while (parser.Accept<DocumentStart>()) {
+            while (parser.Accept<DocumentStart>())
+            {
                 var objType = types[ix++];
                 var obj = deserializer.Deserialize(parser, objType);
                 results.Add(obj);
@@ -93,19 +98,23 @@ namespace k8s
             return results;
         }
 
-        public static async Task<T> LoadFromStreamAsync<T>(Stream stream) {
+        public static async Task<T> LoadFromStreamAsync<T>(Stream stream)
+        {
             var reader = new StreamReader(stream);
             var content = await reader.ReadToEndAsync().ConfigureAwait(false);
             return LoadFromString<T>(content);
         }
 
-        public static async Task<T> LoadFromFileAsync<T> (string file) {
-            using (FileStream fs = File.OpenRead(file)) {
+        public static async Task<T> LoadFromFileAsync<T>(string file)
+        {
+            using (FileStream fs = File.OpenRead(file))
+            {
                 return await LoadFromStreamAsync<T>(fs).ConfigureAwait(false);
             }
         }
 
-        public static T LoadFromString<T>(string content) {
+        public static T LoadFromString<T>(string content)
+        {
             var deserializer =
                 new DeserializerBuilder()
                 .WithNamingConvention(new CamelCaseNamingConvention())

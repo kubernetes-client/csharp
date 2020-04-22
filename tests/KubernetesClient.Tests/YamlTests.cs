@@ -31,8 +31,8 @@ metadata:
             Assert.Equal(2, objs.Count);
             Assert.IsType<V1Pod>(objs[0]);
             Assert.IsType<V1Namespace>(objs[1]);
-            Assert.Equal("foo", ((V1Pod) objs[0]).Metadata.Name);
-            Assert.Equal("ns", ((V1Namespace) objs[1]).Metadata.Name);
+            Assert.Equal("foo", ((V1Pod)objs[0]).Metadata.Name);
+            Assert.Equal("ns", ((V1Namespace)objs[1]).Metadata.Name);
         }
 
         [Fact]

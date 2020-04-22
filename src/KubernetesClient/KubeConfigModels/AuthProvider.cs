@@ -7,7 +7,8 @@ namespace k8s.KubeConfigModels
     /// <summary>
     /// Contains information that describes identity information.  This is use to tell the kubernetes cluster who you are.
     /// </summary>
-    public class AuthProvider {
+    public class AuthProvider
+    {
         /// <summary>
         /// Gets or sets the nickname for this auth provider.
         /// </summary>

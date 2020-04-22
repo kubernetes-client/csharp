@@ -12,7 +12,7 @@ namespace k8s.KubeConfigModels
         /// Gets or sets the path to a cert file for the certificate authority.
         /// </summary>
         [YamlMember(Alias = "certificate-authority", ApplyNamingConventions = false)]
-        public string CertificateAuthority {get; set; }
+        public string CertificateAuthority { get; set; }
 
         /// <summary>
         /// Gets or sets =PEM-encoded certificate authority certificates. Overrides <see cref="CertificateAuthority"/>.
