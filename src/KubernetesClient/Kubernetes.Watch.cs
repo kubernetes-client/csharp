@@ -47,7 +47,7 @@ namespace k8s
             // Don't sent watch, because setting that value will cause the WatcherDelegatingHandler to kick in. That class
             // "eats" the first line, which is something we don't want.
             // query = QueryHelpers.AddQueryString(query, "watch", "true");
-            if(@continue != null)
+            if (@continue != null)
             {
                 Utilities.AddQueryParameter(query, "continue", @continue);
             }
@@ -87,7 +87,7 @@ namespace k8s
                 Utilities.AddQueryParameter(query, "resourceVersion", resourceVersion);
             }
 
-            uriBuilder.Query = query.Length == 0 ? "" : query.ToString(1, query.Length-1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
+            uriBuilder.Query = query.Length == 0 ? "" : query.ToString(1, query.Length - 1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
 
             // Create HTTP transport objects
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, uriBuilder.ToString());
@@ -147,7 +147,8 @@ namespace k8s
                 throw ex;
             }
 
-            return new Watcher<T>(async () => {
+            return new Watcher<T>(async () =>
+            {
                 var stream = await httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false);
                 StreamReader reader = new StreamReader(stream);
 

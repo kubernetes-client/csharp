@@ -21,7 +21,7 @@ namespace k8s
         /// <returns>List of x509 instances.</returns>
         public static X509Certificate2Collection LoadPemFileCert(string file)
         {
-            var certs =  new X509CertificateParser().ReadCertificates(File.OpenRead(file));
+            var certs = new X509CertificateParser().ReadCertificates(File.OpenRead(file));
             var certCollection = new X509Certificate2Collection();
 
             // Convert BouncyCastle X509Certificates to the .NET cryptography implementation and add
@@ -76,7 +76,8 @@ namespace k8s
             var cert = new X509CertificateParser().ReadCertificate(new MemoryStream(certData));
             // key usage is a bit string, zero-th bit is 'digitalSignature'
             // See https://www.alvestrand.no/objectid/2.5.29.15.html for more details.
-            if (cert != null && cert.GetKeyUsage() != null && !cert.GetKeyUsage()[0]) {
+            if (cert != null && cert.GetKeyUsage() != null && !cert.GetKeyUsage()[0])
+            {
                 throw new Exception(
                     "Client certificates must be marked for digital signing. " +
                     "See https://github.com/kubernetes-client/csharp/issues/319");
@@ -93,10 +94,10 @@ namespace k8s
                 }
             }
 
-            var keyParams = (AsymmetricKeyParameter) obj;
+            var keyParams = (AsymmetricKeyParameter)obj;
 
             var store = new Pkcs12StoreBuilder().Build();
-            store.SetKeyEntry("K8SKEY", new AsymmetricKeyEntry(keyParams), new[] {new X509CertificateEntry(cert)});
+            store.SetKeyEntry("K8SKEY", new AsymmetricKeyEntry(keyParams), new[] { new X509CertificateEntry(cert) });
 
             using (var pkcs = new MemoryStream())
             {

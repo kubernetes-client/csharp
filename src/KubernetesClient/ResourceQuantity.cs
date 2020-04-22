@@ -138,14 +138,14 @@ namespace k8s.Models
             {
                 return false;
             }
-            return Equals((ResourceQuantity) obj);
+            return Equals((ResourceQuantity)obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                return ((int) Format * 397) ^ _unitlessValue.GetHashCode();
+                return ((int)Format * 397) ^ _unitlessValue.GetHashCode();
             }
         }
 
@@ -336,7 +336,7 @@ namespace k8s.Models
                             var minE = -9;
                             var lastv = Roundup(value * Fraction.Pow(10, -minE));
 
-                            for (var exp = minE;; exp += 3)
+                            for (var exp = minE; ; exp += 3)
                             {
                                 var v = value * Fraction.Pow(10, -exp);
                                 if (HasMantissa(v))
@@ -351,10 +351,10 @@ namespace k8s.Models
 
                             if (minE == 0)
                             {
-                                return $"{(decimal) lastv}";
+                                return $"{(decimal)lastv}";
                             }
 
-                            return $"{(decimal) lastv}e{minE}";
+                            return $"{(decimal)lastv}e{minE}";
                         }
 
                     case SuffixFormat.BinarySI:
@@ -384,7 +384,7 @@ namespace k8s.Models
                     lastv = v;
                 }
 
-                return $"{(decimal) lastv}{suffix}";
+                return $"{(decimal)lastv}{suffix}";
             }
 
             private static Fraction Roundup(Fraction lastv)

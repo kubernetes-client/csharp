@@ -43,7 +43,7 @@ namespace k8s
             ValidateConfig(config);
             CaCerts = config.SslCaCerts;
             SkipTlsVerify = config.SkipTlsVerify;
-            SetCredentials(config); 
+            SetCredentials(config);
         }
 
         /// <summary>

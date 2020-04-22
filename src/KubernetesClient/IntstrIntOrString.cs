@@ -7,7 +7,7 @@ using YamlDotNet.Serialization;
 
 namespace k8s.Models
 {
-    public class IntOrStringYamlConverter: IYamlTypeConverter
+    public class IntOrStringYamlConverter : IYamlTypeConverter
     {
         public bool Accepts(Type type)
         {
@@ -18,13 +18,16 @@ namespace k8s.Models
         {
             if (parser.Current is YamlDotNet.Core.Events.Scalar scalar)
             {
-                try {
+                try
+                {
                     if (string.IsNullOrEmpty(scalar.Value))
                     {
                         return null;
                     }
                     return new IntstrIntOrString(scalar.Value);
-                } finally {
+                }
+                finally
+                {
                     parser.MoveNext();
                 }
             }
@@ -33,7 +36,7 @@ namespace k8s.Models
 
         public void WriteYaml(IEmitter emitter, object value, Type type)
         {
-            var obj = (IntstrIntOrString) value;
+            var obj = (IntstrIntOrString)value;
             emitter.Emit(new YamlDotNet.Core.Events.Scalar(obj.Value));
         }
     }
@@ -56,7 +59,7 @@ namespace k8s.Models
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
             JsonSerializer serializer)
         {
-            return (IntstrIntOrString) serializer.Deserialize<string>(reader);
+            return (IntstrIntOrString)serializer.Deserialize<string>(reader);
         }
 
         public override bool CanConvert(Type objectType)
@@ -98,7 +101,7 @@ namespace k8s.Models
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((IntstrIntOrString) obj);
+            return Equals((IntstrIntOrString)obj);
         }
 
         public override int GetHashCode()

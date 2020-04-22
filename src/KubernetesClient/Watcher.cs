@@ -194,7 +194,8 @@ namespace k8s
             Action<Exception> onError = null,
             Action onClosed = null)
         {
-            return new Watcher<T>(async () => {
+            return new Watcher<T>(async () =>
+            {
                 var response = await responseTask.ConfigureAwait(false);
 
                 if (!(response.Response.Content is WatcherDelegatingHandler.LineSeparatedHttpContent content))
@@ -203,7 +204,7 @@ namespace k8s
                 }
 
                 return content.StreamReader;
-                } , onEvent, onError, onClosed);
+            }, onEvent, onError, onClosed);
         }
 
         /// <summary>

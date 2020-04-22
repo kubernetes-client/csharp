@@ -119,7 +119,7 @@ namespace k8s
             query.Append("&stdin=").Append(stdin ? '1' : '0');
             query.Append("&stdout=").Append(stdout ? '1' : '0');
             query.Append("&tty=").Append(tty ? '1' : '0');
-            uriBuilder.Query = query.ToString(1, query.Length-1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
+            uriBuilder.Query = query.ToString(1, query.Length - 1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
 
             return this.StreamConnectAsync(uriBuilder.Uri, _invocationId, webSocketSubProtol, customHeaders, cancellationToken);
         }
@@ -228,7 +228,7 @@ namespace k8s
             query.Append("&stdout=").Append(stdout ? '1' : '0');
             query.Append("&tty=").Append(tty ? '1' : '0');
             Utilities.AddQueryParameter(query, "container", container);
-            uriBuilder.Query = query.ToString(1, query.Length-1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
+            uriBuilder.Query = query.ToString(1, query.Length - 1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
 
             return StreamConnectAsync(uriBuilder.Uri, _invocationId, webSocketSubProtol, customHeaders, cancellationToken);
         }

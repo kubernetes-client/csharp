@@ -7,7 +7,7 @@ namespace k8s.Tests
 {
     static class TaskAssert
     {
-        public static void NotCompleted(Task task,string message = "Task should not be completed")
+        public static void NotCompleted(Task task, string message = "Task should not be completed")
         {
             Assert.False(task.IsCompleted, message);
         }

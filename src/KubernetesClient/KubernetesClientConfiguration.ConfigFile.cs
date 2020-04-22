@@ -427,7 +427,7 @@ namespace k8s
 
             process.StartInfo.Environment.Add("KUBERNETES_EXEC_INFO",
                 JsonConvert.SerializeObject(execInfo));
-            
+
             if (config.EnvironmentVariables != null)
                 foreach (var configEnvironmentVariableKey in config.EnvironmentVariables.Keys)
                     process.StartInfo.Environment.Add(key: configEnvironmentVariableKey,
@@ -474,7 +474,7 @@ namespace k8s
                 throw new KubeConfigException($"external exec failed due to uncaught exception: {ex}");
             }
 
-            
+
 
         }
 #endif

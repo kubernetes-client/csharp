@@ -37,7 +37,7 @@ namespace k8s.Models
 
         public PathType Type { get; private set; }
 
-        public V1Patch(IJsonPatchDocument jsonPatch) : this((object) jsonPatch)
+        public V1Patch(IJsonPatchDocument jsonPatch) : this((object)jsonPatch)
         {
         }
 
