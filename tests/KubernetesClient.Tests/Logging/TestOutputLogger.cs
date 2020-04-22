@@ -6,13 +6,13 @@ using Xunit.Abstractions;
 namespace k8s.Tests.Logging
 {
     /// <summary>
-    /// 	An implementation of <see cref="ILogger"/> that writes to the output of the current Xunit test.
+    ///     An implementation of <see cref="ILogger"/> that writes to the output of the current Xunit test.
     /// </summary>
     sealed class TestOutputLogger
         : ILogger
     {
         /// <summary>
-        /// 	Create a new <see cref="TestOutputLogger"/>.
+        ///     Create a new <see cref="TestOutputLogger"/>.
         /// </summary>
         /// <param name="testOutput">
         ///     The output for the current test.
@@ -21,7 +21,7 @@ namespace k8s.Tests.Logging
         ///     The logger's category name.
         /// </param>
         /// <param name="minLogLevel">
-        /// 	The logger's minimum log level.
+        ///     The logger's minimum log level.
         /// </param>
         public TestOutputLogger(ITestOutputHelper testOutput, string loggerCategory, LogLevel minLogLevel)
         {
@@ -47,27 +47,27 @@ namespace k8s.Tests.Logging
         public string LoggerCategory { get; }
 
         /// <summary>
-        /// 	The logger's minimum log level.
+        ///     The logger's minimum log level.
         /// </summary>
         public LogLevel MinLogLevel { get; }
 
         /// <summary>
-        /// 	Emit a log entry.
+        ///     Emit a log entry.
         /// </summary>
         /// <param name="level">
-        /// 	The log entry's level.
+        ///     The log entry's level.
         /// </param>
         /// <param name="eventId">
-        /// 	The log entry's associated event Id.
+        ///     The log entry's associated event Id.
         /// </param>
         /// <param name="state">
-        /// 	The log entry to be written. Can be also an object.
+        ///     The log entry to be written. Can be also an object.
         /// </param>
         /// <param name="exception">
-        /// 	The exception (if any) related to the log entry.
+        ///     The exception (if any) related to the log entry.
         /// </param>
         /// <param name="formatter">
-        /// 	A function that creates a <c>string</c> log message from the <paramref name="state"/> and <paramref name="exception"/>.
+        ///     A function that creates a <c>string</c> log message from the <paramref name="state"/> and <paramref name="exception"/>.
         /// </param>
         public void Log<TState>(LogLevel level, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
         {
@@ -89,24 +89,24 @@ namespace k8s.Tests.Logging
         }
 
         /// <summary>
-        /// 	Check if the given <paramref name="logLevel"/> is enabled.
+        ///     Check if the given <paramref name="logLevel"/> is enabled.
         /// </summary>
         /// <param name="logLevel">
-        /// 	The level to be checked.
+        ///     The level to be checked.
         /// </param>
         /// <returns>
-        /// 	<c>true</c> if enabled; otherwise, <c>false</c>.
+        ///     <c>true</c> if enabled; otherwise, <c>false</c>.
         /// </returns>
         public bool IsEnabled(LogLevel logLevel) => logLevel >= MinLogLevel;
 
         /// <summary>
-        /// 	Begin a logical operation scope.
+        ///     Begin a logical operation scope.
         /// </summary>
         /// <param name="state">
-        /// 	An identifier for the scope.
+        ///     An identifier for the scope.
         /// </param>
         /// <returns>
-        /// 	An <see cref="IDisposable"/> that ends the logical operation scope when disposed.
+        ///     An <see cref="IDisposable"/> that ends the logical operation scope when disposed.
         /// </returns>
         public IDisposable BeginScope<TState>(TState state) => Disposable.Empty;
     }
