@@ -470,6 +470,19 @@ namespace k8s.Tests
         }
 
         [Fact]
+        public void AlwaysPicksFirstOccurence()
+        {
+            var firstPath = Path.GetFullPath("assets/kubeconfig.no-cluster.yml");
+            var secondPath = Path.GetFullPath("assets/kubeconfig.no-context.yml");
+
+            var cfg = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo[] { new FileInfo(firstPath), new FileInfo(secondPath) });
+
+            var user = cfg.Users.Where(u => u.Name == "green-user").Single();
+            Assert.NotNull(user.UserCredentials.Password);
+            Assert.Null(user.UserCredentials.ClientCertificate);
+        }
+
+        [Fact]
         public void ContextFromSecondWorks()
         {
             var firstPath = Path.GetFullPath("assets/kubeconfig.no-current-context.yml");
@@ -477,7 +490,19 @@ namespace k8s.Tests
 
             var cfg = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo[] { new FileInfo(firstPath), new FileInfo(secondPath) });
 
+            // green-user
             Assert.NotNull(cfg.CurrentContext);
+        }
+
+        [Fact]
+        public void ContextPreferencesExtensionsMergeWithDuplicates()
+        {
+            var path = Path.GetFullPath("assets/kubeconfig.preferences-extensions.yml");
+
+            var cfg = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo[] { new FileInfo(path), new FileInfo(path) });
+
+            Assert.Equal(1, cfg.Extensions.Count);
+            Assert.Equal(1, cfg.Preferences.Count);
         }
 
         /// <summary>

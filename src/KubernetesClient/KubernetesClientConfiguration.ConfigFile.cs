@@ -645,18 +645,23 @@ namespace k8s
             }
         }
 
+        /// <summary>
+        /// Merges kube config files together, preferring configuration present in the base config over the merge config.
+        /// </summary>
+        /// <param name="basek8SConfig">The <see cref="K8SConfiguration"/> to merge into</param>
+        /// <param name="mergek8SConfig">The <see cref="K8SConfiguration"/> to merge from</param>
         private static void MergeKubeConfig(K8SConfiguration basek8SConfig, K8SConfiguration mergek8SConfig)
         {
             // For scalar values, prefer local values 
             basek8SConfig.CurrentContext = basek8SConfig.CurrentContext ?? mergek8SConfig.CurrentContext;
             basek8SConfig.FileName = basek8SConfig.FileName ?? mergek8SConfig.FileName;
 
+            // Kinds must match in kube config, otherwise throw.
             if (basek8SConfig.Kind != mergek8SConfig.Kind)
             {
                 throw new KubeConfigException($"kubeconfig \"kind\" are different between {basek8SConfig.FileName} and {mergek8SConfig.FileName}");
             }
 
-            // For Dictionaries, prefer first if not present in second.
             if (mergek8SConfig.Preferences != null)
             {
                 foreach (var preference in mergek8SConfig.Preferences)
