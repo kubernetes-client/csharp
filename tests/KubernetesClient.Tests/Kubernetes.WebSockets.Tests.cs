@@ -26,7 +26,7 @@ namespace k8s.Tests
         {
             var credentials = new BasicAuthenticationCredentials()
             {
-                UserName = "my-user", Password = "my-secret-password"
+                UserName = "my-user", Password = "my-secret-password",
             };
 
             Kubernetes client = new Kubernetes(credentials);
@@ -46,14 +46,14 @@ namespace k8s.Tests
                 tty: true,
                 customHeaders: new Dictionary<string, List<string>>()
                 {
-                    {"X-My-Header", new List<string>() {"myHeaderValue", "myHeaderValue2"}}
+                    {"X-My-Header", new List<string>() {"myHeaderValue", "myHeaderValue2"}},
                 },
                 cancellationToken: CancellationToken.None).ConfigureAwait(false);
 
             var expectedHeaders = new Dictionary<string, string>()
             {
                 {"X-My-Header", "myHeaderValue myHeaderValue2"},
-                {"Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ="}
+                {"Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ="},
             };
 
             Assert.Equal(mockWebSocketBuilder.PublicWebSocket,
@@ -71,7 +71,7 @@ namespace k8s.Tests
         {
             var credentials = new BasicAuthenticationCredentials()
             {
-                UserName = "my-user", Password = "my-secret-password"
+                UserName = "my-user", Password = "my-secret-password",
             };
 
             Kubernetes client = new Kubernetes(credentials);
@@ -86,14 +86,14 @@ namespace k8s.Tests
                 ports: new int[] {80, 8080},
                 customHeaders: new Dictionary<string, List<string>>()
                 {
-                    {"X-My-Header", new List<string>() {"myHeaderValue", "myHeaderValue2"}}
+                    {"X-My-Header", new List<string>() {"myHeaderValue", "myHeaderValue2"}},
                 },
                 cancellationToken: CancellationToken.None).ConfigureAwait(false);
 
             var expectedHeaders = new Dictionary<string, string>()
             {
                 {"X-My-Header", "myHeaderValue myHeaderValue2"},
-                {"Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ="}
+                {"Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ="},
             };
 
             Assert.Equal(mockWebSocketBuilder.PublicWebSocket,
@@ -110,7 +110,7 @@ namespace k8s.Tests
         {
             var credentials = new BasicAuthenticationCredentials()
             {
-                UserName = "my-user", Password = "my-secret-password"
+                UserName = "my-user", Password = "my-secret-password",
             };
 
             Kubernetes client = new Kubernetes(credentials);
@@ -129,14 +129,14 @@ namespace k8s.Tests
                 tty: true,
                 customHeaders: new Dictionary<string, List<string>>()
                 {
-                    {"X-My-Header", new List<string>() {"myHeaderValue", "myHeaderValue2"}}
+                    {"X-My-Header", new List<string>() {"myHeaderValue", "myHeaderValue2"}},
                 },
                 cancellationToken: CancellationToken.None).ConfigureAwait(false);
 
             var expectedHeaders = new Dictionary<string, string>()
             {
                 {"X-My-Header", "myHeaderValue myHeaderValue2"},
-                {"Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ="}
+                {"Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ="},
             };
 
             Assert.Equal(mockWebSocketBuilder.PublicWebSocket,

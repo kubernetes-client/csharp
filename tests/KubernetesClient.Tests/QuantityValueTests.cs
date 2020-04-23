@@ -115,7 +115,7 @@ namespace k8s.Tests
                 // Things written by trolls
                 ("0.000000000001Ki", new ResourceQuantity(2, -9, DecimalSI)), // rounds up, changes format
                 (".001", new ResourceQuantity(1, -3, DecimalSI)), (".0001k", new ResourceQuantity(100, -3, DecimalSI)),
-                ("1.", new ResourceQuantity(1, 0, DecimalSI)), ("1.G", new ResourceQuantity(1, 9, DecimalSI))
+                ("1.", new ResourceQuantity(1, 0, DecimalSI)), ("1.G", new ResourceQuantity(1, 9, DecimalSI)),
             })
             {
                 Assert.Equal(expect.ToString(), new ResourceQuantity(input).ToString());
@@ -123,7 +123,7 @@ namespace k8s.Tests
 
             foreach (var s in new[]
             {
-                "1.1.M", "1+1.0M", "0.1mi", "0.1am", "aoeu", ".5i", "1i", "-3.01i", "-3.01e-"
+                "1.1.M", "1+1.0M", "0.1mi", "0.1am", "aoeu", ".5i", "1i", "-3.01i", "-3.01e-",
 
                 // TODO support trailing whitespace is forbidden
 //                " 1",
@@ -185,7 +185,7 @@ namespace k8s.Tests
                 (new ResourceQuantity(10800, -10, DecimalSI), "1080n", ""),
                 (new ResourceQuantity(1, -6, DecimalSI), "1u", ""),
                 (new ResourceQuantity(80, -6, DecimalSI), "80u", ""),
-                (new ResourceQuantity(1080, -6, DecimalSI), "1080u", "")
+                (new ResourceQuantity(1080, -6, DecimalSI), "1080u", ""),
             })
             {
                 Assert.Equal(expect, input.ToString());

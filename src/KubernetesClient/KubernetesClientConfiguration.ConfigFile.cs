@@ -440,7 +440,7 @@ namespace k8s
             {
                 {"apiVersion", config.ApiVersion},
                 {"kind", "ExecCredentials"},
-                {"spec", new Dictionary<string, bool> {{"interactive", Environment.UserInteractive}}}
+                {"spec", new Dictionary<string, bool> {{"interactive", Environment.UserInteractive}}},
             };
 
             var process = new Process();

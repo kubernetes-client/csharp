@@ -32,7 +32,7 @@ namespace k8s.Tests.Mock
         {
             this.receiveBuffers.Enqueue(new MessageData()
             {
-                Buffer = buffer, MessageType = messageType, EndOfMessage = endOfMessage
+                Buffer = buffer, MessageType = messageType, EndOfMessage = endOfMessage,
             });
             this.receiveEvent.Set();
             return Task.CompletedTask;
@@ -62,7 +62,7 @@ namespace k8s.Tests.Mock
             {
                 Buffer = new ArraySegment<byte>(new byte[] { }),
                 EndOfMessage = true,
-                MessageType = WebSocketMessageType.Close
+                MessageType = WebSocketMessageType.Close,
             });
             this.receiveEvent.Set();
             return Task.CompletedTask;
@@ -124,7 +124,7 @@ namespace k8s.Tests.Mock
                     Data = new MessageData()
                     {
                         Buffer = buffer, MessageType = messageType, EndOfMessage = endOfMessage
-                    }
+                    },
                 });
             return Task.CompletedTask;
         }

@@ -32,6 +32,6 @@ namespace k8s
         /// has a Width and Height property.
         /// </summary>
         /// <seealso href="https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/client-go/tools/remotecommand/resize.go"/>
-        Resize
+        Resize,
     }
 }

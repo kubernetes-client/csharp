@@ -56,7 +56,7 @@ namespace KubernetesWatchGenerator
                         FullName = x,
                         Name = parts[parts.Length - 1],
                         Version = parts[parts.Length - 2],
-                        Group = parts[parts.Length - 3]
+                        Group = parts[parts.Length - 3],
                     };
                 })
                 .GroupBy(x => new {x.Name, x.Version})
@@ -73,7 +73,7 @@ namespace KubernetesWatchGenerator
                     {
                         PluralName = x.Path.Split("/").Last(),
                         ClassName = GetClassNameForSchemaDefinition(x.Operation.Responses["200"]
-                            .ActualResponseSchema)
+                            .ActualResponseSchema),
                     };
                 })
                 .Distinct()

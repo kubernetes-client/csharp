@@ -123,7 +123,7 @@ namespace k8s.Tests
                     {
                         new V1StatusCause() {Reason = "ExitCode", Message = "1"}
                     }
-                }
+                },
             };
 
             Assert.Equal(1, Kubernetes.GetExitCodeOrThrow(status));
@@ -144,7 +144,7 @@ namespace k8s.Tests
                     {
                         new V1StatusCause() {Reason = "ExitCode", Message = "abc"}
                     }
-                }
+                },
             };
 
             var ex = Assert.Throws<KubernetesException>(() => Kubernetes.GetExitCodeOrThrow(status));
@@ -160,7 +160,7 @@ namespace k8s.Tests
                 Status = "Failure",
                 Message = "command terminated with non-zero exit code: Error executing in Docker Container: 1",
                 Reason = "NonZeroExitCode",
-                Details = new V1StatusDetails() {Causes = new List<V1StatusCause>() { }}
+                Details = new V1StatusDetails() {Causes = new List<V1StatusCause>() { }},
             };
 
             var ex = Assert.Throws<KubernetesException>(() => Kubernetes.GetExitCodeOrThrow(status));
@@ -292,7 +292,7 @@ namespace k8s.Tests
                     {
                         new V1StatusCause() {Reason = "ExitCode", Message = "1"}
                     }
-                }
+                },
             };
 
             var processStatusJson = Encoding.UTF8.GetBytes(SafeJsonConvert.SerializeObject(processStatus));

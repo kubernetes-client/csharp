@@ -472,7 +472,7 @@ namespace k8s.Tests
 
             var cfg = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo[]
             {
-                new FileInfo(firstPath), new FileInfo(secondPath)
+                new FileInfo(firstPath), new FileInfo(secondPath),
             });
 
             // Merged file has 6 users now.
@@ -489,7 +489,7 @@ namespace k8s.Tests
 
             var cfg = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo[]
             {
-                new FileInfo(firstPath), new FileInfo(secondPath)
+                new FileInfo(firstPath), new FileInfo(secondPath),
             });
 
             var user = cfg.Users.Where(u => u.Name == "green-user").Single();
@@ -505,7 +505,7 @@ namespace k8s.Tests
 
             var cfg = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo[]
             {
-                new FileInfo(firstPath), new FileInfo(secondPath)
+                new FileInfo(firstPath), new FileInfo(secondPath),
             });
 
             // green-user
@@ -519,7 +519,7 @@ namespace k8s.Tests
 
             var cfg = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo[]
             {
-                new FileInfo(path), new FileInfo(path)
+                new FileInfo(path), new FileInfo(path),
             });
 
             Assert.Equal(1, cfg.Extensions.Count);

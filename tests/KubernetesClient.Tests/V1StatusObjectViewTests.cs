@@ -38,7 +38,7 @@ namespace k8s.Tests
             var corev1Namespace = new V1Namespace()
             {
                 Metadata = new V1ObjectMeta() {Name = "test name"},
-                Status = new V1NamespaceStatus() {Phase = "test termating"}
+                Status = new V1NamespaceStatus() {Phase = "test termating"},
             };
 
             using (var server = new MockKubeApiServer(testOutput, resp: JsonConvert.SerializeObject(corev1Namespace)))

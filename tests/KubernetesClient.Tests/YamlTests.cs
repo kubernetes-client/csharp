@@ -127,7 +127,7 @@ metadata:
             {
                 ApiVersion = "v1",
                 Kind = "Pod",
-                Metadata = new V1ObjectMeta() {Name = "foo", NamespaceProperty = "bar"}
+                Metadata = new V1ObjectMeta() {Name = "foo", NamespaceProperty = "bar"},
             };
 
             var yaml = Yaml.SaveToString(pod);
@@ -166,7 +166,7 @@ metadata:
                             }
                         }
                     }
-                }
+                },
             };
 
             var yaml = Yaml.SaveToString(pod);
@@ -285,7 +285,7 @@ spec:
                 Spec = new V1ServiceSpec
                 {
                     Ports = new List<V1ServicePort> {new V1ServicePort {Port = 3000, TargetPort = 3000}}
-                }
+                },
             };
 
             var output = Yaml.SaveToString<V1Service>(obj);

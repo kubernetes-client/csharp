@@ -93,7 +93,7 @@ namespace k8s.Models
         {
             DecimalExponent,
             BinarySI,
-            DecimalSI
+            DecimalSI,
         }
 
         public static readonly decimal MaxAllowed = (decimal)BigInteger.Pow(2, 63) - 1;
@@ -267,7 +267,7 @@ namespace k8s.Models
                     {"Gi", (2, 30) },
                     {"Ti", (2, 40) },
                     {"Pi", (2, 50) },
-                    {"Ei", (2, 60) }
+                    {"Ei", (2, 60) },
                 };
 
             private static readonly IReadOnlyDictionary<string, (int, int)> DecSuffixes =
@@ -282,7 +282,7 @@ namespace k8s.Models
                     {"G", (10, 9) },
                     {"T", (10, 12) },
                     {"P", (10, 15) },
-                    {"E", (10, 18) }
+                    {"E", (10, 18) },
                 };
 
             public Suffixer(string suffix)

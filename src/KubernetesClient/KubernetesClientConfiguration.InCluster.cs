@@ -9,7 +9,7 @@ namespace k8s
         private static string ServiceAccountPath =
             Path.Combine(new string[]
             {
-                $"{Path.DirectorySeparatorChar}var", "run", "secrets", "kubernetes.io", "serviceaccount"
+                $"{Path.DirectorySeparatorChar}var", "run", "secrets", "kubernetes.io", "serviceaccount",
             });
 
         private const string ServiceAccountTokenKeyFileName = "token";
@@ -51,7 +51,7 @@ namespace k8s
             {
                 Host = new UriBuilder("https", host, Convert.ToInt32(port)).ToString(),
                 AccessToken = token,
-                SslCaCerts = CertUtils.LoadPemFileCert(rootCAFile)
+                SslCaCerts = CertUtils.LoadPemFileCert(rootCAFile),
             };
         }
     }

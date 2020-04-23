@@ -594,7 +594,7 @@ namespace k8s.Tests
                                 RestartPolicy = "Never"
                             },
                         }
-                    }
+                    },
                 },
                 "default");
 

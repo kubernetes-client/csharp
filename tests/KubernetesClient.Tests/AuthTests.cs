@@ -90,7 +90,7 @@ namespace k8s.Tests
                 {
                     var client = new Kubernetes(new KubernetesClientConfiguration
                     {
-                        Host = server.Uri.ToString(), Username = testName, Password = testPassword
+                        Host = server.Uri.ToString(), Username = testName, Password = testPassword,
                     });
 
                     var listTask = ExecuteListPods(client);
@@ -101,7 +101,7 @@ namespace k8s.Tests
                 {
                     var client = new Kubernetes(new KubernetesClientConfiguration
                     {
-                        Host = server.Uri.ToString(), Username = "wrong name", Password = testPassword
+                        Host = server.Uri.ToString(), Username = "wrong name", Password = testPassword,
                     });
 
                     var listTask = ExecuteListPods(client);
@@ -112,7 +112,7 @@ namespace k8s.Tests
                 {
                     var client = new Kubernetes(new KubernetesClientConfiguration
                     {
-                        Host = server.Uri.ToString(), Username = testName, Password = "wrong password"
+                        Host = server.Uri.ToString(), Username = testName, Password = "wrong password",
                     });
 
                     var listTask = ExecuteListPods(client);
@@ -123,7 +123,7 @@ namespace k8s.Tests
                 {
                     var client = new Kubernetes(new KubernetesClientConfiguration
                     {
-                        Host = server.Uri.ToString(), Username = "both wrong", Password = "wrong password"
+                        Host = server.Uri.ToString(), Username = "both wrong", Password = "wrong password",
                     });
 
                     var listTask = ExecuteListPods(client);
@@ -142,7 +142,7 @@ namespace k8s.Tests
                 {
                     var client = new Kubernetes(new KubernetesClientConfiguration
                     {
-                        Host = server.Uri.ToString(), Username = "xx"
+                        Host = server.Uri.ToString(), Username = "xx",
                     });
 
                     var listTask = ExecuteListPods(client);
@@ -196,7 +196,7 @@ namespace k8s.Tests
                     {
                         clientCertificateValidationCalled = true;
                         return clientCertificate.Equals(certificate);
-                    }
+                    },
                 });
             }))
             {
@@ -208,7 +208,7 @@ namespace k8s.Tests
                         ClientCertificateData = clientCertificateData,
                         ClientCertificateKeyData = clientCertificateKeyData,
                         SslCaCerts = new X509Certificate2Collection(serverCertificate),
-                        SkipTlsVerify = false
+                        SkipTlsVerify = false,
                     });
 
                     var listTask = ExecuteListPods(client);
@@ -225,7 +225,7 @@ namespace k8s.Tests
                         Host = server.Uri.ToString(),
                         ClientCertificateData = clientCertificateData,
                         ClientCertificateKeyData = clientCertificateKeyData,
-                        SkipTlsVerify = true
+                        SkipTlsVerify = true,
                     });
 
                     var listTask = ExecuteListPods(client);
@@ -243,7 +243,7 @@ namespace k8s.Tests
                         ClientCertificateFilePath =
                             "assets/client.crt", // TODO amazoning why client.crt != client-data.txt
                         ClientKeyFilePath = "assets/client.key",
-                        SkipTlsVerify = true
+                        SkipTlsVerify = true,
                     });
 
                     Assert.ThrowsAny<Exception>(() => ExecuteListPods(client));
@@ -254,7 +254,7 @@ namespace k8s.Tests
                     clientCertificateValidationCalled = false;
                     var client = new Kubernetes(new KubernetesClientConfiguration
                     {
-                        Host = server.Uri.ToString(), SkipTlsVerify = true
+                        Host = server.Uri.ToString(), SkipTlsVerify = true,
                     });
 
                     Assert.ThrowsAny<Exception>(() => ExecuteListPods(client));
@@ -343,7 +343,7 @@ namespace k8s.Tests
                 {
                     var client = new Kubernetes(new KubernetesClientConfiguration
                     {
-                        Host = server.Uri.ToString(), AccessToken = token
+                        Host = server.Uri.ToString(), AccessToken = token,
                     });
 
                     var listTask = ExecuteListPods(client);
@@ -354,7 +354,7 @@ namespace k8s.Tests
                 {
                     var client = new Kubernetes(new KubernetesClientConfiguration
                     {
-                        Host = server.Uri.ToString(), AccessToken = "wrong token"
+                        Host = server.Uri.ToString(), AccessToken = "wrong token",
                     });
 
                     var listTask = ExecuteListPods(client);
@@ -366,7 +366,7 @@ namespace k8s.Tests
                 {
                     var client = new Kubernetes(new KubernetesClientConfiguration
                     {
-                        Host = server.Uri.ToString(), Username = "wrong name", Password = "same password"
+                        Host = server.Uri.ToString(), Username = "wrong name", Password = "same password",
                     });
 
                     var listTask = ExecuteListPods(client);
@@ -411,7 +411,7 @@ namespace k8s.Tests
 
             var contexts = new List<Context>
             {
-                new Context {Name = name, ContextDetails = new ContextDetails {Cluster = name, User = username}}
+                new Context {Name = name, ContextDetails = new ContextDetails {Cluster = name, User = username}},
             };
 
             var responseJson = $"{{\"apiVersion\": \"testingversion\", \"status\": {{\"token\": \"{token}\"}}}}";
@@ -423,7 +423,7 @@ namespace k8s.Tests
                     {
                         Name = name,
                         ClusterEndpoint = new ClusterEndpoint {SkipTlsVerify = true, Server = serverUri}
-                    }
+                    },
                 };
 
                 var command = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "cmd.exe" : "echo";
@@ -459,7 +459,7 @@ namespace k8s.Tests
                                 Arguments = arguments.ToList()
                             }
                         }
-                    }
+                    },
                 };
                 var kubernetesConfig = new K8SConfiguration {Clusters = clusters, Users = users, Contexts = contexts};
                 return kubernetesConfig;
