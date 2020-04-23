@@ -28,6 +28,7 @@ namespace httpClientFactory
             {
                 _logger.LogInformation(item.Metadata.Name);
             }
+
             if (list.Items.Count == 0)
             {
                 _logger.LogInformation("Empty!");

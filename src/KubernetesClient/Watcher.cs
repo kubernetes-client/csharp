@@ -61,7 +61,8 @@ namespace k8s
         /// <param name="onClosed">
         /// The action to invoke when the server closes the connection.
         /// </param>
-        public Watcher(Func<Task<StreamReader>> streamReaderCreator, Action<WatchEventType, T> onEvent, Action<Exception> onError, Action onClosed = null)
+        public Watcher(Func<Task<StreamReader>> streamReaderCreator, Action<WatchEventType, T> onEvent,
+            Action<Exception> onError, Action onClosed = null)
             : this(
                 async () => (TextReader)await streamReaderCreator().ConfigureAwait(false),
                 onEvent, onError, onClosed)
@@ -83,7 +84,8 @@ namespace k8s
         /// <param name="onClosed">
         /// The action to invoke when the server closes the connection.
         /// </param>
-        public Watcher(Func<Task<TextReader>> streamReaderCreator, Action<WatchEventType, T> onEvent, Action<Exception> onError, Action onClosed = null)
+        public Watcher(Func<Task<TextReader>> streamReaderCreator, Action<WatchEventType, T> onEvent,
+            Action<Exception> onError, Action onClosed = null)
         {
             _streamReaderCreator = streamReaderCreator;
             OnEvent += onEvent;
@@ -141,7 +143,8 @@ namespace k8s
 
                     try
                     {
-                        var genericEvent = SafeJsonConvert.DeserializeObject<k8s.Watcher<KubernetesObject>.WatchEvent>(line);
+                        var genericEvent =
+                            SafeJsonConvert.DeserializeObject<k8s.Watcher<KubernetesObject>.WatchEvent>(line);
 
                         if (genericEvent.Object.Kind == "Status")
                         {

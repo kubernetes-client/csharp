@@ -16,8 +16,7 @@ namespace k8s
     /// <summary>
     /// This is a utility class that helps you load objects from YAML files.
     /// </summary>
-
-    public class Yaml
+    public static class Yaml
     {
         /// <summary>
         /// Load a collection of objects from a stream asynchronously
@@ -44,7 +43,6 @@ namespace k8s
         /// <param name="typeMap">
         /// A map from <apiVersion>/<kind> to Type. For example "v1/Pod" -> typeof(V1Pod)
         /// </param>
-
         public static Task<List<object>> LoadAllFromFileAsync(String fileName, Dictionary<String, Type> typeMap)
         {
             var reader = File.OpenRead(fileName);
@@ -60,7 +58,6 @@ namespace k8s
         /// <param name="typeMap">
         /// A map from <apiVersion>/<kind> to Type. For example "v1/Pod" -> typeof(V1Pod)
         /// </param>
-
         public static List<object> LoadAllFromString(String content, Dictionary<String, Type> typeMap)
         {
             var deserializer =
@@ -95,6 +92,7 @@ namespace k8s
                 var obj = deserializer.Deserialize(parser, objType);
                 results.Add(obj);
             }
+
             return results;
         }
 
@@ -117,10 +115,10 @@ namespace k8s
         {
             var deserializer =
                 new DeserializerBuilder()
-                .WithNamingConvention(new CamelCaseNamingConvention())
-                .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
-                .WithTypeConverter(new IntOrStringYamlConverter())
-                .Build();
+                    .WithNamingConvention(new CamelCaseNamingConvention())
+                    .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
+                    .WithTypeConverter(new IntOrStringYamlConverter())
+                    .Build();
             var obj = deserializer.Deserialize<T>(content);
             return obj;
         }
@@ -133,11 +131,11 @@ namespace k8s
 
             var serializer =
                 new SerializerBuilder()
-                .DisableAliases()
-                .WithNamingConvention(new CamelCaseNamingConvention())
-                .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
-                .WithTypeConverter(new IntOrStringYamlConverter())
-                .BuildValueSerializer();
+                    .DisableAliases()
+                    .WithNamingConvention(new CamelCaseNamingConvention())
+                    .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
+                    .WithTypeConverter(new IntOrStringYamlConverter())
+                    .BuildValueSerializer();
             emitter.Emit(new StreamStart());
             emitter.Emit(new DocumentStart());
             serializer.SerializeValue(emitter, value, typeof(T));
@@ -207,9 +205,23 @@ namespace k8s
 
                 public Type Type => _inner.Type;
 
-                public Type TypeOverride { get => _inner.TypeOverride; set => _inner.TypeOverride = value; }
-                public int Order { get => _inner.Order; set => _inner.Order = value; }
-                public ScalarStyle ScalarStyle { get => _inner.ScalarStyle; set => _inner.ScalarStyle = value; }
+                public Type TypeOverride
+                {
+                    get => _inner.TypeOverride;
+                    set => _inner.TypeOverride = value;
+                }
+
+                public int Order
+                {
+                    get => _inner.Order;
+                    set => _inner.Order = value;
+                }
+
+                public ScalarStyle ScalarStyle
+                {
+                    get => _inner.ScalarStyle;
+                    set => _inner.ScalarStyle = value;
+                }
 
                 public T GetCustomAttribute<T>() where T : Attribute
                 {

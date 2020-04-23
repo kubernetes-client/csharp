@@ -160,7 +160,9 @@ namespace k8s.Tests
         [Fact]
         public void CreatedFromPreLoadedConfig()
         {
-            var k8sConfig = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo("assets/kubeconfig.yml"), useRelativePaths: false);
+            var k8sConfig =
+                KubernetesClientConfiguration.LoadKubeConfig(new FileInfo("assets/kubeconfig.yml"),
+                    useRelativePaths: false);
             var cfg = KubernetesClientConfiguration.BuildConfigFromConfigObject(k8sConfig);
             Assert.NotNull(cfg.Host);
         }
@@ -171,7 +173,8 @@ namespace k8s.Tests
         [Fact]
         public void DefaultConfigurationLoaded()
         {
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(new FileInfo("assets/kubeconfig.yml"), useRelativePaths: false);
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(new FileInfo("assets/kubeconfig.yml"),
+                useRelativePaths: false);
             Assert.NotNull(cfg.Host);
         }
 
@@ -182,7 +185,8 @@ namespace k8s.Tests
         public void IncompleteUserCredentials()
         {
             var fi = new FileInfo("assets/kubeconfig.no-credentials.yml");
-            Assert.Throws<KubeConfigException>(() => KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, useRelativePaths: false));
+            Assert.Throws<KubeConfigException>(() =>
+                KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, useRelativePaths: false));
         }
 
         /// <summary>
@@ -245,7 +249,8 @@ namespace k8s.Tests
         public void UserNotFound()
         {
             var fi = new FileInfo("assets/kubeconfig.user-not-found.yml");
-            Assert.Throws<KubeConfigException>(() => KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, useRelativePaths: false));
+            Assert.Throws<KubeConfigException>(() =>
+                KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, useRelativePaths: false));
         }
 
         /// <summary>
@@ -267,7 +272,8 @@ namespace k8s.Tests
         public void OverrideByMasterUrl()
         {
             var fi = new FileInfo("assets/kubeconfig.yml");
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, masterUrl: "http://test.server", useRelativePaths: false);
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, masterUrl: "http://test.server",
+                useRelativePaths: false);
             Assert.Equal("http://test.server", cfg.Host);
         }
 
@@ -332,7 +338,8 @@ namespace k8s.Tests
         public void DefaultConfigurationAsStringLoaded()
         {
             var filePath = "assets/kubeconfig.yml";
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(filePath, null, null, useRelativePaths: false);
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(filePath, null, null,
+                useRelativePaths: false);
             Assert.NotNull(cfg.Host);
         }
 
@@ -358,7 +365,8 @@ namespace k8s.Tests
         {
             var filePath = "assets/kubeconfig.as-user-extra.yml";
 
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(filePath, null, null, useRelativePaths: false);
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(filePath, null, null,
+                useRelativePaths: false);
             Assert.NotNull(cfg.Host);
         }
 
@@ -434,7 +442,8 @@ namespace k8s.Tests
             var filePath = Path.GetFullPath("assets/kubeconfig.relative.yml");
             var environmentVariable = "KUBECONFIG_LoadKubeConfigFromEnvironmentVariable_MultipleConfigs";
 
-            Environment.SetEnvironmentVariable(environmentVariable, string.Concat(filePath, RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ';' : ':', filePath));
+            Environment.SetEnvironmentVariable(environmentVariable,
+                string.Concat(filePath, RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ';' : ':', filePath));
             KubernetesClientConfiguration.KubeConfigEnvironmentVariable = environmentVariable;
 
             var cfg = KubernetesClientConfiguration.BuildDefaultConfig();
@@ -461,7 +470,10 @@ namespace k8s.Tests
             var firstPath = Path.GetFullPath("assets/kubeconfig.as-user-extra.yml");
             var secondPath = Path.GetFullPath("assets/kubeconfig.yml");
 
-            var cfg = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo[] { new FileInfo(firstPath), new FileInfo(secondPath) });
+            var cfg = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo[]
+            {
+                new FileInfo(firstPath), new FileInfo(secondPath),
+            });
 
             // Merged file has 6 users now.
             Assert.Equal(6, cfg.Users.Count());
@@ -475,7 +487,10 @@ namespace k8s.Tests
             var firstPath = Path.GetFullPath("assets/kubeconfig.no-cluster.yml");
             var secondPath = Path.GetFullPath("assets/kubeconfig.no-context.yml");
 
-            var cfg = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo[] { new FileInfo(firstPath), new FileInfo(secondPath) });
+            var cfg = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo[]
+            {
+                new FileInfo(firstPath), new FileInfo(secondPath),
+            });
 
             var user = cfg.Users.Where(u => u.Name == "green-user").Single();
             Assert.NotNull(user.UserCredentials.Password);
@@ -488,7 +503,10 @@ namespace k8s.Tests
             var firstPath = Path.GetFullPath("assets/kubeconfig.no-current-context.yml");
             var secondPath = Path.GetFullPath("assets/kubeconfig.no-user.yml");
 
-            var cfg = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo[] { new FileInfo(firstPath), new FileInfo(secondPath) });
+            var cfg = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo[]
+            {
+                new FileInfo(firstPath), new FileInfo(secondPath),
+            });
 
             // green-user
             Assert.NotNull(cfg.CurrentContext);
@@ -499,7 +517,10 @@ namespace k8s.Tests
         {
             var path = Path.GetFullPath("assets/kubeconfig.preferences-extensions.yml");
 
-            var cfg = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo[] { new FileInfo(path), new FileInfo(path) });
+            var cfg = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo[]
+            {
+                new FileInfo(path), new FileInfo(path),
+            });
 
             Assert.Equal(1, cfg.Extensions.Count);
             Assert.Equal(1, cfg.Preferences.Count);
@@ -555,7 +576,8 @@ namespace k8s.Tests
         {
             Assert.Equal(expected.Name, actual.Name);
             Assert.Equal(expected.ClusterEndpoint.CertificateAuthority, actual.ClusterEndpoint.CertificateAuthority);
-            Assert.Equal(expected.ClusterEndpoint.CertificateAuthorityData, actual.ClusterEndpoint.CertificateAuthorityData);
+            Assert.Equal(expected.ClusterEndpoint.CertificateAuthorityData,
+                actual.ClusterEndpoint.CertificateAuthorityData);
             Assert.Equal(expected.ClusterEndpoint.Server, actual.ClusterEndpoint.Server);
             Assert.Equal(expected.ClusterEndpoint.SkipTlsVerify, actual.ClusterEndpoint.SkipTlsVerify);
         }

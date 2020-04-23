@@ -26,10 +26,16 @@ namespace k8s.Tests.Logging
         public TestOutputLogger(ITestOutputHelper testOutput, string loggerCategory, LogLevel minLogLevel)
         {
             if (testOutput == null)
+            {
                 throw new ArgumentNullException(nameof(testOutput));
+            }
 
             if (String.IsNullOrWhiteSpace(loggerCategory))
-                throw new ArgumentException("Argument cannot be null, empty, or entirely composed of whitespace: 'loggerCategory'.", nameof(loggerCategory));
+            {
+                throw new ArgumentException(
+                    "Argument cannot be null, empty, or entirely composed of whitespace: 'loggerCategory'.",
+                    nameof(loggerCategory));
+            }
 
             TestOutput = testOutput;
             LoggerCategory = loggerCategory;
@@ -69,22 +75,23 @@ namespace k8s.Tests.Logging
         /// <param name="formatter">
         ///     A function that creates a <c>string</c> log message from the <paramref name="state"/> and <paramref name="exception"/>.
         /// </param>
-        public void Log<TState>(LogLevel level, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+        public void Log<TState>(LogLevel level, EventId eventId, TState state, Exception exception,
+            Func<TState, Exception, string> formatter)
         {
             if (formatter == null)
+            {
                 throw new ArgumentNullException(nameof(formatter));
+            }
 
             TestOutput.WriteLine(String.Format("[{0}] {1}: {2}",
                 level,
                 LoggerCategory,
-                formatter(state, exception)
-            ));
+                formatter(state, exception)));
 
             if (exception != null)
             {
                 TestOutput.WriteLine(
-                    exception.ToString()
-                );
+                    exception.ToString());
             }
         }
 

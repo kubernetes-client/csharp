@@ -111,15 +111,7 @@ metadata:
         [Fact]
         public void WriteToString()
         {
-            var pod = new V1Pod()
-            {
-                ApiVersion = "v1",
-                Kind = "Pod",
-                Metadata = new V1ObjectMeta()
-                {
-                    Name = "foo"
-                }
-            };
+            var pod = new V1Pod() { ApiVersion = "v1", Kind = "Pod", Metadata = new V1ObjectMeta() { Name = "foo" } };
 
             var yaml = Yaml.SaveToString(pod);
             Assert.True(ToLines(@"apiVersion: v1
@@ -135,11 +127,7 @@ metadata:
             {
                 ApiVersion = "v1",
                 Kind = "Pod",
-                Metadata = new V1ObjectMeta()
-                {
-                    Name = "foo",
-                    NamespaceProperty = "bar"
-                }
+                Metadata = new V1ObjectMeta() { Name = "foo", NamespaceProperty = "bar" },
             };
 
             var yaml = Yaml.SaveToString(pod);
@@ -157,11 +145,7 @@ metadata:
             {
                 ApiVersion = "v1",
                 Kind = "Pod",
-                Metadata = new V1ObjectMeta()
-                {
-                    Name = "foo",
-                    NamespaceProperty = "bar"
-                },
+                Metadata = new V1ObjectMeta() { Name = "foo", NamespaceProperty = "bar" },
                 Spec = new V1PodSpec()
                 {
                     Containers = new[]
@@ -173,20 +157,16 @@ metadata:
                             {
                                 new V1VolumeMount
                                 {
-                                    Name = "vm1",
-                                    MountPath = "/vm1",
-                                    ReadOnlyProperty = true
+                                    Name = "vm1", MountPath = "/vm1", ReadOnlyProperty = true
                                 },
                                 new V1VolumeMount
                                 {
-                                    Name = "vm2",
-                                    MountPath = "/vm2",
-                                    ReadOnlyProperty = false
+                                    Name = "vm2", MountPath = "/vm2", ReadOnlyProperty = false
                                 },
                             }
                         }
                     }
-                }
+                },
             };
 
             var yaml = Yaml.SaveToString(pod);
@@ -218,6 +198,7 @@ spec:
                     {
                         yield break;
                     }
+
                     yield return line;
                 }
             }
@@ -295,10 +276,7 @@ spec:
   - port: 3000
     targetPort: 3000";
 
-            Dictionary<string, string> labels = new Dictionary<string, string>
-                                                {
-                                                    {"app", "test"}
-                                                };
+            Dictionary<string, string> labels = new Dictionary<string, string> { { "app", "test" } };
             var obj = new V1Service
             {
                 Kind = "Service",
@@ -306,15 +284,8 @@ spec:
                 ApiVersion = "v1",
                 Spec = new V1ServiceSpec
                 {
-                    Ports = new List<V1ServicePort>
-                                                       {
-                                                           new V1ServicePort
-                                                           {
-                                                               Port = 3000,
-                                                               TargetPort = 3000
-                                                           }
-                                                       }
-                }
+                    Ports = new List<V1ServicePort> { new V1ServicePort { Port = 3000, TargetPort = 3000 } }
+                },
             };
 
             var output = Yaml.SaveToString<V1Service>(obj);

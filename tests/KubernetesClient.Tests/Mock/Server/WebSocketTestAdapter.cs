@@ -67,7 +67,9 @@ namespace k8s.Tests.Mock.Server
             public void AcceptServerSocket(WebSocket serverSocket)
             {
                 if (serverSocket == null)
+                {
                     throw new ArgumentNullException(nameof(serverSocket));
+                }
 
                 _completion.SetResult(serverSocket);
             }
@@ -81,7 +83,9 @@ namespace k8s.Tests.Mock.Server
             public void RejectServerSocket(Exception reason)
             {
                 if (reason == null)
+                {
                     throw new ArgumentNullException(nameof(reason));
+                }
 
                 _completion.SetException(reason);
             }

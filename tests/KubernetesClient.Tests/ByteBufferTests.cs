@@ -12,7 +12,10 @@ namespace k8s.Tests
     /// </summary>
     public class ByteBufferTests
     {
-        private readonly byte[] writeData = new byte[] { 0xF0, 0xF1, 0xF2, 0xF3, 0xF4, 0xF5, 0xF6, 0xF7, 0xF8, 0xF9, 0xFA, 0xFB, 0xFC, 0xFD, 0xFE, 0xFF };
+        private readonly byte[] writeData = new byte[]
+        {
+            0xF0, 0xF1, 0xF2, 0xF3, 0xF4, 0xF5, 0xF6, 0xF7, 0xF8, 0xF9, 0xFA, 0xFB, 0xFC, 0xFD, 0xFE, 0xFF,
+        };
 
         /// <summary>
         /// Tests a sequential read and write operation.
@@ -261,8 +264,7 @@ namespace k8s.Tests
 
             await TaskAssert.Completed(readTask,
                 timeout: TimeSpan.FromMilliseconds(1000),
-                message: "Timed out waiting for read task to complete."
-            );
+                message: "Timed out waiting for read task to complete.");
 
             Assert.Equal(3, read);
             Assert.Equal(0xF0, readData[0]);
@@ -427,26 +429,34 @@ namespace k8s.Tests
         [Fact]
         public async Task RandomReadWriteTest()
         {
-            ByteBuffer buffer = new ByteBuffer(1, 1024 * 1024);
+            ByteBuffer buffer
+ = new ByteBuffer(1, 1024 * 1024);
 
-            var generatorTask = Task.Run(() => this.Generate(buffer, SHA256.Create()));
-            var consumerTask = Task.Run(() => this.Consume(buffer, SHA256.Create()));
+            var generatorTask
+ = Task.Run(() => this.Generate(buffer, SHA256.Create()));
+            var consumerTask
+ = Task.Run(() => this.Consume(buffer, SHA256.Create()));
 
             await Task.WhenAll(generatorTask, consumerTask);
 
-            var generatorHash = await generatorTask;
-            var consumerHash = await consumerTask;
+            var generatorHash
+ = await generatorTask;
+            var consumerHash
+ = await consumerTask;
 
             Assert.Equal(generatorHash, consumerHash);
         }
 
         private byte[] Generate(ByteBuffer buffer, HashAlgorithm hash)
         {
-            RandomNumberGenerator g = RandomNumberGenerator.Create();
+            RandomNumberGenerator g
+ = RandomNumberGenerator.Create();
 
-            byte[] next = new byte[32];
+            byte[] next
+ = new byte[32];
 
-            int iterations = 0;
+            int iterations
+ = 0;
             while (buffer.Size < buffer.MaximumSize)
             {
                 iterations++;
@@ -463,14 +473,19 @@ namespace k8s.Tests
 
         private byte[] Consume(ByteBuffer buffer, HashAlgorithm hash)
         {
-            byte[] data = new byte[32];
+            byte[] data
+ = new byte[32];
 
-            AsyncAutoResetEvent onBufferResized = new AsyncAutoResetEvent();
-            buffer.OnResize += (sender, e) => onBufferResized.Set();
+            AsyncAutoResetEvent onBufferResized
+ = new AsyncAutoResetEvent();
+            buffer.OnResize
+ += (sender, e) => onBufferResized.Set();
 
             int read;
-            int iterations = 0;
-            while ((read = buffer.Read(data, 0, data.Length)) > 0)
+            int iterations
+ = 0;
+            while ((read
+ = buffer.Read(data, 0, data.Length)) > 0)
             {
                 iterations++;
 

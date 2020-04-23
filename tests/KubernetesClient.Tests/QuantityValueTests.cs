@@ -22,47 +22,33 @@ namespace k8s.Tests
         {
             foreach (var (input, expect) in new[]
             {
-                ("0", new ResourceQuantity(0, 0, DecimalSI)),
-                ("0n", new ResourceQuantity(0, 0, DecimalSI)),
-                ("0u", new ResourceQuantity(0, 0, DecimalSI)),
-                ("0m", new ResourceQuantity(0, 0, DecimalSI)),
-                ("0Ki", new ResourceQuantity(0, 0, BinarySI)),
-                ("0k", new ResourceQuantity(0, 0, DecimalSI)),
-                ("0Mi", new ResourceQuantity(0, 0, BinarySI)),
-                ("0M", new ResourceQuantity(0, 0, DecimalSI)),
-                ("0Gi", new ResourceQuantity(0, 0, BinarySI)),
-                ("0G", new ResourceQuantity(0, 0, DecimalSI)),
-                ("0Ti", new ResourceQuantity(0, 0, BinarySI)),
-                ("0T", new ResourceQuantity(0, 0, DecimalSI)),
+                ("0", new ResourceQuantity(0, 0, DecimalSI)), ("0n", new ResourceQuantity(0, 0, DecimalSI)),
+                ("0u", new ResourceQuantity(0, 0, DecimalSI)), ("0m", new ResourceQuantity(0, 0, DecimalSI)),
+                ("0Ki", new ResourceQuantity(0, 0, BinarySI)), ("0k", new ResourceQuantity(0, 0, DecimalSI)),
+                ("0Mi", new ResourceQuantity(0, 0, BinarySI)), ("0M", new ResourceQuantity(0, 0, DecimalSI)),
+                ("0Gi", new ResourceQuantity(0, 0, BinarySI)), ("0G", new ResourceQuantity(0, 0, DecimalSI)),
+                ("0Ti", new ResourceQuantity(0, 0, BinarySI)), ("0T", new ResourceQuantity(0, 0, DecimalSI)),
 
                 // Quantity less numbers are allowed
                 ("1", new ResourceQuantity(1, 0, DecimalSI)),
 
                 // Binary suffixes
-                ("1Ki", new ResourceQuantity(1024, 0, BinarySI)),
-                ("8Ki", new ResourceQuantity(8 * 1024, 0, BinarySI)),
+                ("1Ki", new ResourceQuantity(1024, 0, BinarySI)), ("8Ki", new ResourceQuantity(8 * 1024, 0, BinarySI)),
                 ("7Mi", new ResourceQuantity(7 * 1024 * 1024, 0, BinarySI)),
                 ("6Gi", new ResourceQuantity(6L * 1024 * 1024 * 1024, 0, BinarySI)),
                 ("5Ti", new ResourceQuantity(5L * 1024 * 1024 * 1024 * 1024, 0, BinarySI)),
                 ("4Pi", new ResourceQuantity(4L * 1024 * 1024 * 1024 * 1024 * 1024, 0, BinarySI)),
                 ("3Ei", new ResourceQuantity(3L * 1024 * 1024 * 1024 * 1024 * 1024 * 1024, 0, BinarySI)),
-
                 ("10Ti", new ResourceQuantity(10L * 1024 * 1024 * 1024 * 1024, 0, BinarySI)),
                 ("100Ti", new ResourceQuantity(100L * 1024 * 1024 * 1024 * 1024, 0, BinarySI)),
 
                 // Decimal suffixes
-                ("5n", new ResourceQuantity(5, -9, DecimalSI)),
-                ("4u", new ResourceQuantity(4, -6, DecimalSI)),
-                ("3m", new ResourceQuantity(3, -3, DecimalSI)),
-                ("9", new ResourceQuantity(9, 0, DecimalSI)),
-                ("8k", new ResourceQuantity(8, 3, DecimalSI)),
-                ("50k", new ResourceQuantity(5, 4, DecimalSI)),
-                ("7M", new ResourceQuantity(7, 6, DecimalSI)),
-                ("6G", new ResourceQuantity(6, 9, DecimalSI)),
-                ("5T", new ResourceQuantity(5, 12, DecimalSI)),
-                ("40T", new ResourceQuantity(4, 13, DecimalSI)),
-                ("300T", new ResourceQuantity(3, 14, DecimalSI)),
-                ("2P", new ResourceQuantity(2, 15, DecimalSI)),
+                ("5n", new ResourceQuantity(5, -9, DecimalSI)), ("4u", new ResourceQuantity(4, -6, DecimalSI)),
+                ("3m", new ResourceQuantity(3, -3, DecimalSI)), ("9", new ResourceQuantity(9, 0, DecimalSI)),
+                ("8k", new ResourceQuantity(8, 3, DecimalSI)), ("50k", new ResourceQuantity(5, 4, DecimalSI)),
+                ("7M", new ResourceQuantity(7, 6, DecimalSI)), ("6G", new ResourceQuantity(6, 9, DecimalSI)),
+                ("5T", new ResourceQuantity(5, 12, DecimalSI)), ("40T", new ResourceQuantity(4, 13, DecimalSI)),
+                ("300T", new ResourceQuantity(3, 14, DecimalSI)), ("2P", new ResourceQuantity(2, 15, DecimalSI)),
                 ("1E", new ResourceQuantity(1, 18, DecimalSI)),
 
                 // Decimal exponents
@@ -81,12 +67,9 @@ namespace k8s.Tests
                 ("100.035k", new ResourceQuantity(100035, 0, DecimalSI)),
 
                 // Things that look like floating point
-                ("0.001", new ResourceQuantity(1, -3, DecimalSI)),
-                ("0.0005k", new ResourceQuantity(5, -1, DecimalSI)),
-                ("0.005", new ResourceQuantity(5, -3, DecimalSI)),
-                ("0.05", new ResourceQuantity(5, -2, DecimalSI)),
-                ("0.5", new ResourceQuantity(5, -1, DecimalSI)),
-                ("0.00050k", new ResourceQuantity(5, -1, DecimalSI)),
+                ("0.001", new ResourceQuantity(1, -3, DecimalSI)), ("0.0005k", new ResourceQuantity(5, -1, DecimalSI)),
+                ("0.005", new ResourceQuantity(5, -3, DecimalSI)), ("0.05", new ResourceQuantity(5, -2, DecimalSI)),
+                ("0.5", new ResourceQuantity(5, -1, DecimalSI)), ("0.00050k", new ResourceQuantity(5, -1, DecimalSI)),
                 ("0.00500", new ResourceQuantity(5, -3, DecimalSI)),
                 ("0.05000", new ResourceQuantity(5, -2, DecimalSI)),
                 ("0.50000", new ResourceQuantity(5, -1, DecimalSI)),
@@ -95,23 +78,19 @@ namespace k8s.Tests
                 ("0.5e-2", new ResourceQuantity(5, -3, DecimalExponent)),
                 ("0.5e0", new ResourceQuantity(5, -1, DecimalExponent)),
                 ("10.035M", new ResourceQuantity(10035, 3, DecimalSI)),
-
                 ("1.2e3", new ResourceQuantity(12, 2, DecimalExponent)),
                 ("1.3E+6", new ResourceQuantity(13, 5, DecimalExponent)),
                 ("1.40e9", new ResourceQuantity(14, 8, DecimalExponent)),
                 ("1.53E12", new ResourceQuantity(153, 10, DecimalExponent)),
                 ("1.6e15", new ResourceQuantity(16, 14, DecimalExponent)),
                 ("1.7E18", new ResourceQuantity(17, 17, DecimalExponent)),
-
-                ("9.01", new ResourceQuantity(901, -2, DecimalSI)),
-                ("8.1k", new ResourceQuantity(81, 2, DecimalSI)),
+                ("9.01", new ResourceQuantity(901, -2, DecimalSI)), ("8.1k", new ResourceQuantity(81, 2, DecimalSI)),
                 ("7.123456M", new ResourceQuantity(7123456, 0, DecimalSI)),
                 ("6.987654321G", new ResourceQuantity(6987654321, 0, DecimalSI)),
                 ("5.444T", new ResourceQuantity(5444, 9, DecimalSI)),
                 ("40.1T", new ResourceQuantity(401, 11, DecimalSI)),
                 ("300.2T", new ResourceQuantity(3002, 11, DecimalSI)),
-                ("2.5P", new ResourceQuantity(25, 14, DecimalSI)),
-                ("1.01E", new ResourceQuantity(101, 16, DecimalSI)),
+                ("2.5P", new ResourceQuantity(25, 14, DecimalSI)), ("1.01E", new ResourceQuantity(101, 16, DecimalSI)),
 
                 // Things that saturate/round
                 ("3.001n", new ResourceQuantity(4, -9, DecimalSI)),
@@ -135,10 +114,8 @@ namespace k8s.Tests
 
                 // Things written by trolls
                 ("0.000000000001Ki", new ResourceQuantity(2, -9, DecimalSI)), // rounds up, changes format
-                (".001", new ResourceQuantity(1, -3, DecimalSI)),
-                (".0001k", new ResourceQuantity(100, -3, DecimalSI)),
-                ("1.", new ResourceQuantity(1, 0, DecimalSI)),
-                ("1.G", new ResourceQuantity(1, 9, DecimalSI))
+                (".001", new ResourceQuantity(1, -3, DecimalSI)), (".0001k", new ResourceQuantity(100, -3, DecimalSI)),
+                ("1.", new ResourceQuantity(1, 0, DecimalSI)), ("1.G", new ResourceQuantity(1, 9, DecimalSI)),
             })
             {
                 Assert.Equal(expect.ToString(), new ResourceQuantity(input).ToString());
@@ -146,15 +123,7 @@ namespace k8s.Tests
 
             foreach (var s in new[]
             {
-                "1.1.M",
-                "1+1.0M",
-                "0.1mi",
-                "0.1am",
-                "aoeu",
-                ".5i",
-                "1i",
-                "-3.01i",
-                "-3.01e-"
+                "1.1.M", "1+1.0M", "0.1mi", "0.1am", "aoeu", ".5i", "1i", "-3.01i", "-3.01e-",
 
                 // TODO support trailing whitespace is forbidden
 //                " 1",
@@ -198,8 +167,7 @@ namespace k8s.Tests
                 (new ResourceQuantity(1234567, -3, BinarySI), "1234567m", ""),
                 (new ResourceQuantity(3, 3, DecimalSI), "3k", ""),
                 (new ResourceQuantity(1025, 0, BinarySI), "1025", ""),
-                (new ResourceQuantity(0, 0, DecimalSI), "0", ""),
-                (new ResourceQuantity(0, 0, BinarySI), "0", ""),
+                (new ResourceQuantity(0, 0, DecimalSI), "0", ""), (new ResourceQuantity(0, 0, BinarySI), "0", ""),
                 (new ResourceQuantity(1, 9, DecimalExponent), "1e9", ".001e12"),
                 (new ResourceQuantity(1, -3, DecimalExponent), "1e-3", "0.001e0"),
                 (new ResourceQuantity(1, -9, DecimalExponent), "1e-9", "1000e-12"),
@@ -217,7 +185,7 @@ namespace k8s.Tests
                 (new ResourceQuantity(10800, -10, DecimalSI), "1080n", ""),
                 (new ResourceQuantity(1, -6, DecimalSI), "1u", ""),
                 (new ResourceQuantity(80, -6, DecimalSI), "80u", ""),
-                (new ResourceQuantity(1080, -6, DecimalSI), "1080u", "")
+                (new ResourceQuantity(1080, -6, DecimalSI), "1080u", ""),
             })
             {
                 Assert.Equal(expect, input.ToString());

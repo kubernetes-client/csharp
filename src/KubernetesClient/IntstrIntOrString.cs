@@ -24,6 +24,7 @@ namespace k8s.Models
                     {
                         return null;
                     }
+
                     return new IntstrIntOrString(scalar.Value);
                 }
                 finally
@@ -31,6 +32,7 @@ namespace k8s.Models
                     parser.MoveNext();
                 }
             }
+
             throw new InvalidOperationException(parser.Current?.ToString());
         }
 
@@ -98,9 +100,21 @@ namespace k8s.Models
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+
             return Equals((IntstrIntOrString)obj);
         }
 

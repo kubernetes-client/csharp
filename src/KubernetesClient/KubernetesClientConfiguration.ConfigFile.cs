@@ -49,7 +49,8 @@ namespace k8s
             var kubeconfig = Environment.GetEnvironmentVariable(KubeConfigEnvironmentVariable);
             if (kubeconfig != null)
             {
-                var configList = kubeconfig.Split(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ';' : ':').Select((s) => new FileInfo(s));
+                var configList = kubeconfig.Split(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ';' : ':')
+                    .Select((s) => new FileInfo(s));
                 var k8sConfig = LoadKubeConfig(configList.ToArray());
                 return BuildConfigFromConfigObject(k8sConfig);
             }
@@ -95,7 +96,8 @@ namespace k8s
         public static KubernetesClientConfiguration BuildConfigFromConfigFile(FileInfo kubeconfig,
             string currentContext = null, string masterUrl = null, bool useRelativePaths = true)
         {
-            return BuildConfigFromConfigFileAsync(kubeconfig, currentContext, masterUrl, useRelativePaths).GetAwaiter().GetResult();
+            return BuildConfigFromConfigFileAsync(kubeconfig, currentContext, masterUrl, useRelativePaths).GetAwaiter()
+                .GetResult();
         }
 
         /// <summary>
@@ -106,7 +108,6 @@ namespace k8s
         /// <param name="masterUrl">override the kube api server endpoint, set null if do not want to override</param>
         /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
         /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
-
         public static async Task<KubernetesClientConfiguration> BuildConfigFromConfigFileAsync(FileInfo kubeconfig,
             string currentContext = null, string masterUrl = null, bool useRelativePaths = true)
         {
@@ -166,10 +167,12 @@ namespace k8s
         /// <param name="k8sConfig">A <see cref="K8SConfiguration"/>, for example loaded from <see cref="LoadKubeConfigAsync(string, bool)" /></param>
         /// <param name="currentContext">Override the current context in config, set null if do not want to override</param>
         /// <param name="masterUrl">Override the Kubernetes API server endpoint, set null if do not want to override</param>
-        public static KubernetesClientConfiguration BuildConfigFromConfigObject(K8SConfiguration k8SConfig, string currentContext = null, string masterUrl = null)
+        public static KubernetesClientConfiguration BuildConfigFromConfigObject(K8SConfiguration k8SConfig,
+            string currentContext = null, string masterUrl = null)
             => GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig);
 
-        private static KubernetesClientConfiguration GetKubernetesClientConfiguration(string currentContext, string masterUrl, K8SConfiguration k8SConfig)
+        private static KubernetesClientConfiguration GetKubernetesClientConfiguration(string currentContext,
+            string masterUrl, K8SConfiguration k8SConfig)
         {
             var k8SConfiguration = new KubernetesClientConfiguration();
 
@@ -179,6 +182,7 @@ namespace k8s
             {
                 k8SConfiguration.InitializeContext(k8SConfig, currentContext);
             }
+
             if (!string.IsNullOrWhiteSpace(masterUrl))
             {
                 k8SConfiguration.Host = masterUrl;
@@ -237,6 +241,7 @@ namespace k8s
             {
                 throw new KubeConfigException($"Cluster not found for context `{activeContext}` in kubeconfig");
             }
+
             if (string.IsNullOrWhiteSpace(clusterDetails.ClusterEndpoint.Server))
             {
                 throw new KubeConfigException($"Server not found for current-context `{activeContext}` in kubeconfig");
@@ -259,7 +264,8 @@ namespace k8s
                 }
                 else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
                 {
-                    SslCaCerts = new X509Certificate2Collection(new X509Certificate2(GetFullPath(k8SConfig, clusterDetails.ClusterEndpoint.CertificateAuthority)));
+                    SslCaCerts = new X509Certificate2Collection(new X509Certificate2(GetFullPath(k8SConfig,
+                        clusterDetails.ClusterEndpoint.CertificateAuthority)));
                 }
             }
         }
@@ -293,7 +299,7 @@ namespace k8s
                 userCredentialsFound = true;
             }
             else if (!string.IsNullOrWhiteSpace(userDetails.UserCredentials.UserName) &&
-                    !string.IsNullOrWhiteSpace(userDetails.UserCredentials.Password))
+                     !string.IsNullOrWhiteSpace(userDetails.UserCredentials.Password))
             {
                 Username = userDetails.UserCredentials.UserName;
                 Password = userDetails.UserCredentials.Password;
@@ -320,7 +326,7 @@ namespace k8s
             if (userDetails.UserCredentials.AuthProvider != null)
             {
                 if (userDetails.UserCredentials.AuthProvider.Config != null
-                 && userDetails.UserCredentials.AuthProvider.Config.ContainsKey("access-token"))
+                    && userDetails.UserCredentials.AuthProvider.Config.ContainsKey("access-token"))
                 {
                     switch (userDetails.UserCredentials.AuthProvider.Name)
                     {
@@ -332,24 +338,25 @@ namespace k8s
                                     var expiresOn = Int32.Parse(config["expires-on"]);
                                     DateTimeOffset expires;
 #if NET452
-                                var epoch = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
-                                expires = epoch.AddSeconds(expiresOn);
+                                    var epoch = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
+                                    expires
+     = epoch.AddSeconds(expiresOn);
 #else
                                     expires = DateTimeOffset.FromUnixTimeSeconds(expiresOn);
 #endif
 
                                     if (DateTimeOffset.Compare(expires
-                                                             , DateTimeOffset.Now)
-                                     <= 0)
+                                            , DateTimeOffset.Now)
+                                        <= 0)
                                     {
                                         var tenantId = config["tenant-id"];
                                         var clientId = config["client-id"];
                                         var apiServerId = config["apiserver-id"];
                                         var refresh = config["refresh-token"];
                                         var newToken = RenewAzureToken(tenantId
-                                                                     , clientId
-                                                                     , apiServerId
-                                                                     , refresh);
+                                            , clientId
+                                            , apiServerId
+                                            , refresh);
                                         config["access-token"] = newToken;
                                     }
                                 }
@@ -365,11 +372,11 @@ namespace k8s
                                 if (config.ContainsKey(keyExpire))
                                 {
                                     if (DateTimeOffset.TryParse(config[keyExpire]
-                                                              , out DateTimeOffset expires))
+                                        , out DateTimeOffset expires))
                                     {
                                         if (DateTimeOffset.Compare(expires
-                                                                 , DateTimeOffset.Now)
-                                         <= 0)
+                                                , DateTimeOffset.Now)
+                                            <= 0)
                                         {
                                             throw new KubeConfigException("Refresh not supported.");
                                         }
@@ -388,10 +395,15 @@ namespace k8s
             if (userDetails.UserCredentials.ExternalExecution != null)
             {
                 if (string.IsNullOrWhiteSpace(userDetails.UserCredentials.ExternalExecution.Command))
+                {
                     throw new KubeConfigException(
                         "External command execution to receive user credentials must include a command to execute");
+                }
+
                 if (string.IsNullOrWhiteSpace(userDetails.UserCredentials.ExternalExecution.ApiVersion))
+                {
                     throw new KubeConfigException("External command execution missing ApiVersion key");
+                }
 
                 var token = ExecuteExternalCommand(userDetails.UserCredentials.ExternalExecution);
                 AccessToken = token;
@@ -426,12 +438,9 @@ namespace k8s
         {
             var execInfo = new Dictionary<string, dynamic>
             {
-                {"apiVersion", config.ApiVersion},
-                {"kind", "ExecCredentials"},
-                {"spec", new Dictionary<string, bool>
-                {
-                    {"interactive", Environment.UserInteractive}
-                }}
+                {"apiVersion", config.ApiVersion },
+                {"kind", "ExecCredentials" },
+                {"spec", new Dictionary<string, bool> {{"interactive", Environment.UserInteractive } } },
             };
 
             var process = new Process();
@@ -440,13 +449,20 @@ namespace k8s
                 JsonConvert.SerializeObject(execInfo));
 
             if (config.EnvironmentVariables != null)
+            {
                 foreach (var configEnvironmentVariableKey in config.EnvironmentVariables.Keys)
+                {
                     process.StartInfo.Environment.Add(key: configEnvironmentVariableKey,
                         value: config.EnvironmentVariables[configEnvironmentVariableKey]);
+                }
+            }
 
             process.StartInfo.FileName = config.Command;
             if (config.Arguments != null)
+            {
                 process.StartInfo.Arguments = string.Join(" ", config.Arguments);
+            }
+
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.RedirectStandardError = true;
             process.StartInfo.UseShellExecute = false;
@@ -463,7 +479,9 @@ namespace k8s
             var stdout = process.StandardOutput.ReadToEnd();
             var stderr = process.StandardOutput.ReadToEnd();
             if (string.IsNullOrWhiteSpace(stderr) == false)
+            {
                 throw new KubeConfigException($"external exec failed due to: {stderr}");
+            }
 
             // Wait for a maximum of 5 seconds, if a response takes longer probably something went wrong...
             process.WaitForExit(5);
@@ -472,8 +490,11 @@ namespace k8s
             {
                 var responseObject = JsonConvert.DeserializeObject<ExecCredentialResponse>(stdout);
                 if (responseObject == null || responseObject.ApiVersion != config.ApiVersion)
+                {
                     throw new KubeConfigException(
                         $"external exec failed because api version {responseObject.ApiVersion} does not match {config.ApiVersion}");
+                }
+
                 return responseObject.Status["token"];
             }
             catch (JsonSerializationException ex)
@@ -484,9 +505,6 @@ namespace k8s
             {
                 throw new KubeConfigException($"external exec failed due to uncaught exception: {ex}");
             }
-
-
-
         }
 #endif
 
@@ -497,7 +515,8 @@ namespace k8s
         /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
         /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
         /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
-        public static async Task<K8SConfiguration> LoadKubeConfigAsync(string kubeconfigPath = null, bool useRelativePaths = true)
+        public static async Task<K8SConfiguration> LoadKubeConfigAsync(string kubeconfigPath = null,
+            bool useRelativePaths = true)
         {
             var fileInfo = new FileInfo(kubeconfigPath ?? KubeConfigDefaultLocation);
 
@@ -523,7 +542,8 @@ namespace k8s
         /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
         /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
         /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
-        public static async Task<K8SConfiguration> LoadKubeConfigAsync(FileInfo kubeconfig, bool useRelativePaths = true)
+        public static async Task<K8SConfiguration> LoadKubeConfigAsync(FileInfo kubeconfig,
+            bool useRelativePaths = true)
         {
             if (!kubeconfig.Exists)
             {
@@ -602,7 +622,8 @@ namespace k8s
         ///     The kube config files will be merges into a single <see cref="K8SConfiguration"/>, where first occurence wins.
         ///     See https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#merging-kubeconfig-files.
         /// </remarks>
-        internal static async Task<K8SConfiguration> LoadKubeConfigAsync(FileInfo[] kubeConfigs, bool useRelativePaths = true)
+        internal static async Task<K8SConfiguration> LoadKubeConfigAsync(FileInfo[] kubeConfigs,
+            bool useRelativePaths = true)
         {
             var basek8SConfig = await LoadKubeConfigAsync(kubeConfigs[0], useRelativePaths).ConfigureAwait(false);
 
@@ -659,7 +680,8 @@ namespace k8s
             // Kinds must match in kube config, otherwise throw.
             if (basek8SConfig.Kind != mergek8SConfig.Kind)
             {
-                throw new KubeConfigException($"kubeconfig \"kind\" are different between {basek8SConfig.FileName} and {mergek8SConfig.FileName}");
+                throw new KubeConfigException(
+                    $"kubeconfig \"kind\" are different between {basek8SConfig.FileName} and {mergek8SConfig.FileName}");
             }
 
             if (mergek8SConfig.Preferences != null)
@@ -691,7 +713,8 @@ namespace k8s
             basek8SConfig.Contexts = MergeLists(basek8SConfig.Contexts, mergek8SConfig.Contexts, (s) => s.Name);
         }
 
-        private static IEnumerable<T> MergeLists<T>(IEnumerable<T> baseList, IEnumerable<T> mergeList, Func<T, string> getNameFunc)
+        private static IEnumerable<T> MergeLists<T>(IEnumerable<T> baseList, IEnumerable<T> mergeList,
+            Func<T, string> getNameFunc)
         {
             if (mergeList != null && mergeList.Count() > 0)
             {

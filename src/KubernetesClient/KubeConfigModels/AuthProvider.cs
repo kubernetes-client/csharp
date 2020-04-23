@@ -20,6 +20,5 @@ namespace k8s.KubeConfigModels
         /// </summary>
         [YamlMember(Alias = "config")]
         public Dictionary<string, string> Config { get; set; }
-
     }
 }

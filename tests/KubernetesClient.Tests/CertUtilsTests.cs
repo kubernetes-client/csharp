@@ -14,13 +14,13 @@ namespace k8s.Tests
         /// This file contains a sample kubeconfig file. The paths to the certificate files are relative
         /// to the current working directly.
         /// </summary>
-        private static readonly string kubeConfigFileName = "assets/kubeconfig.yml";
+        private const string KubeConfigFileName = "assets/kubeconfig.yml";
 
         /// <summary>
         /// This file contains a sample kubeconfig file. The paths to the certificate files are relative
         /// to the directory in which the kubeconfig file is located.
         /// </summary>
-        private static readonly string kubeConfigWithRelativePathsFileName = "assets/kubeconfig.relative.yml";
+        private const string KubeConfigWithRelativePathsFileName = "assets/kubeconfig.relative.yml";
 
         /// <summary>
         /// Checks that a certificate can be loaded from files.
@@ -28,7 +28,8 @@ namespace k8s.Tests
         [Fact]
         public void LoadFromFiles()
         {
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(kubeConfigFileName, "federal-context", useRelativePaths: false);
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(KubeConfigFileName, "federal-context",
+                useRelativePaths: false);
 
             // Just validate that this doesn't throw and private key is non-null
             var cert = CertUtils.GeneratePfx(cfg);
@@ -41,7 +42,8 @@ namespace k8s.Tests
         [Fact]
         public void LoadFromFilesRelativePath()
         {
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(kubeConfigWithRelativePathsFileName, "federal-context");
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(KubeConfigWithRelativePathsFileName,
+                "federal-context");
 
             // Just validate that this doesn't throw and private key is non-null
             var cert = CertUtils.GeneratePfx(cfg);
@@ -54,7 +56,8 @@ namespace k8s.Tests
         [Fact]
         public void LoadFromInlineData()
         {
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(kubeConfigFileName, "victorian-context", useRelativePaths: false);
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(KubeConfigFileName, "victorian-context",
+                useRelativePaths: false);
 
             // Just validate that this doesn't throw and private key is non-null
             var cert = CertUtils.GeneratePfx(cfg);
@@ -67,7 +70,8 @@ namespace k8s.Tests
         [Fact]
         public void LoadFromInlineDataRelativePath()
         {
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(kubeConfigWithRelativePathsFileName, "victorian-context");
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(KubeConfigWithRelativePathsFileName,
+                "victorian-context");
 
             // Just validate that this doesn't throw and private key is non-null
             var cert = CertUtils.GeneratePfx(cfg);

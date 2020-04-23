@@ -12,12 +12,12 @@ namespace k8s.Exceptions
         }
 
         public KubernetesClientException(string message)
-        : base(message)
+            : base(message)
         {
         }
 
         public KubernetesClientException(string message, Exception inner)
-        : base(message, inner)
+            : base(message, inner)
         {
         }
     }

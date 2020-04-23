@@ -29,7 +29,13 @@ namespace k8s.Tests
             s = new V1Status() { Status = "Failure", Code = 400, Message = "It's all messed up." };
             Assert.Equal("BadRequest - It's all messed up.", s.ToString());
 
-            s = new V1Status() { Status = "Failure", Code = 400, Reason = "IllegalValue", Message = "You're breaking the LAW!", };
+            s = new V1Status()
+            {
+                Status = "Failure",
+                Code = 400,
+                Reason = "IllegalValue",
+                Message = "You're breaking the LAW!",
+            };
             Assert.Equal("IllegalValue - You're breaking the LAW!", s.ToString());
         }
     }

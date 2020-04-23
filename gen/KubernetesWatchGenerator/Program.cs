@@ -49,10 +49,16 @@ namespace KubernetesWatchGenerator
             swagger = await SwaggerDocument.FromFileAsync(Path.Combine(args[1], "swagger.json.unprocessed"));
             _schemaToNameMap = swagger.Definitions.ToDictionary(x => x.Value, x => x.Key);
             _schemaDefinitionsInMultipleGroups = _schemaToNameMap.Values.Select(x =>
-            {
-                var parts = x.Split(".");
-                return new { FullName = x, Name = parts[parts.Length - 1], Version = parts[parts.Length - 2], Group = parts[parts.Length - 3] };
-            })
+                {
+                    var parts = x.Split(".");
+                    return new
+                    {
+                        FullName = x,
+                        Name = parts[parts.Length - 1],
+                        Version = parts[parts.Length - 2],
+                        Group = parts[parts.Length - 3],
+                    };
+                })
                 .GroupBy(x => new { x.Name, x.Version })
                 .Where(x => x.Count() > 1)
                 .SelectMany(x => x)
@@ -61,7 +67,15 @@ namespace KubernetesWatchGenerator
 
             _classNameToPluralMap = swagger.Operations
                 .Where(x => x.Operation.OperationId.StartsWith("list"))
-                .Select(x => { return new { PluralName = x.Path.Split("/").Last(), ClassName = GetClassNameForSchemaDefinition(x.Operation.Responses["200"].ActualResponseSchema) }; })
+                .Select(x =>
+                {
+                    return new
+                    {
+                        PluralName = x.Path.Split("/").Last(),
+                        ClassName = GetClassNameForSchemaDefinition(x.Operation.Responses["200"]
+                            .ActualResponseSchema),
+                    };
+                })
                 .Distinct()
                 .ToDictionary(x => x.ClassName, x => x.PluralName);
 
@@ -73,7 +87,6 @@ namespace KubernetesWatchGenerator
                 .ToDictionary(x => x.ClassName, x => x.PluralName)
                 .Union(_classNameToPluralMap)
                 .ToDictionary(x => x.Key, x => x.Value);
-
 
 
             // Register helpers used in the templating.
@@ -92,30 +105,27 @@ namespace KubernetesWatchGenerator
             // Generate the Watcher operations
             // We skip operations where the name of the class in the C# client could not be determined correctly.
             // That's usually because there are different version of the same object (e.g. for deployments).
-            var blacklistedOperations = new HashSet<string>()
-            {
-            };
+            var blacklistedOperations = new HashSet<string>() { };
 
             var watchOperations = swagger.Operations.Where(
                 o => o.Path.Contains("/watch/")
-                && o.Operation.ActualParameters.Any(p => p.Name == "name")
-                && !blacklistedOperations.Contains(o.Operation.OperationId)).ToArray();
+                     && o.Operation.ActualParameters.Any(p => p.Name == "name")
+                     && !blacklistedOperations.Contains(o.Operation.OperationId)).ToArray();
 
             // Render.
-            Render.FileToFile("IKubernetes.Watch.cs.template", watchOperations, Path.Combine(outputDirectory, "IKubernetes.Watch.cs"));
-            Render.FileToFile("Kubernetes.Watch.cs.template", watchOperations, Path.Combine(outputDirectory, "Kubernetes.Watch.cs"));
+            Render.FileToFile("IKubernetes.Watch.cs.template", watchOperations,
+                Path.Combine(outputDirectory, "IKubernetes.Watch.cs"));
+            Render.FileToFile("Kubernetes.Watch.cs.template", watchOperations,
+                Path.Combine(outputDirectory, "Kubernetes.Watch.cs"));
 
             // Generate the interface declarations
-            var skippedTypes = new HashSet<string>()
-            {
-                "V1WatchEvent",
-            };
+            var skippedTypes = new HashSet<string>() { "V1WatchEvent", };
 
             var definitions = swagger.Definitions.Values
                 .Where(
                     d => d.ExtensionData != null
-                    && d.ExtensionData.ContainsKey("x-kubernetes-group-version-kind")
-                    && !skippedTypes.Contains(GetClassName(d)));
+                         && d.ExtensionData.ContainsKey("x-kubernetes-group-version-kind")
+                         && !skippedTypes.Contains(GetClassName(d)));
 
             var modelsDir = Path.Combine(outputDirectory, "Models");
             _classesWithValidation = Directory.EnumerateFiles(modelsDir)
@@ -124,10 +134,12 @@ namespace KubernetesWatchGenerator
                 .Select(x => x.Class)
                 .ToHashSet();
 
-            Render.FileToFile("ModelExtensions.cs.template", definitions, Path.Combine(outputDirectory, "ModelExtensions.cs"));
+            Render.FileToFile("ModelExtensions.cs.template", definitions,
+                Path.Combine(outputDirectory, "ModelExtensions.cs"));
         }
 
-        static void ToXmlDoc(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
+        static void ToXmlDoc(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
+            RenderBlock fn, RenderBlock inverse)
         {
             if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is string)
             {
@@ -147,13 +159,15 @@ namespace KubernetesWatchGenerator
                         {
                             first = false;
                         }
+
                         context.Write(line);
                     }
                 }
             }
         }
 
-        static void GetClassName(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
+        static void GetClassName(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
+            RenderBlock fn, RenderBlock inverse)
         {
             if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is SwaggerOperation)
             {
@@ -167,7 +181,8 @@ namespace KubernetesWatchGenerator
 
         static string GetClassName(SwaggerOperation watchOperation)
         {
-            var groupVersionKind = (Dictionary<string, object>)watchOperation.ExtensionData["x-kubernetes-group-version-kind"];
+            var groupVersionKind =
+                (Dictionary<string, object>)watchOperation.ExtensionData["x-kubernetes-group-version-kind"];
             return GetClassName(groupVersionKind);
         }
 
@@ -187,20 +202,23 @@ namespace KubernetesWatchGenerator
 
             return GetClassName(groupVersionKind);
         }
-        private static void GetInterfaceName(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
-        {
 
+        private static void GetInterfaceName(RenderContext context, IList<object> arguments,
+            IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
+        {
             if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema4)
             {
                 context.Write(GetInterfaceName(arguments[0] as JsonSchema4));
             }
-
         }
 
         static string GetClassNameForSchemaDefinition(JsonSchema4 definition)
         {
-            if (definition.ExtensionData != null && definition.ExtensionData.ContainsKey("x-kubernetes-group-version-kind"))
+            if (definition.ExtensionData != null &&
+                definition.ExtensionData.ContainsKey("x-kubernetes-group-version-kind"))
+            {
                 return GetClassName(definition);
+            }
 
             var schemaName = _schemaToNameMap[definition];
 
@@ -209,11 +227,14 @@ namespace KubernetesWatchGenerator
             var version = parts[parts.Length - 2];
             var entityName = parts[parts.Length - 1];
             if (!_schemaDefinitionsInMultipleGroups.Contains(schemaName))
-                group = null;
+            {
+                @group = null;
+            }
+
             var className = ToPascalCase($"{group}{version}{entityName}");
             return className;
-
         }
+
         static string GetInterfaceName(JsonSchema4 definition)
         {
             var groupVersionKindElements = (object[])definition.ExtensionData["x-kubernetes-group-version-kind"];
@@ -235,7 +256,9 @@ namespace KubernetesWatchGenerator
 
             if (definition.Properties.TryGetValue("items", out var itemsProperty))
             {
-                var schema = itemsProperty.Type == JsonObjectType.Object ? itemsProperty.Reference : itemsProperty.Item.Reference;
+                var schema = itemsProperty.Type == JsonObjectType.Object
+                    ? itemsProperty.Reference
+                    : itemsProperty.Item.Reference;
                 interfaces.Add($"IItems<{GetClassNameForSchemaDefinition(schema)}>");
             }
 
@@ -245,13 +268,17 @@ namespace KubernetesWatchGenerator
             }
 
             if (_classesWithValidation.Contains(className))
+            {
                 interfaces.Add("IValidate");
+            }
+
             var result = string.Join(", ", interfaces);
             return result;
         }
 
 
-        static void GetKind(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
+        static void GetKind(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
+            RenderBlock fn, RenderBlock inverse)
         {
             if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema4)
             {
@@ -267,15 +294,20 @@ namespace KubernetesWatchGenerator
             return groupVersionKind["kind"] as string;
         }
 
-        static void GetPlural(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
+        static void GetPlural(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
+            RenderBlock fn, RenderBlock inverse)
         {
             if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema4)
             {
                 var plural = GetPlural(arguments[0] as JsonSchema4);
                 if (plural != null)
+                {
                     context.Write($"\"{plural}\"");
+                }
                 else
+                {
                     context.Write("null");
+                }
             }
         }
 
@@ -285,7 +317,8 @@ namespace KubernetesWatchGenerator
             return _classNameToPluralMap.GetValueOrDefault(className, null);
         }
 
-        static void GetGroup(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
+        static void GetGroup(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
+            RenderBlock fn, RenderBlock inverse)
         {
             if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema4)
             {
@@ -301,7 +334,8 @@ namespace KubernetesWatchGenerator
             return groupVersionKind["group"] as string;
         }
 
-        static void GetMethodName(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
+        static void GetMethodName(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
+            RenderBlock fn, RenderBlock inverse)
         {
             if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is SwaggerOperation)
             {
@@ -322,14 +356,17 @@ namespace KubernetesWatchGenerator
             return methodName;
         }
 
-        static void GetDotNetType(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
+        static void GetDotNetType(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
+            RenderBlock fn, RenderBlock inverse)
         {
             if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is SwaggerParameter)
             {
                 var parameter = arguments[0] as SwaggerParameter;
                 context.Write(GetDotNetType(parameter.Type, parameter.Name, parameter.IsRequired));
             }
-            else if (arguments != null && arguments.Count > 2 && arguments[0] != null && arguments[1] != null && arguments[2] != null && arguments[0] is JsonObjectType && arguments[1] is string && arguments[2] is bool)
+            else if (arguments != null && arguments.Count > 2 && arguments[0] != null && arguments[1] != null &&
+                     arguments[2] != null && arguments[0] is JsonObjectType && arguments[1] is string &&
+                     arguments[2] is bool)
             {
                 context.Write(GetDotNetType((JsonObjectType)arguments[0], (string)arguments[1], (bool)arguments[2]));
             }
@@ -380,7 +417,8 @@ namespace KubernetesWatchGenerator
             }
         }
 
-        static void GetDotNetName(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
+        static void GetDotNetName(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
+            RenderBlock fn, RenderBlock inverse)
         {
             if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is SwaggerParameter)
             {
@@ -408,9 +446,11 @@ namespace KubernetesWatchGenerator
             return jsonName;
         }
 
-        static void GetPathExpression(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
+        static void GetPathExpression(RenderContext context, IList<object> arguments,
+            IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
         {
-            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is SwaggerOperationDescription)
+            if (arguments != null && arguments.Count > 0 && arguments[0] != null &&
+                arguments[0] is SwaggerOperationDescription)
             {
                 var operation = arguments[0] as SwaggerOperationDescription;
                 context.Write(GetPathExpression(operation));
@@ -430,7 +470,8 @@ namespace KubernetesWatchGenerator
             return pathExpression;
         }
 
-        static void GetApiVersion(RenderContext context, IList<object> arguments, IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
+        static void GetApiVersion(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
+            RenderBlock fn, RenderBlock inverse)
         {
             if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema4)
             {

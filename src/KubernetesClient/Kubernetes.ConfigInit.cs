@@ -38,7 +38,8 @@ namespace k8s
         /// <param name="disposeHttpClient">
         ///     Whether or not the <see cref="Kubernetes"/> object should own the lifetime of <paramref name="httpClient"/>.
         /// </param>
-        public Kubernetes(KubernetesClientConfiguration config, HttpClient httpClient, bool disposeHttpClient) : this(httpClient, disposeHttpClient)
+        public Kubernetes(KubernetesClientConfiguration config, HttpClient httpClient, bool disposeHttpClient) : this(
+            httpClient, disposeHttpClient)
         {
             ValidateConfig(config);
             CaCerts = config.SslCaCerts;
@@ -94,10 +95,11 @@ namespace k8s
                 if (config.SkipTlsVerify)
                 {
 #if NET452
-                    ((WebRequestHandler) HttpClientHandler).ServerCertificateValidationCallback =
+                    ((WebRequestHandler)HttpClientHandler).ServerCertificateValidationCallback =
                         (sender, certificate, chain, sslPolicyErrors) => true;
 #elif XAMARINIOS1_0 || MONOANDROID8_1
-                    System.Net.ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) =>
+                    System.Net.ServicePointManager.ServerCertificateValidationCallback +=
+ (sender, certificate, chain, sslPolicyErrors) =>
                     {
                         return true;
                     };
@@ -113,14 +115,17 @@ namespace k8s
                         throw new KubeConfigException("A CA must be set when SkipTlsVerify === false");
                     }
 #if NET452
-                    ((WebRequestHandler) HttpClientHandler).ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
+                    ((WebRequestHandler)HttpClientHandler).ServerCertificateValidationCallback =
+ (sender, certificate, chain, sslPolicyErrors) =>
                     {
                         return Kubernetes.CertificateValidationCallBack(sender, CaCerts, certificate, chain, sslPolicyErrors);
                     };
 #elif XAMARINIOS1_0
-                    System.Net.ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) =>
+                    System.Net.ServicePointManager.ServerCertificateValidationCallback +=
+ (sender, certificate, chain, sslPolicyErrors) =>
                     {
-                        var cert = new X509Certificate2(certificate);
+                        var cert
+ = new X509Certificate2(certificate);
                         return Kubernetes.CertificateValidationCallBack(sender, CaCerts, cert, chain, sslPolicyErrors);
                     };
 #elif MONOANDROID8_1
@@ -128,22 +133,28 @@ namespace k8s
 
                     foreach (X509Certificate2 caCert in CaCerts)
                     {
-                        using (var certStream = new System.IO.MemoryStream(caCert.RawData))
+                        using (var certStream
+ = new System.IO.MemoryStream(caCert.RawData))
                         {
-                            Java.Security.Cert.Certificate cert = Java.Security.Cert.CertificateFactory.GetInstance("X509").GenerateCertificate(certStream);
+                            Java.Security.Cert.Certificate cert
+ = Java.Security.Cert.CertificateFactory.GetInstance("X509").GenerateCertificate(certStream);
 
                             certList.Add(cert);
                         }
                     }
 
-                    var handler = (Xamarin.Android.Net.AndroidClientHandler)this.HttpClientHandler;
+                    var handler
+ = (Xamarin.Android.Net.AndroidClientHandler)this.HttpClientHandler;
 
-                    handler.TrustedCerts = certList;
+                    handler.TrustedCerts
+ = certList;
 #else
-                    HttpClientHandler.ServerCertificateCustomValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
-                    {
-                        return Kubernetes.CertificateValidationCallBack(sender, CaCerts, certificate, chain, sslPolicyErrors);
-                    };
+                    HttpClientHandler.ServerCertificateCustomValidationCallback =
+                        (sender, certificate, chain, sslPolicyErrors) =>
+                        {
+                            return Kubernetes.CertificateValidationCallBack(sender, CaCerts, certificate, chain,
+                                sslPolicyErrors);
+                        };
 #endif
                 }
             }
@@ -159,7 +170,7 @@ namespace k8s
 
         partial void CustomInitialize()
         {
-#if NET452 
+#if NET452
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
 #endif
             DeserializationSettings.Converters.Add(new V1Status.V1StatusObjectViewConverter());
@@ -168,7 +179,9 @@ namespace k8s
         /// <summary>A <see cref="DelegatingHandler"/> that simply forwards a request with no further processing.</summary>
         private sealed class ForwardingHandler : DelegatingHandler
         {
-            public ForwardingHandler(HttpMessageHandler handler) : base(handler) { }
+            public ForwardingHandler(HttpMessageHandler handler) : base(handler)
+            {
+            }
         }
 
         private void AppendDelegatingHandler<T>() where T : DelegatingHandler, new()
@@ -183,10 +196,7 @@ namespace k8s
                 {
                     // last one
                     // append watcher handler between to last handler
-                    cur.InnerHandler = new T
-                    {
-                        InnerHandler = cur.InnerHandler
-                    };
+                    cur.InnerHandler = new T { InnerHandler = cur.InnerHandler };
                     break;
                 }
 
@@ -211,11 +221,16 @@ namespace k8s
                 for (int i = handlers.Length - 1; i >= 0; i--)
                 {
                     DelegatingHandler handler = handlers[i];
-                    while (handler.InnerHandler is DelegatingHandler d) handler = d;
+                    while (handler.InnerHandler is DelegatingHandler d)
+                    {
+                        handler = d;
+                    }
+
                     handler.InnerHandler = FirstMessageHandler;
                     FirstMessageHandler = handlers[i];
                 }
             }
+
             AppendDelegatingHandler<WatcherDelegatingHandler>();
             HttpClient = new HttpClient(FirstMessageHandler, false);
         }
@@ -287,7 +302,11 @@ namespace k8s
         /// </summary>
         public static ServiceClientCredentials CreateCredentials(KubernetesClientConfiguration config)
         {
-            if (config == null) throw new ArgumentNullException(nameof(config));
+            if (config == null)
+            {
+                throw new ArgumentNullException(nameof(config));
+            }
+
             if (!string.IsNullOrEmpty(config.AccessToken))
             {
                 return new TokenCredentials(config.AccessToken);
@@ -296,6 +315,7 @@ namespace k8s
             {
                 return new BasicAuthenticationCredentials() { UserName = config.Username, Password = config.Password };
             }
+
             return null;
         }
     }

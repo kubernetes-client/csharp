@@ -30,6 +30,7 @@ namespace k8s
         /// <returns>
         /// A <see cref="Task"/> which represents the asynchronous operation.
         /// </returns>
-        Task<int> NamespacedPodExecAsync(string name, string @namespace, string container, IEnumerable<string> command, bool tty, ExecAsyncCallback action, CancellationToken cancellationToken);
+        Task<int> NamespacedPodExecAsync(string name, string @namespace, string container, IEnumerable<string> command,
+            bool tty, ExecAsyncCallback action, CancellationToken cancellationToken);
     }
 }

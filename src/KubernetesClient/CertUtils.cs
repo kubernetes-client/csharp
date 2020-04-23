@@ -49,6 +49,7 @@ namespace k8s
             {
                 keyData = Convert.FromBase64String(config.ClientCertificateKeyData);
             }
+
             if (!string.IsNullOrWhiteSpace(config.ClientKeyFilePath))
             {
                 keyData = File.ReadAllBytes(config.ClientKeyFilePath);
@@ -63,6 +64,7 @@ namespace k8s
             {
                 certData = Convert.FromBase64String(config.ClientCertificateData);
             }
+
             if (!string.IsNullOrWhiteSpace(config.ClientCertificateFilePath))
             {
                 certData = File.ReadAllBytes(config.ClientCertificateFilePath);
@@ -82,6 +84,7 @@ namespace k8s
                     "Client certificates must be marked for digital signing. " +
                     "See https://github.com/kubernetes-client/csharp/issues/319");
             }
+
             object obj;
             using (var reader = new StreamReader(new MemoryStream(keyData)))
             {

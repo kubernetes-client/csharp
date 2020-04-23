@@ -20,7 +20,9 @@ namespace exec
 
         private async static Task ExecInPod(IKubernetes client, V1Pod pod)
         {
-            var webSocket = await client.WebSocketNamespacedPodExecAsync(pod.Metadata.Name, "default", "ls", pod.Spec.Containers[0].Name);
+            var webSocket =
+                await client.WebSocketNamespacedPodExecAsync(pod.Metadata.Name, "default", "ls",
+                    pod.Spec.Containers[0].Name);
 
             var demux = new StreamDemuxer(webSocket);
             demux.Start();

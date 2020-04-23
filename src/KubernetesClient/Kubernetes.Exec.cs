@@ -12,7 +12,8 @@ namespace k8s
 {
     public partial class Kubernetes
     {
-        public async Task<int> NamespacedPodExecAsync(string name, string @namespace, string container, IEnumerable<string> command, bool tty, ExecAsyncCallback action, CancellationToken cancellationToken)
+        public async Task<int> NamespacedPodExecAsync(string name, string @namespace, string container,
+            IEnumerable<string> command, bool tty, ExecAsyncCallback action, CancellationToken cancellationToken)
         {
             // All other parameters are being validated by MuxedStreamNamespacedPodExecAsync
             if (action == null)
@@ -22,7 +23,9 @@ namespace k8s
 
             try
             {
-                using (var muxedStream = await this.MuxedStreamNamespacedPodExecAsync(name: name, @namespace: @namespace, command: command, container: container, tty: tty, cancellationToken: cancellationToken).ConfigureAwait(false))
+                using (var muxedStream = await this.MuxedStreamNamespacedPodExecAsync(name: name,
+                    @namespace: @namespace, command: command, container: container, tty: tty,
+                    cancellationToken: cancellationToken).ConfigureAwait(false))
                 using (Stream stdIn = muxedStream.GetStream(null, ChannelIndex.StdIn))
                 using (Stream stdOut = muxedStream.GetStream(ChannelIndex.StdOut, null))
                 using (Stream stdErr = muxedStream.GetStream(ChannelIndex.StdErr, null))

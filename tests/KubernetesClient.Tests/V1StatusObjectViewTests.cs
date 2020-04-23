@@ -18,18 +18,11 @@ namespace k8s.Tests
         [Fact]
         public void ReturnStatus()
         {
-            var v1Status = new V1Status
-            {
-                Message = "test message",
-                Status = "test status"
-            };
+            var v1Status = new V1Status { Message = "test message", Status = "test status" };
 
             using (var server = new MockKubeApiServer(testOutput, resp: JsonConvert.SerializeObject(v1Status)))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration
-                {
-                    Host = server.Uri.ToString()
-                });
+                var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
                 var status = client.DeleteNamespace("test", new V1DeleteOptions());
 
@@ -44,22 +37,13 @@ namespace k8s.Tests
         {
             var corev1Namespace = new V1Namespace()
             {
-                Metadata = new V1ObjectMeta()
-                {
-                    Name = "test name"
-                },
-                Status = new V1NamespaceStatus()
-                {
-                    Phase = "test termating"
-                }
+                Metadata = new V1ObjectMeta() { Name = "test name" },
+                Status = new V1NamespaceStatus() { Phase = "test termating" },
             };
 
             using (var server = new MockKubeApiServer(testOutput, resp: JsonConvert.SerializeObject(corev1Namespace)))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration
-                {
-                    Host = server.Uri.ToString()
-                });
+                var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
                 var status = client.DeleteNamespace("test", new V1DeleteOptions());
 
@@ -70,7 +54,6 @@ namespace k8s.Tests
                 Assert.Equal(obj.Metadata.Name, corev1Namespace.Metadata.Name);
                 Assert.Equal(obj.Status.Phase, corev1Namespace.Status.Phase);
             }
-
         }
     }
 }

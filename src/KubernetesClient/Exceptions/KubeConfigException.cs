@@ -12,12 +12,12 @@ namespace k8s.Exceptions
         }
 
         public KubeConfigException(string message)
-        : base(message)
+            : base(message)
         {
         }
 
         public KubeConfigException(string message, Exception inner)
-        : base(message, inner)
+            : base(message, inner)
         {
         }
     }

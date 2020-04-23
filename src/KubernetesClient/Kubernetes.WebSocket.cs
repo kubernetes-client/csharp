@@ -27,21 +27,37 @@ namespace k8s
         public Func<WebSocketBuilder> CreateWebSocketBuilder { get; set; } = () => new WebSocketBuilder();
 
         /// <inheritdoc/>
-        public Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", string command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default",
+            string command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true,
+            bool tty = true, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
-            return WebSocketNamespacedPodExecAsync(name, @namespace, new string[] { command }, container, stderr, stdin, stdout, tty, webSocketSubProtol, customHeaders, cancellationToken);
+            return WebSocketNamespacedPodExecAsync(name, @namespace, new string[] { command }, container, stderr, stdin,
+                stdout, tty, webSocketSubProtol, customHeaders, cancellationToken);
         }
 
         /// <inheritdoc/>
-        public virtual async Task<IStreamDemuxer> MuxedStreamNamespacedPodExecAsync(string name, string @namespace = "default", IEnumerable<string> command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, string webSocketSubProtol = WebSocketProtocol.V4BinaryWebsocketProtocol, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<IStreamDemuxer> MuxedStreamNamespacedPodExecAsync(string name,
+            string @namespace = "default", IEnumerable<string> command = null, string container = null,
+            bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true,
+            string webSocketSubProtol = WebSocketProtocol.V4BinaryWebsocketProtocol,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
-            WebSocket webSocket = await this.WebSocketNamespacedPodExecAsync(name: name, @namespace: @namespace, command: command, container: container, tty: tty, cancellationToken: cancellationToken).ConfigureAwait(false);
+            WebSocket webSocket = await this.WebSocketNamespacedPodExecAsync(name: name, @namespace: @namespace,
+                    command: command, container: container, tty: tty, cancellationToken: cancellationToken)
+                .ConfigureAwait(false);
             StreamDemuxer muxer = new StreamDemuxer(webSocket);
             return muxer;
         }
 
         /// <inheritdoc/>
-        public virtual Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default", IEnumerable<string> command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true, string webSocketSubProtol = WebSocketProtocol.V4BinaryWebsocketProtocol, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default",
+            IEnumerable<string> command = null, string container = null, bool stderr = true, bool stdin = true,
+            bool stdout = true, bool tty = true,
+            string webSocketSubProtol = WebSocketProtocol.V4BinaryWebsocketProtocol,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             if (name == null)
             {
@@ -68,7 +84,8 @@ namespace k8s
             {
                 if (c.Length > 0 && c[0] == 0xfeff)
                 {
-                    throw new InvalidOperationException($"Detected an attempt to execute a command which starts with a Unicode byte order mark (BOM). This is probably incorrect. The command was {c}");
+                    throw new InvalidOperationException(
+                        $"Detected an attempt to execute a command which starts with a Unicode byte order mark (BOM). This is probably incorrect. The command was {c}");
                 }
             }
 
@@ -89,7 +106,8 @@ namespace k8s
                 tracingParameters.Add("tty", tty);
                 tracingParameters.Add("webSocketSubProtol", webSocketSubProtol);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, nameof(WebSocketNamespacedPodExecAsync), tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, nameof(WebSocketNamespacedPodExecAsync),
+                    tracingParameters);
             }
 
             // Construct URL
@@ -115,17 +133,25 @@ namespace k8s
                 Utilities.AddQueryParameter(query, "container", container);
             }
 
-            query.Append("&stderr=").Append(stderr ? '1' : '0'); // the query string is guaranteed not to be empty here because it has a 'command' param
+            query.Append("&stderr=")
+                .Append(stderr
+                    ? '1'
+                    : '0'); // the query string is guaranteed not to be empty here because it has a 'command' param
             query.Append("&stdin=").Append(stdin ? '1' : '0');
             query.Append("&stdout=").Append(stdout ? '1' : '0');
             query.Append("&tty=").Append(tty ? '1' : '0');
-            uriBuilder.Query = query.ToString(1, query.Length - 1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
+            uriBuilder.Query =
+                query.ToString(1, query.Length - 1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
 
-            return this.StreamConnectAsync(uriBuilder.Uri, _invocationId, webSocketSubProtol, customHeaders, cancellationToken);
+            return this.StreamConnectAsync(uriBuilder.Uri, _invocationId, webSocketSubProtol, customHeaders,
+                cancellationToken);
         }
 
         /// <inheritdoc/>
-        public Task<WebSocket> WebSocketNamespacedPodPortForwardAsync(string name, string @namespace, IEnumerable<int> ports, string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public Task<WebSocket> WebSocketNamespacedPodPortForwardAsync(string name, string @namespace,
+            IEnumerable<int> ports, string webSocketSubProtocol = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             if (name == null)
             {
@@ -154,7 +180,8 @@ namespace k8s
                 tracingParameters.Add("ports", ports);
                 tracingParameters.Add("webSocketSubProtocol", webSocketSubProtocol);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, nameof(WebSocketNamespacedPodPortForwardAsync), tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, nameof(WebSocketNamespacedPodPortForwardAsync),
+                    tracingParameters);
             }
 
             // Construct URL
@@ -171,16 +198,25 @@ namespace k8s
             var q = new StringBuilder();
             foreach (var port in ports)
             {
-                if (q.Length != 0) q.Append('&');
+                if (q.Length != 0)
+                {
+                    q.Append('&');
+                }
+
                 q.Append("ports=").Append(port.ToString(CultureInfo.InvariantCulture));
             }
+
             uriBuilder.Query = q.ToString();
 
-            return StreamConnectAsync(uriBuilder.Uri, _invocationId, webSocketSubProtocol, customHeaders, cancellationToken);
+            return StreamConnectAsync(uriBuilder.Uri, _invocationId, webSocketSubProtocol, customHeaders,
+                cancellationToken);
         }
 
         /// <inheritdoc/>
-        public Task<WebSocket> WebSocketNamespacedPodAttachAsync(string name, string @namespace, string container = default(string), bool stderr = true, bool stdin = false, bool stdout = true, bool tty = false, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public Task<WebSocket> WebSocketNamespacedPodAttachAsync(string name, string @namespace,
+            string container = default(string), bool stderr = true, bool stdin = false, bool stdout = true,
+            bool tty = false, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             if (name == null)
             {
@@ -208,7 +244,8 @@ namespace k8s
                 tracingParameters.Add("tty", tty);
                 tracingParameters.Add("webSocketSubProtol", webSocketSubProtol);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, nameof(WebSocketNamespacedPodAttachAsync), tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, nameof(WebSocketNamespacedPodAttachAsync),
+                    tracingParameters);
             }
 
             // Construct URL
@@ -228,12 +265,16 @@ namespace k8s
             query.Append("&stdout=").Append(stdout ? '1' : '0');
             query.Append("&tty=").Append(tty ? '1' : '0');
             Utilities.AddQueryParameter(query, "container", container);
-            uriBuilder.Query = query.ToString(1, query.Length - 1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
+            uriBuilder.Query =
+                query.ToString(1, query.Length - 1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
 
-            return StreamConnectAsync(uriBuilder.Uri, _invocationId, webSocketSubProtol, customHeaders, cancellationToken);
+            return StreamConnectAsync(uriBuilder.Uri, _invocationId, webSocketSubProtol, customHeaders,
+                cancellationToken);
         }
 
-        protected async Task<WebSocket> StreamConnectAsync(Uri uri, string invocationId = null, string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        protected async Task<WebSocket> StreamConnectAsync(Uri uri, string invocationId = null,
+            string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
 
@@ -301,9 +342,13 @@ namespace k8s
             WebSocket webSocket = null;
             try
             {
-                webSocket = await webSocketBuilder.BuildAndConnectAsync(uri, CancellationToken.None).ConfigureAwait(false);
+                webSocket = await webSocketBuilder.BuildAndConnectAsync(uri, CancellationToken.None)
+                    .ConfigureAwait(false);
             }
-            catch (WebSocketException wse) when (wse.WebSocketErrorCode == WebSocketError.HeaderError || (wse.InnerException is WebSocketException && ((WebSocketException)wse.InnerException).WebSocketErrorCode == WebSocketError.HeaderError))
+            catch (WebSocketException wse) when (wse.WebSocketErrorCode == WebSocketError.HeaderError ||
+                                                 (wse.InnerException is WebSocketException &&
+                                                  ((WebSocketException)wse.InnerException).WebSocketErrorCode ==
+                                                  WebSocketError.HeaderError))
             {
                 // This usually indicates the server sent an error message, like 400 Bad Request. Unfortunately, the WebSocket client
                 // class doesn't give us a lot of information about what went wrong. So, retry the connection.
@@ -332,11 +377,13 @@ namespace k8s
                         status = SafeJsonConvert.DeserializeObject<V1Status>(content);
                     }
 
-                    var ex = new HttpOperationException($"The operation returned an invalid status code: {response.StatusCode}", wse)
-                    {
-                        Response = new HttpResponseMessageWrapper(response, content),
-                        Body = status != null ? (object)status : content,
-                    };
+                    var ex =
+                        new HttpOperationException(
+                            $"The operation returned an invalid status code: {response.StatusCode}", wse)
+                        {
+                            Response = new HttpResponseMessageWrapper(response, content),
+                            Body = status != null ? (object)status : content,
+                        };
 
                     response.Dispose();
 
@@ -362,15 +409,18 @@ namespace k8s
 #if (NET452 || NETSTANDARD2_0)
                 if (this.CaCerts != null)
                 {
-                    webSocketBuilder.CleanupServerCertificateValidationCallback(this.ServerCertificateValidationCallback);
+                    webSocketBuilder.CleanupServerCertificateValidationCallback(
+                        this.ServerCertificateValidationCallback);
                 }
 #endif
             }
+
             return webSocket;
         }
 
 #if (NET452 || NETSTANDARD2_0)
-        internal bool ServerCertificateValidationCallback(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        internal bool ServerCertificateValidationCallback(object sender, X509Certificate certificate, X509Chain chain,
+            SslPolicyErrors sslPolicyErrors)
         {
             return Kubernetes.CertificateValidationCallBack(sender, this.CaCerts, certificate, chain, sslPolicyErrors);
         }

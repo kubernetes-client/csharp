@@ -27,7 +27,6 @@ namespace k8s.Models
     [JsonConverter(typeof(V1PathJsonConverter))]
     public partial class V1Patch
     {
-
         public enum PathType
         {
             JsonPatch,

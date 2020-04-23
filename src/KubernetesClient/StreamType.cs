@@ -17,6 +17,6 @@ namespace k8s
         /// <summary>
         /// This <see cref="StreamDemuxer"/> object is used in port forwarding.
         /// </summary>
-        PortForward
+        PortForward,
     }
 }

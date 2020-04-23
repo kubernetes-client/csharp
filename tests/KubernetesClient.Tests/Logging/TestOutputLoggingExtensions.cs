@@ -21,17 +21,21 @@ namespace k8s.Tests.Logging
         /// <param name="minLogLevel">
         ///     The minimum level to log at.
         /// </param>
-        public static void AddTestOutput(this ILoggingBuilder logging, ITestOutputHelper testOutput, LogLevel minLogLevel = LogLevel.Information)
+        public static void AddTestOutput(this ILoggingBuilder logging, ITestOutputHelper testOutput,
+            LogLevel minLogLevel = LogLevel.Information)
         {
             if (logging == null)
+            {
                 throw new ArgumentNullException(nameof(logging));
+            }
 
             if (testOutput == null)
+            {
                 throw new ArgumentNullException(nameof(testOutput));
+            }
 
             logging.AddProvider(
-                new TestOutputLoggerProvider(testOutput, minLogLevel)
-            );
+                new TestOutputLoggerProvider(testOutput, minLogLevel));
         }
 
         /// <summary>
@@ -49,17 +53,21 @@ namespace k8s.Tests.Logging
         /// <returns>
         ///     The logger factory (enables inline use / method-chaining).
         /// </returns>
-        public static ILoggerFactory AddTestOutput(this ILoggerFactory loggers, ITestOutputHelper testOutput, LogLevel minLogLevel = LogLevel.Information)
+        public static ILoggerFactory AddTestOutput(this ILoggerFactory loggers, ITestOutputHelper testOutput,
+            LogLevel minLogLevel = LogLevel.Information)
         {
             if (loggers == null)
+            {
                 throw new ArgumentNullException(nameof(loggers));
+            }
 
             if (testOutput == null)
+            {
                 throw new ArgumentNullException(nameof(testOutput));
+            }
 
             loggers.AddProvider(
-                new TestOutputLoggerProvider(testOutput, minLogLevel)
-            );
+                new TestOutputLoggerProvider(testOutput, minLogLevel));
 
             return loggers;
         }

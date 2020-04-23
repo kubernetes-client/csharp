@@ -34,13 +34,14 @@ namespace k8s.Tests.Mock
             {
                 Buffer = buffer,
                 MessageType = messageType,
-                EndOfMessage = endOfMessage
+                EndOfMessage = endOfMessage,
             });
             this.receiveEvent.Set();
             return Task.CompletedTask;
         }
 
         #region WebSocket overrides
+
         public override WebSocketCloseStatus? CloseStatus => this.closeStatus;
 
         public override string CloseStatusDescription => this.closeStatusDescription;
@@ -54,7 +55,8 @@ namespace k8s.Tests.Mock
             throw new NotImplementedException();
         }
 
-        public override Task CloseAsync(WebSocketCloseStatus closeStatus, string statusDescription, CancellationToken cancellationToken)
+        public override Task CloseAsync(WebSocketCloseStatus closeStatus, string statusDescription,
+            CancellationToken cancellationToken)
         {
             this.closeStatus = closeStatus;
             this.closeStatusDescription = statusDescription;
@@ -62,13 +64,14 @@ namespace k8s.Tests.Mock
             {
                 Buffer = new ArraySegment<byte>(new byte[] { }),
                 EndOfMessage = true,
-                MessageType = WebSocketMessageType.Close
+                MessageType = WebSocketMessageType.Close,
             });
             this.receiveEvent.Set();
             return Task.CompletedTask;
         }
 
-        public override Task CloseOutputAsync(WebSocketCloseStatus closeStatus, string statusDescription, CancellationToken cancellationToken)
+        public override Task CloseOutputAsync(WebSocketCloseStatus closeStatus, string statusDescription,
+            CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
@@ -79,7 +82,8 @@ namespace k8s.Tests.Mock
             this.receiveEvent.Set();
         }
 
-        public override async Task<WebSocketReceiveResult> ReceiveAsync(ArraySegment<byte> buffer, CancellationToken cancellationToken)
+        public override async Task<WebSocketReceiveResult> ReceiveAsync(ArraySegment<byte> buffer,
+            CancellationToken cancellationToken)
         {
             if (this.receiveBuffers.Count == 0)
             {
@@ -113,19 +117,22 @@ namespace k8s.Tests.Mock
             return new WebSocketReceiveResult(bytesReceived, messageType, endOfMessage);
         }
 
-        public override Task SendAsync(ArraySegment<byte> buffer, WebSocketMessageType messageType, bool endOfMessage, CancellationToken cancellationToken)
+        public override Task SendAsync(ArraySegment<byte> buffer, WebSocketMessageType messageType, bool endOfMessage,
+            CancellationToken cancellationToken)
         {
-            this.MessageSent?.Invoke(this, new MessageDataEventArgs()
-            {
-                Data = new MessageData()
+            this.MessageSent?.Invoke(this,
+                new MessageDataEventArgs()
                 {
-                    Buffer = buffer,
-                    MessageType = messageType,
-                    EndOfMessage = endOfMessage
-                }
-            });
+                    Data = new MessageData()
+                    {
+                        Buffer = buffer,
+                        MessageType = messageType,
+                        EndOfMessage = endOfMessage
+                    },
+                });
             return Task.CompletedTask;
         }
+
         #endregion
 
         public class MessageData

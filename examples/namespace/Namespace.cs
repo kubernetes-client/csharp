@@ -15,6 +15,7 @@ namespace @namespace
             {
                 Console.WriteLine(item.Metadata.Name);
             }
+
             if (list.Items.Count == 0)
             {
                 Console.WriteLine("Empty!");
@@ -41,6 +42,7 @@ namespace @namespace
                             {
                                 return;
                             }
+
                             throw ex;
                         }
                     }
@@ -51,6 +53,7 @@ namespace @namespace
                     {
                         return;
                     }
+
                     throw ex;
                 }
             }
@@ -68,13 +71,7 @@ namespace @namespace
 
             ListNamespaces(client);
 
-            var ns = new V1Namespace
-            {
-                Metadata = new V1ObjectMeta
-                {
-                    Name = "test"
-                }
-            };
+            var ns = new V1Namespace { Metadata = new V1ObjectMeta { Name = "test" } };
 
             var result = client.CreateNamespace(ns);
             Console.WriteLine(result);

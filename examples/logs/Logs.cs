@@ -19,9 +19,11 @@ namespace logs
                 Console.WriteLine("No pods!");
                 return;
             }
+
             var pod = list.Items[0];
 
-            var response = await client.ReadNamespacedPodLogWithHttpMessagesAsync(pod.Metadata.Name, pod.Metadata.NamespaceProperty, follow: true);
+            var response = await client.ReadNamespacedPodLogWithHttpMessagesAsync(pod.Metadata.Name,
+                pod.Metadata.NamespaceProperty, follow: true);
             var stream = response.Body;
             stream.CopyTo(Console.OpenStandardOutput());
         }

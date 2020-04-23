@@ -21,11 +21,13 @@ namespace simple
                 {
                     continue;
                 }
+
                 var labels = new List<string>();
                 foreach (var key in item.Spec.Selector)
                 {
                     labels.Add(key.Key + "=" + key.Value);
                 }
+
                 var labelStr = string.Join(",", labels.ToArray());
                 Console.WriteLine(labelStr);
                 var podList = client.ListNamespacedPod("default", labelSelector: labelStr);
@@ -33,10 +35,12 @@ namespace simple
                 {
                     Console.WriteLine(pod.Metadata.Name);
                 }
+
                 if (podList.Items.Count == 0)
                 {
                     Console.WriteLine("Empty!");
                 }
+
                 Console.WriteLine();
             }
         }

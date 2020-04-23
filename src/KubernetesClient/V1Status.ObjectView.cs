@@ -27,11 +27,7 @@ namespace k8s.Models
                     // should be an object
                 }
 
-                return new V1Status
-                {
-                    _original = obj,
-                    HasObject = true
-                };
+                return new V1Status { _original = obj, HasObject = true };
             }
 
             public override bool CanConvert(Type objectType)
