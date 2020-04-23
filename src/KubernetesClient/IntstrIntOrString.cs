@@ -38,7 +38,7 @@ namespace k8s.Models
 
         public void WriteYaml(IEmitter emitter, object value, Type type)
         {
-            var obj = (IntstrIntOrString) value;
+            var obj = (IntstrIntOrString)value;
             emitter.Emit(new YamlDotNet.Core.Events.Scalar(obj.Value));
         }
     }
@@ -61,7 +61,7 @@ namespace k8s.Models
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
             JsonSerializer serializer)
         {
-            return (IntstrIntOrString) serializer.Deserialize<string>(reader);
+            return (IntstrIntOrString)serializer.Deserialize<string>(reader);
         }
 
         public override bool CanConvert(Type objectType)
@@ -115,7 +115,7 @@ namespace k8s.Models
                 return false;
             }
 
-            return Equals((IntstrIntOrString) obj);
+            return Equals((IntstrIntOrString)obj);
         }
 
         public override int GetHashCode()

@@ -34,12 +34,12 @@ namespace KubernetesWatchGenerator
             {
                 if (v.ExtensionData?.TryGetValue("x-kubernetes-group-version-kind", out var _) == true)
                 {
-                    var groupVersionKindElements = (object[]) v.ExtensionData["x-kubernetes-group-version-kind"];
-                    var groupVersionKind = (Dictionary<string, object>) groupVersionKindElements[0];
+                    var groupVersionKindElements = (object[])v.ExtensionData["x-kubernetes-group-version-kind"];
+                    var groupVersionKind = (Dictionary<string, object>)groupVersionKindElements[0];
 
-                    var group = (string) groupVersionKind["group"];
-                    var kind = (string) groupVersionKind["kind"];
-                    var version = (string) groupVersionKind["version"];
+                    var group = (string)groupVersionKind["group"];
+                    var kind = (string)groupVersionKind["kind"];
+                    var version = (string)groupVersionKind["version"];
                     ClassNameMap[$"{group}_{kind}_{version}"] = ToPascalCase(k.Replace(".", ""));
                 }
             }
@@ -129,7 +129,7 @@ namespace KubernetesWatchGenerator
 
             var modelsDir = Path.Combine(outputDirectory, "Models");
             _classesWithValidation = Directory.EnumerateFiles(modelsDir)
-                .Select(x => new {Class = Path.GetFileNameWithoutExtension(x), Content = File.ReadAllText(x)})
+                .Select(x => new {Class = Path.GetFileNameWithoutExtension(x), Content = File.ReadAllText(x) })
                 .Where(x => x.Content.Contains("public virtual void Validate()"))
                 .Select(x => x.Class)
                 .ToHashSet();
@@ -182,23 +182,23 @@ namespace KubernetesWatchGenerator
         static string GetClassName(SwaggerOperation watchOperation)
         {
             var groupVersionKind =
-                (Dictionary<string, object>) watchOperation.ExtensionData["x-kubernetes-group-version-kind"];
+                (Dictionary<string, object>)watchOperation.ExtensionData["x-kubernetes-group-version-kind"];
             return GetClassName(groupVersionKind);
         }
 
         private static string GetClassName(Dictionary<string, object> groupVersionKind)
         {
-            var group = (string) groupVersionKind["group"];
-            var kind = (string) groupVersionKind["kind"];
-            var version = (string) groupVersionKind["version"];
+            var group = (string)groupVersionKind["group"];
+            var kind = (string)groupVersionKind["kind"];
+            var version = (string)groupVersionKind["version"];
 
             return ClassNameMap[$"{group}_{kind}_{version}"];
         }
 
         private static string GetClassName(JsonSchema4 definition)
         {
-            var groupVersionKindElements = (object[]) definition.ExtensionData["x-kubernetes-group-version-kind"];
-            var groupVersionKind = (Dictionary<string, object>) groupVersionKindElements[0];
+            var groupVersionKindElements = (object[])definition.ExtensionData["x-kubernetes-group-version-kind"];
+            var groupVersionKind = (Dictionary<string, object>)groupVersionKindElements[0];
 
             return GetClassName(groupVersionKind);
         }
@@ -237,8 +237,8 @@ namespace KubernetesWatchGenerator
 
         static string GetInterfaceName(JsonSchema4 definition)
         {
-            var groupVersionKindElements = (object[]) definition.ExtensionData["x-kubernetes-group-version-kind"];
-            var groupVersionKind = (Dictionary<string, object>) groupVersionKindElements[0];
+            var groupVersionKindElements = (object[])definition.ExtensionData["x-kubernetes-group-version-kind"];
+            var groupVersionKind = (Dictionary<string, object>)groupVersionKindElements[0];
 
             var group = groupVersionKind["group"] as string;
             var version = groupVersionKind["version"] as string;
@@ -288,8 +288,8 @@ namespace KubernetesWatchGenerator
 
         private static string GetKind(JsonSchema4 definition)
         {
-            var groupVersionKindElements = (object[]) definition.ExtensionData["x-kubernetes-group-version-kind"];
-            var groupVersionKind = (Dictionary<string, object>) groupVersionKindElements[0];
+            var groupVersionKindElements = (object[])definition.ExtensionData["x-kubernetes-group-version-kind"];
+            var groupVersionKind = (Dictionary<string, object>)groupVersionKindElements[0];
 
             return groupVersionKind["kind"] as string;
         }
@@ -328,8 +328,8 @@ namespace KubernetesWatchGenerator
 
         private static string GetGroup(JsonSchema4 definition)
         {
-            var groupVersionKindElements = (object[]) definition.ExtensionData["x-kubernetes-group-version-kind"];
-            var groupVersionKind = (Dictionary<string, object>) groupVersionKindElements[0];
+            var groupVersionKindElements = (object[])definition.ExtensionData["x-kubernetes-group-version-kind"];
+            var groupVersionKind = (Dictionary<string, object>)groupVersionKindElements[0];
 
             return groupVersionKind["group"] as string;
         }
@@ -368,7 +368,7 @@ namespace KubernetesWatchGenerator
                      arguments[2] != null && arguments[0] is JsonObjectType && arguments[1] is string &&
                      arguments[2] is bool)
             {
-                context.Write(GetDotNetType((JsonObjectType) arguments[0], (string) arguments[1], (bool) arguments[2]));
+                context.Write(GetDotNetType((JsonObjectType)arguments[0], (string)arguments[1], (bool)arguments[2]));
             }
             else if (arguments != null && arguments.Count > 0 && arguments[0] != null)
             {
@@ -428,7 +428,7 @@ namespace KubernetesWatchGenerator
             else if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is string)
             {
                 var parameter = arguments[0] as SwaggerParameter;
-                context.Write(GetDotNetName((string) arguments[0]));
+                context.Write(GetDotNetName((string)arguments[0]));
             }
         }
 
@@ -481,8 +481,8 @@ namespace KubernetesWatchGenerator
 
         private static string GetApiVersion(JsonSchema4 definition)
         {
-            var groupVersionKindElements = (object[]) definition.ExtensionData["x-kubernetes-group-version-kind"];
-            var groupVersionKind = (Dictionary<string, object>) groupVersionKindElements[0];
+            var groupVersionKindElements = (object[])definition.ExtensionData["x-kubernetes-group-version-kind"];
+            var groupVersionKind = (Dictionary<string, object>)groupVersionKindElements[0];
 
             return groupVersionKind["version"] as string;
         }

@@ -41,7 +41,7 @@ namespace k8s.Tests
         {
             var corev1PodList = JsonConvert.DeserializeObject<V1PodList>(MockKubeApiServer.MockPodResponse);
             return JsonConvert.SerializeObject(
-                new Watcher<V1Pod>.WatchEvent {Type = eventType, Object = corev1PodList.Items.First()},
+                new Watcher<V1Pod>.WatchEvent {Type = eventType, Object = corev1PodList.Items.First() },
                 new StringEnumConverter());
         }
 
@@ -58,7 +58,7 @@ namespace k8s.Tests
         {
             using (var server = new MockKubeApiServer(testOutput: testOutput))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
 
                 // did not pass watch param
                 var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default");
@@ -97,7 +97,7 @@ namespace k8s.Tests
                 return false;
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
 
 
                 var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
@@ -125,7 +125,7 @@ namespace k8s.Tests
                     testOutput,
                     async httpContext =>
                     {
-                        httpContext.Response.StatusCode = (int) HttpStatusCode.OK;
+                        httpContext.Response.StatusCode = (int)HttpStatusCode.OK;
                         httpContext.Response.ContentLength = null;
 
                         await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse);
@@ -139,7 +139,7 @@ namespace k8s.Tests
                         return false;
                     }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
 
                 var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
 
@@ -161,16 +161,14 @@ namespace k8s.Tests
                         errors += 1;
                         eventsReceived.Signal();
                     },
-                    onClosed: connectionClosed.Set
-                );
+                    onClosed: connectionClosed.Set);
 
                 // wait server yields all events
                 await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout));
 
                 Assert.True(
                     eventsReceived.CurrentCount == 0,
-                    "Timed out waiting for all events / errors to be received."
-                );
+                    "Timed out waiting for all events / errors to be received.");
 
                 Assert.Contains(WatchEventType.Added, events);
                 Assert.Contains(WatchEventType.Modified, events);
@@ -206,7 +204,7 @@ namespace k8s.Tests
                 return true;
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
 
                 var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
 
@@ -218,15 +216,13 @@ namespace k8s.Tests
                         events.Add(type);
                         eventsReceived.Signal();
                     },
-                    onClosed: connectionClosed.Set
-                );
+                    onClosed: connectionClosed.Set);
 
                 // wait at least an event
                 await Task.WhenAny(Task.Run(() => eventsReceived.Wait()), Task.Delay(TestTimeout));
                 Assert.True(
                     eventsReceived.CurrentCount == 0,
-                    "Timed out waiting for events."
-                );
+                    "Timed out waiting for events.");
 
                 Assert.NotEmpty(events);
                 Assert.True(watcher.Watching);
@@ -270,7 +266,7 @@ namespace k8s.Tests
                 return false;
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
 
                 var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
 
@@ -292,16 +288,14 @@ namespace k8s.Tests
                         errors += 1;
                         eventsReceived.Signal();
                     },
-                    onClosed: waitForClosed.Set
-                );
+                    onClosed: waitForClosed.Set);
 
                 // wait server yields all events
                 await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout));
 
                 Assert.True(
                     eventsReceived.CurrentCount == 0,
-                    "Timed out waiting for all events / errors to be received."
-                );
+                    "Timed out waiting for all events / errors to be received.");
 
                 Assert.Contains(WatchEventType.Added, events);
                 Assert.Contains(WatchEventType.Deleted, events);
@@ -341,7 +335,7 @@ namespace k8s.Tests
                 return false;
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
 
                 var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
 
@@ -363,16 +357,14 @@ namespace k8s.Tests
                         errors += 1;
                         eventsReceived.Signal();
                     },
-                    onClosed: connectionClosed.Set
-                );
+                    onClosed: connectionClosed.Set);
 
                 // wait server yields all events
                 await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout));
 
                 Assert.True(
                     eventsReceived.CurrentCount == 0,
-                    "Timed out waiting for all events / errors to be received."
-                );
+                    "Timed out waiting for all events / errors to be received.");
 
                 Assert.Contains(WatchEventType.Added, events);
                 Assert.Contains(WatchEventType.Deleted, events);
@@ -405,7 +397,7 @@ namespace k8s.Tests
                 throw new IOException("server down");
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
 
                 var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
 
@@ -425,8 +417,7 @@ namespace k8s.Tests
 
                 Assert.True(
                     exceptionReceived.IsSet,
-                    "Timed out waiting for exception"
-                );
+                    "Timed out waiting for exception");
 
                 await Task.WhenAny(waitForClosed.WaitAsync(), Task.Delay(TestTimeout));
                 Assert.True(waitForClosed.IsSet);
@@ -466,7 +457,7 @@ namespace k8s.Tests
                 var handler1 = new DummyHandler();
                 var handler2 = new DummyHandler();
 
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()}, handler1,
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() }, handler1,
                     handler2);
 
                 Assert.False(handler1.Called);
@@ -481,16 +472,14 @@ namespace k8s.Tests
                     {
                         events.Add(type);
                         eventsReceived.Signal();
-                    }
-                );
+                    });
 
                 // wait server yields all events
                 await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout));
 
                 Assert.True(
                     eventsReceived.CurrentCount == 0,
-                    "Timed out waiting for all events / errors to be received."
-                );
+                    "Timed out waiting for all events / errors to be received.");
 
                 Assert.Contains(WatchEventType.Added, events);
 
@@ -520,7 +509,7 @@ namespace k8s.Tests
                 return false;
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
 
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
@@ -544,16 +533,14 @@ namespace k8s.Tests
                         errors += 1;
                         eventsReceived.Signal();
                     },
-                    onClosed: connectionClosed.Set
-                );
+                    onClosed: connectionClosed.Set);
 
                 // wait server yields all events
                 await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout));
 
                 Assert.True(
                     eventsReceived.CurrentCount == 0,
-                    "Timed out waiting for all events / errors to be received."
-                );
+                    "Timed out waiting for all events / errors to be received.");
 
                 Assert.Contains(WatchEventType.Added, events);
                 Assert.Contains(WatchEventType.Deleted, events);
@@ -584,7 +571,7 @@ namespace k8s.Tests
                 {
                     ApiVersion = "batch/v1",
                     Kind = V1Job.KubeKind,
-                    Metadata = new V1ObjectMeta() {Name = nameof(WatcherIntegrationTest).ToLowerInvariant()},
+                    Metadata = new V1ObjectMeta() {Name = nameof(WatcherIntegrationTest).ToLowerInvariant() },
                     Spec = new V1JobSpec()
                     {
                         Template = new V1PodTemplateSpec()
@@ -661,7 +648,7 @@ namespace k8s.Tests
                 return false;
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
 
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
@@ -684,16 +671,14 @@ namespace k8s.Tests
 
                         errors += 1;
                         eventsReceived.Signal();
-                    }
-                );
+                    });
 
                 // wait server yields all events
                 await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout));
 
                 Assert.True(
                     eventsReceived.CurrentCount == 0,
-                    "Timed out waiting for all events / errors to be received."
-                );
+                    "Timed out waiting for all events / errors to be received.");
 
                 Assert.Contains(WatchEventType.Added, events);
                 Assert.Contains(WatchEventType.Deleted, events);
@@ -722,7 +707,7 @@ namespace k8s.Tests
                 return true;
             }, resp: ""))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
 
                 var cts = new CancellationTokenSource();
                 cts.CancelAfter(TimeSpan.FromSeconds(2));

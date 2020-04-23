@@ -95,7 +95,7 @@ namespace k8s
                 if (config.SkipTlsVerify)
                 {
 #if NET452
-                    ((WebRequestHandler) HttpClientHandler).ServerCertificateValidationCallback =
+                    ((WebRequestHandler)HttpClientHandler).ServerCertificateValidationCallback =
                         (sender, certificate, chain, sslPolicyErrors) => true;
 #elif XAMARINIOS1_0 || MONOANDROID8_1
                     System.Net.ServicePointManager.ServerCertificateValidationCallback +=
@@ -115,7 +115,7 @@ namespace k8s
                         throw new KubeConfigException("A CA must be set when SkipTlsVerify === false");
                     }
 #if NET452
-                    ((WebRequestHandler) HttpClientHandler).ServerCertificateValidationCallback =
+                    ((WebRequestHandler)HttpClientHandler).ServerCertificateValidationCallback =
  (sender, certificate, chain, sslPolicyErrors) =>
                     {
                         return Kubernetes.CertificateValidationCallBack(sender, CaCerts, certificate, chain, sslPolicyErrors);
@@ -273,7 +273,7 @@ namespace k8s
                 chain.ChainPolicy.ExtraStore.AddRange(caCerts);
 
                 chain.ChainPolicy.VerificationFlags = X509VerificationFlags.AllowUnknownCertificateAuthority;
-                var isValid = chain.Build((X509Certificate2) certificate);
+                var isValid = chain.Build((X509Certificate2)certificate);
 
                 var isTrusted = false;
 

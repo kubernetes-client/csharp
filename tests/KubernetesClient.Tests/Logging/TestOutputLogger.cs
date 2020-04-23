@@ -86,14 +86,12 @@ namespace k8s.Tests.Logging
             TestOutput.WriteLine(String.Format("[{0}] {1}: {2}",
                 level,
                 LoggerCategory,
-                formatter(state, exception)
-            ));
+                formatter(state, exception)));
 
             if (exception != null)
             {
                 TestOutput.WriteLine(
-                    exception.ToString()
-                );
+                    exception.ToString());
             }
         }
 

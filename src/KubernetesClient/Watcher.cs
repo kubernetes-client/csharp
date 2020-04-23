@@ -64,7 +64,7 @@ namespace k8s
         public Watcher(Func<Task<StreamReader>> streamReaderCreator, Action<WatchEventType, T> onEvent,
             Action<Exception> onError, Action onClosed = null)
             : this(
-                async () => (TextReader) await streamReaderCreator().ConfigureAwait(false),
+                async () => (TextReader)await streamReaderCreator().ConfigureAwait(false),
                 onEvent, onError, onClosed)
         {
         }

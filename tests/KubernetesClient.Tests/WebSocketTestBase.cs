@@ -42,8 +42,7 @@ namespace k8s.Tests
 
             // Useful to diagnose test timeouts.
             TestCancellation.Register(
-                () => testOutput.WriteLine("Test-level cancellation token has been canceled.")
-            );
+                () => testOutput.WriteLine("Test-level cancellation token has been canceled."));
 
             ServerBaseAddress = new Uri($"http://localhost:{port}");
             WebSocketBaseAddress = new Uri($"ws://localhost:{port}");
@@ -200,8 +199,7 @@ namespace k8s.Tests
                             await serverSocket.CloseAsync(
                                 received.Result.CloseStatus.Value,
                                 received.Result.CloseStatusDescription,
-                                TestCancellation
-                            );
+                                TestCancellation);
 
                             testOutput.WriteLine("Server socket closed.");
                         }
@@ -262,8 +260,7 @@ namespace k8s.Tests
 
             await webSocket.SendAsync(sendBuffer, WebSocketMessageType.Binary,
                 endOfMessage: true,
-                cancellationToken: TestCancellation
-            );
+                cancellationToken: TestCancellation);
 
             return sendBuffer.Length;
         }
@@ -315,8 +312,7 @@ namespace k8s.Tests
             return (
                 text: Encoding.ASCII.GetString(receivedData, 1, receivedData.Length - 1),
                 streamIndex: receivedData[0],
-                totalBytes: receivedData.Length
-            );
+                totalBytes: receivedData.Length);
         }
 
         public void Dispose()

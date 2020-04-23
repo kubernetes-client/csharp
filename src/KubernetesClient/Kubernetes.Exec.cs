@@ -46,7 +46,7 @@ namespace k8s
             }
             catch (HttpOperationException httpEx) when (httpEx.Body is V1Status)
             {
-                throw new KubernetesException((V1Status) httpEx.Body);
+                throw new KubernetesException((V1Status)httpEx.Body);
             }
         }
 

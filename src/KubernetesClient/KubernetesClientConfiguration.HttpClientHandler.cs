@@ -46,7 +46,7 @@ namespace k8s
                 var cert = CertUtils.GeneratePfx(this);
 
 #if NET452
-                ((WebRequestHandler) handler).ClientCertificates.Add(cert);
+                ((WebRequestHandler)handler).ClientCertificates.Add(cert);
 #else
                 handler.ClientCertificates.Add(cert);
 #endif

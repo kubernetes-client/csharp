@@ -14,7 +14,7 @@ namespace k8s.Models
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            var q = (ResourceQuantity) value;
+            var q = (ResourceQuantity)value;
 
             if (q != null)
             {
@@ -96,7 +96,7 @@ namespace k8s.Models
             DecimalSI
         }
 
-        public static readonly decimal MaxAllowed = (decimal) BigInteger.Pow(2, 63) - 1;
+        public static readonly decimal MaxAllowed = (decimal)BigInteger.Pow(2, 63) - 1;
 
         private static readonly char[] SuffixChars = "eEinumkKMGTP".ToCharArray();
         private Fraction _unitlessValue;
@@ -141,14 +141,14 @@ namespace k8s.Models
                 return false;
             }
 
-            return Equals((ResourceQuantity) obj);
+            return Equals((ResourceQuantity)obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                return ((int) Format * 397) ^ _unitlessValue.GetHashCode();
+                return ((int)Format * 397) ^ _unitlessValue.GetHashCode();
             }
         }
 
@@ -230,7 +230,7 @@ namespace k8s.Models
 
             if (parser.Current is Scalar)
             {
-                Value = ((Scalar) parser.Current).Value;
+                Value = ((Scalar)parser.Current).Value;
                 parser.MoveNext();
                 CustomInit();
             }
@@ -261,28 +261,28 @@ namespace k8s.Models
                 {
                     // Don't emit an error when trying to produce
                     // a suffix for 2^0.
-                    {"", (2, 0)},
-                    {"Ki", (2, 10)},
-                    {"Mi", (2, 20)},
-                    {"Gi", (2, 30)},
-                    {"Ti", (2, 40)},
-                    {"Pi", (2, 50)},
-                    {"Ei", (2, 60)}
+                    {"", (2, 0) },
+                    {"Ki", (2, 10) },
+                    {"Mi", (2, 20) },
+                    {"Gi", (2, 30) },
+                    {"Ti", (2, 40) },
+                    {"Pi", (2, 50) },
+                    {"Ei", (2, 60) }
                 };
 
             private static readonly IReadOnlyDictionary<string, (int, int)> DecSuffixes =
                 new Dictionary<string, (int, int)>
                 {
-                    {"n", (10, -9)},
-                    {"u", (10, -6)},
-                    {"m", (10, -3)},
-                    {"", (10, 0)},
-                    {"k", (10, 3)},
-                    {"M", (10, 6)},
-                    {"G", (10, 9)},
-                    {"T", (10, 12)},
-                    {"P", (10, 15)},
-                    {"E", (10, 18)}
+                    {"n", (10, -9) },
+                    {"u", (10, -6) },
+                    {"m", (10, -3) },
+                    {"", (10, 0) },
+                    {"k", (10, 3) },
+                    {"M", (10, 6) },
+                    {"G", (10, 9) },
+                    {"T", (10, 12) },
+                    {"P", (10, 15) },
+                    {"E", (10, 18) }
                 };
 
             public Suffixer(string suffix)
@@ -354,10 +354,10 @@ namespace k8s.Models
 
                         if (minE == 0)
                         {
-                            return $"{(decimal) lastv}";
+                            return $"{(decimal)lastv}";
                         }
 
-                        return $"{(decimal) lastv}e{minE}";
+                        return $"{(decimal)lastv}e{minE}";
                     }
 
                     case SuffixFormat.BinarySI:
@@ -387,7 +387,7 @@ namespace k8s.Models
                     lastv = v;
                 }
 
-                return $"{(decimal) lastv}{suffix}";
+                return $"{(decimal)lastv}{suffix}";
             }
 
             private static Fraction Roundup(Fraction lastv)

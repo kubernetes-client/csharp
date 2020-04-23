@@ -22,7 +22,7 @@ namespace k8s.Tests
 
             using (var server = new MockKubeApiServer(testOutput, resp: JsonConvert.SerializeObject(v1Status)))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
 
                 var status = client.DeleteNamespace("test", new V1DeleteOptions());
 
@@ -43,7 +43,7 @@ namespace k8s.Tests
 
             using (var server = new MockKubeApiServer(testOutput, resp: JsonConvert.SerializeObject(corev1Namespace)))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
 
                 var status = client.DeleteNamespace("test", new V1DeleteOptions());
 

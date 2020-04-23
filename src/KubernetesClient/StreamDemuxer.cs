@@ -98,7 +98,7 @@ namespace k8s
         /// </returns>
         public Stream GetStream(ChannelIndex? inputIndex, ChannelIndex? outputIndex)
         {
-            return GetStream((byte?) inputIndex, (byte?) outputIndex);
+            return GetStream((byte?)inputIndex, (byte?)outputIndex);
         }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace k8s
         public Task Write(ChannelIndex index, byte[] buffer, int offset, int count,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Write((byte) index, buffer, offset, count, cancellationToken);
+            return Write((byte)index, buffer, offset, count, cancellationToken);
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace k8s
 
             try
             {
-                writeBuffer[0] = (byte) index;
+                writeBuffer[0] = (byte)index;
                 Array.Copy(buffer, offset, writeBuffer, 1, count);
                 ArraySegment<byte> segment = new ArraySegment<byte>(writeBuffer, 0, count + 1);
                 await this.webSocket.SendAsync(segment, WebSocketMessageType.Binary, false, cancellationToken)

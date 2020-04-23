@@ -48,8 +48,7 @@ namespace k8s.Tests
             if (!Debugger.IsAttached)
             {
                 CancellationSource.CancelAfter(
-                    TimeSpan.FromSeconds(5)
-                );
+                    TimeSpan.FromSeconds(5));
             }
 
             await Host.StartAsync(TestCancellation);
@@ -67,8 +66,7 @@ namespace k8s.Tests
                     stdin: false,
                     stdout: true,
                     webSocketSubProtol: WebSocketProtocol.ChannelWebSocketProtocol,
-                    cancellationToken: TestCancellation
-                );
+                    cancellationToken: TestCancellation);
                 Assert.Equal(WebSocketProtocol.ChannelWebSocketProtocol,
                     clientSocket
                         .SubProtocol); // For WebSockets, the Kubernetes API defaults to the binary channel (v1) protocol.
@@ -95,8 +93,7 @@ namespace k8s.Tests
 
                 await Disconnect(clientSocket, serverSocket,
                     closeStatus: WebSocketCloseStatus.NormalClosure,
-                    closeStatusDescription: "Normal Closure"
-                );
+                    closeStatusDescription: "Normal Closure");
 
                 WebSocketTestAdapter.CompleteTest();
             }

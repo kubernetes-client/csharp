@@ -31,8 +31,8 @@ metadata:
             Assert.Equal(2, objs.Count);
             Assert.IsType<V1Pod>(objs[0]);
             Assert.IsType<V1Namespace>(objs[1]);
-            Assert.Equal("foo", ((V1Pod) objs[0]).Metadata.Name);
-            Assert.Equal("ns", ((V1Namespace) objs[1]).Metadata.Name);
+            Assert.Equal("foo", ((V1Pod)objs[0]).Metadata.Name);
+            Assert.Equal("ns", ((V1Namespace)objs[1]).Metadata.Name);
         }
 
         [Fact]
@@ -259,7 +259,7 @@ spec:
             var obj = Yaml.LoadFromString<V1Service>(content);
 
             Assert.Equal(3000, obj.Spec.Ports[0].Port);
-            Assert.Equal(3000, (int) obj.Spec.Ports[0].TargetPort);
+            Assert.Equal(3000, (int)obj.Spec.Ports[0].TargetPort);
         }
 
         [Fact]

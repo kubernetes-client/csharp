@@ -35,8 +35,7 @@ namespace k8s.Tests.Logging
             }
 
             logging.AddProvider(
-                new TestOutputLoggerProvider(testOutput, minLogLevel)
-            );
+                new TestOutputLoggerProvider(testOutput, minLogLevel));
         }
 
         /// <summary>
@@ -68,8 +67,7 @@ namespace k8s.Tests.Logging
             }
 
             loggers.AddProvider(
-                new TestOutputLoggerProvider(testOutput, minLogLevel)
-            );
+                new TestOutputLoggerProvider(testOutput, minLogLevel));
 
             return loggers;
         }

@@ -264,8 +264,7 @@ namespace k8s.Tests
 
             await TaskAssert.Completed(readTask,
                 timeout: TimeSpan.FromMilliseconds(1000),
-                message: "Timed out waiting for read task to complete."
-            );
+                message: "Timed out waiting for read task to complete.");
 
             Assert.Equal(3, read);
             Assert.Equal(0xF0, readData[0]);

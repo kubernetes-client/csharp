@@ -42,7 +42,7 @@ namespace k8s.Tests
         {
             using (var server = new MockKubeApiServer(testOutput))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
 
                 var listTask = ExecuteListPods(client);
 
@@ -52,11 +52,11 @@ namespace k8s.Tests
 
             using (var server = new MockKubeApiServer(testOutput, cxt =>
             {
-                cxt.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
+                cxt.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                 return Task.FromResult(false);
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
 
                 var listTask = ExecuteListPods(client);
 
@@ -80,7 +80,7 @@ namespace k8s.Tests
 
                 if (header != expect)
                 {
-                    cxt.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
+                    cxt.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                     return Task.FromResult(false);
                 }
 
@@ -132,7 +132,7 @@ namespace k8s.Tests
                 }
 
                 {
-                    var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
+                    var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
 
                     var listTask = ExecuteListPods(client);
 
@@ -333,7 +333,7 @@ namespace k8s.Tests
 
                 if (header != expect)
                 {
-                    cxt.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
+                    cxt.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                     return Task.FromResult(false);
                 }
 
@@ -375,7 +375,7 @@ namespace k8s.Tests
                 }
 
                 {
-                    var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
+                    var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
 
                     var listTask = ExecuteListPods(client);
 
@@ -391,7 +391,7 @@ namespace k8s.Tests
 
             var keyAlias = store.Aliases.Cast<string>().SingleOrDefault(a => store.IsKeyEntry(a));
 
-            var key = (RsaPrivateCrtKeyParameters) store.GetKey(keyAlias).Key;
+            var key = (RsaPrivateCrtKeyParameters)store.GetKey(keyAlias).Key;
             var bouncyCertificate = store.GetCertificate(keyAlias).Certificate;
 
             var certificate = new X509Certificate2(DotNetUtilities.ToX509Certificate(bouncyCertificate));

@@ -347,7 +347,7 @@ namespace k8s
             }
             catch (WebSocketException wse) when (wse.WebSocketErrorCode == WebSocketError.HeaderError ||
                                                  (wse.InnerException is WebSocketException &&
-                                                  ((WebSocketException) wse.InnerException).WebSocketErrorCode ==
+                                                  ((WebSocketException)wse.InnerException).WebSocketErrorCode ==
                                                   WebSocketError.HeaderError))
             {
                 // This usually indicates the server sent an error message, like 400 Bad Request. Unfortunately, the WebSocket client
@@ -382,7 +382,7 @@ namespace k8s
                             $"The operation returned an invalid status code: {response.StatusCode}", wse)
                         {
                             Response = new HttpResponseMessageWrapper(response, content),
-                            Body = status != null ? (object) status : content,
+                            Body = status != null ? (object)status : content,
                         };
 
                     response.Dispose();

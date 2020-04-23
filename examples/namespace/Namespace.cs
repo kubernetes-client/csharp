@@ -37,7 +37,7 @@ namespace @namespace
                     {
                         if (innerEx is Microsoft.Rest.HttpOperationException)
                         {
-                            var code = ((Microsoft.Rest.HttpOperationException) innerEx).Response.StatusCode;
+                            var code = ((Microsoft.Rest.HttpOperationException)innerEx).Response.StatusCode;
                             if (code == HttpStatusCode.NotFound)
                             {
                                 return;
