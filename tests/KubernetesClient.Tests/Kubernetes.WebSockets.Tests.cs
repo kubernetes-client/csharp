@@ -47,14 +47,14 @@ namespace k8s.Tests
                 tty: true,
                 customHeaders: new Dictionary<string, List<string>>()
                 {
-                    {"X-My-Header", new List<string>() {"myHeaderValue", "myHeaderValue2"}},
+                    {"X-My-Header", new List<string>() {"myHeaderValue", "myHeaderValue2" } },
                 },
                 cancellationToken: CancellationToken.None).ConfigureAwait(false);
 
             var expectedHeaders = new Dictionary<string, string>()
             {
-                {"X-My-Header", "myHeaderValue myHeaderValue2"},
-                {"Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ="},
+                {"X-My-Header", "myHeaderValue myHeaderValue2" },
+                {"Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ=" },
             };
 
             Assert.Equal(mockWebSocketBuilder.PublicWebSocket,
@@ -88,14 +88,14 @@ namespace k8s.Tests
                 ports: new int[] { 80, 8080 },
                 customHeaders: new Dictionary<string, List<string>>()
                 {
-                    {"X-My-Header", new List<string>() {"myHeaderValue", "myHeaderValue2"}},
+                    {"X-My-Header", new List<string>() {"myHeaderValue", "myHeaderValue2" } },
                 },
                 cancellationToken: CancellationToken.None).ConfigureAwait(false);
 
             var expectedHeaders = new Dictionary<string, string>()
             {
-                {"X-My-Header", "myHeaderValue myHeaderValue2"},
-                {"Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ="},
+                {"X-My-Header", "myHeaderValue myHeaderValue2" },
+                {"Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ=" },
             };
 
             Assert.Equal(mockWebSocketBuilder.PublicWebSocket,
@@ -132,14 +132,14 @@ namespace k8s.Tests
                 tty: true,
                 customHeaders: new Dictionary<string, List<string>>()
                 {
-                    {"X-My-Header", new List<string>() {"myHeaderValue", "myHeaderValue2"}},
+                    {"X-My-Header", new List<string>() {"myHeaderValue", "myHeaderValue2" } },
                 },
                 cancellationToken: CancellationToken.None).ConfigureAwait(false);
 
             var expectedHeaders = new Dictionary<string, string>()
             {
-                {"X-My-Header", "myHeaderValue myHeaderValue2"},
-                {"Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ="},
+                {"X-My-Header", "myHeaderValue myHeaderValue2" },
+                {"Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ=" },
             };
 
             Assert.Equal(mockWebSocketBuilder.PublicWebSocket,

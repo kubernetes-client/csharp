@@ -438,9 +438,9 @@ namespace k8s
         {
             var execInfo = new Dictionary<string, dynamic>
             {
-                {"apiVersion", config.ApiVersion},
-                {"kind", "ExecCredentials"},
-                {"spec", new Dictionary<string, bool> {{"interactive", Environment.UserInteractive}}},
+                {"apiVersion", config.ApiVersion },
+                {"kind", "ExecCredentials" },
+                {"spec", new Dictionary<string, bool> {{"interactive", Environment.UserInteractive } } },
             };
 
             var process = new Process();

@@ -425,7 +425,7 @@ namespace k8s.Tests
 
             var contexts = new List<Context>
             {
-                new Context {Name = name, ContextDetails = new ContextDetails {Cluster = name, User = username}},
+                new Context {Name = name, ContextDetails = new ContextDetails {Cluster = name, User = username } },
             };
 
             var responseJson = $"{{\"apiVersion\": \"testingversion\", \"status\": {{\"token\": \"{token}\"}}}}";
@@ -436,7 +436,7 @@ namespace k8s.Tests
                     new Cluster
                     {
                         Name = name,
-                        ClusterEndpoint = new ClusterEndpoint {SkipTlsVerify = true, Server = serverUri}
+                        ClusterEndpoint = new ClusterEndpoint {SkipTlsVerify = true, Server = serverUri }
                     },
                 };
 

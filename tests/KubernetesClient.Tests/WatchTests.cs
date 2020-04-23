@@ -584,7 +584,7 @@ namespace k8s.Tests
                                     {
                                         Image = "ubuntu/xenial",
                                         Name = "runner",
-                                        Command = new List<string>() {"/bin/bash", "-c", "--"},
+                                        Command = new List<string>() {"/bin/bash", "-c", "--" },
                                         Args = new List<string>()
                                         {
                                             "trap : TERM INT; sleep infinity & wait"

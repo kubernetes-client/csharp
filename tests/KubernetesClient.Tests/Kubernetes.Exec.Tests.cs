@@ -121,7 +121,7 @@ namespace k8s.Tests
                 {
                     Causes = new List<V1StatusCause>()
                     {
-                        new V1StatusCause() {Reason = "ExitCode", Message = "1"}
+                        new V1StatusCause() {Reason = "ExitCode", Message = "1" }
                     }
                 },
             };
@@ -142,7 +142,7 @@ namespace k8s.Tests
                 {
                     Causes = new List<V1StatusCause>()
                     {
-                        new V1StatusCause() {Reason = "ExitCode", Message = "abc"}
+                        new V1StatusCause() {Reason = "ExitCode", Message = "abc" }
                     }
                 },
             };
@@ -290,7 +290,7 @@ namespace k8s.Tests
                 {
                     Causes = new List<V1StatusCause>()
                     {
-                        new V1StatusCause() {Reason = "ExitCode", Message = "1"}
+                        new V1StatusCause() {Reason = "ExitCode", Message = "1" }
                     }
                 },
             };
