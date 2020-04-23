@@ -459,7 +459,7 @@ namespace k8s.Tests
 
             var fileInfo = new FileInfo(Path.GetFullPath("assets/kubeconfig.yml"));
 
-            var cfg = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo[] {fileInfo, fileInfo});
+            var cfg = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo[] { fileInfo, fileInfo });
 
             AssertConfigEqual(expectedCfg, cfg);
         }

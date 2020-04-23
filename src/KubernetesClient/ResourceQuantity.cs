@@ -335,30 +335,30 @@ namespace k8s.Models
                 switch (format)
                 {
                     case SuffixFormat.DecimalExponent:
-                    {
-                        var minE = -9;
-                        var lastv = Roundup(value * Fraction.Pow(10, -minE));
-
-                        for (var exp = minE;; exp += 3)
                         {
-                            var v = value * Fraction.Pow(10, -exp);
-                            if (HasMantissa(v))
+                            var minE = -9;
+                            var lastv = Roundup(value * Fraction.Pow(10, -minE));
+
+                            for (var exp = minE; ; exp += 3)
                             {
-                                break;
+                                var v = value * Fraction.Pow(10, -exp);
+                                if (HasMantissa(v))
+                                {
+                                    break;
+                                }
+
+                                minE = exp;
+                                lastv = v;
                             }
 
-                            minE = exp;
-                            lastv = v;
+
+                            if (minE == 0)
+                            {
+                                return $"{(decimal)lastv}";
+                            }
+
+                            return $"{(decimal)lastv}e{minE}";
                         }
-
-
-                        if (minE == 0)
-                        {
-                            return $"{(decimal)lastv}";
-                        }
-
-                        return $"{(decimal)lastv}e{minE}";
-                    }
 
                     case SuffixFormat.BinarySI:
                         return AppendMaxSuffix(value, BinSuffixes);

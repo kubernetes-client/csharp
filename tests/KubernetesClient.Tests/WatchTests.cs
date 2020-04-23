@@ -41,7 +41,7 @@ namespace k8s.Tests
         {
             var corev1PodList = JsonConvert.DeserializeObject<V1PodList>(MockKubeApiServer.MockPodResponse);
             return JsonConvert.SerializeObject(
-                new Watcher<V1Pod>.WatchEvent {Type = eventType, Object = corev1PodList.Items.First() },
+                new Watcher<V1Pod>.WatchEvent { Type = eventType, Object = corev1PodList.Items.First() },
                 new StringEnumConverter());
         }
 
@@ -58,7 +58,7 @@ namespace k8s.Tests
         {
             using (var server = new MockKubeApiServer(testOutput: testOutput))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
+                var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
                 // did not pass watch param
                 var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default");
@@ -97,7 +97,7 @@ namespace k8s.Tests
                 return false;
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
+                var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
 
                 var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
@@ -139,7 +139,7 @@ namespace k8s.Tests
                         return false;
                     }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
+                var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
                 var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
 
@@ -204,7 +204,7 @@ namespace k8s.Tests
                 return true;
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
+                var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
                 var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
 
@@ -266,7 +266,7 @@ namespace k8s.Tests
                 return false;
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
+                var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
                 var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
 
@@ -335,7 +335,7 @@ namespace k8s.Tests
                 return false;
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
+                var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
                 var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
 
@@ -397,7 +397,7 @@ namespace k8s.Tests
                 throw new IOException("server down");
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
+                var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
                 var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
 
@@ -457,7 +457,7 @@ namespace k8s.Tests
                 var handler1 = new DummyHandler();
                 var handler2 = new DummyHandler();
 
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() }, handler1,
+                var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() }, handler1,
                     handler2);
 
                 Assert.False(handler1.Called);
@@ -509,7 +509,7 @@ namespace k8s.Tests
                 return false;
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
+                var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
@@ -571,7 +571,7 @@ namespace k8s.Tests
                 {
                     ApiVersion = "batch/v1",
                     Kind = V1Job.KubeKind,
-                    Metadata = new V1ObjectMeta() {Name = nameof(WatcherIntegrationTest).ToLowerInvariant() },
+                    Metadata = new V1ObjectMeta() { Name = nameof(WatcherIntegrationTest).ToLowerInvariant() },
                     Spec = new V1JobSpec()
                     {
                         Template = new V1PodTemplateSpec()
@@ -648,7 +648,7 @@ namespace k8s.Tests
                 return false;
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
+                var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
@@ -707,7 +707,7 @@ namespace k8s.Tests
                 return true;
             }, resp: ""))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString() });
+                var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
                 var cts = new CancellationTokenSource();
                 cts.CancelAfter(TimeSpan.FromSeconds(2));

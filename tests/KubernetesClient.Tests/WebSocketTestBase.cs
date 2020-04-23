@@ -131,7 +131,7 @@ namespace k8s.Tests
         /// </returns>
         protected virtual Kubernetes CreateTestClient(ServiceClientCredentials credentials = null)
         {
-            return new Kubernetes(credentials ?? AnonymousClientCredentials.Instance) {BaseUri = ServerBaseAddress};
+            return new Kubernetes(credentials ?? AnonymousClientCredentials.Instance) { BaseUri = ServerBaseAddress };
         }
 
         /// <summary>

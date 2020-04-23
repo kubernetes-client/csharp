@@ -32,7 +32,7 @@ namespace k8s
             bool tty = true, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            return WebSocketNamespacedPodExecAsync(name, @namespace, new string[] {command}, container, stderr, stdin,
+            return WebSocketNamespacedPodExecAsync(name, @namespace, new string[] { command }, container, stderr, stdin,
                 stdout, tty, webSocketSubProtol, customHeaders, cancellationToken);
         }
 

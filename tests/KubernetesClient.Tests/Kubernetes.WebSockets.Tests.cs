@@ -26,7 +26,8 @@ namespace k8s.Tests
         {
             var credentials = new BasicAuthenticationCredentials()
             {
-                UserName = "my-user", Password = "my-secret-password",
+                UserName = "my-user",
+                Password = "my-secret-password",
             };
 
             Kubernetes client = new Kubernetes(credentials);
@@ -38,7 +39,7 @@ namespace k8s.Tests
             var webSocket = await client.WebSocketNamespacedPodExecAsync(
                 name: "mypod",
                 @namespace: "mynamespace",
-                command: new string[] {"/bin/bash", "-c", $"echo Hello, World\nexit 0\n"},
+                command: new string[] { "/bin/bash", "-c", $"echo Hello, World\nexit 0\n" },
                 container: "mycontainer",
                 stderr: true,
                 stdin: true,
@@ -71,7 +72,8 @@ namespace k8s.Tests
         {
             var credentials = new BasicAuthenticationCredentials()
             {
-                UserName = "my-user", Password = "my-secret-password",
+                UserName = "my-user",
+                Password = "my-secret-password",
             };
 
             Kubernetes client = new Kubernetes(credentials);
@@ -83,7 +85,7 @@ namespace k8s.Tests
             var webSocket = await client.WebSocketNamespacedPodPortForwardAsync(
                 name: "mypod",
                 @namespace: "mynamespace",
-                ports: new int[] {80, 8080},
+                ports: new int[] { 80, 8080 },
                 customHeaders: new Dictionary<string, List<string>>()
                 {
                     {"X-My-Header", new List<string>() {"myHeaderValue", "myHeaderValue2"}},
@@ -110,7 +112,8 @@ namespace k8s.Tests
         {
             var credentials = new BasicAuthenticationCredentials()
             {
-                UserName = "my-user", Password = "my-secret-password",
+                UserName = "my-user",
+                Password = "my-secret-password",
             };
 
             Kubernetes client = new Kubernetes(credentials);

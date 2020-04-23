@@ -71,7 +71,7 @@ namespace @namespace
 
             ListNamespaces(client);
 
-            var ns = new V1Namespace {Metadata = new V1ObjectMeta {Name = "test"}};
+            var ns = new V1Namespace { Metadata = new V1ObjectMeta { Name = "test" } };
 
             var result = client.CreateNamespace(ns);
             Console.WriteLine(result);

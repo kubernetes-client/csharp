@@ -59,7 +59,7 @@ namespace KubernetesWatchGenerator
                         Group = parts[parts.Length - 3],
                     };
                 })
-                .GroupBy(x => new {x.Name, x.Version})
+                .GroupBy(x => new { x.Name, x.Version })
                 .Where(x => x.Count() > 1)
                 .SelectMany(x => x)
                 .Select(x => x.FullName)
@@ -83,7 +83,7 @@ namespace KubernetesWatchGenerator
             _classNameToPluralMap = _classNameToPluralMap
                 .Where(x => x.Key.EndsWith("List"))
                 .Select(x =>
-                    new {ClassName = x.Key.Remove(x.Key.Length - 4), PluralName = x.Value})
+                    new { ClassName = x.Key.Remove(x.Key.Length - 4), PluralName = x.Value })
                 .ToDictionary(x => x.ClassName, x => x.PluralName)
                 .Union(_classNameToPluralMap)
                 .ToDictionary(x => x.Key, x => x.Value);
@@ -119,7 +119,7 @@ namespace KubernetesWatchGenerator
                 Path.Combine(outputDirectory, "Kubernetes.Watch.cs"));
 
             // Generate the interface declarations
-            var skippedTypes = new HashSet<string>() {"V1WatchEvent",};
+            var skippedTypes = new HashSet<string>() { "V1WatchEvent", };
 
             var definitions = swagger.Definitions.Values
                 .Where(
@@ -129,7 +129,7 @@ namespace KubernetesWatchGenerator
 
             var modelsDir = Path.Combine(outputDirectory, "Models");
             _classesWithValidation = Directory.EnumerateFiles(modelsDir)
-                .Select(x => new {Class = Path.GetFileNameWithoutExtension(x), Content = File.ReadAllText(x) })
+                .Select(x => new { Class = Path.GetFileNameWithoutExtension(x), Content = File.ReadAllText(x) })
                 .Where(x => x.Content.Contains("public virtual void Validate()"))
                 .Select(x => x.Class)
                 .ToHashSet();

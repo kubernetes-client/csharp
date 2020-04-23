@@ -32,7 +32,9 @@ namespace k8s.Tests.Mock
         {
             this.receiveBuffers.Enqueue(new MessageData()
             {
-                Buffer = buffer, MessageType = messageType, EndOfMessage = endOfMessage,
+                Buffer = buffer,
+                MessageType = messageType,
+                EndOfMessage = endOfMessage,
             });
             this.receiveEvent.Set();
             return Task.CompletedTask;
@@ -123,7 +125,9 @@ namespace k8s.Tests.Mock
                 {
                     Data = new MessageData()
                     {
-                        Buffer = buffer, MessageType = messageType, EndOfMessage = endOfMessage
+                        Buffer = buffer,
+                        MessageType = messageType,
+                        EndOfMessage = endOfMessage
                     },
                 });
             return Task.CompletedTask;

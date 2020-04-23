@@ -331,62 +331,62 @@ namespace k8s
                     switch (userDetails.UserCredentials.AuthProvider.Name)
                     {
                         case "azure":
-                        {
-                            var config = userDetails.UserCredentials.AuthProvider.Config;
-                            if (config.ContainsKey("expires-on"))
                             {
-                                var expiresOn = Int32.Parse(config["expires-on"]);
-                                DateTimeOffset expires;
+                                var config = userDetails.UserCredentials.AuthProvider.Config;
+                                if (config.ContainsKey("expires-on"))
+                                {
+                                    var expiresOn = Int32.Parse(config["expires-on"]);
+                                    DateTimeOffset expires;
 #if NET452
-                                var epoch = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
-                                expires
- = epoch.AddSeconds(expiresOn);
+                                    var epoch = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
+                                    expires
+     = epoch.AddSeconds(expiresOn);
 #else
-                                expires = DateTimeOffset.FromUnixTimeSeconds(expiresOn);
+                                    expires = DateTimeOffset.FromUnixTimeSeconds(expiresOn);
 #endif
 
-                                if (DateTimeOffset.Compare(expires
-                                        , DateTimeOffset.Now)
-                                    <= 0)
-                                {
-                                    var tenantId = config["tenant-id"];
-                                    var clientId = config["client-id"];
-                                    var apiServerId = config["apiserver-id"];
-                                    var refresh = config["refresh-token"];
-                                    var newToken = RenewAzureToken(tenantId
-                                        , clientId
-                                        , apiServerId
-                                        , refresh);
-                                    config["access-token"] = newToken;
-                                }
-                            }
-
-                            AccessToken = config["access-token"];
-                            userCredentialsFound = true;
-                            break;
-                        }
-                        case "gcp":
-                        {
-                            var config = userDetails.UserCredentials.AuthProvider.Config;
-                            const string keyExpire = "expiry";
-                            if (config.ContainsKey(keyExpire))
-                            {
-                                if (DateTimeOffset.TryParse(config[keyExpire]
-                                    , out DateTimeOffset expires))
-                                {
                                     if (DateTimeOffset.Compare(expires
                                             , DateTimeOffset.Now)
                                         <= 0)
                                     {
-                                        throw new KubeConfigException("Refresh not supported.");
+                                        var tenantId = config["tenant-id"];
+                                        var clientId = config["client-id"];
+                                        var apiServerId = config["apiserver-id"];
+                                        var refresh = config["refresh-token"];
+                                        var newToken = RenewAzureToken(tenantId
+                                            , clientId
+                                            , apiServerId
+                                            , refresh);
+                                        config["access-token"] = newToken;
                                     }
                                 }
-                            }
 
-                            AccessToken = config["access-token"];
-                            userCredentialsFound = true;
-                            break;
-                        }
+                                AccessToken = config["access-token"];
+                                userCredentialsFound = true;
+                                break;
+                            }
+                        case "gcp":
+                            {
+                                var config = userDetails.UserCredentials.AuthProvider.Config;
+                                const string keyExpire = "expiry";
+                                if (config.ContainsKey(keyExpire))
+                                {
+                                    if (DateTimeOffset.TryParse(config[keyExpire]
+                                        , out DateTimeOffset expires))
+                                    {
+                                        if (DateTimeOffset.Compare(expires
+                                                , DateTimeOffset.Now)
+                                            <= 0)
+                                        {
+                                            throw new KubeConfigException("Refresh not supported.");
+                                        }
+                                    }
+                                }
+
+                                AccessToken = config["access-token"];
+                                userCredentialsFound = true;
+                                break;
+                            }
                     }
                 }
             }

@@ -196,7 +196,7 @@ namespace k8s
                 {
                     // last one
                     // append watcher handler between to last handler
-                    cur.InnerHandler = new T {InnerHandler = cur.InnerHandler};
+                    cur.InnerHandler = new T { InnerHandler = cur.InnerHandler };
                     break;
                 }
 
@@ -313,7 +313,7 @@ namespace k8s
             }
             else if (!string.IsNullOrEmpty(config.Username))
             {
-                return new BasicAuthenticationCredentials() {UserName = config.Username, Password = config.Password};
+                return new BasicAuthenticationCredentials() { UserName = config.Username, Password = config.Password };
             }
 
             return null;

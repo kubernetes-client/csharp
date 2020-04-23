@@ -47,7 +47,8 @@ namespace k8s.Tests.Mock.Server
         {
             app.UseWebSockets(new WebSocketOptions
             {
-                KeepAliveInterval = TimeSpan.FromSeconds(5), ReceiveBufferSize = 2048,
+                KeepAliveInterval = TimeSpan.FromSeconds(5),
+                ReceiveBufferSize = 2048,
             });
             app.UseMvc();
         }
