@@ -42,10 +42,7 @@ namespace k8s.Tests
         {
             using (var server = new MockKubeApiServer(testOutput))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration
-                {
-                    Host = server.Uri.ToString()
-                });
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
 
                 var listTask = ExecuteListPods(client);
 
@@ -55,14 +52,11 @@ namespace k8s.Tests
 
             using (var server = new MockKubeApiServer(testOutput, cxt =>
             {
-                cxt.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                cxt.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
                 return Task.FromResult(false);
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration
-                {
-                    Host = server.Uri.ToString()
-                });
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
 
                 var listTask = ExecuteListPods(client);
 
@@ -80,12 +74,13 @@ namespace k8s.Tests
             {
                 var header = cxt.Request.Headers["Authorization"].FirstOrDefault();
 
-                var expect = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{testName}:{testPassword}")))
+                var expect = new AuthenticationHeaderValue("Basic",
+                        Convert.ToBase64String(Encoding.UTF8.GetBytes($"{testName}:{testPassword}")))
                     .ToString();
 
                 if (header != expect)
                 {
-                    cxt.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                    cxt.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
                     return Task.FromResult(false);
                 }
 
@@ -95,9 +90,7 @@ namespace k8s.Tests
                 {
                     var client = new Kubernetes(new KubernetesClientConfiguration
                     {
-                        Host = server.Uri.ToString(),
-                        Username = testName,
-                        Password = testPassword
+                        Host = server.Uri.ToString(), Username = testName, Password = testPassword
                     });
 
                     var listTask = ExecuteListPods(client);
@@ -108,9 +101,7 @@ namespace k8s.Tests
                 {
                     var client = new Kubernetes(new KubernetesClientConfiguration
                     {
-                        Host = server.Uri.ToString(),
-                        Username = "wrong name",
-                        Password = testPassword
+                        Host = server.Uri.ToString(), Username = "wrong name", Password = testPassword
                     });
 
                     var listTask = ExecuteListPods(client);
@@ -121,9 +112,7 @@ namespace k8s.Tests
                 {
                     var client = new Kubernetes(new KubernetesClientConfiguration
                     {
-                        Host = server.Uri.ToString(),
-                        Username = testName,
-                        Password = "wrong password"
+                        Host = server.Uri.ToString(), Username = testName, Password = "wrong password"
                     });
 
                     var listTask = ExecuteListPods(client);
@@ -134,10 +123,16 @@ namespace k8s.Tests
                 {
                     var client = new Kubernetes(new KubernetesClientConfiguration
                     {
-                        Host = server.Uri.ToString(),
-                        Username = "both wrong",
-                        Password = "wrong password"
+                        Host = server.Uri.ToString(), Username = "both wrong", Password = "wrong password"
                     });
+
+                    var listTask = ExecuteListPods(client);
+
+                    Assert.Equal(HttpStatusCode.Unauthorized, listTask.Response.StatusCode);
+                }
+
+                {
+                    var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
 
                     var listTask = ExecuteListPods(client);
 
@@ -147,19 +142,7 @@ namespace k8s.Tests
                 {
                     var client = new Kubernetes(new KubernetesClientConfiguration
                     {
-                        Host = server.Uri.ToString()
-                    });
-
-                    var listTask = ExecuteListPods(client);
-
-                    Assert.Equal(HttpStatusCode.Unauthorized, listTask.Response.StatusCode);
-                }
-
-                {
-                    var client = new Kubernetes(new KubernetesClientConfiguration
-                    {
-                        Host = server.Uri.ToString(),
-                        Username = "xx"
+                        Host = server.Uri.ToString(), Username = "xx"
                     });
 
                     var listTask = ExecuteListPods(client);
@@ -188,7 +171,8 @@ namespace k8s.Tests
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                using (MemoryStream serverCertificateStream = new MemoryStream(Convert.FromBase64String(serverCertificateData)))
+                using (MemoryStream serverCertificateStream =
+                    new MemoryStream(Convert.FromBase64String(serverCertificateData)))
                 {
                     serverCertificate = OpenCertificateStore(serverCertificateStream);
                 }
@@ -256,7 +240,8 @@ namespace k8s.Tests
                     var client = new Kubernetes(new KubernetesClientConfiguration
                     {
                         Host = server.Uri.ToString(),
-                        ClientCertificateFilePath = "assets/client.crt", // TODO amazoning why client.crt != client-data.txt
+                        ClientCertificateFilePath =
+                            "assets/client.crt", // TODO amazoning why client.crt != client-data.txt
                         ClientKeyFilePath = "assets/client.key",
                         SkipTlsVerify = true
                     });
@@ -269,8 +254,7 @@ namespace k8s.Tests
                     clientCertificateValidationCalled = false;
                     var client = new Kubernetes(new KubernetesClientConfiguration
                     {
-                        Host = server.Uri.ToString(),
-                        SkipTlsVerify = true
+                        Host = server.Uri.ToString(), SkipTlsVerify = true
                     });
 
                     Assert.ThrowsAny<Exception>(() => ExecuteListPods(client));
@@ -285,18 +269,24 @@ namespace k8s.Tests
         [Fact]
         public void ExternalToken()
         {
-            const string token = "testingtoken";
-            const string name = "testing_irrelevant";
+            const string token
+ = "testingtoken";
+            const string name
+ = "testing_irrelevant";
 
-            using (var server = new MockKubeApiServer(testOutput, cxt =>
+            using (var server
+ = new MockKubeApiServer(testOutput, cxt =>
             {
-                var header = cxt.Request.Headers["Authorization"].FirstOrDefault();
+                var header
+ = cxt.Request.Headers["Authorization"].FirstOrDefault();
 
-                var expect = new AuthenticationHeaderValue("Bearer", token).ToString();
+                var expect
+ = new AuthenticationHeaderValue("Bearer", token).ToString();
 
                 if (header != expect)
                 {
-                    cxt.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
+                    cxt.Response.StatusCode
+ = (int) HttpStatusCode.Unauthorized;
                     return Task.FromResult(false);
                 }
 
@@ -304,18 +294,26 @@ namespace k8s.Tests
             }))
             {
                 {
-                    var kubernetesConfig = GetK8SConfiguration(server.Uri.ToString(), token, name);
-                    var clientConfig = KubernetesClientConfiguration.BuildConfigFromConfigObject(kubernetesConfig, name);
-                    var client = new Kubernetes(clientConfig);
-                    var listTask = ExecuteListPods(client);
+                    var kubernetesConfig
+ = GetK8SConfiguration(server.Uri.ToString(), token, name);
+                    var clientConfig
+ = KubernetesClientConfiguration.BuildConfigFromConfigObject(kubernetesConfig, name);
+                    var client
+ = new Kubernetes(clientConfig);
+                    var listTask
+ = ExecuteListPods(client);
                     Assert.True(listTask.Response.IsSuccessStatusCode);
                     Assert.Equal(1, listTask.Body.Items.Count);
                 }
                 {
-                    var kubernetesConfig = GetK8SConfiguration(server.Uri.ToString(), "wrong token", name);
-                    var clientConfig = KubernetesClientConfiguration.BuildConfigFromConfigObject(kubernetesConfig, name);
-                    var client = new Kubernetes(clientConfig);
-                    var listTask = ExecuteListPods(client);
+                    var kubernetesConfig
+ = GetK8SConfiguration(server.Uri.ToString(), "wrong token", name);
+                    var clientConfig
+ = KubernetesClientConfiguration.BuildConfigFromConfigObject(kubernetesConfig, name);
+                    var client
+ = new Kubernetes(clientConfig);
+                    var listTask
+ = ExecuteListPods(client);
                     Assert.Equal(HttpStatusCode.Unauthorized, listTask.Response.StatusCode);
                 }
             }
@@ -335,7 +333,7 @@ namespace k8s.Tests
 
                 if (header != expect)
                 {
-                    cxt.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                    cxt.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
                     return Task.FromResult(false);
                 }
 
@@ -345,8 +343,7 @@ namespace k8s.Tests
                 {
                     var client = new Kubernetes(new KubernetesClientConfiguration
                     {
-                        Host = server.Uri.ToString(),
-                        AccessToken = token
+                        Host = server.Uri.ToString(), AccessToken = token
                     });
 
                     var listTask = ExecuteListPods(client);
@@ -357,8 +354,7 @@ namespace k8s.Tests
                 {
                     var client = new Kubernetes(new KubernetesClientConfiguration
                     {
-                        Host = server.Uri.ToString(),
-                        AccessToken = "wrong token"
+                        Host = server.Uri.ToString(), AccessToken = "wrong token"
                     });
 
                     var listTask = ExecuteListPods(client);
@@ -370,9 +366,7 @@ namespace k8s.Tests
                 {
                     var client = new Kubernetes(new KubernetesClientConfiguration
                     {
-                        Host = server.Uri.ToString(),
-                        Username = "wrong name",
-                        Password = "same password"
+                        Host = server.Uri.ToString(), Username = "wrong name", Password = "same password"
                     });
 
                     var listTask = ExecuteListPods(client);
@@ -381,10 +375,7 @@ namespace k8s.Tests
                 }
 
                 {
-                    var client = new Kubernetes(new KubernetesClientConfiguration
-                    {
-                        Host = server.Uri.ToString()
-                    });
+                    var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
 
                     var listTask = ExecuteListPods(client);
 
@@ -400,7 +391,7 @@ namespace k8s.Tests
 
             var keyAlias = store.Aliases.Cast<string>().SingleOrDefault(a => store.IsKeyEntry(a));
 
-            var key = (RsaPrivateCrtKeyParameters)store.GetKey(keyAlias).Key;
+            var key = (RsaPrivateCrtKeyParameters) store.GetKey(keyAlias).Key;
             var bouncyCertificate = store.GetCertificate(keyAlias).Certificate;
 
             var certificate = new X509Certificate2(DotNetUtilities.ToX509Certificate(bouncyCertificate));
@@ -437,13 +428,21 @@ namespace k8s.Tests
 
                 var command = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "cmd.exe" : "echo";
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
                     command = "printf";
+                }
 
                 var arguments = new string[] { };
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
                     arguments = ($"/c echo {responseJson}").Split(" ");
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                    arguments = new[] { responseJson };
+                }
+
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ||
+                    RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    arguments = new[] {responseJson};
+                }
 
 
                 var users = new List<User>
@@ -462,7 +461,7 @@ namespace k8s.Tests
                         }
                     }
                 };
-                var kubernetesConfig = new K8SConfiguration { Clusters = clusters, Users = users, Contexts = contexts };
+                var kubernetesConfig = new K8SConfiguration {Clusters = clusters, Users = users, Contexts = contexts};
                 return kubernetesConfig;
             }
         }

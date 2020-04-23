@@ -20,7 +20,8 @@ namespace k8s
         {
             var originResponse = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
 
-            if (originResponse.IsSuccessStatusCode && request.Method == HttpMethod.Get) // all watches are GETs, so we can ignore others
+            if (originResponse.IsSuccessStatusCode && request.Method == HttpMethod.Get
+            ) // all watches are GETs, so we can ignore others
             {
                 string query = request.RequestUri.Query;
                 int index = query.IndexOf("watch=true");
@@ -58,11 +59,13 @@ namespace k8s
             public override int Read(byte[] buffer, int offset, int count) =>
                 _innerStream.ReadAsync(buffer, offset, count, _cancellationToken).GetAwaiter().GetResult();
 
-            public override async Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
+            public override async Task<int> ReadAsync(byte[] buffer, int offset, int count,
+                CancellationToken cancellationToken)
             {
                 using (var cancellationTokenSource = CreateCancellationTokenSource(cancellationToken))
                 {
-                    return await _innerStream.ReadAsync(buffer, offset, count, cancellationTokenSource.Token).ConfigureAwait(false);
+                    return await _innerStream.ReadAsync(buffer, offset, count, cancellationTokenSource.Token)
+                        .ConfigureAwait(false);
                 }
             }
 
@@ -73,11 +76,13 @@ namespace k8s
             public override void Write(byte[] buffer, int offset, int count) =>
                 _innerStream.WriteAsync(buffer, offset, count, _cancellationToken).GetAwaiter().GetResult();
 
-            public override async Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
+            public override async Task WriteAsync(byte[] buffer, int offset, int count,
+                CancellationToken cancellationToken)
             {
                 using (var cancellationTokenSource = CreateCancellationTokenSource(cancellationToken))
                 {
-                    await _innerStream.WriteAsync(buffer, offset, count, cancellationTokenSource.Token).ConfigureAwait(false);
+                    await _innerStream.WriteAsync(buffer, offset, count, cancellationTokenSource.Token)
+                        .ConfigureAwait(false);
                 }
             }
 
@@ -101,6 +106,7 @@ namespace k8s
                 {
                     _innerStream.Dispose();
                 }
+
                 base.Dispose(disposing);
             }
 
@@ -205,11 +211,13 @@ namespace k8s
 
             public override int Read(char[] buffer, int index, int count) => throw new NotImplementedException();
 
-            public override Task<int> ReadAsync(char[] buffer, int index, int count) => throw new NotImplementedException();
+            public override Task<int> ReadAsync(char[] buffer, int index, int count) =>
+                throw new NotImplementedException();
 
             public override int ReadBlock(char[] buffer, int index, int count) => throw new NotImplementedException();
 
-            public override Task<int> ReadBlockAsync(char[] buffer, int index, int count) => throw new NotImplementedException();
+            public override Task<int> ReadBlockAsync(char[] buffer, int index, int count) =>
+                throw new NotImplementedException();
 
             public override string ReadToEnd() => throw new NotImplementedException();
 
@@ -221,6 +229,7 @@ namespace k8s
                 {
                     _inner.Dispose();
                 }
+
                 base.Dispose(disposing);
             }
         }

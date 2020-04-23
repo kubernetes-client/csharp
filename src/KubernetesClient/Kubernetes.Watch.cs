@@ -13,7 +13,12 @@ namespace k8s
     public partial class Kubernetes
     {
         /// <inheritdoc/>
-        public async Task<Watcher<T>> WatchObjectAsync<T>(string path, string @continue = null, string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null, int? timeoutSeconds = null, string resourceVersion = null, Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, T> onEvent = null, Action<Exception> onError = null, Action onClosed = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Watcher<T>> WatchObjectAsync<T>(string path, string @continue = null,
+            string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null,
+            int? limit = null, bool? pretty = null, int? timeoutSeconds = null, string resourceVersion = null,
+            Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, T> onEvent = null,
+            Action<Exception> onError = null, Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -59,7 +64,8 @@ namespace k8s
 
             if (includeUninitialized != null)
             {
-                Utilities.AddQueryParameter(query, "includeUninitialized", includeUninitialized.Value ? "true" : "false");
+                Utilities.AddQueryParameter(query, "includeUninitialized",
+                    includeUninitialized.Value ? "true" : "false");
             }
 
             if (!string.IsNullOrEmpty(labelSelector))
@@ -87,7 +93,11 @@ namespace k8s
                 Utilities.AddQueryParameter(query, "resourceVersion", resourceVersion);
             }
 
-            uriBuilder.Query = query.Length == 0 ? "" : query.ToString(1, query.Length - 1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
+            uriBuilder.Query =
+                query.Length == 0
+                    ? ""
+                    : query.ToString(1,
+                        query.Length - 1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
 
             // Create HTTP transport objects
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, uriBuilder.ToString());
@@ -120,7 +130,9 @@ namespace k8s
             }
 
             cancellationToken.ThrowIfCancellationRequested();
-            var httpResponse = await HttpClient.SendAsync(httpRequest, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+            var httpResponse = await HttpClient
+                .SendAsync(httpRequest, HttpCompletionOption.ResponseHeadersRead, cancellationToken)
+                .ConfigureAwait(false);
 
             if (_shouldTrace)
             {
@@ -133,7 +145,8 @@ namespace k8s
             {
                 string responseContent = string.Empty;
 
-                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", httpResponse.StatusCode));
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'",
+                    httpResponse.StatusCode));
                 if (httpResponse.Content != null)
                 {
                     responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);

@@ -24,6 +24,7 @@ namespace k8s.Models
                     {
                         return null;
                     }
+
                     return new IntstrIntOrString(scalar.Value);
                 }
                 finally
@@ -31,12 +32,13 @@ namespace k8s.Models
                     parser.MoveNext();
                 }
             }
+
             throw new InvalidOperationException(parser.Current?.ToString());
         }
 
         public void WriteYaml(IEmitter emitter, object value, Type type)
         {
-            var obj = (IntstrIntOrString)value;
+            var obj = (IntstrIntOrString) value;
             emitter.Emit(new YamlDotNet.Core.Events.Scalar(obj.Value));
         }
     }
@@ -59,7 +61,7 @@ namespace k8s.Models
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
             JsonSerializer serializer)
         {
-            return (IntstrIntOrString)serializer.Deserialize<string>(reader);
+            return (IntstrIntOrString) serializer.Deserialize<string>(reader);
         }
 
         public override bool CanConvert(Type objectType)
@@ -98,10 +100,22 @@ namespace k8s.Models
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((IntstrIntOrString)obj);
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+
+            return Equals((IntstrIntOrString) obj);
         }
 
         public override int GetHashCode()

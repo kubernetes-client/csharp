@@ -12,10 +12,7 @@ namespace httpClientFactory
         {
             // Learn more about generic hosts at https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host
             using (var host = new HostBuilder()
-                .ConfigureLogging((logging) =>
-                {
-                    logging.AddConsole();
-                })
+                .ConfigureLogging((logging) => { logging.AddConsole(); })
                 .ConfigureServices((hostBuilderContext, services) =>
                 {
                     // Ideally this config would be read from the .net core config constructs,

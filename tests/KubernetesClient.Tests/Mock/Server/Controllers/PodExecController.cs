@@ -22,7 +22,9 @@ namespace k8s.Tests.Mock.Server.Controllers
         public PodExecController(WebSocketTestAdapter webSocketTestAdapter)
         {
             if (webSocketTestAdapter == null)
+            {
                 throw new ArgumentNullException(nameof(webSocketTestAdapter));
+            }
 
             WebSocketTestAdapter = webSocketTestAdapter;
         }
@@ -45,7 +47,9 @@ namespace k8s.Tests.Mock.Server.Controllers
         public async Task<IActionResult> Exec(string kubeNamespace, string podName)
         {
             if (!HttpContext.WebSockets.IsWebSocketRequest)
+            {
                 return BadRequest("Exec requires WebSockets");
+            }
 
             WebSocket webSocket = await HttpContext.WebSockets.AcceptWebSocketAsync(
                 subProtocol: WebSocketProtocol.ChannelWebSocketProtocol

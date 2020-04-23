@@ -7,9 +7,11 @@ namespace k8s
     public partial class KubernetesClientConfiguration
     {
         private static string ServiceAccountPath =
-            Path.Combine(new string[] {
+            Path.Combine(new string[]
+            {
                 $"{Path.DirectorySeparatorChar}var", "run", "secrets", "kubernetes.io", "serviceaccount"
             });
+
         private const string ServiceAccountTokenKeyFileName = "token";
         private const string ServiceAccountRootCAKeyFileName = "ca.crt";
 
@@ -21,11 +23,13 @@ namespace k8s
             {
                 return false;
             }
+
             var tokenPath = Path.Combine(ServiceAccountPath, ServiceAccountTokenKeyFileName);
             if (!File.Exists(tokenPath))
             {
                 return false;
             }
+
             var certPath = Path.Combine(ServiceAccountPath, ServiceAccountRootCAKeyFileName);
             return File.Exists(certPath);
         }

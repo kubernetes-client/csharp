@@ -78,20 +78,12 @@ namespace k8s
         /// <summary>
         /// Gets the offset from which the next byte will be read. Increased every time a caller reads data.
         /// </summary>
-        public int ReadWaterMark
-        {
-            get;
-            private set;
-        }
+        public int ReadWaterMark { get; private set; }
 
         /// <summary>
         /// Gets the offset to which the next byte will be written. Increased every time a caller writes data.
         /// </summary>
-        public int WriteWaterMark
-        {
-            get;
-            private set;
-        }
+        public int WriteWaterMark { get; private set; }
 
         /// <summary>
         /// Gets the amount of bytes availble for reading.
@@ -192,7 +184,8 @@ namespace k8s
 
                 if (length > availableBeforeWrapping)
                 {
-                    Array.Copy(data, offset + availableBeforeWrapping, this.buffer, 0, length - availableBeforeWrapping);
+                    Array.Copy(data, offset + availableBeforeWrapping, this.buffer, 0,
+                        length - availableBeforeWrapping);
                     this.WriteWaterMark = length - availableBeforeWrapping;
                 }
 
@@ -256,7 +249,8 @@ namespace k8s
 
                 if (toRead > availableBeforeWrapping)
                 {
-                    Array.Copy(this.buffer, 0, data, offset + availableBeforeWrapping, toRead - availableBeforeWrapping);
+                    Array.Copy(this.buffer, 0, data, offset + availableBeforeWrapping,
+                        toRead - availableBeforeWrapping);
                     this.ReadWaterMark = toRead - availableBeforeWrapping;
                 }
 

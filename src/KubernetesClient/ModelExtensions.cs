@@ -10,10 +10,11 @@ namespace k8s.Models
             string reason = Reason;
             if (string.IsNullOrEmpty(reason) && Code.GetValueOrDefault() != 0)
             {
-                reason = ((HttpStatusCode)Code.Value).ToString();
+                reason = ((HttpStatusCode) Code.Value).ToString();
             }
+
             return string.IsNullOrEmpty(Message) ? string.IsNullOrEmpty(reason) ? Status : reason :
-                   string.IsNullOrEmpty(reason) ? Message : $"{reason} - {Message}";
+                string.IsNullOrEmpty(reason) ? Message : $"{reason} - {Message}";
         }
     }
 }

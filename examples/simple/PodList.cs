@@ -16,6 +16,7 @@ namespace simple
             {
                 Console.WriteLine(item.Metadata.Name);
             }
+
             if (list.Items.Count == 0)
             {
                 Console.WriteLine("Empty!");

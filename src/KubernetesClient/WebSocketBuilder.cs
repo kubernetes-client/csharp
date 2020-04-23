@@ -40,7 +40,8 @@ namespace k8s
         }
 
 #if (NET452 || NETSTANDARD2_0)
-        public WebSocketBuilder SetServerCertificateValidationCallback(RemoteCertificateValidationCallback validationCallback)
+        public WebSocketBuilder SetServerCertificateValidationCallback(
+            RemoteCertificateValidationCallback validationCallback)
         {
             System.Net.ServicePointManager.ServerCertificateValidationCallback += validationCallback;
             return this;
@@ -55,7 +56,8 @@ namespace k8s
 #if NETCOREAPP2_1
         public WebSocketBuilder ExpectServerCertificate(X509Certificate2Collection serverCertificate)
         {
-            Options.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
+            Options.RemoteCertificateValidationCallback
+ = (sender, certificate, chain, sslPolicyErrors) =>
             {
                 return Kubernetes.CertificateValidationCallBack(sender, serverCertificate, certificate, chain, sslPolicyErrors);
             };
@@ -65,7 +67,8 @@ namespace k8s
 
         public WebSocketBuilder SkipServerCertificateValidation()
         {
-            Options.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
+            Options.RemoteCertificateValidationCallback
+ = (sender, certificate, chain, sslPolicyErrors) => true;
 
             return this;
         }

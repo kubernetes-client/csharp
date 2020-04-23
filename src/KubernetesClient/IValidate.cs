@@ -9,6 +9,5 @@ namespace k8s
         /// Validate the object.
         /// </summary>
         void Validate();
-
     }
 }

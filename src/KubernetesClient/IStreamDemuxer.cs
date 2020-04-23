@@ -74,7 +74,8 @@ namespace k8s
         /// <returns>
         /// A <see cref="Task"/> which represents the asynchronous operation.
         /// </returns>
-        Task Write(ChannelIndex index, byte[] buffer, int offset, int count, CancellationToken cancellationToken = default(CancellationToken));
+        Task Write(ChannelIndex index, byte[] buffer, int offset, int count,
+            CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Directly writes data to a channel.
@@ -97,6 +98,7 @@ namespace k8s
         /// <returns>
         /// A <see cref="Task"/> which represents the asynchronous operation.
         /// </returns>
-        Task Write(byte index, byte[] buffer, int offset, int count, CancellationToken cancellationToken = default(CancellationToken));
+        Task Write(byte index, byte[] buffer, int offset, int count,
+            CancellationToken cancellationToken = default(CancellationToken));
     }
 }

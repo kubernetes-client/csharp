@@ -21,10 +21,12 @@ namespace k8s
                 }
                 else
                 {
-                    httpClientHandler.ServerCertificateCustomValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
-                    {
-                        return Kubernetes.CertificateValidationCallBack(sender, this.SslCaCerts, certificate, chain, sslPolicyErrors);
-                    };
+                    httpClientHandler.ServerCertificateCustomValidationCallback =
+                        (sender, certificate, chain, sslPolicyErrors) =>
+                        {
+                            return Kubernetes.CertificateValidationCallBack(sender, this.SslCaCerts, certificate, chain,
+                                sslPolicyErrors);
+                        };
                 }
             }
 #endif
@@ -37,9 +39,9 @@ namespace k8s
         public void AddCertificates(HttpClientHandler handler)
         {
             if ((!string.IsNullOrWhiteSpace(this.ClientCertificateData) ||
-                    !string.IsNullOrWhiteSpace(this.ClientCertificateFilePath)) &&
-                    (!string.IsNullOrWhiteSpace(this.ClientCertificateKeyData) ||
-                    !string.IsNullOrWhiteSpace(this.ClientKeyFilePath)))
+                 !string.IsNullOrWhiteSpace(this.ClientCertificateFilePath)) &&
+                (!string.IsNullOrWhiteSpace(this.ClientCertificateKeyData) ||
+                 !string.IsNullOrWhiteSpace(this.ClientKeyFilePath)))
             {
                 var cert = CertUtils.GeneratePfx(this);
 

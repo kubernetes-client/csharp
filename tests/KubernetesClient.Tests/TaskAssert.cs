@@ -28,11 +28,12 @@ namespace k8s.Tests
         {
             var timeoutTask =
                 Task.Delay(
-                    TimeSpan.FromMilliseconds(1000)
-                )
-                .ContinueWith(
-                    completedTimeoutTask => default(T) // Value is never returned, but we need a task of the same result type in order to use Task.WhenAny.
-                );
+                        TimeSpan.FromMilliseconds(1000)
+                    )
+                    .ContinueWith(
+                        completedTimeoutTask =>
+                            default(T) // Value is never returned, but we need a task of the same result type in order to use Task.WhenAny.
+                    );
 
             var completedTask = await Task.WhenAny(task, timeoutTask);
             Assert.True(ReferenceEquals(task, completedTask), message);

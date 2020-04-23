@@ -51,6 +51,7 @@ namespace k8s.Tests
                     TimeSpan.FromSeconds(5)
                 );
             }
+
             await Host.StartAsync(TestCancellation);
 
             using (Kubernetes client = CreateTestClient())
@@ -60,7 +61,7 @@ namespace k8s.Tests
                 WebSocket clientSocket = await client.WebSocketNamespacedPodExecAsync(
                     name: "mypod",
                     @namespace: "mynamespace",
-                    command: new string[] { "/bin/bash" },
+                    command: new string[] {"/bin/bash"},
                     container: "mycontainer",
                     stderr: false,
                     stdin: false,
@@ -68,12 +69,16 @@ namespace k8s.Tests
                     webSocketSubProtol: WebSocketProtocol.ChannelWebSocketProtocol,
                     cancellationToken: TestCancellation
                 );
-                Assert.Equal(WebSocketProtocol.ChannelWebSocketProtocol, clientSocket.SubProtocol); // For WebSockets, the Kubernetes API defaults to the binary channel (v1) protocol.
+                Assert.Equal(WebSocketProtocol.ChannelWebSocketProtocol,
+                    clientSocket
+                        .SubProtocol); // For WebSockets, the Kubernetes API defaults to the binary channel (v1) protocol.
 
-                testOutput.WriteLine($"Client socket connected (socket state is {clientSocket.State}). Waiting for server-side socket to become available...");
+                testOutput.WriteLine(
+                    $"Client socket connected (socket state is {clientSocket.State}). Waiting for server-side socket to become available...");
 
                 WebSocket serverSocket = await WebSocketTestAdapter.AcceptedPodExecV1Connection;
-                testOutput.WriteLine($"Server-side socket is now available (socket state is {serverSocket.State}). Sending data to server socket...");
+                testOutput.WriteLine(
+                    $"Server-side socket is now available (socket state is {serverSocket.State}). Sending data to server socket...");
 
                 const int STDOUT = 1;
                 const string expectedOutput = "This is text send to STDOUT.";
@@ -82,7 +87,8 @@ namespace k8s.Tests
                 testOutput.WriteLine($"Sent {bytesSent} bytes to server socket; receiving from client socket...");
 
                 (string receivedText, byte streamIndex, int bytesReceived) = await ReceiveTextMultiplexed(clientSocket);
-                testOutput.WriteLine($"Received {bytesReceived} bytes from client socket ('{receivedText}', stream {streamIndex}).");
+                testOutput.WriteLine(
+                    $"Received {bytesReceived} bytes from client socket ('{receivedText}', stream {streamIndex}).");
 
                 Assert.Equal(STDOUT, streamIndex);
                 Assert.Equal(expectedOutput, receivedText);
@@ -100,11 +106,7 @@ namespace k8s.Tests
         [Fact]
         public void GetExitCodeOrThrow_Success()
         {
-            var status = new V1Status()
-            {
-                Metadata = null,
-                Status = "Success",
-            };
+            var status = new V1Status() {Metadata = null, Status = "Success",};
 
             Assert.Equal(0, Kubernetes.GetExitCodeOrThrow(status));
         }
@@ -121,13 +123,9 @@ namespace k8s.Tests
                 Details = new V1StatusDetails()
                 {
                     Causes = new List<V1StatusCause>()
-                      {
-                          new V1StatusCause()
-                          {
-                               Reason = "ExitCode",
-                               Message = "1"
-                          }
-                      }
+                    {
+                        new V1StatusCause() {Reason = "ExitCode", Message = "1"}
+                    }
                 }
             };
 
@@ -147,11 +145,7 @@ namespace k8s.Tests
                 {
                     Causes = new List<V1StatusCause>()
                     {
-                        new V1StatusCause()
-                        {
-                            Reason = "ExitCode",
-                            Message = "abc"
-                        }
+                        new V1StatusCause() {Reason = "ExitCode", Message = "abc"}
                     }
                 }
             };
@@ -169,12 +163,7 @@ namespace k8s.Tests
                 Status = "Failure",
                 Message = "command terminated with non-zero exit code: Error executing in Docker Container: 1",
                 Reason = "NonZeroExitCode",
-                Details = new V1StatusDetails()
-                {
-                    Causes = new List<V1StatusCause>()
-                    {
-                    }
-                }
+                Details = new V1StatusDetails() {Causes = new List<V1StatusCause>() { }}
             };
 
             var ex = Assert.Throws<KubernetesException>(() => Kubernetes.GetExitCodeOrThrow(status));
@@ -184,12 +173,7 @@ namespace k8s.Tests
         [Fact]
         public void GetExitCodeOrThrow_OtherError()
         {
-            var status = new V1Status()
-            {
-                Metadata = null,
-                Status = "Failure",
-                Reason = "SomethingElse"
-            };
+            var status = new V1Status() {Metadata = null, Status = "Failure", Reason = "SomethingElse"};
 
             var ex = Assert.Throws<KubernetesException>(() => Kubernetes.GetExitCodeOrThrow(status));
             Assert.Equal(status, ex.Status);
@@ -210,15 +194,19 @@ namespace k8s.Tests
                 muxedStream.Setup(m => m.GetStream(ChannelIndex.Error, null)).Returns(errorStream);
 
                 var kubernetesMock = new Moq.Mock<Kubernetes>(
-                    new object[] { Moq.Mock.Of<ServiceClientCredentials>(), new DelegatingHandler[] { } });
-                var command = new string[] { "/bin/bash", "-c", "echo Hello, World!" };
+                    new object[] {Moq.Mock.Of<ServiceClientCredentials>(), new DelegatingHandler[] { }});
+                var command = new string[] {"/bin/bash", "-c", "echo Hello, World!"};
 
-                kubernetesMock.Setup(m => m.MuxedStreamNamespacedPodExecAsync("pod-name", "pod-namespace", command, "my-container", true, true, true, false, WebSocketProtocol.V4BinaryWebsocketProtocol, null, CancellationToken.None))
+                kubernetesMock.Setup(m => m.MuxedStreamNamespacedPodExecAsync("pod-name", "pod-namespace", command,
+                        "my-container", true, true, true, false, WebSocketProtocol.V4BinaryWebsocketProtocol, null,
+                        CancellationToken.None))
                     .Returns(Task.FromResult(muxedStream.Object));
 
                 using (Kubernetes client = kubernetesMock.Object)
                 {
-                    await Assert.ThrowsAsync<ArgumentNullException>(() => client.NamespacedPodExecAsync("pod-name", "pod-namespace", "my-container", command, false, null, CancellationToken.None)).ConfigureAwait(false);
+                    await Assert.ThrowsAsync<ArgumentNullException>(() => client.NamespacedPodExecAsync("pod-name",
+                            "pod-namespace", "my-container", command, false, null, CancellationToken.None))
+                        .ConfigureAwait(false);
                 }
             }
         }
@@ -227,17 +215,21 @@ namespace k8s.Tests
         public async Task NamespacedPodExecAsync_HttpException_WithStatus()
         {
             var kubernetesMock = new Moq.Mock<Kubernetes>(
-                new object[] { Moq.Mock.Of<ServiceClientCredentials>(), new DelegatingHandler[] { } });
-            var command = new string[] { "/bin/bash", "-c", "echo Hello, World!" };
+                new object[] {Moq.Mock.Of<ServiceClientCredentials>(), new DelegatingHandler[] { }});
+            var command = new string[] {"/bin/bash", "-c", "echo Hello, World!"};
             var handler = new ExecAsyncCallback((stdIn, stdOut, stdError) => Task.CompletedTask);
 
             var status = new V1Status();
-            kubernetesMock.Setup(m => m.MuxedStreamNamespacedPodExecAsync("pod-name", "pod-namespace", command, "my-container", true, true, true, false, WebSocketProtocol.V4BinaryWebsocketProtocol, null, CancellationToken.None))
-                .Throws(new HttpOperationException() { Body = status });
+            kubernetesMock.Setup(m => m.MuxedStreamNamespacedPodExecAsync("pod-name", "pod-namespace", command,
+                    "my-container", true, true, true, false, WebSocketProtocol.V4BinaryWebsocketProtocol, null,
+                    CancellationToken.None))
+                .Throws(new HttpOperationException() {Body = status});
 
             using (Kubernetes client = kubernetesMock.Object)
             {
-                var ex = await Assert.ThrowsAsync<KubernetesException>(() => client.NamespacedPodExecAsync("pod-name", "pod-namespace", "my-container", command, false, handler, CancellationToken.None)).ConfigureAwait(false);
+                var ex = await Assert.ThrowsAsync<KubernetesException>(() => client.NamespacedPodExecAsync("pod-name",
+                        "pod-namespace", "my-container", command, false, handler, CancellationToken.None))
+                    .ConfigureAwait(false);
                 Assert.Same(status, ex.Status);
             }
         }
@@ -246,17 +238,21 @@ namespace k8s.Tests
         public async Task NamespacedPodExecAsync_HttpException_NoStatus()
         {
             var kubernetesMock = new Moq.Mock<Kubernetes>(
-                new object[] { Moq.Mock.Of<ServiceClientCredentials>(), new DelegatingHandler[] { } });
-            var command = new string[] { "/bin/bash", "-c", "echo Hello, World!" };
+                new object[] {Moq.Mock.Of<ServiceClientCredentials>(), new DelegatingHandler[] { }});
+            var command = new string[] {"/bin/bash", "-c", "echo Hello, World!"};
             var handler = new ExecAsyncCallback((stdIn, stdOut, stdError) => Task.CompletedTask);
 
             var exception = new HttpOperationException();
-            kubernetesMock.Setup(m => m.MuxedStreamNamespacedPodExecAsync("pod-name", "pod-namespace", command, "my-container", true, true, true, false, WebSocketProtocol.V4BinaryWebsocketProtocol, null, CancellationToken.None))
+            kubernetesMock.Setup(m => m.MuxedStreamNamespacedPodExecAsync("pod-name", "pod-namespace", command,
+                    "my-container", true, true, true, false, WebSocketProtocol.V4BinaryWebsocketProtocol, null,
+                    CancellationToken.None))
                 .Throws(exception);
 
             using (Kubernetes client = kubernetesMock.Object)
             {
-                var ex = await Assert.ThrowsAsync<HttpOperationException>(() => client.NamespacedPodExecAsync("pod-name", "pod-namespace", "my-container", command, false, handler, CancellationToken.None)).ConfigureAwait(false);
+                var ex = await Assert.ThrowsAsync<HttpOperationException>(() =>
+                    client.NamespacedPodExecAsync("pod-name", "pod-namespace", "my-container", command, false, handler,
+                        CancellationToken.None)).ConfigureAwait(false);
                 Assert.Same(exception, ex);
             }
         }
@@ -265,17 +261,21 @@ namespace k8s.Tests
         public async Task NamespacedPodExecAsync_GenericException()
         {
             var kubernetesMock = new Moq.Mock<Kubernetes>(
-                new object[] { Moq.Mock.Of<ServiceClientCredentials>(), new DelegatingHandler[] { } });
-            var command = new string[] { "/bin/bash", "-c", "echo Hello, World!" };
+                new object[] {Moq.Mock.Of<ServiceClientCredentials>(), new DelegatingHandler[] { }});
+            var command = new string[] {"/bin/bash", "-c", "echo Hello, World!"};
             var handler = new ExecAsyncCallback((stdIn, stdOut, stdError) => Task.CompletedTask);
 
             var exception = new Exception();
-            kubernetesMock.Setup(m => m.MuxedStreamNamespacedPodExecAsync("pod-name", "pod-namespace", command, "my-container", true, true, true, false, WebSocketProtocol.V4BinaryWebsocketProtocol, null, CancellationToken.None))
+            kubernetesMock.Setup(m => m.MuxedStreamNamespacedPodExecAsync("pod-name", "pod-namespace", command,
+                    "my-container", true, true, true, false, WebSocketProtocol.V4BinaryWebsocketProtocol, null,
+                    CancellationToken.None))
                 .Throws(exception);
 
             using (Kubernetes client = kubernetesMock.Object)
             {
-                var ex = await Assert.ThrowsAsync<Exception>(() => client.NamespacedPodExecAsync("pod-name", "pod-namespace", "my-container", command, false, handler, CancellationToken.None)).ConfigureAwait(false);
+                var ex = await Assert.ThrowsAsync<Exception>(() => client.NamespacedPodExecAsync("pod-name",
+                        "pod-namespace", "my-container", command, false, handler, CancellationToken.None))
+                    .ConfigureAwait(false);
                 Assert.Same(exception, ex);
             }
         }
@@ -292,13 +292,9 @@ namespace k8s.Tests
                 Details = new V1StatusDetails()
                 {
                     Causes = new List<V1StatusCause>()
-                      {
-                          new V1StatusCause()
-                          {
-                               Reason = "ExitCode",
-                               Message = "1"
-                          }
-                      }
+                    {
+                        new V1StatusCause() {Reason = "ExitCode", Message = "1"}
+                    }
                 }
             };
 
@@ -317,16 +313,19 @@ namespace k8s.Tests
                 muxedStream.Setup(m => m.GetStream(ChannelIndex.Error, null)).Returns(errorStream);
 
                 var kubernetesMock = new Moq.Mock<Kubernetes>(
-                    new object[] { Moq.Mock.Of<ServiceClientCredentials>(), new DelegatingHandler[] { } });
-                var command = new string[] { "/bin/bash", "-c", "echo Hello, World!" };
+                    new object[] {Moq.Mock.Of<ServiceClientCredentials>(), new DelegatingHandler[] { }});
+                var command = new string[] {"/bin/bash", "-c", "echo Hello, World!"};
 
                 var exception = new Exception();
-                kubernetesMock.Setup(m => m.MuxedStreamNamespacedPodExecAsync("pod-name", "pod-namespace", command, "my-container", true, true, true, false, WebSocketProtocol.V4BinaryWebsocketProtocol, null, CancellationToken.None))
+                kubernetesMock.Setup(m => m.MuxedStreamNamespacedPodExecAsync("pod-name", "pod-namespace", command,
+                        "my-container", true, true, true, false, WebSocketProtocol.V4BinaryWebsocketProtocol, null,
+                        CancellationToken.None))
                     .Returns(Task.FromResult(muxedStream.Object));
 
                 using (Kubernetes client = kubernetesMock.Object)
                 {
-                    var exitCode = await client.NamespacedPodExecAsync("pod-name", "pod-namespace", "my-container", command, false, handler, CancellationToken.None).ConfigureAwait(false);
+                    var exitCode = await client.NamespacedPodExecAsync("pod-name", "pod-namespace", "my-container",
+                        command, false, handler, CancellationToken.None).ConfigureAwait(false);
                     Assert.Equal(1, exitCode);
                 }
             }

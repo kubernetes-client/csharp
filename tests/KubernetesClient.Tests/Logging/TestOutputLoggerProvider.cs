@@ -22,7 +22,9 @@ namespace k8s.Tests.Logging
         public TestOutputLoggerProvider(ITestOutputHelper testOutput, LogLevel minLogLevel)
         {
             if (testOutput == null)
+            {
                 throw new ArgumentNullException(nameof(testOutput));
+            }
 
             TestOutput = testOutput;
             MinLogLevel = minLogLevel;

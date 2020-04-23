@@ -26,8 +26,7 @@ namespace k8s.Tests
         {
             var credentials = new BasicAuthenticationCredentials()
             {
-                UserName = "my-user",
-                Password = "my-secret-password"
+                UserName = "my-user", Password = "my-secret-password"
             };
 
             Kubernetes client = new Kubernetes(credentials);
@@ -39,7 +38,7 @@ namespace k8s.Tests
             var webSocket = await client.WebSocketNamespacedPodExecAsync(
                 name: "mypod",
                 @namespace: "mynamespace",
-                command: new string[] { "/bin/bash", "-c", $"echo Hello, World\nexit 0\n" },
+                command: new string[] {"/bin/bash", "-c", $"echo Hello, World\nexit 0\n"},
                 container: "mycontainer",
                 stderr: true,
                 stdin: true,
@@ -47,18 +46,22 @@ namespace k8s.Tests
                 tty: true,
                 customHeaders: new Dictionary<string, List<string>>()
                 {
-                    { "X-My-Header", new List<string>() { "myHeaderValue", "myHeaderValue2"} }
+                    {"X-My-Header", new List<string>() {"myHeaderValue", "myHeaderValue2"}}
                 },
                 cancellationToken: CancellationToken.None).ConfigureAwait(false);
 
             var expectedHeaders = new Dictionary<string, string>()
             {
-                { "X-My-Header", "myHeaderValue myHeaderValue2" },
-                { "Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ=" }
+                {"X-My-Header", "myHeaderValue myHeaderValue2"},
+                {"Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ="}
             };
 
-            Assert.Equal(mockWebSocketBuilder.PublicWebSocket, webSocket); // Did the method return the correct web socket?
-            Assert.Equal(new Uri("ws://localhost/api/v1/namespaces/mynamespace/pods/mypod/exec?command=%2Fbin%2Fbash&command=-c&command=echo%20Hello%2C%20World%0Aexit%200%0A&container=mycontainer&stderr=1&stdin=1&stdout=1&tty=1"), mockWebSocketBuilder.Uri); // Did we connect to the correct URL?
+            Assert.Equal(mockWebSocketBuilder.PublicWebSocket,
+                webSocket); // Did the method return the correct web socket?
+            Assert.Equal(
+                new Uri(
+                    "ws://localhost/api/v1/namespaces/mynamespace/pods/mypod/exec?command=%2Fbin%2Fbash&command=-c&command=echo%20Hello%2C%20World%0Aexit%200%0A&container=mycontainer&stderr=1&stdin=1&stdout=1&tty=1"),
+                mockWebSocketBuilder.Uri); // Did we connect to the correct URL?
             Assert.Empty(mockWebSocketBuilder.Certificates); // No certificates were used in this test
             Assert.Equal(expectedHeaders, mockWebSocketBuilder.RequestHeaders); // Did we use the expected headers
         }
@@ -68,8 +71,7 @@ namespace k8s.Tests
         {
             var credentials = new BasicAuthenticationCredentials()
             {
-                UserName = "my-user",
-                Password = "my-secret-password"
+                UserName = "my-user", Password = "my-secret-password"
             };
 
             Kubernetes client = new Kubernetes(credentials);
@@ -81,21 +83,24 @@ namespace k8s.Tests
             var webSocket = await client.WebSocketNamespacedPodPortForwardAsync(
                 name: "mypod",
                 @namespace: "mynamespace",
-                ports: new int[] { 80, 8080 },
+                ports: new int[] {80, 8080},
                 customHeaders: new Dictionary<string, List<string>>()
                 {
-                    { "X-My-Header", new List<string>() { "myHeaderValue", "myHeaderValue2"} }
+                    {"X-My-Header", new List<string>() {"myHeaderValue", "myHeaderValue2"}}
                 },
                 cancellationToken: CancellationToken.None).ConfigureAwait(false);
 
             var expectedHeaders = new Dictionary<string, string>()
             {
-                { "X-My-Header", "myHeaderValue myHeaderValue2" },
-                { "Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ=" }
+                {"X-My-Header", "myHeaderValue myHeaderValue2"},
+                {"Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ="}
             };
 
-            Assert.Equal(mockWebSocketBuilder.PublicWebSocket, webSocket); // Did the method return the correct web socket?
-            Assert.Equal(new Uri("ws://localhost/api/v1/namespaces/mynamespace/pods/mypod/portforward?ports=80&ports=8080"), mockWebSocketBuilder.Uri); // Did we connect to the correct URL?
+            Assert.Equal(mockWebSocketBuilder.PublicWebSocket,
+                webSocket); // Did the method return the correct web socket?
+            Assert.Equal(
+                new Uri("ws://localhost/api/v1/namespaces/mynamespace/pods/mypod/portforward?ports=80&ports=8080"),
+                mockWebSocketBuilder.Uri); // Did we connect to the correct URL?
             Assert.Empty(mockWebSocketBuilder.Certificates); // No certificates were used in this test
             Assert.Equal(expectedHeaders, mockWebSocketBuilder.RequestHeaders); // Did we use the expected headers
         }
@@ -105,8 +110,7 @@ namespace k8s.Tests
         {
             var credentials = new BasicAuthenticationCredentials()
             {
-                UserName = "my-user",
-                Password = "my-secret-password"
+                UserName = "my-user", Password = "my-secret-password"
             };
 
             Kubernetes client = new Kubernetes(credentials);
@@ -125,18 +129,22 @@ namespace k8s.Tests
                 tty: true,
                 customHeaders: new Dictionary<string, List<string>>()
                 {
-                    { "X-My-Header", new List<string>() { "myHeaderValue", "myHeaderValue2"} }
+                    {"X-My-Header", new List<string>() {"myHeaderValue", "myHeaderValue2"}}
                 },
                 cancellationToken: CancellationToken.None).ConfigureAwait(false);
 
             var expectedHeaders = new Dictionary<string, string>()
             {
-                { "X-My-Header", "myHeaderValue myHeaderValue2" },
-                { "Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ=" }
+                {"X-My-Header", "myHeaderValue myHeaderValue2"},
+                {"Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ="}
             };
 
-            Assert.Equal(mockWebSocketBuilder.PublicWebSocket, webSocket); // Did the method return the correct web socket?
-            Assert.Equal(new Uri("ws://localhost:80/api/v1/namespaces/mynamespace/pods/mypod/attach?stderr=1&stdin=1&stdout=1&tty=1&container=my-container"), mockWebSocketBuilder.Uri); // Did we connect to the correct URL?
+            Assert.Equal(mockWebSocketBuilder.PublicWebSocket,
+                webSocket); // Did the method return the correct web socket?
+            Assert.Equal(
+                new Uri(
+                    "ws://localhost:80/api/v1/namespaces/mynamespace/pods/mypod/attach?stderr=1&stdin=1&stdout=1&tty=1&container=my-container"),
+                mockWebSocketBuilder.Uri); // Did we connect to the correct URL?
             Assert.Empty(mockWebSocketBuilder.Certificates); // No certificates were used in this test
             Assert.Equal(expectedHeaders, mockWebSocketBuilder.RequestHeaders); // Did we use the expected headers
         }

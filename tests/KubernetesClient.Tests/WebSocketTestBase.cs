@@ -96,7 +96,9 @@ namespace k8s.Tests
         protected virtual void ConfigureTestServerServices(IServiceCollection services)
         {
             if (services == null)
+            {
                 throw new ArgumentNullException(nameof(services));
+            }
 
             // Inject WebSocketTestData.
             services.AddSingleton(WebSocketTestAdapter);
@@ -111,7 +113,9 @@ namespace k8s.Tests
         protected virtual void ConfigureTestServerLogging(ILoggingBuilder logging)
         {
             if (logging == null)
+            {
                 throw new ArgumentNullException(nameof(logging));
+            }
 
             logging.ClearProviders(); // Don't log to console.
             logging.AddTestOutput(this.testOutput, LogLevel.Information);
@@ -128,10 +132,7 @@ namespace k8s.Tests
         /// </returns>
         protected virtual Kubernetes CreateTestClient(ServiceClientCredentials credentials = null)
         {
-            return new Kubernetes(credentials ?? AnonymousClientCredentials.Instance)
-            {
-                BaseUri = ServerBaseAddress
-            };
+            return new Kubernetes(credentials ?? AnonymousClientCredentials.Instance) {BaseUri = ServerBaseAddress};
         }
 
         /// <summary>
@@ -156,13 +157,19 @@ namespace k8s.Tests
         /// <returns>
         ///     A <see cref="Task"/> representing the asynchronous operation.
         /// </returns>
-        protected async Task Disconnect(WebSocket clientSocket, WebSocket serverSocket, WebSocketCloseStatus closeStatus = WebSocketCloseStatus.NormalClosure, string closeStatusDescription = "Normal Closure")
+        protected async Task Disconnect(WebSocket clientSocket, WebSocket serverSocket,
+            WebSocketCloseStatus closeStatus = WebSocketCloseStatus.NormalClosure,
+            string closeStatusDescription = "Normal Closure")
         {
             if (clientSocket == null)
+            {
                 throw new ArgumentNullException(nameof(clientSocket));
+            }
 
             if (serverSocket == null)
+            {
                 throw new ArgumentNullException(nameof(serverSocket));
+            }
 
             testOutput.WriteLine("Disconnecting...");
 
@@ -172,16 +179,23 @@ namespace k8s.Tests
                 .ContinueWith(async received =>
                 {
                     if (received.IsFaulted)
-                        testOutput.WriteLine("Server socket operation to receive Close message failed: {0}", received.Exception.Flatten().InnerExceptions[0]);
+                    {
+                        testOutput.WriteLine("Server socket operation to receive Close message failed: {0}",
+                            received.Exception.Flatten().InnerExceptions[0]);
+                    }
                     else if (received.IsCanceled)
+                    {
                         testOutput.WriteLine("Server socket operation to receive Close message was canceled.");
+                    }
                     else
                     {
-                        testOutput.WriteLine($"Received {received.Result.MessageType} message from server socket (expecting {WebSocketMessageType.Close}).");
+                        testOutput.WriteLine(
+                            $"Received {received.Result.MessageType} message from server socket (expecting {WebSocketMessageType.Close}).");
 
                         if (received.Result.MessageType == WebSocketMessageType.Close)
                         {
-                            testOutput.WriteLine($"Closing server socket (with status {received.Result.CloseStatus})...");
+                            testOutput.WriteLine(
+                                $"Closing server socket (with status {received.Result.CloseStatus})...");
 
                             await serverSocket.CloseAsync(
                                 received.Result.CloseStatus.Value,
@@ -231,10 +245,14 @@ namespace k8s.Tests
         protected async Task<int> SendMultiplexed(WebSocket webSocket, byte streamIndex, string text)
         {
             if (webSocket == null)
+            {
                 throw new ArgumentNullException(nameof(webSocket));
+            }
 
             if (text == null)
+            {
                 throw new ArgumentNullException(nameof(text));
+            }
 
             byte[] payload = Encoding.ASCII.GetBytes(text);
             byte[] sendBuffer = new byte[payload.Length + 1];
@@ -262,10 +280,13 @@ namespace k8s.Tests
         /// <returns>
         ///     A tuple containing the received text, 0-based substream index, and total bytes received.
         /// </returns>
-        protected async Task<(string text, byte streamIndex, int totalBytes)> ReceiveTextMultiplexed(WebSocket webSocket)
+        protected async Task<(string text, byte streamIndex, int totalBytes)> ReceiveTextMultiplexed(
+            WebSocket webSocket)
         {
             if (webSocket == null)
+            {
                 throw new ArgumentNullException(nameof(webSocket));
+            }
 
             byte[] receivedData;
             using (MemoryStream buffer = new MemoryStream())
@@ -273,7 +294,10 @@ namespace k8s.Tests
                 byte[] receiveBuffer = new byte[1024];
                 WebSocketReceiveResult receiveResult = await webSocket.ReceiveAsync(receiveBuffer, TestCancellation);
                 if (receiveResult.MessageType != WebSocketMessageType.Binary)
-                    throw new IOException($"Received unexpected WebSocket message of type '{receiveResult.MessageType}'.");
+                {
+                    throw new IOException(
+                        $"Received unexpected WebSocket message of type '{receiveResult.MessageType}'.");
+                }
 
                 buffer.Write(receiveBuffer, 0, receiveResult.Count);
 

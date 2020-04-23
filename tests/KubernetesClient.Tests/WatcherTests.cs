@@ -13,7 +13,8 @@ namespace k8s.Tests
         [Fact]
         public void ReadError()
         {
-            byte[] data = Encoding.UTF8.GetBytes("{\"type\":\"ERROR\",\"object\":{\"kind\":\"Status\",\"apiVersion\":\"v1\",\"metadata\":{},\"status\":\"Failure\",\"message\":\"too old resource version: 44982(53593)\",\"reason\":\"Gone\",\"code\":410}}");
+            byte[] data = Encoding.UTF8.GetBytes(
+                "{\"type\":\"ERROR\",\"object\":{\"kind\":\"Status\",\"apiVersion\":\"v1\",\"metadata\":{},\"status\":\"Failure\",\"message\":\"too old resource version: 44982(53593)\",\"reason\":\"Gone\",\"code\":410}}");
 
             using (MemoryStream stream = new MemoryStream(data))
             using (StreamReader reader = new StreamReader(stream))

@@ -27,10 +27,7 @@ namespace k8s.Tests
             using (StreamDemuxer demuxer = new StreamDemuxer(ws))
             {
                 List<byte> sentBuffer = new List<byte>();
-                ws.MessageSent += (sender, args) =>
-                {
-                    sentBuffer.AddRange(args.Data.Buffer);
-                };
+                ws.MessageSent += (sender, args) => { sentBuffer.AddRange(args.Data.Buffer); };
 
                 demuxer.Start();
 
@@ -40,7 +37,8 @@ namespace k8s.Tests
                 stream.Write(b, 0, b.Length);
 
                 // Send 100 bytes, expect 1 (channel index) + 100 (payload) = 101 bytes
-                Assert.True(await WaitForAsync(() => sentBuffer.Count == 101), $"Demuxer error: expect to send 101 bytes, but actually send {sentBuffer.Count} bytes.");
+                Assert.True(await WaitForAsync(() => sentBuffer.Count == 101),
+                    $"Demuxer error: expect to send 101 bytes, but actually send {sentBuffer.Count} bytes.");
                 Assert.True(sentBuffer[0] == channelIndex, "The first sent byte is not channel index!");
                 Assert.True(sentBuffer[1] == 0xEF, "Incorrect payload!");
             }
@@ -53,10 +51,7 @@ namespace k8s.Tests
             using (StreamDemuxer demuxer = new StreamDemuxer(ws))
             {
                 List<byte> sentBuffer = new List<byte>();
-                ws.MessageSent += (sender, args) =>
-                {
-                    sentBuffer.AddRange(args.Data.Buffer);
-                };
+                ws.MessageSent += (sender, args) => { sentBuffer.AddRange(args.Data.Buffer); };
 
                 demuxer.Start();
 
@@ -68,7 +63,8 @@ namespace k8s.Tests
                 stream.Write(b, 0, b.Length);
 
                 // Send 300 bytes in 2 messages, expect 1 (channel index) * 2 + 300 (payload) = 302 bytes
-                Assert.True(await WaitForAsync(() => sentBuffer.Count == 302), $"Demuxer error: expect to send 302 bytes, but actually send {sentBuffer.Count} bytes.");
+                Assert.True(await WaitForAsync(() => sentBuffer.Count == 302),
+                    $"Demuxer error: expect to send 302 bytes, but actually send {sentBuffer.Count} bytes.");
                 Assert.True(sentBuffer[0] == channelIndex, "The first sent byte is not channel index!");
                 Assert.True(sentBuffer[1] == 0xEF, "The first part of payload incorrect!");
                 Assert.True(sentBuffer[101] == channelIndex, "The second message first byte is not channel index!");
@@ -93,9 +89,15 @@ namespace k8s.Tests
 
                 var t = Task.Run(async () =>
                 {
-                    await ws.InvokeReceiveAsync(new ArraySegment<byte>(GenerateRandomBuffer(100, channelIndex, 0xAA, false)), WebSocketMessageType.Binary, true);
-                    await ws.InvokeReceiveAsync(new ArraySegment<byte>(GenerateRandomBuffer(200, channelIndex, 0xAB, false)), WebSocketMessageType.Binary, true);
-                    await ws.InvokeReceiveAsync(new ArraySegment<byte>(GenerateRandomBuffer(300, channelIndex, 0xAC, false)), WebSocketMessageType.Binary, true);
+                    await ws.InvokeReceiveAsync(
+                        new ArraySegment<byte>(GenerateRandomBuffer(100, channelIndex, 0xAA, false)),
+                        WebSocketMessageType.Binary, true);
+                    await ws.InvokeReceiveAsync(
+                        new ArraySegment<byte>(GenerateRandomBuffer(200, channelIndex, 0xAB, false)),
+                        WebSocketMessageType.Binary, true);
+                    await ws.InvokeReceiveAsync(
+                        new ArraySegment<byte>(GenerateRandomBuffer(300, channelIndex, 0xAC, false)),
+                        WebSocketMessageType.Binary, true);
 
                     await WaitForAsync(() => receivedBuffer.Count == expectedCount);
                     await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "normal", CancellationToken.None);
@@ -108,14 +110,17 @@ namespace k8s.Tests
                     {
                         break;
                     }
+
                     for (int i = 0; i < cRead; i++)
                     {
                         receivedBuffer.Add(buffer[i]);
                     }
                 }
+
                 await t;
 
-                Assert.True(receivedBuffer.Count == expectedCount, $"Demuxer error: expect to receive {expectedCount} bytes, but actually got {receivedBuffer.Count} bytes.");
+                Assert.True(receivedBuffer.Count == expectedCount,
+                    $"Demuxer error: expect to receive {expectedCount} bytes, but actually got {receivedBuffer.Count} bytes.");
                 Assert.True(receivedBuffer[0] == 0xAA, "The first payload incorrect!");
                 Assert.True(receivedBuffer[98] == 0xAA, "The first payload incorrect!");
                 Assert.True(receivedBuffer[99] == 0xAB, "The second payload incorrect!");
@@ -143,9 +148,15 @@ namespace k8s.Tests
 
                 var t = Task.Run(async () =>
                 {
-                    await ws.InvokeReceiveAsync(new ArraySegment<byte>(GenerateRandomBuffer(100, channelIndex, 0xB1, true)), WebSocketMessageType.Binary, true);
-                    await ws.InvokeReceiveAsync(new ArraySegment<byte>(GenerateRandomBuffer(200, channelIndex, 0xB2, false)), WebSocketMessageType.Binary, true);
-                    await ws.InvokeReceiveAsync(new ArraySegment<byte>(GenerateRandomBuffer(300, channelIndex, 0xB3, false)), WebSocketMessageType.Binary, true);
+                    await ws.InvokeReceiveAsync(
+                        new ArraySegment<byte>(GenerateRandomBuffer(100, channelIndex, 0xB1, true)),
+                        WebSocketMessageType.Binary, true);
+                    await ws.InvokeReceiveAsync(
+                        new ArraySegment<byte>(GenerateRandomBuffer(200, channelIndex, 0xB2, false)),
+                        WebSocketMessageType.Binary, true);
+                    await ws.InvokeReceiveAsync(
+                        new ArraySegment<byte>(GenerateRandomBuffer(300, channelIndex, 0xB3, false)),
+                        WebSocketMessageType.Binary, true);
 
                     await WaitForAsync(() => receivedBuffer.Count == expectedCount);
                     await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "normal", CancellationToken.None);
@@ -158,14 +169,17 @@ namespace k8s.Tests
                     {
                         break;
                     }
+
                     for (int i = 0; i < cRead; i++)
                     {
                         receivedBuffer.Add(buffer[i]);
                     }
                 }
+
                 await t;
 
-                Assert.True(receivedBuffer.Count == expectedCount, $"Demuxer error: expect to receive {expectedCount} bytes, but actually got {receivedBuffer.Count} bytes.");
+                Assert.True(receivedBuffer.Count == expectedCount,
+                    $"Demuxer error: expect to receive {expectedCount} bytes, but actually got {receivedBuffer.Count} bytes.");
                 Assert.True(receivedBuffer[0] == 0xB1, "The first payload incorrect!");
                 Assert.True(receivedBuffer[96] == 0xB1, "The first payload incorrect!");
                 Assert.True(receivedBuffer[97] == 0xB2, "The second payload incorrect!");
@@ -193,9 +207,15 @@ namespace k8s.Tests
 
                 var t = Task.Run(async () =>
                 {
-                    await ws.InvokeReceiveAsync(new ArraySegment<byte>(GenerateRandomBuffer(2, channelIndex, 0xC1, true)), WebSocketMessageType.Binary, false);
-                    await ws.InvokeReceiveAsync(new ArraySegment<byte>(GenerateRandomBuffer(100, channelIndex, 0xC2, false)), WebSocketMessageType.Binary, true);
-                    await ws.InvokeReceiveAsync(new ArraySegment<byte>(GenerateRandomBuffer(300, channelIndex, 0xC3, false)), WebSocketMessageType.Binary, true);
+                    await ws.InvokeReceiveAsync(
+                        new ArraySegment<byte>(GenerateRandomBuffer(2, channelIndex, 0xC1, true)),
+                        WebSocketMessageType.Binary, false);
+                    await ws.InvokeReceiveAsync(
+                        new ArraySegment<byte>(GenerateRandomBuffer(100, channelIndex, 0xC2, false)),
+                        WebSocketMessageType.Binary, true);
+                    await ws.InvokeReceiveAsync(
+                        new ArraySegment<byte>(GenerateRandomBuffer(300, channelIndex, 0xC3, false)),
+                        WebSocketMessageType.Binary, true);
 
                     await WaitForAsync(() => receivedBuffer.Count == expectedCount);
                     await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "normal", CancellationToken.None);
@@ -208,14 +228,17 @@ namespace k8s.Tests
                     {
                         break;
                     }
+
                     for (int i = 0; i < cRead; i++)
                     {
                         receivedBuffer.Add(buffer[i]);
                     }
                 }
+
                 await t;
 
-                Assert.True(receivedBuffer.Count == expectedCount, $"Demuxer error: expect to receive {expectedCount} bytes, but actually got {receivedBuffer.Count} bytes.");
+                Assert.True(receivedBuffer.Count == expectedCount,
+                    $"Demuxer error: expect to receive {expectedCount} bytes, but actually got {receivedBuffer.Count} bytes.");
                 Assert.True(receivedBuffer[0] == 0xC2, "The first payload incorrect!");
                 Assert.True(receivedBuffer[98] == 0xC2, "The first payload incorrect!");
                 Assert.True(receivedBuffer[99] == 0xC3, "The second payload incorrect!");
@@ -247,9 +270,15 @@ namespace k8s.Tests
                 var t1 = Task.Run(async () =>
                 {
                     // Simulate WebSocket received remote data to multiple streams
-                    await ws.InvokeReceiveAsync(new ArraySegment<byte>(GenerateRandomBuffer(100, channelIndex1, 0xD1, false)), WebSocketMessageType.Binary, true);
-                    await ws.InvokeReceiveAsync(new ArraySegment<byte>(GenerateRandomBuffer(200, channelIndex2, 0xD2, false)), WebSocketMessageType.Binary, true);
-                    await ws.InvokeReceiveAsync(new ArraySegment<byte>(GenerateRandomBuffer(300, channelIndex1, 0xD3, false)), WebSocketMessageType.Binary, true);
+                    await ws.InvokeReceiveAsync(
+                        new ArraySegment<byte>(GenerateRandomBuffer(100, channelIndex1, 0xD1, false)),
+                        WebSocketMessageType.Binary, true);
+                    await ws.InvokeReceiveAsync(
+                        new ArraySegment<byte>(GenerateRandomBuffer(200, channelIndex2, 0xD2, false)),
+                        WebSocketMessageType.Binary, true);
+                    await ws.InvokeReceiveAsync(
+                        new ArraySegment<byte>(GenerateRandomBuffer(300, channelIndex1, 0xD3, false)),
+                        WebSocketMessageType.Binary, true);
 
                     await WaitForAsync(() => receivedBuffer1.Count == expectedCount1);
                     await WaitForAsync(() => receivedBuffer2.Count == expectedCount2);
@@ -265,6 +294,7 @@ namespace k8s.Tests
                         {
                             break;
                         }
+
                         for (int i = 0; i < cRead; i++)
                         {
                             receivedBuffer1.Add(buffer[i]);
@@ -281,6 +311,7 @@ namespace k8s.Tests
                         {
                             break;
                         }
+
                         for (int i = 0; i < cRead; i++)
                         {
                             receivedBuffer2.Add(buffer[i]);
@@ -289,8 +320,10 @@ namespace k8s.Tests
                 });
                 await Task.WhenAll(t1, t2, t3);
 
-                Assert.True(receivedBuffer1.Count == expectedCount1, $"Demuxer error: expect to receive {expectedCount1} bytes, but actually got {receivedBuffer1.Count} bytes.");
-                Assert.True(receivedBuffer2.Count == expectedCount2, $"Demuxer error: expect to receive {expectedCount2} bytes, but actually got {receivedBuffer2.Count} bytes.");
+                Assert.True(receivedBuffer1.Count == expectedCount1,
+                    $"Demuxer error: expect to receive {expectedCount1} bytes, but actually got {receivedBuffer1.Count} bytes.");
+                Assert.True(receivedBuffer2.Count == expectedCount2,
+                    $"Demuxer error: expect to receive {expectedCount2} bytes, but actually got {receivedBuffer2.Count} bytes.");
                 Assert.True(receivedBuffer1[0] == 0xD1, "The first payload incorrect!");
                 Assert.True(receivedBuffer1[98] == 0xD1, "The first payload incorrect!");
                 Assert.True(receivedBuffer1[99] == 0xD3, "The second payload incorrect!");
@@ -326,9 +359,15 @@ namespace k8s.Tests
                 var t1 = Task.Run(async () =>
                 {
                     // Simulate WebSocket received remote data to multiple streams
-                    await ws.InvokeReceiveAsync(new ArraySegment<byte>(GenerateRandomBuffer(100, channelIndex1, 0xE1, true)), WebSocketMessageType.Binary, true);
-                    await ws.InvokeReceiveAsync(new ArraySegment<byte>(GenerateRandomBuffer(200, channelIndex2, 0xE2, true)), WebSocketMessageType.Binary, true);
-                    await ws.InvokeReceiveAsync(new ArraySegment<byte>(GenerateRandomBuffer(300, channelIndex1, 0xE3, false)), WebSocketMessageType.Binary, true);
+                    await ws.InvokeReceiveAsync(
+                        new ArraySegment<byte>(GenerateRandomBuffer(100, channelIndex1, 0xE1, true)),
+                        WebSocketMessageType.Binary, true);
+                    await ws.InvokeReceiveAsync(
+                        new ArraySegment<byte>(GenerateRandomBuffer(200, channelIndex2, 0xE2, true)),
+                        WebSocketMessageType.Binary, true);
+                    await ws.InvokeReceiveAsync(
+                        new ArraySegment<byte>(GenerateRandomBuffer(300, channelIndex1, 0xE3, false)),
+                        WebSocketMessageType.Binary, true);
 
                     await WaitForAsync(() => receivedBuffer1.Count == expectedCount1);
                     await WaitForAsync(() => receivedBuffer2.Count == expectedCount2);
@@ -344,6 +383,7 @@ namespace k8s.Tests
                         {
                             break;
                         }
+
                         for (int i = 0; i < cRead; i++)
                         {
                             receivedBuffer1.Add(buffer[i]);
@@ -360,6 +400,7 @@ namespace k8s.Tests
                         {
                             break;
                         }
+
                         for (int i = 0; i < cRead; i++)
                         {
                             receivedBuffer2.Add(buffer[i]);
@@ -368,8 +409,10 @@ namespace k8s.Tests
                 });
                 await Task.WhenAll(t1, t2, t3);
 
-                Assert.True(receivedBuffer1.Count == expectedCount1, $"Demuxer error: expect to receive {expectedCount1} bytes, but actually got {receivedBuffer1.Count} bytes.");
-                Assert.True(receivedBuffer2.Count == expectedCount2, $"Demuxer error: expect to receive {expectedCount2} bytes, but actually got {receivedBuffer2.Count} bytes.");
+                Assert.True(receivedBuffer1.Count == expectedCount1,
+                    $"Demuxer error: expect to receive {expectedCount1} bytes, but actually got {receivedBuffer1.Count} bytes.");
+                Assert.True(receivedBuffer2.Count == expectedCount2,
+                    $"Demuxer error: expect to receive {expectedCount2} bytes, but actually got {receivedBuffer2.Count} bytes.");
                 Assert.True(receivedBuffer1[0] == 0xE1, "The first payload incorrect!");
                 Assert.True(receivedBuffer1[96] == 0xE1, "The first payload incorrect!");
                 Assert.True(receivedBuffer1[97] == 0xE3, "The second payload incorrect!");
@@ -387,13 +430,15 @@ namespace k8s.Tests
             {
                 if (length > 1)
                 {
-                    buffer[1] = 0xFF;  // the first port bytes
+                    buffer[1] = 0xFF; // the first port bytes
                 }
+
                 if (length > 2)
                 {
-                    buffer[2] = 0xFF;  // the 2nd port bytes
+                    buffer[2] = 0xFF; // the 2nd port bytes
                 }
             }
+
             return buffer;
         }
 
@@ -404,6 +449,7 @@ namespace k8s.Tests
             {
                 buffer[i] = content;
             }
+
             return buffer;
         }
 
@@ -418,8 +464,10 @@ namespace k8s.Tests
                     {
                         return true;
                     }
+
                     await Task.Delay(10);
                 } while (w.Elapsed.Duration().TotalSeconds < waitForSeconds);
+
                 return false;
             }
             finally

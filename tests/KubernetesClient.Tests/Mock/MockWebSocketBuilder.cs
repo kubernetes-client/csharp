@@ -1,5 +1,4 @@
 #if !NETCOREAPP2_1
-
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,9 +11,11 @@ namespace k8s.Tests.Mock
 {
     public class MockWebSocketBuilder : WebSocketBuilder
     {
-        public Dictionary<string, string> RequestHeaders { get; } = new Dictionary<string, string>();
+        public Dictionary<string, string> RequestHeaders { get; }
+ = new Dictionary<string, string>();
 
-        public Collection<X509Certificate2> Certificates { get; } = new Collection<X509Certificate2>();
+        public Collection<X509Certificate2> Certificates { get; }
+ = new Collection<X509Certificate2>();
 
         public Uri Uri { get; private set; }
 
@@ -28,7 +29,8 @@ namespace k8s.Tests.Mock
 
         public override Task<WebSocket> BuildAndConnectAsync(Uri uri, CancellationToken cancellationToken)
         {
-            this.Uri = uri;
+            this.Uri
+ = uri;
 
             return Task.FromResult(this.PublicWebSocket);
         }

@@ -31,8 +31,8 @@ metadata:
             Assert.Equal(2, objs.Count);
             Assert.IsType<V1Pod>(objs[0]);
             Assert.IsType<V1Namespace>(objs[1]);
-            Assert.Equal("foo", ((V1Pod)objs[0]).Metadata.Name);
-            Assert.Equal("ns", ((V1Namespace)objs[1]).Metadata.Name);
+            Assert.Equal("foo", ((V1Pod) objs[0]).Metadata.Name);
+            Assert.Equal("ns", ((V1Namespace) objs[1]).Metadata.Name);
         }
 
         [Fact]
@@ -111,15 +111,7 @@ metadata:
         [Fact]
         public void WriteToString()
         {
-            var pod = new V1Pod()
-            {
-                ApiVersion = "v1",
-                Kind = "Pod",
-                Metadata = new V1ObjectMeta()
-                {
-                    Name = "foo"
-                }
-            };
+            var pod = new V1Pod() {ApiVersion = "v1", Kind = "Pod", Metadata = new V1ObjectMeta() {Name = "foo"}};
 
             var yaml = Yaml.SaveToString(pod);
             Assert.True(ToLines(@"apiVersion: v1
@@ -135,11 +127,7 @@ metadata:
             {
                 ApiVersion = "v1",
                 Kind = "Pod",
-                Metadata = new V1ObjectMeta()
-                {
-                    Name = "foo",
-                    NamespaceProperty = "bar"
-                }
+                Metadata = new V1ObjectMeta() {Name = "foo", NamespaceProperty = "bar"}
             };
 
             var yaml = Yaml.SaveToString(pod);
@@ -157,11 +145,7 @@ metadata:
             {
                 ApiVersion = "v1",
                 Kind = "Pod",
-                Metadata = new V1ObjectMeta()
-                {
-                    Name = "foo",
-                    NamespaceProperty = "bar"
-                },
+                Metadata = new V1ObjectMeta() {Name = "foo", NamespaceProperty = "bar"},
                 Spec = new V1PodSpec()
                 {
                     Containers = new[]
@@ -173,15 +157,11 @@ metadata:
                             {
                                 new V1VolumeMount
                                 {
-                                    Name = "vm1",
-                                    MountPath = "/vm1",
-                                    ReadOnlyProperty = true
+                                    Name = "vm1", MountPath = "/vm1", ReadOnlyProperty = true
                                 },
                                 new V1VolumeMount
                                 {
-                                    Name = "vm2",
-                                    MountPath = "/vm2",
-                                    ReadOnlyProperty = false
+                                    Name = "vm2", MountPath = "/vm2", ReadOnlyProperty = false
                                 },
                             }
                         }
@@ -211,13 +191,14 @@ spec:
         {
             using (var reader = new StringReader(s))
             {
-                for (; ; )
+                for (;;)
                 {
                     var line = reader.ReadLine();
                     if (line == null)
                     {
                         yield break;
                     }
+
                     yield return line;
                 }
             }
@@ -278,7 +259,7 @@ spec:
             var obj = Yaml.LoadFromString<V1Service>(content);
 
             Assert.Equal(3000, obj.Spec.Ports[0].Port);
-            Assert.Equal(3000, (int)obj.Spec.Ports[0].TargetPort);
+            Assert.Equal(3000, (int) obj.Spec.Ports[0].TargetPort);
         }
 
         [Fact]
@@ -295,10 +276,7 @@ spec:
   - port: 3000
     targetPort: 3000";
 
-            Dictionary<string, string> labels = new Dictionary<string, string>
-                                                {
-                                                    {"app", "test"}
-                                                };
+            Dictionary<string, string> labels = new Dictionary<string, string> {{"app", "test"}};
             var obj = new V1Service
             {
                 Kind = "Service",
@@ -306,14 +284,7 @@ spec:
                 ApiVersion = "v1",
                 Spec = new V1ServiceSpec
                 {
-                    Ports = new List<V1ServicePort>
-                                                       {
-                                                           new V1ServicePort
-                                                           {
-                                                               Port = 3000,
-                                                               TargetPort = 3000
-                                                           }
-                                                       }
+                    Ports = new List<V1ServicePort> {new V1ServicePort {Port = 3000, TargetPort = 3000}}
                 }
             };
 

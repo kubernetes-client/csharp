@@ -76,10 +76,6 @@ namespace k8s
         /// Gets, when this exception was raised because of a Kubernetes status message, the underlying
         /// Kubernetes status message.
         /// </summary>
-        public V1Status Status
-        {
-            get;
-            private set;
-        }
+        public V1Status Status { get; private set; }
     }
 }

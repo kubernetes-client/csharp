@@ -40,11 +40,9 @@ namespace k8s.Tests
         private static string BuildWatchEventStreamLine(WatchEventType eventType)
         {
             var corev1PodList = JsonConvert.DeserializeObject<V1PodList>(MockKubeApiServer.MockPodResponse);
-            return JsonConvert.SerializeObject(new Watcher<V1Pod>.WatchEvent
-            {
-                Type = eventType,
-                Object = corev1PodList.Items.First()
-            }, new StringEnumConverter());
+            return JsonConvert.SerializeObject(
+                new Watcher<V1Pod>.WatchEvent {Type = eventType, Object = corev1PodList.Items.First()},
+                new StringEnumConverter());
         }
 
         private static async Task WriteStreamLine(HttpContext httpContext, string reponseLine)
@@ -60,19 +58,15 @@ namespace k8s.Tests
         {
             using (var server = new MockKubeApiServer(testOutput: testOutput))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration
-                {
-                    Host = server.Uri.ToString()
-                });
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
 
                 // did not pass watch param
                 var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default");
                 var onErrorCalled = false;
 
-                using (listTask.Watch<V1Pod, V1PodList>((type, item) => { }, e =>
+                using (listTask.Watch<V1Pod, V1PodList>((type, item) => { }, e => { onErrorCalled = true; }))
                 {
-                    onErrorCalled = true;
-                })) { }
+                }
 
                 await Task.Delay(TimeSpan.FromSeconds(1)); // delay for onerror to be called
                 Assert.True(onErrorCalled);
@@ -103,17 +97,11 @@ namespace k8s.Tests
                 return false;
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration
-                {
-                    Host = server.Uri.ToString()
-                });
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
 
 
                 var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
-                using (listTask.Watch<V1Pod, V1PodList>((type, item) =>
-                {
-                    eventsReceived.Set();
-                }))
+                using (listTask.Watch<V1Pod, V1PodList>((type, item) => { eventsReceived.Set(); }))
                 {
                     // here watcher is ready to use, but http server has not responsed yet.
                     created.Set();
@@ -137,7 +125,7 @@ namespace k8s.Tests
                     testOutput,
                     async httpContext =>
                     {
-                        httpContext.Response.StatusCode = (int)HttpStatusCode.OK;
+                        httpContext.Response.StatusCode = (int) HttpStatusCode.OK;
                         httpContext.Response.ContentLength = null;
 
                         await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse);
@@ -151,10 +139,7 @@ namespace k8s.Tests
                         return false;
                     }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration
-                {
-                    Host = server.Uri.ToString()
-                });
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
 
                 var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
 
@@ -221,10 +206,7 @@ namespace k8s.Tests
                 return true;
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration
-                {
-                    Host = server.Uri.ToString()
-                });
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
 
                 var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
 
@@ -271,7 +253,8 @@ namespace k8s.Tests
         [Fact]
         public async Task WatchAllEvents()
         {
-            AsyncCountdownEvent eventsReceived = new AsyncCountdownEvent(4 /* first line of response is eaten by WatcherDelegatingHandler */);
+            AsyncCountdownEvent eventsReceived =
+                new AsyncCountdownEvent(4 /* first line of response is eaten by WatcherDelegatingHandler */);
             AsyncManualResetEvent serverShutdown = new AsyncManualResetEvent();
             var waitForClosed = new AsyncManualResetEvent(false);
 
@@ -287,10 +270,7 @@ namespace k8s.Tests
                 return false;
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration
-                {
-                    Host = server.Uri.ToString()
-                });
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
 
                 var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
 
@@ -361,10 +341,7 @@ namespace k8s.Tests
                 return false;
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration
-                {
-                    Host = server.Uri.ToString()
-                });
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
 
                 var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
 
@@ -428,10 +405,7 @@ namespace k8s.Tests
                 throw new IOException("server down");
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration
-                {
-                    Host = server.Uri.ToString()
-                });
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
 
                 var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
 
@@ -492,10 +466,8 @@ namespace k8s.Tests
                 var handler1 = new DummyHandler();
                 var handler2 = new DummyHandler();
 
-                var client = new Kubernetes(new KubernetesClientConfiguration
-                {
-                    Host = server.Uri.ToString()
-                }, handler1, handler2);
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()}, handler1,
+                    handler2);
 
                 Assert.False(handler1.Called);
                 Assert.False(handler2.Called);
@@ -548,10 +520,7 @@ namespace k8s.Tests
                 return false;
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration
-                {
-                    Host = server.Uri.ToString()
-                });
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
 
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
@@ -560,21 +529,21 @@ namespace k8s.Tests
                     name: "myPod",
                     @namespace: "default",
                     onEvent:
-                        (type, item) =>
-                        {
-                            testOutput.WriteLine($"Watcher received '{type}' event.");
+                    (type, item) =>
+                    {
+                        testOutput.WriteLine($"Watcher received '{type}' event.");
 
-                            events.Add(type);
-                            eventsReceived.Signal();
-                        },
+                        events.Add(type);
+                        eventsReceived.Signal();
+                    },
                     onError:
-                        error =>
-                        {
-                            testOutput.WriteLine($"Watcher received '{error.GetType().FullName}' error.");
+                    error =>
+                    {
+                        testOutput.WriteLine($"Watcher received '{error.GetType().FullName}' error.");
 
-                            errors += 1;
-                            eventsReceived.Signal();
-                        },
+                        errors += 1;
+                        eventsReceived.Signal();
+                    },
                     onClosed: connectionClosed.Set
                 );
 
@@ -605,7 +574,9 @@ namespace k8s.Tests
         [Fact(Skip = "Integration Test")]
         public async Task WatcherIntegrationTest()
         {
-            var kubernetesConfig = KubernetesClientConfiguration.BuildConfigFromConfigFile(kubeconfigPath: @"C:\Users\frede\Source\Repos\cloud\minikube.config");
+            var kubernetesConfig =
+                KubernetesClientConfiguration.BuildConfigFromConfigFile(
+                    kubeconfigPath: @"C:\Users\frede\Source\Repos\cloud\minikube.config");
             var kubernetes = new Kubernetes(kubernetesConfig);
 
             var job = await kubernetes.CreateNamespacedJobAsync(
@@ -613,13 +584,9 @@ namespace k8s.Tests
                 {
                     ApiVersion = "batch/v1",
                     Kind = V1Job.KubeKind,
-                    Metadata = new V1ObjectMeta()
-                    {
-                        Name = nameof(WatcherIntegrationTest).ToLowerInvariant()
-                    },
+                    Metadata = new V1ObjectMeta() {Name = nameof(WatcherIntegrationTest).ToLowerInvariant()},
                     Spec = new V1JobSpec()
                     {
-
                         Template = new V1PodTemplateSpec()
                         {
                             Spec = new V1PodSpec()
@@ -630,12 +597,7 @@ namespace k8s.Tests
                                     {
                                         Image = "ubuntu/xenial",
                                         Name = "runner",
-                                        Command = new List<string>()
-                                        {
-                                            "/bin/bash",
-                                            "-c",
-                                            "--"
-                                        },
+                                        Command = new List<string>() {"/bin/bash", "-c", "--"},
                                         Args = new List<string>()
                                         {
                                             "trap : TERM INT; sleep infinity & wait"
@@ -699,10 +661,7 @@ namespace k8s.Tests
                 return false;
             }))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration
-                {
-                    Host = server.Uri.ToString()
-                });
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
 
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
@@ -711,21 +670,21 @@ namespace k8s.Tests
                     name: "myPod",
                     @namespace: "default",
                     onEvent:
-                        (type, item) =>
-                        {
-                            testOutput.WriteLine($"Watcher received '{type}' event.");
+                    (type, item) =>
+                    {
+                        testOutput.WriteLine($"Watcher received '{type}' event.");
 
-                            events.Add(type);
-                            eventsReceived.Signal();
-                        },
+                        events.Add(type);
+                        eventsReceived.Signal();
+                    },
                     onError:
-                        error =>
-                        {
-                            testOutput.WriteLine($"Watcher received '{error.GetType().FullName}' error.");
+                    error =>
+                    {
+                        testOutput.WriteLine($"Watcher received '{error.GetType().FullName}' error.");
 
-                            errors += 1;
-                            eventsReceived.Signal();
-                        }
+                        errors += 1;
+                        eventsReceived.Signal();
+                    }
                 );
 
                 // wait server yields all events
@@ -763,17 +722,15 @@ namespace k8s.Tests
                 return true;
             }, resp: ""))
             {
-                var client = new Kubernetes(new KubernetesClientConfiguration
-                {
-                    Host = server.Uri.ToString()
-                });
+                var client = new Kubernetes(new KubernetesClientConfiguration {Host = server.Uri.ToString()});
 
                 var cts = new CancellationTokenSource();
                 cts.CancelAfter(TimeSpan.FromSeconds(2));
 
                 await Assert.ThrowsAnyAsync<OperationCanceledException>(async () =>
                 {
-                    await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true, cancellationToken: cts.Token);
+                    await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true,
+                        cancellationToken: cts.Token);
                 });
             }
         }

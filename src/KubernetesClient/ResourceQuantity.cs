@@ -14,7 +14,7 @@ namespace k8s.Models
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            var q = (ResourceQuantity)value;
+            var q = (ResourceQuantity) value;
 
             if (q != null)
             {
@@ -96,7 +96,7 @@ namespace k8s.Models
             DecimalSI
         }
 
-        public static readonly decimal MaxAllowed = (decimal)BigInteger.Pow(2, 63) - 1;
+        public static readonly decimal MaxAllowed = (decimal) BigInteger.Pow(2, 63) - 1;
 
         private static readonly char[] SuffixChars = "eEinumkKMGTP".ToCharArray();
         private Fraction _unitlessValue;
@@ -130,22 +130,25 @@ namespace k8s.Models
             {
                 return false;
             }
+
             if (ReferenceEquals(this, obj))
             {
                 return true;
             }
+
             if (obj.GetType() != GetType())
             {
                 return false;
             }
-            return Equals((ResourceQuantity)obj);
+
+            return Equals((ResourceQuantity) obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                return ((int)Format * 397) ^ _unitlessValue.GetHashCode();
+                return ((int) Format * 397) ^ _unitlessValue.GetHashCode();
             }
         }
 
@@ -227,7 +230,7 @@ namespace k8s.Models
 
             if (parser.Current is Scalar)
             {
-                Value = ((Scalar)parser.Current).Value;
+                Value = ((Scalar) parser.Current).Value;
                 parser.MoveNext();
                 CustomInit();
             }
@@ -332,30 +335,30 @@ namespace k8s.Models
                 switch (format)
                 {
                     case SuffixFormat.DecimalExponent:
+                    {
+                        var minE = -9;
+                        var lastv = Roundup(value * Fraction.Pow(10, -minE));
+
+                        for (var exp = minE;; exp += 3)
                         {
-                            var minE = -9;
-                            var lastv = Roundup(value * Fraction.Pow(10, -minE));
-
-                            for (var exp = minE; ; exp += 3)
+                            var v = value * Fraction.Pow(10, -exp);
+                            if (HasMantissa(v))
                             {
-                                var v = value * Fraction.Pow(10, -exp);
-                                if (HasMantissa(v))
-                                {
-                                    break;
-                                }
-
-                                minE = exp;
-                                lastv = v;
+                                break;
                             }
 
-
-                            if (minE == 0)
-                            {
-                                return $"{(decimal)lastv}";
-                            }
-
-                            return $"{(decimal)lastv}e{minE}";
+                            minE = exp;
+                            lastv = v;
                         }
+
+
+                        if (minE == 0)
+                        {
+                            return $"{(decimal) lastv}";
+                        }
+
+                        return $"{(decimal) lastv}e{minE}";
+                    }
 
                     case SuffixFormat.BinarySI:
                         return AppendMaxSuffix(value, BinSuffixes);
@@ -384,7 +387,7 @@ namespace k8s.Models
                     lastv = v;
                 }
 
-                return $"{(decimal)lastv}{suffix}";
+                return $"{(decimal) lastv}{suffix}";
             }
 
             private static Fraction Roundup(Fraction lastv)
@@ -394,6 +397,7 @@ namespace k8s.Models
                 {
                     lastv = round + 1;
                 }
+
                 return lastv;
             }
         }
