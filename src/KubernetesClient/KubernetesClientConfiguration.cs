@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.Rest;
 
 namespace k8s
 {
@@ -76,5 +77,7 @@ namespace k8s
         /// </summary>
         /// <value>The access token.</value>
         public string AccessToken { get; set; }
+
+        public ITokenProvider TokenProvider { get; set; }
     }
 }

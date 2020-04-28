@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using k8s.Authentication;
 using k8s.Exceptions;
 using k8s.KubeConfigModels;
 
@@ -367,23 +368,9 @@ namespace k8s
                             }
                         case "gcp":
                             {
+                                // config
                                 var config = userDetails.UserCredentials.AuthProvider.Config;
-                                const string keyExpire = "expiry";
-                                if (config.ContainsKey(keyExpire))
-                                {
-                                    if (DateTimeOffset.TryParse(config[keyExpire]
-                                        , out DateTimeOffset expires))
-                                    {
-                                        if (DateTimeOffset.Compare(expires
-                                                , DateTimeOffset.Now)
-                                            <= 0)
-                                        {
-                                            throw new KubeConfigException("Refresh not supported.");
-                                        }
-                                    }
-                                }
-
-                                AccessToken = config["access-token"];
+                                TokenProvider = new GcpTokenProvider(config["cmd-path"]);
                                 userCredentialsFound = true;
                                 break;
                             }

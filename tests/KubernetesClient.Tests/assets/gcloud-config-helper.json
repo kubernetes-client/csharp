@@ -1,0 +1,23 @@
+{
+    "configuration": {
+        "active_configuration": "default",
+        "properties": {
+            "compute": {
+                "region": "us-east1",
+                "zone": "us-east1-b"
+            },
+            "core": {
+                "account": "some@account.io",
+                "disable_usage_reporting": "True",
+                "project": "fe-astakhov"
+            }
+        }
+    },
+    "credential": {
+        "access_token": "ACCESS-TOKEN",
+        "token_expiry": "2020-03-20T07:09:20Z"
+    },
+    "sentinels": {
+        "config_sentinel": "C:\\Users\\Andrew\\AppData\\Roaming\\gcloud\\config_sentinel"
+    }
+}
