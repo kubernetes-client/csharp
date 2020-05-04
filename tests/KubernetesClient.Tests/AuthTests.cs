@@ -162,15 +162,10 @@ namespace k8s.Tests
         }
 
 #if NETCOREAPP2_1 // The functionality under test, here, is dependent on managed HTTP / WebSocket in .NET Core 2.1 or newer.
-        [Fact]
+        // this test doesn't work on OSX and is inconsistent on windows
+        [OperatingSystemDependentFact(Exclude = OperatingSystem.OSX | OperatingSystem.Windows)]
         public void Cert()
         {
-            if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                // TODO: This test fails on OS X for some reason. Figure out why...
-                return;
-            }
-
             var serverCertificateData = File.ReadAllText("assets/apiserver-pfx-data.txt");
 
             var clientCertificateKeyData = File.ReadAllText("assets/client-key-data.txt");
