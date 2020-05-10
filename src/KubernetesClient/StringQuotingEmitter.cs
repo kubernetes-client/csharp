@@ -6,6 +6,7 @@ using YamlDotNet.Serialization.EventEmitters;
 
 namespace k8s
 {
+    // adapted from https://github.com/cloudbase/powershell-yaml/blob/master/powershell-yaml.psm1
     public class StringQuotingEmitter : ChainedEventEmitter
     {
         // Patterns from https://yaml.org/spec/1.2/spec.html#id2804356
