@@ -293,17 +293,25 @@ spec:
         }
 
         [Fact]
-        public void EnvVariableShouldBeStrings()
+        public void QuotedValuesShouldRemainQuotedAfterSerialization()
         {
             var content = @"apiVersion: v1
 kind: Pod
 metadata:
+  annotations:
+    custom.annotation: ""null""
   name: cpu-demo
 spec:
   containers:
   - env:
     - name: PORT
       value: ""3000""
+    - name: NUM_RETRIES
+      value: ""3""
+    - name: ENABLE_CACHE
+      value: ""true""
+    - name: ENABLE_OTHER
+      value: ""false""
     image: vish/stress
     name: cpu-demo-ctr";
             var obj = Yaml.LoadFromString<V1Pod>(content);
