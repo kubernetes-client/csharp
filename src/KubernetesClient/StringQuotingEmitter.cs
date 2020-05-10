@@ -26,7 +26,7 @@ namespace k8s
             switch (typeCode)
             {
                 case TypeCode.Char:
-                    if (char.IsDigit((char) eventInfo.Source.Value))
+                    if (char.IsDigit((char)eventInfo.Source.Value))
                     {
                         eventInfo.Style = ScalarStyle.DoubleQuoted;
                     }
