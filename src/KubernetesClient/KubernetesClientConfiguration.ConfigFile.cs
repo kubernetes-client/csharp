@@ -420,14 +420,14 @@ namespace k8s
         /// https://github.com/kubernetes-client/python-base/blob/master/config/exec_provider.py
         /// </summary>
         /// <param name="config">The external command execution configuration</param>
-        /// <returns>The token received from the external commmand execution</returns>
+        /// <returns>The token received from the external command execution</returns>
         public static string ExecuteExternalCommand(ExternalExecution config)
         {
             var execInfo = new Dictionary<string, dynamic>
             {
                 {"apiVersion", config.ApiVersion },
                 {"kind", "ExecCredentials" },
-                {"spec", new Dictionary<string, bool> {{"interactive", Environment.UserInteractive } } },
+                {"spec", new Dictionary<string, bool> { {"interactive", Environment.UserInteractive } } },
             };
 
             var process = new Process();
@@ -464,7 +464,7 @@ namespace k8s
             }
 
             var stdout = process.StandardOutput.ReadToEnd();
-            var stderr = process.StandardOutput.ReadToEnd();
+            var stderr = process.StandardError.ReadToEnd();
             if (string.IsNullOrWhiteSpace(stderr) == false)
             {
                 throw new KubeConfigException($"external exec failed due to: {stderr}");
@@ -660,7 +660,7 @@ namespace k8s
         /// <param name="mergek8SConfig">The <see cref="K8SConfiguration"/> to merge from</param>
         private static void MergeKubeConfig(K8SConfiguration basek8SConfig, K8SConfiguration mergek8SConfig)
         {
-            // For scalar values, prefer local values 
+            // For scalar values, prefer local values
             basek8SConfig.CurrentContext = basek8SConfig.CurrentContext ?? mergek8SConfig.CurrentContext;
             basek8SConfig.FileName = basek8SConfig.FileName ?? mergek8SConfig.FileName;
 
