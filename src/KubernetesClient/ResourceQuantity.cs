@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using Fractions;
@@ -198,7 +199,7 @@ namespace k8s.Models
                 si = value.Length;
             }
 
-            var literal = Fraction.FromString(value.Substring(0, si));
+            var literal = Fraction.FromString(value.Substring(0, si), CultureInfo.InvariantCulture);
             var suffixer = new Suffixer(value.Substring(si));
 
             _unitlessValue = literal.Multiply(Fraction.Pow(suffixer.Base, suffixer.Exponent));
