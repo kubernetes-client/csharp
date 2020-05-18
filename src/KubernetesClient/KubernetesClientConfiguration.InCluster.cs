@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using k8s.Authentication;
 using k8s.Exceptions;
 
 namespace k8s
@@ -42,7 +43,6 @@ namespace k8s
                     "unable to load in-cluster configuration, KUBERNETES_SERVICE_HOST and KUBERNETES_SERVICE_PORT must be defined");
             }
 
-            var token = File.ReadAllText(Path.Combine(ServiceAccountPath, ServiceAccountTokenKeyFileName));
             var rootCAFile = Path.Combine(ServiceAccountPath, ServiceAccountRootCAKeyFileName);
             var host = Environment.GetEnvironmentVariable("KUBERNETES_SERVICE_HOST");
             var port = Environment.GetEnvironmentVariable("KUBERNETES_SERVICE_PORT");
@@ -50,7 +50,7 @@ namespace k8s
             return new KubernetesClientConfiguration
             {
                 Host = new UriBuilder("https", host, Convert.ToInt32(port)).ToString(),
-                AccessToken = token,
+                TokenProvider = new TokenFileAuth(Path.Combine(ServiceAccountPath, ServiceAccountTokenKeyFileName)),
                 SslCaCerts = CertUtils.LoadPemFileCert(rootCAFile),
             };
         }
