@@ -1,0 +1,19 @@
+using AutoMapper;
+using k8s.Models;
+
+namespace k8s.Versioning
+{
+
+
+    public static partial class VersionConverter
+    {
+        private static void AutoConfigurations(IMapperConfigurationExpression cfg)
+        {
+            {{#.}}
+                cfg.CreateMap<{{GetTuple . index="0"}}, {{GetTuple . index="1"}}>().ReverseMap();
+            {{/.}}
+        }
+    }
+
+
+}

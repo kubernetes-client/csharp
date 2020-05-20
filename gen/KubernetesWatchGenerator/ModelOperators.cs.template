@@ -1,0 +1,15 @@
+using k8s.Versioning;
+
+namespace k8s.Models
+{
+{{#.}}
+    public partial class {{GetTuple . index="0"}}
+    {
+        public static explicit operator {{GetTuple . index="0"}}({{GetTuple . index="1"}} s) => VersionConverter.Mapper.Map<{{GetTuple . index="0"}}>(s);
+    }
+    public partial class {{GetTuple . index="1"}}
+    {
+        public static explicit operator {{GetTuple . index="1"}}({{GetTuple . index="0"}} s) => VersionConverter.Mapper.Map<{{GetTuple . index="1"}}>(s);
+    }
+{{/.}}
+}
