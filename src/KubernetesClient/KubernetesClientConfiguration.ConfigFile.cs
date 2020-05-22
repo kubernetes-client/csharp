@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-#if NETSTANDARD2_0
 using Newtonsoft.Json;
 using System.Diagnostics;
-#endif
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -378,7 +376,6 @@ namespace k8s
                 }
             }
 
-#if NETSTANDARD2_0
             if (userDetails.UserCredentials.ExternalExecution != null)
             {
                 if (string.IsNullOrWhiteSpace(userDetails.UserCredentials.ExternalExecution.Command))
@@ -397,7 +394,6 @@ namespace k8s
 
                 userCredentialsFound = true;
             }
-#endif
 
             if (!userCredentialsFound)
             {
@@ -411,7 +407,6 @@ namespace k8s
             throw new KubeConfigException("Refresh not supported.");
         }
 
-#if NETSTANDARD2_0
         /// <summary>
         /// Implementation of the proposal for out-of-tree client
         /// authentication providers as described here --
@@ -493,7 +488,6 @@ namespace k8s
                 throw new KubeConfigException($"external exec failed due to uncaught exception: {ex}");
             }
         }
-#endif
 
         /// <summary>
         ///     Loads entire Kube Config from default or explicit file path
