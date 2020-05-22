@@ -53,7 +53,7 @@ namespace k8s.Models
             if (obj.ApiVersion != null)
             {
                 int slash = obj.ApiVersion.IndexOf('/');
-                return slash < 0 ? obj.ApiVersion : obj.ApiVersion.Substring(slash+1);
+                return slash < 0 ? obj.ApiVersion : obj.ApiVersion.Substring(slash + 1);
             }
             return null;
         }
@@ -81,7 +81,7 @@ namespace k8s.Models
             {
                 int slash = obj.ApiVersion.IndexOf('/');
                 if (slash < 0) (group, version) = (string.Empty, obj.ApiVersion);
-                else (group, version) = (obj.ApiVersion.Substring(0, slash), obj.ApiVersion.Substring(slash+1));
+                else (group, version) = (obj.ApiVersion.Substring(0, slash), obj.ApiVersion.Substring(slash + 1));
             }
         }
 
@@ -307,7 +307,7 @@ namespace k8s.Models
             IList<V1OwnerReference> refs = obj.Metadata?.OwnerReferences;
             if (refs != null)
             {
-                for (int i = refs.Count-1; i >= 0; i--)
+                for (int i = refs.Count - 1; i >= 0; i--)
                 {
                     if (predicate(refs[i]))
                     {
