@@ -432,7 +432,7 @@ namespace k8s
             {
                 foreach (var configEnvironmentVariableKey in config.EnvironmentVariables.Keys)
                 {
-                    process.StartInfo.Environment.Add(key: configEnvironmentVariableKey,
+                    process.StartInfo.EnvironmentVariables.Add(key: configEnvironmentVariableKey,
                         value: config.EnvironmentVariables[configEnvironmentVariableKey]);
                 }
             }
