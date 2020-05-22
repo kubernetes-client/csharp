@@ -427,9 +427,7 @@ namespace k8s
 
             var process = new Process();
 
-            process.StartInfo.Environment.Add("KUBERNETES_EXEC_INFO",
-                JsonConvert.SerializeObject(execInfo));
-
+            process.StartInfo.EnvironmentVariables.Add("KUBERNETES_EXEC_INFO", JsonConvert.SerializeObject(execInfo));
             if (config.EnvironmentVariables != null)
             {
                 foreach (var configEnvironmentVariableKey in config.EnvironmentVariables.Keys)
