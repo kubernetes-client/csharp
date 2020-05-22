@@ -80,8 +80,14 @@ namespace k8s.Models
             else
             {
                 int slash = obj.ApiVersion.IndexOf('/');
-                if (slash < 0) (group, version) = (string.Empty, obj.ApiVersion);
-                else (group, version) = (obj.ApiVersion.Substring(0, slash), obj.ApiVersion.Substring(slash + 1));
+                if (slash < 0)
+                {
+                    (group, version) = (string.Empty, obj.ApiVersion);
+                }
+                else
+                {
+                    (group, version) = (obj.ApiVersion.Substring(0, slash), obj.ApiVersion.Substring(slash + 1));
+                }
             }
         }
 
@@ -162,6 +168,7 @@ namespace k8s.Models
             {
                 throw new ArgumentNullException(nameof(obj));
             }
+
             if (predicate == null)
             {
                 throw new ArgumentNullException(nameof(predicate));
@@ -172,7 +179,10 @@ namespace k8s.Models
             {
                 for (int i = 0; i < ownerRefs.Count; i++)
                 {
-                    if (predicate(ownerRefs[i])) return i;
+                    if (predicate(ownerRefs[i]))
+                    {
+                        return i;
+                    }
                 }
             }
             return -1;
