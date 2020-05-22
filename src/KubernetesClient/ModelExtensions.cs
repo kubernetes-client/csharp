@@ -5,26 +5,29 @@ using System.Net;
 
 namespace k8s.Models
 {
-    /// <summary>Adds convenient extensions for Kubernetes objects.</summary>
+    ///<summary>Adds convenient extensions for Kubernetes objects.</summary>
     public static class ModelExtensions
     {
-        /// <summary>Adds the given finalizer to a Kubernetes object if it doesn't already exist.</summary>
-        /// <returns>Returns true if the finalizer was added and false if it already existed.</returns>
+        ///<summary>Adds the given finalizer to a Kubernetes object if it doesn't already exist.</summary>
+        ///<returns>Returns true if the finalizer was added and false if it already existed.</returns>
         public static bool AddFinalizer(this IMetadata<V1ObjectMeta> obj, string finalizer)
         {
             if (string.IsNullOrEmpty(finalizer))
             {
                 throw new ArgumentNullException(nameof(finalizer));
             }
+
             if (EnsureMetadata(obj).Finalizers == null)
             {
                 obj.Metadata.Finalizers = new List<string>();
             }
+
             if (!obj.Metadata.Finalizers.Contains(finalizer))
             {
                 obj.Metadata.Finalizers.Add(finalizer);
                 return true;
             }
+
             return false;
         }
 
@@ -35,11 +38,13 @@ namespace k8s.Models
             {
                 throw new ArgumentNullException(nameof(obj));
             }
+
             if (obj.ApiVersion != null)
             {
                 int slash = obj.ApiVersion.IndexOf('/');
                 return slash < 0 ? string.Empty : obj.ApiVersion.Substring(0, slash);
             }
+
             return null;
         }
 
@@ -50,11 +55,13 @@ namespace k8s.Models
             {
                 throw new ArgumentNullException(nameof(obj));
             }
+
             if (obj.ApiVersion != null)
             {
                 int slash = obj.ApiVersion.IndexOf('/');
-                return slash < 0 ? obj.ApiVersion : obj.ApiVersion.Substring(slash+1);
+                return slash < 0 ? obj.ApiVersion : obj.ApiVersion.Substring(slash + 1);
             }
+
             return null;
         }
 
@@ -73,6 +80,7 @@ namespace k8s.Models
             {
                 throw new ArgumentNullException(nameof(obj));
             }
+
             if (obj.ApiVersion == null)
             {
                 group = version = null;
@@ -80,8 +88,14 @@ namespace k8s.Models
             else
             {
                 int slash = obj.ApiVersion.IndexOf('/');
-                if (slash < 0) (group, version) = (string.Empty, obj.ApiVersion);
-                else (group, version) = (obj.ApiVersion.Substring(0, slash), obj.ApiVersion.Substring(slash+1));
+                if (slash < 0)
+                {
+                    (group, version) = (string.Empty, obj.ApiVersion);
+                }
+                else
+                {
+                    (group, version) = (obj.ApiVersion.Substring(0, slash), obj.ApiVersion.Substring(slash + 1));
+                }
             }
         }
 
@@ -95,10 +109,12 @@ namespace k8s.Models
             {
                 throw new ArgumentNullException(nameof(obj));
             }
+
             if (obj.Metadata == null)
             {
                 obj.Metadata = new V1ListMeta();
             }
+
             return obj.Metadata;
         }
 
@@ -114,15 +130,18 @@ namespace k8s.Models
             {
                 throw new ArgumentNullException(nameof(ownerRef));
             }
+
             if (EnsureMetadata(obj).OwnerReferences == null)
             {
                 obj.Metadata.OwnerReferences = new List<V1OwnerReference>();
             }
+
             obj.Metadata.OwnerReferences.Add(ownerRef);
         }
 
         /// <summary>Gets the annotations of a Kubernetes object.</summary>
-        public static IDictionary<string, string> Annotations(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.Annotations;
+        public static IDictionary<string, string> Annotations(this IMetadata<V1ObjectMeta> obj) =>
+            obj.Metadata?.Annotations;
 
         /// <summary>Gets the creation time of a Kubernetes object, or null if it hasn't been created yet.</summary>
         public static DateTime? CreationTimestamp(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.CreationTimestamp;
@@ -137,10 +156,12 @@ namespace k8s.Models
             {
                 throw new ArgumentNullException(nameof(obj));
             }
+
             if (obj.Metadata == null)
             {
                 obj.Metadata = new V1ObjectMeta();
             }
+
             return obj.Metadata;
         }
 
@@ -162,6 +183,7 @@ namespace k8s.Models
             {
                 throw new ArgumentNullException(nameof(obj));
             }
+
             if (predicate == null)
             {
                 throw new ArgumentNullException(nameof(predicate));
@@ -172,9 +194,13 @@ namespace k8s.Models
             {
                 for (int i = 0; i < ownerRefs.Count; i++)
                 {
-                    if (predicate(ownerRefs[i])) return i;
+                    if (predicate(ownerRefs[i]))
+                    {
+                        return i;
+                    }
                 }
             }
+
             return -1;
         }
 
@@ -188,6 +214,7 @@ namespace k8s.Models
             {
                 throw new ArgumentNullException(nameof(obj));
             }
+
             if (key == null)
             {
                 throw new ArgumentNullException(nameof(key));
@@ -208,6 +235,7 @@ namespace k8s.Models
             {
                 throw new ArgumentNullException(nameof(obj));
             }
+
             if (key == null)
             {
                 throw new ArgumentNullException(nameof(key));
@@ -218,11 +246,13 @@ namespace k8s.Models
         }
 
         /// <summary>Gets <see cref="V1OwnerReference"/> that matches the given object, or null if no matching reference exists.</summary>
-        public static V1OwnerReference GetOwnerReference(this IMetadata<V1ObjectMeta> obj, IKubernetesObject<V1ObjectMeta> owner) =>
+        public static V1OwnerReference GetOwnerReference(this IMetadata<V1ObjectMeta> obj,
+            IKubernetesObject<V1ObjectMeta> owner) =>
             GetOwnerReference(obj, r => r.Matches(owner));
 
         /// <summary>Gets the <see cref="V1OwnerReference"/> that matches the given predicate, or null if no matching reference exists.</summary>
-        public static V1OwnerReference GetOwnerReference(this IMetadata<V1ObjectMeta> obj, Predicate<V1OwnerReference> predicate)
+        public static V1OwnerReference GetOwnerReference(this IMetadata<V1ObjectMeta> obj,
+            Predicate<V1OwnerReference> predicate)
         {
             int index = FindOwnerReference(obj, predicate);
             return index >= 0 ? obj.Metadata.OwnerReferences[index] : null;
@@ -235,6 +265,7 @@ namespace k8s.Models
             {
                 throw new ArgumentNullException(nameof(obj));
             }
+
             if (string.IsNullOrEmpty(finalizer))
             {
                 throw new ArgumentNullException(nameof(finalizer));
@@ -257,7 +288,8 @@ namespace k8s.Models
         public static string Namespace(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.NamespaceProperty;
 
         /// <summary>Gets the owner references of a Kubernetes object.</summary>
-        public static IList<V1OwnerReference> OwnerReferences(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.OwnerReferences;
+        public static IList<V1OwnerReference> OwnerReferences(this IMetadata<V1ObjectMeta> obj) =>
+            obj.Metadata?.OwnerReferences;
 
         /// <summary>Removes the given finalizer from a Kubernetes object if it exists.</summary>
         /// <returns>Returns true if the finalizer was removed and false if it didn't exist.</returns>
@@ -267,6 +299,7 @@ namespace k8s.Models
             {
                 throw new ArgumentNullException(nameof(obj));
             }
+
             if (string.IsNullOrEmpty(finalizer))
             {
                 throw new ArgumentNullException(nameof(finalizer));
@@ -278,7 +311,8 @@ namespace k8s.Models
         /// <summary>Removes the first <see cref="V1OwnerReference"/> that matches the given object and returns it, or returns null if no
         /// matching reference could be found.
         /// </summary>
-        public static V1OwnerReference RemoveOwnerReference(this IMetadata<V1ObjectMeta> obj, IKubernetesObject<V1ObjectMeta> owner)
+        public static V1OwnerReference RemoveOwnerReference(this IMetadata<V1ObjectMeta> obj,
+            IKubernetesObject<V1ObjectMeta> owner)
         {
             int index = FindOwnerReference(obj, owner);
             V1OwnerReference ownerRef = index >= 0 ? obj.Metadata.OwnerReferences[index] : null;
@@ -286,18 +320,21 @@ namespace k8s.Models
             {
                 obj.Metadata.OwnerReferences.RemoveAt(index);
             }
+
             return ownerRef;
         }
 
         /// <summary>Removes all <see cref="V1OwnerReference">owner references</see> that match the given predicate, and returns true if
         /// any were removed.
         /// </summary>
-        public static bool RemoveOwnerReferences(this IMetadata<V1ObjectMeta> obj, Predicate<V1OwnerReference> predicate)
+        public static bool RemoveOwnerReferences(this IMetadata<V1ObjectMeta> obj,
+            Predicate<V1OwnerReference> predicate)
         {
             if (obj == null)
             {
                 throw new ArgumentNullException(nameof(obj));
             }
+
             if (predicate == null)
             {
                 throw new ArgumentNullException(nameof(predicate));
@@ -307,7 +344,7 @@ namespace k8s.Models
             IList<V1OwnerReference> refs = obj.Metadata?.OwnerReferences;
             if (refs != null)
             {
-                for (int i = refs.Count-1; i >= 0; i--)
+                for (int i = refs.Count - 1; i >= 0; i--)
                 {
                     if (predicate(refs[i]))
                     {
@@ -316,13 +353,15 @@ namespace k8s.Models
                     }
                 }
             }
+
             return removed;
         }
 
         /// <summary>Removes all <see cref="V1OwnerReference">owner references</see> that match the given object, and returns true if
         /// any were removed.
         /// </summary>
-        public static bool RemoveOwnerReferences(this IMetadata<V1ObjectMeta> obj, IKubernetesObject<V1ObjectMeta> owner) =>
+        public static bool RemoveOwnerReferences(this IMetadata<V1ObjectMeta> obj,
+            IKubernetesObject<V1ObjectMeta> owner) =>
             RemoveOwnerReferences(obj, r => r.Matches(owner));
 
         /// <summary>Gets the resource version of a Kubernetes object.</summary>
@@ -335,6 +374,7 @@ namespace k8s.Models
             {
                 throw new ArgumentNullException(nameof(obj));
             }
+
             if (key == null)
             {
                 throw new ArgumentNullException(nameof(key));
@@ -357,6 +397,7 @@ namespace k8s.Models
             {
                 throw new ArgumentNullException(nameof(obj));
             }
+
             if (key == null)
             {
                 throw new ArgumentNullException(nameof(key));
@@ -382,10 +423,12 @@ namespace k8s.Models
             {
                 throw new ArgumentNullException(nameof(meta));
             }
+
             if (meta.Annotations == null)
             {
                 meta.Annotations = new Dictionary<string, string>();
             }
+
             return meta.Annotations;
         }
 
@@ -396,10 +439,12 @@ namespace k8s.Models
             {
                 throw new ArgumentNullException(nameof(meta));
             }
+
             if (meta.Finalizers == null)
             {
                 meta.Finalizers = new List<string>();
             }
+
             return meta.Finalizers;
         }
 
@@ -410,10 +455,12 @@ namespace k8s.Models
             {
                 throw new ArgumentNullException(nameof(meta));
             }
+
             if (meta.Labels == null)
             {
                 meta.Labels = new Dictionary<string, string>();
             }
+
             return meta.Labels;
         }
 
@@ -430,11 +477,14 @@ namespace k8s.Models
             {
                 throw new ArgumentNullException(nameof(objref));
             }
+
             if (obj == null)
             {
                 throw new ArgumentNullException(nameof(obj));
             }
-            return objref.ApiVersion == obj.ApiVersion && objref.Kind == obj.Kind && objref.Name == obj.Name() && objref.Uid == obj.Uid() &&
+
+            return objref.ApiVersion == obj.ApiVersion && objref.Kind == obj.Kind && objref.Name == obj.Name() &&
+                   objref.Uid == obj.Uid() &&
                    objref.NamespaceProperty == obj.Namespace();
         }
 
@@ -445,11 +495,14 @@ namespace k8s.Models
             {
                 throw new ArgumentNullException(nameof(owner));
             }
+
             if (obj == null)
             {
                 throw new ArgumentNullException(nameof(obj));
             }
-            return owner.ApiVersion == obj.ApiVersion && owner.Kind == obj.Kind && owner.Name == obj.Name() && owner.Uid == obj.Uid();
+
+            return owner.ApiVersion == obj.ApiVersion && owner.Kind == obj.Kind && owner.Name == obj.Name() &&
+                   owner.Uid == obj.Uid();
         }
     }
 
