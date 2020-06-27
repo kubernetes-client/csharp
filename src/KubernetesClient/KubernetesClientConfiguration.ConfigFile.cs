@@ -429,7 +429,8 @@ namespace k8s
                             configEnvironmentVariable["name"],
                             configEnvironmentVariable["value"]);
                     }
-                    else {
+                    else
+                    {
                         var badVariable = string.Join(",", configEnvironmentVariable.Select(x => $"{x.Key}={x.Value}"));
                         throw new KubeConfigException($"Invalid environment variable defined: {badVariable}");
                     }
