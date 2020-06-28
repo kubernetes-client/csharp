@@ -407,16 +407,7 @@ namespace k8s
             throw new KubeConfigException("Refresh not supported.");
         }
 
-        /// <summary>
-        /// Implementation of the proposal for out-of-tree client
-        /// authentication providers as described here --
-        /// https://github.com/kubernetes/community/blob/master/contributors/design-proposals/auth/kubectl-exec-plugins.md
-        /// Took inspiration from python exec_provider.py --
-        /// https://github.com/kubernetes-client/python-base/blob/master/config/exec_provider.py
-        /// </summary>
-        /// <param name="config">The external command execution configuration</param>
-        /// <returns>The token received from the external command execution</returns>
-        public static string ExecuteExternalCommand(ExternalExecution config)
+        public static Process CreateRunnableExternalProcess(ExternalExecution config)
         {
             var execInfo = new Dictionary<string, dynamic>
             {
@@ -430,10 +421,19 @@ namespace k8s
             process.StartInfo.EnvironmentVariables.Add("KUBERNETES_EXEC_INFO", JsonConvert.SerializeObject(execInfo));
             if (config.EnvironmentVariables != null)
             {
-                foreach (var configEnvironmentVariableKey in config.EnvironmentVariables.Keys)
+                foreach (var configEnvironmentVariable in config.EnvironmentVariables)
                 {
-                    process.StartInfo.EnvironmentVariables.Add(key: configEnvironmentVariableKey,
-                        value: config.EnvironmentVariables[configEnvironmentVariableKey]);
+                    if (configEnvironmentVariable.ContainsKey("name") && configEnvironmentVariable.ContainsKey("value"))
+                    {
+                        process.StartInfo.EnvironmentVariables.Add(
+                            configEnvironmentVariable["name"],
+                            configEnvironmentVariable["value"]);
+                    }
+                    else
+                    {
+                        var badVariable = string.Join(",", configEnvironmentVariable.Select(x => $"{x.Key}={x.Value}"));
+                        throw new KubeConfigException($"Invalid environment variable defined: {badVariable}");
+                    }
                 }
             }
 
@@ -446,6 +446,22 @@ namespace k8s
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.RedirectStandardError = true;
             process.StartInfo.UseShellExecute = false;
+
+            return process;
+        }
+
+        /// <summary>
+        /// Implementation of the proposal for out-of-tree client
+        /// authentication providers as described here --
+        /// https://github.com/kubernetes/community/blob/master/contributors/design-proposals/auth/kubectl-exec-plugins.md
+        /// Took inspiration from python exec_provider.py --
+        /// https://github.com/kubernetes-client/python-base/blob/master/config/exec_provider.py
+        /// </summary>
+        /// <param name="config">The external command execution configuration</param>
+        /// <returns>The token received from the external command execution</returns>
+        public static string ExecuteExternalCommand(ExternalExecution config)
+        {
+            var process = CreateRunnableExternalProcess(config);
 
             try
             {
