@@ -83,5 +83,32 @@ namespace k8s.Tests
                 Assert.Empty(podsMetricsList.Items);
             }
         }
+
+        [Fact(DisplayName = "Pod metrics by namespace")]
+        public async Task PodsMetricsByNamespace()
+        {
+            var namespaceName = "default";
+
+            using (var server = new MockKubeApiServer(testOutput, resp: PodMetricsResponse))
+            {
+                var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
+
+                var podsMetricsList = await client.GetKubernetesPodsMetricsByNamespaceAsync(namespaceName).ConfigureAwait(false);
+
+                Assert.Single(podsMetricsList.Items);
+
+                var podMetrics = podsMetricsList.Items.First();
+                Assert.Equal(namespaceName, podMetrics.Metadata.NamespaceProperty);
+
+                Assert.Single(podMetrics.Containers);
+
+                var containerMetrics = podMetrics.Containers.First();
+                Assert.Equal(DefaultPodName, containerMetrics.Name);
+
+                Assert.Equal(2, containerMetrics.Usage.Count);
+                Assert.True(containerMetrics.Usage.ContainsKey(DefaultCpuKey));
+                Assert.True(containerMetrics.Usage.ContainsKey(DefaultMemoryKey));
+            }
+        }
     }
 }
