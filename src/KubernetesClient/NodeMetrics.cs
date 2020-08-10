@@ -19,7 +19,7 @@ namespace k8s.Models
         /// The timestamp when metrics were collected.
         /// </summary>
         [JsonProperty(PropertyName = "timestamp")]
-        public DateTime Timestamp { get; set; }
+        public DateTime? Timestamp { get; set; }
 
         /// <summary>
         /// The interval from which metrics were collected.
