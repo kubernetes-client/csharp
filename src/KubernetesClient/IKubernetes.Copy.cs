@@ -15,10 +15,10 @@ namespace k8s
         /// <param name="container">
         /// The container in which the source file exist.
         /// </param>
-        /// <param name="sourcePath">
+        /// <param name="sourceFilePath">
         /// The source file path.
         /// </param>
-        /// <param name="destinationPath">
+        /// <param name="destinationFilePath">
         /// The destination file path.
         /// </param>
         /// <param name="cancellationToken">
@@ -27,7 +27,7 @@ namespace k8s
         /// <returns>
         /// A <see cref="Task"/> which represents the asynchronous operation.
         /// </returns>
-        Task CopyFileFromPod(V1Pod pod, string container, string sourcePath, string destinationPath, CancellationToken cancellationToken = default(CancellationToken));
+        Task<int> CopyFileFromPodAsync(V1Pod pod, string container, string sourceFilePath, string destinationFilePath, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Copy a file from a node into the local machine.
@@ -41,10 +41,10 @@ namespace k8s
         /// <param name="container">
         /// The container in which the source file exist.
         /// </param>
-        /// <param name="sourcePath">
+        /// <param name="sourceFilePath">
         /// The source file path.
         /// </param>
-        /// <param name="destinationPath">
+        /// <param name="destinationFilePath">
         /// The destination file path.
         /// </param>
         /// <param name="cancellationToken">
@@ -53,6 +53,6 @@ namespace k8s
         /// <returns>
         /// A <see cref="Task"/> which represents the asynchronous operation.
         /// </returns>
-        Task CopyFileFromPod(string name, string @namespace, string container, string sourceFilePath, string destinationFilePath, CancellationToken cancellationToken = default(CancellationToken));
+        Task<int> CopyFileFromPodAsync(string name, string @namespace, string container, string sourceFilePath, string destinationFilePath, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
