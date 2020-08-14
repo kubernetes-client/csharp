@@ -2,8 +2,8 @@ using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
 using ICSharpCode.SharpZipLib.GZip;
 using ICSharpCode.SharpZipLib.Tar;
 using k8s.Models;
@@ -77,7 +77,10 @@ namespace k8s
                 }
             });
 
-            return await NamespacedPodExecAsync(name, @namespace, container, new string[] { "sh", "-c", $"tar cz {sourceFilePath} | base64" }, false, handler, cancellationToken).ConfigureAwait(false);
+            var sourceFileInfo = new FileInfo(sourceFilePath);
+            var sourceFolder = GetFolderName(sourceFilePath);
+
+            return await NamespacedPodExecAsync(name, @namespace, container, new string[] { "sh", "-c", $"tar czf - -C {sourceFolder} {sourceFileInfo.Name} | base64" }, false, handler, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<int> CopyFileToPodAsync(V1Pod pod, string container, string sourcePath, string destinationPath, CancellationToken cancellationToken = default(CancellationToken))
@@ -163,13 +166,7 @@ namespace k8s
                 }
             });
 
-            var destinationFileInfo = new FileInfo(destinationFilePath);
-            var destinationFolder = Path.GetDirectoryName(destinationFilePath);
-
-            if (string.IsNullOrEmpty(destinationFolder))
-            {
-                destinationFolder = ".";
-            }
+            var destinationFolder = GetFolderName(destinationFilePath);
 
             return await NamespacedPodExecAsync(
                 name,
@@ -179,6 +176,13 @@ namespace k8s
                 false,
                 handler,
                 cancellationToken).ConfigureAwait(false);
+        }
+
+        private string GetFolderName(string filePath)
+        {
+            var folderName = Path.GetDirectoryName(filePath);
+
+            return string.IsNullOrEmpty(folderName) ? "." : folderName;
         }
     }
 }
