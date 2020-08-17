@@ -16,28 +16,20 @@ namespace k8s
         ** /!\ Requires that the 'tar' binary is present in your container
         ** image. If 'tar' is not present, the copy will fail. /!\
         *******************************************************************/
-        public async Task<int> CopyFileFromPodAsync(V1Pod pod, string container, string sourcePath, string destinationPath, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<int> CopyFileFromPodAsync(V1Pod pod, string container, string sourceFilePath, string destinationFilePath, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (pod == null)
             {
                 throw new ArgumentNullException(nameof(pod));
             }
 
-            return await CopyFileFromPodAsync(pod.Metadata.Name, pod.Metadata.NamespaceProperty, container, sourcePath, destinationPath, cancellationToken).ConfigureAwait(false);
+            return await CopyFileFromPodAsync(pod.Metadata.Name, pod.Metadata.NamespaceProperty, container, sourceFilePath, destinationFilePath, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<int> CopyFileFromPodAsync(string name, string @namespace, string container, string sourceFilePath, string destinationFilePath, CancellationToken cancellationToken = default(CancellationToken))
         {
             // All other parameters are being validated by MuxedStreamNamespacedPodExecAsync called by NamespacedPodExecAsync
-            if (string.IsNullOrWhiteSpace(sourceFilePath))
-            {
-                throw new ArgumentException($"{nameof(sourceFilePath)} cannot be null or whitespace");
-            }
-
-            if (string.IsNullOrWhiteSpace(destinationFilePath))
-            {
-                throw new ArgumentException($"{nameof(destinationFilePath)} cannot be null or whitespace");
-            }
+            ValidatePathParameters(sourceFilePath, destinationFilePath);
 
             // The callback which processes the standard input, standard output and standard error of exec method
             var handler = new ExecAsyncCallback(async (stdIn, stdOut, stdError) =>
@@ -96,15 +88,7 @@ namespace k8s
         public async Task<int> CopyFileToPodAsync(string name, string @namespace, string container, string sourceFilePath, string destinationFilePath, CancellationToken cancellationToken = default(CancellationToken))
         {
             // All other parameters are being validated by MuxedStreamNamespacedPodExecAsync called by NamespacedPodExecAsync
-            if (string.IsNullOrWhiteSpace(sourceFilePath))
-            {
-                throw new ArgumentException($"{nameof(sourceFilePath)} cannot be null or whitespace");
-            }
-
-            if (string.IsNullOrWhiteSpace(destinationFilePath))
-            {
-                throw new ArgumentException($"{nameof(destinationFilePath)} cannot be null or whitespace");
-            }
+            ValidatePathParameters(sourceFilePath, destinationFilePath);
 
             // The callback which processes the standard input, standard output and standard error of exec method
             var handler = new ExecAsyncCallback(async (stdIn, stdOut, stdError) =>
@@ -147,7 +131,7 @@ namespace k8s
                         outputStream.Position = 0;
                         using (var cryptoStream = new CryptoStream(stdIn, new ToBase64Transform(), CryptoStreamMode.Write))
                         {
-                            outputStream.CopyTo(cryptoStream);
+                            await outputStream.CopyToAsync(cryptoStream).ConfigureAwait(false);
                         }
                     }
                 }
@@ -178,11 +162,71 @@ namespace k8s
                 cancellationToken).ConfigureAwait(false);
         }
 
+        public async Task<int> CopyDirectoryFromPodAsync(V1Pod pod, string container, string sourceFolderPath, string destinationFolderPath, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (pod == null)
+            {
+                throw new ArgumentNullException(nameof(pod));
+            }
+
+            return await CopyDirectoryFromPodAsync(pod.Metadata.Name, pod.Metadata.NamespaceProperty, container, sourceFolderPath, destinationFolderPath, cancellationToken).ConfigureAwait(false);
+
+        }
+
+        public async Task<int> CopyDirectoryFromPodAsync(string name, string @namespace, string container, string sourceFolderPath, string destinationFolderPath, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // All other parameters are being validated by MuxedStreamNamespacedPodExecAsync called by NamespacedPodExecAsync
+            ValidatePathParameters(sourceFolderPath, destinationFolderPath);
+
+            // The callback which processes the standard input, standard output and standard error of exec method
+            var handler = new ExecAsyncCallback(async (stdIn, stdOut, stdError) =>
+            {
+                using (var errorReader = new StreamReader(stdError))
+                {
+                    if (errorReader.Peek() != -1)
+                    {
+                        var error = await errorReader.ReadToEndAsync().ConfigureAwait(false);
+                        throw new IOException($"Copy command failed: {error}");
+                    }
+                }
+
+                try
+                {
+                    using (var stream = new CryptoStream(stdOut, new FromBase64Transform(), CryptoStreamMode.Read))
+                    using (var gzipStream = new GZipInputStream(stream))
+                    using (var tarArchive = TarArchive.CreateInputTarArchive(gzipStream))
+                    {
+                        tarArchive.ExtractContents(destinationFolderPath);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new IOException($"Copy command failed: {ex.Message}");
+                }
+            });
+
+            return await NamespacedPodExecAsync(name, @namespace, container, new string[] { "sh", "-c", $"tar czf - -C {sourceFolderPath} . | base64" }, false, handler, cancellationToken).ConfigureAwait(false);
+        }
+
         private string GetFolderName(string filePath)
         {
             var folderName = Path.GetDirectoryName(filePath);
 
             return string.IsNullOrEmpty(folderName) ? "." : folderName;
+        }
+
+        private void ValidatePathParameters(string sourcePath, string destinationPath)
+        {
+            if (string.IsNullOrWhiteSpace(sourcePath))
+            {
+                throw new ArgumentException($"{nameof(sourcePath)} cannot be null or whitespace");
+            }
+
+            if (string.IsNullOrWhiteSpace(destinationPath))
+            {
+                throw new ArgumentException($"{nameof(destinationPath)} cannot be null or whitespace");
+            }
+
         }
     }
 }
