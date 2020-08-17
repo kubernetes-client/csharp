@@ -72,17 +72,24 @@ namespace k8s
             var sourceFileInfo = new FileInfo(sourceFilePath);
             var sourceFolder = GetFolderName(sourceFilePath);
 
-            return await NamespacedPodExecAsync(name, @namespace, container, new string[] { "sh", "-c", $"tar czf - -C {sourceFolder} {sourceFileInfo.Name} | base64" }, false, handler, cancellationToken).ConfigureAwait(false);
+            return await NamespacedPodExecAsync(
+                name,
+                @namespace,
+                container,
+                new string[] { "sh", "-c", $"tar czf - -C {sourceFolder} {sourceFileInfo.Name} | base64" },
+                false,
+                handler,
+                cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<int> CopyFileToPodAsync(V1Pod pod, string container, string sourcePath, string destinationPath, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<int> CopyFileToPodAsync(V1Pod pod, string container, string sourceFilePath, string destinationFilePath, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (pod == null)
             {
                 throw new ArgumentNullException(nameof(pod));
             }
 
-            return await CopyFileToPodAsync(pod.Metadata.Name, pod.Metadata.NamespaceProperty, container, sourcePath, destinationPath, cancellationToken).ConfigureAwait(false);
+            return await CopyFileToPodAsync(pod.Metadata.Name, pod.Metadata.NamespaceProperty, container, sourceFilePath, destinationFilePath, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<int> CopyFileToPodAsync(string name, string @namespace, string container, string sourceFilePath, string destinationFilePath, CancellationToken cancellationToken = default(CancellationToken))
@@ -205,7 +212,103 @@ namespace k8s
                 }
             });
 
-            return await NamespacedPodExecAsync(name, @namespace, container, new string[] { "sh", "-c", $"tar czf - -C {sourceFolderPath} . | base64" }, false, handler, cancellationToken).ConfigureAwait(false);
+            return await NamespacedPodExecAsync(
+                name,
+                @namespace,
+                container,
+                new string[] { "sh", "-c", $"tar czf - -C {sourceFolderPath} . | base64" },
+                false,
+                handler,
+                cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<int> CopyDirectoryToPodAsync(V1Pod pod, string container, string sourceDirectoryPath, string destinationDirectoyPath, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (pod == null)
+            {
+                throw new ArgumentNullException(nameof(pod));
+            }
+
+            return await CopyFileToPodAsync(pod.Metadata.Name, pod.Metadata.NamespaceProperty, container, sourceDirectoryPath, destinationDirectoyPath, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<int> CopyDirectoryToPodAsync(string name, string @namespace, string container, string sourceDirectoryPath, string destinationDirectoryPath, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // All other parameters are being validated by MuxedStreamNamespacedPodExecAsync called by NamespacedPodExecAsync
+            ValidatePathParameters(sourceDirectoryPath, destinationDirectoryPath);
+
+            // The callback which processes the standard input, standard output and standard error of exec method
+            var handler = new ExecAsyncCallback(async (stdIn, stdOut, stdError) =>
+            {
+                try
+                {
+                    using (var outputStream = new MemoryStream())
+                    {
+                        using (var gZipOutputStream = new GZipOutputStream(outputStream))
+                        using (var tarArchive = TarArchive.CreateOutputTarArchive(gZipOutputStream))
+                        {
+                            // To avoid gZipOutputStream to close the memoryStream
+                            gZipOutputStream.IsStreamOwner = false;
+
+                            // RootPath must be forward slashes and must not end with a slash
+                            tarArchive.RootPath = sourceDirectoryPath.Replace('\\', '/');
+                            if (tarArchive.RootPath.EndsWith("/", StringComparison.InvariantCulture))
+                            {
+                                tarArchive.RootPath = tarArchive.RootPath.Remove(tarArchive.RootPath.Length - 1);
+                            }
+
+                            AddDirectoryFilesToTar(tarArchive, sourceDirectoryPath);
+                        }
+
+                        outputStream.Position = 0;
+                        using (var cryptoStream = new CryptoStream(stdIn, new ToBase64Transform(), CryptoStreamMode.Write))
+                        {
+                            await outputStream.CopyToAsync(cryptoStream).ConfigureAwait(false);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new IOException($"Copy command failed: {ex.Message}");
+                }
+
+                using (var errorReader = new StreamReader(stdError))
+                {
+                    if (errorReader.Peek() != -1)
+                    {
+                        var error = await errorReader.ReadToEndAsync().ConfigureAwait(false);
+                        throw new IOException($"Copy command failed: {error}");
+                    }
+                }
+            });
+
+            return await NamespacedPodExecAsync(
+                name,
+                @namespace,
+                container,
+                new string[] { "sh", "-c", $"base64 -d | tar xzmf - -C {destinationDirectoryPath}" },
+                false,
+                handler,
+                cancellationToken).ConfigureAwait(false);
+        }
+
+        private void AddDirectoryFilesToTar(TarArchive tarArchive, string sourceDirectoryPath)
+        {
+            var tarEntry = TarEntry.CreateEntryFromFile(sourceDirectoryPath);
+            tarArchive.WriteEntry(tarEntry, false);
+
+            var filenames = Directory.GetFiles(sourceDirectoryPath);
+            for (var i = 0; i < filenames.Length; i++)
+            {
+                tarEntry = TarEntry.CreateEntryFromFile(filenames[i]);
+                tarArchive.WriteEntry(tarEntry, true);
+            }
+
+            var directories = Directory.GetDirectories(sourceDirectoryPath);
+            for (var i = 0; i < directories.Length; i++)
+            {
+                AddDirectoryFilesToTar(tarArchive, directories[i]);
+            }
         }
 
         private string GetFolderName(string filePath)
