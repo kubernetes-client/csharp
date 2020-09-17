@@ -495,22 +495,22 @@ namespace k8s
                         $"external exec failed because api version {responseObject.ApiVersion} does not match {config.ApiVersion}");
                 }
 
-                if (responseObject.Status.ContainsKey("token")) 
+                if (responseObject.Status.ContainsKey("token"))
                 {
                     clientCertificateData = clientKeyData = null;
                     token = responseObject.Status["token"];
-                } 
-                else if (responseObject.Status.ContainsKey("clientCertificateData")) 
+                }
+                else if (responseObject.Status.ContainsKey("clientCertificateData"))
                 {
-                    if (!responseObject.Status.ContainsKey("clientKeyData")) 
+                    if (!responseObject.Status.ContainsKey("clientKeyData"))
                     {
                         throw new KubeConfigException($"external exec failed missing clientKeyData field in plugin output");
                     }
                     token = null;
                     clientCertificateData = responseObject.Status["clientCertificateData"];
                     clientKeyData = responseObject.Status["clientKeyData"];
-                } 
-                else 
+                }
+                else
                 {
                     throw new KubeConfigException($"external exec failed missing token or clientCertificateData field in plugin output");
                 }
