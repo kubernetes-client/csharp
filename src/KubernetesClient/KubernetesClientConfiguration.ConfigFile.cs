@@ -389,8 +389,10 @@ namespace k8s
                     throw new KubeConfigException("External command execution missing ApiVersion key");
                 }
 
-                var token = ExecuteExternalCommand(userDetails.UserCredentials.ExternalExecution);
-                AccessToken = token;
+                var (accessToken, clientCertificateData, clientCertificateKeyData) = ExecuteExternalCommand(userDetails.UserCredentials.ExternalExecution);
+                AccessToken = accessToken;
+                ClientCertificateData = clientCertificateData;
+                ClientCertificateKeyData = clientCertificateKeyData;
 
                 userCredentialsFound = true;
             }
@@ -458,8 +460,10 @@ namespace k8s
         /// https://github.com/kubernetes-client/python-base/blob/master/config/exec_provider.py
         /// </summary>
         /// <param name="config">The external command execution configuration</param>
-        /// <returns>The token received from the external command execution</returns>
-        public static string ExecuteExternalCommand(ExternalExecution config)
+        /// <returns>
+        /// The token, client certificate data, and the client key data received from the external command execution
+        /// </returns>
+        public static (string, string, string) ExecuteExternalCommand(ExternalExecution config)
         {
             var process = CreateRunnableExternalProcess(config);
 
@@ -491,7 +495,22 @@ namespace k8s
                         $"external exec failed because api version {responseObject.ApiVersion} does not match {config.ApiVersion}");
                 }
 
-                return responseObject.Status["token"];
+                if (responseObject.Status.ContainsKey("token"))
+                {
+                    return (responseObject.Status["token"], null, null);
+                }
+                else if (responseObject.Status.ContainsKey("clientCertificateData"))
+                {
+                    if (!responseObject.Status.ContainsKey("clientKeyData"))
+                    {
+                        throw new KubeConfigException($"external exec failed missing clientKeyData field in plugin output");
+                    }
+                    return (null, responseObject.Status["clientCertificateData"], responseObject.Status["clientKeyData"]);
+                }
+                else
+                {
+                    throw new KubeConfigException($"external exec failed missing token or clientCertificateData field in plugin output");
+                }
             }
             catch (JsonSerializationException ex)
             {
