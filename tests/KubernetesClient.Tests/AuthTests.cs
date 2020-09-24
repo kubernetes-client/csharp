@@ -349,7 +349,7 @@ namespace k8s.Tests
 
                 if (header != expect)
                 {
-                    cxt.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
+                    cxt.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                     return Task.FromResult(false);
                 }
 
@@ -494,7 +494,7 @@ namespace k8s.Tests
                 var arguments = new string[] { };
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
-                    arguments = new [] { "/c", "echo", responseJson };
+                    arguments = new[] { "/c", "echo", responseJson };
                 }
 
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ||
