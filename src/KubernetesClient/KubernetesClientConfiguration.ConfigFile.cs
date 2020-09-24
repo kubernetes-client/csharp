@@ -394,8 +394,8 @@ namespace k8s
                 // When reading ClientCertificateData from a config file it will be base64 encoded, and code later in the system (see CertUtils.GeneratePfx)
                 // expects ClientCertificateData and ClientCertificateKeyData to be base64 encoded because of this. However the string returned by external
                 // auth providers is the raw certificate and key PEM text, so we need to take that and base64 encoded it here so it can be decoded later.
-                ClientCertificateData = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(clientCertificateData));
-                ClientCertificateKeyData = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(clientCertificateKeyData));
+                ClientCertificateData = clientCertificateData == null ? null : Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(clientCertificateData));
+                ClientCertificateKeyData = clientCertificateKeyData == null ? null : Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(clientCertificateKeyData));
 
                 userCredentialsFound = true;
             }
