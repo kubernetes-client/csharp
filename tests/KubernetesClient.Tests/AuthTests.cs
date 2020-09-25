@@ -431,12 +431,15 @@ namespace k8s.Tests
                     arguments = ($"/c echo {responseJson}").Split(" ");
                 }
 
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ||
-                    RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 {
                     arguments = new[] { responseJson.Replace("\"", "\\\"") };
                 }
 
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    arguments = new[] { "\"%s\"", responseJson.Replace("\"", "\\\"") };
+                }
 
                 var users = new List<User>
                 {
