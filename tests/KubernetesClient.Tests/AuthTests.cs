@@ -342,19 +342,19 @@ namespace k8s.Tests
             const string name = "testing_irrelevant";
 
             using (var server = new MockKubeApiServer(testOutput, cxt =>
-            {
-                var header = cxt.Request.Headers["Authorization"].FirstOrDefault();
+             {
+                 var header = cxt.Request.Headers["Authorization"].FirstOrDefault();
 
-                var expect = new AuthenticationHeaderValue("Bearer", token).ToString();
+                 var expect = new AuthenticationHeaderValue("Bearer", token).ToString();
 
-                if (header != expect)
-                {
-                    cxt.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                    return Task.FromResult(false);
-                }
+                 if (header != expect)
+                 {
+                     cxt.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                     return Task.FromResult(false);
+                 }
 
-                return Task.FromResult(true);
-            }))
+                 return Task.FromResult(true);
+             }))
             {
                 {
 
@@ -497,12 +497,15 @@ namespace k8s.Tests
                     arguments = new[] { "/c", "echo", responseJson };
                 }
 
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ||
-                    RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 {
-                    arguments = new[] { responseJson };
+                    arguments = new[] { responseJson.Replace("\"", "\\\"") };
                 }
 
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    arguments = new[] { "\"%s\"", responseJson.Replace("\"", "\\\"") };
+                }
 
                 var users = new List<User>
                 {
