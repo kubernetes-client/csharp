@@ -270,60 +270,44 @@ namespace k8s.Tests
 
 #endif // NETCOREAPP2_1
 
-#if NETSTANDARD2_0
         [Fact]
         public void ExternalToken()
         {
-            const string token
- = "testingtoken";
-            const string name
- = "testing_irrelevant";
+            const string token = "testingtoken";
+            const string name = "testing_irrelevant";
 
-            using (var server
- = new MockKubeApiServer(testOutput, cxt =>
-            {
-                var header
- = cxt.Request.Headers["Authorization"].FirstOrDefault();
+            using (var server = new MockKubeApiServer(testOutput, cxt =>
+             {
+                 var header = cxt.Request.Headers["Authorization"].FirstOrDefault();
 
-                var expect
- = new AuthenticationHeaderValue("Bearer", token).ToString();
+                 var expect = new AuthenticationHeaderValue("Bearer", token).ToString();
 
-                if (header != expect)
-                {
-                    cxt.Response.StatusCode
- = (int) HttpStatusCode.Unauthorized;
-                    return Task.FromResult(false);
-                }
+                 if (header != expect)
+                 {
+                     cxt.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                     return Task.FromResult(false);
+                 }
 
-                return Task.FromResult(true);
-            }))
+                 return Task.FromResult(true);
+             }))
             {
                 {
-                    var kubernetesConfig
- = GetK8SConfiguration(server.Uri.ToString(), token, name);
-                    var clientConfig
- = KubernetesClientConfiguration.BuildConfigFromConfigObject(kubernetesConfig, name);
-                    var client
- = new Kubernetes(clientConfig);
-                    var listTask
- = ExecuteListPods(client);
+                    var kubernetesConfig = GetK8SConfiguration(server.Uri.ToString(), token, name);
+                    var clientConfig = KubernetesClientConfiguration.BuildConfigFromConfigObject(kubernetesConfig, name);
+                    var client = new Kubernetes(clientConfig);
+                    var listTask = ExecuteListPods(client);
                     Assert.True(listTask.Response.IsSuccessStatusCode);
                     Assert.Equal(1, listTask.Body.Items.Count);
                 }
                 {
-                    var kubernetesConfig
- = GetK8SConfiguration(server.Uri.ToString(), "wrong token", name);
-                    var clientConfig
- = KubernetesClientConfiguration.BuildConfigFromConfigObject(kubernetesConfig, name);
-                    var client
- = new Kubernetes(clientConfig);
-                    var listTask
- = ExecuteListPods(client);
+                    var kubernetesConfig = GetK8SConfiguration(server.Uri.ToString(), "wrong token", name);
+                    var clientConfig = KubernetesClientConfiguration.BuildConfigFromConfigObject(kubernetesConfig, name);
+                    var client = new Kubernetes(clientConfig);
+                    var listTask = ExecuteListPods(client);
                     Assert.Equal(HttpStatusCode.Unauthorized, listTask.Response.StatusCode);
                 }
             }
         }
-#endif // NETSTANDARD2_0
 
         [Fact]
         public void Token()
@@ -447,12 +431,15 @@ namespace k8s.Tests
                     arguments = ($"/c echo {responseJson}").Split(" ");
                 }
 
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ||
-                    RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 {
-                    arguments = new[] { responseJson };
+                    arguments = new[] { responseJson.Replace("\"", "\\\"") };
                 }
 
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    arguments = new[] { "\"%s\"", responseJson.Replace("\"", "\\\"") };
+                }
 
                 var users = new List<User>
                 {
