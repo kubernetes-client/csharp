@@ -268,6 +268,71 @@ namespace k8s.Tests
             }
         }
 
+        [OperatingSystemDependentFact(Exclude = OperatingSystem.OSX | OperatingSystem.Windows)]
+        public void ExternalCertificate()
+        {
+            const string name = "testing_irrelevant";
+
+            var serverCertificateData = Convert.FromBase64String(File.ReadAllText("assets/apiserver-pfx-data.txt"));
+
+            var clientCertificateKeyData = Convert.FromBase64String(File.ReadAllText("assets/client-key-data.txt"));
+            var clientCertificateData = Convert.FromBase64String(File.ReadAllText("assets/client-certificate-data.txt"));
+
+            X509Certificate2 serverCertificate = null;
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                using (MemoryStream serverCertificateStream = new MemoryStream(serverCertificateData))
+                {
+                    serverCertificate = OpenCertificateStore(serverCertificateStream);
+                }
+            }
+            else
+            {
+                serverCertificate = new X509Certificate2(serverCertificateData, "");
+            }
+
+            var clientCertificate = new X509Certificate2(clientCertificateData, "");
+
+            var clientCertificateValidationCalled = false;
+
+            using (var server = new MockKubeApiServer(testOutput, listenConfigure: options =>
+            {
+                options.UseHttps(new HttpsConnectionAdapterOptions
+                {
+                    ServerCertificate = serverCertificate,
+                    ClientCertificateMode = ClientCertificateMode.RequireCertificate,
+                    ClientCertificateValidation = (certificate, chain, valid) =>
+                    {
+                        clientCertificateValidationCalled = true;
+                        return clientCertificate.Equals(certificate);
+                    },
+                });
+            }))
+            {
+                {
+                    var clientCertificateText = Encoding.ASCII.GetString(clientCertificateData).Replace("\n", "\\n");
+                    var clientCertificateKeyText = Encoding.ASCII.GetString(clientCertificateKeyData).Replace("\n", "\\n");
+                    var responseJson = $"{{\"apiVersion\":\"testingversion\",\"status\":{{\"clientCertificateData\":\"{clientCertificateText}\",\"clientKeyData\":\"{clientCertificateKeyText}\"}}}}";
+                    var kubernetesConfig = GetK8SConfiguration(server.Uri.ToString(), responseJson, name);
+                    var clientConfig = KubernetesClientConfiguration.BuildConfigFromConfigObject(kubernetesConfig, name);
+                    var client = new Kubernetes(clientConfig);
+                    var listTask = ExecuteListPods(client);
+                    Assert.True(listTask.Response.IsSuccessStatusCode);
+                    Assert.Equal(1, listTask.Body.Items.Count);
+                }
+                {
+                    var clientCertificateText = File.ReadAllText("assets/client.crt").Replace("\n", "\\n");
+                    var clientCertificateKeyText = File.ReadAllText("assets/client.key").Replace("\n", "\\n");
+                    var responseJson = $"{{\"apiVersion\":\"testingversion\",\"status\":{{\"clientCertificateData\":\"{clientCertificateText}\",\"clientKeyData\":\"{clientCertificateKeyText}\"}}}}";
+                    var kubernetesConfig = GetK8SConfiguration(server.Uri.ToString(), responseJson, name);
+                    var clientConfig = KubernetesClientConfiguration.BuildConfigFromConfigObject(kubernetesConfig, name);
+                    var client = new Kubernetes(clientConfig);
+                    Assert.ThrowsAny<Exception>(() => ExecuteListPods(client));
+                    Assert.True(clientCertificateValidationCalled);
+                }
+            }
+        }
 #endif // NETCOREAPP2_1
 
         [Fact]
@@ -292,7 +357,9 @@ namespace k8s.Tests
              }))
             {
                 {
-                    var kubernetesConfig = GetK8SConfiguration(server.Uri.ToString(), token, name);
+
+                    var responseJson = $"{{\"apiVersion\":\"testingversion\",\"status\":{{\"token\":\"{token}\"}}}}";
+                    var kubernetesConfig = GetK8SConfiguration(server.Uri.ToString(), responseJson, name);
                     var clientConfig = KubernetesClientConfiguration.BuildConfigFromConfigObject(kubernetesConfig, name);
                     var client = new Kubernetes(clientConfig);
                     var listTask = ExecuteListPods(client);
@@ -300,7 +367,8 @@ namespace k8s.Tests
                     Assert.Equal(1, listTask.Body.Items.Count);
                 }
                 {
-                    var kubernetesConfig = GetK8SConfiguration(server.Uri.ToString(), "wrong token", name);
+                    var responseJson = "{\"apiVersion\":\"testingversion\",\"status\":{\"token\":\"wrong_token\"}}";
+                    var kubernetesConfig = GetK8SConfiguration(server.Uri.ToString(), responseJson, name);
                     var clientConfig = KubernetesClientConfiguration.BuildConfigFromConfigObject(kubernetesConfig, name);
                     var client = new Kubernetes(clientConfig);
                     var listTask = ExecuteListPods(client);
@@ -398,7 +466,7 @@ namespace k8s.Tests
             return certificate;
         }
 
-        private K8SConfiguration GetK8SConfiguration(string serverUri, string token, string name)
+        private K8SConfiguration GetK8SConfiguration(string serverUri, string responseJson, string name)
         {
             const string username = "testinguser";
 
@@ -406,8 +474,6 @@ namespace k8s.Tests
             {
                 new Context {Name = name, ContextDetails = new ContextDetails {Cluster = name, User = username } },
             };
-
-            var responseJson = $"{{\"apiVersion\": \"testingversion\", \"status\": {{\"token\": \"{token}\"}}}}";
 
             {
                 var clusters = new List<Cluster>
@@ -428,7 +494,7 @@ namespace k8s.Tests
                 var arguments = new string[] { };
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
-                    arguments = ($"/c echo {responseJson}").Split(" ");
+                    arguments = new[] { "/c", "echo", responseJson };
                 }
 
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
