@@ -18,6 +18,42 @@ namespace k8s
     /// </summary>
     public static class Yaml
     {
+        public class ByteArrayStringYamlConverter : IYamlTypeConverter
+        {
+            public bool Accepts(Type type)
+            {
+                return type == typeof(System.Byte[]);
+            }
+
+            public object ReadYaml(IParser parser, Type type)
+            {
+                if (parser.Current is YamlDotNet.Core.Events.Scalar scalar)
+                {
+                    try
+                    {
+                        if (string.IsNullOrEmpty(scalar.Value))
+                        {
+                            return null;
+                        }
+
+                        return Encoding.UTF8.GetBytes(scalar.Value);
+                    }
+                    finally
+                    {
+                        parser.MoveNext();
+                    }
+                }
+
+                throw new InvalidOperationException(parser.Current?.ToString());
+            }
+
+            public void WriteYaml(IEmitter emitter, object value, Type type)
+            {
+                var obj = (System.Byte[])value;
+                emitter.Emit(new YamlDotNet.Core.Events.Scalar(Encoding.UTF8.GetString(obj)));
+            }
+        }
+
         /// <summary>
         /// Load a collection of objects from a stream asynchronously
         /// </summary>
@@ -65,6 +101,7 @@ namespace k8s
                     .WithNamingConvention(new CamelCaseNamingConvention())
                     .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
                     .WithTypeConverter(new IntOrStringYamlConverter())
+                    .WithTypeConverter(new ByteArrayStringYamlConverter())
                     .IgnoreUnmatchedProperties()
                     .Build();
             var types = new List<Type>();
@@ -81,6 +118,7 @@ namespace k8s
                     .WithNamingConvention(new CamelCaseNamingConvention())
                     .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
                     .WithTypeConverter(new IntOrStringYamlConverter())
+                    .WithTypeConverter(new ByteArrayStringYamlConverter())
                     .Build();
             parser = new Parser(new StringReader(content));
             parser.Expect<StreamStart>();
@@ -118,6 +156,7 @@ namespace k8s
                     .WithNamingConvention(new CamelCaseNamingConvention())
                     .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
                     .WithTypeConverter(new IntOrStringYamlConverter())
+                    .WithTypeConverter(new ByteArrayStringYamlConverter())
                     .Build();
             var obj = deserializer.Deserialize<T>(content);
             return obj;
@@ -135,6 +174,7 @@ namespace k8s
                     .WithNamingConvention(new CamelCaseNamingConvention())
                     .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
                     .WithTypeConverter(new IntOrStringYamlConverter())
+                    .WithTypeConverter(new ByteArrayStringYamlConverter())
                     .WithEventEmitter(e => new StringQuotingEmitter(e))
                     .BuildValueSerializer();
             emitter.Emit(new StreamStart());

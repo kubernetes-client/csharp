@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using k8s;
+using System.Text;
 using k8s.Models;
 using Xunit;
 
@@ -320,6 +320,24 @@ spec:
             Assert.NotNull(container.Env);
             var objStr = Yaml.SaveToString(obj);
             Assert.Equal(content, objStr);
+        }
+
+        [Fact]
+        public void LoadSecret()
+        {
+            string kManifest = @"
+apiVersion: v1
+kind: Secret
+metadata:
+  name: test-secret
+data:
+  username: bXktYXBw
+  password: Mzk1MjgkdmRnN0pi
+";
+
+            var result = Yaml.LoadFromString<V1Secret>(kManifest);
+            Assert.Equal(Encoding.UTF8.GetString(result.Data["username"]), "bXktYXBw");
+            Assert.Equal(Encoding.UTF8.GetString(result.Data["password"]), "Mzk1MjgkdmRnN0pi");
         }
     }
 }
