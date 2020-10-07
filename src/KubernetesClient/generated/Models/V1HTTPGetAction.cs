@@ -38,7 +38,7 @@ namespace k8s.Models
         /// <param name="path">Path to access on the HTTP server.</param>
         /// <param name="scheme">Scheme to use for connecting to the host.
         /// Defaults to HTTP.</param>
-        public V1HTTPGetAction(IntstrIntOrString port, string host = default(string), IList<V1HTTPHeader> httpHeaders = default(IList<V1HTTPHeader>), string path = default(string), string scheme = default(string))
+        public V1HTTPGetAction(string port, string host = default(string), IList<V1HTTPHeader> httpHeaders = default(IList<V1HTTPHeader>), string path = default(string), string scheme = default(string))
         {
             Host = host;
             HttpHeaders = httpHeaders;
@@ -79,7 +79,7 @@ namespace k8s.Models
         /// IANA_SVC_NAME.
         /// </summary>
         [JsonProperty(PropertyName = "port")]
-        public IntstrIntOrString Port { get; set; }
+        public string Port { get; set; }
 
         /// <summary>
         /// Gets or sets scheme to use for connecting to the host. Defaults to

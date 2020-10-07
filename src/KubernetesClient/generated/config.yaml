@@ -1,0 +1,26 @@
+csharp:
+  directive:
+    - from: swagger-document
+      where: '$..*[?(@.consumes[0] === "*/*")]'
+      transform:
+      - '$.consumes[0] = "application/json"'
+    - from: swagger-document
+      where: '$..*[?(@.operationId === "readNamespacedPodLog")]'
+      transform:
+      - '$.responses["200"].schema = { "type": "object", "format": "file" }'
+    - from: swagger-document
+      where: '$..*[?(@["x-kubernetes-action"]=== "proxy")]'
+      transform:
+      - '$.responses["200"].schema = { "type": "object", "format": "file" }'
+    - from: swagger-document
+      where: '$.definitions'
+      transform:
+      - '$["intstr.IntOrString"] = {"properties": { "value": { "type": "string" }}}'
+    - from: swagger-document
+      where: '$.definitions'
+      transform:
+      - '$["resource.Quantity"] = {"properties": { "value": { "type": "string" }}}'
+    - from: swagger-document
+      where: "$.definitions"
+      transform:
+      - '$["v1.Patch"] = {"properties": { "content": { "type": "object" }}}'

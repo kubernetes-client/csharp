@@ -38,7 +38,7 @@ namespace k8s.Models
         /// the PodsMetricSource, it is passed as an additional parameter to
         /// the metrics server for more specific metrics scoping. When unset,
         /// just the metricName will be used to gather metrics.</param>
-        public V2beta1PodsMetricStatus(ResourceQuantity currentAverageValue, string metricName, V1LabelSelector selector = default(V1LabelSelector))
+        public V2beta1PodsMetricStatus(string currentAverageValue, string metricName, V1LabelSelector selector = default(V1LabelSelector))
         {
             CurrentAverageValue = currentAverageValue;
             MetricName = metricName;
@@ -56,7 +56,7 @@ namespace k8s.Models
         /// average of the metric across all relevant pods (as a quantity)
         /// </summary>
         [JsonProperty(PropertyName = "currentAverageValue")]
-        public ResourceQuantity CurrentAverageValue { get; set; }
+        public string CurrentAverageValue { get; set; }
 
         /// <summary>
         /// Gets or sets metricName is the name of the metric in question

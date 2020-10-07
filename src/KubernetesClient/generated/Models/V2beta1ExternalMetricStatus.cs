@@ -37,7 +37,7 @@ namespace k8s.Models
         /// current value of metric averaged over autoscaled pods.</param>
         /// <param name="metricSelector">metricSelector is used to identify a
         /// specific time series within a given metric.</param>
-        public V2beta1ExternalMetricStatus(ResourceQuantity currentValue, string metricName, ResourceQuantity currentAverageValue = default(ResourceQuantity), V1LabelSelector metricSelector = default(V1LabelSelector))
+        public V2beta1ExternalMetricStatus(string currentValue, string metricName, string currentAverageValue = default(string), V1LabelSelector metricSelector = default(V1LabelSelector))
         {
             CurrentAverageValue = currentAverageValue;
             CurrentValue = currentValue;
@@ -56,14 +56,14 @@ namespace k8s.Models
         /// averaged over autoscaled pods.
         /// </summary>
         [JsonProperty(PropertyName = "currentAverageValue")]
-        public ResourceQuantity CurrentAverageValue { get; set; }
+        public string CurrentAverageValue { get; set; }
 
         /// <summary>
         /// Gets or sets currentValue is the current value of the metric (as a
         /// quantity)
         /// </summary>
         [JsonProperty(PropertyName = "currentValue")]
-        public ResourceQuantity CurrentValue { get; set; }
+        public string CurrentValue { get; set; }
 
         /// <summary>
         /// Gets or sets metricName is the name of a metric used for

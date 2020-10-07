@@ -35,7 +35,7 @@ namespace k8s.Models
         /// service.</param>
         /// <param name="servicePort">Specifies the port of the referenced
         /// service.</param>
-        public Extensionsv1beta1IngressBackend(V1TypedLocalObjectReference resource = default(V1TypedLocalObjectReference), string serviceName = default(string), IntstrIntOrString servicePort = default(IntstrIntOrString))
+        public Extensionsv1beta1IngressBackend(V1TypedLocalObjectReference resource = default(V1TypedLocalObjectReference), string serviceName = default(string), string servicePort = default(string))
         {
             Resource = resource;
             ServiceName = serviceName;
@@ -66,7 +66,7 @@ namespace k8s.Models
         /// Gets or sets specifies the port of the referenced service.
         /// </summary>
         [JsonProperty(PropertyName = "servicePort")]
-        public IntstrIntOrString ServicePort { get; set; }
+        public string ServicePort { get; set; }
 
         /// <summary>
         /// Validate the object.

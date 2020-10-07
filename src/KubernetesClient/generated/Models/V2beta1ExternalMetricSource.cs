@@ -41,7 +41,7 @@ namespace k8s.Models
         /// <param name="targetValue">targetValue is the target value of the
         /// metric (as a quantity). Mutually exclusive with
         /// TargetAverageValue.</param>
-        public V2beta1ExternalMetricSource(string metricName, V1LabelSelector metricSelector = default(V1LabelSelector), ResourceQuantity targetAverageValue = default(ResourceQuantity), ResourceQuantity targetValue = default(ResourceQuantity))
+        public V2beta1ExternalMetricSource(string metricName, V1LabelSelector metricSelector = default(V1LabelSelector), string targetAverageValue = default(string), string targetValue = default(string))
         {
             MetricName = metricName;
             MetricSelector = metricSelector;
@@ -73,14 +73,14 @@ namespace k8s.Models
         /// global metric (as a quantity). Mutually exclusive with TargetValue.
         /// </summary>
         [JsonProperty(PropertyName = "targetAverageValue")]
-        public ResourceQuantity TargetAverageValue { get; set; }
+        public string TargetAverageValue { get; set; }
 
         /// <summary>
         /// Gets or sets targetValue is the target value of the metric (as a
         /// quantity). Mutually exclusive with TargetAverageValue.
         /// </summary>
         [JsonProperty(PropertyName = "targetValue")]
-        public ResourceQuantity TargetValue { get; set; }
+        public string TargetValue { get; set; }
 
         /// <summary>
         /// Validate the object.

@@ -30,7 +30,7 @@ namespace k8s.Models
         /// </summary>
         /// <param name="podFixed">PodFixed represents the fixed resource
         /// overhead associated with running a pod.</param>
-        public V1beta1Overhead(IDictionary<string, ResourceQuantity> podFixed = default(IDictionary<string, ResourceQuantity>))
+        public V1beta1Overhead(IDictionary<string, string> podFixed = default(IDictionary<string, string>))
         {
             PodFixed = podFixed;
             CustomInit();
@@ -46,7 +46,7 @@ namespace k8s.Models
         /// associated with running a pod.
         /// </summary>
         [JsonProperty(PropertyName = "podFixed")]
-        public IDictionary<string, ResourceQuantity> PodFixed { get; set; }
+        public IDictionary<string, string> PodFixed { get; set; }
 
     }
 }

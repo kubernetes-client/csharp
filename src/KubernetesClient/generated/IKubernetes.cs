@@ -11,7 +11,6 @@ namespace k8s
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
-    using System.IO;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -733,16 +732,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -844,11 +833,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -858,7 +842,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedConfigMapWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedConfigMapWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ConfigMap
@@ -1112,7 +1096,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ConfigMap>> PatchNamespacedConfigMapWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ConfigMap>> PatchNamespacedConfigMapWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified ConfigMap
@@ -1153,16 +1137,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -1265,11 +1239,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -1279,7 +1248,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEndpointsWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEndpointsWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Endpoints
@@ -1533,7 +1502,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Endpoints>> PatchNamespacedEndpointsWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Endpoints>> PatchNamespacedEndpointsWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified Endpoints
@@ -1574,16 +1543,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -1686,11 +1645,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -1700,7 +1654,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEventWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEventWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Event
@@ -1954,7 +1908,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Event>> PatchNamespacedEventWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Event>> PatchNamespacedEventWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified Event
@@ -1995,16 +1949,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -2107,11 +2051,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -2121,7 +2060,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedLimitRangeWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedLimitRangeWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind LimitRange
@@ -2375,7 +2314,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1LimitRange>> PatchNamespacedLimitRangeWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1LimitRange>> PatchNamespacedLimitRangeWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified LimitRange
@@ -2416,16 +2355,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -2528,11 +2457,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -2542,7 +2466,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPersistentVolumeClaimWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPersistentVolumeClaimWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PersistentVolumeClaim
@@ -2796,7 +2720,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PersistentVolumeClaim>> PatchNamespacedPersistentVolumeClaimWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PersistentVolumeClaim>> PatchNamespacedPersistentVolumeClaimWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified PersistentVolumeClaim
@@ -2891,7 +2815,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PersistentVolumeClaim>> PatchNamespacedPersistentVolumeClaimStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PersistentVolumeClaim>> PatchNamespacedPersistentVolumeClaimStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified PersistentVolumeClaim
@@ -2932,16 +2856,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -3044,11 +2958,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -3058,7 +2967,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Pod
@@ -3312,7 +3221,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Pod>> PatchNamespacedPodWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Pod>> PatchNamespacedPodWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified Pod
@@ -3638,7 +3547,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Stream>> ReadNamespacedPodLogWithHttpMessagesAsync(string name, string namespaceParameter, string container = default(string), bool? follow = default(bool?), bool? insecureSkipTLSVerifyBackend = default(bool?), int? limitBytes = default(int?), string pretty = default(string), bool? previous = default(bool?), int? sinceSeconds = default(int?), int? tailLines = default(int?), bool? timestamps = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<string>> ReadNamespacedPodLogWithHttpMessagesAsync(string name, string namespaceParameter, string container = default(string), bool? follow = default(bool?), bool? insecureSkipTLSVerifyBackend = default(bool?), int? limitBytes = default(int?), string pretty = default(string), bool? previous = default(bool?), int? sinceSeconds = default(int?), int? tailLines = default(int?), bool? timestamps = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect GET requests to portforward of Pod
@@ -3997,7 +3906,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Pod>> PatchNamespacedPodStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Pod>> PatchNamespacedPodStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified Pod
@@ -4038,16 +3947,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -4150,11 +4049,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -4164,7 +4058,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodTemplateWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodTemplateWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodTemplate
@@ -4418,7 +4312,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PodTemplate>> PatchNamespacedPodTemplateWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PodTemplate>> PatchNamespacedPodTemplateWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified PodTemplate
@@ -4459,16 +4353,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -4571,11 +4455,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -4585,7 +4464,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedReplicationControllerWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedReplicationControllerWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ReplicationController
@@ -4839,7 +4718,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ReplicationController>> PatchNamespacedReplicationControllerWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ReplicationController>> PatchNamespacedReplicationControllerWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified ReplicationController
@@ -4934,7 +4813,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Scale>> PatchNamespacedReplicationControllerScaleWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Scale>> PatchNamespacedReplicationControllerScaleWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace scale of the specified ReplicationController
@@ -5029,7 +4908,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ReplicationController>> PatchNamespacedReplicationControllerStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ReplicationController>> PatchNamespacedReplicationControllerStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified ReplicationController
@@ -5070,16 +4949,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -5182,11 +5051,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -5196,7 +5060,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedResourceQuotaWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedResourceQuotaWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ResourceQuota
@@ -5450,7 +5314,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ResourceQuota>> PatchNamespacedResourceQuotaWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ResourceQuota>> PatchNamespacedResourceQuotaWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified ResourceQuota
@@ -5545,7 +5409,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ResourceQuota>> PatchNamespacedResourceQuotaStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ResourceQuota>> PatchNamespacedResourceQuotaStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified ResourceQuota
@@ -5586,16 +5450,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -5698,11 +5552,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -5712,7 +5561,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedSecretWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedSecretWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Secret
@@ -5966,7 +5815,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Secret>> PatchNamespacedSecretWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Secret>> PatchNamespacedSecretWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified Secret
@@ -6007,16 +5856,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -6119,11 +5958,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -6133,7 +5967,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedServiceAccountWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedServiceAccountWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ServiceAccount
@@ -6387,7 +6221,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ServiceAccount>> PatchNamespacedServiceAccountWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ServiceAccount>> PatchNamespacedServiceAccountWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified ServiceAccount
@@ -6709,7 +6543,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Service>> PatchNamespacedServiceWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Service>> PatchNamespacedServiceWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified Service
@@ -7110,7 +6944,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Service>> PatchNamespacedServiceStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Service>> PatchNamespacedServiceStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified Service
@@ -7257,7 +7091,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Namespace>> PatchNamespaceWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Namespace>> PatchNamespaceWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified Namespace
@@ -7374,7 +7208,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Namespace>> PatchNamespaceStatusWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Namespace>> PatchNamespaceStatusWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified Namespace
@@ -7410,16 +7244,6 @@ namespace k8s
         /// <summary>
         /// delete collection of Node
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -7521,11 +7345,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -7535,7 +7354,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNodeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNodeWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Node
@@ -7774,7 +7593,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Node>> PatchNodeWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Node>> PatchNodeWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified Node
@@ -8082,7 +7901,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Node>> PatchNodeStatusWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Node>> PatchNodeStatusWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified Node
@@ -8216,16 +8035,6 @@ namespace k8s
         /// <summary>
         /// delete collection of PersistentVolume
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -8327,11 +8136,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -8341,7 +8145,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionPersistentVolumeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPersistentVolumeWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PersistentVolume
@@ -8580,7 +8384,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PersistentVolume>> PatchPersistentVolumeWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PersistentVolume>> PatchPersistentVolumeWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified PersistentVolume
@@ -8666,7 +8470,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PersistentVolume>> PatchPersistentVolumeStatusWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PersistentVolume>> PatchPersistentVolumeStatusWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified PersistentVolume
@@ -9421,16 +9225,6 @@ namespace k8s
         /// <summary>
         /// delete collection of MutatingWebhookConfiguration
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -9532,11 +9326,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -9546,7 +9335,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionMutatingWebhookConfigurationWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionMutatingWebhookConfigurationWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind MutatingWebhookConfiguration
@@ -9785,7 +9574,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1MutatingWebhookConfiguration>> PatchMutatingWebhookConfigurationWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1MutatingWebhookConfiguration>> PatchMutatingWebhookConfigurationWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified MutatingWebhookConfiguration
@@ -9821,16 +9610,6 @@ namespace k8s
         /// <summary>
         /// delete collection of ValidatingWebhookConfiguration
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -9932,11 +9711,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -9946,7 +9720,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionValidatingWebhookConfigurationWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionValidatingWebhookConfigurationWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ValidatingWebhookConfiguration
@@ -10185,7 +9959,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ValidatingWebhookConfiguration>> PatchValidatingWebhookConfigurationWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ValidatingWebhookConfiguration>> PatchValidatingWebhookConfigurationWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified ValidatingWebhookConfiguration
@@ -10232,16 +10006,6 @@ namespace k8s
         /// <summary>
         /// delete collection of MutatingWebhookConfiguration
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -10343,11 +10107,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -10357,7 +10116,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionMutatingWebhookConfiguration1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionMutatingWebhookConfiguration1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind MutatingWebhookConfiguration
@@ -10596,7 +10355,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1MutatingWebhookConfiguration>> PatchMutatingWebhookConfiguration1WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1MutatingWebhookConfiguration>> PatchMutatingWebhookConfiguration1WithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified MutatingWebhookConfiguration
@@ -10632,16 +10391,6 @@ namespace k8s
         /// <summary>
         /// delete collection of ValidatingWebhookConfiguration
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -10743,11 +10492,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -10757,7 +10501,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionValidatingWebhookConfiguration1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionValidatingWebhookConfiguration1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ValidatingWebhookConfiguration
@@ -10996,7 +10740,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1ValidatingWebhookConfiguration>> PatchValidatingWebhookConfiguration1WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1ValidatingWebhookConfiguration>> PatchValidatingWebhookConfiguration1WithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified ValidatingWebhookConfiguration
@@ -11054,16 +10798,6 @@ namespace k8s
         /// <summary>
         /// delete collection of CustomResourceDefinition
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -11165,11 +10899,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -11179,7 +10908,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionCustomResourceDefinitionWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCustomResourceDefinitionWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CustomResourceDefinition
@@ -11418,7 +11147,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1CustomResourceDefinition>> PatchCustomResourceDefinitionWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1CustomResourceDefinition>> PatchCustomResourceDefinitionWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified CustomResourceDefinition
@@ -11504,7 +11233,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1CustomResourceDefinition>> PatchCustomResourceDefinitionStatusWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1CustomResourceDefinition>> PatchCustomResourceDefinitionStatusWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified CustomResourceDefinition
@@ -11551,16 +11280,6 @@ namespace k8s
         /// <summary>
         /// delete collection of CustomResourceDefinition
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -11662,11 +11381,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -11676,7 +11390,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionCustomResourceDefinition1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCustomResourceDefinition1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CustomResourceDefinition
@@ -11915,7 +11629,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CustomResourceDefinition>> PatchCustomResourceDefinition1WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CustomResourceDefinition>> PatchCustomResourceDefinition1WithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified CustomResourceDefinition
@@ -12001,7 +11715,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CustomResourceDefinition>> PatchCustomResourceDefinitionStatus1WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CustomResourceDefinition>> PatchCustomResourceDefinitionStatus1WithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified CustomResourceDefinition
@@ -12059,16 +11773,6 @@ namespace k8s
         /// <summary>
         /// delete collection of APIService
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -12170,11 +11874,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -12184,7 +11883,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionAPIServiceWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionAPIServiceWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind APIService
@@ -12423,7 +12122,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIService>> PatchAPIServiceWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIService>> PatchAPIServiceWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified APIService
@@ -12509,7 +12208,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIService>> PatchAPIServiceStatusWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIService>> PatchAPIServiceStatusWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified APIService
@@ -12556,16 +12255,6 @@ namespace k8s
         /// <summary>
         /// delete collection of APIService
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -12667,11 +12356,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -12681,7 +12365,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionAPIService1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionAPIService1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind APIService
@@ -12920,7 +12604,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1APIService>> PatchAPIService1WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1APIService>> PatchAPIService1WithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified APIService
@@ -13006,7 +12690,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1APIService>> PatchAPIServiceStatus1WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1APIService>> PatchAPIServiceStatus1WithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified APIService
@@ -13361,16 +13045,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -13472,11 +13146,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -13486,7 +13155,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedControllerRevisionWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedControllerRevisionWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ControllerRevision
@@ -13740,7 +13409,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ControllerRevision>> PatchNamespacedControllerRevisionWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ControllerRevision>> PatchNamespacedControllerRevisionWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified ControllerRevision
@@ -13781,16 +13450,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -13893,11 +13552,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -13907,7 +13561,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDaemonSetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDaemonSetWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind DaemonSet
@@ -14161,7 +13815,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1DaemonSet>> PatchNamespacedDaemonSetWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1DaemonSet>> PatchNamespacedDaemonSetWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified DaemonSet
@@ -14256,7 +13910,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1DaemonSet>> PatchNamespacedDaemonSetStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1DaemonSet>> PatchNamespacedDaemonSetStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified DaemonSet
@@ -14297,16 +13951,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -14409,11 +14053,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -14423,7 +14062,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDeploymentWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDeploymentWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Deployment
@@ -14677,7 +14316,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Deployment>> PatchNamespacedDeploymentWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Deployment>> PatchNamespacedDeploymentWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified Deployment
@@ -14772,7 +14411,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Scale>> PatchNamespacedDeploymentScaleWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Scale>> PatchNamespacedDeploymentScaleWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace scale of the specified Deployment
@@ -14867,7 +14506,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Deployment>> PatchNamespacedDeploymentStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Deployment>> PatchNamespacedDeploymentStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified Deployment
@@ -14908,16 +14547,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -15020,11 +14649,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -15034,7 +14658,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedReplicaSetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedReplicaSetWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ReplicaSet
@@ -15288,7 +14912,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ReplicaSet>> PatchNamespacedReplicaSetWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ReplicaSet>> PatchNamespacedReplicaSetWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified ReplicaSet
@@ -15383,7 +15007,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Scale>> PatchNamespacedReplicaSetScaleWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Scale>> PatchNamespacedReplicaSetScaleWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace scale of the specified ReplicaSet
@@ -15478,7 +15102,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ReplicaSet>> PatchNamespacedReplicaSetStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ReplicaSet>> PatchNamespacedReplicaSetStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified ReplicaSet
@@ -15519,16 +15143,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -15631,11 +15245,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -15645,7 +15254,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedStatefulSetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedStatefulSetWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind StatefulSet
@@ -15899,7 +15508,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1StatefulSet>> PatchNamespacedStatefulSetWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1StatefulSet>> PatchNamespacedStatefulSetWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified StatefulSet
@@ -15994,7 +15603,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Scale>> PatchNamespacedStatefulSetScaleWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Scale>> PatchNamespacedStatefulSetScaleWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace scale of the specified StatefulSet
@@ -16089,7 +15698,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1StatefulSet>> PatchNamespacedStatefulSetStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1StatefulSet>> PatchNamespacedStatefulSetStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified StatefulSet
@@ -16346,16 +15955,6 @@ namespace k8s
         /// <summary>
         /// delete collection of AuditSink
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -16457,11 +16056,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -16471,7 +16065,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionAuditSinkWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionAuditSinkWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind AuditSink
@@ -16710,7 +16304,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1AuditSink>> PatchAuditSinkWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1AuditSink>> PatchAuditSinkWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified AuditSink
@@ -17221,16 +16815,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -17332,11 +16916,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -17346,7 +16925,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -17600,7 +17179,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified HorizontalPodAutoscaler
@@ -17695,7 +17274,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified HorizontalPodAutoscaler
@@ -17846,16 +17425,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -17957,11 +17526,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -17971,7 +17535,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -18225,7 +17789,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified HorizontalPodAutoscaler
@@ -18320,7 +17884,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerStatus1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerStatus1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified HorizontalPodAutoscaler
@@ -18471,16 +18035,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -18582,11 +18136,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -18596,7 +18145,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -18850,7 +18399,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified HorizontalPodAutoscaler
@@ -18945,7 +18494,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerStatus2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerStatus2WithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified HorizontalPodAutoscaler
@@ -19107,16 +18656,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -19218,11 +18757,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -19232,7 +18766,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedJobWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedJobWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Job
@@ -19486,7 +19020,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Job>> PatchNamespacedJobWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Job>> PatchNamespacedJobWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified Job
@@ -19581,7 +19115,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Job>> PatchNamespacedJobStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Job>> PatchNamespacedJobStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified Job
@@ -19732,16 +19266,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -19843,11 +19367,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -19857,7 +19376,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedCronJobWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedCronJobWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CronJob
@@ -20111,7 +19630,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CronJob>> PatchNamespacedCronJobWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CronJob>> PatchNamespacedCronJobWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified CronJob
@@ -20206,7 +19725,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CronJob>> PatchNamespacedCronJobStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CronJob>> PatchNamespacedCronJobStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified CronJob
@@ -20357,16 +19876,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -20468,11 +19977,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -20482,7 +19986,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedCronJob1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedCronJob1WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CronJob
@@ -20736,7 +20240,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2alpha1CronJob>> PatchNamespacedCronJob1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2alpha1CronJob>> PatchNamespacedCronJob1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified CronJob
@@ -20831,7 +20335,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2alpha1CronJob>> PatchNamespacedCronJobStatus1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2alpha1CronJob>> PatchNamespacedCronJobStatus1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified CronJob
@@ -20892,16 +20396,6 @@ namespace k8s
         /// <summary>
         /// delete collection of CertificateSigningRequest
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -21003,11 +20497,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -21017,7 +20506,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionCertificateSigningRequestWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCertificateSigningRequestWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CertificateSigningRequest
@@ -21256,7 +20745,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> PatchCertificateSigningRequestWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> PatchCertificateSigningRequestWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified CertificateSigningRequest
@@ -21373,7 +20862,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> PatchCertificateSigningRequestStatusWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> PatchCertificateSigningRequestStatusWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified CertificateSigningRequest
@@ -21532,16 +21021,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -21643,11 +21122,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -21657,7 +21131,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedLeaseWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedLeaseWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Lease
@@ -21911,7 +21385,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Lease>> PatchNamespacedLeaseWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Lease>> PatchNamespacedLeaseWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified Lease
@@ -22062,16 +21536,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -22173,11 +21637,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -22187,7 +21646,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedLease1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedLease1WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Lease
@@ -22441,7 +21900,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1Lease>> PatchNamespacedLease1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1Lease>> PatchNamespacedLease1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified Lease
@@ -22603,16 +22062,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -22714,11 +22163,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -22728,7 +22172,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEndpointSliceWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEndpointSliceWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind EndpointSlice
@@ -22982,7 +22426,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1EndpointSlice>> PatchNamespacedEndpointSliceWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1EndpointSlice>> PatchNamespacedEndpointSliceWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified EndpointSlice
@@ -23144,16 +22588,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -23255,11 +22689,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -23269,7 +22698,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEvent1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEvent1WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Event
@@ -23523,7 +22952,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1Event>> PatchNamespacedEvent1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1Event>> PatchNamespacedEvent1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified Event
@@ -23685,16 +23114,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -23796,11 +23215,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -23810,7 +23224,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedIngressWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedIngressWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Ingress
@@ -24064,7 +23478,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Ingress>> PatchNamespacedIngressWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Extensionsv1beta1Ingress>> PatchNamespacedIngressWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified Ingress
@@ -24159,7 +23573,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1Ingress>> PatchNamespacedIngressStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Extensionsv1beta1Ingress>> PatchNamespacedIngressStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified Ingress
@@ -24220,16 +23634,6 @@ namespace k8s
         /// <summary>
         /// delete collection of FlowSchema
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -24331,11 +23735,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -24345,7 +23744,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionFlowSchemaWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionFlowSchemaWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind FlowSchema
@@ -24584,7 +23983,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1FlowSchema>> PatchFlowSchemaWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1FlowSchema>> PatchFlowSchemaWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified FlowSchema
@@ -24670,7 +24069,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1FlowSchema>> PatchFlowSchemaStatusWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1FlowSchema>> PatchFlowSchemaStatusWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified FlowSchema
@@ -24706,16 +24105,6 @@ namespace k8s
         /// <summary>
         /// delete collection of PriorityLevelConfiguration
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -24817,11 +24206,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -24831,7 +24215,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityLevelConfigurationWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityLevelConfigurationWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PriorityLevelConfiguration
@@ -25070,7 +24454,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1PriorityLevelConfiguration>> PatchPriorityLevelConfigurationWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1PriorityLevelConfiguration>> PatchPriorityLevelConfigurationWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified PriorityLevelConfiguration
@@ -25156,7 +24540,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1PriorityLevelConfiguration>> PatchPriorityLevelConfigurationStatusWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1PriorityLevelConfiguration>> PatchPriorityLevelConfigurationStatusWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified PriorityLevelConfiguration
@@ -25216,16 +24600,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -25328,11 +24702,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -25342,7 +24711,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedNetworkPolicyWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedNetworkPolicyWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind NetworkPolicy
@@ -25596,7 +24965,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1NetworkPolicy>> PatchNamespacedNetworkPolicyWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1NetworkPolicy>> PatchNamespacedNetworkPolicyWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified NetworkPolicy
@@ -25744,16 +25113,6 @@ namespace k8s
         /// <summary>
         /// delete collection of IngressClass
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -25855,11 +25214,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -25869,7 +25223,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionIngressClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionIngressClassWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind IngressClass
@@ -26108,7 +25462,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1IngressClass>> PatchIngressClassWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1IngressClass>> PatchIngressClassWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified IngressClass
@@ -26245,16 +25599,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -26356,11 +25700,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -26370,7 +25709,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedIngress1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedIngress1WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Ingress
@@ -26624,7 +25963,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Networkingv1beta1Ingress>> PatchNamespacedIngress1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Networkingv1beta1Ingress>> PatchNamespacedIngress1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified Ingress
@@ -26719,7 +26058,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Networkingv1beta1Ingress>> PatchNamespacedIngressStatus1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Networkingv1beta1Ingress>> PatchNamespacedIngressStatus1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified Ingress
@@ -26780,16 +26119,6 @@ namespace k8s
         /// <summary>
         /// delete collection of RuntimeClass
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -26891,11 +26220,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -26905,7 +26229,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionRuntimeClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionRuntimeClassWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind RuntimeClass
@@ -27144,7 +26468,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1RuntimeClass>> PatchRuntimeClassWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1RuntimeClass>> PatchRuntimeClassWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified RuntimeClass
@@ -27191,16 +26515,6 @@ namespace k8s
         /// <summary>
         /// delete collection of RuntimeClass
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -27302,11 +26616,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -27316,7 +26625,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionRuntimeClass1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionRuntimeClass1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind RuntimeClass
@@ -27555,7 +26864,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1RuntimeClass>> PatchRuntimeClass1WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1RuntimeClass>> PatchRuntimeClass1WithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified RuntimeClass
@@ -27615,16 +26924,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -27727,11 +27026,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -27741,7 +27035,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodDisruptionBudgetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodDisruptionBudgetWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodDisruptionBudget
@@ -27995,7 +27289,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1PodDisruptionBudget>> PatchNamespacedPodDisruptionBudgetWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1PodDisruptionBudget>> PatchNamespacedPodDisruptionBudgetWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified PodDisruptionBudget
@@ -28090,7 +27384,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1PodDisruptionBudget>> PatchNamespacedPodDisruptionBudgetStatusWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1PodDisruptionBudget>> PatchNamespacedPodDisruptionBudgetStatusWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified PodDisruptionBudget
@@ -28227,16 +27521,6 @@ namespace k8s
         /// <summary>
         /// delete collection of PodSecurityPolicy
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -28338,11 +27622,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -28352,7 +27631,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionPodSecurityPolicyWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPodSecurityPolicyWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodSecurityPolicy
@@ -28591,7 +27870,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1PodSecurityPolicy>> PatchPodSecurityPolicyWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1PodSecurityPolicy>> PatchPodSecurityPolicyWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified PodSecurityPolicy
@@ -28649,16 +27928,6 @@ namespace k8s
         /// <summary>
         /// delete collection of ClusterRoleBinding
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -28760,11 +28029,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -28774,7 +28038,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleBindingWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleBindingWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRoleBinding
@@ -29004,7 +28268,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ClusterRoleBinding>> PatchClusterRoleBindingWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ClusterRoleBinding>> PatchClusterRoleBindingWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified ClusterRoleBinding
@@ -29040,16 +28304,6 @@ namespace k8s
         /// <summary>
         /// delete collection of ClusterRole
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -29151,11 +28405,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -29165,7 +28414,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRole
@@ -29395,7 +28644,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ClusterRole>> PatchClusterRoleWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ClusterRole>> PatchClusterRoleWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified ClusterRole
@@ -29433,16 +28682,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -29545,11 +28784,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -29559,7 +28793,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleBindingWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleBindingWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind RoleBinding
@@ -29804,7 +29038,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1RoleBinding>> PatchNamespacedRoleBindingWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1RoleBinding>> PatchNamespacedRoleBindingWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified RoleBinding
@@ -29845,16 +29079,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -29957,11 +29181,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -29971,7 +29190,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Role
@@ -30216,7 +29435,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Role>> PatchNamespacedRoleWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Role>> PatchNamespacedRoleWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified Role
@@ -30462,16 +29681,6 @@ namespace k8s
         /// <summary>
         /// delete collection of ClusterRoleBinding
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -30573,11 +29782,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -30587,7 +29791,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleBinding1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleBinding1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRoleBinding
@@ -30817,7 +30021,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1ClusterRoleBinding>> PatchClusterRoleBinding1WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1ClusterRoleBinding>> PatchClusterRoleBinding1WithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified ClusterRoleBinding
@@ -30853,16 +30057,6 @@ namespace k8s
         /// <summary>
         /// delete collection of ClusterRole
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -30964,11 +30158,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -30978,7 +30167,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRole1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRole1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRole
@@ -31208,7 +30397,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1ClusterRole>> PatchClusterRole1WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1ClusterRole>> PatchClusterRole1WithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified ClusterRole
@@ -31246,16 +30435,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -31358,11 +30537,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -31372,7 +30546,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleBinding1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleBinding1WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind RoleBinding
@@ -31617,7 +30791,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1RoleBinding>> PatchNamespacedRoleBinding1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1RoleBinding>> PatchNamespacedRoleBinding1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified RoleBinding
@@ -31658,16 +30832,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -31770,11 +30934,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -31784,7 +30943,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRole1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRole1WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Role
@@ -32029,7 +31188,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1Role>> PatchNamespacedRole1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1Role>> PatchNamespacedRole1WithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified Role
@@ -32275,16 +31434,6 @@ namespace k8s
         /// <summary>
         /// delete collection of ClusterRoleBinding
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -32386,11 +31535,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -32400,7 +31544,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleBinding2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleBinding2WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRoleBinding
@@ -32630,7 +31774,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1ClusterRoleBinding>> PatchClusterRoleBinding2WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1ClusterRoleBinding>> PatchClusterRoleBinding2WithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified ClusterRoleBinding
@@ -32666,16 +31810,6 @@ namespace k8s
         /// <summary>
         /// delete collection of ClusterRole
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -32777,11 +31911,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -32791,7 +31920,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRole2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRole2WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRole
@@ -33021,7 +32150,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1ClusterRole>> PatchClusterRole2WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1ClusterRole>> PatchClusterRole2WithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified ClusterRole
@@ -33059,16 +32188,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -33171,11 +32290,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -33185,7 +32299,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleBinding2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleBinding2WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind RoleBinding
@@ -33430,7 +32544,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1RoleBinding>> PatchNamespacedRoleBinding2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1RoleBinding>> PatchNamespacedRoleBinding2WithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified RoleBinding
@@ -33471,16 +32585,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -33583,11 +32687,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -33597,7 +32696,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRole2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRole2WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Role
@@ -33842,7 +32941,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1Role>> PatchNamespacedRole2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1Role>> PatchNamespacedRole2WithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified Role
@@ -34099,16 +33198,6 @@ namespace k8s
         /// <summary>
         /// delete collection of PriorityClass
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -34210,11 +33299,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -34224,7 +33308,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityClassWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PriorityClass
@@ -34463,7 +33547,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PriorityClass>> PatchPriorityClassWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PriorityClass>> PatchPriorityClassWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified PriorityClass
@@ -34510,16 +33594,6 @@ namespace k8s
         /// <summary>
         /// delete collection of PriorityClass
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -34621,11 +33695,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -34635,7 +33704,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityClass1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityClass1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PriorityClass
@@ -34874,7 +33943,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1PriorityClass>> PatchPriorityClass1WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1PriorityClass>> PatchPriorityClass1WithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified PriorityClass
@@ -34921,16 +33990,6 @@ namespace k8s
         /// <summary>
         /// delete collection of PriorityClass
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -35032,11 +34091,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -35046,7 +34100,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityClass2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityClass2WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PriorityClass
@@ -35285,7 +34339,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1PriorityClass>> PatchPriorityClass2WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1PriorityClass>> PatchPriorityClass2WithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified PriorityClass
@@ -35345,16 +34399,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -35457,11 +34501,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -35471,7 +34510,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodPresetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodPresetWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodPreset
@@ -35725,7 +34764,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1PodPreset>> PatchNamespacedPodPresetWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1PodPreset>> PatchNamespacedPodPresetWithHttpMessagesAsync(object body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified PodPreset
@@ -35884,16 +34923,6 @@ namespace k8s
         /// <summary>
         /// delete collection of CSIDriver
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -35995,11 +35024,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -36009,7 +35033,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSIDriverWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSIDriverWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CSIDriver
@@ -36248,7 +35272,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1CSIDriver>> PatchCSIDriverWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1CSIDriver>> PatchCSIDriverWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified CSIDriver
@@ -36284,16 +35308,6 @@ namespace k8s
         /// <summary>
         /// delete collection of CSINode
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -36395,11 +35409,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -36409,7 +35418,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSINodeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSINodeWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CSINode
@@ -36648,7 +35657,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1CSINode>> PatchCSINodeWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1CSINode>> PatchCSINodeWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified CSINode
@@ -36684,16 +35693,6 @@ namespace k8s
         /// <summary>
         /// delete collection of StorageClass
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -36795,11 +35794,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -36809,7 +35803,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionStorageClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionStorageClassWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind StorageClass
@@ -37048,7 +36042,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1StorageClass>> PatchStorageClassWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1StorageClass>> PatchStorageClassWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified StorageClass
@@ -37084,16 +36078,6 @@ namespace k8s
         /// <summary>
         /// delete collection of VolumeAttachment
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -37195,11 +36179,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -37209,7 +36188,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionVolumeAttachmentWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionVolumeAttachmentWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind VolumeAttachment
@@ -37448,7 +36427,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1VolumeAttachment>> PatchVolumeAttachmentWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1VolumeAttachment>> PatchVolumeAttachmentWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified VolumeAttachment
@@ -37534,7 +36513,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1VolumeAttachment>> PatchVolumeAttachmentStatusWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1VolumeAttachment>> PatchVolumeAttachmentStatusWithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified VolumeAttachment
@@ -37581,16 +36560,6 @@ namespace k8s
         /// <summary>
         /// delete collection of VolumeAttachment
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -37692,11 +36661,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -37706,7 +36670,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionVolumeAttachment1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionVolumeAttachment1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind VolumeAttachment
@@ -37945,7 +36909,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1VolumeAttachment>> PatchVolumeAttachment1WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1VolumeAttachment>> PatchVolumeAttachment1WithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified VolumeAttachment
@@ -37992,16 +36956,6 @@ namespace k8s
         /// <summary>
         /// delete collection of CSIDriver
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -38103,11 +37057,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -38117,7 +37066,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSIDriver1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSIDriver1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CSIDriver
@@ -38356,7 +37305,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CSIDriver>> PatchCSIDriver1WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CSIDriver>> PatchCSIDriver1WithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified CSIDriver
@@ -38392,16 +37341,6 @@ namespace k8s
         /// <summary>
         /// delete collection of CSINode
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -38503,11 +37442,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -38517,7 +37451,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSINode1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSINode1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CSINode
@@ -38756,7 +37690,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CSINode>> PatchCSINode1WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CSINode>> PatchCSINode1WithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified CSINode
@@ -38792,16 +37726,6 @@ namespace k8s
         /// <summary>
         /// delete collection of StorageClass
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -38903,11 +37827,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -38917,7 +37836,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionStorageClass1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionStorageClass1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind StorageClass
@@ -39156,7 +38075,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1StorageClass>> PatchStorageClass1WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1StorageClass>> PatchStorageClass1WithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified StorageClass
@@ -39192,16 +38111,6 @@ namespace k8s
         /// <summary>
         /// delete collection of VolumeAttachment
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -39303,11 +38212,6 @@ namespace k8s
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
         /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -39317,7 +38221,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionVolumeAttachment2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionVolumeAttachment2WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind VolumeAttachment
@@ -39556,7 +38460,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1VolumeAttachment>> PatchVolumeAttachment2WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1VolumeAttachment>> PatchVolumeAttachment2WithHttpMessagesAsync(object body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified VolumeAttachment
@@ -39638,6 +38542,18 @@ namespace k8s
         /// The custom resource's plural name. For TPRs this would be lowercase
         /// plural kind.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -39647,7 +38563,62 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> CreateNamespacedCustomObjectWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> CreateNamespacedCustomObjectWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Delete collection of namespace scoped custom objects
+        /// </summary>
+        /// <param name='group'>
+        /// The custom resource's group name
+        /// </param>
+        /// <param name='version'>
+        /// The custom resource's version
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// The custom resource's namespace
+        /// </param>
+        /// <param name='plural'>
+        /// The custom resource's plural name. For TPRs this would be lowercase
+        /// plural kind.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<object>> DeleteCollectionNamespacedCustomObjectWithHttpMessagesAsync(string group, string version, string namespaceParameter, string plural, V1DeleteOptions body = default(V1DeleteOptions), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string dryRun = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch namespace scoped custom objects
@@ -39765,6 +38736,20 @@ namespace k8s
         /// The custom resource's plural name. For TPRs this would be lowercase
         /// plural kind.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -39774,7 +38759,59 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> CreateClusterCustomObjectWithHttpMessagesAsync(object body, string group, string version, string plural, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> CreateClusterCustomObjectWithHttpMessagesAsync(object body, string group, string version, string plural, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Delete collection of cluster scoped custom objects
+        /// </summary>
+        /// <param name='group'>
+        /// The custom resource's group name
+        /// </param>
+        /// <param name='version'>
+        /// The custom resource's version
+        /// </param>
+        /// <param name='plural'>
+        /// The custom resource's plural name. For TPRs this would be lowercase
+        /// plural kind.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<object>> DeleteCollectionClusterCustomObjectWithHttpMessagesAsync(string group, string version, string plural, V1DeleteOptions body = default(V1DeleteOptions), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string dryRun = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch cluster scoped custom objects
@@ -39891,13 +38928,25 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> ReplaceClusterCustomObjectStatusWithHttpMessagesAsync(object body, string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> ReplaceClusterCustomObjectStatusWithHttpMessagesAsync(object body, string group, string version, string plural, string name, string dryRun = default(string), string fieldManager = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update status of the specified cluster scoped custom
@@ -39918,13 +38967,32 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> PatchClusterCustomObjectStatusWithHttpMessagesAsync(object body, string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> PatchClusterCustomObjectStatusWithHttpMessagesAsync(object body, string group, string version, string plural, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified cluster scoped custom object
@@ -39972,13 +39040,25 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> ReplaceNamespacedCustomObjectWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> ReplaceNamespacedCustomObjectWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, string dryRun = default(string), string fieldManager = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// patch the specified namespace scoped custom object
@@ -40002,13 +39082,32 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> PatchNamespacedCustomObjectWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> PatchNamespacedCustomObjectWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Deletes the specified namespace scoped custom object
@@ -40051,13 +39150,19 @@ namespace k8s
         /// policy is decided by the existing finalizer set in the
         /// metadata.finalizers and the resource-specific default policy.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> DeleteNamespacedCustomObjectWithHttpMessagesAsync(string group, string version, string namespaceParameter, string plural, string name, V1DeleteOptions body = default(V1DeleteOptions), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> DeleteNamespacedCustomObjectWithHttpMessagesAsync(string group, string version, string namespaceParameter, string plural, string name, V1DeleteOptions body = default(V1DeleteOptions), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string dryRun = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Returns a namespace scoped custom object
@@ -40107,13 +39212,25 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> ReplaceNamespacedCustomObjectScaleWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> ReplaceNamespacedCustomObjectScaleWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, string dryRun = default(string), string fieldManager = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update scale of the specified namespace scoped custom
@@ -40137,13 +39254,32 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> PatchNamespacedCustomObjectScaleWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> PatchNamespacedCustomObjectScaleWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read scale of the specified namespace scoped custom object
@@ -40190,13 +39326,25 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> ReplaceClusterCustomObjectScaleWithHttpMessagesAsync(object body, string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> ReplaceClusterCustomObjectScaleWithHttpMessagesAsync(object body, string group, string version, string plural, string name, string dryRun = default(string), string fieldManager = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update scale of the specified cluster scoped custom
@@ -40217,13 +39365,32 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> PatchClusterCustomObjectScaleWithHttpMessagesAsync(object body, string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> PatchClusterCustomObjectScaleWithHttpMessagesAsync(object body, string group, string version, string plural, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read scale of the specified custom object
@@ -40268,13 +39435,25 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> ReplaceClusterCustomObjectWithHttpMessagesAsync(object body, string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> ReplaceClusterCustomObjectWithHttpMessagesAsync(object body, string group, string version, string plural, string name, string dryRun = default(string), string fieldManager = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// patch the specified cluster scoped custom object
@@ -40295,13 +39474,32 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> PatchClusterCustomObjectWithHttpMessagesAsync(object body, string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> PatchClusterCustomObjectWithHttpMessagesAsync(object body, string group, string version, string plural, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Deletes the specified cluster scoped custom object
@@ -40341,13 +39539,19 @@ namespace k8s
         /// policy is decided by the existing finalizer set in the
         /// metadata.finalizers and the resource-specific default policy.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> DeleteClusterCustomObjectWithHttpMessagesAsync(string group, string version, string plural, string name, V1DeleteOptions body = default(V1DeleteOptions), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> DeleteClusterCustomObjectWithHttpMessagesAsync(string group, string version, string plural, string name, V1DeleteOptions body = default(V1DeleteOptions), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string dryRun = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Returns a cluster scoped custom object
@@ -40394,13 +39598,25 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> ReplaceNamespacedCustomObjectStatusWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> ReplaceNamespacedCustomObjectStatusWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, string dryRun = default(string), string fieldManager = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update status of the specified namespace scoped custom
@@ -40424,13 +39640,32 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> PatchNamespacedCustomObjectStatusWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> PatchNamespacedCustomObjectStatusWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified namespace scoped custom object

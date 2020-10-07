@@ -40,7 +40,7 @@ namespace k8s.Models
         /// Condition will be set to 'ResizeStarted'.</param>
         /// <param name="phase">Phase represents the current phase of
         /// PersistentVolumeClaim.</param>
-        public V1PersistentVolumeClaimStatus(IList<string> accessModes = default(IList<string>), IDictionary<string, ResourceQuantity> capacity = default(IDictionary<string, ResourceQuantity>), IList<V1PersistentVolumeClaimCondition> conditions = default(IList<V1PersistentVolumeClaimCondition>), string phase = default(string))
+        public V1PersistentVolumeClaimStatus(IList<string> accessModes = default(IList<string>), IDictionary<string, string> capacity = default(IDictionary<string, string>), IList<V1PersistentVolumeClaimCondition> conditions = default(IList<V1PersistentVolumeClaimCondition>), string phase = default(string))
         {
             AccessModes = accessModes;
             Capacity = capacity;
@@ -67,7 +67,7 @@ namespace k8s.Models
         /// volume.
         /// </summary>
         [JsonProperty(PropertyName = "capacity")]
-        public IDictionary<string, ResourceQuantity> Capacity { get; set; }
+        public IDictionary<string, string> Capacity { get; set; }
 
         /// <summary>
         /// Gets or sets current Condition of persistent volume claim. If

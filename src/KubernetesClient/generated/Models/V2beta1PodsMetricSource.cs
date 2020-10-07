@@ -39,7 +39,7 @@ namespace k8s.Models
         /// it is passed as an additional parameter to the metrics server for
         /// more specific metrics scoping When unset, just the metricName will
         /// be used to gather metrics.</param>
-        public V2beta1PodsMetricSource(string metricName, ResourceQuantity targetAverageValue, V1LabelSelector selector = default(V1LabelSelector))
+        public V2beta1PodsMetricSource(string metricName, string targetAverageValue, V1LabelSelector selector = default(V1LabelSelector))
         {
             MetricName = metricName;
             Selector = selector;
@@ -73,7 +73,7 @@ namespace k8s.Models
         /// of the metric across all relevant pods (as a quantity)
         /// </summary>
         [JsonProperty(PropertyName = "targetAverageValue")]
-        public ResourceQuantity TargetAverageValue { get; set; }
+        public string TargetAverageValue { get; set; }
 
         /// <summary>
         /// Validate the object.

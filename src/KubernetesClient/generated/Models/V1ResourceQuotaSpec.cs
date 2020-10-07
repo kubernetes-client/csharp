@@ -38,7 +38,7 @@ namespace k8s.Models
         /// <param name="scopes">A collection of filters that must match each
         /// object tracked by a quota. If not specified, the quota matches all
         /// objects.</param>
-        public V1ResourceQuotaSpec(IDictionary<string, ResourceQuantity> hard = default(IDictionary<string, ResourceQuantity>), V1ScopeSelector scopeSelector = default(V1ScopeSelector), IList<string> scopes = default(IList<string>))
+        public V1ResourceQuotaSpec(IDictionary<string, string> hard = default(IDictionary<string, string>), V1ScopeSelector scopeSelector = default(V1ScopeSelector), IList<string> scopes = default(IList<string>))
         {
             Hard = hard;
             ScopeSelector = scopeSelector;
@@ -57,7 +57,7 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/policy/resource-quotas/
         /// </summary>
         [JsonProperty(PropertyName = "hard")]
-        public IDictionary<string, ResourceQuantity> Hard { get; set; }
+        public IDictionary<string, string> Hard { get; set; }
 
         /// <summary>
         /// Gets or sets scopeSelector is also a collection of filters like

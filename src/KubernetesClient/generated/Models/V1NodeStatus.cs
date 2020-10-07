@@ -59,7 +59,7 @@ namespace k8s.Models
         /// the node.</param>
         /// <param name="volumesInUse">List of attachable volumes in use
         /// (mounted) by the node.</param>
-        public V1NodeStatus(IList<V1NodeAddress> addresses = default(IList<V1NodeAddress>), IDictionary<string, ResourceQuantity> allocatable = default(IDictionary<string, ResourceQuantity>), IDictionary<string, ResourceQuantity> capacity = default(IDictionary<string, ResourceQuantity>), IList<V1NodeCondition> conditions = default(IList<V1NodeCondition>), V1NodeConfigStatus config = default(V1NodeConfigStatus), V1NodeDaemonEndpoints daemonEndpoints = default(V1NodeDaemonEndpoints), IList<V1ContainerImage> images = default(IList<V1ContainerImage>), V1NodeSystemInfo nodeInfo = default(V1NodeSystemInfo), string phase = default(string), IList<V1AttachedVolume> volumesAttached = default(IList<V1AttachedVolume>), IList<string> volumesInUse = default(IList<string>))
+        public V1NodeStatus(IList<V1NodeAddress> addresses = default(IList<V1NodeAddress>), IDictionary<string, string> allocatable = default(IDictionary<string, string>), IDictionary<string, string> capacity = default(IDictionary<string, string>), IList<V1NodeCondition> conditions = default(IList<V1NodeCondition>), V1NodeConfigStatus config = default(V1NodeConfigStatus), V1NodeDaemonEndpoints daemonEndpoints = default(V1NodeDaemonEndpoints), IList<V1ContainerImage> images = default(IList<V1ContainerImage>), V1NodeSystemInfo nodeInfo = default(V1NodeSystemInfo), string phase = default(string), IList<V1AttachedVolume> volumesAttached = default(IList<V1AttachedVolume>), IList<string> volumesInUse = default(IList<string>))
         {
             Addresses = addresses;
             Allocatable = allocatable;
@@ -97,7 +97,7 @@ namespace k8s.Models
         /// are available for scheduling. Defaults to Capacity.
         /// </summary>
         [JsonProperty(PropertyName = "allocatable")]
-        public IDictionary<string, ResourceQuantity> Allocatable { get; set; }
+        public IDictionary<string, string> Allocatable { get; set; }
 
         /// <summary>
         /// Gets or sets capacity represents the total resources of a node.
@@ -105,7 +105,7 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity
         /// </summary>
         [JsonProperty(PropertyName = "capacity")]
-        public IDictionary<string, ResourceQuantity> Capacity { get; set; }
+        public IDictionary<string, string> Capacity { get; set; }
 
         /// <summary>
         /// Gets or sets conditions is an array of current observed node

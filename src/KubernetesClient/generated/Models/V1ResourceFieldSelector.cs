@@ -32,7 +32,7 @@ namespace k8s.Models
         /// optional for env vars</param>
         /// <param name="divisor">Specifies the output format of the exposed
         /// resources, defaults to "1"</param>
-        public V1ResourceFieldSelector(string resource, string containerName = default(string), ResourceQuantity divisor = default(ResourceQuantity))
+        public V1ResourceFieldSelector(string resource, string containerName = default(string), string divisor = default(string))
         {
             ContainerName = containerName;
             Divisor = divisor;
@@ -57,7 +57,7 @@ namespace k8s.Models
         /// defaults to "1"
         /// </summary>
         [JsonProperty(PropertyName = "divisor")]
-        public ResourceQuantity Divisor { get; set; }
+        public string Divisor { get; set; }
 
         /// <summary>
         /// Gets or sets required: resource to select

@@ -32,7 +32,7 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/policy/resource-quotas/</param>
         /// <param name="used">Used is the current observed total usage of the
         /// resource in the namespace.</param>
-        public V1ResourceQuotaStatus(IDictionary<string, ResourceQuantity> hard = default(IDictionary<string, ResourceQuantity>), IDictionary<string, ResourceQuantity> used = default(IDictionary<string, ResourceQuantity>))
+        public V1ResourceQuotaStatus(IDictionary<string, string> hard = default(IDictionary<string, string>), IDictionary<string, string> used = default(IDictionary<string, string>))
         {
             Hard = hard;
             Used = used;
@@ -50,14 +50,14 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/policy/resource-quotas/
         /// </summary>
         [JsonProperty(PropertyName = "hard")]
-        public IDictionary<string, ResourceQuantity> Hard { get; set; }
+        public IDictionary<string, string> Hard { get; set; }
 
         /// <summary>
         /// Gets or sets used is the current observed total usage of the
         /// resource in the namespace.
         /// </summary>
         [JsonProperty(PropertyName = "used")]
-        public IDictionary<string, ResourceQuantity> Used { get; set; }
+        public IDictionary<string, string> Used { get; set; }
 
     }
 }

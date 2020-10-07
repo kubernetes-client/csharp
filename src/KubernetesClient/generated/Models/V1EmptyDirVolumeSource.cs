@@ -37,7 +37,7 @@ namespace k8s.Models
         /// memory limits of all containers in a pod. The default is nil which
         /// means that the limit is undefined. More info:
         /// http://kubernetes.io/docs/user-guide/volumes#emptydir</param>
-        public V1EmptyDirVolumeSource(string medium = default(string), ResourceQuantity sizeLimit = default(ResourceQuantity))
+        public V1EmptyDirVolumeSource(string medium = default(string), string sizeLimit = default(string))
         {
             Medium = medium;
             SizeLimit = sizeLimit;
@@ -68,7 +68,7 @@ namespace k8s.Models
         /// http://kubernetes.io/docs/user-guide/volumes#emptydir
         /// </summary>
         [JsonProperty(PropertyName = "sizeLimit")]
-        public ResourceQuantity SizeLimit { get; set; }
+        public string SizeLimit { get; set; }
 
     }
 }

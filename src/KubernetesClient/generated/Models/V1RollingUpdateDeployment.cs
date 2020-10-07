@@ -47,7 +47,7 @@ namespace k8s.Models
         /// scaling up the new ReplicaSet, ensuring that the total number of
         /// pods available at all times during the update is at least 70% of
         /// desired pods.</param>
-        public V1RollingUpdateDeployment(IntstrIntOrString maxSurge = default(IntstrIntOrString), IntstrIntOrString maxUnavailable = default(IntstrIntOrString))
+        public V1RollingUpdateDeployment(string maxSurge = default(string), string maxUnavailable = default(string))
         {
             MaxSurge = maxSurge;
             MaxUnavailable = maxUnavailable;
@@ -73,7 +73,7 @@ namespace k8s.Models
         /// desired pods.
         /// </summary>
         [JsonProperty(PropertyName = "maxSurge")]
-        public IntstrIntOrString MaxSurge { get; set; }
+        public string MaxSurge { get; set; }
 
         /// <summary>
         /// Gets or sets the maximum number of pods that can be unavailable
@@ -88,7 +88,7 @@ namespace k8s.Models
         /// all times during the update is at least 70% of desired pods.
         /// </summary>
         [JsonProperty(PropertyName = "maxUnavailable")]
-        public IntstrIntOrString MaxUnavailable { get; set; }
+        public string MaxUnavailable { get; set; }
 
     }
 }

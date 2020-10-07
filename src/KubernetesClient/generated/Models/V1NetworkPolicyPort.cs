@@ -31,7 +31,7 @@ namespace k8s.Models
         /// <param name="protocol">The protocol (TCP, UDP, or SCTP) which
         /// traffic must match. If not specified, this field defaults to
         /// TCP.</param>
-        public V1NetworkPolicyPort(IntstrIntOrString port = default(IntstrIntOrString), string protocol = default(string))
+        public V1NetworkPolicyPort(string port = default(string), string protocol = default(string))
         {
             Port = port;
             Protocol = protocol;
@@ -49,7 +49,7 @@ namespace k8s.Models
         /// this matches all port names and numbers.
         /// </summary>
         [JsonProperty(PropertyName = "port")]
-        public IntstrIntOrString Port { get; set; }
+        public string Port { get; set; }
 
         /// <summary>
         /// Gets or sets the protocol (TCP, UDP, or SCTP) which traffic must

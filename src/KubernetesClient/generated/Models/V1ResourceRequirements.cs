@@ -35,7 +35,7 @@ namespace k8s.Models
         /// it defaults to Limits if that is explicitly specified, otherwise to
         /// an implementation-defined value. More info:
         /// https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/</param>
-        public V1ResourceRequirements(IDictionary<string, ResourceQuantity> limits = default(IDictionary<string, ResourceQuantity>), IDictionary<string, ResourceQuantity> requests = default(IDictionary<string, ResourceQuantity>))
+        public V1ResourceRequirements(IDictionary<string, string> limits = default(IDictionary<string, string>), IDictionary<string, string> requests = default(IDictionary<string, string>))
         {
             Limits = limits;
             Requests = requests;
@@ -53,7 +53,7 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
         /// </summary>
         [JsonProperty(PropertyName = "limits")]
-        public IDictionary<string, ResourceQuantity> Limits { get; set; }
+        public IDictionary<string, string> Limits { get; set; }
 
         /// <summary>
         /// Gets or sets requests describes the minimum amount of compute
@@ -63,7 +63,7 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
         /// </summary>
         [JsonProperty(PropertyName = "requests")]
-        public IDictionary<string, ResourceQuantity> Requests { get; set; }
+        public IDictionary<string, string> Requests { get; set; }
 
     }
 }

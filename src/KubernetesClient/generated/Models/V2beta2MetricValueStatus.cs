@@ -34,7 +34,7 @@ namespace k8s.Models
         /// quantity)</param>
         /// <param name="value">value is the current value of the metric (as a
         /// quantity).</param>
-        public V2beta2MetricValueStatus(int? averageUtilization = default(int?), ResourceQuantity averageValue = default(ResourceQuantity), ResourceQuantity value = default(ResourceQuantity))
+        public V2beta2MetricValueStatus(int? averageUtilization = default(int?), string averageValue = default(string), string value = default(string))
         {
             AverageUtilization = averageUtilization;
             AverageValue = averageValue;
@@ -61,14 +61,14 @@ namespace k8s.Models
         /// the metric across all relevant pods (as a quantity)
         /// </summary>
         [JsonProperty(PropertyName = "averageValue")]
-        public ResourceQuantity AverageValue { get; set; }
+        public string AverageValue { get; set; }
 
         /// <summary>
         /// Gets or sets value is the current value of the metric (as a
         /// quantity).
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public ResourceQuantity Value { get; set; }
+        public string Value { get; set; }
 
     }
 }

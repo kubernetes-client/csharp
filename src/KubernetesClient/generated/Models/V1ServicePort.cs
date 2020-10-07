@@ -57,7 +57,7 @@ namespace k8s.Models
         /// clusterIP=None, and should be omitted or set equal to the 'port'
         /// field. More info:
         /// https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service</param>
-        public V1ServicePort(int port, string appProtocol = default(string), string name = default(string), int? nodePort = default(int?), string protocol = default(string), IntstrIntOrString targetPort = default(IntstrIntOrString))
+        public V1ServicePort(int port, string appProtocol = default(string), string name = default(string), int? nodePort = default(int?), string protocol = default(string), string targetPort = default(string))
         {
             AppProtocol = appProtocol;
             Name = name;
@@ -131,7 +131,7 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service
         /// </summary>
         [JsonProperty(PropertyName = "targetPort")]
-        public IntstrIntOrString TargetPort { get; set; }
+        public string TargetPort { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -141,6 +141,7 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
+            //Nothing to validate
         }
     }
 }

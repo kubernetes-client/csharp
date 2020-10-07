@@ -39,7 +39,7 @@ namespace k8s.Models
         /// specifying "100%".</param>
         /// <param name="selector">Label query over pods whose evictions are
         /// managed by the disruption budget.</param>
-        public V1beta1PodDisruptionBudgetSpec(IntstrIntOrString maxUnavailable = default(IntstrIntOrString), IntstrIntOrString minAvailable = default(IntstrIntOrString), V1LabelSelector selector = default(V1LabelSelector))
+        public V1beta1PodDisruptionBudgetSpec(string maxUnavailable = default(string), string minAvailable = default(string), V1LabelSelector selector = default(V1LabelSelector))
         {
             MaxUnavailable = maxUnavailable;
             MinAvailable = minAvailable;
@@ -60,7 +60,7 @@ namespace k8s.Models
         /// exclusive setting with "minAvailable".
         /// </summary>
         [JsonProperty(PropertyName = "maxUnavailable")]
-        public IntstrIntOrString MaxUnavailable { get; set; }
+        public string MaxUnavailable { get; set; }
 
         /// <summary>
         /// Gets or sets an eviction is allowed if at least "minAvailable" pods
@@ -69,7 +69,7 @@ namespace k8s.Models
         /// can prevent all voluntary evictions by specifying "100%".
         /// </summary>
         [JsonProperty(PropertyName = "minAvailable")]
-        public IntstrIntOrString MinAvailable { get; set; }
+        public string MinAvailable { get; set; }
 
         /// <summary>
         /// Gets or sets label query over pods whose evictions are managed by

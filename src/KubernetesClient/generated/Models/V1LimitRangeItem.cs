@@ -45,7 +45,7 @@ namespace k8s.Models
         /// the named resource.</param>
         /// <param name="min">Min usage constraints on this kind by resource
         /// name.</param>
-        public V1LimitRangeItem(string type, IDictionary<string, ResourceQuantity> defaultProperty = default(IDictionary<string, ResourceQuantity>), IDictionary<string, ResourceQuantity> defaultRequest = default(IDictionary<string, ResourceQuantity>), IDictionary<string, ResourceQuantity> max = default(IDictionary<string, ResourceQuantity>), IDictionary<string, ResourceQuantity> maxLimitRequestRatio = default(IDictionary<string, ResourceQuantity>), IDictionary<string, ResourceQuantity> min = default(IDictionary<string, ResourceQuantity>))
+        public V1LimitRangeItem(string type, IDictionary<string, string> defaultProperty = default(IDictionary<string, string>), IDictionary<string, string> defaultRequest = default(IDictionary<string, string>), IDictionary<string, string> max = default(IDictionary<string, string>), IDictionary<string, string> maxLimitRequestRatio = default(IDictionary<string, string>), IDictionary<string, string> min = default(IDictionary<string, string>))
         {
             DefaultProperty = defaultProperty;
             DefaultRequest = defaultRequest;
@@ -66,20 +66,20 @@ namespace k8s.Models
         /// name if resource limit is omitted.
         /// </summary>
         [JsonProperty(PropertyName = "default")]
-        public IDictionary<string, ResourceQuantity> DefaultProperty { get; set; }
+        public IDictionary<string, string> DefaultProperty { get; set; }
 
         /// <summary>
         /// Gets or sets defaultRequest is the default resource requirement
         /// request value by resource name if resource request is omitted.
         /// </summary>
         [JsonProperty(PropertyName = "defaultRequest")]
-        public IDictionary<string, ResourceQuantity> DefaultRequest { get; set; }
+        public IDictionary<string, string> DefaultRequest { get; set; }
 
         /// <summary>
         /// Gets or sets max usage constraints on this kind by resource name.
         /// </summary>
         [JsonProperty(PropertyName = "max")]
-        public IDictionary<string, ResourceQuantity> Max { get; set; }
+        public IDictionary<string, string> Max { get; set; }
 
         /// <summary>
         /// Gets or sets maxLimitRequestRatio if specified, the named resource
@@ -88,13 +88,13 @@ namespace k8s.Models
         /// this represents the max burst for the named resource.
         /// </summary>
         [JsonProperty(PropertyName = "maxLimitRequestRatio")]
-        public IDictionary<string, ResourceQuantity> MaxLimitRequestRatio { get; set; }
+        public IDictionary<string, string> MaxLimitRequestRatio { get; set; }
 
         /// <summary>
         /// Gets or sets min usage constraints on this kind by resource name.
         /// </summary>
         [JsonProperty(PropertyName = "min")]
-        public IDictionary<string, ResourceQuantity> Min { get; set; }
+        public IDictionary<string, string> Min { get; set; }
 
         /// <summary>
         /// Gets or sets type of resource that this limit applies to.
