@@ -7,7 +7,7 @@ namespace k8s.Models
     /// <summary>
     /// Describes the resource usage metrics of a node pull from metrics server API.
     /// </summary>
-    public class NodeMetrics: IKubernetesObject, IMetadata<V1ObjectMeta>
+    public class NodeMetrics : IKubernetesObject, IMetadata<V1ObjectMeta>
     {
         /// <summary>
         /// Defines the versioned schema of this representation of an object.
@@ -20,6 +20,7 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty( PropertyName = "kind" )]
         public string Kind { get; set; }
+
         /// <summary>
         /// The kubernetes standard object's metadata.
         /// </summary>

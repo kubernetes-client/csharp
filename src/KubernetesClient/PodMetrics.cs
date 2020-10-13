@@ -7,7 +7,7 @@ namespace k8s.Models
     /// <summary>
     /// Describes the resource usage metrics of a pod pull from metrics server API.
     /// </summary>
-    public class PodMetrics: IKubernetesObject, IMetadata<V1ObjectMeta>
+    public class PodMetrics : IKubernetesObject, IMetadata<V1ObjectMeta>
     {
         /// <summary>
         /// Defines the versioned schema of this representation of an object.
