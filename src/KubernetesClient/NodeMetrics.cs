@@ -12,13 +12,13 @@ namespace k8s.Models
         /// <summary>
         /// Defines the versioned schema of this representation of an object.
         /// </summary>
-        [JsonProperty( PropertyName = "apiVersion" )]
+        [JsonProperty(PropertyName = "apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
         /// Defines the REST resource this object represents.
         /// </summary>
-        [JsonProperty( PropertyName = "kind" )]
+        [JsonProperty(PropertyName = "kind")]
         public string Kind { get; set; }
 
         /// <summary>
