@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace k8s.Models
 {
-    public class NodeMetricsList
+    public class NodeMetricsList: IKubernetesObject, IMetadata<V1ObjectMeta>
     {
         /// <summary>
         /// Defines the versioned schema of this representation of an object.
