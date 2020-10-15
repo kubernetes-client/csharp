@@ -7,7 +7,7 @@ namespace k8s
 {
     public partial class KubernetesClientConfiguration
     {
-        private static string ServiceAccountPath =
+        private static string serviceAccountPath =
             Path.Combine(new string[]
             {
                 $"{Path.DirectorySeparatorChar}var", "run", "secrets", "kubernetes.io", "serviceaccount",
@@ -16,7 +16,7 @@ namespace k8s
         private const string ServiceAccountTokenKeyFileName = "token";
         private const string ServiceAccountRootCAKeyFileName = "ca.crt";
 
-        public static Boolean IsInCluster()
+        public static bool IsInCluster()
         {
             var host = Environment.GetEnvironmentVariable("KUBERNETES_SERVICE_HOST");
             var port = Environment.GetEnvironmentVariable("KUBERNETES_SERVICE_PORT");
@@ -25,13 +25,13 @@ namespace k8s
                 return false;
             }
 
-            var tokenPath = Path.Combine(ServiceAccountPath, ServiceAccountTokenKeyFileName);
+            var tokenPath = Path.Combine(serviceAccountPath, ServiceAccountTokenKeyFileName);
             if (!File.Exists(tokenPath))
             {
                 return false;
             }
 
-            var certPath = Path.Combine(ServiceAccountPath, ServiceAccountRootCAKeyFileName);
+            var certPath = Path.Combine(serviceAccountPath, ServiceAccountRootCAKeyFileName);
             return File.Exists(certPath);
         }
 
@@ -43,14 +43,14 @@ namespace k8s
                     "unable to load in-cluster configuration, KUBERNETES_SERVICE_HOST and KUBERNETES_SERVICE_PORT must be defined");
             }
 
-            var rootCAFile = Path.Combine(ServiceAccountPath, ServiceAccountRootCAKeyFileName);
+            var rootCAFile = Path.Combine(serviceAccountPath, ServiceAccountRootCAKeyFileName);
             var host = Environment.GetEnvironmentVariable("KUBERNETES_SERVICE_HOST");
             var port = Environment.GetEnvironmentVariable("KUBERNETES_SERVICE_PORT");
 
             return new KubernetesClientConfiguration
             {
                 Host = new UriBuilder("https", host, Convert.ToInt32(port)).ToString(),
-                TokenProvider = new TokenFileAuth(Path.Combine(ServiceAccountPath, ServiceAccountTokenKeyFileName)),
+                TokenProvider = new TokenFileAuth(Path.Combine(serviceAccountPath, ServiceAccountTokenKeyFileName)),
                 SslCaCerts = CertUtils.LoadPemFileCert(rootCAFile),
             };
         }

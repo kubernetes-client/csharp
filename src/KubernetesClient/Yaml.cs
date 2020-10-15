@@ -22,7 +22,7 @@ namespace k8s
         {
             public bool Accepts(Type type)
             {
-                return type == typeof(System.Byte[]);
+                return type == typeof(byte[]);
             }
 
             public object ReadYaml(IParser parser, Type type)
@@ -49,7 +49,7 @@ namespace k8s
 
             public void WriteYaml(IEmitter emitter, object value, Type type)
             {
-                var obj = (System.Byte[])value;
+                var obj = (byte[])value;
                 emitter.Emit(new YamlDotNet.Core.Events.Scalar(Encoding.UTF8.GetString(obj)));
             }
         }
@@ -63,7 +63,7 @@ namespace k8s
         /// <param name="typeMap">
         /// A map from <apiVersion>/<kind> to Type. For example "v1/Pod" -> typeof(V1Pod)
         /// </param>
-        public static async Task<List<object>> LoadAllFromStreamAsync(Stream stream, Dictionary<String, Type> typeMap)
+        public static async Task<List<object>> LoadAllFromStreamAsync(Stream stream, Dictionary<string, Type> typeMap)
         {
             var reader = new StreamReader(stream);
             var content = await reader.ReadToEndAsync().ConfigureAwait(false);
@@ -79,7 +79,7 @@ namespace k8s
         /// <param name="typeMap">
         /// A map from <apiVersion>/<kind> to Type. For example "v1/Pod" -> typeof(V1Pod)
         /// </param>
-        public static Task<List<object>> LoadAllFromFileAsync(String fileName, Dictionary<String, Type> typeMap)
+        public static Task<List<object>> LoadAllFromFileAsync(string fileName, Dictionary<string, Type> typeMap)
         {
             var reader = File.OpenRead(fileName);
             return LoadAllFromStreamAsync(reader, typeMap);
@@ -94,7 +94,7 @@ namespace k8s
         /// <param name="typeMap">
         /// A map from <apiVersion>/<kind> to Type. For example "v1/Pod" -> typeof(V1Pod)
         /// </param>
-        public static List<object> LoadAllFromString(String content, Dictionary<String, Type> typeMap)
+        public static List<object> LoadAllFromString(string content, Dictionary<string, Type> typeMap)
         {
             var deserializer =
                 new DeserializerBuilder()
@@ -221,7 +221,7 @@ namespace k8s
                 // This might have been renamed by AutoRest.  See if there is a
                 // JsonPropertyAttribute.PropertyName and use that instead if there is.
                 var jpa = pd.GetCustomAttribute<JsonPropertyAttribute>();
-                if (jpa == null || String.IsNullOrEmpty(jpa.PropertyName))
+                if (jpa == null || string.IsNullOrEmpty(jpa.PropertyName))
                 {
                     return pd;
                 }

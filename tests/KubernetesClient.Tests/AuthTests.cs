@@ -321,6 +321,7 @@ namespace k8s.Tests
                     Assert.True(listTask.Response.IsSuccessStatusCode);
                     Assert.Equal(1, listTask.Body.Items.Count);
                 }
+
                 {
                     var clientCertificateText = File.ReadAllText("assets/client.crt").Replace("\n", "\\n");
                     var clientCertificateKeyText = File.ReadAllText("assets/client.key").Replace("\n", "\\n");
@@ -357,7 +358,6 @@ namespace k8s.Tests
              }))
             {
                 {
-
                     var responseJson = $"{{\"apiVersion\":\"testingversion\",\"status\":{{\"token\":\"{token}\"}}}}";
                     var kubernetesConfig = GetK8SConfiguration(server.Uri.ToString(), responseJson, name);
                     var clientConfig = KubernetesClientConfiguration.BuildConfigFromConfigObject(kubernetesConfig, name);
@@ -366,6 +366,7 @@ namespace k8s.Tests
                     Assert.True(listTask.Response.IsSuccessStatusCode);
                     Assert.Equal(1, listTask.Body.Items.Count);
                 }
+
                 {
                     var responseJson = "{\"apiVersion\":\"testingversion\",\"status\":{\"token\":\"wrong_token\"}}";
                     var kubernetesConfig = GetK8SConfiguration(server.Uri.ToString(), responseJson, name);
@@ -421,7 +422,6 @@ namespace k8s.Tests
                     Assert.Equal(HttpStatusCode.Unauthorized, listTask.Response.StatusCode);
                 }
 
-
                 {
                     var client = new Kubernetes(new KubernetesClientConfiguration
                     {
@@ -472,16 +472,15 @@ namespace k8s.Tests
 
             var contexts = new List<Context>
             {
-                new Context {Name = name, ContextDetails = new ContextDetails {Cluster = name, User = username } },
+                new Context { Name = name, ContextDetails = new ContextDetails { Cluster = name, User = username } },
             };
-
             {
                 var clusters = new List<Cluster>
                 {
                     new Cluster
                     {
                         Name = name,
-                        ClusterEndpoint = new ClusterEndpoint {SkipTlsVerify = true, Server = serverUri }
+                        ClusterEndpoint = new ClusterEndpoint { SkipTlsVerify = true, Server = serverUri },
                     },
                 };
 
@@ -518,9 +517,9 @@ namespace k8s.Tests
                             {
                                 ApiVersion = "testingversion",
                                 Command = command,
-                                Arguments = arguments.ToList()
-                            }
-                        }
+                                Arguments = arguments.ToList(),
+                            },
+                        },
                     },
                 };
                 var kubernetesConfig = new K8SConfiguration { Clusters = clusters, Users = users, Contexts = contexts };

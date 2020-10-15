@@ -23,7 +23,7 @@ kind: Namespace
 metadata:
   name: ns";
 
-            var types = new Dictionary<String, Type>();
+            var types = new Dictionary<string, Type>();
             types.Add("v1/Pod", typeof(V1Pod));
             types.Add("v1/Namespace", typeof(V1Namespace));
 
@@ -157,15 +157,15 @@ metadata:
                             {
                                 new V1VolumeMount
                                 {
-                                    Name = "vm1", MountPath = "/vm1", ReadOnlyProperty = true
+                                    Name = "vm1", MountPath = "/vm1", ReadOnlyProperty = true,
                                 },
                                 new V1VolumeMount
                                 {
-                                    Name = "vm2", MountPath = "/vm2", ReadOnlyProperty = false
+                                    Name = "vm2", MountPath = "/vm2", ReadOnlyProperty = false,
                                 },
-                            }
-                        }
-                    }
+                            },
+                        },
+                    },
                 },
             };
 
@@ -284,7 +284,7 @@ spec:
                 ApiVersion = "v1",
                 Spec = new V1ServiceSpec
                 {
-                    Ports = new List<V1ServicePort> { new V1ServicePort { Port = 3000, TargetPort = 3000 } }
+                    Ports = new List<V1ServicePort> { new V1ServicePort { Port = 3000, TargetPort = 3000 } },
                 },
             };
 
@@ -336,8 +336,8 @@ data:
 ";
 
             var result = Yaml.LoadFromString<V1Secret>(kManifest);
-            Assert.Equal(Encoding.UTF8.GetString(result.Data["username"]), "bXktYXBw");
-            Assert.Equal(Encoding.UTF8.GetString(result.Data["password"]), "Mzk1MjgkdmRnN0pi");
+            Assert.Equal("bXktYXBw", Encoding.UTF8.GetString(result.Data["username"]));
+            Assert.Equal("Mzk1MjgkdmRnN0pi", Encoding.UTF8.GetString(result.Data["password"]));
         }
     }
 }

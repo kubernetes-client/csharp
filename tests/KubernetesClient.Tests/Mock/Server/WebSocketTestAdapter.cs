@@ -18,7 +18,7 @@ namespace k8s.Tests.Mock.Server
         /// <summary>
         ///     Completion source for the <see cref="TestCompleted"/> task.
         /// </summary>
-        readonly TaskCompletionSource<object> _testCompletion = new TaskCompletionSource<object>();
+        private readonly TaskCompletionSource<object> _testCompletion = new TaskCompletionSource<object>();
 
         /// <summary>
         ///     A <see cref="Task"/> that completes when the test is complete (providing <see cref="CompleteTest"/> is called).
@@ -51,7 +51,7 @@ namespace k8s.Tests.Mock.Server
             /// <summary>
             ///     Completion source for the <see cref="ServerSocketAccepted"/> task.
             /// </summary>
-            readonly TaskCompletionSource<WebSocket> _completion = new TaskCompletionSource<WebSocket>();
+            private readonly TaskCompletionSource<WebSocket> _completion = new TaskCompletionSource<WebSocket>();
 
             /// <summary>
             ///     A <see cref="Task"/> that completes when the server accepts a WebSocket connection (i.e. when <see cref="AcceptServerSocket"/> or <see cref="RejectServerSocket"/> is called).

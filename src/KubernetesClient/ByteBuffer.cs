@@ -34,6 +34,7 @@ namespace k8s
         /// more data is available.
         /// </summary>
         private bool endOfFile;
+        private bool disposedValue;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ByteBuffer"/> class using the default buffer size and limit.
@@ -143,12 +144,6 @@ namespace k8s
                     }
                 }
             }
-        }
-
-        /// <inheritdoc/>
-        public void Dispose()
-        {
-            ArrayPool<byte>.Shared.Return(this.buffer);
         }
 
         /// <summary>
@@ -306,6 +301,35 @@ namespace k8s
 
             Debug.Assert(this.bytesRead + this.AvailableReadableBytes == this.bytesWritten);
             this.OnResize?.Invoke(this, EventArgs.Empty);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    ArrayPool<byte>.Shared.Return(this.buffer);
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+                // TODO: set large fields to null
+                disposedValue = true;
+            }
+        }
+
+        // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+        // ~ByteBuffer()
+        // {
+        //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        //     Dispose(disposing: false);
+        // }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

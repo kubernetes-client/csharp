@@ -434,7 +434,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void LoadKubeConfigFromEnvironmentVariable_MultipleConfigs()
+        public void LoadKubeConfigFromEnvironmentVariableMultipleConfigs()
         {
             // This test makes sure that a list of environment variables works (no exceptions),
             // doesn't check validity of configuration, which is done in other tests.
@@ -564,7 +564,7 @@ namespace k8s.Tests
             }
         }
 
-        private void AssertContextEqual(Context expected, Context actual)
+        private static void AssertContextEqual(Context expected, Context actual)
         {
             Assert.Equal(expected.Name, actual.Name);
             Assert.Equal(expected.ContextDetails.Cluster, actual.ContextDetails.Cluster);
@@ -572,7 +572,7 @@ namespace k8s.Tests
             Assert.Equal(expected.ContextDetails.Namespace, actual.ContextDetails.Namespace);
         }
 
-        private void AssertClusterEqual(Cluster expected, Cluster actual)
+        private static void AssertClusterEqual(Cluster expected, Cluster actual)
         {
             Assert.Equal(expected.Name, actual.Name);
             Assert.Equal(expected.ClusterEndpoint.CertificateAuthority, actual.ClusterEndpoint.CertificateAuthority);
@@ -582,7 +582,7 @@ namespace k8s.Tests
             Assert.Equal(expected.ClusterEndpoint.SkipTlsVerify, actual.ClusterEndpoint.SkipTlsVerify);
         }
 
-        private void AssertUserEqual(User expected, User actual)
+        private static void AssertUserEqual(User expected, User actual)
         {
             Assert.Equal(expected.Name, actual.Name);
 

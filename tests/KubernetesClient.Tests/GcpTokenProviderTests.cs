@@ -19,8 +19,9 @@ namespace k8s.Tests
             {
                 System.Diagnostics.Process.Start("chmod", $"+x {cmd}").WaitForExit();
             }
+
             var sut = new GcpTokenProvider(cmd);
-            var result = await sut.GetAuthenticationHeaderAsync(CancellationToken.None);
+            var result = await sut.GetAuthenticationHeaderAsync(CancellationToken.None).ConfigureAwait(false);
             result.Scheme.Should().Be("Bearer");
             result.Parameter.Should().Be("ACCESS-TOKEN");
         }

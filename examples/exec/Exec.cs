@@ -15,14 +15,14 @@ namespace exec
 
             var list = client.ListNamespacedPod("default");
             var pod = list.Items[0];
-            await ExecInPod(client, pod);
+            await ExecInPod(client, pod).ConfigureAwait(false);
         }
 
         private async static Task ExecInPod(IKubernetes client, V1Pod pod)
         {
             var webSocket =
                 await client.WebSocketNamespacedPodExecAsync(pod.Metadata.Name, "default", "ls",
-                    pod.Spec.Containers[0].Name);
+                    pod.Spec.Containers[0].Name).ConfigureAwait(false);
 
             var demux = new StreamDemuxer(webSocket);
             demux.Start();

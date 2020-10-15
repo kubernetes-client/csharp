@@ -5,6 +5,7 @@ namespace k8s
     /// pod.
     /// </summary>
     /// <seealso href="https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/server/remotecommand/websocket.go#L29"/>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1028:Enum Storage should be Int32", Justification = "byte only")]
     public enum ChannelIndex : byte
     {
         /// <summary>

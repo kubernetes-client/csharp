@@ -1,15 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 
 namespace k8s.Models
 {
-    ///<summary>Adds convenient extensions for Kubernetes objects.</summary>
+    /// <summary>Adds convenient extensions for Kubernetes objects.</summary>
     public static class ModelExtensions
     {
-        ///<summary>Adds the given finalizer to a Kubernetes object if it doesn't already exist.</summary>
-        ///<returns>Returns true if the finalizer was added and false if it already existed.</returns>
+        /// <summary>Adds the given finalizer to a Kubernetes object if it doesn't already exist.</summary>
+        /// <returns>Returns true if the finalizer was added and false if it already existed.</returns>
         public static bool AddFinalizer(this IMetadata<V1ObjectMeta> obj, string finalizer)
         {
             if (string.IsNullOrEmpty(finalizer))
@@ -503,22 +502,6 @@ namespace k8s.Models
 
             return owner.ApiVersion == obj.ApiVersion && owner.Kind == obj.Kind && owner.Name == obj.Name() &&
                    owner.Uid == obj.Uid();
-        }
-    }
-
-    public partial class V1Status
-    {
-        /// <summary>Converts a <see cref="V1Status"/> object into a short description of the status.</summary>
-        public override string ToString()
-        {
-            string reason = Reason;
-            if (string.IsNullOrEmpty(reason) && Code.GetValueOrDefault() != 0)
-            {
-                reason = ((HttpStatusCode)Code.Value).ToString();
-            }
-
-            return string.IsNullOrEmpty(Message) ? string.IsNullOrEmpty(reason) ? Status : reason :
-                string.IsNullOrEmpty(reason) ? Message : $"{reason} - {Message}";
         }
     }
 }

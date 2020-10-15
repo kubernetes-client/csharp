@@ -69,7 +69,7 @@ namespace k8s.Tests
                 Name = "name",
                 NamespaceProperty = "ns",
                 ResourceVersion = "42",
-                Uid = "id"
+                Uid = "id",
             };
             Assert.Equal(ts, pod.CreationTimestamp().Value);
             Assert.Equal(ts2, pod.DeletionTimestamp().Value);

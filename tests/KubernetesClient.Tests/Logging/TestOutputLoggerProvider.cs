@@ -7,7 +7,7 @@ namespace k8s.Tests.Logging
     /// <summary>
     ///     Logger provider for logging to Xunit test output.
     /// </summary>
-    sealed class TestOutputLoggerProvider
+    internal sealed class TestOutputLoggerProvider
         : ILoggerProvider
     {
         /// <summary>
@@ -40,7 +40,7 @@ namespace k8s.Tests.Logging
         /// <summary>
         ///     The output for the current test.
         /// </summary>
-        ITestOutputHelper TestOutput { get; }
+        private ITestOutputHelper TestOutput { get; }
 
         /// <summary>
         ///     The logger's minimum log level.

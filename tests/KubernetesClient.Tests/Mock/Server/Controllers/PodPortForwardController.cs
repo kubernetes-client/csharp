@@ -33,7 +33,7 @@ namespace k8s.Tests.Mock.Server.Controllers
         /// <summary>
         ///     The adapter used to capture sockets accepted by the test server and provide them to the calling test.
         /// </summary>
-        WebSocketTestAdapter WebSocketTestAdapter { get; }
+        private WebSocketTestAdapter WebSocketTestAdapter { get; }
 
         /// <summary>
         ///     Mock Kubernetes API: port-forward for pod.
@@ -56,11 +56,11 @@ namespace k8s.Tests.Mock.Server.Controllers
             }
 
             WebSocket webSocket = await HttpContext.WebSockets.AcceptWebSocketAsync(
-                subProtocol: WebSocketProtocol.ChannelWebSocketProtocol);
+                subProtocol: WebSocketProtocol.ChannelWebSocketProtocol).ConfigureAwait(false);
 
             WebSocketTestAdapter.AcceptedPodPortForwardV1Connection.AcceptServerSocket(webSocket);
 
-            await WebSocketTestAdapter.TestCompleted;
+            await WebSocketTestAdapter.TestCompleted.ConfigureAwait(false);
 
             return Ok();
         }

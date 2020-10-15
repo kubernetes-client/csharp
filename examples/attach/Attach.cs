@@ -18,14 +18,14 @@ namespace attach
 
             var list = client.ListNamespacedPod("default");
             var pod = list.Items[0];
-            await AttachToPod(client, pod);
+            await AttachToPod(client, pod).ConfigureAwait(false);
         }
 
         private async static Task AttachToPod(IKubernetes client, V1Pod pod)
         {
             var webSocket =
                 await client.WebSocketNamespacedPodAttachAsync(pod.Metadata.Name, "default",
-                    pod.Spec.Containers[0].Name);
+                    pod.Spec.Containers[0].Name).ConfigureAwait(false);
 
             var demux = new StreamDemuxer(webSocket);
             demux.Start();

@@ -16,7 +16,7 @@ namespace k8s.Tests
                 Command = "command",
                 Arguments = new List<string> { "arg1", "arg2" },
                 EnvironmentVariables = new List<Dictionary<string, string>>
-                    { new Dictionary<string, string> { { "name", "testkey" }, { "value", "testvalue" } } }
+                    { new Dictionary<string, string> { { "name", "testkey" }, { "value", "testvalue" } } },
             });
 
             var actualExecInfo = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(actual.StartInfo.EnvironmentVariables["KUBERNETES_EXEC_INFO"]);

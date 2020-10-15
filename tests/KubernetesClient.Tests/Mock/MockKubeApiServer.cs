@@ -32,9 +32,9 @@ namespace k8s.Tests.Mock
             _webHost = WebHost.CreateDefaultBuilder()
                 .Configure(app => app.Run(async httpContext =>
                 {
-                    if (await shouldNext(httpContext))
+                    if (await shouldNext(httpContext).ConfigureAwait(false))
                     {
-                        await httpContext.Response.WriteAsync(resp);
+                        await httpContext.Response.WriteAsync(resp).ConfigureAwait(false);
                     }
                 }))
                 .UseKestrel(options => { options.Listen(IPAddress.Loopback, 0, listenConfigure); })

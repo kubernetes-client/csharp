@@ -5,7 +5,7 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\src\KubernetesClient\kubernetes-client.snk</AssemblyOriginatorKeyFile>
     <RootNamespace>k8s.Tests</RootNamespace>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.1</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,12 +20,12 @@
       <PackageReference Include="Nito.AsyncEx" Version="5.0.0" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
+  <!-- <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
       <Compile Remove="Kubernetes.Exec.Tests.cs" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.1' ">
       <Compile Remove="Kubernetes.WebSockets.Tests.cs" />
-  </ItemGroup>
+  </ItemGroup> -->
 
   <ItemGroup>
 

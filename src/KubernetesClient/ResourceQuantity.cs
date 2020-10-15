@@ -11,33 +11,6 @@ using YamlDotNet.Serialization;
 
 namespace k8s.Models
 {
-    internal class QuantityConverter : JsonConverter
-    {
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            var q = (ResourceQuantity)value;
-
-            if (q != null)
-            {
-                serializer.Serialize(writer, q.ToString());
-                return;
-            }
-
-            serializer.Serialize(writer, value);
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
-            JsonSerializer serializer)
-        {
-            return new ResourceQuantity(serializer.Deserialize<string>(reader));
-        }
-
-        public override bool CanConvert(Type objectType)
-        {
-            return objectType == typeof(string);
-        }
-    }
-
     /// <summary>
     ///     port https://github.com/kubernetes/apimachinery/blob/master/pkg/api/resource/quantity.go to c#
     ///     Quantity is a fixed-point representation of a number.
@@ -166,7 +139,7 @@ namespace k8s.Models
         {
             if (suffixFormat == SuffixFormat.BinarySI)
             {
-                if (-1024 < _unitlessValue && _unitlessValue < 1024)
+                if (_unitlessValue > -1024 && _unitlessValue < 1024)
                 {
                     return Suffixer.AppendMaxSuffix(_unitlessValue, SuffixFormat.DecimalSI);
                 }
@@ -253,8 +226,6 @@ namespace k8s.Models
             return new ResourceQuantity(v, 0, SuffixFormat.DecimalExponent);
         }
 
-        #region suffixer
-
         private class Suffixer
         {
             private static readonly IReadOnlyDictionary<string, (int, int)> BinSuffixes =
@@ -262,28 +233,28 @@ namespace k8s.Models
                 {
                     // Don't emit an error when trying to produce
                     // a suffix for 2^0.
-                    {"", (2, 0) },
-                    {"Ki", (2, 10) },
-                    {"Mi", (2, 20) },
-                    {"Gi", (2, 30) },
-                    {"Ti", (2, 40) },
-                    {"Pi", (2, 50) },
-                    {"Ei", (2, 60) },
+                    { "", (2, 0) },
+                    { "Ki", (2, 10) },
+                    { "Mi", (2, 20) },
+                    { "Gi", (2, 30) },
+                    { "Ti", (2, 40) },
+                    { "Pi", (2, 50) },
+                    { "Ei", (2, 60) },
                 };
 
             private static readonly IReadOnlyDictionary<string, (int, int)> DecSuffixes =
                 new Dictionary<string, (int, int)>
                 {
-                    {"n", (10, -9) },
-                    {"u", (10, -6) },
-                    {"m", (10, -3) },
-                    {"", (10, 0) },
-                    {"k", (10, 3) },
-                    {"M", (10, 6) },
-                    {"G", (10, 9) },
-                    {"T", (10, 12) },
-                    {"P", (10, 15) },
-                    {"E", (10, 18) },
+                    { "n", (10, -9) },
+                    { "u", (10, -6) },
+                    { "m", (10, -3) },
+                    { "", (10, 0) },
+                    { "k", (10, 3) },
+                    { "M", (10, 6) },
+                    { "G", (10, 9) },
+                    { "T", (10, 12) },
+                    { "P", (10, 15) },
+                    { "E", (10, 18) },
                 };
 
             public Suffixer(string suffix)
@@ -325,7 +296,6 @@ namespace k8s.Models
             public int Base { get; }
             public int Exponent { get; }
 
-
             public static string AppendMaxSuffix(Fraction value, SuffixFormat format)
             {
                 if (value.IsZero)
@@ -351,7 +321,6 @@ namespace k8s.Models
                                 minE = exp;
                                 lastv = v;
                             }
-
 
                             if (minE == 0)
                             {
@@ -402,7 +371,5 @@ namespace k8s.Models
                 return lastv;
             }
         }
-
-        #endregion
     }
 }
