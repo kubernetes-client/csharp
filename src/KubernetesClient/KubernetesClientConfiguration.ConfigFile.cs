@@ -11,7 +11,6 @@ using k8s.Authentication;
 using k8s.Exceptions;
 using k8s.KubeConfigModels;
 
-
 namespace k8s
 {
     public partial class KubernetesClientConfiguration
@@ -334,7 +333,7 @@ namespace k8s
                                 var config = userDetails.UserCredentials.AuthProvider.Config;
                                 if (config.ContainsKey("expires-on"))
                                 {
-                                    var expiresOn = Int32.Parse(config["expires-on"]);
+                                    var expiresOn = int.Parse(config["expires-on"]);
                                     DateTimeOffset expires;
 #if NET452
                                     var epoch = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
@@ -344,18 +343,18 @@ namespace k8s
                                     expires = DateTimeOffset.FromUnixTimeSeconds(expiresOn);
 #endif
 
-                                    if (DateTimeOffset.Compare(expires
-                                            , DateTimeOffset.Now)
+                                    if (DateTimeOffset.Compare(expires,
+                                            DateTimeOffset.Now)
                                         <= 0)
                                     {
                                         var tenantId = config["tenant-id"];
                                         var clientId = config["client-id"];
                                         var apiServerId = config["apiserver-id"];
                                         var refresh = config["refresh-token"];
-                                        var newToken = RenewAzureToken(tenantId
-                                            , clientId
-                                            , apiServerId
-                                            , refresh);
+                                        var newToken = RenewAzureToken(tenantId,
+                                            clientId,
+                                            apiServerId,
+                                            refresh);
                                         config["access-token"] = newToken;
                                     }
                                 }
@@ -364,6 +363,7 @@ namespace k8s
                                 userCredentialsFound = true;
                                 break;
                             }
+
                         case "gcp":
                             {
                                 // config
@@ -416,9 +416,9 @@ namespace k8s
         {
             var execInfo = new Dictionary<string, dynamic>
             {
-                {"apiVersion", config.ApiVersion },
-                {"kind", "ExecCredentials" },
-                {"spec", new Dictionary<string, bool> { {"interactive", Environment.UserInteractive } } },
+                { "apiVersion", config.ApiVersion },
+                { "kind", "ExecCredentials" },
+                { "spec", new Dictionary<string, bool> { { "interactive", Environment.UserInteractive } } },
             };
 
             var process = new Process();
@@ -508,6 +508,7 @@ namespace k8s
                     {
                         throw new KubeConfigException($"external exec failed missing clientKeyData field in plugin output");
                     }
+
                     return (null, responseObject.Status["clientCertificateData"], responseObject.Status["clientKeyData"]);
                 }
                 else
@@ -733,7 +734,7 @@ namespace k8s
         private static IEnumerable<T> MergeLists<T>(IEnumerable<T> baseList, IEnumerable<T> mergeList,
             Func<T, string> getNameFunc)
         {
-            if (mergeList != null && mergeList.Count() > 0)
+            if (mergeList != null && mergeList.Any())
             {
                 var mapping = new Dictionary<string, T>();
                 foreach (var item in baseList)

@@ -24,8 +24,9 @@ namespace k8s.Authentication
         {
             if (DateTime.UtcNow.AddSeconds(30) > _expiry)
             {
-                await RefreshToken();
+                await RefreshToken().ConfigureAwait(false);
             }
+
             return new AuthenticationHeaderValue("Bearer", _token);
         }
 
@@ -40,9 +41,9 @@ namespace k8s.Authentication
                     UseShellExecute = false,
                     CreateNoWindow = true,
                     RedirectStandardOutput = true,
-                    RedirectStandardError = true
+                    RedirectStandardError = true,
                 },
-                EnableRaisingEvents = true
+                EnableRaisingEvents = true,
             };
             var tcs = new TaskCompletionSource<bool>();
             process.Exited += (sender, arg) =>
@@ -53,14 +54,14 @@ namespace k8s.Authentication
             var output = process.StandardOutput.ReadToEndAsync();
             var err = process.StandardError.ReadToEndAsync();
 
-            await Task.WhenAll(tcs.Task, output, err);
+            await Task.WhenAll(tcs.Task, output, err).ConfigureAwait(false);
 
             if (process.ExitCode != 0)
             {
                 throw new KubernetesClientException($"Unable to obtain a token via gcloud command. Error code {process.ExitCode}. \n {err}");
             }
 
-            var json = JToken.Parse(await output);
+            var json = JToken.Parse(await output.ConfigureAwait(false));
             _token = json["credential"]["access_token"].Value<string>();
             _expiry = json["credential"]["token_expiry"].Value<DateTime>();
         }

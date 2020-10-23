@@ -7,7 +7,7 @@ namespace k8s.Versioning
     public class KubernetesVersionComparer : IComparer<string>
     {
         public static KubernetesVersionComparer Instance { get; private set; }
-        static readonly Regex _kubernetesVersionRegex;
+        private static readonly Regex _kubernetesVersionRegex;
 
         static KubernetesVersionComparer()
         {
@@ -59,7 +59,7 @@ namespace k8s.Versioning
         {
             Alpha = 1,
             Beta = 2,
-            Final = 3
+            Final = 3,
         }
     }
 }

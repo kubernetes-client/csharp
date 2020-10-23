@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace metrics
 {
-    class Program
+    internal class Program
     {
-        static async Task NodesMetrics(IKubernetes client)
+        private static async Task NodesMetrics(IKubernetes client)
         {
             var nodesMetrics = await client.GetKubernetesNodesMetricsAsync().ConfigureAwait(false);
 
@@ -22,7 +22,7 @@ namespace metrics
             }
         }
 
-        static async Task PodsMetrics(IKubernetes client)
+        private static async Task PodsMetrics(IKubernetes client)
         {
             var podsMetrics = await client.GetKubernetesPodsMetricsAsync().ConfigureAwait(false);
 
@@ -42,11 +42,12 @@ namespace metrics
                         Console.WriteLine($"{metric.Key}: {metric.Value}");
                     }
                 }
+
                 Console.Write(Environment.NewLine);
             }
         }
 
-        static async Task Main(string[] args)
+        private static async Task Main(string[] args)
         {
             var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
             var client = new Kubernetes(config);

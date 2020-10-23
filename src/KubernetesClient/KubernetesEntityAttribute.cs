@@ -5,6 +5,7 @@ namespace k8s.Models
     /// <summary>
     /// Describes object type in Kubernetes
     /// </summary>
+    [AttributeUsage(AttributeTargets.Class)]
     public sealed class KubernetesEntityAttribute : Attribute
     {
         /// <summary>

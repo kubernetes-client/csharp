@@ -17,7 +17,6 @@ namespace k8s.Models
             Metadata = metadata;
         }
 
-
         /// <summary>
         /// Gets or sets aPIVersion defines the versioned schema of this
         /// representation of an object. Servers should convert recognized

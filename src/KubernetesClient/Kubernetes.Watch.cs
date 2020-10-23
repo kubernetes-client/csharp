@@ -21,11 +21,11 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken))
         {
             // Tracing
-            bool _shouldTrace = ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
+            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            string invocationId = null;
+            if (shouldTrace)
             {
-                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("path", path);
                 tracingParameters.Add("continue", @continue);
@@ -36,7 +36,7 @@ namespace k8s
                 tracingParameters.Add("pretty", pretty);
                 tracingParameters.Add("timeoutSeconds", timeoutSeconds);
                 tracingParameters.Add("resourceVersion", resourceVersion);
-                ServiceClientTracing.Enter(_invocationId, this, nameof(WatchObjectAsync), tracingParameters);
+                ServiceClientTracing.Enter(invocationId, this, nameof(WatchObjectAsync), tracingParameters);
             }
 
             // Construct URL
@@ -124,9 +124,9 @@ namespace k8s
             }
 
             // Send Request
-            if (_shouldTrace)
+            if (shouldTrace)
             {
-                ServiceClientTracing.SendRequest(_invocationId, httpRequest);
+                ServiceClientTracing.SendRequest(invocationId, httpRequest);
             }
 
             cancellationToken.ThrowIfCancellationRequested();
@@ -134,9 +134,9 @@ namespace k8s
                 .SendAsync(httpRequest, HttpCompletionOption.ResponseHeadersRead, cancellationToken)
                 .ConfigureAwait(false);
 
-            if (_shouldTrace)
+            if (shouldTrace)
             {
-                ServiceClientTracing.ReceiveResponse(_invocationId, httpResponse);
+                ServiceClientTracing.ReceiveResponse(invocationId, httpResponse);
             }
 
             cancellationToken.ThrowIfCancellationRequested();

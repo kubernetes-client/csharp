@@ -256,7 +256,7 @@ namespace k8s.Tests
 
             // Kick off a read operation
             var readTask = Task.Run(() => read = buffer.Read(readData, 0, readData.Length));
-            await Task.Delay(250);
+            await Task.Delay(250).ConfigureAwait(false);
             Assert.False(readTask.IsCompleted, "Read task completed before data was available.");
 
             // Write data to the buffer
@@ -264,7 +264,7 @@ namespace k8s.Tests
 
             await TaskAssert.Completed(readTask,
                 timeout: TimeSpan.FromMilliseconds(1000),
-                message: "Timed out waiting for read task to complete.");
+                message: "Timed out waiting for read task to complete.").ConfigureAwait(false);
 
             Assert.Equal(3, read);
             Assert.Equal(0xF0, readData[0]);
@@ -411,10 +411,10 @@ namespace k8s.Tests
             byte[] output = new byte[buffer.Size + 1];
 
             var readTask = Task.Run(() => buffer.Read(output, 0, output.Length));
-            await Task.Delay(TimeSpan.FromSeconds(1));
+            await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(false);
 
             buffer.Write(data, 0, data.Length);
-            await readTask;
+            await readTask.ConfigureAwait(false);
         }
 
 #if NETCOREAPP2_0
@@ -437,12 +437,12 @@ namespace k8s.Tests
             var consumerTask
  = Task.Run(() => this.Consume(buffer, SHA256.Create()));
 
-            await Task.WhenAll(generatorTask, consumerTask);
+            await Task.WhenAll(generatorTask, consumerTask).ConfigureAwait(false);
 
             var generatorHash
- = await generatorTask;
+ = await generatorTask.ConfigureAwait(false);
             var consumerHash
- = await consumerTask;
+ = await consumerTask.ConfigureAwait(false);
 
             Assert.Equal(generatorHash, consumerHash);
         }

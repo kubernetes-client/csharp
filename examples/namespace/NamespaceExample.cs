@@ -6,9 +6,9 @@ using k8s.Models;
 
 namespace @namespace
 {
-    class NamespaceExample
+    internal class NamespaceExample
     {
-        static void ListNamespaces(IKubernetes client)
+        private static void ListNamespaces(IKubernetes client)
         {
             var list = client.ListNamespace();
             foreach (var item in list.Items)
@@ -22,14 +22,14 @@ namespace @namespace
             }
         }
 
-        static async Task DeleteAsync(IKubernetes client, string name, int delayMillis)
+        private static async Task DeleteAsync(IKubernetes client, string name, int delayMillis)
         {
             while (true)
             {
-                await Task.Delay(delayMillis);
+                await Task.Delay(delayMillis).ConfigureAwait(false);
                 try
                 {
-                    await client.ReadNamespaceAsync(name);
+                    await client.ReadNamespaceAsync(name).ConfigureAwait(false);
                 }
                 catch (AggregateException ex)
                 {
@@ -43,7 +43,7 @@ namespace @namespace
                                 return;
                             }
 
-                            throw ex;
+                            throw;
                         }
                     }
                 }
@@ -54,12 +54,12 @@ namespace @namespace
                         return;
                     }
 
-                    throw ex;
+                    throw;
                 }
             }
         }
 
-        static void Delete(IKubernetes client, string name, int delayMillis)
+        private static void Delete(IKubernetes client, string name, int delayMillis)
         {
             DeleteAsync(client, name, delayMillis).Wait();
         }

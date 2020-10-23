@@ -29,6 +29,7 @@ namespace k8s
         private readonly StreamType streamType;
         private readonly bool ownsSocket;
         private Task runLoop;
+        private bool disposedValue;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StreamDemuxer"/> class.
@@ -58,31 +59,9 @@ namespace k8s
         /// </summary>
         public void Start()
         {
-            this.runLoop = Task.Run(async () => await this.RunLoop(this.cts.Token));
+            this.runLoop = Task.Run(async () => await RunLoop(cts.Token).ConfigureAwait(false));
         }
 
-        /// <inheritdoc/>
-        public void Dispose()
-        {
-            try
-            {
-                if (this.runLoop != null)
-                {
-                    this.cts.Cancel();
-                    this.runLoop.Wait();
-                }
-            }
-            catch (Exception ex)
-            {
-                // Dispose methods can never throw.
-                Debug.Write(ex);
-            }
-
-            if (this.ownsSocket)
-            {
-                this.webSocket.Dispose();
-            }
-        }
 
         /// <summary>
         /// Gets a <see cref="Stream"/> which allows you to read to and/or write from a remote channel.
@@ -275,6 +254,50 @@ namespace k8s
 
                 this.ConnectionClosed?.Invoke(this, EventArgs.Empty);
             }
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    try
+                    {
+                        if (this.runLoop != null)
+                        {
+                            this.cts.Cancel();
+                            this.runLoop.Wait();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Dispose methods can never throw.
+                        Debug.Write(ex);
+                    }
+
+                    if (this.ownsSocket)
+                    {
+                        this.webSocket.Dispose();
+                    }
+                }
+
+                disposedValue = true;
+            }
+        }
+
+        // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+        // ~StreamDemuxer()
+        // {
+        //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        //     Dispose(disposing: false);
+        // }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

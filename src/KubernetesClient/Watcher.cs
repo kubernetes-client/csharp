@@ -3,9 +3,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
-using k8s.Exceptions;
 using k8s.Models;
-using Microsoft.Rest;
 using Microsoft.Rest.Serialization;
 
 namespace k8s
@@ -44,6 +42,7 @@ namespace k8s
         private readonly Func<Task<TextReader>> _streamReaderCreator;
 
         private TextReader _streamReader;
+        private bool disposedValue;
         private readonly Task _watcherLoop;
 
         /// <summary>
@@ -93,14 +92,7 @@ namespace k8s
             OnClosed += onClosed;
 
             _cts = new CancellationTokenSource();
-            _watcherLoop = Task.Run(async () => await this.WatcherLoop(_cts.Token));
-        }
-
-        /// <inheritdoc/>
-        public void Dispose()
-        {
-            _cts.Cancel();
-            _streamReader?.Dispose();
+            _watcherLoop = Task.Run(async () => await WatcherLoop(_cts.Token).ConfigureAwait(false));
         }
 
         /// <summary>
@@ -176,58 +168,33 @@ namespace k8s
                 OnClosed?.Invoke();
             }
         }
-    }
 
-    public static class WatcherExt
-    {
-        /// <summary>
-        /// create a watch object from a call to api server with watch=true
-        /// </summary>
-        /// <typeparam name="T">type of the event object</typeparam>
-        /// <typeparam name="L">type of the HttpOperationResponse object</typeparam>
-        /// <param name="response">the api response</param>
-        /// <param name="onEvent">a callback when any event raised from api server</param>
-        /// <param name="onError">a callbak when any exception was caught during watching</param>
-        /// <param name="onClosed">
-        /// The action to invoke when the server closes the connection.
-        /// </param>
-        /// <returns>a watch object</returns>
-        public static Watcher<T> Watch<T, L>(this Task<HttpOperationResponse<L>> responseTask,
-            Action<WatchEventType, T> onEvent,
-            Action<Exception> onError = null,
-            Action onClosed = null)
+        protected virtual void Dispose(bool disposing)
         {
-            return new Watcher<T>(async () =>
+            if (!disposedValue)
             {
-                var response = await responseTask.ConfigureAwait(false);
-
-                if (!(response.Response.Content is WatcherDelegatingHandler.LineSeparatedHttpContent content))
+                if (disposing)
                 {
-                    throw new KubernetesClientException("not a watchable request or failed response");
+                    _cts.Cancel();
+                    _streamReader?.Dispose();
                 }
 
-                return content.StreamReader;
-            }, onEvent, onError, onClosed);
+                disposedValue = true;
+            }
         }
 
-        /// <summary>
-        /// create a watch object from a call to api server with watch=true
-        /// </summary>
-        /// <typeparam name="T">type of the event object</typeparam>
-        /// <typeparam name="L">type of the HttpOperationResponse object</typeparam>
-        /// <param name="response">the api response</param>
-        /// <param name="onEvent">a callback when any event raised from api server</param>
-        /// <param name="onError">a callbak when any exception was caught during watching</param>
-        /// <param name="onClosed">
-        /// The action to invoke when the server closes the connection.
-        /// </param>
-        /// <returns>a watch object</returns>
-        public static Watcher<T> Watch<T, L>(this HttpOperationResponse<L> response,
-            Action<WatchEventType, T> onEvent,
-            Action<Exception> onError = null,
-            Action onClosed = null)
+        // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+        // ~Watcher()
+        // {
+        //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        //     Dispose(disposing: false);
+        // }
+
+        public void Dispose()
         {
-            return Watch(Task.FromResult(response), onEvent, onError, onClosed);
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

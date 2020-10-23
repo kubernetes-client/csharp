@@ -7,6 +7,6 @@ namespace k8s.Tests
     {
         Windows = 1,
         Linux = 2,
-        OSX = 4
+        OSX = 4,
     }
 }

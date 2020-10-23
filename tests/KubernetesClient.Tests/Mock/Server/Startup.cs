@@ -23,7 +23,7 @@ namespace k8s.Tests.Mock.Server
         /// <param name="services">
         ///     The service collection to configure.
         /// </param>
-        public void ConfigureServices(IServiceCollection services)
+        public static void ConfigureServices(IServiceCollection services)
         {
             if (services == null)
             {
@@ -43,7 +43,7 @@ namespace k8s.Tests.Mock.Server
         /// <param name="app">
         ///     The application pipeline builder.
         /// </param>
-        public void Configure(IApplicationBuilder app)
+        public static void Configure(IApplicationBuilder app)
         {
             app.UseWebSockets(new WebSocketOptions
             {

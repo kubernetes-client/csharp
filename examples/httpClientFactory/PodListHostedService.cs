@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace httpClientFactory
 {
     // Learn more about IHostedServices at https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&tabs=visual-studio
-    internal class PodListHostedService : IHostedService
+    public class PodListHostedService : IHostedService
     {
         private readonly IKubernetes _kubernetesClient;
         private readonly ILogger<PodListHostedService> _logger;
@@ -23,7 +23,7 @@ namespace httpClientFactory
         {
             _logger.LogInformation("Starting Request!");
 
-            var list = await _kubernetesClient.ListNamespacedPodAsync("default", cancellationToken: cancellationToken);
+            var list = await _kubernetesClient.ListNamespacedPodAsync("default", cancellationToken: cancellationToken).ConfigureAwait(false);
             foreach (var item in list.Items)
             {
                 _logger.LogInformation(item.Metadata.Name);

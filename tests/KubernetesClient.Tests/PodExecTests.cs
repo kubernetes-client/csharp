@@ -43,7 +43,7 @@ namespace k8s.Tests
         ///     Verify that the client can request execution of a command in a pod's default container, with only the STDOUT stream enabled.
         /// </summary>
         [Fact(DisplayName = "Can exec in pod's default container, STDOUT only")]
-        public async Task Exec_DefaultContainer_StdOut()
+        public async Task ExecDefaultContainerStdOut()
         {
             if (!Debugger.IsAttached)
             {
@@ -51,7 +51,7 @@ namespace k8s.Tests
                     TimeSpan.FromSeconds(5));
             }
 
-            await Host.StartAsync(TestCancellation);
+            await Host.StartAsync(TestCancellation).ConfigureAwait(false);
 
             using (Kubernetes client = CreateTestClient())
             {
@@ -66,7 +66,7 @@ namespace k8s.Tests
                     stdin: false,
                     stdout: true,
                     webSocketSubProtol: WebSocketProtocol.ChannelWebSocketProtocol,
-                    cancellationToken: TestCancellation);
+                    cancellationToken: TestCancellation).ConfigureAwait(false);
                 Assert.Equal(WebSocketProtocol.ChannelWebSocketProtocol,
                     clientSocket
                         .SubProtocol); // For WebSockets, the Kubernetes API defaults to the binary channel (v1) protocol.
@@ -81,10 +81,10 @@ namespace k8s.Tests
                 const int STDOUT = 1;
                 const string expectedOutput = "This is text send to STDOUT.";
 
-                int bytesSent = await SendMultiplexed(serverSocket, STDOUT, expectedOutput);
+                int bytesSent = await SendMultiplexed(serverSocket, STDOUT, expectedOutput).ConfigureAwait(false);
                 testOutput.WriteLine($"Sent {bytesSent} bytes to server socket; receiving from client socket...");
 
-                (string receivedText, byte streamIndex, int bytesReceived) = await ReceiveTextMultiplexed(clientSocket);
+                (string receivedText, byte streamIndex, int bytesReceived) = await ReceiveTextMultiplexed(clientSocket).ConfigureAwait(false);
                 testOutput.WriteLine(
                     $"Received {bytesReceived} bytes from client socket ('{receivedText}', stream {streamIndex}).");
 
@@ -93,15 +93,14 @@ namespace k8s.Tests
 
                 await Disconnect(clientSocket, serverSocket,
                     closeStatus: WebSocketCloseStatus.NormalClosure,
-                    closeStatusDescription: "Normal Closure");
+                    closeStatusDescription: "Normal Closure").ConfigureAwait(false);
 
                 WebSocketTestAdapter.CompleteTest();
             }
         }
 
-
         [Fact]
-        public void GetExitCodeOrThrow_Success()
+        public void GetExitCodeOrThrowSuccess()
         {
             var status = new V1Status() { Metadata = null, Status = "Success", };
 
@@ -109,7 +108,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void GetExitCodeOrThrow_NonZeroExitCode()
+        public void GetExitCodeOrThrowNonZeroExitCode()
         {
             var status = new V1Status()
             {
@@ -121,8 +120,8 @@ namespace k8s.Tests
                 {
                     Causes = new List<V1StatusCause>()
                     {
-                        new V1StatusCause() {Reason = "ExitCode", Message = "1" }
-                    }
+                        new V1StatusCause() { Reason = "ExitCode", Message = "1" },
+                    },
                 },
             };
 
@@ -130,7 +129,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void GetExitCodeOrThrow_InvalidExitCode()
+        public void GetExitCodeOrThrowInvalidExitCode()
         {
             var status = new V1Status()
             {
@@ -142,8 +141,8 @@ namespace k8s.Tests
                 {
                     Causes = new List<V1StatusCause>()
                     {
-                        new V1StatusCause() {Reason = "ExitCode", Message = "abc" }
-                    }
+                        new V1StatusCause() { Reason = "ExitCode", Message = "abc" },
+                    },
                 },
             };
 
@@ -152,7 +151,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void GetExitCodeOrThrow_NoExitCode()
+        public void GetExitCodeOrThrowNoExitCode()
         {
             var status = new V1Status()
             {
@@ -168,7 +167,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void GetExitCodeOrThrow_OtherError()
+        public void GetExitCodeOrThrowOtherError()
         {
             var status = new V1Status() { Metadata = null, Status = "Failure", Reason = "SomethingElse" };
 
@@ -177,7 +176,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public async Task NamespacedPodExecAsync_ActionNull()
+        public async Task NamespacedPodExecAsyncActionNull()
         {
             using (MemoryStream stdIn = new MemoryStream())
             using (MemoryStream stdOut = new MemoryStream())
@@ -209,7 +208,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public async Task NamespacedPodExecAsync_HttpException_WithStatus()
+        public async Task NamespacedPodExecAsyncHttpExceptionWithStatus()
         {
             var kubernetesMock = new Moq.Mock<Kubernetes>(
                 new object[] { Moq.Mock.Of<ServiceClientCredentials>(), new DelegatingHandler[] { } });
@@ -232,7 +231,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public async Task NamespacedPodExecAsync_HttpException_NoStatus()
+        public async Task NamespacedPodExecAsyncHttpExceptionNoStatus()
         {
             var kubernetesMock = new Moq.Mock<Kubernetes>(
                 new object[] { Moq.Mock.Of<ServiceClientCredentials>(), new DelegatingHandler[] { } });
@@ -255,7 +254,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public async Task NamespacedPodExecAsync_GenericException()
+        public async Task NamespacedPodExecAsyncGenericException()
         {
             var kubernetesMock = new Moq.Mock<Kubernetes>(
                 new object[] { Moq.Mock.Of<ServiceClientCredentials>(), new DelegatingHandler[] { } });
@@ -278,7 +277,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public async Task NamespacedPodExecAsync_ExitCode_NonZero()
+        public async Task NamespacedPodExecAsyncExitCodeNonZero()
         {
             var processStatus = new V1Status()
             {
@@ -290,8 +289,8 @@ namespace k8s.Tests
                 {
                     Causes = new List<V1StatusCause>()
                     {
-                        new V1StatusCause() {Reason = "ExitCode", Message = "1" }
-                    }
+                        new V1StatusCause() { Reason = "ExitCode", Message = "1" },
+                    },
                 },
             };
 
