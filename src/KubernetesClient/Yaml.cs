@@ -176,6 +176,7 @@ namespace k8s
                     .WithTypeConverter(new IntOrStringYamlConverter())
                     .WithTypeConverter(new ByteArrayStringYamlConverter())
                     .WithEventEmitter(e => new StringQuotingEmitter(e))
+                    .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitNull)
                     .BuildValueSerializer();
             emitter.Emit(new StreamStart());
             emitter.Emit(new DocumentStart());

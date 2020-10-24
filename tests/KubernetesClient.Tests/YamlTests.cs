@@ -114,10 +114,10 @@ metadata:
             var pod = new V1Pod() { ApiVersion = "v1", Kind = "Pod", Metadata = new V1ObjectMeta() { Name = "foo" } };
 
             var yaml = Yaml.SaveToString(pod);
-            Assert.True(ToLines(@"apiVersion: v1
+            Assert.Equal(ToLines(@"apiVersion: v1
 kind: Pod
 metadata:
-  name: foo").SequenceEqual(ToLines(yaml)));
+  name: foo"), ToLines(yaml));
         }
 
         [Fact]
@@ -131,11 +131,11 @@ metadata:
             };
 
             var yaml = Yaml.SaveToString(pod);
-            Assert.True(ToLines(@"apiVersion: v1
+            Assert.Equal(ToLines(@"apiVersion: v1
 kind: Pod
 metadata:
   name: foo
-  namespace: bar").SequenceEqual(ToLines(yaml)));
+  namespace: bar"), ToLines(yaml));
         }
 
         [Fact]
@@ -170,7 +170,7 @@ metadata:
             };
 
             var yaml = Yaml.SaveToString(pod);
-            Assert.True(ToLines(@"apiVersion: v1
+            Assert.Equal(ToLines(@"apiVersion: v1
 kind: Pod
 metadata:
   name: foo
@@ -184,7 +184,7 @@ spec:
       readOnly: true
     - mountPath: /vm2
       name: vm2
-      readOnly: false").SequenceEqual(ToLines(yaml)));
+      readOnly: false"), ToLines(yaml));
         }
 
         private static IEnumerable<string> ToLines(string s)
@@ -289,7 +289,7 @@ spec:
             };
 
             var output = Yaml.SaveToString<V1Service>(obj);
-            Assert.True(ToLines(output).SequenceEqual(ToLines(content)));
+            Assert.Equal(ToLines(output), ToLines(content));
         }
 
         [Fact]
