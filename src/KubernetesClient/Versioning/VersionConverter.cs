@@ -402,7 +402,7 @@ namespace k8s.Versioning
                 .ForMember(dest => dest.CurrentMetrics, opt => opt.Ignore())
                 .ReverseMap();
 
-            cfg.CreateMap<V1Event, V1beta1Event>()
+            cfg.CreateMap<Corev1Event, V1beta1Event>()
                 .ForMember(dest => dest.DeprecatedCount, opt => opt.Ignore())
                 .ForMember(dest => dest.DeprecatedFirstTimestamp, opt => opt.MapFrom(src => src.FirstTimestamp))
                 .ForMember(dest => dest.DeprecatedLastTimestamp, opt => opt.MapFrom(src => src.LastTimestamp))
