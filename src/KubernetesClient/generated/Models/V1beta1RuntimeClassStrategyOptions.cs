@@ -32,9 +32,9 @@ namespace k8s.Models
         /// V1beta1RuntimeClassStrategyOptions class.
         /// </summary>
         /// <param name="allowedRuntimeClassNames">allowedRuntimeClassNames is
-        /// a whitelist of RuntimeClass names that may be specified on a pod. A
-        /// value of "*" means that any RuntimeClass name is allowed, and must
-        /// be the only item in the list. An empty list requires the
+        /// an allowlist of RuntimeClass names that may be specified on a pod.
+        /// A value of "*" means that any RuntimeClass name is allowed, and
+        /// must be the only item in the list. An empty list requires the
         /// RuntimeClassName field to be unset.</param>
         /// <param name="defaultRuntimeClassName">defaultRuntimeClassName is
         /// the default RuntimeClassName to set on the pod. The default MUST be
@@ -53,7 +53,7 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets allowedRuntimeClassNames is a whitelist of
+        /// Gets or sets allowedRuntimeClassNames is an allowlist of
         /// RuntimeClass names that may be specified on a pod. A value of "*"
         /// means that any RuntimeClass name is allowed, and must be the only
         /// item in the list. An empty list requires the RuntimeClassName field

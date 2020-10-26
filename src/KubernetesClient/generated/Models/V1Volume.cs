@@ -46,13 +46,37 @@ namespace k8s.Models
         /// <param name="configMap">ConfigMap represents a configMap that
         /// should populate this volume</param>
         /// <param name="csi">CSI (Container Storage Interface) represents
-        /// storage that is handled by an external CSI driver (Alpha
-        /// feature).</param>
+        /// ephemeral storage that is handled by certain external CSI drivers
+        /// (Beta feature).</param>
         /// <param name="downwardAPI">DownwardAPI represents downward API about
         /// the pod that should populate this volume</param>
         /// <param name="emptyDir">EmptyDir represents a temporary directory
         /// that shares a pod's lifetime. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#emptydir</param>
+        /// <param name="ephemeral">Ephemeral represents a volume that is
+        /// handled by a cluster storage driver (Alpha feature). The volume's
+        /// lifecycle is tied to the pod that defines it - it will be created
+        /// before the pod starts, and deleted when the pod is removed.
+        ///
+        /// Use this if: a) the volume is only needed while the pod runs, b)
+        /// features of normal volumes like restoring from snapshot or capacity
+        /// tracking are needed,
+        /// c) the storage driver is specified through a storage class, and d)
+        /// the storage driver supports dynamic volume provisioning through
+        /// a PersistentVolumeClaim (see EphemeralVolumeSource for more
+        /// information on the connection between this volume type
+        /// and PersistentVolumeClaim).
+        ///
+        /// Use PersistentVolumeClaim or one of the vendor-specific APIs for
+        /// volumes that persist for longer than the lifecycle of an individual
+        /// pod.
+        ///
+        /// Use CSI for light-weight local ephemeral volumes if the CSI driver
+        /// is meant to be used that way - see the documentation of the driver
+        /// for more information.
+        ///
+        /// A pod can use both types of ephemeral volumes and persistent
+        /// volumes at the same time.</param>
         /// <param name="fc">FC represents a Fibre Channel resource that is
         /// attached to a kubelet's host machine and then exposed to the
         /// pod.</param>
@@ -112,7 +136,7 @@ namespace k8s.Models
         /// attached and mounted on Kubernetes nodes.</param>
         /// <param name="vsphereVolume">VsphereVolume represents a vSphere
         /// volume attached and mounted on kubelets host machine</param>
-        public V1Volume(string name, V1AWSElasticBlockStoreVolumeSource awsElasticBlockStore = default(V1AWSElasticBlockStoreVolumeSource), V1AzureDiskVolumeSource azureDisk = default(V1AzureDiskVolumeSource), V1AzureFileVolumeSource azureFile = default(V1AzureFileVolumeSource), V1CephFSVolumeSource cephfs = default(V1CephFSVolumeSource), V1CinderVolumeSource cinder = default(V1CinderVolumeSource), V1ConfigMapVolumeSource configMap = default(V1ConfigMapVolumeSource), V1CSIVolumeSource csi = default(V1CSIVolumeSource), V1DownwardAPIVolumeSource downwardAPI = default(V1DownwardAPIVolumeSource), V1EmptyDirVolumeSource emptyDir = default(V1EmptyDirVolumeSource), V1FCVolumeSource fc = default(V1FCVolumeSource), V1FlexVolumeSource flexVolume = default(V1FlexVolumeSource), V1FlockerVolumeSource flocker = default(V1FlockerVolumeSource), V1GCEPersistentDiskVolumeSource gcePersistentDisk = default(V1GCEPersistentDiskVolumeSource), V1GitRepoVolumeSource gitRepo = default(V1GitRepoVolumeSource), V1GlusterfsVolumeSource glusterfs = default(V1GlusterfsVolumeSource), V1HostPathVolumeSource hostPath = default(V1HostPathVolumeSource), V1ISCSIVolumeSource iscsi = default(V1ISCSIVolumeSource), V1NFSVolumeSource nfs = default(V1NFSVolumeSource), V1PersistentVolumeClaimVolumeSource persistentVolumeClaim = default(V1PersistentVolumeClaimVolumeSource), V1PhotonPersistentDiskVolumeSource photonPersistentDisk = default(V1PhotonPersistentDiskVolumeSource), V1PortworxVolumeSource portworxVolume = default(V1PortworxVolumeSource), V1ProjectedVolumeSource projected = default(V1ProjectedVolumeSource), V1QuobyteVolumeSource quobyte = default(V1QuobyteVolumeSource), V1RBDVolumeSource rbd = default(V1RBDVolumeSource), V1ScaleIOVolumeSource scaleIO = default(V1ScaleIOVolumeSource), V1SecretVolumeSource secret = default(V1SecretVolumeSource), V1StorageOSVolumeSource storageos = default(V1StorageOSVolumeSource), V1VsphereVirtualDiskVolumeSource vsphereVolume = default(V1VsphereVirtualDiskVolumeSource))
+        public V1Volume(string name, V1AWSElasticBlockStoreVolumeSource awsElasticBlockStore = default(V1AWSElasticBlockStoreVolumeSource), V1AzureDiskVolumeSource azureDisk = default(V1AzureDiskVolumeSource), V1AzureFileVolumeSource azureFile = default(V1AzureFileVolumeSource), V1CephFSVolumeSource cephfs = default(V1CephFSVolumeSource), V1CinderVolumeSource cinder = default(V1CinderVolumeSource), V1ConfigMapVolumeSource configMap = default(V1ConfigMapVolumeSource), V1CSIVolumeSource csi = default(V1CSIVolumeSource), V1DownwardAPIVolumeSource downwardAPI = default(V1DownwardAPIVolumeSource), V1EmptyDirVolumeSource emptyDir = default(V1EmptyDirVolumeSource), V1EphemeralVolumeSource ephemeral = default(V1EphemeralVolumeSource), V1FCVolumeSource fc = default(V1FCVolumeSource), V1FlexVolumeSource flexVolume = default(V1FlexVolumeSource), V1FlockerVolumeSource flocker = default(V1FlockerVolumeSource), V1GCEPersistentDiskVolumeSource gcePersistentDisk = default(V1GCEPersistentDiskVolumeSource), V1GitRepoVolumeSource gitRepo = default(V1GitRepoVolumeSource), V1GlusterfsVolumeSource glusterfs = default(V1GlusterfsVolumeSource), V1HostPathVolumeSource hostPath = default(V1HostPathVolumeSource), V1ISCSIVolumeSource iscsi = default(V1ISCSIVolumeSource), V1NFSVolumeSource nfs = default(V1NFSVolumeSource), V1PersistentVolumeClaimVolumeSource persistentVolumeClaim = default(V1PersistentVolumeClaimVolumeSource), V1PhotonPersistentDiskVolumeSource photonPersistentDisk = default(V1PhotonPersistentDiskVolumeSource), V1PortworxVolumeSource portworxVolume = default(V1PortworxVolumeSource), V1ProjectedVolumeSource projected = default(V1ProjectedVolumeSource), V1QuobyteVolumeSource quobyte = default(V1QuobyteVolumeSource), V1RBDVolumeSource rbd = default(V1RBDVolumeSource), V1ScaleIOVolumeSource scaleIO = default(V1ScaleIOVolumeSource), V1SecretVolumeSource secret = default(V1SecretVolumeSource), V1StorageOSVolumeSource storageos = default(V1StorageOSVolumeSource), V1VsphereVirtualDiskVolumeSource vsphereVolume = default(V1VsphereVirtualDiskVolumeSource))
         {
             AwsElasticBlockStore = awsElasticBlockStore;
             AzureDisk = azureDisk;
@@ -123,6 +147,7 @@ namespace k8s.Models
             Csi = csi;
             DownwardAPI = downwardAPI;
             EmptyDir = emptyDir;
+            Ephemeral = ephemeral;
             Fc = fc;
             FlexVolume = flexVolume;
             Flocker = flocker;
@@ -197,8 +222,9 @@ namespace k8s.Models
         public V1ConfigMapVolumeSource ConfigMap { get; set; }
 
         /// <summary>
-        /// Gets or sets CSI (Container Storage Interface) represents storage
-        /// that is handled by an external CSI driver (Alpha feature).
+        /// Gets or sets CSI (Container Storage Interface) represents ephemeral
+        /// storage that is handled by certain external CSI drivers (Beta
+        /// feature).
         /// </summary>
         [JsonProperty(PropertyName = "csi")]
         public V1CSIVolumeSource Csi { get; set; }
@@ -217,6 +243,35 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "emptyDir")]
         public V1EmptyDirVolumeSource EmptyDir { get; set; }
+
+        /// <summary>
+        /// Gets or sets ephemeral represents a volume that is handled by a
+        /// cluster storage driver (Alpha feature). The volume's lifecycle is
+        /// tied to the pod that defines it - it will be created before the pod
+        /// starts, and deleted when the pod is removed.
+        ///
+        /// Use this if: a) the volume is only needed while the pod runs, b)
+        /// features of normal volumes like restoring from snapshot or capacity
+        /// tracking are needed,
+        /// c) the storage driver is specified through a storage class, and d)
+        /// the storage driver supports dynamic volume provisioning through
+        /// a PersistentVolumeClaim (see EphemeralVolumeSource for more
+        /// information on the connection between this volume type
+        /// and PersistentVolumeClaim).
+        ///
+        /// Use PersistentVolumeClaim or one of the vendor-specific APIs for
+        /// volumes that persist for longer than the lifecycle of an individual
+        /// pod.
+        ///
+        /// Use CSI for light-weight local ephemeral volumes if the CSI driver
+        /// is meant to be used that way - see the documentation of the driver
+        /// for more information.
+        ///
+        /// A pod can use both types of ephemeral volumes and persistent
+        /// volumes at the same time.
+        /// </summary>
+        [JsonProperty(PropertyName = "ephemeral")]
+        public V1EphemeralVolumeSource Ephemeral { get; set; }
 
         /// <summary>
         /// Gets or sets FC represents a Fibre Channel resource that is
@@ -411,6 +466,10 @@ namespace k8s.Models
             if (Csi != null)
             {
                 Csi.Validate();
+            }
+            if (Ephemeral != null)
+            {
+                Ephemeral.Validate();
             }
             if (FlexVolume != null)
             {

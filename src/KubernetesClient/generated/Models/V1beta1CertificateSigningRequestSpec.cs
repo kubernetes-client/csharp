@@ -52,7 +52,31 @@ namespace k8s.Models
         /// <param name="usages">allowedUsages specifies a set of usage
         /// contexts the key will be valid for. See:
         /// https://tools.ietf.org/html/rfc5280#section-4.2.1.3
-        /// https://tools.ietf.org/html/rfc5280#section-4.2.1.12</param>
+        /// https://tools.ietf.org/html/rfc5280#section-4.2.1.12
+        /// Valid values are:
+        /// "signing",
+        /// "digital signature",
+        /// "content commitment",
+        /// "key encipherment",
+        /// "key agreement",
+        /// "data encipherment",
+        /// "cert sign",
+        /// "crl sign",
+        /// "encipher only",
+        /// "decipher only",
+        /// "any",
+        /// "server auth",
+        /// "client auth",
+        /// "code signing",
+        /// "email protection",
+        /// "s/mime",
+        /// "ipsec end system",
+        /// "ipsec tunnel",
+        /// "ipsec user",
+        /// "timestamping",
+        /// "ocsp signing",
+        /// "microsoft sgc",
+        /// "netscape sgc"</param>
         /// <param name="username">Information about the requesting user. See
         /// user.Info interface for details.</param>
         public V1beta1CertificateSigningRequestSpec(byte[] request, IDictionary<string, IList<string>> extra = default(IDictionary<string, IList<string>>), IList<string> groups = default(IList<string>), string signerName = default(string), string uid = default(string), IList<string> usages = default(IList<string>), string username = default(string))
@@ -119,6 +143,30 @@ namespace k8s.Models
         /// key will be valid for. See:
         /// https://tools.ietf.org/html/rfc5280#section-4.2.1.3
         /// https://tools.ietf.org/html/rfc5280#section-4.2.1.12
+        /// Valid values are:
+        /// "signing",
+        /// "digital signature",
+        /// "content commitment",
+        /// "key encipherment",
+        /// "key agreement",
+        /// "data encipherment",
+        /// "cert sign",
+        /// "crl sign",
+        /// "encipher only",
+        /// "decipher only",
+        /// "any",
+        /// "server auth",
+        /// "client auth",
+        /// "code signing",
+        /// "email protection",
+        /// "s/mime",
+        /// "ipsec end system",
+        /// "ipsec tunnel",
+        /// "ipsec user",
+        /// "timestamping",
+        /// "ocsp signing",
+        /// "microsoft sgc",
+        /// "netscape sgc"
         /// </summary>
         [JsonProperty(PropertyName = "usages")]
         public IList<string> Usages { get; set; }

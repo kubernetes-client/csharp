@@ -6,7 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -27,17 +26,14 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1beta1EventSeries class.
         /// </summary>
-        /// <param name="count">Number of occurrences in this series up to the
-        /// last heartbeat time</param>
-        /// <param name="lastObservedTime">Time when last Event from the series
-        /// was seen before last heartbeat.</param>
-        /// <param name="state">Information whether this series is ongoing or
-        /// finished. Deprecated. Planned removal for 1.18</param>
-        public V1beta1EventSeries(int count, System.DateTime lastObservedTime, string state)
+        /// <param name="count">count is the number of occurrences in this
+        /// series up to the last heartbeat time.</param>
+        /// <param name="lastObservedTime">lastObservedTime is the time when
+        /// last Event from the series was seen before last heartbeat.</param>
+        public V1beta1EventSeries(int count, System.DateTime lastObservedTime)
         {
             Count = count;
             LastObservedTime = lastObservedTime;
-            State = state;
             CustomInit();
         }
 
@@ -47,38 +43,28 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets number of occurrences in this series up to the last
-        /// heartbeat time
+        /// Gets or sets count is the number of occurrences in this series up
+        /// to the last heartbeat time.
         /// </summary>
         [JsonProperty(PropertyName = "count")]
         public int Count { get; set; }
 
         /// <summary>
-        /// Gets or sets time when last Event from the series was seen before
-        /// last heartbeat.
+        /// Gets or sets lastObservedTime is the time when last Event from the
+        /// series was seen before last heartbeat.
         /// </summary>
         [JsonProperty(PropertyName = "lastObservedTime")]
         public System.DateTime LastObservedTime { get; set; }
 
         /// <summary>
-        /// Gets or sets information whether this series is ongoing or
-        /// finished. Deprecated. Planned removal for 1.18
-        /// </summary>
-        [JsonProperty(PropertyName = "state")]
-        public string State { get; set; }
-
-        /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (State == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "State");
-            }
+            //Nothing to validate
         }
     }
 }

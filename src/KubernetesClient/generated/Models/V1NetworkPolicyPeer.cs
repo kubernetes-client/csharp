@@ -10,8 +10,8 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// NetworkPolicyPeer describes a peer to allow traffic from. Only certain
-    /// combinations of fields are allowed
+    /// NetworkPolicyPeer describes a peer to allow traffic to/from. Only
+    /// certain combinations of fields are allowed
     /// </summary>
     public partial class V1NetworkPolicyPeer
     {

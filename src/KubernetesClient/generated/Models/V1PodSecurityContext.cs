@@ -70,6 +70,8 @@ namespace k8s.Models
         /// SecurityContext.  If set in both SecurityContext and
         /// PodSecurityContext, the value specified in SecurityContext takes
         /// precedence for that container.</param>
+        /// <param name="seccompProfile">The seccomp options to use by the
+        /// containers in this pod.</param>
         /// <param name="supplementalGroups">A list of groups applied to the
         /// first process run in each container, in addition to the container's
         /// primary GID.  If unspecified, no groups will be added to any
@@ -82,7 +84,7 @@ namespace k8s.Models
         /// SecurityContext will be used. If set in both SecurityContext and
         /// PodSecurityContext, the value specified in SecurityContext takes
         /// precedence.</param>
-        public V1PodSecurityContext(long? fsGroup = default(long?), string fsGroupChangePolicy = default(string), long? runAsGroup = default(long?), bool? runAsNonRoot = default(bool?), long? runAsUser = default(long?), V1SELinuxOptions seLinuxOptions = default(V1SELinuxOptions), IList<long?> supplementalGroups = default(IList<long?>), IList<V1Sysctl> sysctls = default(IList<V1Sysctl>), V1WindowsSecurityContextOptions windowsOptions = default(V1WindowsSecurityContextOptions))
+        public V1PodSecurityContext(long? fsGroup = default(long?), string fsGroupChangePolicy = default(string), long? runAsGroup = default(long?), bool? runAsNonRoot = default(bool?), long? runAsUser = default(long?), V1SELinuxOptions seLinuxOptions = default(V1SELinuxOptions), V1SeccompProfile seccompProfile = default(V1SeccompProfile), IList<long?> supplementalGroups = default(IList<long?>), IList<V1Sysctl> sysctls = default(IList<V1Sysctl>), V1WindowsSecurityContextOptions windowsOptions = default(V1WindowsSecurityContextOptions))
         {
             FsGroup = fsGroup;
             FsGroupChangePolicy = fsGroupChangePolicy;
@@ -90,6 +92,7 @@ namespace k8s.Models
             RunAsNonRoot = runAsNonRoot;
             RunAsUser = runAsUser;
             SeLinuxOptions = seLinuxOptions;
+            SeccompProfile = seccompProfile;
             SupplementalGroups = supplementalGroups;
             Sysctls = sysctls;
             WindowsOptions = windowsOptions;
@@ -172,6 +175,13 @@ namespace k8s.Models
         public V1SELinuxOptions SeLinuxOptions { get; set; }
 
         /// <summary>
+        /// Gets or sets the seccomp options to use by the containers in this
+        /// pod.
+        /// </summary>
+        [JsonProperty(PropertyName = "seccompProfile")]
+        public V1SeccompProfile SeccompProfile { get; set; }
+
+        /// <summary>
         /// Gets or sets a list of groups applied to the first process run in
         /// each container, in addition to the container's primary GID.  If
         /// unspecified, no groups will be added to any container.
@@ -197,5 +207,28 @@ namespace k8s.Models
         [JsonProperty(PropertyName = "windowsOptions")]
         public V1WindowsSecurityContextOptions WindowsOptions { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (SeccompProfile != null)
+            {
+                SeccompProfile.Validate();
+            }
+            if (Sysctls != null)
+            {
+                foreach (var element in Sysctls)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+        }
     }
 }

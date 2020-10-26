@@ -15,7 +15,7 @@ namespace k8s.Models
     /// ClusterRole is a cluster level, logical grouping of PolicyRules that
     /// can be referenced as a unit by a RoleBinding or ClusterRoleBinding.
     /// Deprecated in v1.17 in favor of rbac.authorization.k8s.io/v1
-    /// ClusterRole, and will no longer be served in v1.20.
+    /// ClusterRole, and will no longer be served in v1.22.
     /// </summary>
     public partial class V1beta1ClusterRole
     {

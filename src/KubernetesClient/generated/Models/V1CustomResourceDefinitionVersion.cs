@@ -44,14 +44,25 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables
         /// for details. If no columns are specified, a single column
         /// displaying the age of the custom resource is used.</param>
+        /// <param name="deprecated">deprecated indicates this version of the
+        /// custom resource API is deprecated. When set to true, API requests
+        /// to this version receive a warning header in the server response.
+        /// Defaults to false.</param>
+        /// <param name="deprecationWarning">deprecationWarning overrides the
+        /// default warning returned to API clients. May only be set when
+        /// `deprecated` is true. The default warning indicates this version is
+        /// deprecated and recommends use of the newest served version of equal
+        /// or greater stability, if one exists.</param>
         /// <param name="schema">schema describes the schema used for
         /// validation, pruning, and defaulting of this version of the custom
         /// resource.</param>
         /// <param name="subresources">subresources specify what subresources
         /// this version of the defined custom resource have.</param>
-        public V1CustomResourceDefinitionVersion(string name, bool served, bool storage, IList<V1CustomResourceColumnDefinition> additionalPrinterColumns = default(IList<V1CustomResourceColumnDefinition>), V1CustomResourceValidation schema = default(V1CustomResourceValidation), V1CustomResourceSubresources subresources = default(V1CustomResourceSubresources))
+        public V1CustomResourceDefinitionVersion(string name, bool served, bool storage, IList<V1CustomResourceColumnDefinition> additionalPrinterColumns = default(IList<V1CustomResourceColumnDefinition>), bool? deprecated = default(bool?), string deprecationWarning = default(string), V1CustomResourceValidation schema = default(V1CustomResourceValidation), V1CustomResourceSubresources subresources = default(V1CustomResourceSubresources))
         {
             AdditionalPrinterColumns = additionalPrinterColumns;
+            Deprecated = deprecated;
+            DeprecationWarning = deprecationWarning;
             Name = name;
             Schema = schema;
             Served = served;
@@ -74,6 +85,25 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "additionalPrinterColumns")]
         public IList<V1CustomResourceColumnDefinition> AdditionalPrinterColumns { get; set; }
+
+        /// <summary>
+        /// Gets or sets deprecated indicates this version of the custom
+        /// resource API is deprecated. When set to true, API requests to this
+        /// version receive a warning header in the server response. Defaults
+        /// to false.
+        /// </summary>
+        [JsonProperty(PropertyName = "deprecated")]
+        public bool? Deprecated { get; set; }
+
+        /// <summary>
+        /// Gets or sets deprecationWarning overrides the default warning
+        /// returned to API clients. May only be set when `deprecated` is true.
+        /// The default warning indicates this version is deprecated and
+        /// recommends use of the newest served version of equal or greater
+        /// stability, if one exists.
+        /// </summary>
+        [JsonProperty(PropertyName = "deprecationWarning")]
+        public string DeprecationWarning { get; set; }
 
         /// <summary>
         /// Gets or sets name is the version name, e.g. “v1”, “v2beta1”, etc.

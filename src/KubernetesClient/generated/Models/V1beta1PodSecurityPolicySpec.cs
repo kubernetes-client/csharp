@@ -42,33 +42,33 @@ namespace k8s.Models
         /// <param name="allowPrivilegeEscalation">allowPrivilegeEscalation
         /// determines if a pod can request to allow privilege escalation. If
         /// unspecified, defaults to true.</param>
-        /// <param name="allowedCSIDrivers">AllowedCSIDrivers is a whitelist of
-        /// inline CSI drivers that must be explicitly set to be embedded
+        /// <param name="allowedCSIDrivers">AllowedCSIDrivers is an allowlist
+        /// of inline CSI drivers that must be explicitly set to be embedded
         /// within a pod spec. An empty value indicates that any CSI driver can
-        /// be used for inline ephemeral volumes. This is an alpha field, and
-        /// is only honored if the API server enables the CSIInlineVolume
-        /// feature gate.</param>
+        /// be used for inline ephemeral volumes. This is a beta field, and is
+        /// only honored if the API server enables the CSIInlineVolume feature
+        /// gate.</param>
         /// <param name="allowedCapabilities">allowedCapabilities is a list of
         /// capabilities that can be requested to add to the container.
         /// Capabilities in this field may be added at the pod author's
         /// discretion. You must not list a capability in both
         /// allowedCapabilities and requiredDropCapabilities.</param>
-        /// <param name="allowedFlexVolumes">allowedFlexVolumes is a whitelist
-        /// of allowed Flexvolumes.  Empty or nil indicates that all
-        /// Flexvolumes may be used.  This parameter is effective only when the
-        /// usage of the Flexvolumes is allowed in the "volumes" field.</param>
-        /// <param name="allowedHostPaths">allowedHostPaths is a white list of
-        /// allowed host paths. Empty indicates that all host paths may be
+        /// <param name="allowedFlexVolumes">allowedFlexVolumes is an allowlist
+        /// of Flexvolumes.  Empty or nil indicates that all Flexvolumes may be
+        /// used.  This parameter is effective only when the usage of the
+        /// Flexvolumes is allowed in the "volumes" field.</param>
+        /// <param name="allowedHostPaths">allowedHostPaths is an allowlist of
+        /// host paths. Empty indicates that all host paths may be
         /// used.</param>
-        /// <param name="allowedProcMountTypes">AllowedProcMountTypes is a
-        /// whitelist of allowed ProcMountTypes. Empty or nil indicates that
+        /// <param name="allowedProcMountTypes">AllowedProcMountTypes is an
+        /// allowlist of allowed ProcMountTypes. Empty or nil indicates that
         /// only the DefaultProcMountType may be used. This requires the
         /// ProcMountType feature flag to be enabled.</param>
         /// <param name="allowedUnsafeSysctls">allowedUnsafeSysctls is a list
         /// of explicitly allowed unsafe sysctls, defaults to none. Each entry
         /// is either a plain sysctl name or ends in "*" in which case it is
         /// considered as a prefix of allowed sysctls. Single * means all
-        /// unsafe sysctls are allowed. Kubelet has to whitelist all allowed
+        /// unsafe sysctls are allowed. Kubelet has to allowlist all allowed
         /// unsafe sysctls explicitly to avoid rejection.
         ///
         /// Examples: e.g. "foo/*" allows "foo/bar", "foo/baz", etc. e.g.
@@ -120,9 +120,9 @@ namespace k8s.Models
         /// omitted, the pod's runtimeClassName field is unrestricted.
         /// Enforcement of this field depends on the RuntimeClass feature gate
         /// being enabled.</param>
-        /// <param name="volumes">volumes is a white list of allowed volume
-        /// plugins. Empty indicates that no volumes may be used. To allow all
-        /// volumes you may use '*'.</param>
+        /// <param name="volumes">volumes is an allowlist of volume plugins.
+        /// Empty indicates that no volumes may be used. To allow all volumes
+        /// you may use '*'.</param>
         public V1beta1PodSecurityPolicySpec(V1beta1FSGroupStrategyOptions fsGroup, V1beta1RunAsUserStrategyOptions runAsUser, V1beta1SELinuxStrategyOptions seLinux, V1beta1SupplementalGroupsStrategyOptions supplementalGroups, bool? allowPrivilegeEscalation = default(bool?), IList<V1beta1AllowedCSIDriver> allowedCSIDrivers = default(IList<V1beta1AllowedCSIDriver>), IList<string> allowedCapabilities = default(IList<string>), IList<V1beta1AllowedFlexVolume> allowedFlexVolumes = default(IList<V1beta1AllowedFlexVolume>), IList<V1beta1AllowedHostPath> allowedHostPaths = default(IList<V1beta1AllowedHostPath>), IList<string> allowedProcMountTypes = default(IList<string>), IList<string> allowedUnsafeSysctls = default(IList<string>), IList<string> defaultAddCapabilities = default(IList<string>), bool? defaultAllowPrivilegeEscalation = default(bool?), IList<string> forbiddenSysctls = default(IList<string>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), IList<V1beta1HostPortRange> hostPorts = default(IList<V1beta1HostPortRange>), bool? privileged = default(bool?), bool? readOnlyRootFilesystem = default(bool?), IList<string> requiredDropCapabilities = default(IList<string>), V1beta1RunAsGroupStrategyOptions runAsGroup = default(V1beta1RunAsGroupStrategyOptions), V1beta1RuntimeClassStrategyOptions runtimeClass = default(V1beta1RuntimeClassStrategyOptions), IList<string> volumes = default(IList<string>))
         {
             AllowPrivilegeEscalation = allowPrivilegeEscalation;
@@ -166,11 +166,11 @@ namespace k8s.Models
         public bool? AllowPrivilegeEscalation { get; set; }
 
         /// <summary>
-        /// Gets or sets allowedCSIDrivers is a whitelist of inline CSI drivers
-        /// that must be explicitly set to be embedded within a pod spec. An
-        /// empty value indicates that any CSI driver can be used for inline
-        /// ephemeral volumes. This is an alpha field, and is only honored if
-        /// the API server enables the CSIInlineVolume feature gate.
+        /// Gets or sets allowedCSIDrivers is an allowlist of inline CSI
+        /// drivers that must be explicitly set to be embedded within a pod
+        /// spec. An empty value indicates that any CSI driver can be used for
+        /// inline ephemeral volumes. This is a beta field, and is only honored
+        /// if the API server enables the CSIInlineVolume feature gate.
         /// </summary>
         [JsonProperty(PropertyName = "allowedCSIDrivers")]
         public IList<V1beta1AllowedCSIDriver> AllowedCSIDrivers { get; set; }
@@ -186,23 +186,23 @@ namespace k8s.Models
         public IList<string> AllowedCapabilities { get; set; }
 
         /// <summary>
-        /// Gets or sets allowedFlexVolumes is a whitelist of allowed
-        /// Flexvolumes.  Empty or nil indicates that all Flexvolumes may be
-        /// used.  This parameter is effective only when the usage of the
-        /// Flexvolumes is allowed in the "volumes" field.
+        /// Gets or sets allowedFlexVolumes is an allowlist of Flexvolumes.
+        /// Empty or nil indicates that all Flexvolumes may be used.  This
+        /// parameter is effective only when the usage of the Flexvolumes is
+        /// allowed in the "volumes" field.
         /// </summary>
         [JsonProperty(PropertyName = "allowedFlexVolumes")]
         public IList<V1beta1AllowedFlexVolume> AllowedFlexVolumes { get; set; }
 
         /// <summary>
-        /// Gets or sets allowedHostPaths is a white list of allowed host
-        /// paths. Empty indicates that all host paths may be used.
+        /// Gets or sets allowedHostPaths is an allowlist of host paths. Empty
+        /// indicates that all host paths may be used.
         /// </summary>
         [JsonProperty(PropertyName = "allowedHostPaths")]
         public IList<V1beta1AllowedHostPath> AllowedHostPaths { get; set; }
 
         /// <summary>
-        /// Gets or sets allowedProcMountTypes is a whitelist of allowed
+        /// Gets or sets allowedProcMountTypes is an allowlist of allowed
         /// ProcMountTypes. Empty or nil indicates that only the
         /// DefaultProcMountType may be used. This requires the ProcMountType
         /// feature flag to be enabled.
@@ -215,7 +215,7 @@ namespace k8s.Models
         /// unsafe sysctls, defaults to none. Each entry is either a plain
         /// sysctl name or ends in "*" in which case it is considered as a
         /// prefix of allowed sysctls. Single * means all unsafe sysctls are
-        /// allowed. Kubelet has to whitelist all allowed unsafe sysctls
+        /// allowed. Kubelet has to allowlist all allowed unsafe sysctls
         /// explicitly to avoid rejection.
         ///
         /// Examples: e.g. "foo/*" allows "foo/bar", "foo/baz", etc. e.g.
@@ -356,9 +356,9 @@ namespace k8s.Models
         public V1beta1SupplementalGroupsStrategyOptions SupplementalGroups { get; set; }
 
         /// <summary>
-        /// Gets or sets volumes is a white list of allowed volume plugins.
-        /// Empty indicates that no volumes may be used. To allow all volumes
-        /// you may use '*'.
+        /// Gets or sets volumes is an allowlist of volume plugins. Empty
+        /// indicates that no volumes may be used. To allow all volumes you may
+        /// use '*'.
         /// </summary>
         [JsonProperty(PropertyName = "volumes")]
         public IList<string> Volumes { get; set; }

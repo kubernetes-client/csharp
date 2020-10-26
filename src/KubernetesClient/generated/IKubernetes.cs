@@ -136,13 +136,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -159,7 +167,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ComponentStatusList>> ListComponentStatusWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ComponentStatusList>> ListComponentStatusWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read the specified ComponentStatus
@@ -251,13 +259,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -274,7 +290,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ConfigMapList>> ListConfigMapForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ConfigMapList>> ListConfigMapForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Endpoints
@@ -349,13 +365,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -372,7 +396,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1EndpointsList>> ListEndpointsForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1EndpointsList>> ListEndpointsForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Event
@@ -447,13 +471,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -470,7 +502,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1EventList>> ListEventForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Corev1EventList>> ListEventForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind LimitRange
@@ -545,13 +577,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -568,7 +608,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1LimitRangeList>> ListLimitRangeForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1LimitRangeList>> ListLimitRangeForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Namespace
@@ -640,13 +680,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -666,7 +714,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1NamespaceList>> ListNamespaceWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1NamespaceList>> ListNamespaceWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Namespace
@@ -732,16 +780,6 @@ namespace k8s
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -832,22 +870,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -858,7 +899,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedConfigMapWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedConfigMapWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ConfigMap
@@ -933,13 +974,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -959,7 +1008,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ConfigMapList>> ListNamespacedConfigMapWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ConfigMapList>> ListNamespacedConfigMapWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ConfigMap
@@ -1154,16 +1203,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -1253,22 +1292,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -1279,7 +1321,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEndpointsWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEndpointsWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Endpoints
@@ -1354,13 +1396,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -1380,7 +1430,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1EndpointsList>> ListNamespacedEndpointsWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1EndpointsList>> ListNamespacedEndpointsWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create Endpoints
@@ -1575,16 +1625,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -1674,22 +1714,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -1700,7 +1743,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEventWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEventWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Event
@@ -1775,13 +1818,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -1801,7 +1852,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1EventList>> ListNamespacedEventWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Corev1EventList>> ListNamespacedEventWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create an Event
@@ -1832,7 +1883,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Event>> CreateNamespacedEventWithHttpMessagesAsync(V1Event body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Corev1Event>> CreateNamespacedEventWithHttpMessagesAsync(Corev1Event body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete an Event
@@ -1913,7 +1964,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Event>> ReadNamespacedEventWithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Corev1Event>> ReadNamespacedEventWithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified Event
@@ -1954,7 +2005,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Event>> PatchNamespacedEventWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Corev1Event>> PatchNamespacedEventWithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified Event
@@ -1988,23 +2039,13 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Event>> ReplaceNamespacedEventWithHttpMessagesAsync(V1Event body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Corev1Event>> ReplaceNamespacedEventWithHttpMessagesAsync(Corev1Event body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of LimitRange
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -2095,22 +2136,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -2121,7 +2165,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedLimitRangeWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedLimitRangeWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind LimitRange
@@ -2196,13 +2240,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -2222,7 +2274,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1LimitRangeList>> ListNamespacedLimitRangeWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1LimitRangeList>> ListNamespacedLimitRangeWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a LimitRange
@@ -2417,16 +2469,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -2516,22 +2558,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -2542,7 +2587,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPersistentVolumeClaimWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPersistentVolumeClaimWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PersistentVolumeClaim
@@ -2617,13 +2662,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -2643,7 +2696,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PersistentVolumeClaimList>> ListNamespacedPersistentVolumeClaimWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PersistentVolumeClaimList>> ListNamespacedPersistentVolumeClaimWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a PersistentVolumeClaim
@@ -2933,16 +2986,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -3032,22 +3075,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -3058,7 +3104,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Pod
@@ -3133,13 +3179,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -3159,7 +3213,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PodList>> ListNamespacedPodWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PodList>> ListNamespacedPodWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Pod
@@ -3385,7 +3439,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectGetNamespacedPodAttachWithHttpMessagesAsync(string name, string namespaceParameter, string container = default(string), bool? stderr = default(bool?), bool? stdin = default(bool?), bool? stdout = default(bool?), bool? tty = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectGetNamespacedPodAttachWithHttpMessagesAsync(string name, string namespaceParameter, string container = default(string), bool? stderr = default(bool?), bool? stdin = default(bool?), bool? stdout = default(bool?), bool? tty = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect POST requests to attach of Pod
@@ -3424,7 +3478,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectPostNamespacedPodAttachWithHttpMessagesAsync(string name, string namespaceParameter, string container = default(string), bool? stderr = default(bool?), bool? stdin = default(bool?), bool? stdout = default(bool?), bool? tty = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectPostNamespacedPodAttachWithHttpMessagesAsync(string name, string namespaceParameter, string container = default(string), bool? stderr = default(bool?), bool? stdin = default(bool?), bool? stdout = default(bool?), bool? tty = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create binding of a Pod
@@ -3533,7 +3587,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectGetNamespacedPodExecWithHttpMessagesAsync(string name, string namespaceParameter, string command = default(string), string container = default(string), bool? stderr = default(bool?), bool? stdin = default(bool?), bool? stdout = default(bool?), bool? tty = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectGetNamespacedPodExecWithHttpMessagesAsync(string name, string namespaceParameter, string command = default(string), string container = default(string), bool? stderr = default(bool?), bool? stdin = default(bool?), bool? stdout = default(bool?), bool? tty = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect POST requests to exec of Pod
@@ -3574,7 +3628,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectPostNamespacedPodExecWithHttpMessagesAsync(string name, string namespaceParameter, string command = default(string), string container = default(string), bool? stderr = default(bool?), bool? stdin = default(bool?), bool? stdout = default(bool?), bool? tty = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectPostNamespacedPodExecWithHttpMessagesAsync(string name, string namespaceParameter, string command = default(string), string container = default(string), bool? stderr = default(bool?), bool? stdin = default(bool?), bool? stdout = default(bool?), bool? tty = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read log of the specified Pod
@@ -3658,7 +3712,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectGetNamespacedPodPortforwardWithHttpMessagesAsync(string name, string namespaceParameter, int? ports = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectGetNamespacedPodPortforwardWithHttpMessagesAsync(string name, string namespaceParameter, int? ports = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect POST requests to portforward of Pod
@@ -3678,7 +3732,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectPostNamespacedPodPortforwardWithHttpMessagesAsync(string name, string namespaceParameter, int? ports = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectPostNamespacedPodPortforwardWithHttpMessagesAsync(string name, string namespaceParameter, int? ports = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect DELETE requests to proxy of Pod
@@ -3698,7 +3752,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectDeleteNamespacedPodProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectDeleteNamespacedPodProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect GET requests to proxy of Pod
@@ -3718,7 +3772,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectGetNamespacedPodProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectGetNamespacedPodProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect HEAD requests to proxy of Pod
@@ -3738,7 +3792,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectHeadNamespacedPodProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectHeadNamespacedPodProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect PATCH requests to proxy of Pod
@@ -3758,7 +3812,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectPatchNamespacedPodProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectPatchNamespacedPodProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect POST requests to proxy of Pod
@@ -3778,7 +3832,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectPostNamespacedPodProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectPostNamespacedPodProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect PUT requests to proxy of Pod
@@ -3798,7 +3852,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectPutNamespacedPodProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectPutNamespacedPodProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect DELETE requests to proxy of Pod
@@ -3821,7 +3875,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectDeleteNamespacedPodProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectDeleteNamespacedPodProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect GET requests to proxy of Pod
@@ -3844,7 +3898,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectGetNamespacedPodProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectGetNamespacedPodProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect HEAD requests to proxy of Pod
@@ -3867,7 +3921,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectHeadNamespacedPodProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectHeadNamespacedPodProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect PATCH requests to proxy of Pod
@@ -3890,7 +3944,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectPatchNamespacedPodProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectPatchNamespacedPodProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect POST requests to proxy of Pod
@@ -3913,7 +3967,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectPostNamespacedPodProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectPostNamespacedPodProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect PUT requests to proxy of Pod
@@ -3936,7 +3990,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectPutNamespacedPodProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectPutNamespacedPodProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified Pod
@@ -4039,16 +4093,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -4138,22 +4182,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -4164,7 +4211,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodTemplateWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodTemplateWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodTemplate
@@ -4239,13 +4286,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -4265,7 +4320,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PodTemplateList>> ListNamespacedPodTemplateWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PodTemplateList>> ListNamespacedPodTemplateWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a PodTemplate
@@ -4460,16 +4515,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -4559,22 +4604,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -4585,7 +4633,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedReplicationControllerWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedReplicationControllerWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ReplicationController
@@ -4660,13 +4708,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -4686,7 +4742,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ReplicationControllerList>> ListNamespacedReplicationControllerWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ReplicationControllerList>> ListNamespacedReplicationControllerWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ReplicationController
@@ -5071,16 +5127,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -5170,22 +5216,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -5196,7 +5245,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedResourceQuotaWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedResourceQuotaWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ResourceQuota
@@ -5271,13 +5320,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -5297,7 +5354,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ResourceQuotaList>> ListNamespacedResourceQuotaWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ResourceQuotaList>> ListNamespacedResourceQuotaWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ResourceQuota
@@ -5587,16 +5644,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -5686,22 +5733,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -5712,7 +5762,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedSecretWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedSecretWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Secret
@@ -5787,13 +5837,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -5813,7 +5871,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1SecretList>> ListNamespacedSecretWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1SecretList>> ListNamespacedSecretWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Secret
@@ -6008,16 +6066,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -6107,22 +6155,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -6133,7 +6184,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedServiceAccountWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedServiceAccountWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ServiceAccount
@@ -6208,13 +6259,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -6234,7 +6293,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ServiceAccountList>> ListNamespacedServiceAccountWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ServiceAccountList>> ListNamespacedServiceAccountWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ServiceAccount
@@ -6530,13 +6589,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -6556,7 +6623,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ServiceList>> ListNamespacedServiceWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ServiceList>> ListNamespacedServiceWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Service
@@ -6767,7 +6834,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectDeleteNamespacedServiceProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectDeleteNamespacedServiceProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect GET requests to proxy of Service
@@ -6791,7 +6858,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectGetNamespacedServiceProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectGetNamespacedServiceProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect HEAD requests to proxy of Service
@@ -6815,7 +6882,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectHeadNamespacedServiceProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectHeadNamespacedServiceProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect PATCH requests to proxy of Service
@@ -6839,7 +6906,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectPatchNamespacedServiceProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectPatchNamespacedServiceProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect POST requests to proxy of Service
@@ -6863,7 +6930,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectPostNamespacedServiceProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectPostNamespacedServiceProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect PUT requests to proxy of Service
@@ -6887,7 +6954,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectPutNamespacedServiceProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectPutNamespacedServiceProxyWithHttpMessagesAsync(string name, string namespaceParameter, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect DELETE requests to proxy of Service
@@ -6914,7 +6981,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectDeleteNamespacedServiceProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectDeleteNamespacedServiceProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect GET requests to proxy of Service
@@ -6941,7 +7008,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectGetNamespacedServiceProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectGetNamespacedServiceProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect HEAD requests to proxy of Service
@@ -6968,7 +7035,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectHeadNamespacedServiceProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectHeadNamespacedServiceProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect PATCH requests to proxy of Service
@@ -6995,7 +7062,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectPatchNamespacedServiceProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectPatchNamespacedServiceProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect POST requests to proxy of Service
@@ -7022,7 +7089,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectPostNamespacedServiceProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectPostNamespacedServiceProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect PUT requests to proxy of Service
@@ -7049,7 +7116,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectPutNamespacedServiceProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectPutNamespacedServiceProxyWithPathWithHttpMessagesAsync(string name, string namespaceParameter, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified Service
@@ -7410,16 +7477,6 @@ namespace k8s
         /// <summary>
         /// delete collection of Node
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -7509,22 +7566,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -7535,7 +7595,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNodeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNodeWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Node
@@ -7607,13 +7667,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -7633,7 +7701,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1NodeList>> ListNodeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1NodeList>> ListNodeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Node
@@ -7822,7 +7890,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectDeleteNodeProxyWithHttpMessagesAsync(string name, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectDeleteNodeProxyWithHttpMessagesAsync(string name, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect GET requests to proxy of Node
@@ -7839,7 +7907,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectGetNodeProxyWithHttpMessagesAsync(string name, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectGetNodeProxyWithHttpMessagesAsync(string name, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect HEAD requests to proxy of Node
@@ -7856,7 +7924,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectHeadNodeProxyWithHttpMessagesAsync(string name, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectHeadNodeProxyWithHttpMessagesAsync(string name, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect PATCH requests to proxy of Node
@@ -7873,7 +7941,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectPatchNodeProxyWithHttpMessagesAsync(string name, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectPatchNodeProxyWithHttpMessagesAsync(string name, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect POST requests to proxy of Node
@@ -7890,7 +7958,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectPostNodeProxyWithHttpMessagesAsync(string name, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectPostNodeProxyWithHttpMessagesAsync(string name, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect PUT requests to proxy of Node
@@ -7907,7 +7975,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectPutNodeProxyWithHttpMessagesAsync(string name, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectPutNodeProxyWithHttpMessagesAsync(string name, string path = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect DELETE requests to proxy of Node
@@ -7927,7 +7995,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectDeleteNodeProxyWithPathWithHttpMessagesAsync(string name, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectDeleteNodeProxyWithPathWithHttpMessagesAsync(string name, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect GET requests to proxy of Node
@@ -7947,7 +8015,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectGetNodeProxyWithPathWithHttpMessagesAsync(string name, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectGetNodeProxyWithPathWithHttpMessagesAsync(string name, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect HEAD requests to proxy of Node
@@ -7967,7 +8035,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectHeadNodeProxyWithPathWithHttpMessagesAsync(string name, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectHeadNodeProxyWithPathWithHttpMessagesAsync(string name, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect PATCH requests to proxy of Node
@@ -7987,7 +8055,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectPatchNodeProxyWithPathWithHttpMessagesAsync(string name, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectPatchNodeProxyWithPathWithHttpMessagesAsync(string name, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect POST requests to proxy of Node
@@ -8007,7 +8075,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectPostNodeProxyWithPathWithHttpMessagesAsync(string name, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectPostNodeProxyWithPathWithHttpMessagesAsync(string name, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// connect PUT requests to proxy of Node
@@ -8027,7 +8095,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<string>> ConnectPutNodeProxyWithPathWithHttpMessagesAsync(string name, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Stream>> ConnectPutNodeProxyWithPathWithHttpMessagesAsync(string name, string path, string path1, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified Node
@@ -8188,13 +8256,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -8211,21 +8287,11 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PersistentVolumeClaimList>> ListPersistentVolumeClaimForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PersistentVolumeClaimList>> ListPersistentVolumeClaimForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of PersistentVolume
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -8315,22 +8381,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -8341,7 +8410,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionPersistentVolumeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPersistentVolumeWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PersistentVolume
@@ -8413,13 +8482,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -8439,7 +8516,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PersistentVolumeList>> ListPersistentVolumeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PersistentVolumeList>> ListPersistentVolumeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a PersistentVolume
@@ -8772,13 +8849,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -8795,7 +8880,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PodList>> ListPodForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PodList>> ListPodForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodTemplate
@@ -8870,13 +8955,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -8893,7 +8986,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PodTemplateList>> ListPodTemplateForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PodTemplateList>> ListPodTemplateForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ReplicationController
@@ -8968,13 +9061,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -8991,7 +9092,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ReplicationControllerList>> ListReplicationControllerForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ReplicationControllerList>> ListReplicationControllerForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ResourceQuota
@@ -9066,13 +9167,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -9089,7 +9198,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ResourceQuotaList>> ListResourceQuotaForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ResourceQuotaList>> ListResourceQuotaForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Secret
@@ -9164,13 +9273,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -9187,7 +9304,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1SecretList>> ListSecretForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1SecretList>> ListSecretForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ServiceAccount
@@ -9262,13 +9379,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -9285,7 +9410,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ServiceAccountList>> ListServiceAccountForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ServiceAccountList>> ListServiceAccountForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Service
@@ -9360,13 +9485,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -9383,7 +9516,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ServiceList>> ListServiceForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ServiceList>> ListServiceForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available API versions
@@ -9421,16 +9554,6 @@ namespace k8s
         /// <summary>
         /// delete collection of MutatingWebhookConfiguration
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -9520,22 +9643,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -9546,7 +9672,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionMutatingWebhookConfigurationWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionMutatingWebhookConfigurationWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind MutatingWebhookConfiguration
@@ -9618,13 +9744,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -9644,7 +9778,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1MutatingWebhookConfigurationList>> ListMutatingWebhookConfigurationWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1MutatingWebhookConfigurationList>> ListMutatingWebhookConfigurationWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a MutatingWebhookConfiguration
@@ -9821,16 +9955,6 @@ namespace k8s
         /// <summary>
         /// delete collection of ValidatingWebhookConfiguration
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -9920,22 +10044,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -9946,7 +10073,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionValidatingWebhookConfigurationWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionValidatingWebhookConfigurationWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ValidatingWebhookConfiguration
@@ -10018,13 +10145,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -10044,7 +10179,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ValidatingWebhookConfigurationList>> ListValidatingWebhookConfigurationWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ValidatingWebhookConfigurationList>> ListValidatingWebhookConfigurationWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ValidatingWebhookConfiguration
@@ -10232,16 +10367,6 @@ namespace k8s
         /// <summary>
         /// delete collection of MutatingWebhookConfiguration
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -10331,22 +10456,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -10357,7 +10485,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionMutatingWebhookConfiguration1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionMutatingWebhookConfiguration1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind MutatingWebhookConfiguration
@@ -10429,13 +10557,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -10455,7 +10591,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1MutatingWebhookConfigurationList>> ListMutatingWebhookConfiguration1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1MutatingWebhookConfigurationList>> ListMutatingWebhookConfiguration1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a MutatingWebhookConfiguration
@@ -10632,16 +10768,6 @@ namespace k8s
         /// <summary>
         /// delete collection of ValidatingWebhookConfiguration
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -10731,22 +10857,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -10757,7 +10886,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionValidatingWebhookConfiguration1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionValidatingWebhookConfiguration1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ValidatingWebhookConfiguration
@@ -10829,13 +10958,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -10855,7 +10992,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1ValidatingWebhookConfigurationList>> ListValidatingWebhookConfiguration1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1ValidatingWebhookConfigurationList>> ListValidatingWebhookConfiguration1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ValidatingWebhookConfiguration
@@ -11054,16 +11191,6 @@ namespace k8s
         /// <summary>
         /// delete collection of CustomResourceDefinition
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -11153,22 +11280,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -11179,7 +11309,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionCustomResourceDefinitionWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCustomResourceDefinitionWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CustomResourceDefinition
@@ -11251,13 +11381,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -11277,7 +11415,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1CustomResourceDefinitionList>> ListCustomResourceDefinitionWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1CustomResourceDefinitionList>> ListCustomResourceDefinitionWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a CustomResourceDefinition
@@ -11551,16 +11689,6 @@ namespace k8s
         /// <summary>
         /// delete collection of CustomResourceDefinition
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -11650,22 +11778,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -11676,7 +11807,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionCustomResourceDefinition1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCustomResourceDefinition1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CustomResourceDefinition
@@ -11748,13 +11879,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -11774,7 +11913,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CustomResourceDefinitionList>> ListCustomResourceDefinition1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CustomResourceDefinitionList>> ListCustomResourceDefinition1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a CustomResourceDefinition
@@ -12059,16 +12198,6 @@ namespace k8s
         /// <summary>
         /// delete collection of APIService
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -12158,22 +12287,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -12184,7 +12316,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionAPIServiceWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionAPIServiceWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind APIService
@@ -12256,13 +12388,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -12282,7 +12422,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIServiceList>> ListAPIServiceWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIServiceList>> ListAPIServiceWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create an APIService
@@ -12556,16 +12696,6 @@ namespace k8s
         /// <summary>
         /// delete collection of APIService
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -12655,22 +12785,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -12681,7 +12814,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionAPIService1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionAPIService1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind APIService
@@ -12753,13 +12886,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -12779,7 +12920,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1APIServiceList>> ListAPIService1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1APIServiceList>> ListAPIService1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create an APIService
@@ -13134,13 +13275,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -13157,7 +13306,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ControllerRevisionList>> ListControllerRevisionForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ControllerRevisionList>> ListControllerRevisionForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind DaemonSet
@@ -13232,13 +13381,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -13255,7 +13412,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1DaemonSetList>> ListDaemonSetForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1DaemonSetList>> ListDaemonSetForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Deployment
@@ -13330,13 +13487,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -13353,23 +13518,13 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1DeploymentList>> ListDeploymentForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1DeploymentList>> ListDeploymentForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of ControllerRevision
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -13460,22 +13615,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -13486,7 +13644,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedControllerRevisionWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedControllerRevisionWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ControllerRevision
@@ -13561,13 +13719,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -13587,7 +13753,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ControllerRevisionList>> ListNamespacedControllerRevisionWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ControllerRevisionList>> ListNamespacedControllerRevisionWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ControllerRevision
@@ -13782,16 +13948,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -13881,22 +14037,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -13907,7 +14066,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDaemonSetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDaemonSetWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind DaemonSet
@@ -13982,13 +14141,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -14008,7 +14175,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1DaemonSetList>> ListNamespacedDaemonSetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1DaemonSetList>> ListNamespacedDaemonSetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a DaemonSet
@@ -14298,16 +14465,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -14397,22 +14554,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -14423,7 +14583,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDeploymentWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDeploymentWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Deployment
@@ -14498,13 +14658,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -14524,7 +14692,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1DeploymentList>> ListNamespacedDeploymentWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1DeploymentList>> ListNamespacedDeploymentWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Deployment
@@ -14909,16 +15077,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -15008,22 +15166,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -15034,7 +15195,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedReplicaSetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedReplicaSetWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ReplicaSet
@@ -15109,13 +15270,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -15135,7 +15304,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ReplicaSetList>> ListNamespacedReplicaSetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ReplicaSetList>> ListNamespacedReplicaSetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ReplicaSet
@@ -15520,16 +15689,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -15619,22 +15778,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -15645,7 +15807,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedStatefulSetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedStatefulSetWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind StatefulSet
@@ -15720,13 +15882,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -15746,7 +15916,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1StatefulSetList>> ListNamespacedStatefulSetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1StatefulSetList>> ListNamespacedStatefulSetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a StatefulSet
@@ -16198,13 +16368,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -16221,7 +16399,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ReplicaSetList>> ListReplicaSetForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ReplicaSetList>> ListReplicaSetForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind StatefulSet
@@ -16296,13 +16474,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -16319,7 +16505,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1StatefulSetList>> ListStatefulSetForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1StatefulSetList>> ListStatefulSetForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get information of a group
@@ -16342,428 +16528,6 @@ namespace k8s
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources8WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete collection of AuditSink
-        /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionAuditSinkWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind AuditSink
-        /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
-        /// <param name='continueParameter'>
-        /// The continue option should be set when retrieving more results from
-        /// the server. Since this value is server defined, clients may only
-        /// use the continue value from a previous query result with identical
-        /// query parameters (except for the value of continue) and the server
-        /// may reject a continue value it does not recognize. If the specified
-        /// continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on
-        /// the server, the server will respond with a 410 ResourceExpired
-        /// error together with a continue token. If the client needs a
-        /// consistent list, it must restart their list without the continue
-        /// field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a
-        /// list starting from the next key, but from the latest snapshot,
-        /// which is inconsistent from the previous list results - objects that
-        /// are created, modified, or deleted after the first list request will
-        /// be included in the response, as long as their keys are after the
-        /// "next key".
-        ///
-        /// This field is not supported when watch is true. Clients may start a
-        /// watch from the last resourceVersion value returned by the server
-        /// and not miss any modifications.
-        /// </param>
-        /// <param name='fieldSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// fields. Defaults to everything.
-        /// </param>
-        /// <param name='labelSelector'>
-        /// A selector to restrict the list of returned objects by their
-        /// labels. Defaults to everything.
-        /// </param>
-        /// <param name='limit'>
-        /// limit is a maximum number of responses to return for a list call.
-        /// If more items exist, the server will set the `continue` field on
-        /// the list metadata to a value that can be used with the same initial
-        /// query to retrieve the next set of results. Setting a limit may
-        /// return fewer than the requested amount of items (up to zero items)
-        /// in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine
-        /// whether more results are available. Servers may choose not to
-        /// support the limit argument and will return all of the available
-        /// results. If limit is specified and the continue field is empty,
-        /// clients may assume that no more results are available. This field
-        /// is not supported if watch is true.
-        ///
-        /// The server guarantees that the objects returned when using continue
-        /// will be identical to issuing a single list call without a limit -
-        /// that is, no objects created, modified, or deleted after the first
-        /// request is issued will be included in any subsequent continued
-        /// requests. This is sometimes referred to as a consistent snapshot,
-        /// and ensures that a client that is using limit to receive smaller
-        /// chunks of a very large result can ensure they see all possible
-        /// objects. If objects are updated during a chunked list the version
-        /// of the object that was present at the time the first list result
-        /// was calculated is returned.
-        /// </param>
-        /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
-        /// </param>
-        /// <param name='timeoutSeconds'>
-        /// Timeout for the list/watch call. This limits the duration of the
-        /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1AuditSinkList>> ListAuditSinkWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// create an AuditSink
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1AuditSink>> CreateAuditSinkWithHttpMessagesAsync(V1alpha1AuditSink body, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// delete an AuditSink
-        /// </summary>
-        /// <param name='name'>
-        /// name of the AuditSink
-        /// </param>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='gracePeriodSeconds'>
-        /// The duration in seconds before the object should be deleted. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period for the
-        /// specified type will be used. Defaults to a per object value if not
-        /// specified. zero means delete immediately.
-        /// </param>
-        /// <param name='orphanDependents'>
-        /// Deprecated: please use the PropagationPolicy, this field will be
-        /// deprecated in 1.7. Should the dependent objects be orphaned. If
-        /// true/false, the "orphan" finalizer will be added to/removed from
-        /// the object's finalizers list. Either this field or
-        /// PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name='propagationPolicy'>
-        /// Whether and how garbage collection will be performed. Either this
-        /// field or OrphanDependents may be set, but not both. The default
-        /// policy is decided by the existing finalizer set in the
-        /// metadata.finalizers and the resource-specific default policy.
-        /// Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents
-        /// in the background; 'Foreground' - a cascading policy that deletes
-        /// all dependents in the foreground.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteAuditSinkWithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read the specified AuditSink
-        /// </summary>
-        /// <param name='name'>
-        /// name of the AuditSink
-        /// </param>
-        /// <param name='exact'>
-        /// Should the export be exact.  Exact export maintains
-        /// cluster-specific fields like 'Namespace'. Deprecated. Planned for
-        /// removal in 1.18.
-        /// </param>
-        /// <param name='export'>
-        /// Should this value be exported.  Export strips fields that a user
-        /// can not specify. Deprecated. Planned for removal in 1.18.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1AuditSink>> ReadAuditSinkWithHttpMessagesAsync(string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update the specified AuditSink
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the AuditSink
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
-        /// apply requests (application/apply-patch) but optional for non-apply
-        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name='force'>
-        /// Force is going to "force" Apply requests. It means user will
-        /// re-acquire conflicting fields owned by other people. Force flag
-        /// must be unset for non-apply patch requests.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1AuditSink>> PatchAuditSinkWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace the specified AuditSink
-        /// </summary>
-        /// <param name='body'>
-        /// </param>
-        /// <param name='name'>
-        /// name of the AuditSink
-        /// </param>
-        /// <param name='dryRun'>
-        /// When present, indicates that modifications should not be persisted.
-        /// An invalid or unrecognized dryRun directive will result in an error
-        /// response and no further processing of the request. Valid values
-        /// are: - All: all dry run stages will be processed
-        /// </param>
-        /// <param name='fieldManager'>
-        /// fieldManager is a name associated with the actor or entity that is
-        /// making these changes. The value must be less than or 128 characters
-        /// long, and only contain printable characters, as defined by
-        /// https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name='pretty'>
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1AuditSink>> ReplaceAuditSinkWithHttpMessagesAsync(V1alpha1AuditSink body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// get information of a group
-        /// </summary>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup5WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// get available resources
-        /// </summary>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources9WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a TokenReview
@@ -16802,7 +16566,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources10WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources9WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a TokenReview
@@ -16841,7 +16605,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup6WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup5WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -16852,7 +16616,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources11WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources10WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a LocalSubjectAccessReview
@@ -16978,7 +16742,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources12WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources11WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a LocalSubjectAccessReview
@@ -17104,7 +16868,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup7WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup6WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -17115,7 +16879,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources13WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources12WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -17190,13 +16954,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -17213,23 +16985,13 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of HorizontalPodAutoscaler
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -17320,22 +17082,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -17346,7 +17111,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -17421,13 +17186,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -17447,7 +17220,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a HorizontalPodAutoscaler
@@ -17740,7 +17513,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources14WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources13WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -17815,13 +17588,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -17838,23 +17619,13 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of HorizontalPodAutoscaler
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -17945,22 +17716,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -17971,7 +17745,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -18046,13 +17820,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -18072,7 +17854,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a HorizontalPodAutoscaler
@@ -18365,7 +18147,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources15WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources14WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -18440,13 +18222,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -18463,23 +18253,13 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespaces2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespaces2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of HorizontalPodAutoscaler
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -18570,22 +18350,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -18596,7 +18379,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -18671,13 +18454,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -18697,7 +18488,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a HorizontalPodAutoscaler
@@ -18990,7 +18781,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup8WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup7WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -19001,7 +18792,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources16WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources15WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Job
@@ -19076,13 +18867,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -19099,23 +18898,13 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1JobList>> ListJobForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1JobList>> ListJobForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of Job
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -19206,22 +18995,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -19232,7 +19024,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedJobWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedJobWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Job
@@ -19307,13 +19099,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -19333,7 +19133,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1JobList>> ListNamespacedJobWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1JobList>> ListNamespacedJobWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Job
@@ -19626,7 +19426,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources17WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources16WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CronJob
@@ -19701,13 +19501,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -19724,23 +19532,13 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CronJobList>> ListCronJobForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CronJobList>> ListCronJobForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of CronJob
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -19831,22 +19629,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -19857,7 +19658,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedCronJobWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedCronJobWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CronJob
@@ -19932,13 +19733,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -19958,7 +19767,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CronJobList>> ListNamespacedCronJobWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CronJobList>> ListNamespacedCronJobWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a CronJob
@@ -20251,7 +20060,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources18WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources17WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CronJob
@@ -20326,13 +20135,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -20349,23 +20166,13 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2alpha1CronJobList>> ListCronJobForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2alpha1CronJobList>> ListCronJobForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of CronJob
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -20456,22 +20263,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -20482,7 +20292,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedCronJob1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedCronJob1WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CronJob
@@ -20557,13 +20367,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -20583,7 +20401,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V2alpha1CronJobList>> ListNamespacedCronJob1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V2alpha1CronJobList>> ListNamespacedCronJob1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a CronJob
@@ -20876,7 +20694,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup9WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup8WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -20887,21 +20705,11 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources19WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources18WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of CertificateSigningRequest
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -20991,22 +20799,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -21017,7 +20828,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionCertificateSigningRequestWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCertificateSigningRequestWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CertificateSigningRequest
@@ -21089,13 +20900,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -21115,7 +20934,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CertificateSigningRequestList>> ListCertificateSigningRequestWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1CertificateSigningRequestList>> ListCertificateSigningRequestWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a CertificateSigningRequest
@@ -21143,7 +20962,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> CreateCertificateSigningRequestWithHttpMessagesAsync(V1beta1CertificateSigningRequest body, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1CertificateSigningRequest>> CreateCertificateSigningRequestWithHttpMessagesAsync(V1CertificateSigningRequest body, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete a CertificateSigningRequest
@@ -21218,7 +21037,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> ReadCertificateSigningRequestWithHttpMessagesAsync(string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1CertificateSigningRequest>> ReadCertificateSigningRequestWithHttpMessagesAsync(string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified CertificateSigningRequest
@@ -21256,7 +21075,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> PatchCertificateSigningRequestWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1CertificateSigningRequest>> PatchCertificateSigningRequestWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified CertificateSigningRequest
@@ -21287,7 +21106,63 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> ReplaceCertificateSigningRequestWithHttpMessagesAsync(V1beta1CertificateSigningRequest body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1CertificateSigningRequest>> ReplaceCertificateSigningRequestWithHttpMessagesAsync(V1CertificateSigningRequest body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read approval of the specified CertificateSigningRequest
+        /// </summary>
+        /// <param name='name'>
+        /// name of the CertificateSigningRequest
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1CertificateSigningRequest>> ReadCertificateSigningRequestApprovalWithHttpMessagesAsync(string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update approval of the specified
+        /// CertificateSigningRequest
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the CertificateSigningRequest
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1CertificateSigningRequest>> PatchCertificateSigningRequestApprovalWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace approval of the specified CertificateSigningRequest
@@ -21318,7 +21193,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> ReplaceCertificateSigningRequestApprovalWithHttpMessagesAsync(V1beta1CertificateSigningRequest body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1CertificateSigningRequest>> ReplaceCertificateSigningRequestApprovalWithHttpMessagesAsync(V1CertificateSigningRequest body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified CertificateSigningRequest
@@ -21335,7 +21210,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> ReadCertificateSigningRequestStatusWithHttpMessagesAsync(string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1CertificateSigningRequest>> ReadCertificateSigningRequestStatusWithHttpMessagesAsync(string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update status of the specified CertificateSigningRequest
@@ -21373,7 +21248,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> PatchCertificateSigningRequestStatusWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1CertificateSigningRequest>> PatchCertificateSigningRequestStatusWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified CertificateSigningRequest
@@ -21404,7 +21279,592 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> ReplaceCertificateSigningRequestStatusWithHttpMessagesAsync(V1beta1CertificateSigningRequest body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1CertificateSigningRequest>> ReplaceCertificateSigningRequestStatusWithHttpMessagesAsync(V1CertificateSigningRequest body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// get available resources
+        /// </summary>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources19WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete collection of CertificateSigningRequest
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCertificateSigningRequest1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// list or watch objects of kind CertificateSigningRequest
+        /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='watch'>
+        /// Watch for changes to the described resources and return them as a
+        /// stream of add, update, and remove notifications. Specify
+        /// resourceVersion.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1CertificateSigningRequestList>> ListCertificateSigningRequest1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// create a CertificateSigningRequest
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> CreateCertificateSigningRequest1WithHttpMessagesAsync(V1beta1CertificateSigningRequest body, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete a CertificateSigningRequest
+        /// </summary>
+        /// <param name='name'>
+        /// name of the CertificateSigningRequest
+        /// </param>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteCertificateSigningRequest1WithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read the specified CertificateSigningRequest
+        /// </summary>
+        /// <param name='name'>
+        /// name of the CertificateSigningRequest
+        /// </param>
+        /// <param name='exact'>
+        /// Should the export be exact.  Exact export maintains
+        /// cluster-specific fields like 'Namespace'. Deprecated. Planned for
+        /// removal in 1.18.
+        /// </param>
+        /// <param name='export'>
+        /// Should this value be exported.  Export strips fields that a user
+        /// can not specify. Deprecated. Planned for removal in 1.18.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> ReadCertificateSigningRequest1WithHttpMessagesAsync(string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update the specified CertificateSigningRequest
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the CertificateSigningRequest
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> PatchCertificateSigningRequest1WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace the specified CertificateSigningRequest
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the CertificateSigningRequest
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> ReplaceCertificateSigningRequest1WithHttpMessagesAsync(V1beta1CertificateSigningRequest body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read approval of the specified CertificateSigningRequest
+        /// </summary>
+        /// <param name='name'>
+        /// name of the CertificateSigningRequest
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> ReadCertificateSigningRequestApproval1WithHttpMessagesAsync(string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update approval of the specified
+        /// CertificateSigningRequest
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the CertificateSigningRequest
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> PatchCertificateSigningRequestApproval1WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace approval of the specified CertificateSigningRequest
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the CertificateSigningRequest
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> ReplaceCertificateSigningRequestApproval1WithHttpMessagesAsync(V1beta1CertificateSigningRequest body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read status of the specified CertificateSigningRequest
+        /// </summary>
+        /// <param name='name'>
+        /// name of the CertificateSigningRequest
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> ReadCertificateSigningRequestStatus1WithHttpMessagesAsync(string name, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update status of the specified CertificateSigningRequest
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the CertificateSigningRequest
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> PatchCertificateSigningRequestStatus1WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace status of the specified CertificateSigningRequest
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the CertificateSigningRequest
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1CertificateSigningRequest>> ReplaceCertificateSigningRequestStatus1WithHttpMessagesAsync(V1beta1CertificateSigningRequest body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get information of a group
@@ -21415,7 +21875,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup10WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup9WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -21501,13 +21961,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -21524,23 +21992,13 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1LeaseList>> ListLeaseForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1LeaseList>> ListLeaseForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of Lease
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -21631,22 +22089,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -21657,7 +22118,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedLeaseWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedLeaseWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Lease
@@ -21732,13 +22193,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -21758,7 +22227,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1LeaseList>> ListNamespacedLeaseWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1LeaseList>> ListNamespacedLeaseWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Lease
@@ -22031,13 +22500,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -22054,23 +22531,13 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1LeaseList>> ListLeaseForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1LeaseList>> ListLeaseForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of Lease
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -22161,22 +22628,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -22187,7 +22657,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedLease1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedLease1WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Lease
@@ -22262,13 +22732,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -22288,7 +22766,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1LeaseList>> ListNamespacedLease1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1LeaseList>> ListNamespacedLease1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Lease
@@ -22486,7 +22964,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup11WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup10WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -22572,13 +23050,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -22595,23 +23081,13 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1EndpointSliceList>> ListEndpointSliceForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1EndpointSliceList>> ListEndpointSliceForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of EndpointSlice
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -22702,22 +23178,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -22728,7 +23207,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEndpointSliceWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEndpointSliceWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind EndpointSlice
@@ -22803,13 +23282,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -22829,7 +23316,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1EndpointSliceList>> ListNamespacedEndpointSliceWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1EndpointSliceList>> ListNamespacedEndpointSliceWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create an EndpointSlice
@@ -23027,7 +23514,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup12WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup11WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -23113,13 +23600,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -23136,23 +23631,13 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1EventList>> ListEventForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Eventsv1EventList>> ListEventForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of Event
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -23243,22 +23728,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -23269,7 +23757,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEvent1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEvent1WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Event
@@ -23344,13 +23832,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -23370,7 +23866,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1EventList>> ListNamespacedEvent1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Eventsv1EventList>> ListNamespacedEvent1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create an Event
@@ -23401,7 +23897,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1Event>> CreateNamespacedEvent1WithHttpMessagesAsync(V1beta1Event body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Eventsv1Event>> CreateNamespacedEvent1WithHttpMessagesAsync(Eventsv1Event body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete an Event
@@ -23482,7 +23978,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1Event>> ReadNamespacedEvent1WithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Eventsv1Event>> ReadNamespacedEvent1WithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified Event
@@ -23523,7 +24019,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1Event>> PatchNamespacedEvent1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Eventsv1Event>> PatchNamespacedEvent1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified Event
@@ -23557,18 +24053,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1Event>> ReplaceNamespacedEvent1WithHttpMessagesAsync(V1beta1Event body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// get information of a group
-        /// </summary>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup13WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Eventsv1Event>> ReplaceNamespacedEvent1WithHttpMessagesAsync(Eventsv1Event body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -23582,7 +24067,7 @@ namespace k8s
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources24WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// list or watch objects of kind Ingress
+        /// list or watch objects of kind Event
         /// </summary>
         /// <param name='allowWatchBookmarks'>
         /// allowWatchBookmarks requests watch events with type "BOOKMARK".
@@ -23654,13 +24139,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -23677,23 +24170,13 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1IngressList>> ListIngressForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1EventList>> ListEventForAllNamespaces2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// delete collection of Ingress
+        /// delete collection of Event
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -23784,13 +24267,125 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEvent2WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// list or watch objects of kind Event
+        /// </summary>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -23810,7 +24405,448 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedIngressWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1EventList>> ListNamespacedEvent2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// create an Event
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1Event>> CreateNamespacedEvent2WithHttpMessagesAsync(V1beta1Event body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete an Event
+        /// </summary>
+        /// <param name='name'>
+        /// name of the Event
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedEvent2WithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read the specified Event
+        /// </summary>
+        /// <param name='name'>
+        /// name of the Event
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='exact'>
+        /// Should the export be exact.  Exact export maintains
+        /// cluster-specific fields like 'Namespace'. Deprecated. Planned for
+        /// removal in 1.18.
+        /// </param>
+        /// <param name='export'>
+        /// Should this value be exported.  Export strips fields that a user
+        /// can not specify. Deprecated. Planned for removal in 1.18.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1Event>> ReadNamespacedEvent2WithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update the specified Event
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the Event
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1Event>> PatchNamespacedEvent2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace the specified Event
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the Event
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1beta1Event>> ReplaceNamespacedEvent2WithHttpMessagesAsync(V1beta1Event body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// get information of a group
+        /// </summary>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup12WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// get available resources
+        /// </summary>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources25WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// list or watch objects of kind Ingress
+        /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='watch'>
+        /// Watch for changes to the described resources and return them as a
+        /// stream of add, update, and remove notifications. Specify
+        /// resourceVersion.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<Extensionsv1beta1IngressList>> ListIngressForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete collection of Ingress
+        /// </summary>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedIngressWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Ingress
@@ -23885,13 +24921,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -23911,7 +24955,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Extensionsv1beta1IngressList>> ListNamespacedIngressWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Extensionsv1beta1IngressList>> ListNamespacedIngressWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create an Ingress
@@ -24204,7 +25248,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup14WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup13WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -24215,21 +25259,11 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources25WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources26WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of FlowSchema
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -24319,22 +25353,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -24345,7 +25382,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionFlowSchemaWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionFlowSchemaWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind FlowSchema
@@ -24417,13 +25454,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -24443,7 +25488,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1FlowSchemaList>> ListFlowSchemaWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1FlowSchemaList>> ListFlowSchemaWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a FlowSchema
@@ -24706,16 +25751,6 @@ namespace k8s
         /// <summary>
         /// delete collection of PriorityLevelConfiguration
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -24805,22 +25840,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -24831,7 +25869,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityLevelConfigurationWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityLevelConfigurationWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PriorityLevelConfiguration
@@ -24903,13 +25941,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -24929,7 +25975,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1PriorityLevelConfigurationList>> ListPriorityLevelConfigurationWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1PriorityLevelConfigurationList>> ListPriorityLevelConfigurationWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a PriorityLevelConfiguration
@@ -25198,7 +26244,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup15WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup14WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -25209,14 +26255,134 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources26WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources27WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// delete collection of NetworkPolicy
+        /// delete collection of IngressClass
         /// </summary>
-        /// <param name='namespaceParameter'>
-        /// object name and auth scope, such as for teams and projects
+        /// <param name='body'>
         /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionIngressClassWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// list or watch objects of kind IngressClass
+        /// </summary>
         /// <param name='allowWatchBookmarks'>
         /// allowWatchBookmarks requests watch events with type "BOOKMARK".
         /// Servers that do not implement bookmarks may ignore this flag and
@@ -25226,6 +26392,383 @@ namespace k8s
         /// session. If this is not a watch, this field is ignored. If the
         /// feature gate WatchBookmarks is not enabled in apiserver, this field
         /// is ignored.
+        /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='watch'>
+        /// Watch for changes to the described resources and return them as a
+        /// stream of add, update, and remove notifications. Specify
+        /// resourceVersion.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1IngressClassList>> ListIngressClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// create an IngressClass
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1IngressClass>> CreateIngressClassWithHttpMessagesAsync(V1IngressClass body, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete an IngressClass
+        /// </summary>
+        /// <param name='name'>
+        /// name of the IngressClass
+        /// </param>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteIngressClassWithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read the specified IngressClass
+        /// </summary>
+        /// <param name='name'>
+        /// name of the IngressClass
+        /// </param>
+        /// <param name='exact'>
+        /// Should the export be exact.  Exact export maintains
+        /// cluster-specific fields like 'Namespace'. Deprecated. Planned for
+        /// removal in 1.18.
+        /// </param>
+        /// <param name='export'>
+        /// Should this value be exported.  Export strips fields that a user
+        /// can not specify. Deprecated. Planned for removal in 1.18.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1IngressClass>> ReadIngressClassWithHttpMessagesAsync(string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update the specified IngressClass
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the IngressClass
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1IngressClass>> PatchIngressClassWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace the specified IngressClass
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the IngressClass
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1IngressClass>> ReplaceIngressClassWithHttpMessagesAsync(V1IngressClass body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// list or watch objects of kind Ingress
+        /// </summary>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='watch'>
+        /// Watch for changes to the described resources and return them as a
+        /// stream of add, update, and remove notifications. Specify
+        /// resourceVersion.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1IngressList>> ListIngressForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete collection of Ingress
+        /// </summary>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -25316,13 +26859,125 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedIngress1WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// list or watch objects of kind Ingress
+        /// </summary>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -25342,7 +26997,415 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedNetworkPolicyWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1IngressList>> ListNamespacedIngress1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// create an Ingress
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Ingress>> CreateNamespacedIngress1WithHttpMessagesAsync(V1Ingress body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete an Ingress
+        /// </summary>
+        /// <param name='name'>
+        /// name of the Ingress
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedIngress1WithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read the specified Ingress
+        /// </summary>
+        /// <param name='name'>
+        /// name of the Ingress
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='exact'>
+        /// Should the export be exact.  Exact export maintains
+        /// cluster-specific fields like 'Namespace'. Deprecated. Planned for
+        /// removal in 1.18.
+        /// </param>
+        /// <param name='export'>
+        /// Should this value be exported.  Export strips fields that a user
+        /// can not specify. Deprecated. Planned for removal in 1.18.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Ingress>> ReadNamespacedIngress1WithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update the specified Ingress
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the Ingress
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Ingress>> PatchNamespacedIngress1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace the specified Ingress
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the Ingress
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Ingress>> ReplaceNamespacedIngress1WithHttpMessagesAsync(V1Ingress body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read status of the specified Ingress
+        /// </summary>
+        /// <param name='name'>
+        /// name of the Ingress
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Ingress>> ReadNamespacedIngressStatus1WithHttpMessagesAsync(string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update status of the specified Ingress
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the Ingress
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Ingress>> PatchNamespacedIngressStatus1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace status of the specified Ingress
+        /// </summary>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='name'>
+        /// name of the Ingress
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Ingress>> ReplaceNamespacedIngressStatus1WithHttpMessagesAsync(V1Ingress body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete collection of NetworkPolicy
+        /// </summary>
+        /// <param name='namespaceParameter'>
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='continueParameter'>
+        /// The continue option should be set when retrieving more results from
+        /// the server. Since this value is server defined, clients may only
+        /// use the continue value from a previous query result with identical
+        /// query parameters (except for the value of continue) and the server
+        /// may reject a continue value it does not recognize. If the specified
+        /// continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on
+        /// the server, the server will respond with a 410 ResourceExpired
+        /// error together with a continue token. If the client needs a
+        /// consistent list, it must restart their list without the continue
+        /// field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a
+        /// list starting from the next key, but from the latest snapshot,
+        /// which is inconsistent from the previous list results - objects that
+        /// are created, modified, or deleted after the first list request will
+        /// be included in the response, as long as their keys are after the
+        /// "next key".
+        ///
+        /// This field is not supported when watch is true. Clients may start a
+        /// watch from the last resourceVersion value returned by the server
+        /// and not miss any modifications.
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// fields. Defaults to everything.
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='labelSelector'>
+        /// A selector to restrict the list of returned objects by their
+        /// labels. Defaults to everything.
+        /// </param>
+        /// <param name='limit'>
+        /// limit is a maximum number of responses to return for a list call.
+        /// If more items exist, the server will set the `continue` field on
+        /// the list metadata to a value that can be used with the same initial
+        /// query to retrieve the next set of results. Setting a limit may
+        /// return fewer than the requested amount of items (up to zero items)
+        /// in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine
+        /// whether more results are available. Servers may choose not to
+        /// support the limit argument and will return all of the available
+        /// results. If limit is specified and the continue field is empty,
+        /// clients may assume that no more results are available. This field
+        /// is not supported if watch is true.
+        ///
+        /// The server guarantees that the objects returned when using continue
+        /// will be identical to issuing a single list call without a limit -
+        /// that is, no objects created, modified, or deleted after the first
+        /// request is issued will be included in any subsequent continued
+        /// requests. This is sometimes referred to as a consistent snapshot,
+        /// and ensures that a client that is using limit to receive smaller
+        /// chunks of a very large result can ensure they see all possible
+        /// objects. If objects are updated during a chunked list the version
+        /// of the object that was present at the time the first list result
+        /// was calculated is returned.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// Acceptable values are: 'Orphan' - orphan the dependents;
+        /// 'Background' - allow the garbage collector to delete the dependents
+        /// in the background; 'Foreground' - a cascading policy that deletes
+        /// all dependents in the foreground.
+        /// </param>
+        /// <param name='resourceVersion'>
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='timeoutSeconds'>
+        /// Timeout for the list/watch call. This limits the duration of the
+        /// call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedNetworkPolicyWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind NetworkPolicy
@@ -25417,13 +27480,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -25443,7 +27514,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1NetworkPolicyList>> ListNamespacedNetworkPolicyWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1NetworkPolicyList>> ListNamespacedNetworkPolicyWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a NetworkPolicy
@@ -25705,13 +27776,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -25728,7 +27807,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1NetworkPolicyList>> ListNetworkPolicyForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1NetworkPolicyList>> ListNetworkPolicyForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -25739,21 +27818,11 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources27WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources28WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of IngressClass
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -25843,22 +27912,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -25869,7 +27941,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionIngressClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionIngressClass1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind IngressClass
@@ -25941,13 +28013,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -25967,7 +28047,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1IngressClassList>> ListIngressClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1IngressClassList>> ListIngressClass1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create an IngressClass
@@ -25995,7 +28075,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1IngressClass>> CreateIngressClassWithHttpMessagesAsync(V1beta1IngressClass body, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1IngressClass>> CreateIngressClass1WithHttpMessagesAsync(V1beta1IngressClass body, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete an IngressClass
@@ -26044,7 +28124,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteIngressClassWithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteIngressClass1WithHttpMessagesAsync(string name, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read the specified IngressClass
@@ -26070,7 +28150,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1IngressClass>> ReadIngressClassWithHttpMessagesAsync(string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1IngressClass>> ReadIngressClass1WithHttpMessagesAsync(string name, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified IngressClass
@@ -26108,7 +28188,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1IngressClass>> PatchIngressClassWithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1IngressClass>> PatchIngressClass1WithHttpMessagesAsync(V1Patch body, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified IngressClass
@@ -26139,7 +28219,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1IngressClass>> ReplaceIngressClassWithHttpMessagesAsync(V1beta1IngressClass body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1IngressClass>> ReplaceIngressClass1WithHttpMessagesAsync(V1beta1IngressClass body, string name, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Ingress
@@ -26214,13 +28294,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -26237,23 +28325,13 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Networkingv1beta1IngressList>> ListIngressForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Networkingv1beta1IngressList>> ListIngressForAllNamespaces2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of Ingress
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -26344,22 +28422,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -26370,7 +28451,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedIngress1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedIngress2WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Ingress
@@ -26445,13 +28526,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -26471,7 +28560,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Networkingv1beta1IngressList>> ListNamespacedIngress1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Networkingv1beta1IngressList>> ListNamespacedIngress2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create an Ingress
@@ -26502,7 +28591,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Networkingv1beta1Ingress>> CreateNamespacedIngress1WithHttpMessagesAsync(Networkingv1beta1Ingress body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Networkingv1beta1Ingress>> CreateNamespacedIngress2WithHttpMessagesAsync(Networkingv1beta1Ingress body, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete an Ingress
@@ -26554,7 +28643,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedIngress1WithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedIngress2WithHttpMessagesAsync(string name, string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string dryRun = default(string), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read the specified Ingress
@@ -26583,7 +28672,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Networkingv1beta1Ingress>> ReadNamespacedIngress1WithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Networkingv1beta1Ingress>> ReadNamespacedIngress2WithHttpMessagesAsync(string name, string namespaceParameter, bool? exact = default(bool?), bool? export = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update the specified Ingress
@@ -26624,7 +28713,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Networkingv1beta1Ingress>> PatchNamespacedIngress1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Networkingv1beta1Ingress>> PatchNamespacedIngress2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace the specified Ingress
@@ -26658,7 +28747,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Networkingv1beta1Ingress>> ReplaceNamespacedIngress1WithHttpMessagesAsync(Networkingv1beta1Ingress body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Networkingv1beta1Ingress>> ReplaceNamespacedIngress2WithHttpMessagesAsync(Networkingv1beta1Ingress body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified Ingress
@@ -26678,7 +28767,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Networkingv1beta1Ingress>> ReadNamespacedIngressStatus1WithHttpMessagesAsync(string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Networkingv1beta1Ingress>> ReadNamespacedIngressStatus2WithHttpMessagesAsync(string name, string namespaceParameter, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update status of the specified Ingress
@@ -26719,7 +28808,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Networkingv1beta1Ingress>> PatchNamespacedIngressStatus1WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Networkingv1beta1Ingress>> PatchNamespacedIngressStatus2WithHttpMessagesAsync(V1Patch body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the specified Ingress
@@ -26753,7 +28842,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Networkingv1beta1Ingress>> ReplaceNamespacedIngressStatus1WithHttpMessagesAsync(Networkingv1beta1Ingress body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Networkingv1beta1Ingress>> ReplaceNamespacedIngressStatus2WithHttpMessagesAsync(Networkingv1beta1Ingress body, string name, string namespaceParameter, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get information of a group
@@ -26764,7 +28853,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup16WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup15WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -26775,21 +28864,11 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources28WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources29WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of RuntimeClass
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -26879,22 +28958,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -26905,7 +28987,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionRuntimeClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionRuntimeClassWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind RuntimeClass
@@ -26977,13 +29059,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -27003,7 +29093,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1RuntimeClassList>> ListRuntimeClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1RuntimeClassList>> ListRuntimeClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a RuntimeClass
@@ -27186,21 +29276,11 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources29WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources30WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of RuntimeClass
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -27290,22 +29370,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -27316,7 +29399,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionRuntimeClass1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionRuntimeClass1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind RuntimeClass
@@ -27388,13 +29471,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -27414,7 +29505,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1RuntimeClassList>> ListRuntimeClass1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1RuntimeClassList>> ListRuntimeClass1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a RuntimeClass
@@ -27597,7 +29688,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup17WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup16WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -27608,23 +29699,13 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources30WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources31WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of PodDisruptionBudget
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -27715,22 +29796,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -27741,7 +29825,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodDisruptionBudgetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodDisruptionBudgetWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodDisruptionBudget
@@ -27816,13 +29900,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -27842,7 +29934,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1PodDisruptionBudgetList>> ListNamespacedPodDisruptionBudgetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1PodDisruptionBudgetList>> ListNamespacedPodDisruptionBudgetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a PodDisruptionBudget
@@ -28199,13 +30291,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -28222,21 +30322,11 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1PodDisruptionBudgetList>> ListPodDisruptionBudgetForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1PodDisruptionBudgetList>> ListPodDisruptionBudgetForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of PodSecurityPolicy
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -28326,22 +30416,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -28352,7 +30445,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionPodSecurityPolicyWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPodSecurityPolicyWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodSecurityPolicy
@@ -28424,13 +30517,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -28450,7 +30551,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1PodSecurityPolicyList>> ListPodSecurityPolicyWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1PodSecurityPolicyList>> ListPodSecurityPolicyWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a PodSecurityPolicy
@@ -28633,7 +30734,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup18WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup17WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -28644,21 +30745,11 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources31WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources32WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of ClusterRoleBinding
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -28748,22 +30839,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -28774,7 +30868,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleBindingWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleBindingWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRoleBinding
@@ -28846,13 +30940,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -28872,7 +30974,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ClusterRoleBindingList>> ListClusterRoleBindingWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ClusterRoleBindingList>> ListClusterRoleBindingWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ClusterRoleBinding
@@ -29040,16 +31142,6 @@ namespace k8s
         /// <summary>
         /// delete collection of ClusterRole
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -29139,22 +31231,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -29165,7 +31260,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRole
@@ -29237,13 +31332,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -29263,7 +31366,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1ClusterRoleList>> ListClusterRoleWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1ClusterRoleList>> ListClusterRoleWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ClusterRole
@@ -29434,16 +31537,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -29533,22 +31626,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -29559,7 +31655,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleBindingWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleBindingWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind RoleBinding
@@ -29634,13 +31730,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -29660,7 +31764,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1RoleBindingList>> ListNamespacedRoleBindingWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1RoleBindingList>> ListNamespacedRoleBindingWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a RoleBinding
@@ -29846,16 +31950,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -29945,22 +32039,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -29971,7 +32068,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Role
@@ -30046,13 +32143,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -30072,7 +32177,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1RoleList>> ListNamespacedRoleWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1RoleList>> ListNamespacedRoleWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Role
@@ -30325,13 +32430,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -30348,7 +32461,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1RoleBindingList>> ListRoleBindingForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1RoleBindingList>> ListRoleBindingForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Role
@@ -30423,13 +32536,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -30446,7 +32567,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1RoleList>> ListRoleForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1RoleList>> ListRoleForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -30457,21 +32578,11 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources32WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources33WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of ClusterRoleBinding
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -30561,22 +32672,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -30587,7 +32701,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleBinding1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleBinding1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRoleBinding
@@ -30659,13 +32773,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -30685,7 +32807,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1ClusterRoleBindingList>> ListClusterRoleBinding1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1ClusterRoleBindingList>> ListClusterRoleBinding1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ClusterRoleBinding
@@ -30853,16 +32975,6 @@ namespace k8s
         /// <summary>
         /// delete collection of ClusterRole
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -30952,22 +33064,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -30978,7 +33093,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRole1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRole1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRole
@@ -31050,13 +33165,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -31076,7 +33199,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1ClusterRoleList>> ListClusterRole1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1ClusterRoleList>> ListClusterRole1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ClusterRole
@@ -31247,16 +33370,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -31346,22 +33459,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -31372,7 +33488,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleBinding1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleBinding1WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind RoleBinding
@@ -31447,13 +33563,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -31473,7 +33597,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1RoleBindingList>> ListNamespacedRoleBinding1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1RoleBindingList>> ListNamespacedRoleBinding1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a RoleBinding
@@ -31659,16 +33783,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -31758,22 +33872,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -31784,7 +33901,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRole1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRole1WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Role
@@ -31859,13 +33976,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -31885,7 +34010,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1RoleList>> ListNamespacedRole1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1RoleList>> ListNamespacedRole1WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Role
@@ -32138,13 +34263,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -32161,7 +34294,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1RoleBindingList>> ListRoleBindingForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1RoleBindingList>> ListRoleBindingForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Role
@@ -32236,13 +34369,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -32259,7 +34400,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1RoleList>> ListRoleForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1RoleList>> ListRoleForAllNamespaces1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -32270,21 +34411,11 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources33WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources34WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of ClusterRoleBinding
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -32374,22 +34505,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -32400,7 +34534,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleBinding2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleBinding2WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRoleBinding
@@ -32472,13 +34606,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -32498,7 +34640,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1ClusterRoleBindingList>> ListClusterRoleBinding2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1ClusterRoleBindingList>> ListClusterRoleBinding2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ClusterRoleBinding
@@ -32666,16 +34808,6 @@ namespace k8s
         /// <summary>
         /// delete collection of ClusterRole
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -32765,22 +34897,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -32791,7 +34926,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRole2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRole2WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind ClusterRole
@@ -32863,13 +34998,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -32889,7 +35032,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1ClusterRoleList>> ListClusterRole2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1ClusterRoleList>> ListClusterRole2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a ClusterRole
@@ -33060,16 +35203,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -33159,22 +35292,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -33185,7 +35321,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleBinding2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleBinding2WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind RoleBinding
@@ -33260,13 +35396,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -33286,7 +35430,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1RoleBindingList>> ListNamespacedRoleBinding2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1RoleBindingList>> ListNamespacedRoleBinding2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a RoleBinding
@@ -33472,16 +35616,6 @@ namespace k8s
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
         /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -33571,22 +35705,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -33597,7 +35734,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRole2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRole2WithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Role
@@ -33672,13 +35809,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -33698,7 +35843,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1RoleList>> ListNamespacedRole2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1RoleList>> ListNamespacedRole2WithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a Role
@@ -33951,13 +36096,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -33974,7 +36127,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1RoleBindingList>> ListRoleBindingForAllNamespaces2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1RoleBindingList>> ListRoleBindingForAllNamespaces2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind Role
@@ -34049,13 +36202,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -34072,7 +36233,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1RoleList>> ListRoleForAllNamespaces2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1RoleList>> ListRoleForAllNamespaces2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get information of a group
@@ -34083,7 +36244,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup19WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup18WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -34094,21 +36255,11 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources34WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources35WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of PriorityClass
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -34198,22 +36349,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -34224,7 +36378,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityClassWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PriorityClass
@@ -34296,13 +36450,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -34322,7 +36484,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1PriorityClassList>> ListPriorityClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1PriorityClassList>> ListPriorityClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a PriorityClass
@@ -34505,21 +36667,11 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources35WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources36WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of PriorityClass
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -34609,22 +36761,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -34635,7 +36790,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityClass1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityClass1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PriorityClass
@@ -34707,13 +36862,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -34733,7 +36896,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1PriorityClassList>> ListPriorityClass1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1PriorityClassList>> ListPriorityClass1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a PriorityClass
@@ -34916,21 +37079,11 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources36WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources37WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of PriorityClass
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -35020,22 +37173,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -35046,7 +37202,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityClass2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityClass2WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PriorityClass
@@ -35118,13 +37274,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -35144,7 +37308,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1PriorityClassList>> ListPriorityClass2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1PriorityClassList>> ListPriorityClass2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a PriorityClass
@@ -35327,7 +37491,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup20WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup19WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -35338,23 +37502,13 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources37WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources38WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of PodPreset
         /// </summary>
         /// <param name='namespaceParameter'>
         /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
         /// </param>
         /// <param name='body'>
         /// </param>
@@ -35445,22 +37599,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -35471,7 +37628,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodPresetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodPresetWithHttpMessagesAsync(string namespaceParameter, V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind PodPreset
@@ -35546,13 +37703,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -35572,7 +37737,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1PodPresetList>> ListNamespacedPodPresetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1PodPresetList>> ListNamespacedPodPresetWithHttpMessagesAsync(string namespaceParameter, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a PodPreset
@@ -35834,13 +37999,21 @@ namespace k8s
         /// If 'true', then the output is pretty printed.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -35857,7 +38030,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1PodPresetList>> ListPodPresetForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1PodPresetList>> ListPodPresetForAllNamespacesWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string pretty = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get information of a group
@@ -35868,7 +38041,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup21WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup20WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// get available resources
@@ -35879,21 +38052,11 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources38WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources39WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of CSIDriver
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -35983,22 +38146,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -36009,7 +38175,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSIDriverWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSIDriverWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CSIDriver
@@ -36081,13 +38247,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -36107,7 +38281,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1CSIDriverList>> ListCSIDriverWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1CSIDriverList>> ListCSIDriverWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a CSIDriver
@@ -36284,16 +38458,6 @@ namespace k8s
         /// <summary>
         /// delete collection of CSINode
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -36383,22 +38547,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -36409,7 +38576,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSINodeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSINodeWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CSINode
@@ -36481,13 +38648,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -36507,7 +38682,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1CSINodeList>> ListCSINodeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1CSINodeList>> ListCSINodeWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a CSINode
@@ -36684,16 +38859,6 @@ namespace k8s
         /// <summary>
         /// delete collection of StorageClass
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -36783,22 +38948,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -36809,7 +38977,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionStorageClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionStorageClassWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind StorageClass
@@ -36881,13 +39049,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -36907,7 +39083,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1StorageClassList>> ListStorageClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1StorageClassList>> ListStorageClassWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a StorageClass
@@ -37084,16 +39260,6 @@ namespace k8s
         /// <summary>
         /// delete collection of VolumeAttachment
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -37183,22 +39349,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -37209,7 +39378,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionVolumeAttachmentWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionVolumeAttachmentWithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind VolumeAttachment
@@ -37281,13 +39450,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -37307,7 +39484,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1VolumeAttachmentList>> ListVolumeAttachmentWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1VolumeAttachmentList>> ListVolumeAttachmentWithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a VolumeAttachment
@@ -37576,21 +39753,11 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources39WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources40WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of VolumeAttachment
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -37680,22 +39847,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -37706,7 +39876,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionVolumeAttachment1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionVolumeAttachment1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind VolumeAttachment
@@ -37778,13 +39948,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -37804,7 +39982,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1alpha1VolumeAttachmentList>> ListVolumeAttachment1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1alpha1VolumeAttachmentList>> ListVolumeAttachment1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a VolumeAttachment
@@ -37987,21 +40165,11 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources40WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources41WithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// delete collection of CSIDriver
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -38091,22 +40259,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -38117,7 +40288,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSIDriver1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSIDriver1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CSIDriver
@@ -38189,13 +40360,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -38215,7 +40394,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CSIDriverList>> ListCSIDriver1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CSIDriverList>> ListCSIDriver1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a CSIDriver
@@ -38392,16 +40571,6 @@ namespace k8s
         /// <summary>
         /// delete collection of CSINode
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -38491,22 +40660,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -38517,7 +40689,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSINode1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionCSINode1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind CSINode
@@ -38589,13 +40761,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -38615,7 +40795,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1CSINodeList>> ListCSINode1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1CSINodeList>> ListCSINode1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a CSINode
@@ -38792,16 +40972,6 @@ namespace k8s
         /// <summary>
         /// delete collection of StorageClass
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -38891,22 +41061,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -38917,7 +41090,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionStorageClass1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionStorageClass1WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind StorageClass
@@ -38989,13 +41162,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -39015,7 +41196,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1StorageClassList>> ListStorageClass1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1StorageClassList>> ListStorageClass1WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a StorageClass
@@ -39192,16 +41373,6 @@ namespace k8s
         /// <summary>
         /// delete collection of VolumeAttachment
         /// </summary>
-        /// <param name='allowWatchBookmarks'>
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
-        /// Servers that do not implement bookmarks may ignore this flag and
-        /// bookmarks are sent at the server's discretion. Clients should not
-        /// assume bookmarks are returned at any specific interval, nor may
-        /// they assume the server will send any BOOKMARK event during a
-        /// session. If this is not a watch, this field is ignored. If the
-        /// feature gate WatchBookmarks is not enabled in apiserver, this field
-        /// is ignored.
-        /// </param>
         /// <param name='body'>
         /// </param>
         /// <param name='continueParameter'>
@@ -39291,22 +41462,25 @@ namespace k8s
         /// all dependents in the foreground.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name='watch'>
-        /// Watch for changes to the described resources and return them as a
-        /// stream of add, update, and remove notifications. Specify
-        /// resourceVersion.
         /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
@@ -39317,7 +41491,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionVolumeAttachment2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionVolumeAttachment2WithHttpMessagesAsync(V1DeleteOptions body = default(V1DeleteOptions), string continueParameter = default(string), string dryRun = default(string), string fieldSelector = default(string), int? gracePeriodSeconds = default(int?), string labelSelector = default(string), int? limit = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch objects of kind VolumeAttachment
@@ -39389,13 +41563,21 @@ namespace k8s
         /// was calculated is returned.
         /// </param>
         /// <param name='resourceVersion'>
-        /// When specified with a watch call, shows changes that occur after
-        /// that particular version of a resource. Defaults to changes from the
-        /// beginning of history. When specified for list: - if unset, then the
-        /// result is returned from remote storage based on quorum-read flag; -
-        /// if it's 0, then we simply return what we currently have in cache,
-        /// no guarantee; - if set to non zero, then the result is at least as
-        /// fresh as given rv.
+        /// resourceVersion sets a constraint on what resource versions a
+        /// request may be served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
         /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
@@ -39415,7 +41597,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<V1beta1VolumeAttachmentList>> ListVolumeAttachment2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<V1beta1VolumeAttachmentList>> ListVolumeAttachment2WithHttpMessagesAsync(bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// create a VolumeAttachment
@@ -39638,6 +41820,18 @@ namespace k8s
         /// The custom resource's plural name. For TPRs this would be lowercase
         /// plural kind.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -39647,7 +41841,62 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> CreateNamespacedCustomObjectWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> CreateNamespacedCustomObjectWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Delete collection of namespace scoped custom objects
+        /// </summary>
+        /// <param name='group'>
+        /// The custom resource's group name
+        /// </param>
+        /// <param name='version'>
+        /// The custom resource's version
+        /// </param>
+        /// <param name='namespaceParameter'>
+        /// The custom resource's namespace
+        /// </param>
+        /// <param name='plural'>
+        /// The custom resource's plural name. For TPRs this would be lowercase
+        /// plural kind.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<object>> DeleteCollectionNamespacedCustomObjectWithHttpMessagesAsync(string group, string version, string namespaceParameter, string plural, V1DeleteOptions body = default(V1DeleteOptions), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string dryRun = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch namespace scoped custom objects
@@ -39765,6 +42014,20 @@ namespace k8s
         /// The custom resource's plural name. For TPRs this would be lowercase
         /// plural kind.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
         /// <param name='pretty'>
         /// If 'true', then the output is pretty printed.
         /// </param>
@@ -39774,7 +42037,59 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> CreateClusterCustomObjectWithHttpMessagesAsync(object body, string group, string version, string plural, string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> CreateClusterCustomObjectWithHttpMessagesAsync(object body, string group, string version, string plural, string dryRun = default(string), string fieldManager = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Delete collection of cluster scoped custom objects
+        /// </summary>
+        /// <param name='group'>
+        /// The custom resource's group name
+        /// </param>
+        /// <param name='version'>
+        /// The custom resource's version
+        /// </param>
+        /// <param name='plural'>
+        /// The custom resource's plural name. For TPRs this would be lowercase
+        /// plural kind.
+        /// </param>
+        /// <param name='body'>
+        /// </param>
+        /// <param name='gracePeriodSeconds'>
+        /// The duration in seconds before the object should be deleted. Value
+        /// must be non-negative integer. The value zero indicates delete
+        /// immediately. If this value is nil, the default grace period for the
+        /// specified type will be used. Defaults to a per object value if not
+        /// specified. zero means delete immediately.
+        /// </param>
+        /// <param name='orphanDependents'>
+        /// Deprecated: please use the PropagationPolicy, this field will be
+        /// deprecated in 1.7. Should the dependent objects be orphaned. If
+        /// true/false, the "orphan" finalizer will be added to/removed from
+        /// the object's finalizers list. Either this field or
+        /// PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name='propagationPolicy'>
+        /// Whether and how garbage collection will be performed. Either this
+        /// field or OrphanDependents may be set, but not both. The default
+        /// policy is decided by the existing finalizer set in the
+        /// metadata.finalizers and the resource-specific default policy.
+        /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='pretty'>
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<object>> DeleteCollectionClusterCustomObjectWithHttpMessagesAsync(string group, string version, string plural, V1DeleteOptions body = default(V1DeleteOptions), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string dryRun = default(string), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// list or watch cluster scoped custom objects
@@ -39891,13 +42206,25 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> ReplaceClusterCustomObjectStatusWithHttpMessagesAsync(object body, string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> ReplaceClusterCustomObjectStatusWithHttpMessagesAsync(object body, string group, string version, string plural, string name, string dryRun = default(string), string fieldManager = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update status of the specified cluster scoped custom
@@ -39918,13 +42245,32 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> PatchClusterCustomObjectStatusWithHttpMessagesAsync(object body, string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> PatchClusterCustomObjectStatusWithHttpMessagesAsync(object body, string group, string version, string plural, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified cluster scoped custom object
@@ -39972,13 +42318,25 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> ReplaceNamespacedCustomObjectWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> ReplaceNamespacedCustomObjectWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, string dryRun = default(string), string fieldManager = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// patch the specified namespace scoped custom object
@@ -40002,13 +42360,32 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> PatchNamespacedCustomObjectWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> PatchNamespacedCustomObjectWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Deletes the specified namespace scoped custom object
@@ -40051,13 +42428,19 @@ namespace k8s
         /// policy is decided by the existing finalizer set in the
         /// metadata.finalizers and the resource-specific default policy.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> DeleteNamespacedCustomObjectWithHttpMessagesAsync(string group, string version, string namespaceParameter, string plural, string name, V1DeleteOptions body = default(V1DeleteOptions), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> DeleteNamespacedCustomObjectWithHttpMessagesAsync(string group, string version, string namespaceParameter, string plural, string name, V1DeleteOptions body = default(V1DeleteOptions), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string dryRun = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Returns a namespace scoped custom object
@@ -40107,13 +42490,25 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> ReplaceNamespacedCustomObjectScaleWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> ReplaceNamespacedCustomObjectScaleWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, string dryRun = default(string), string fieldManager = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update scale of the specified namespace scoped custom
@@ -40137,13 +42532,32 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> PatchNamespacedCustomObjectScaleWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> PatchNamespacedCustomObjectScaleWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read scale of the specified namespace scoped custom object
@@ -40190,13 +42604,25 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> ReplaceClusterCustomObjectScaleWithHttpMessagesAsync(object body, string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> ReplaceClusterCustomObjectScaleWithHttpMessagesAsync(object body, string group, string version, string plural, string name, string dryRun = default(string), string fieldManager = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update scale of the specified cluster scoped custom
@@ -40217,13 +42643,32 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> PatchClusterCustomObjectScaleWithHttpMessagesAsync(object body, string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> PatchClusterCustomObjectScaleWithHttpMessagesAsync(object body, string group, string version, string plural, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read scale of the specified custom object
@@ -40268,13 +42713,25 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> ReplaceClusterCustomObjectWithHttpMessagesAsync(object body, string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> ReplaceClusterCustomObjectWithHttpMessagesAsync(object body, string group, string version, string plural, string name, string dryRun = default(string), string fieldManager = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// patch the specified cluster scoped custom object
@@ -40295,13 +42752,32 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> PatchClusterCustomObjectWithHttpMessagesAsync(object body, string group, string version, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> PatchClusterCustomObjectWithHttpMessagesAsync(object body, string group, string version, string plural, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Deletes the specified cluster scoped custom object
@@ -40341,13 +42817,19 @@ namespace k8s
         /// policy is decided by the existing finalizer set in the
         /// metadata.finalizers and the resource-specific default policy.
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> DeleteClusterCustomObjectWithHttpMessagesAsync(string group, string version, string plural, string name, V1DeleteOptions body = default(V1DeleteOptions), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> DeleteClusterCustomObjectWithHttpMessagesAsync(string group, string version, string plural, string name, V1DeleteOptions body = default(V1DeleteOptions), int? gracePeriodSeconds = default(int?), bool? orphanDependents = default(bool?), string propagationPolicy = default(string), string dryRun = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Returns a cluster scoped custom object
@@ -40394,13 +42876,25 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> ReplaceNamespacedCustomObjectStatusWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> ReplaceNamespacedCustomObjectStatusWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, string dryRun = default(string), string fieldManager = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// partially update status of the specified namespace scoped custom
@@ -40424,13 +42918,32 @@ namespace k8s
         /// <param name='name'>
         /// the custom object's name
         /// </param>
+        /// <param name='dryRun'>
+        /// When present, indicates that modifications should not be persisted.
+        /// An invalid or unrecognized dryRun directive will result in an error
+        /// response and no further processing of the request. Valid values
+        /// are: - All: all dry run stages will be processed
+        /// </param>
+        /// <param name='fieldManager'>
+        /// fieldManager is a name associated with the actor or entity that is
+        /// making these changes. The value must be less than or 128 characters
+        /// long, and only contain printable characters, as defined by
+        /// https://golang.org/pkg/unicode/#IsPrint. This field is required for
+        /// apply requests (application/apply-patch) but optional for non-apply
+        /// patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name='force'>
+        /// Force is going to "force" Apply requests. It means user will
+        /// re-acquire conflicting fields owned by other people. Force flag
+        /// must be unset for non-apply patch requests.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> PatchNamespacedCustomObjectStatusWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> PatchNamespacedCustomObjectStatusWithHttpMessagesAsync(object body, string group, string version, string namespaceParameter, string plural, string name, string dryRun = default(string), string fieldManager = default(string), bool? force = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// read status of the specified namespace scoped custom object
