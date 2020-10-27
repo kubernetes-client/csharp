@@ -15,7 +15,7 @@ namespace k8s.Models
     /// <summary>
     /// RoleList is a collection of Roles Deprecated in v1.17 in favor of
     /// rbac.authorization.k8s.io/v1 RoleList, and will no longer be served in
-    /// v1.20.
+    /// v1.22.
     /// </summary>
     public partial class V1beta1RoleList
     {

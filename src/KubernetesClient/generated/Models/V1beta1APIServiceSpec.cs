@@ -64,8 +64,8 @@ namespace k8s.Models
         /// This is strongly discouraged.  You should use the CABundle
         /// instead.</param>
         /// <param name="service">Service is a reference to the service for
-        /// this API server.  It must communicate on port 443 If the Service is
-        /// nil, that means the handling for the API groupversion is handled
+        /// this API server.  It must communicate on port 443. If the Service
+        /// is nil, that means the handling for the API groupversion is handled
         /// locally on this server. The call will simply delegate to the normal
         /// handler chain to be fulfilled.</param>
         /// <param name="version">Version is the API version this server hosts.
@@ -126,7 +126,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets service is a reference to the service for this API
-        /// server.  It must communicate on port 443 If the Service is nil,
+        /// server.  It must communicate on port 443. If the Service is nil,
         /// that means the handling for the API groupversion is handled locally
         /// on this server. The call will simply delegate to the normal handler
         /// chain to be fulfilled.

@@ -54,8 +54,8 @@ namespace k8s.Models
         /// <param name="preemptionPolicy">PreemptionPolicy is the Policy for
         /// preempting pods with lower priority. One of Never,
         /// PreemptLowerPriority. Defaults to PreemptLowerPriority if unset.
-        /// This field is alpha-level and is only honored by servers that
-        /// enable the NonPreemptingPriority feature.</param>
+        /// This field is beta-level, gated by the NonPreemptingPriority
+        /// feature-gate.</param>
         public V1PriorityClass(int value, string apiVersion = default(string), string description = default(string), bool? globalDefault = default(bool?), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), string preemptionPolicy = default(string))
         {
             ApiVersion = apiVersion;
@@ -122,9 +122,8 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets preemptionPolicy is the Policy for preempting pods
         /// with lower priority. One of Never, PreemptLowerPriority. Defaults
-        /// to PreemptLowerPriority if unset. This field is alpha-level and is
-        /// only honored by servers that enable the NonPreemptingPriority
-        /// feature.
+        /// to PreemptLowerPriority if unset. This field is beta-level, gated
+        /// by the NonPreemptingPriority feature-gate.
         /// </summary>
         [JsonProperty(PropertyName = "preemptionPolicy")]
         public string PreemptionPolicy { get; set; }

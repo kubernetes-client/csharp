@@ -28,7 +28,7 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1beta1EventList class.
         /// </summary>
-        /// <param name="items">Items is a list of schema objects.</param>
+        /// <param name="items">items is a list of schema objects.</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized

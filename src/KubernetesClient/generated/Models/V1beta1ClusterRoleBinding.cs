@@ -17,7 +17,7 @@ namespace k8s.Models
     /// can reference a ClusterRole in the global namespace, and adds who
     /// information via Subject. Deprecated in v1.17 in favor of
     /// rbac.authorization.k8s.io/v1 ClusterRoleBinding, and will no longer be
-    /// served in v1.20.
+    /// served in v1.22.
     /// </summary>
     public partial class V1beta1ClusterRoleBinding
     {

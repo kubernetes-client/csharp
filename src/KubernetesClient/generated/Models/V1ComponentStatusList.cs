@@ -14,7 +14,7 @@ namespace k8s.Models
 
     /// <summary>
     /// Status of all the conditions for the component as a list of
-    /// ComponentStatus objects.
+    /// ComponentStatus objects. Deprecated: This API is deprecated in v1.19+
     /// </summary>
     public partial class V1ComponentStatusList
     {

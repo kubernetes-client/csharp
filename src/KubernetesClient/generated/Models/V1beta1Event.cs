@@ -26,48 +26,59 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1beta1Event class.
         /// </summary>
-        /// <param name="eventTime">Required. Time when this Event was first
-        /// observed.</param>
-        /// <param name="action">What action was taken/failed regarding to the
-        /// regarding object.</param>
+        /// <param name="eventTime">eventTime is the time when this Event was
+        /// first observed. It is required.</param>
+        /// <param name="action">action is what action was taken/failed
+        /// regarding to the regarding object. It is machine-readable. This
+        /// field can have at most 128 characters.</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
         /// values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources</param>
-        /// <param name="deprecatedCount">Deprecated field assuring backward
-        /// compatibility with core.v1 Event type</param>
-        /// <param name="deprecatedFirstTimestamp">Deprecated field assuring
-        /// backward compatibility with core.v1 Event type</param>
-        /// <param name="deprecatedLastTimestamp">Deprecated field assuring
-        /// backward compatibility with core.v1 Event type</param>
-        /// <param name="deprecatedSource">Deprecated field assuring backward
-        /// compatibility with core.v1 Event type</param>
+        /// <param name="deprecatedCount">deprecatedCount is the deprecated
+        /// field assuring backward compatibility with core.v1 Event
+        /// type.</param>
+        /// <param name="deprecatedFirstTimestamp">deprecatedFirstTimestamp is
+        /// the deprecated field assuring backward compatibility with core.v1
+        /// Event type.</param>
+        /// <param name="deprecatedLastTimestamp">deprecatedLastTimestamp is
+        /// the deprecated field assuring backward compatibility with core.v1
+        /// Event type.</param>
+        /// <param name="deprecatedSource">deprecatedSource is the deprecated
+        /// field assuring backward compatibility with core.v1 Event
+        /// type.</param>
         /// <param name="kind">Kind is a string value representing the REST
         /// resource this object represents. Servers may infer this from the
         /// endpoint the client submits requests to. Cannot be updated. In
         /// CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</param>
-        /// <param name="note">Optional. A human-readable description of the
+        /// <param name="note">note is a human-readable description of the
         /// status of this operation. Maximal length of the note is 1kB, but
         /// libraries should be prepared to handle values up to 64kB.</param>
-        /// <param name="reason">Why the action was taken.</param>
-        /// <param name="regarding">The object this Event is about. In most
-        /// cases it's an Object reporting controller implements. E.g.
-        /// ReplicaSetController implements ReplicaSets and this event is
-        /// emitted because it acts on some changes in a ReplicaSet
-        /// object.</param>
-        /// <param name="related">Optional secondary object for more complex
-        /// actions. E.g. when regarding object triggers a creation or deletion
-        /// of related object.</param>
-        /// <param name="reportingController">Name of the controller that
-        /// emitted this Event, e.g. `kubernetes.io/kubelet`.</param>
-        /// <param name="reportingInstance">ID of the controller instance, e.g.
-        /// `kubelet-xyzf`.</param>
-        /// <param name="series">Data about the Event series this event
-        /// represents or nil if it's a singleton Event.</param>
-        /// <param name="type">Type of this event (Normal, Warning), new types
-        /// could be added in the future.</param>
+        /// <param name="reason">reason is why the action was taken. It is
+        /// human-readable. This field can have at most 128 characters.</param>
+        /// <param name="regarding">regarding contains the object this Event is
+        /// about. In most cases it's an Object reporting controller
+        /// implements, e.g. ReplicaSetController implements ReplicaSets and
+        /// this event is emitted because it acts on some changes in a
+        /// ReplicaSet object.</param>
+        /// <param name="related">related is the optional secondary object for
+        /// more complex actions. E.g. when regarding object triggers a
+        /// creation or deletion of related object.</param>
+        /// <param name="reportingController">reportingController is the name
+        /// of the controller that emitted this Event, e.g.
+        /// `kubernetes.io/kubelet`. This field cannot be empty for new
+        /// Events.</param>
+        /// <param name="reportingInstance">reportingInstance is the ID of the
+        /// controller instance, e.g. `kubelet-xyzf`. This field cannot be
+        /// empty for new Events and it can have at most 128
+        /// characters.</param>
+        /// <param name="series">series is data about the Event series this
+        /// event represents or nil if it's a singleton Event.</param>
+        /// <param name="type">type is the type of this event (Normal,
+        /// Warning), new types could be added in the future. It is
+        /// machine-readable.</param>
         public V1beta1Event(System.DateTime eventTime, string action = default(string), string apiVersion = default(string), int? deprecatedCount = default(int?), System.DateTime? deprecatedFirstTimestamp = default(System.DateTime?), System.DateTime? deprecatedLastTimestamp = default(System.DateTime?), V1EventSource deprecatedSource = default(V1EventSource), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), string note = default(string), string reason = default(string), V1ObjectReference regarding = default(V1ObjectReference), V1ObjectReference related = default(V1ObjectReference), string reportingController = default(string), string reportingInstance = default(string), V1beta1EventSeries series = default(V1beta1EventSeries), string type = default(string))
         {
             Action = action;
@@ -96,8 +107,9 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets what action was taken/failed regarding to the
-        /// regarding object.
+        /// Gets or sets action is what action was taken/failed regarding to
+        /// the regarding object. It is machine-readable. This field can have
+        /// at most 128 characters.
         /// </summary>
         [JsonProperty(PropertyName = "action")]
         public string Action { get; set; }
@@ -113,35 +125,36 @@ namespace k8s.Models
         public string ApiVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets deprecated field assuring backward compatibility with
-        /// core.v1 Event type
+        /// Gets or sets deprecatedCount is the deprecated field assuring
+        /// backward compatibility with core.v1 Event type.
         /// </summary>
         [JsonProperty(PropertyName = "deprecatedCount")]
         public int? DeprecatedCount { get; set; }
 
         /// <summary>
-        /// Gets or sets deprecated field assuring backward compatibility with
-        /// core.v1 Event type
+        /// Gets or sets deprecatedFirstTimestamp is the deprecated field
+        /// assuring backward compatibility with core.v1 Event type.
         /// </summary>
         [JsonProperty(PropertyName = "deprecatedFirstTimestamp")]
         public System.DateTime? DeprecatedFirstTimestamp { get; set; }
 
         /// <summary>
-        /// Gets or sets deprecated field assuring backward compatibility with
-        /// core.v1 Event type
+        /// Gets or sets deprecatedLastTimestamp is the deprecated field
+        /// assuring backward compatibility with core.v1 Event type.
         /// </summary>
         [JsonProperty(PropertyName = "deprecatedLastTimestamp")]
         public System.DateTime? DeprecatedLastTimestamp { get; set; }
 
         /// <summary>
-        /// Gets or sets deprecated field assuring backward compatibility with
-        /// core.v1 Event type
+        /// Gets or sets deprecatedSource is the deprecated field assuring
+        /// backward compatibility with core.v1 Event type.
         /// </summary>
         [JsonProperty(PropertyName = "deprecatedSource")]
         public V1EventSource DeprecatedSource { get; set; }
 
         /// <summary>
-        /// Gets or sets required. Time when this Event was first observed.
+        /// Gets or sets eventTime is the time when this Event was first
+        /// observed. It is required.
         /// </summary>
         [JsonProperty(PropertyName = "eventTime")]
         public System.DateTime EventTime { get; set; }
@@ -162,59 +175,63 @@ namespace k8s.Models
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
-        /// Gets or sets optional. A human-readable description of the status
-        /// of this operation. Maximal length of the note is 1kB, but libraries
+        /// Gets or sets note is a human-readable description of the status of
+        /// this operation. Maximal length of the note is 1kB, but libraries
         /// should be prepared to handle values up to 64kB.
         /// </summary>
         [JsonProperty(PropertyName = "note")]
         public string Note { get; set; }
 
         /// <summary>
-        /// Gets or sets why the action was taken.
+        /// Gets or sets reason is why the action was taken. It is
+        /// human-readable. This field can have at most 128 characters.
         /// </summary>
         [JsonProperty(PropertyName = "reason")]
         public string Reason { get; set; }
 
         /// <summary>
-        /// Gets or sets the object this Event is about. In most cases it's an
-        /// Object reporting controller implements. E.g. ReplicaSetController
-        /// implements ReplicaSets and this event is emitted because it acts on
-        /// some changes in a ReplicaSet object.
+        /// Gets or sets regarding contains the object this Event is about. In
+        /// most cases it's an Object reporting controller implements, e.g.
+        /// ReplicaSetController implements ReplicaSets and this event is
+        /// emitted because it acts on some changes in a ReplicaSet object.
         /// </summary>
         [JsonProperty(PropertyName = "regarding")]
         public V1ObjectReference Regarding { get; set; }
 
         /// <summary>
-        /// Gets or sets optional secondary object for more complex actions.
-        /// E.g. when regarding object triggers a creation or deletion of
-        /// related object.
+        /// Gets or sets related is the optional secondary object for more
+        /// complex actions. E.g. when regarding object triggers a creation or
+        /// deletion of related object.
         /// </summary>
         [JsonProperty(PropertyName = "related")]
         public V1ObjectReference Related { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the controller that emitted this Event, e.g.
-        /// `kubernetes.io/kubelet`.
+        /// Gets or sets reportingController is the name of the controller that
+        /// emitted this Event, e.g. `kubernetes.io/kubelet`. This field cannot
+        /// be empty for new Events.
         /// </summary>
         [JsonProperty(PropertyName = "reportingController")]
         public string ReportingController { get; set; }
 
         /// <summary>
-        /// Gets or sets ID of the controller instance, e.g. `kubelet-xyzf`.
+        /// Gets or sets reportingInstance is the ID of the controller
+        /// instance, e.g. `kubelet-xyzf`. This field cannot be empty for new
+        /// Events and it can have at most 128 characters.
         /// </summary>
         [JsonProperty(PropertyName = "reportingInstance")]
         public string ReportingInstance { get; set; }
 
         /// <summary>
-        /// Gets or sets data about the Event series this event represents or
-        /// nil if it's a singleton Event.
+        /// Gets or sets series is data about the Event series this event
+        /// represents or nil if it's a singleton Event.
         /// </summary>
         [JsonProperty(PropertyName = "series")]
         public V1beta1EventSeries Series { get; set; }
 
         /// <summary>
-        /// Gets or sets type of this event (Normal, Warning), new types could
-        /// be added in the future.
+        /// Gets or sets type is the type of this event (Normal, Warning), new
+        /// types could be added in the future. It is machine-readable.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

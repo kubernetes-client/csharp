@@ -127,10 +127,11 @@ namespace k8s.Models
         /// and configuration definition. Cannot be updated. More info:
         /// http://kubernetes.io/docs/user-guide/identifiers#names</param>
         /// <param name="namespaceProperty">Namespace defines the space within
-        /// each name must be unique. An empty namespace is equivalent to the
-        /// "default" namespace, but "default" is the canonical representation.
-        /// Not all objects are required to be scoped to a namespace - the
-        /// value of this field for those objects will be empty.
+        /// which each name must be unique. An empty namespace is equivalent to
+        /// the "default" namespace, but "default" is the canonical
+        /// representation. Not all objects are required to be scoped to a
+        /// namespace - the value of this field for those objects will be
+        /// empty.
         ///
         /// Must be a DNS_LABEL. Cannot be updated. More info:
         /// http://kubernetes.io/docs/user-guide/namespaces</param>
@@ -342,8 +343,8 @@ namespace k8s.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets namespace defines the space within each name must be
-        /// unique. An empty namespace is equivalent to the "default"
+        /// Gets or sets namespace defines the space within which each name
+        /// must be unique. An empty namespace is equivalent to the "default"
         /// namespace, but "default" is the canonical representation. Not all
         /// objects are required to be scoped to a namespace - the value of
         /// this field for those objects will be empty.

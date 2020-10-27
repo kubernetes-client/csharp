@@ -412,6 +412,10 @@ namespace k8s.Models
             {
                 ReadinessProbe.Validate();
             }
+            if (SecurityContext != null)
+            {
+                SecurityContext.Validate();
+            }
             if (StartupProbe != null)
             {
                 StartupProbe.Validate();

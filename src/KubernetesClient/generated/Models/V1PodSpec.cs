@@ -120,8 +120,8 @@ namespace k8s.Models
         /// <param name="preemptionPolicy">PreemptionPolicy is the Policy for
         /// preempting pods with lower priority. One of Never,
         /// PreemptLowerPriority. Defaults to PreemptLowerPriority if unset.
-        /// This field is alpha-level and is only honored by servers that
-        /// enable the NonPreemptingPriority feature.</param>
+        /// This field is beta-level, gated by the NonPreemptingPriority
+        /// feature-gate.</param>
         /// <param name="priority">The priority value. Various system
         /// components use this field to find the priority of the pod. When
         /// Priority Admission Controller is enabled, it prevents users from
@@ -165,6 +165,15 @@ namespace k8s.Models
         /// <param name="serviceAccountName">ServiceAccountName is the name of
         /// the ServiceAccount to use to run this pod. More info:
         /// https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/</param>
+        /// <param name="setHostnameAsFQDN">If true the pod's hostname will be
+        /// configured as the pod's FQDN, rather than the leaf name (the
+        /// default). In Linux containers, this means setting the FQDN in the
+        /// hostname field of the kernel (the nodename field of struct
+        /// utsname). In Windows containers, this means setting the registry
+        /// value of hostname for the registry key
+        /// HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters
+        /// to FQDN. If a pod does not have FQDN, this has no effect. Default
+        /// to false.</param>
         /// <param name="shareProcessNamespace">Share a single process
         /// namespace between all of the containers in a pod. When this is set
         /// containers will be able to view and signal processes from other
@@ -189,13 +198,11 @@ namespace k8s.Models
         /// <param name="topologySpreadConstraints">TopologySpreadConstraints
         /// describes how a group of pods ought to spread across topology
         /// domains. Scheduler will schedule pods in a way which abides by the
-        /// constraints. This field is only honored by clusters that enable the
-        /// EvenPodsSpread feature. All topologySpreadConstraints are
-        /// ANDed.</param>
+        /// constraints. All topologySpreadConstraints are ANDed.</param>
         /// <param name="volumes">List of volumes that can be mounted by
         /// containers belonging to the pod. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes</param>
-        public V1PodSpec(IList<V1Container> containers, long? activeDeadlineSeconds = default(long?), V1Affinity affinity = default(V1Affinity), bool? automountServiceAccountToken = default(bool?), V1PodDNSConfig dnsConfig = default(V1PodDNSConfig), string dnsPolicy = default(string), bool? enableServiceLinks = default(bool?), IList<V1EphemeralContainer> ephemeralContainers = default(IList<V1EphemeralContainer>), IList<V1HostAlias> hostAliases = default(IList<V1HostAlias>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), string hostname = default(string), IList<V1LocalObjectReference> imagePullSecrets = default(IList<V1LocalObjectReference>), IList<V1Container> initContainers = default(IList<V1Container>), string nodeName = default(string), IDictionary<string, string> nodeSelector = default(IDictionary<string, string>), IDictionary<string, ResourceQuantity> overhead = default(IDictionary<string, ResourceQuantity>), string preemptionPolicy = default(string), int? priority = default(int?), string priorityClassName = default(string), IList<V1PodReadinessGate> readinessGates = default(IList<V1PodReadinessGate>), string restartPolicy = default(string), string runtimeClassName = default(string), string schedulerName = default(string), V1PodSecurityContext securityContext = default(V1PodSecurityContext), string serviceAccount = default(string), string serviceAccountName = default(string), bool? shareProcessNamespace = default(bool?), string subdomain = default(string), long? terminationGracePeriodSeconds = default(long?), IList<V1Toleration> tolerations = default(IList<V1Toleration>), IList<V1TopologySpreadConstraint> topologySpreadConstraints = default(IList<V1TopologySpreadConstraint>), IList<V1Volume> volumes = default(IList<V1Volume>))
+        public V1PodSpec(IList<V1Container> containers, long? activeDeadlineSeconds = default(long?), V1Affinity affinity = default(V1Affinity), bool? automountServiceAccountToken = default(bool?), V1PodDNSConfig dnsConfig = default(V1PodDNSConfig), string dnsPolicy = default(string), bool? enableServiceLinks = default(bool?), IList<V1EphemeralContainer> ephemeralContainers = default(IList<V1EphemeralContainer>), IList<V1HostAlias> hostAliases = default(IList<V1HostAlias>), bool? hostIPC = default(bool?), bool? hostNetwork = default(bool?), bool? hostPID = default(bool?), string hostname = default(string), IList<V1LocalObjectReference> imagePullSecrets = default(IList<V1LocalObjectReference>), IList<V1Container> initContainers = default(IList<V1Container>), string nodeName = default(string), IDictionary<string, string> nodeSelector = default(IDictionary<string, string>), IDictionary<string, ResourceQuantity> overhead = default(IDictionary<string, ResourceQuantity>), string preemptionPolicy = default(string), int? priority = default(int?), string priorityClassName = default(string), IList<V1PodReadinessGate> readinessGates = default(IList<V1PodReadinessGate>), string restartPolicy = default(string), string runtimeClassName = default(string), string schedulerName = default(string), V1PodSecurityContext securityContext = default(V1PodSecurityContext), string serviceAccount = default(string), string serviceAccountName = default(string), bool? setHostnameAsFQDN = default(bool?), bool? shareProcessNamespace = default(bool?), string subdomain = default(string), long? terminationGracePeriodSeconds = default(long?), IList<V1Toleration> tolerations = default(IList<V1Toleration>), IList<V1TopologySpreadConstraint> topologySpreadConstraints = default(IList<V1TopologySpreadConstraint>), IList<V1Volume> volumes = default(IList<V1Volume>))
         {
             ActiveDeadlineSeconds = activeDeadlineSeconds;
             Affinity = affinity;
@@ -225,6 +232,7 @@ namespace k8s.Models
             SecurityContext = securityContext;
             ServiceAccount = serviceAccount;
             ServiceAccountName = serviceAccountName;
+            SetHostnameAsFQDN = setHostnameAsFQDN;
             ShareProcessNamespace = shareProcessNamespace;
             Subdomain = subdomain;
             TerminationGracePeriodSeconds = terminationGracePeriodSeconds;
@@ -416,9 +424,8 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets preemptionPolicy is the Policy for preempting pods
         /// with lower priority. One of Never, PreemptLowerPriority. Defaults
-        /// to PreemptLowerPriority if unset. This field is alpha-level and is
-        /// only honored by servers that enable the NonPreemptingPriority
-        /// feature.
+        /// to PreemptLowerPriority if unset. This field is beta-level, gated
+        /// by the NonPreemptingPriority feature-gate.
         /// </summary>
         [JsonProperty(PropertyName = "preemptionPolicy")]
         public string PreemptionPolicy { get; set; }
@@ -508,6 +515,20 @@ namespace k8s.Models
         public string ServiceAccountName { get; set; }
 
         /// <summary>
+        /// Gets or sets if true the pod's hostname will be configured as the
+        /// pod's FQDN, rather than the leaf name (the default). In Linux
+        /// containers, this means setting the FQDN in the hostname field of
+        /// the kernel (the nodename field of struct utsname). In Windows
+        /// containers, this means setting the registry value of hostname for
+        /// the registry key
+        /// HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters
+        /// to FQDN. If a pod does not have FQDN, this has no effect. Default
+        /// to false.
+        /// </summary>
+        [JsonProperty(PropertyName = "setHostnameAsFQDN")]
+        public bool? SetHostnameAsFQDN { get; set; }
+
+        /// <summary>
         /// Gets or sets share a single process namespace between all of the
         /// containers in a pod. When this is set containers will be able to
         /// view and signal processes from other containers in the same pod,
@@ -550,9 +571,8 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets topologySpreadConstraints describes how a group of
         /// pods ought to spread across topology domains. Scheduler will
-        /// schedule pods in a way which abides by the constraints. This field
-        /// is only honored by clusters that enable the EvenPodsSpread feature.
-        /// All topologySpreadConstraints are ANDed.
+        /// schedule pods in a way which abides by the constraints. All
+        /// topologySpreadConstraints are ANDed.
         /// </summary>
         [JsonProperty(PropertyName = "topologySpreadConstraints")]
         public IList<V1TopologySpreadConstraint> TopologySpreadConstraints { get; set; }
@@ -620,6 +640,10 @@ namespace k8s.Models
                         element3.Validate();
                     }
                 }
+            }
+            if (SecurityContext != null)
+            {
+                SecurityContext.Validate();
             }
             if (TopologySpreadConstraints != null)
             {

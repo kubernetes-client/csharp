@@ -31,8 +31,9 @@ namespace k8s.Models
         /// names are reserved for IANA standard service names (as per RFC-6335
         /// and http://www.iana.org/assignments/service-names). Non-standard
         /// protocols should use prefixed names such as
-        /// mycompany.com/my-custom-protocol. Field can be enabled with
-        /// ServiceAppProtocol feature gate.</param>
+        /// mycompany.com/my-custom-protocol. This is a beta field that is
+        /// guarded by the ServiceAppProtocol feature gate and enabled by
+        /// default.</param>
         /// <param name="name">The name of this port.  This must match the
         /// 'name' field in the corresponding ServicePort. Must be a DNS_LABEL.
         /// Optional only if one port is defined.</param>
@@ -58,8 +59,9 @@ namespace k8s.Models
         /// reserved for IANA standard service names (as per RFC-6335 and
         /// http://www.iana.org/assignments/service-names). Non-standard
         /// protocols should use prefixed names such as
-        /// mycompany.com/my-custom-protocol. Field can be enabled with
-        /// ServiceAppProtocol feature gate.
+        /// mycompany.com/my-custom-protocol. This is a beta field that is
+        /// guarded by the ServiceAppProtocol feature gate and enabled by
+        /// default.
         /// </summary>
         [JsonProperty(PropertyName = "appProtocol")]
         public string AppProtocol { get; set; }

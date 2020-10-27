@@ -41,7 +41,7 @@ namespace k8s.Models
         /// <param name="immutable">Immutable, if set to true, ensures that
         /// data stored in the Secret cannot be updated (only object metadata
         /// can be modified). If not set to true, the field can be modified at
-        /// any time. Defaulted to nil. This is an alpha field enabled by
+        /// any time. Defaulted to nil. This is a beta field enabled by
         /// ImmutableEphemeralVolumes feature gate.</param>
         /// <param name="kind">Kind is a string value representing the REST
         /// resource this object represents. Servers may infer this from the
@@ -98,7 +98,7 @@ namespace k8s.Models
         /// Gets or sets immutable, if set to true, ensures that data stored in
         /// the Secret cannot be updated (only object metadata can be
         /// modified). If not set to true, the field can be modified at any
-        /// time. Defaulted to nil. This is an alpha field enabled by
+        /// time. Defaulted to nil. This is a beta field enabled by
         /// ImmutableEphemeralVolumes feature gate.
         /// </summary>
         [JsonProperty(PropertyName = "immutable")]

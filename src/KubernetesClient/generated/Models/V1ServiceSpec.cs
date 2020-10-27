@@ -62,17 +62,24 @@ namespace k8s.Models
         /// specified by the client. Only effects when Type is set to
         /// LoadBalancer and ExternalTrafficPolicy is set to Local.</param>
         /// <param name="ipFamily">ipFamily specifies whether this Service has
-        /// a preference for a particular IP family (e.g. IPv4 vs. IPv6).  If a
-        /// specific IP family is requested, the clusterIP field will be
-        /// allocated from that family, if it is available in the cluster.  If
-        /// no IP family is requested, the cluster's primary IP family will be
-        /// used. Other IP fields (loadBalancerIP, loadBalancerSourceRanges,
-        /// externalIPs) and controllers which allocate external load-balancers
-        /// should use the same IP family.  Endpoints for this Service will be
-        /// of this family.  This field is immutable after creation. Assigning
-        /// a ServiceIPFamily not available in the cluster (e.g. IPv6 in IPv4
-        /// only cluster) is an error condition and will fail during clusterIP
-        /// assignment.</param>
+        /// a preference for a particular IP family (e.g. IPv4 vs. IPv6) when
+        /// the IPv6DualStack feature gate is enabled. In a dual-stack cluster,
+        /// you can specify ipFamily when creating a ClusterIP Service to
+        /// determine whether the controller will allocate an IPv4 or IPv6 IP
+        /// for it, and you can specify ipFamily when creating a headless
+        /// Service to determine whether it will have IPv4 or IPv6 Endpoints.
+        /// In either case, if you do not specify an ipFamily explicitly, it
+        /// will default to the cluster's primary IP family. This field is part
+        /// of an alpha feature, and you should not make any assumptions about
+        /// its semantics other than those described above. In particular, you
+        /// should not assume that it can (or cannot) be changed after creation
+        /// time; that it can only have the values "IPv4" and "IPv6"; or that
+        /// its current value on a given Service correctly reflects the current
+        /// state of that Service. (For ClusterIP Services, look at clusterIP
+        /// to see if the Service is IPv4 or IPv6. For headless Services, look
+        /// at the endpoints, which may be dual-stack in the future. For
+        /// ExternalName Services, ipFamily has no meaning, but it may be set
+        /// to an irrelevant value anyway.)</param>
         /// <param name="loadBalancerIP">Only applies to Service Type:
         /// LoadBalancer LoadBalancer will get created with the IP specified in
         /// this field. This feature depends on whether the underlying
@@ -88,13 +95,17 @@ namespace k8s.Models
         /// <param name="ports">The list of ports that are exposed by this
         /// service. More info:
         /// https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies</param>
-        /// <param name="publishNotReadyAddresses">publishNotReadyAddresses,
-        /// when set to true, indicates that DNS implementations must publish
-        /// the notReadyAddresses of subsets for the Endpoints associated with
-        /// the Service. The default value is false. The primary use case for
-        /// setting this field is to use a StatefulSet's Headless Service to
-        /// propagate SRV records for its Pods without respect to their
-        /// readiness for purpose of peer discovery.</param>
+        /// <param name="publishNotReadyAddresses">publishNotReadyAddresses
+        /// indicates that any agent which deals with endpoints for this
+        /// Service should disregard any indications of ready/not-ready. The
+        /// primary use case for setting this field is for a StatefulSet's
+        /// Headless Service to propagate SRV DNS records for its Pods for the
+        /// purpose of peer discovery. The Kubernetes controllers that generate
+        /// Endpoints and EndpointSlice resources for Services interpret this
+        /// to mean that all endpoints are considered "ready" even if the Pods
+        /// themselves are not. Agents which consume only Kubernetes generated
+        /// endpoints through the Endpoints or EndpointSlice resources can
+        /// safely assume this behavior.</param>
         /// <param name="selector">Route service traffic to pods with label
         /// keys and values matching this selector. If empty or not present,
         /// the service is assumed to have an external process managing its
@@ -221,17 +232,24 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets ipFamily specifies whether this Service has a
-        /// preference for a particular IP family (e.g. IPv4 vs. IPv6).  If a
-        /// specific IP family is requested, the clusterIP field will be
-        /// allocated from that family, if it is available in the cluster.  If
-        /// no IP family is requested, the cluster's primary IP family will be
-        /// used. Other IP fields (loadBalancerIP, loadBalancerSourceRanges,
-        /// externalIPs) and controllers which allocate external load-balancers
-        /// should use the same IP family.  Endpoints for this Service will be
-        /// of this family.  This field is immutable after creation. Assigning
-        /// a ServiceIPFamily not available in the cluster (e.g. IPv6 in IPv4
-        /// only cluster) is an error condition and will fail during clusterIP
-        /// assignment.
+        /// preference for a particular IP family (e.g. IPv4 vs. IPv6) when the
+        /// IPv6DualStack feature gate is enabled. In a dual-stack cluster, you
+        /// can specify ipFamily when creating a ClusterIP Service to determine
+        /// whether the controller will allocate an IPv4 or IPv6 IP for it, and
+        /// you can specify ipFamily when creating a headless Service to
+        /// determine whether it will have IPv4 or IPv6 Endpoints. In either
+        /// case, if you do not specify an ipFamily explicitly, it will default
+        /// to the cluster's primary IP family. This field is part of an alpha
+        /// feature, and you should not make any assumptions about its
+        /// semantics other than those described above. In particular, you
+        /// should not assume that it can (or cannot) be changed after creation
+        /// time; that it can only have the values "IPv4" and "IPv6"; or that
+        /// its current value on a given Service correctly reflects the current
+        /// state of that Service. (For ClusterIP Services, look at clusterIP
+        /// to see if the Service is IPv4 or IPv6. For headless Services, look
+        /// at the endpoints, which may be dual-stack in the future. For
+        /// ExternalName Services, ipFamily has no meaning, but it may be set
+        /// to an irrelevant value anyway.)
         /// </summary>
         [JsonProperty(PropertyName = "ipFamily")]
         public string IpFamily { get; set; }
@@ -266,13 +284,17 @@ namespace k8s.Models
         public IList<V1ServicePort> Ports { get; set; }
 
         /// <summary>
-        /// Gets or sets publishNotReadyAddresses, when set to true, indicates
-        /// that DNS implementations must publish the notReadyAddresses of
-        /// subsets for the Endpoints associated with the Service. The default
-        /// value is false. The primary use case for setting this field is to
-        /// use a StatefulSet's Headless Service to propagate SRV records for
-        /// its Pods without respect to their readiness for purpose of peer
-        /// discovery.
+        /// Gets or sets publishNotReadyAddresses indicates that any agent
+        /// which deals with endpoints for this Service should disregard any
+        /// indications of ready/not-ready. The primary use case for setting
+        /// this field is for a StatefulSet's Headless Service to propagate SRV
+        /// DNS records for its Pods for the purpose of peer discovery. The
+        /// Kubernetes controllers that generate Endpoints and EndpointSlice
+        /// resources for Services interpret this to mean that all endpoints
+        /// are considered "ready" even if the Pods themselves are not. Agents
+        /// which consume only Kubernetes generated endpoints through the
+        /// Endpoints or EndpointSlice resources can safely assume this
+        /// behavior.
         /// </summary>
         [JsonProperty(PropertyName = "publishNotReadyAddresses")]
         public bool? PublishNotReadyAddresses { get; set; }

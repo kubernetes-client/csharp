@@ -27,9 +27,11 @@ namespace k8s.Models
         /// </summary>
         /// <param name="configMapKeyRef">Selects a key of a ConfigMap.</param>
         /// <param name="fieldRef">Selects a field of the pod: supports
-        /// metadata.name, metadata.namespace, metadata.labels,
-        /// metadata.annotations, spec.nodeName, spec.serviceAccountName,
-        /// status.hostIP, status.podIP, status.podIPs.</param>
+        /// metadata.name, metadata.namespace,
+        /// `metadata.labels['&lt;KEY&gt;']`,
+        /// `metadata.annotations['&lt;KEY&gt;']`, spec.nodeName,
+        /// spec.serviceAccountName, status.hostIP, status.podIP,
+        /// status.podIPs.</param>
         /// <param name="resourceFieldRef">Selects a resource of the container:
         /// only resources limits and requests (limits.cpu, limits.memory,
         /// limits.ephemeral-storage, requests.cpu, requests.memory and
@@ -58,9 +60,10 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets selects a field of the pod: supports metadata.name,
-        /// metadata.namespace, metadata.labels, metadata.annotations,
-        /// spec.nodeName, spec.serviceAccountName, status.hostIP,
-        /// status.podIP, status.podIPs.
+        /// metadata.namespace, `metadata.labels['&amp;lt;KEY&amp;gt;']`,
+        /// `metadata.annotations['&amp;lt;KEY&amp;gt;']`, spec.nodeName,
+        /// spec.serviceAccountName, status.hostIP, status.podIP,
+        /// status.podIPs.
         /// </summary>
         [JsonProperty(PropertyName = "fieldRef")]
         public V1ObjectFieldSelector FieldRef { get; set; }

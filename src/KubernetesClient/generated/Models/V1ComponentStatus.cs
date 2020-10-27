@@ -13,7 +13,7 @@ namespace k8s.Models
 
     /// <summary>
     /// ComponentStatus (and ComponentStatusList) holds the cluster validation
-    /// info.
+    /// info. Deprecated: This API is deprecated in v1.19+
     /// </summary>
     public partial class V1ComponentStatus
     {

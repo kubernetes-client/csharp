@@ -38,6 +38,12 @@ namespace k8s.Models
         /// If the CSIDriverRegistry feature gate is enabled and the value is
         /// specified to false, the attach operation will be skipped. Otherwise
         /// the attach operation will be called.</param>
+        /// <param name="fsGroupPolicy">Defines if the underlying volume
+        /// supports changing ownership and permission of the volume before
+        /// being mounted. Refer to the specific FSGroupPolicy values for
+        /// additional details. This field is alpha-level, and is only honored
+        /// by servers that enable the CSIVolumeFSGroupPolicy feature
+        /// gate.</param>
         /// <param name="podInfoOnMount">If set to true, podInfoOnMount
         /// indicates this CSI volume driver requires additional pod
         /// information (like podName, podUID, etc.) during mount operations.
@@ -62,6 +68,24 @@ namespace k8s.Models
         /// support this field, drivers can only support one mode when deployed
         /// on such a cluster and the deployment determines which mode that is,
         /// for example via a command line parameter of the driver.</param>
+        /// <param name="storageCapacity">If set to true, storageCapacity
+        /// indicates that the CSI volume driver wants pod scheduling to
+        /// consider the storage capacity that the driver deployment will
+        /// report by creating CSIStorageCapacity objects with capacity
+        /// information.
+        ///
+        /// The check can be enabled immediately when deploying a driver. In
+        /// that case, provisioning new volumes with late binding will pause
+        /// until the driver deployment has published some suitable
+        /// CSIStorageCapacity object.
+        ///
+        /// Alternatively, the driver can be deployed with the field unset or
+        /// false and it can be flipped later when storage capacity information
+        /// has been published.
+        ///
+        /// This is an alpha field and only available when the
+        /// CSIStorageCapacity feature is enabled. The default is
+        /// false.</param>
         /// <param name="volumeLifecycleModes">volumeLifecycleModes defines
         /// what kind of volumes this CSI volume driver supports. The default
         /// if the list is empty is "Persistent", which is the usage defined by
@@ -75,10 +99,12 @@ namespace k8s.Models
         /// https://kubernetes-csi.github.io/docs/ephemeral-local-volumes.html
         /// A driver can support one or more of these modes and more modes may
         /// be added in the future. This field is beta.</param>
-        public V1CSIDriverSpec(bool? attachRequired = default(bool?), bool? podInfoOnMount = default(bool?), IList<string> volumeLifecycleModes = default(IList<string>))
+        public V1CSIDriverSpec(bool? attachRequired = default(bool?), string fsGroupPolicy = default(string), bool? podInfoOnMount = default(bool?), bool? storageCapacity = default(bool?), IList<string> volumeLifecycleModes = default(IList<string>))
         {
             AttachRequired = attachRequired;
+            FsGroupPolicy = fsGroupPolicy;
             PodInfoOnMount = podInfoOnMount;
+            StorageCapacity = storageCapacity;
             VolumeLifecycleModes = volumeLifecycleModes;
             CustomInit();
         }
@@ -103,6 +129,16 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "attachRequired")]
         public bool? AttachRequired { get; set; }
+
+        /// <summary>
+        /// Gets or sets defines if the underlying volume supports changing
+        /// ownership and permission of the volume before being mounted. Refer
+        /// to the specific FSGroupPolicy values for additional details. This
+        /// field is alpha-level, and is only honored by servers that enable
+        /// the CSIVolumeFSGroupPolicy feature gate.
+        /// </summary>
+        [JsonProperty(PropertyName = "fsGroupPolicy")]
+        public string FsGroupPolicy { get; set; }
 
         /// <summary>
         /// Gets or sets if set to true, podInfoOnMount indicates this CSI
@@ -132,6 +168,27 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "podInfoOnMount")]
         public bool? PodInfoOnMount { get; set; }
+
+        /// <summary>
+        /// Gets or sets if set to true, storageCapacity indicates that the CSI
+        /// volume driver wants pod scheduling to consider the storage capacity
+        /// that the driver deployment will report by creating
+        /// CSIStorageCapacity objects with capacity information.
+        ///
+        /// The check can be enabled immediately when deploying a driver. In
+        /// that case, provisioning new volumes with late binding will pause
+        /// until the driver deployment has published some suitable
+        /// CSIStorageCapacity object.
+        ///
+        /// Alternatively, the driver can be deployed with the field unset or
+        /// false and it can be flipped later when storage capacity information
+        /// has been published.
+        ///
+        /// This is an alpha field and only available when the
+        /// CSIStorageCapacity feature is enabled. The default is false.
+        /// </summary>
+        [JsonProperty(PropertyName = "storageCapacity")]
+        public bool? StorageCapacity { get; set; }
 
         /// <summary>
         /// Gets or sets volumeLifecycleModes defines what kind of volumes this

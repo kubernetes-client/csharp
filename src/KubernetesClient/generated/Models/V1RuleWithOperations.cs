@@ -35,8 +35,10 @@ namespace k8s.Models
         /// resources belong to. '*' is all versions. If '*' is present, the
         /// length of the slice must be one. Required.</param>
         /// <param name="operations">Operations is the operations the admission
-        /// hook cares about - CREATE, UPDATE, or * for all operations. If '*'
-        /// is present, the length of the slice must be one. Required.</param>
+        /// hook cares about - CREATE, UPDATE, DELETE, CONNECT or * for all of
+        /// those operations and any future admission operations that are
+        /// added. If '*' is present, the length of the slice must be one.
+        /// Required.</param>
         /// <param name="resources">Resources is a list of resources this rule
         /// applies to.
         ///
@@ -90,8 +92,9 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets operations is the operations the admission hook cares
-        /// about - CREATE, UPDATE, or * for all operations. If '*' is present,
-        /// the length of the slice must be one. Required.
+        /// about - CREATE, UPDATE, DELETE, CONNECT or * for all of those
+        /// operations and any future admission operations that are added. If
+        /// '*' is present, the length of the slice must be one. Required.
         /// </summary>
         [JsonProperty(PropertyName = "operations")]
         public IList<string> Operations { get; set; }

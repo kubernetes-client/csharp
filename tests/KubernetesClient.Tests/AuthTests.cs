@@ -18,6 +18,7 @@ using Microsoft.Rest;
 using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.Security;
+using Remotion.Linq.Clauses;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -57,10 +58,24 @@ namespace k8s.Tests
             }))
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
+                ShouldThrowUnauthorized(client);
+            }
+        }
 
-                var listTask = ExecuteListPods(client);
+        private static void PeelAggregate(Action testcode)
+        {
+            try
+            {
+                testcode();
+            }
+            catch (AggregateException e)
+            {
+                if (e.InnerExceptions.Count == 1)
+                {
+                    throw e.InnerExceptions.First();
+                }
 
-                Assert.Equal(HttpStatusCode.Unauthorized, listTask.Response.StatusCode);
+                throw;
             }
         }
 
@@ -108,9 +123,7 @@ namespace k8s.Tests
                         Password = testPassword,
                     });
 
-                    var listTask = ExecuteListPods(client);
-
-                    Assert.Equal(HttpStatusCode.Unauthorized, listTask.Response.StatusCode);
+                    ShouldThrowUnauthorized(client);
                 }
 
                 {
@@ -121,9 +134,7 @@ namespace k8s.Tests
                         Password = "wrong password",
                     });
 
-                    var listTask = ExecuteListPods(client);
-
-                    Assert.Equal(HttpStatusCode.Unauthorized, listTask.Response.StatusCode);
+                    ShouldThrowUnauthorized(client);
                 }
 
                 {
@@ -134,17 +145,12 @@ namespace k8s.Tests
                         Password = "wrong password",
                     });
 
-                    var listTask = ExecuteListPods(client);
-
-                    Assert.Equal(HttpStatusCode.Unauthorized, listTask.Response.StatusCode);
+                    ShouldThrowUnauthorized(client);
                 }
 
                 {
                     var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
-
-                    var listTask = ExecuteListPods(client);
-
-                    Assert.Equal(HttpStatusCode.Unauthorized, listTask.Response.StatusCode);
+                    ShouldThrowUnauthorized(client);
                 }
 
                 {
@@ -154,9 +160,7 @@ namespace k8s.Tests
                         Username = "xx",
                     });
 
-                    var listTask = ExecuteListPods(client);
-
-                    Assert.Equal(HttpStatusCode.Unauthorized, listTask.Response.StatusCode);
+                    ShouldThrowUnauthorized(client);
                 }
             }
         }
@@ -372,8 +376,7 @@ namespace k8s.Tests
                     var kubernetesConfig = GetK8SConfiguration(server.Uri.ToString(), responseJson, name);
                     var clientConfig = KubernetesClientConfiguration.BuildConfigFromConfigObject(kubernetesConfig, name);
                     var client = new Kubernetes(clientConfig);
-                    var listTask = ExecuteListPods(client);
-                    Assert.Equal(HttpStatusCode.Unauthorized, listTask.Response.StatusCode);
+                    ShouldThrowUnauthorized(client);
                 }
             }
         }
@@ -417,9 +420,7 @@ namespace k8s.Tests
                         AccessToken = "wrong token",
                     });
 
-                    var listTask = ExecuteListPods(client);
-
-                    Assert.Equal(HttpStatusCode.Unauthorized, listTask.Response.StatusCode);
+                    ShouldThrowUnauthorized(client);
                 }
 
                 {
@@ -430,18 +431,27 @@ namespace k8s.Tests
                         Password = "same password",
                     });
 
-                    var listTask = ExecuteListPods(client);
-
-                    Assert.Equal(HttpStatusCode.Unauthorized, listTask.Response.StatusCode);
+                    ShouldThrowUnauthorized(client);
                 }
 
                 {
                     var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
-                    var listTask = ExecuteListPods(client);
-
-                    Assert.Equal(HttpStatusCode.Unauthorized, listTask.Response.StatusCode);
+                    ShouldThrowUnauthorized(client);
                 }
+            }
+        }
+
+        private static void ShouldThrowUnauthorized(Kubernetes client)
+        {
+            try
+            {
+                PeelAggregate(() => ExecuteListPods(client));
+                Assert.True(false, "should not be here");
+            }
+            catch (HttpOperationException e)
+            {
+                Assert.Equal(HttpStatusCode.Unauthorized, e.Response.StatusCode);
             }
         }
 

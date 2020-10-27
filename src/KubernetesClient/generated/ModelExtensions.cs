@@ -149,22 +149,6 @@ namespace k8s.Models
         public const string KubeGroup = "apps";
     }
 
-    [KubernetesEntity(Group="auditregistration.k8s.io", Kind="AuditSink", ApiVersion="v1alpha1", PluralName="auditsinks")]
-    public partial class V1alpha1AuditSink : IKubernetesObject<V1ObjectMeta>, ISpec<V1alpha1AuditSinkSpec>, IValidate
-    {
-        public const string KubeApiVersion = "v1alpha1";
-        public const string KubeKind = "AuditSink";
-        public const string KubeGroup = "auditregistration.k8s.io";
-    }
-
-    [KubernetesEntity(Group="auditregistration.k8s.io", Kind="AuditSinkList", ApiVersion="v1alpha1", PluralName="auditsinks")]
-    public partial class V1alpha1AuditSinkList : IKubernetesObject<V1ListMeta>, IItems<V1alpha1AuditSink>, IValidate
-    {
-        public const string KubeApiVersion = "v1alpha1";
-        public const string KubeKind = "AuditSinkList";
-        public const string KubeGroup = "auditregistration.k8s.io";
-    }
-
     [KubernetesEntity(Group="authentication.k8s.io", Kind="TokenRequest", ApiVersion="v1", PluralName=null)]
     public partial class V1TokenRequest : IKubernetesObject<V1ObjectMeta>, ISpec<V1TokenRequestSpec>, IValidate
     {
@@ -357,6 +341,22 @@ namespace k8s.Models
         public const string KubeGroup = "batch";
     }
 
+    [KubernetesEntity(Group="certificates.k8s.io", Kind="CertificateSigningRequest", ApiVersion="v1", PluralName="certificatesigningrequests")]
+    public partial class V1CertificateSigningRequest : IKubernetesObject<V1ObjectMeta>, ISpec<V1CertificateSigningRequestSpec>, IValidate
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "CertificateSigningRequest";
+        public const string KubeGroup = "certificates.k8s.io";
+    }
+
+    [KubernetesEntity(Group="certificates.k8s.io", Kind="CertificateSigningRequestList", ApiVersion="v1", PluralName="certificatesigningrequests")]
+    public partial class V1CertificateSigningRequestList : IKubernetesObject<V1ListMeta>, IItems<V1CertificateSigningRequest>, IValidate
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "CertificateSigningRequestList";
+        public const string KubeGroup = "certificates.k8s.io";
+    }
+
     [KubernetesEntity(Group="certificates.k8s.io", Kind="CertificateSigningRequest", ApiVersion="v1beta1", PluralName="certificatesigningrequests")]
     public partial class V1beta1CertificateSigningRequest : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1CertificateSigningRequestSpec>, IValidate
     {
@@ -462,7 +462,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="Event", ApiVersion="v1", PluralName="events")]
-    public partial class V1Event : IKubernetesObject<V1ObjectMeta>, IValidate
+    public partial class Corev1Event : IKubernetesObject<V1ObjectMeta>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "Event";
@@ -470,7 +470,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="", Kind="EventList", ApiVersion="v1", PluralName="events")]
-    public partial class V1EventList : IKubernetesObject<V1ListMeta>, IItems<V1Event>, IValidate
+    public partial class Corev1EventList : IKubernetesObject<V1ListMeta>, IItems<Corev1Event>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "EventList";
@@ -685,6 +685,22 @@ namespace k8s.Models
         public const string KubeGroup = "discovery.k8s.io";
     }
 
+    [KubernetesEntity(Group="events.k8s.io", Kind="Event", ApiVersion="v1", PluralName="events")]
+    public partial class Eventsv1Event : IKubernetesObject<V1ObjectMeta>, IValidate
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "Event";
+        public const string KubeGroup = "events.k8s.io";
+    }
+
+    [KubernetesEntity(Group="events.k8s.io", Kind="EventList", ApiVersion="v1", PluralName="events")]
+    public partial class Eventsv1EventList : IKubernetesObject<V1ListMeta>, IItems<Eventsv1Event>, IValidate
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "EventList";
+        public const string KubeGroup = "events.k8s.io";
+    }
+
     [KubernetesEntity(Group="events.k8s.io", Kind="Event", ApiVersion="v1beta1", PluralName="events")]
     public partial class V1beta1Event : IKubernetesObject<V1ObjectMeta>, IValidate
     {
@@ -747,6 +763,38 @@ namespace k8s.Models
         public const string KubeApiVersion = "v1alpha1";
         public const string KubeKind = "PriorityLevelConfigurationList";
         public const string KubeGroup = "flowcontrol.apiserver.k8s.io";
+    }
+
+    [KubernetesEntity(Group="networking.k8s.io", Kind="Ingress", ApiVersion="v1", PluralName="ingresses")]
+    public partial class V1Ingress : IKubernetesObject<V1ObjectMeta>, ISpec<V1IngressSpec>, IValidate
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "Ingress";
+        public const string KubeGroup = "networking.k8s.io";
+    }
+
+    [KubernetesEntity(Group="networking.k8s.io", Kind="IngressClass", ApiVersion="v1", PluralName="ingressclasses")]
+    public partial class V1IngressClass : IKubernetesObject<V1ObjectMeta>, ISpec<V1IngressClassSpec>, IValidate
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "IngressClass";
+        public const string KubeGroup = "networking.k8s.io";
+    }
+
+    [KubernetesEntity(Group="networking.k8s.io", Kind="IngressClassList", ApiVersion="v1", PluralName="ingressclasses")]
+    public partial class V1IngressClassList : IKubernetesObject<V1ListMeta>, IItems<V1IngressClass>, IValidate
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "IngressClassList";
+        public const string KubeGroup = "networking.k8s.io";
+    }
+
+    [KubernetesEntity(Group="networking.k8s.io", Kind="IngressList", ApiVersion="v1", PluralName="ingresses")]
+    public partial class V1IngressList : IKubernetesObject<V1ListMeta>, IItems<V1Ingress>, IValidate
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "IngressList";
+        public const string KubeGroup = "networking.k8s.io";
     }
 
     [KubernetesEntity(Group="networking.k8s.io", Kind="NetworkPolicy", ApiVersion="v1", PluralName="networkpolicies")]

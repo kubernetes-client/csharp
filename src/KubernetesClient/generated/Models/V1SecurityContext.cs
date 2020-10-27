@@ -70,12 +70,16 @@ namespace k8s.Models
         /// PodSecurityContext.  If set in both SecurityContext and
         /// PodSecurityContext, the value specified in SecurityContext takes
         /// precedence.</param>
+        /// <param name="seccompProfile">The seccomp options to use by this
+        /// container. If seccomp options are provided at both the pod &amp;
+        /// container level, the container options override the pod
+        /// options.</param>
         /// <param name="windowsOptions">The Windows specific settings applied
         /// to all containers. If unspecified, the options from the
         /// PodSecurityContext will be used. If set in both SecurityContext and
         /// PodSecurityContext, the value specified in SecurityContext takes
         /// precedence.</param>
-        public V1SecurityContext(bool? allowPrivilegeEscalation = default(bool?), V1Capabilities capabilities = default(V1Capabilities), bool? privileged = default(bool?), string procMount = default(string), bool? readOnlyRootFilesystem = default(bool?), long? runAsGroup = default(long?), bool? runAsNonRoot = default(bool?), long? runAsUser = default(long?), V1SELinuxOptions seLinuxOptions = default(V1SELinuxOptions), V1WindowsSecurityContextOptions windowsOptions = default(V1WindowsSecurityContextOptions))
+        public V1SecurityContext(bool? allowPrivilegeEscalation = default(bool?), V1Capabilities capabilities = default(V1Capabilities), bool? privileged = default(bool?), string procMount = default(string), bool? readOnlyRootFilesystem = default(bool?), long? runAsGroup = default(long?), bool? runAsNonRoot = default(bool?), long? runAsUser = default(long?), V1SELinuxOptions seLinuxOptions = default(V1SELinuxOptions), V1SeccompProfile seccompProfile = default(V1SeccompProfile), V1WindowsSecurityContextOptions windowsOptions = default(V1WindowsSecurityContextOptions))
         {
             AllowPrivilegeEscalation = allowPrivilegeEscalation;
             Capabilities = capabilities;
@@ -86,6 +90,7 @@ namespace k8s.Models
             RunAsNonRoot = runAsNonRoot;
             RunAsUser = runAsUser;
             SeLinuxOptions = seLinuxOptions;
+            SeccompProfile = seccompProfile;
             WindowsOptions = windowsOptions;
             CustomInit();
         }
@@ -180,6 +185,14 @@ namespace k8s.Models
         public V1SELinuxOptions SeLinuxOptions { get; set; }
 
         /// <summary>
+        /// Gets or sets the seccomp options to use by this container. If
+        /// seccomp options are provided at both the pod &amp;amp; container
+        /// level, the container options override the pod options.
+        /// </summary>
+        [JsonProperty(PropertyName = "seccompProfile")]
+        public V1SeccompProfile SeccompProfile { get; set; }
+
+        /// <summary>
         /// Gets or sets the Windows specific settings applied to all
         /// containers. If unspecified, the options from the PodSecurityContext
         /// will be used. If set in both SecurityContext and
@@ -189,5 +202,18 @@ namespace k8s.Models
         [JsonProperty(PropertyName = "windowsOptions")]
         public V1WindowsSecurityContextOptions WindowsOptions { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (SeccompProfile != null)
+            {
+                SeccompProfile.Validate();
+            }
+        }
     }
 }

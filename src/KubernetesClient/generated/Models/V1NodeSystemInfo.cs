@@ -49,7 +49,7 @@ namespace k8s.Models
         /// <param name="systemUUID">SystemUUID reported by the node. For
         /// unique machine identification MachineID is preferred. This field is
         /// specific to Red Hat hosts
-        /// https://access.redhat.com/documentation/en-US/Red_Hat_Subscription_Management/1/html/RHSM/getting-system-uuid.html</param>
+        /// https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/rhsm/uuid</param>
         public V1NodeSystemInfo(string architecture, string bootID, string containerRuntimeVersion, string kernelVersion, string kubeProxyVersion, string kubeletVersion, string machineID, string operatingSystem, string osImage, string systemUUID)
         {
             Architecture = architecture;
@@ -134,7 +134,7 @@ namespace k8s.Models
         /// Gets or sets systemUUID reported by the node. For unique machine
         /// identification MachineID is preferred. This field is specific to
         /// Red Hat hosts
-        /// https://access.redhat.com/documentation/en-US/Red_Hat_Subscription_Management/1/html/RHSM/getting-system-uuid.html
+        /// https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/rhsm/uuid
         /// </summary>
         [JsonProperty(PropertyName = "systemUUID")]
         public string SystemUUID { get; set; }
