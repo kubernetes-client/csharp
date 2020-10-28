@@ -11,29 +11,14 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 0
-      - name: Setup dotnet runtime 2.0.9
+      - name: Setup dotnet SDK 2.1
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 2.1.202
-      - name: Setup dotnet runtime 2.1.17
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 2.1.805
+          dotnet-version: '2.1.x'
       - name: Setup dotnet SDK 3.1
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 3.1.201
-      - name: Setup SxS dotnet
-        if: matrix.os == 'windows-latest'
-        run: |
-          (robocopy %DOTNET_ROOT:3.1.201=2.1.805% %DOTNET_ROOT% /E /XC /XN /XO /NFL /NDL /NJH /NJS /NP) ^& if %ERRORLEVEL% geq 8 exit /B %ERRORLEVEL%
-          (robocopy %DOTNET_ROOT:3.1.201=2.1.202% %DOTNET_ROOT% /E /XC /XN /XO /NFL /NDL /NJH /NJS /NP) ^& if %ERRORLEVEL% geq 8 exit /B %ERRORLEVEL%
-          exit /B 0
-        shell: cmd
-      - name: Setup SxS dotnet
-        if: matrix.os != 'windows-latest'
-        run: |
-          rsync --archive --ignore-existing ${DOTNET_ROOT/3.1.201/2.1.805}/ ${DOTNET_ROOT/3.1.201/2.1.202}/ $DOTNET_ROOT
+          dotnet-version: '3.1.x'          
       - name: Setup Format
         run: dotnet tool install -g dotnet-format
       - name: Check Format
