@@ -91,7 +91,7 @@ namespace k8s.Tests
 
                 var expect = new AuthenticationHeaderValue(
                     "Basic",
-                        Convert.ToBase64String(Encoding.UTF8.GetBytes($"{testName}:{testPassword}")))
+                    Convert.ToBase64String(Encoding.UTF8.GetBytes($"{testName}:{testPassword}")))
                     .ToString();
 
                 if (header != expect)

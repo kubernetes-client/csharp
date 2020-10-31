@@ -202,7 +202,7 @@ namespace k8s.Tests
                 {
                     await Assert.ThrowsAsync<ArgumentNullException>(() => client.NamespacedPodExecAsync(
                         "pod-name",
-                            "pod-namespace", "my-container", command, false, null, CancellationToken.None))
+                        "pod-namespace", "my-container", command, false, null, CancellationToken.None))
                         .ConfigureAwait(false);
                 }
             }
@@ -226,7 +226,7 @@ namespace k8s.Tests
             {
                 var ex = await Assert.ThrowsAsync<KubernetesException>(() => client.NamespacedPodExecAsync(
                     "pod-name",
-                        "pod-namespace", "my-container", command, false, handler, CancellationToken.None))
+                    "pod-namespace", "my-container", command, false, handler, CancellationToken.None))
                     .ConfigureAwait(false);
                 Assert.Same(status, ex.Status);
             }
@@ -273,7 +273,7 @@ namespace k8s.Tests
             {
                 var ex = await Assert.ThrowsAsync<Exception>(() => client.NamespacedPodExecAsync(
                     "pod-name",
-                        "pod-namespace", "my-container", command, false, handler, CancellationToken.None))
+                    "pod-namespace", "my-container", command, false, handler, CancellationToken.None))
                     .ConfigureAwait(false);
                 Assert.Same(exception, ex);
             }

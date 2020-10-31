@@ -355,7 +355,7 @@ namespace k8s
 
                                     if (DateTimeOffset.Compare(
                                         expires,
-                                            DateTimeOffset.Now)
+                                        DateTimeOffset.Now)
                                         <= 0)
                                     {
                                         var tenantId = config["tenant-id"];
