@@ -13,7 +13,8 @@ namespace k8s
         private static readonly Regex quotedRegex =
             new Regex(@"^(\~|null|true|false|-?(0|[1-9][0-9]*)(\.[0-9]*)?([eE][-+]?[0-9]+)?)?$");
 
-        public StringQuotingEmitter(IEventEmitter next) : base(next)
+        public StringQuotingEmitter(IEventEmitter next)
+            : base(next)
         {
         }
 
