@@ -205,7 +205,7 @@
     <Rule Id="CA2225" Action="None" />
 
     <!-- Collection properties should be read only https://docs.microsoft.com/en-us/visualstudio/code-quality/CA2227 -->
-    <Rule Id="CA2227" Action="Warning" />
+    <Rule Id="CA2227" Action="None" />
 
     <!-- Mark ISerializable types with SerializableAttribute https://docs.microsoft.com/en-us/visualstudio/code-quality/CA2237 -->
     <Rule Id="CA2237" Action="Warning" />
