@@ -69,8 +69,7 @@ namespace k8s.Tests
                     cancellationToken: TestCancellation).ConfigureAwait(false);
                 Assert.Equal(
                     WebSocketProtocol.ChannelWebSocketProtocol,
-                    clientSocket
-                        .SubProtocol); // For WebSockets, the Kubernetes API defaults to the binary channel (v1) protocol.
+                    clientSocket.SubProtocol); // For WebSockets, the Kubernetes API defaults to the binary channel (v1) protocol.
 
                 testOutput.WriteLine(
                     $"Client socket connected (socket state is {clientSocket.State}). Waiting for server-side socket to become available...");
