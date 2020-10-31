@@ -184,7 +184,8 @@ namespace k8s
             }
         }
 
-        private void AppendDelegatingHandler<T>() where T : DelegatingHandler, new()
+        private void AppendDelegatingHandler<T>()
+            where T : DelegatingHandler, new()
         {
             var cur = FirstMessageHandler as DelegatingHandler;
 

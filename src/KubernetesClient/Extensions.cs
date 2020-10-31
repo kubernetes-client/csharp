@@ -16,7 +16,9 @@ namespace k8s
 {
     public static class Extensions
     {
-        public static KubernetesEntityAttribute GetKubernetesTypeMetadata<T>(this T obj) where T : IKubernetesObject =>
+        public static KubernetesEntityAttribute GetKubernetesTypeMetadata<T>(this T obj)
+            where T : IKubernetesObject
+            =>
             obj.GetType().GetKubernetesTypeMetadata();
         public static KubernetesEntityAttribute GetKubernetesTypeMetadata(this Type currentType)
         {
@@ -29,7 +31,8 @@ namespace k8s
             return attr;
         }
 
-        public static T Initialize<T>(this T obj) where T : IKubernetesObject
+        public static T Initialize<T>(this T obj)
+            where T : IKubernetesObject
         {
             var metadata = obj.GetKubernetesTypeMetadata();
             obj.ApiVersion = !string.IsNullOrEmpty(metadata.Group) ? $"{metadata.Group}/{metadata.ApiVersion}" : metadata.ApiVersion;
