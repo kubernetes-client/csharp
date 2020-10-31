@@ -3,8 +3,6 @@ using k8s.Models;
 
 namespace k8s.Versioning
 {
-
-
     public static partial class VersionConverter
     {
         private static void AutoConfigurations(IMapperConfigurationExpression cfg)
@@ -160,6 +158,4 @@ namespace k8s.Versioning
                 cfg.CreateMap<V1beta1VolumeNodeResources, V1VolumeNodeResources>().ReverseMap();
         }
     }
-
-
 }
