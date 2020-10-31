@@ -28,7 +28,8 @@ namespace k8s.Models
         [JsonProperty(PropertyName = "apiVersion")]
         public string ApiVersion { get; set; }
 
-        [JsonProperty(PropertyName = "items")] public IList<T> Items { get; set; }
+        [JsonProperty(PropertyName = "items")]
+        public IList<T> Items { get; set; }
 
         /// <summary>
         /// Gets or sets kind is a string value representing the REST resource

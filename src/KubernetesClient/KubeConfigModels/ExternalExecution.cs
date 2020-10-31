@@ -5,7 +5,8 @@ namespace k8s.KubeConfigModels
 {
     public class ExternalExecution
     {
-        [YamlMember(Alias = "apiVersion")] public string ApiVersion { get; set; }
+        [YamlMember(Alias = "apiVersion")]
+        public string ApiVersion { get; set; }
 
         /// <summary>
         /// The command to execute. Required.
