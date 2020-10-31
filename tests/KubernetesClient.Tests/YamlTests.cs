@@ -194,7 +194,7 @@ spec:
         {
             using (var reader = new StringReader(s))
             {
-                for (; ; )
+                for (; ;)
                 {
                     var line = reader.ReadLine();
                     if (line == null)

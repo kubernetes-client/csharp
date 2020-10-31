@@ -153,7 +153,7 @@ namespace k8s.Versioning
                 .ForMember(dest => dest.AverageValue, opt => opt.MapFrom(src => src.TargetAverageValue))
                 .ForMember(dest => dest.Value, opt => opt.Ignore())
 #if NET452
-                .ForMember(dest => dest.Type, opt => opt.ResolveUsing(src => src.TargetAverageValue != null ? "AverageValue" : "Utilization" ))
+                .ForMember(dest => dest.Type, opt => opt.ResolveUsing(src => src.TargetAverageValue != null ? "AverageValue" : "Utilization"))
 #else
                 .ForMember(dest => dest.Type, opt => opt.MapFrom((src, dest) => src.TargetAverageValue != null ? "AverageValue" : "Utilization"))
 #endif
