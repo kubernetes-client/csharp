@@ -40,12 +40,12 @@ namespace k8s.Versioning
         private Version ExtractVersion(Match match)
         {
             var major = int.Parse(match.Groups["major"].Value);
+            var minor = int.Parse(match.Groups["minor"].Value);
             if (!Enum.TryParse<Stream>(match.Groups["stream"].Value, true, out var stream))
             {
                 stream = Stream.Final;
             }
 
-            int.TryParse(match.Groups["minor"].Value, out var minor);
             return new Version(major, (int)stream, minor);
         }
 
