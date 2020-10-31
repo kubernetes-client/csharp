@@ -1,9 +1,8 @@
+using System.Collections.Generic;
+using YamlDotNet.Serialization;
+
 namespace k8s.KubeConfigModels
 {
-    using System.Collections.Generic;
-    using YamlDotNet.RepresentationModel;
-    using YamlDotNet.Serialization;
-
     /// <summary>
     /// Contains information that describes identity information.  This is use to tell the kubernetes cluster who you are.
     /// </summary>

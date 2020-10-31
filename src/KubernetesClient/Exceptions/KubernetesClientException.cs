@@ -1,7 +1,7 @@
+using System;
+
 namespace k8s.Exceptions
 {
-    using System;
-
     /// <summary>
     /// The exception that is thrown when there is a client exception
     /// </summary>

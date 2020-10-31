@@ -1,9 +1,6 @@
 using System;
 using Xunit;
-using k8s;
-using System.IO;
 using System.Security.Cryptography.X509Certificates;
-using System.Net.Security;
 using System.Linq;
 
 namespace k8s.Tests

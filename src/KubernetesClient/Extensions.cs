@@ -1,16 +1,7 @@
 using System;
-using System.Collections.Concurrent;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using k8s.Models;
-using Microsoft.Rest;
-using Microsoft.Rest.TransientFaultHandling;
-using Newtonsoft.Json.Converters;
-using VersionConverter = k8s.Versioning.VersionConverter;
 
 namespace k8s
 {

@@ -1,8 +1,8 @@
+using System.Collections.Generic;
+using YamlDotNet.Serialization;
+
 namespace k8s.KubeConfigModels
 {
-    using System.Collections.Generic;
-    using YamlDotNet.Serialization;
-
     /// <summary>
     /// Contains information about how to communicate with a kubernetes cluster
     /// </summary>

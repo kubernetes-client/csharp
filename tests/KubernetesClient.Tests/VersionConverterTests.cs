@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using k8s.Models;
 using Xunit;
 using FluentAssertions;
