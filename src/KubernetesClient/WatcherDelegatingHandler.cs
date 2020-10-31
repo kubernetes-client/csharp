@@ -15,7 +15,8 @@ namespace k8s
     /// </summary>
     internal class WatcherDelegatingHandler : DelegatingHandler
     {
-        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
+        protected override async Task<HttpResponseMessage> SendAsync(
+            HttpRequestMessage request,
             CancellationToken cancellationToken)
         {
             var originResponse = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);

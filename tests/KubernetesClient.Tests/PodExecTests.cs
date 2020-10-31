@@ -67,7 +67,8 @@ namespace k8s.Tests
                     stdout: true,
                     webSocketSubProtol: WebSocketProtocol.ChannelWebSocketProtocol,
                     cancellationToken: TestCancellation).ConfigureAwait(false);
-                Assert.Equal(WebSocketProtocol.ChannelWebSocketProtocol,
+                Assert.Equal(
+                    WebSocketProtocol.ChannelWebSocketProtocol,
                     clientSocket
                         .SubProtocol); // For WebSockets, the Kubernetes API defaults to the binary channel (v1) protocol.
 
@@ -200,7 +201,8 @@ namespace k8s.Tests
 
                 using (Kubernetes client = kubernetesMock.Object)
                 {
-                    await Assert.ThrowsAsync<ArgumentNullException>(() => client.NamespacedPodExecAsync("pod-name",
+                    await Assert.ThrowsAsync<ArgumentNullException>(() => client.NamespacedPodExecAsync(
+                        "pod-name",
                             "pod-namespace", "my-container", command, false, null, CancellationToken.None))
                         .ConfigureAwait(false);
                 }
@@ -223,7 +225,8 @@ namespace k8s.Tests
 
             using (Kubernetes client = kubernetesMock.Object)
             {
-                var ex = await Assert.ThrowsAsync<KubernetesException>(() => client.NamespacedPodExecAsync("pod-name",
+                var ex = await Assert.ThrowsAsync<KubernetesException>(() => client.NamespacedPodExecAsync(
+                    "pod-name",
                         "pod-namespace", "my-container", command, false, handler, CancellationToken.None))
                     .ConfigureAwait(false);
                 Assert.Same(status, ex.Status);
@@ -269,7 +272,8 @@ namespace k8s.Tests
 
             using (Kubernetes client = kubernetesMock.Object)
             {
-                var ex = await Assert.ThrowsAsync<Exception>(() => client.NamespacedPodExecAsync("pod-name",
+                var ex = await Assert.ThrowsAsync<Exception>(() => client.NamespacedPodExecAsync(
+                    "pod-name",
                         "pod-namespace", "my-container", command, false, handler, CancellationToken.None))
                     .ConfigureAwait(false);
                 Assert.Same(exception, ex);

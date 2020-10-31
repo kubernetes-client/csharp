@@ -262,7 +262,8 @@ namespace k8s.Tests
             // Write data to the buffer
             buffer.Write(this.writeData, 0, 0x03);
 
-            await TaskAssert.Completed(readTask,
+            await TaskAssert.Completed(
+                readTask,
                 timeout: TimeSpan.FromMilliseconds(1000),
                 message: "Timed out waiting for read task to complete.").ConfigureAwait(false);
 

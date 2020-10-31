@@ -89,7 +89,8 @@ namespace k8s.Tests
             {
                 var header = cxt.Request.Headers["Authorization"].FirstOrDefault();
 
-                var expect = new AuthenticationHeaderValue("Basic",
+                var expect = new AuthenticationHeaderValue(
+                    "Basic",
                         Convert.ToBase64String(Encoding.UTF8.GetBytes($"{testName}:{testPassword}")))
                     .ToString();
 

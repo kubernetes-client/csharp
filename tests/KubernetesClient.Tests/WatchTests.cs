@@ -430,7 +430,8 @@ namespace k8s.Tests
         {
             internal bool Called { get; private set; }
 
-            protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
+            protected override Task<HttpResponseMessage> SendAsync(
+                HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
                 Called = true;

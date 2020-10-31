@@ -75,7 +75,8 @@ namespace k8s.Tests.Mock
             throw new NotImplementedException();
         }
 
-        public override async Task<WebSocketReceiveResult> ReceiveAsync(ArraySegment<byte> buffer,
+        public override async Task<WebSocketReceiveResult> ReceiveAsync(
+            ArraySegment<byte> buffer,
             CancellationToken cancellationToken)
         {
             if (this.receiveBuffers.Count == 0)
@@ -113,7 +114,8 @@ namespace k8s.Tests.Mock
         public override Task SendAsync(ArraySegment<byte> buffer, WebSocketMessageType messageType, bool endOfMessage,
             CancellationToken cancellationToken)
         {
-            this.MessageSent?.Invoke(this,
+            this.MessageSent?.Invoke(
+                this,
                 new MessageDataEventArgs()
                 {
                     Data = new MessageData()

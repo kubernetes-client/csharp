@@ -282,7 +282,8 @@ namespace k8s
                 Array.Copy(this.buffer, 0, newBuffer, 0, this.WriteWaterMark);
 
                 int trailingDataLength = this.buffer.Length - this.ReadWaterMark;
-                Array.Copy(this.buffer,
+                Array.Copy(
+                    this.buffer,
                     sourceIndex: this.ReadWaterMark,
                     destinationArray: newBuffer,
                     destinationIndex: newBuffer.Length - trailingDataLength,

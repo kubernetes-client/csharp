@@ -59,7 +59,8 @@ namespace k8s.Versioning
                 .GroupBy(x => x.Kind)
                 .ToDictionary(x => x.Key, kindGroup => kindGroup
                     .GroupBy(x => x.ApiVersion)
-                    .ToDictionary(x => x.Key,
+                    .ToDictionary(
+                        x => x.Key,
                         versionGroup => versionGroup.Select(x => x.Type).Distinct().Single())); // should only be one type for each Kind/Version combination
         }
 

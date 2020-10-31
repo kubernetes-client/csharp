@@ -96,7 +96,8 @@ namespace k8s
             uriBuilder.Query =
                 query.Length == 0
                     ? ""
-                    : query.ToString(1,
+                    : query.ToString(
+                        1,
                         query.Length - 1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
 
             // Create HTTP transport objects
@@ -145,7 +146,8 @@ namespace k8s
             {
                 string responseContent = string.Empty;
 
-                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'",
+                var ex = new HttpOperationException(string.Format(
+                    "Operation returned an invalid status code '{0}'",
                     httpResponse.StatusCode));
                 if (httpResponse.Content != null)
                 {
@@ -160,7 +162,8 @@ namespace k8s
                 throw ex;
             }
 
-            return new Watcher<T>(async () =>
+            return new Watcher<T>(
+                async () =>
             {
                 var stream = await httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false);
                 StreamReader reader = new StreamReader(stream);

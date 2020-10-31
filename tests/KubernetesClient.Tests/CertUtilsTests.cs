@@ -42,7 +42,8 @@ namespace k8s.Tests
         [Fact]
         public void LoadFromFilesRelativePath()
         {
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(KubeConfigWithRelativePathsFileName,
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(
+                KubeConfigWithRelativePathsFileName,
                 "federal-context");
 
             // Just validate that this doesn't throw and private key is non-null
@@ -70,7 +71,8 @@ namespace k8s.Tests
         [Fact]
         public void LoadFromInlineDataRelativePath()
         {
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(KubeConfigWithRelativePathsFileName,
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(
+                KubeConfigWithRelativePathsFileName,
                 "victorian-context");
 
             // Just validate that this doesn't throw and private key is non-null
