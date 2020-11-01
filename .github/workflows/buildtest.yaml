@@ -1,4 +1,4 @@
-name: .NET Core
+name: Build and Test
 
 jobs:
   build:
@@ -34,6 +34,31 @@ jobs:
       #     path: tests/KubernetesClient.Tests/coverage.netcoreapp2.1.cobertura.xml
       #     repo_token: ${{ secrets.GITHUB_TOKEN }}
       #     minimum_coverage: 0
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 0
+      - name: Setup dotnet SDK 2.1
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '2.1.x'
+      - name: Setup dotnet SDK 3.1
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.x'          
+      - name: Minikube
+        run: minikube start
+      - name: Test
+        run: |
+          true > skip.log
+          env K8S_E2E_MINIKUBE=1 dotnet test tests/E2E.Tests --logger "SkipTestLogger;file=$PWD/skip.log"
+          if [ -s skip.log ]; then
+            cat skip.log
+            echo "CASES MUST NOT BE SKIPPED"
+            exit 1
+          fi      
 
 on:
   pull_request:
