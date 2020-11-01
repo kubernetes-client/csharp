@@ -1,0 +1,28 @@
+name: Minikube E2E
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Dotnet build
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 0
+      - name: Setup dotnet SDK 2.1
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '2.1.x'
+      - name: Setup dotnet SDK 3.1
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.x'          
+      - name: Minikube
+        run: minikube start
+      - name: Test
+        run: dotnet test tests/E2E.Tests
+        env: 
+          K8S_E2E_MINIKUBE: 1
+
+on:
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
