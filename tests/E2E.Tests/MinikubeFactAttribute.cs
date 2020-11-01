@@ -3,7 +3,7 @@ using Xunit;
 
 namespace k8s.E2E
 {
-    public class MinikubeFactAttribute : FactAttribute
+    public sealed class MinikubeFactAttribute : FactAttribute
     {
         private static readonly bool HasEnv = !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("K8S_E2E_MINIKUBE"));
 
