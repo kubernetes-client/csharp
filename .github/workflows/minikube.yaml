@@ -23,7 +23,7 @@ jobs:
           dotnet test tests/E2E.Tests > log
           cat log
           grep '\[SKIP\]$' log > skip
-          if [ -s skip ];
+          if [ -s skip ]; then
             echo "CASES MUST NOT BE SKIPPED"
             exit 1
           fi
