@@ -161,7 +161,8 @@ namespace k8s.Tests
         public void CreatedFromPreLoadedConfig()
         {
             var k8sConfig =
-                KubernetesClientConfiguration.LoadKubeConfig(new FileInfo("assets/kubeconfig.yml"),
+                KubernetesClientConfiguration.LoadKubeConfig(
+                    new FileInfo("assets/kubeconfig.yml"),
                     useRelativePaths: false);
             var cfg = KubernetesClientConfiguration.BuildConfigFromConfigObject(k8sConfig);
             Assert.NotNull(cfg.Host);
@@ -173,7 +174,8 @@ namespace k8s.Tests
         [Fact]
         public void DefaultConfigurationLoaded()
         {
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(new FileInfo("assets/kubeconfig.yml"),
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(
+                new FileInfo("assets/kubeconfig.yml"),
                 useRelativePaths: false);
             Assert.NotNull(cfg.Host);
         }
@@ -442,7 +444,8 @@ namespace k8s.Tests
             var filePath = Path.GetFullPath("assets/kubeconfig.relative.yml");
             var environmentVariable = "KUBECONFIG_LoadKubeConfigFromEnvironmentVariable_MultipleConfigs";
 
-            Environment.SetEnvironmentVariable(environmentVariable,
+            Environment.SetEnvironmentVariable(
+                environmentVariable,
                 string.Concat(filePath, RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ';' : ':', filePath));
             KubernetesClientConfiguration.KubeConfigEnvironmentVariable = environmentVariable;
 
@@ -576,7 +579,8 @@ namespace k8s.Tests
         {
             Assert.Equal(expected.Name, actual.Name);
             Assert.Equal(expected.ClusterEndpoint.CertificateAuthority, actual.ClusterEndpoint.CertificateAuthority);
-            Assert.Equal(expected.ClusterEndpoint.CertificateAuthorityData,
+            Assert.Equal(
+                expected.ClusterEndpoint.CertificateAuthorityData,
                 actual.ClusterEndpoint.CertificateAuthorityData);
             Assert.Equal(expected.ClusterEndpoint.Server, actual.ClusterEndpoint.Server);
             Assert.Equal(expected.ClusterEndpoint.SkipTlsVerify, actual.ClusterEndpoint.SkipTlsVerify);

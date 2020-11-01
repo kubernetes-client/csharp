@@ -83,7 +83,8 @@ namespace k8s.Tests.Logging
                 throw new ArgumentNullException(nameof(formatter));
             }
 
-            TestOutput.WriteLine(string.Format("[{0}] {1}: {2}",
+            TestOutput.WriteLine(string.Format(
+                "[{0}] {1}: {2}",
                 level,
                 LoggerCategory,
                 formatter(state, exception)));

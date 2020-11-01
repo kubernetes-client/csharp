@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using System.Threading.Tasks;
 using k8s;
 
@@ -22,7 +21,8 @@ namespace logs
 
             var pod = list.Items[0];
 
-            var response = await client.ReadNamespacedPodLogWithHttpMessagesAsync(pod.Metadata.Name,
+            var response = await client.ReadNamespacedPodLogWithHttpMessagesAsync(
+                pod.Metadata.Name,
                 pod.Metadata.NamespaceProperty, follow: true).ConfigureAwait(false);
             var stream = response.Body;
             stream.CopyTo(Console.OpenStandardOutput());

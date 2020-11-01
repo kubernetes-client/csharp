@@ -37,7 +37,8 @@ namespace k8s
         }
 
         /// <inheritdoc/>
-        public virtual async Task<IStreamDemuxer> MuxedStreamNamespacedPodExecAsync(string name,
+        public virtual async Task<IStreamDemuxer> MuxedStreamNamespacedPodExecAsync(
+            string name,
             string @namespace = "default", IEnumerable<string> command = null, string container = null,
             bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true,
             string webSocketSubProtol = WebSocketProtocol.V4BinaryWebsocketProtocol,

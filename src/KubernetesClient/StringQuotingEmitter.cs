@@ -10,10 +10,11 @@ namespace k8s
     public class StringQuotingEmitter : ChainedEventEmitter
     {
         // Patterns from https://yaml.org/spec/1.2/spec.html#id2804356
-        private static readonly Regex quotedRegex =
+        private static readonly Regex QuotedRegex =
             new Regex(@"^(\~|null|true|false|-?(0|[1-9][0-9]*)(\.[0-9]*)?([eE][-+]?[0-9]+)?)?$");
 
-        public StringQuotingEmitter(IEventEmitter next) : base(next)
+        public StringQuotingEmitter(IEventEmitter next)
+            : base(next)
         {
         }
 
@@ -34,7 +35,7 @@ namespace k8s
                     break;
                 case TypeCode.String:
                     var val = eventInfo.Source.Value.ToString();
-                    if (quotedRegex.IsMatch(val))
+                    if (QuotedRegex.IsMatch(val))
                     {
                         eventInfo.Style = ScalarStyle.DoubleQuoted;
                     }

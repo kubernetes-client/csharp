@@ -8,11 +8,9 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using k8s.Exceptions;
 using k8s.Models;
 using k8s.Tests.Mock;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Nito.AsyncEx;
@@ -430,7 +428,8 @@ namespace k8s.Tests
         {
             internal bool Called { get; private set; }
 
-            protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
+            protected override Task<HttpResponseMessage> SendAsync(
+                HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
                 Called = true;

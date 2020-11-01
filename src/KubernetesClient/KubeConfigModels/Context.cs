@@ -1,8 +1,8 @@
+using System;
+using YamlDotNet.Serialization;
+
 namespace k8s.KubeConfigModels
 {
-    using System;
-    using YamlDotNet.Serialization;
-
     /// <summary>
     /// Relates nicknames to context information.
     /// </summary>

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Net.WebSockets;
 #if (NET452 || NETSTANDARD2_0)
 using System.Net.Security;

@@ -265,7 +265,8 @@ namespace k8s
                     set => _inner.ScalarStyle = value;
                 }
 
-                public T GetCustomAttribute<T>() where T : Attribute
+                public T GetCustomAttribute<T>()
+                    where T : Attribute
                 {
                     return _inner.GetCustomAttribute<T>();
                 }

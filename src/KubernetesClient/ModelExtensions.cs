@@ -245,12 +245,14 @@ namespace k8s.Models
         }
 
         /// <summary>Gets <see cref="V1OwnerReference"/> that matches the given object, or null if no matching reference exists.</summary>
-        public static V1OwnerReference GetOwnerReference(this IMetadata<V1ObjectMeta> obj,
+        public static V1OwnerReference GetOwnerReference(
+            this IMetadata<V1ObjectMeta> obj,
             IKubernetesObject<V1ObjectMeta> owner) =>
             GetOwnerReference(obj, r => r.Matches(owner));
 
         /// <summary>Gets the <see cref="V1OwnerReference"/> that matches the given predicate, or null if no matching reference exists.</summary>
-        public static V1OwnerReference GetOwnerReference(this IMetadata<V1ObjectMeta> obj,
+        public static V1OwnerReference GetOwnerReference(
+            this IMetadata<V1ObjectMeta> obj,
             Predicate<V1OwnerReference> predicate)
         {
             int index = FindOwnerReference(obj, predicate);
@@ -310,7 +312,8 @@ namespace k8s.Models
         /// <summary>Removes the first <see cref="V1OwnerReference"/> that matches the given object and returns it, or returns null if no
         /// matching reference could be found.
         /// </summary>
-        public static V1OwnerReference RemoveOwnerReference(this IMetadata<V1ObjectMeta> obj,
+        public static V1OwnerReference RemoveOwnerReference(
+            this IMetadata<V1ObjectMeta> obj,
             IKubernetesObject<V1ObjectMeta> owner)
         {
             int index = FindOwnerReference(obj, owner);
@@ -326,7 +329,8 @@ namespace k8s.Models
         /// <summary>Removes all <see cref="V1OwnerReference">owner references</see> that match the given predicate, and returns true if
         /// any were removed.
         /// </summary>
-        public static bool RemoveOwnerReferences(this IMetadata<V1ObjectMeta> obj,
+        public static bool RemoveOwnerReferences(
+            this IMetadata<V1ObjectMeta> obj,
             Predicate<V1OwnerReference> predicate)
         {
             if (obj == null)
@@ -359,7 +363,8 @@ namespace k8s.Models
         /// <summary>Removes all <see cref="V1OwnerReference">owner references</see> that match the given object, and returns true if
         /// any were removed.
         /// </summary>
-        public static bool RemoveOwnerReferences(this IMetadata<V1ObjectMeta> obj,
+        public static bool RemoveOwnerReferences(
+            this IMetadata<V1ObjectMeta> obj,
             IKubernetesObject<V1ObjectMeta> owner) =>
             RemoveOwnerReferences(obj, r => r.Matches(owner));
 

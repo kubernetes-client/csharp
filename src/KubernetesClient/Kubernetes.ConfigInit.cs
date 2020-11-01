@@ -22,7 +22,8 @@ namespace k8s
         /// <param name="httpClient">
         ///     The <see cref="HttpClient" /> to use for all requests.
         /// </param>
-        public Kubernetes(KubernetesClientConfiguration config, HttpClient httpClient) : this(config, httpClient, false)
+        public Kubernetes(KubernetesClientConfiguration config, HttpClient httpClient)
+            : this(config, httpClient, false)
         {
         }
 
@@ -38,7 +39,8 @@ namespace k8s
         /// <param name="disposeHttpClient">
         ///     Whether or not the <see cref="Kubernetes"/> object should own the lifetime of <paramref name="httpClient"/>.
         /// </param>
-        public Kubernetes(KubernetesClientConfiguration config, HttpClient httpClient, bool disposeHttpClient) : this(
+        public Kubernetes(KubernetesClientConfiguration config, HttpClient httpClient, bool disposeHttpClient)
+            : this(
             httpClient, disposeHttpClient)
         {
             ValidateConfig(config);
@@ -179,12 +181,14 @@ namespace k8s
         /// <summary>A <see cref="DelegatingHandler"/> that simply forwards a request with no further processing.</summary>
         private sealed class ForwardingHandler : DelegatingHandler
         {
-            public ForwardingHandler(HttpMessageHandler handler) : base(handler)
+            public ForwardingHandler(HttpMessageHandler handler)
+                : base(handler)
             {
             }
         }
 
-        private void AppendDelegatingHandler<T>() where T : DelegatingHandler, new()
+        private void AppendDelegatingHandler<T>()
+            where T : DelegatingHandler, new()
         {
             var cur = FirstMessageHandler as DelegatingHandler;
 

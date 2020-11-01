@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using k8s.Models;
 using Xunit;
@@ -114,7 +113,8 @@ metadata:
             var pod = new V1Pod() { ApiVersion = "v1", Kind = "Pod", Metadata = new V1ObjectMeta() { Name = "foo" } };
 
             var yaml = Yaml.SaveToString(pod);
-            Assert.Equal(ToLines(@"apiVersion: v1
+            Assert.Equal(
+                ToLines(@"apiVersion: v1
 kind: Pod
 metadata:
   name: foo"), ToLines(yaml));
@@ -131,7 +131,8 @@ metadata:
             };
 
             var yaml = Yaml.SaveToString(pod);
-            Assert.Equal(ToLines(@"apiVersion: v1
+            Assert.Equal(
+                ToLines(@"apiVersion: v1
 kind: Pod
 metadata:
   name: foo
@@ -170,7 +171,8 @@ metadata:
             };
 
             var yaml = Yaml.SaveToString(pod);
-            Assert.Equal(ToLines(@"apiVersion: v1
+            Assert.Equal(
+                ToLines(@"apiVersion: v1
 kind: Pod
 metadata:
   name: foo

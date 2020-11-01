@@ -106,7 +106,7 @@
     <Rule Id="SA1314" Action="None" />
 
     <!-- A C# using directive is placed outside of a namespace element. https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1200.md -->
-    <Rule Id="SA1200" Action="Warning" />
+    <Rule Id="SA1200" Action="Error" />
 
     <!-- An element within a C# code file is out of order in relation to the other elements in the code. https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1201.md -->
     <Rule Id="SA1201" Action="None" />
@@ -175,7 +175,7 @@
     <Rule Id="SA1001" Action="Warning" />
 
     <!-- A closing parenthesis within a C# statement is not spaced correctly. https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1009.md -->
-    <Rule Id="SA1009" Action="Warning" />
+    <Rule Id="SA1009" Action="None" />
 
     <!-- An opening brace within a C# element is not spaced correctly. https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1012.md -->
     <Rule Id="SA1012" Action="Warning" />
@@ -205,10 +205,10 @@
     <Rule Id="CA2225" Action="None" />
 
     <!-- Collection properties should be read only https://docs.microsoft.com/en-us/visualstudio/code-quality/CA2227 -->
-    <Rule Id="CA2227" Action="Warning" />
+    <Rule Id="CA2227" Action="None" />
 
     <!-- Mark ISerializable types with SerializableAttribute https://docs.microsoft.com/en-us/visualstudio/code-quality/CA2237 -->
-    <Rule Id="CA2237" Action="Warning" />
+    <Rule Id="CA2237" Action="None" />
 
     <!-- Do Not Disable Certificate Validation https://docs.microsoft.com/en-us/visualstudio/code-quality/CA5359 -->
     <Rule Id="CA5359" Action="None" />

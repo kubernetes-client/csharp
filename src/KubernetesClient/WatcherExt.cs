@@ -19,12 +19,14 @@ namespace k8s
         /// The action to invoke when the server closes the connection.
         /// </param>
         /// <returns>a watch object</returns>
-        public static Watcher<T> Watch<T, L>(this Task<HttpOperationResponse<L>> responseTask,
+        public static Watcher<T> Watch<T, L>(
+            this Task<HttpOperationResponse<L>> responseTask,
             Action<WatchEventType, T> onEvent,
             Action<Exception> onError = null,
             Action onClosed = null)
         {
-            return new Watcher<T>(async () =>
+            return new Watcher<T>(
+                async () =>
             {
                 var response = await responseTask.ConfigureAwait(false);
 
@@ -49,7 +51,8 @@ namespace k8s
         /// The action to invoke when the server closes the connection.
         /// </param>
         /// <returns>a watch object</returns>
-        public static Watcher<T> Watch<T, L>(this HttpOperationResponse<L> response,
+        public static Watcher<T> Watch<T, L>(
+            this HttpOperationResponse<L> response,
             Action<WatchEventType, T> onEvent,
             Action<Exception> onError = null,
             Action onClosed = null)

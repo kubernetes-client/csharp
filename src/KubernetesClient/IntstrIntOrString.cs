@@ -1,7 +1,5 @@
 using System;
 using Newtonsoft.Json;
-using YamlDotNet.Core.Events;
-using YamlDotNet.Core.Tokens;
 
 namespace k8s.Models
 {

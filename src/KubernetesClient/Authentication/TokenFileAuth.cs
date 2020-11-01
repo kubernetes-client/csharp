@@ -18,7 +18,7 @@ namespace k8s.Authentication
             TokenFile = tokenFile;
         }
 
-        public async Task<AuthenticationHeaderValue> GetAuthenticationHeaderAsync(CancellationToken cancellationToken)
+        public Task<AuthenticationHeaderValue> GetAuthenticationHeaderAsync(CancellationToken cancellationToken)
         {
             if (TokenExpiresAt < DateTime.UtcNow)
             {
@@ -32,7 +32,7 @@ namespace k8s.Authentication
                 TokenExpiresAt = DateTime.UtcNow.AddMinutes(1);
             }
 
-            return new AuthenticationHeaderValue("Bearer", token);
+            return Task.FromResult(new AuthenticationHeaderValue("Bearer", token));
         }
     }
 }

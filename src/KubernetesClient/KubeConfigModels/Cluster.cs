@@ -1,7 +1,7 @@
+using YamlDotNet.Serialization;
+
 namespace k8s.KubeConfigModels
 {
-    using YamlDotNet.Serialization;
-
     /// <summary>
     /// Relates nicknames to cluster information.
     /// </summary>

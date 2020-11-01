@@ -18,7 +18,6 @@ using Microsoft.Rest;
 using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.Security;
-using Remotion.Linq.Clauses;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -89,8 +88,9 @@ namespace k8s.Tests
             {
                 var header = cxt.Request.Headers["Authorization"].FirstOrDefault();
 
-                var expect = new AuthenticationHeaderValue("Basic",
-                        Convert.ToBase64String(Encoding.UTF8.GetBytes($"{testName}:{testPassword}")))
+                var expect = new AuthenticationHeaderValue(
+                    "Basic",
+                    Convert.ToBase64String(Encoding.UTF8.GetBytes($"{testName}:{testPassword}")))
                     .ToString();
 
                 if (header != expect)

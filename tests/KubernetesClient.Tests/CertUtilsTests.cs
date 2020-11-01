@@ -1,9 +1,6 @@
 using System;
 using Xunit;
-using k8s;
-using System.IO;
 using System.Security.Cryptography.X509Certificates;
-using System.Net.Security;
 using System.Linq;
 
 namespace k8s.Tests
@@ -42,7 +39,8 @@ namespace k8s.Tests
         [Fact]
         public void LoadFromFilesRelativePath()
         {
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(KubeConfigWithRelativePathsFileName,
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(
+                KubeConfigWithRelativePathsFileName,
                 "federal-context");
 
             // Just validate that this doesn't throw and private key is non-null
@@ -70,7 +68,8 @@ namespace k8s.Tests
         [Fact]
         public void LoadFromInlineDataRelativePath()
         {
-            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(KubeConfigWithRelativePathsFileName,
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(
+                KubeConfigWithRelativePathsFileName,
                 "victorian-context");
 
             // Just validate that this doesn't throw and private key is non-null

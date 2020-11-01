@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.WebSockets;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using k8s.Tests.Mock;
@@ -37,7 +36,8 @@ namespace k8s.Tests
                 stream.Write(b, 0, b.Length);
 
                 // Send 100 bytes, expect 1 (channel index) + 100 (payload) = 101 bytes
-                Assert.True(await WaitForAsync(() => sentBuffer.Count == 101).ConfigureAwait(false),
+                Assert.True(
+                    await WaitForAsync(() => sentBuffer.Count == 101).ConfigureAwait(false),
                     $"Demuxer error: expect to send 101 bytes, but actually send {sentBuffer.Count} bytes.");
                 Assert.True(sentBuffer[0] == channelIndex, "The first sent byte is not channel index!");
                 Assert.True(sentBuffer[1] == 0xEF, "Incorrect payload!");
@@ -63,7 +63,8 @@ namespace k8s.Tests
                 stream.Write(b, 0, b.Length);
 
                 // Send 300 bytes in 2 messages, expect 1 (channel index) * 2 + 300 (payload) = 302 bytes
-                Assert.True(await WaitForAsync(() => sentBuffer.Count == 302).ConfigureAwait(false),
+                Assert.True(
+                    await WaitForAsync(() => sentBuffer.Count == 302).ConfigureAwait(false),
                     $"Demuxer error: expect to send 302 bytes, but actually send {sentBuffer.Count} bytes.");
                 Assert.True(sentBuffer[0] == channelIndex, "The first sent byte is not channel index!");
                 Assert.True(sentBuffer[1] == 0xEF, "The first part of payload incorrect!");
@@ -119,7 +120,8 @@ namespace k8s.Tests
 
                 await t.ConfigureAwait(false);
 
-                Assert.True(receivedBuffer.Count == expectedCount,
+                Assert.True(
+                    receivedBuffer.Count == expectedCount,
                     $"Demuxer error: expect to receive {expectedCount} bytes, but actually got {receivedBuffer.Count} bytes.");
                 Assert.True(receivedBuffer[0] == 0xAA, "The first payload incorrect!");
                 Assert.True(receivedBuffer[98] == 0xAA, "The first payload incorrect!");
@@ -178,7 +180,8 @@ namespace k8s.Tests
 
                 await t.ConfigureAwait(false);
 
-                Assert.True(receivedBuffer.Count == expectedCount,
+                Assert.True(
+                    receivedBuffer.Count == expectedCount,
                     $"Demuxer error: expect to receive {expectedCount} bytes, but actually got {receivedBuffer.Count} bytes.");
                 Assert.True(receivedBuffer[0] == 0xB1, "The first payload incorrect!");
                 Assert.True(receivedBuffer[96] == 0xB1, "The first payload incorrect!");
@@ -237,7 +240,8 @@ namespace k8s.Tests
 
                 await t.ConfigureAwait(false);
 
-                Assert.True(receivedBuffer.Count == expectedCount,
+                Assert.True(
+                    receivedBuffer.Count == expectedCount,
                     $"Demuxer error: expect to receive {expectedCount} bytes, but actually got {receivedBuffer.Count} bytes.");
                 Assert.True(receivedBuffer[0] == 0xC2, "The first payload incorrect!");
                 Assert.True(receivedBuffer[98] == 0xC2, "The first payload incorrect!");
@@ -320,9 +324,11 @@ namespace k8s.Tests
                 });
                 await Task.WhenAll(t1, t2, t3).ConfigureAwait(false);
 
-                Assert.True(receivedBuffer1.Count == expectedCount1,
+                Assert.True(
+                    receivedBuffer1.Count == expectedCount1,
                     $"Demuxer error: expect to receive {expectedCount1} bytes, but actually got {receivedBuffer1.Count} bytes.");
-                Assert.True(receivedBuffer2.Count == expectedCount2,
+                Assert.True(
+                    receivedBuffer2.Count == expectedCount2,
                     $"Demuxer error: expect to receive {expectedCount2} bytes, but actually got {receivedBuffer2.Count} bytes.");
                 Assert.True(receivedBuffer1[0] == 0xD1, "The first payload incorrect!");
                 Assert.True(receivedBuffer1[98] == 0xD1, "The first payload incorrect!");
@@ -409,9 +415,11 @@ namespace k8s.Tests
                 });
                 await Task.WhenAll(t1, t2, t3).ConfigureAwait(false);
 
-                Assert.True(receivedBuffer1.Count == expectedCount1,
+                Assert.True(
+                    receivedBuffer1.Count == expectedCount1,
                     $"Demuxer error: expect to receive {expectedCount1} bytes, but actually got {receivedBuffer1.Count} bytes.");
-                Assert.True(receivedBuffer2.Count == expectedCount2,
+                Assert.True(
+                    receivedBuffer2.Count == expectedCount2,
                     $"Demuxer error: expect to receive {expectedCount2} bytes, but actually got {receivedBuffer2.Count} bytes.");
                 Assert.True(receivedBuffer1[0] == 0xE1, "The first payload incorrect!");
                 Assert.True(receivedBuffer1[96] == 0xE1, "The first payload incorrect!");

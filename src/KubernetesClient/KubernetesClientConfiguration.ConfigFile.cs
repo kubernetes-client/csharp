@@ -76,7 +76,8 @@ namespace k8s
         /// <param name="masterUrl">kube api server endpoint</param>
         /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
         /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
-        public static KubernetesClientConfiguration BuildConfigFromConfigFile(string kubeconfigPath = null,
+        public static KubernetesClientConfiguration BuildConfigFromConfigFile(
+            string kubeconfigPath = null,
             string currentContext = null, string masterUrl = null, bool useRelativePaths = true)
         {
             return BuildConfigFromConfigFile(new FileInfo(kubeconfigPath ?? KubeConfigDefaultLocation), currentContext,
@@ -91,7 +92,8 @@ namespace k8s
         /// <param name="masterUrl">override the kube api server endpoint, set null if do not want to override</param>
         /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
         /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
-        public static KubernetesClientConfiguration BuildConfigFromConfigFile(FileInfo kubeconfig,
+        public static KubernetesClientConfiguration BuildConfigFromConfigFile(
+            FileInfo kubeconfig,
             string currentContext = null, string masterUrl = null, bool useRelativePaths = true)
         {
             return BuildConfigFromConfigFileAsync(kubeconfig, currentContext, masterUrl, useRelativePaths).GetAwaiter()
@@ -106,7 +108,8 @@ namespace k8s
         /// <param name="masterUrl">override the kube api server endpoint, set null if do not want to override</param>
         /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
         /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
-        public static async Task<KubernetesClientConfiguration> BuildConfigFromConfigFileAsync(FileInfo kubeconfig,
+        public static async Task<KubernetesClientConfiguration> BuildConfigFromConfigFileAsync(
+            FileInfo kubeconfig,
             string currentContext = null, string masterUrl = null, bool useRelativePaths = true)
         {
             if (kubeconfig == null)
@@ -126,7 +129,8 @@ namespace k8s
         /// <param name="kubeconfig">Stream of the kubeconfig, cannot be null</param>
         /// <param name="currentContext">Override the current context in config, set null if do not want to override</param>
         /// <param name="masterUrl">Override the Kubernetes API server endpoint, set null if do not want to override</param>
-        public static KubernetesClientConfiguration BuildConfigFromConfigFile(Stream kubeconfig,
+        public static KubernetesClientConfiguration BuildConfigFromConfigFile(
+            Stream kubeconfig,
             string currentContext = null, string masterUrl = null)
         {
             return BuildConfigFromConfigFileAsync(kubeconfig, currentContext, masterUrl).GetAwaiter().GetResult();
@@ -138,7 +142,8 @@ namespace k8s
         /// <param name="kubeconfig">Stream of the kubeconfig, cannot be null</param>
         /// <param name="currentContext">Override the current context in config, set null if do not want to override</param>
         /// <param name="masterUrl">Override the Kubernetes API server endpoint, set null if do not want to override</param>
-        public static async Task<KubernetesClientConfiguration> BuildConfigFromConfigFileAsync(Stream kubeconfig,
+        public static async Task<KubernetesClientConfiguration> BuildConfigFromConfigFileAsync(
+            Stream kubeconfig,
             string currentContext = null, string masterUrl = null)
         {
             if (kubeconfig == null)
@@ -165,11 +170,13 @@ namespace k8s
         /// <param name="k8sConfig">A <see cref="K8SConfiguration"/>, for example loaded from <see cref="LoadKubeConfigAsync(string, bool)" /></param>
         /// <param name="currentContext">Override the current context in config, set null if do not want to override</param>
         /// <param name="masterUrl">Override the Kubernetes API server endpoint, set null if do not want to override</param>
-        public static KubernetesClientConfiguration BuildConfigFromConfigObject(K8SConfiguration k8SConfig,
+        public static KubernetesClientConfiguration BuildConfigFromConfigObject(
+            K8SConfiguration k8SConfig,
             string currentContext = null, string masterUrl = null)
             => GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig);
 
-        private static KubernetesClientConfiguration GetKubernetesClientConfiguration(string currentContext,
+        private static KubernetesClientConfiguration GetKubernetesClientConfiguration(
+            string currentContext,
             string masterUrl, K8SConfiguration k8SConfig)
         {
             var k8SConfiguration = new KubernetesClientConfiguration();
@@ -232,7 +239,8 @@ namespace k8s
         private void SetClusterDetails(K8SConfiguration k8SConfig, Context activeContext)
         {
             var clusterDetails =
-                k8SConfig.Clusters.FirstOrDefault(c => c.Name.Equals(activeContext.ContextDetails.Cluster,
+                k8SConfig.Clusters.FirstOrDefault(c => c.Name.Equals(
+                    activeContext.ContextDetails.Cluster,
                     StringComparison.OrdinalIgnoreCase));
 
             if (clusterDetails?.ClusterEndpoint == null)
@@ -262,7 +270,8 @@ namespace k8s
                 }
                 else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
                 {
-                    SslCaCerts = new X509Certificate2Collection(new X509Certificate2(GetFullPath(k8SConfig,
+                    SslCaCerts = new X509Certificate2Collection(new X509Certificate2(GetFullPath(
+                        k8SConfig,
                         clusterDetails.ClusterEndpoint.CertificateAuthority)));
                 }
             }
@@ -275,7 +284,8 @@ namespace k8s
                 return;
             }
 
-            var userDetails = k8SConfig.Users.FirstOrDefault(c => c.Name.Equals(activeContext.ContextDetails.User,
+            var userDetails = k8SConfig.Users.FirstOrDefault(c => c.Name.Equals(
+                activeContext.ContextDetails.User,
                 StringComparison.OrdinalIgnoreCase));
 
             if (userDetails == null)
@@ -343,15 +353,17 @@ namespace k8s
                                     expires = DateTimeOffset.FromUnixTimeSeconds(expiresOn);
 #endif
 
-                                    if (DateTimeOffset.Compare(expires,
-                                            DateTimeOffset.Now)
+                                    if (DateTimeOffset.Compare(
+                                        expires,
+                                        DateTimeOffset.Now)
                                         <= 0)
                                     {
                                         var tenantId = config["tenant-id"];
                                         var clientId = config["client-id"];
                                         var apiServerId = config["apiserver-id"];
                                         var refresh = config["refresh-token"];
-                                        var newToken = RenewAzureToken(tenantId,
+                                        var newToken = RenewAzureToken(
+                                            tenantId,
                                             clientId,
                                             apiServerId,
                                             refresh);
@@ -533,7 +545,8 @@ namespace k8s
         /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
         /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
         /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
-        public static async Task<K8SConfiguration> LoadKubeConfigAsync(string kubeconfigPath = null,
+        public static async Task<K8SConfiguration> LoadKubeConfigAsync(
+            string kubeconfigPath = null,
             bool useRelativePaths = true)
         {
             var fileInfo = new FileInfo(kubeconfigPath ?? KubeConfigDefaultLocation);
@@ -560,7 +573,8 @@ namespace k8s
         /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
         /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
         /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
-        public static async Task<K8SConfiguration> LoadKubeConfigAsync(FileInfo kubeconfig,
+        public static async Task<K8SConfiguration> LoadKubeConfigAsync(
+            FileInfo kubeconfig,
             bool useRelativePaths = true)
         {
             if (!kubeconfig.Exists)
@@ -640,7 +654,8 @@ namespace k8s
         ///     The kube config files will be merges into a single <see cref="K8SConfiguration"/>, where first occurence wins.
         ///     See https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#merging-kubeconfig-files.
         /// </remarks>
-        internal static async Task<K8SConfiguration> LoadKubeConfigAsync(FileInfo[] kubeConfigs,
+        internal static async Task<K8SConfiguration> LoadKubeConfigAsync(
+            FileInfo[] kubeConfigs,
             bool useRelativePaths = true)
         {
             var basek8SConfig = await LoadKubeConfigAsync(kubeConfigs[0], useRelativePaths).ConfigureAwait(false);

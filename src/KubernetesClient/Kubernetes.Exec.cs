@@ -23,7 +23,8 @@ namespace k8s
 
             try
             {
-                using (var muxedStream = await this.MuxedStreamNamespacedPodExecAsync(name: name,
+                using (var muxedStream = await this.MuxedStreamNamespacedPodExecAsync(
+                    name: name,
                     @namespace: @namespace, command: command, container: container, tty: tty,
                     cancellationToken: cancellationToken).ConfigureAwait(false))
                 using (Stream stdIn = muxedStream.GetStream(null, ChannelIndex.StdIn))

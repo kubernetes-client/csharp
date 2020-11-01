@@ -1,8 +1,8 @@
+using System.Collections.Generic;
+using YamlDotNet.Serialization;
+
 namespace k8s.KubeConfigModels
 {
-    using System.Collections.Generic;
-    using YamlDotNet.Serialization;
-
     /// <summary>
     /// kubeconfig configuration model. Holds the information needed to build connect to remote
     /// Kubernetes clusters as a given user.
@@ -19,9 +19,11 @@ namespace k8s.KubeConfigModels
         [YamlMember(Alias = "preferences")]
         public IDictionary<string, object> Preferences { get; set; }
 
-        [YamlMember(Alias = "apiVersion")] public string ApiVersion { get; set; }
+        [YamlMember(Alias = "apiVersion")]
+        public string ApiVersion { get; set; }
 
-        [YamlMember(Alias = "kind")] public string Kind { get; set; }
+        [YamlMember(Alias = "kind")]
+        public string Kind { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the context that you would like to use by default.

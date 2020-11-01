@@ -1,22 +1,15 @@
 using System;
-using System.Collections.Concurrent;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using k8s.Models;
-using Microsoft.Rest;
-using Microsoft.Rest.TransientFaultHandling;
-using Newtonsoft.Json.Converters;
-using VersionConverter = k8s.Versioning.VersionConverter;
 
 namespace k8s
 {
     public static class Extensions
     {
-        public static KubernetesEntityAttribute GetKubernetesTypeMetadata<T>(this T obj) where T : IKubernetesObject =>
+        public static KubernetesEntityAttribute GetKubernetesTypeMetadata<T>(this T obj)
+            where T : IKubernetesObject
+            =>
             obj.GetType().GetKubernetesTypeMetadata();
         public static KubernetesEntityAttribute GetKubernetesTypeMetadata(this Type currentType)
         {
@@ -29,7 +22,8 @@ namespace k8s
             return attr;
         }
 
-        public static T Initialize<T>(this T obj) where T : IKubernetesObject
+        public static T Initialize<T>(this T obj)
+            where T : IKubernetesObject
         {
             var metadata = obj.GetKubernetesTypeMetadata();
             obj.ApiVersion = !string.IsNullOrEmpty(metadata.Group) ? $"{metadata.Group}/{metadata.ApiVersion}" : metadata.ApiVersion;

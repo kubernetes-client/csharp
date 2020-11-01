@@ -6,14 +6,8 @@ namespace k8s.Versioning
 {
     public class KubernetesVersionComparer : IComparer<string>
     {
-        public static KubernetesVersionComparer Instance { get; private set; }
-        private static readonly Regex _kubernetesVersionRegex;
-
-        static KubernetesVersionComparer()
-        {
-            _kubernetesVersionRegex = new Regex(@"^v(?<major>[0-9]+)((?<stream>alpha|beta)(?<minor>[0-9]+))?$", RegexOptions.Compiled);
-            Instance = new KubernetesVersionComparer();
-        }
+        public static KubernetesVersionComparer Instance { get; } = new KubernetesVersionComparer();
+        private static readonly Regex KubernetesVersionRegex = new Regex(@"^v(?<major>[0-9]+)((?<stream>alpha|beta)(?<minor>[0-9]+))?$", RegexOptions.Compiled);
 
         internal KubernetesVersionComparer()
         {
@@ -26,13 +20,13 @@ namespace k8s.Versioning
                 return StringComparer.CurrentCulture.Compare(x, y);
             }
 
-            var matchX = _kubernetesVersionRegex.Match(x);
+            var matchX = KubernetesVersionRegex.Match(x);
             if (!matchX.Success)
             {
                 return StringComparer.CurrentCulture.Compare(x, y);
             }
 
-            var matchY = _kubernetesVersionRegex.Match(y);
+            var matchY = KubernetesVersionRegex.Match(y);
             if (!matchY.Success)
             {
                 return StringComparer.CurrentCulture.Compare(x, y);

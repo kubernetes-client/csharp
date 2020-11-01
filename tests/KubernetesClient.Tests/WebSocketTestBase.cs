@@ -179,7 +179,8 @@ namespace k8s.Tests
                 {
                     if (received.IsFaulted)
                     {
-                        testOutput.WriteLine("Server socket operation to receive Close message failed: {0}",
+                        testOutput.WriteLine(
+                            "Server socket operation to receive Close message failed: {0}",
                             received.Exception.Flatten().InnerExceptions[0]);
                     }
                     else if (received.IsCanceled)
