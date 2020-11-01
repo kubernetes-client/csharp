@@ -19,8 +19,14 @@ jobs:
         run: minikube start
       - name: Test
         run: |
-          echo "K8S_E2E_MINIKUBE=1" >> $GITHUB_ENV
-          dotnet test tests/E2E.Tests
+          #env K8S_E2E_MINIKUBE=1 dotnet test tests/E2E.Tests
+          dotnet test tests/E2E.Tests > log
+          cat log
+          grep '\[SKIP\]$' log > skip
+          if [ -s skip ];
+            echo "CASES MUST NOT BE SKIPPED"
+            exit 1
+          fi
 
 on:
   pull_request:
