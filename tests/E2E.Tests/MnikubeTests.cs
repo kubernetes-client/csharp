@@ -32,10 +32,10 @@ namespace k8s.E2E
                 client.CreateNamespacedPod(
                     new V1Pod()
                     {
-                        Metadata = new V1ObjectMeta {Name = podName,},
+                        Metadata = new V1ObjectMeta { Name = podName, },
                         Spec = new V1PodSpec
                         {
-                            Containers = new[] {new V1Container() {Name = "k8s-e2e", Image = "nginx",},},
+                            Containers = new[] { new V1Container() { Name = "k8s-e2e", Image = "nginx", }, },
                         },
                     },
                     namespaceParameter);
