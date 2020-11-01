@@ -19,8 +19,8 @@ jobs:
         run: minikube start
       - name: Test
         run: |
-          #env K8S_E2E_MINIKUBE=1 dotnet test tests/E2E.Tests
-          dotnet test tests/E2E.Tests > log
+          env K8S_E2E_MINIKUBE=1 dotnet test tests/E2E.Tests > log
+          #dotnet test tests/E2E.Tests > log
           cat log
           grep '\[SKIP\]$' log > skip
           if [ -s skip ]; then
