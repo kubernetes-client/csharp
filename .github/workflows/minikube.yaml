@@ -3,7 +3,6 @@ name: Minikube E2E
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Dotnet build
     steps:
       - uses: actions/checkout@v1
         with:
@@ -19,9 +18,9 @@ jobs:
       - name: Minikube
         run: minikube start
       - name: Test
-        run: dotnet test tests/E2E.Tests
-        env: 
-          K8S_E2E_MINIKUBE: 1
+        run: |
+          echo "K8S_E2E_MINIKUBE=1" >> $GITHUB_ENV
+          dotnet test tests/E2E.Tests
 
 on:
   pull_request:
