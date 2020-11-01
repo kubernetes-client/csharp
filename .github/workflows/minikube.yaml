@@ -21,7 +21,7 @@ jobs:
         run: |
           true > skip.log
           #env K8S_E2E_MINIKUBE=1 dotnet test tests/E2E.Tests  --logger "SkipTestLogger;file=skip.log"
-          dotnet test tests/E2E.Tests  --logger "SkipTestLogger;file=skip.log"
+          dotnet test tests/E2E.Tests  --logger "SkipTestLogger;file=$PWD/skip.log"
           if [ -s skip.log ]; then
             echo "CASES MUST NOT BE SKIPPED"
             exit 1
