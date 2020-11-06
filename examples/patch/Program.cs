@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using k8s;
 using k8s.Models;
-using Microsoft.AspNetCore.JsonPatch;
 
 namespace patch
 {
@@ -16,21 +14,25 @@ namespace patch
             Console.WriteLine("Starting Request!");
 
             var pod = client.ListNamespacedPod("default").Items.First();
-
             var name = pod.Metadata.Name;
             PrintLabels(pod);
 
-            var newlabels = new Dictionary<string, string>(pod.Metadata.Labels) { ["test"] = "test" };
-            var patch = new JsonPatchDocument<V1Pod>();
-            patch.Replace(e => e.Metadata.Labels, newlabels);
-            client.PatchNamespacedPod(new V1Patch(patch), name, "default");
+            var patchStr = @"
+{
+    ""metadata"": {
+        ""labels"": {
+            ""test"": ""test""
+        }
+    }
+}";
 
+            client.PatchNamespacedPod(new V1Patch(patchStr, V1Patch.PatchType.MergePatch), name, "default");
             PrintLabels(client.ReadNamespacedPod(name, "default"));
         }
 
         private static void PrintLabels(V1Pod pod)
         {
-            Console.WriteLine($"Lables: for {pod.Metadata.Name}");
+            Console.WriteLine($"Labels: for {pod.Metadata.Name}");
             foreach (var (k, v) in pod.Metadata.Labels)
             {
                 Console.WriteLine($"{k} : {v}");

@@ -7,6 +7,13 @@ namespace k8s.Models
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
+            var content = (value as V1Patch)?.Content;
+            if (content is String || content is string)
+            {
+                writer.WriteRaw((string)content);
+                return;
+            }
+
             serializer.Serialize(writer, (value as V1Patch)?.Content);
         }
 
