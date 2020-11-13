@@ -442,9 +442,8 @@ namespace k8s
                 {
                     if (configEnvironmentVariable.ContainsKey("name") && configEnvironmentVariable.ContainsKey("value"))
                     {
-                        process.StartInfo.EnvironmentVariables.Add(
-                            configEnvironmentVariable["name"],
-                            configEnvironmentVariable["value"]);
+                        var name = configEnvironmentVariable["name"];
+                        process.StartInfo.EnvironmentVariables[name] = configEnvironmentVariable["value"];
                     }
                     else
                     {
