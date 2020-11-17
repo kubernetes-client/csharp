@@ -8,6 +8,7 @@ namespace k8s.Models
     {
         public enum PatchType
         {
+            Unknown,
             JsonPatch,
             MergePatch,
             StrategicMergePatch,
@@ -15,20 +16,24 @@ namespace k8s.Models
 
         public PatchType Type { get; private set; }
 
-        public V1Patch(string body, PatchType type)
-            : this(body)
+        public V1Patch(object body, PatchType type)
         {
-            this.Type = type;
+            Content = body;
+            Type = type;
+            CustomInit();
         }
 
         partial void CustomInit()
         {
-            if (Content is string)
+            if (Content == null)
             {
-                return;
+                throw new ArgumentNullException(nameof(Content), "object must be set");
             }
 
-            throw new NotSupportedException();
+            if (Type == PatchType.Unknown)
+            {
+                throw new ArgumentException("patch type must be set", nameof(Type));
+            }
         }
     }
 }

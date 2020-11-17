@@ -8,7 +8,7 @@ jobs:
         os: [ubuntu-latest, windows-latest, macOS-latest]
     name: Dotnet build
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - name: Setup dotnet SDK 2.1
@@ -19,6 +19,10 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '3.1.x'          
+      - name: Setup dotnet SDK 5
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.x'          
       - name: Setup Format
         run: dotnet tool install -g dotnet-format
       - name: Check Format
@@ -48,6 +52,10 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '3.1.x'          
+      - name: Setup dotnet SDK 5
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.x'                
       - name: Minikube
         run: minikube start
       - name: Test
