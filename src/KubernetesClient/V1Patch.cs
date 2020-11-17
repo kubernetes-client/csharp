@@ -1,5 +1,4 @@
 using System;
-using Microsoft.AspNetCore.JsonPatch;
 using Newtonsoft.Json;
 
 namespace k8s.Models
@@ -9,6 +8,7 @@ namespace k8s.Models
     {
         public enum PatchType
         {
+            Unknown,
             JsonPatch,
             MergePatch,
             StrategicMergePatch,
@@ -16,31 +16,24 @@ namespace k8s.Models
 
         public PatchType Type { get; private set; }
 
-        public V1Patch(IJsonPatchDocument jsonPatch)
-            : this((object)jsonPatch)
+        public V1Patch(object body, PatchType type)
         {
-        }
-
-        public V1Patch(String body, PatchType type)
-            : this(body)
-        {
-            this.Type = type;
+            Content = body;
+            Type = type;
+            CustomInit();
         }
 
         partial void CustomInit()
         {
-            if (Content is IJsonPatchDocument)
+            if (Content == null)
             {
-                Type = PatchType.JsonPatch;
-                return;
+                throw new ArgumentNullException(nameof(Content), "object must be set");
             }
 
-            if (Content is String)
+            if (Type == PatchType.Unknown)
             {
-                return;
+                throw new ArgumentException("patch type must be set", nameof(Type));
             }
-
-            throw new NotSupportedException();
         }
     }
 }
