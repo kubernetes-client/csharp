@@ -1,5 +1,4 @@
 using System;
-using Microsoft.AspNetCore.JsonPatch;
 using Newtonsoft.Json;
 
 namespace k8s.Models
@@ -16,12 +15,7 @@ namespace k8s.Models
 
         public PatchType Type { get; private set; }
 
-        public V1Patch(IJsonPatchDocument jsonPatch)
-            : this((object)jsonPatch)
-        {
-        }
-
-        public V1Patch(String body, PatchType type)
+        public V1Patch(string body, PatchType type)
             : this(body)
         {
             this.Type = type;
@@ -29,13 +23,7 @@ namespace k8s.Models
 
         partial void CustomInit()
         {
-            if (Content is IJsonPatchDocument)
-            {
-                Type = PatchType.JsonPatch;
-                return;
-            }
-
-            if (Content is String)
+            if (Content is string)
             {
                 return;
             }
