@@ -152,11 +152,7 @@ namespace k8s.Versioning
             cfg.CreateMap<V2beta1ResourceMetricSource, V2beta2MetricTarget>()
                 .ForMember(dest => dest.AverageValue, opt => opt.MapFrom(src => src.TargetAverageValue))
                 .ForMember(dest => dest.Value, opt => opt.Ignore())
-#if NET452
-                .ForMember(dest => dest.Type, opt => opt.ResolveUsing(src => src.TargetAverageValue != null ? "AverageValue" : "Utilization"))
-#else
                 .ForMember(dest => dest.Type, opt => opt.MapFrom((src, dest) => src.TargetAverageValue != null ? "AverageValue" : "Utilization"))
-#endif
                 .ForMember(dest => dest.AverageUtilization, opt => opt.MapFrom(src => src.TargetAverageUtilization));
             cfg.CreateMap<V2beta1ResourceMetricSource, V2beta2ResourceMetricSource>()
                 .ForMember(dest => dest.Target, opt => opt.MapFrom(src => src));
@@ -183,11 +179,7 @@ namespace k8s.Versioning
                 .ReverseMap();
             cfg.CreateMap<V2beta1PodsMetricSource, V2beta2MetricTarget>()
                 .ForMember(dest => dest.AverageValue, opt => opt.MapFrom(src => src.TargetAverageValue))
-#if NET452
-                .ForMember(dest => dest.Type, opt => opt.UseValue("AverageValue"))
-#else
                 .ForMember(dest => dest.Type, opt => opt.MapFrom((src, dest) => "AverageValue"))
-#endif
                 .ForMember(dest => dest.Value, opt => opt.Ignore())
                 .ForMember(dest => dest.AverageUtilization, opt => opt.Ignore());
             cfg.CreateMap<V2beta1PodsMetricSource, V2beta2PodsMetricSource>()
@@ -220,11 +212,7 @@ namespace k8s.Versioning
                 .ForMember(x => x.Value, opt => opt.MapFrom(src => src.TargetValue))
                 .ForMember(x => x.AverageValue, opt => opt.MapFrom(src => src.TargetAverageValue))
                 .ForMember(x => x.AverageUtilization, opt => opt.Ignore())
-#if NET452
-                .ForMember(x => x.Type, opt => opt.ResolveUsing(src => src.TargetValue != null ? "Value" : "AverageValue"));
-#else
                 .ForMember(x => x.Type, opt => opt.MapFrom((src, dest) => src.TargetValue != null ? "Value" : "AverageValue"));
-#endif
             cfg.CreateMap<V2beta1ExternalMetricSource, V2beta2ExternalMetricSource>()
                 .ForMember(x => x.Metric, opt => opt.MapFrom(src => src))
                 .ForMember(x => x.Target, opt => opt.MapFrom(src => src));
@@ -254,11 +242,7 @@ namespace k8s.Versioning
                 .ForMember(dest => dest.Value, opt => opt.MapFrom(src => src.TargetValue))
                 .ForMember(dest => dest.AverageUtilization, opt => opt.Ignore())
                 .ForMember(dest => dest.AverageValue, opt => opt.MapFrom(src => src.AverageValue))
-#if NET452
-                .ForMember(dest => dest.Type, opt => opt.ResolveUsing(src => src.TargetValue != null ? "Value" : "AverageValue"));
-#else
                 .ForMember(dest => dest.Type, opt => opt.MapFrom((src, dest) => src.TargetValue != null ? "Value" : "AverageValue"));
-#endif
             cfg.CreateMap<V2beta1ObjectMetricSource, V2beta2ObjectMetricSource>()
                 .ForMember(dest => dest.Metric, opt => opt.MapFrom(src => src))
                 .ForMember(dest => dest.Target, opt => opt.MapFrom(src => src))

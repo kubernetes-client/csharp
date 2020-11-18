@@ -1,8 +1,6 @@
 using System;
 using System.Net.WebSockets;
-#if (NET452 || NETSTANDARD2_0)
 using System.Net.Security;
-#endif
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
@@ -38,7 +36,7 @@ namespace k8s
             return this;
         }
 
-#if (NET452 || NETSTANDARD2_0)
+#if (NETSTANDARD2_0)
         public WebSocketBuilder SetServerCertificateValidationCallback(
             RemoteCertificateValidationCallback validationCallback)
         {
@@ -52,7 +50,7 @@ namespace k8s
         }
 #endif
 
-#if NETCOREAPP2_1
+#if NETSTANDARD2_1
         public WebSocketBuilder ExpectServerCertificate(X509Certificate2Collection serverCertificate)
         {
             Options.RemoteCertificateValidationCallback
@@ -72,7 +70,7 @@ namespace k8s
             return this;
         }
 
-#endif // NETCOREAPP2_1
+#endif // NETSTANDARD2_1
 
         public virtual async Task<WebSocket> BuildAndConnectAsync(Uri uri, CancellationToken cancellationToken)
         {
