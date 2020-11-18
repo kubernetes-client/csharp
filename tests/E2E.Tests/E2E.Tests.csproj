@@ -2,7 +2,6 @@
   <PropertyGroup>
     <IsPackable>false</IsPackable>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\..\src\KubernetesClient\kubernetes-client.snk</AssemblyOriginatorKeyFile>
     <RootNamespace>k8s.E2E</RootNamespace>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
