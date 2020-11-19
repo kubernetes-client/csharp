@@ -11,7 +11,6 @@ namespace k8s
         /// info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
-        /// </summary>
         T Spec { get; set; }
     }
 }
