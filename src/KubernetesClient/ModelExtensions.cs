@@ -98,8 +98,12 @@ namespace k8s.Models
             }
         }
 
-        /// <summary>Gets the continuation token version of a Kubernetes list.</summary>
-        public static string Continue(this IMetadata<V1ListMeta> list) => list.Metadata?.ContinueProperty;
+        /// <summary>
+        /// Gets the continuation token version of a Kubernetes list.
+        /// </summary>
+        /// <param name="list">Kubernetes list</param>
+        /// <returns>continuation token </returns>
+        public static string Continue(this IMetadata<V1ListMeta> list) => list?.Metadata?.ContinueProperty;
 
         /// <summary>Ensures that the <see cref="V1ListMeta"/> metadata field is set, and returns it.</summary>
         public static V1ListMeta EnsureMetadata(this IMetadata<V1ListMeta> obj)
@@ -469,10 +473,18 @@ namespace k8s.Models
         }
 
         /// <summary>Gets the namespace from Kubernetes metadata.</summary>
-        public static string Namespace(this V1ObjectMeta meta) => meta.NamespaceProperty;
+        public static string Namespace(this V1ObjectMeta meta) => meta?.NamespaceProperty;
 
         /// <summary>Sets the namespace from Kubernetes metadata.</summary>
-        public static void SetNamespace(this V1ObjectMeta meta, string ns) => meta.NamespaceProperty = ns;
+        public static void SetNamespace(this V1ObjectMeta meta, string ns)
+        {
+            if (meta == null)
+            {
+                throw new ArgumentNullException(nameof(meta));
+            }
+
+            meta.NamespaceProperty = ns;
+        }
 
         /// <summary>Determines whether an object reference references the given object.</summary>
         public static bool Matches(this V1ObjectReference objref, IKubernetesObject<V1ObjectMeta> obj)

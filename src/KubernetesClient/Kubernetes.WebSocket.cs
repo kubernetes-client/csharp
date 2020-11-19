@@ -277,6 +277,11 @@ namespace k8s
             string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (uri == null)
+            {
+                throw new ArgumentNullException(nameof(uri));
+            }
+
             var shouldTrace = ServiceClientTracing.IsEnabled;
 
             // Create WebSocket transport objects

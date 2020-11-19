@@ -95,7 +95,7 @@ namespace k8s.Models
 
         protected bool Equals(ResourceQuantity other)
         {
-            return Format == other.Format && _unitlessValue.Equals(other._unitlessValue);
+            return Format == other?.Format && _unitlessValue.Equals(other._unitlessValue);
         }
 
         public override bool Equals(object obj)
@@ -202,7 +202,7 @@ namespace k8s.Models
                 throw new ArgumentOutOfRangeException(nameof(expectedType));
             }
 
-            if (parser.Current is Scalar)
+            if (parser?.Current is Scalar)
             {
                 Value = ((Scalar)parser.Current).Value;
                 parser.MoveNext();
@@ -213,7 +213,7 @@ namespace k8s.Models
         /// <inheritdoc/>
         public void Write(IEmitter emitter, ObjectSerializer nestedObjectSerializer)
         {
-            emitter.Emit(new Scalar(this.ToString()));
+            emitter?.Emit(new Scalar(this.ToString()));
         }
 
         public static implicit operator decimal(ResourceQuantity v)

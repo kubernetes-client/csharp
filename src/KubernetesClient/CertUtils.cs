@@ -40,6 +40,11 @@ namespace k8s
         /// <returns>Generated Pfx Path</returns>
         public static X509Certificate2 GeneratePfx(KubernetesClientConfiguration config)
         {
+            if (config == null)
+            {
+                throw new ArgumentNullException(nameof(config));
+            }
+
             byte[] keyData = null;
             byte[] certData = null;
 

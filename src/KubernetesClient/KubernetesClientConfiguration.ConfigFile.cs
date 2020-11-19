@@ -179,6 +179,11 @@ namespace k8s
             string currentContext,
             string masterUrl, K8SConfiguration k8SConfig)
         {
+            if (k8SConfig == null)
+            {
+                throw new ArgumentNullException(nameof(k8SConfig));
+            }
+
             var k8SConfiguration = new KubernetesClientConfiguration();
 
             currentContext = currentContext ?? k8SConfig.CurrentContext;
@@ -426,6 +431,11 @@ namespace k8s
 
         public static Process CreateRunnableExternalProcess(ExternalExecution config)
         {
+            if (config == null)
+            {
+                throw new ArgumentNullException(nameof(config));
+            }
+
             var execInfo = new Dictionary<string, dynamic>
             {
                 { "apiVersion", config.ApiVersion },
@@ -479,6 +489,11 @@ namespace k8s
         /// </returns>
         public static (string, string, string) ExecuteExternalCommand(ExternalExecution config)
         {
+            if (config == null)
+            {
+                throw new ArgumentNullException(nameof(config));
+            }
+
             var process = CreateRunnableExternalProcess(config);
 
             try
@@ -576,6 +591,12 @@ namespace k8s
             FileInfo kubeconfig,
             bool useRelativePaths = true)
         {
+            if (kubeconfig == null)
+            {
+                throw new ArgumentNullException(nameof(kubeconfig));
+            }
+
+
             if (!kubeconfig.Exists)
             {
                 throw new KubeConfigException($"kubeconfig file not found at {kubeconfig.FullName}");

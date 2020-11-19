@@ -27,7 +27,7 @@ namespace k8s
 
             public object ReadYaml(IParser parser, Type type)
             {
-                if (parser.Current is YamlDotNet.Core.Events.Scalar scalar)
+                if (parser?.Current is YamlDotNet.Core.Events.Scalar scalar)
                 {
                     try
                     {

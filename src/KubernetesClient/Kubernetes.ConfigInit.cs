@@ -253,7 +253,6 @@ namespace k8s
         /// <param name="chain">chain</param>
         /// <param name="sslPolicyErrors">ssl policy errors</param>
         /// <returns>true if valid cert</returns>
-        [SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", Justification = "Unused by design")]
         public static bool CertificateValidationCallBack(
             object sender,
             X509Certificate2Collection caCerts,
@@ -261,6 +260,11 @@ namespace k8s
             X509Chain chain,
             SslPolicyErrors sslPolicyErrors)
         {
+            if (caCerts == null)
+            {
+                throw new ArgumentNullException(nameof(caCerts));
+            }
+
             // If the certificate is a valid, signed certificate, return true.
             if (sslPolicyErrors == SslPolicyErrors.None)
             {
