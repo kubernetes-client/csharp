@@ -129,7 +129,7 @@ namespace k8s
         /// A <see cref="Task"/> which represents the asynchronous operation.
         /// </returns>
         public Task Write(ChannelIndex index, byte[] buffer, int offset, int count,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             return Write((byte)index, buffer, offset, count, cancellationToken);
         }
@@ -156,7 +156,7 @@ namespace k8s
         /// A <see cref="Task"/> which represents the asynchronous operation.
         /// </returns>
         public async Task Write(byte index, byte[] buffer, int offset, int count,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var writeBuffer = ArrayPool<byte>.Shared.Rent(count + 1);
 

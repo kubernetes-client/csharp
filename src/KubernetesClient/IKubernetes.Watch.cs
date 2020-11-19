@@ -10,6 +10,12 @@ namespace k8s
         /// <summary>
         /// Watches for changes of an object.
         /// </summary>
+        /// <typeparam name="T">
+        /// type of the object of Watcher{T}
+        /// </typeparam>
+        /// <param name="path">
+        /// The uri to the resource being watched
+        /// </param>
         /// <param name="continue">
         /// The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server the server will respond with a 410 ResourceExpired error indicating the client must restart their list without the continue field. This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
         /// </param>
@@ -30,11 +36,11 @@ namespace k8s
         /// <param name="pretty">
         /// If 'true', then the output is pretty printed.
         /// </param>
-        /// <param name="resourceVersion">
-        /// When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.
-        /// </param>
         /// <param name="timeoutSeconds">
         /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name="resourceVersion">
+        /// When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -55,10 +61,10 @@ namespace k8s
         /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
         Task<Watcher<T>> WatchObjectAsync<T>(string path, string @continue = null, string fieldSelector = null,
-            bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null,
-            int? timeoutSeconds = null, string resourceVersion = null,
-            Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, T> onEvent = null,
-            Action<Exception> onError = null, Action onClosed = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+        bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null,
+        int? timeoutSeconds = null, string resourceVersion = null,
+        Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, T> onEvent = null,
+        Action<Exception> onError = null, Action onClosed = null,
+        CancellationToken cancellationToken = default);
     }
 }

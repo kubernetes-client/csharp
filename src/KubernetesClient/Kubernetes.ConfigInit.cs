@@ -249,6 +249,7 @@ namespace k8s
         ///     SSl Cert Validation Callback
         /// </summary>
         /// <param name="sender">sender</param>
+        /// <param name="caCerts">client ca</param>
         /// <param name="certificate">client certificate</param>
         /// <param name="chain">chain</param>
         /// <param name="sslPolicyErrors">ssl policy errors</param>
@@ -310,9 +311,11 @@ namespace k8s
             return false;
         }
 
-        /// <summary>Creates <see cref="ServiceClientCredentials"/> based on the given config, or returns null if no such credentials are
-        /// needed.
+        /// <summary>
+        /// Creates <see cref="ServiceClientCredentials"/> based on the given config, or returns null if no such credentials are needed.
+        /// <param name="config">kubenetes config object</param>
         /// </summary>
+        /// <returns>instance of <see cref="ServiceClientCredentials"/></returns>
         public static ServiceClientCredentials CreateCredentials(KubernetesClientConfiguration config)
         {
             if (config == null)

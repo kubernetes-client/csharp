@@ -12,7 +12,7 @@ namespace k8s
         /// </summary>
         /// <typeparam name="T">type of the event object</typeparam>
         /// <typeparam name="L">type of the HttpOperationResponse object</typeparam>
-        /// <param name="response">the api response</param>
+        /// <param name="responseTask">the api response</param>
         /// <param name="onEvent">a callback when any event raised from api server</param>
         /// <param name="onError">a callbak when any exception was caught during watching</param>
         /// <param name="onClosed">

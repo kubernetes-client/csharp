@@ -42,6 +42,7 @@ namespace k8s
         ///     If multiple kubeconfig files are specified in the KUBECONFIG environment variable,
         ///     merges the files, where first occurence wins. See https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#merging-kubeconfig-files.
         /// </remarks>
+        /// <returns>Instance of the<see cref="KubernetesClientConfiguration"/> class</returns>
         public static KubernetesClientConfiguration BuildDefaultConfig()
         {
             var kubeconfig = Environment.GetEnvironmentVariable(KubeConfigEnvironmentVariable);
@@ -76,6 +77,7 @@ namespace k8s
         /// <param name="masterUrl">kube api server endpoint</param>
         /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
         /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
+        /// <returns>Instance of the<see cref="KubernetesClientConfiguration"/> class</returns>
         public static KubernetesClientConfiguration BuildConfigFromConfigFile(
             string kubeconfigPath = null,
             string currentContext = null, string masterUrl = null, bool useRelativePaths = true)
@@ -92,6 +94,7 @@ namespace k8s
         /// <param name="masterUrl">override the kube api server endpoint, set null if do not want to override</param>
         /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
         /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
+        /// <returns>Instance of the<see cref="KubernetesClientConfiguration"/> class</returns>
         public static KubernetesClientConfiguration BuildConfigFromConfigFile(
             FileInfo kubeconfig,
             string currentContext = null, string masterUrl = null, bool useRelativePaths = true)
@@ -108,6 +111,7 @@ namespace k8s
         /// <param name="masterUrl">override the kube api server endpoint, set null if do not want to override</param>
         /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
         /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
+        /// <returns>Instance of the<see cref="KubernetesClientConfiguration"/> class</returns>
         public static async Task<KubernetesClientConfiguration> BuildConfigFromConfigFileAsync(
             FileInfo kubeconfig,
             string currentContext = null, string masterUrl = null, bool useRelativePaths = true)
@@ -129,6 +133,7 @@ namespace k8s
         /// <param name="kubeconfig">Stream of the kubeconfig, cannot be null</param>
         /// <param name="currentContext">Override the current context in config, set null if do not want to override</param>
         /// <param name="masterUrl">Override the Kubernetes API server endpoint, set null if do not want to override</param>
+        /// <returns>Instance of the<see cref="KubernetesClientConfiguration"/> class</returns>
         public static KubernetesClientConfiguration BuildConfigFromConfigFile(
             Stream kubeconfig,
             string currentContext = null, string masterUrl = null)
@@ -142,6 +147,7 @@ namespace k8s
         /// <param name="kubeconfig">Stream of the kubeconfig, cannot be null</param>
         /// <param name="currentContext">Override the current context in config, set null if do not want to override</param>
         /// <param name="masterUrl">Override the Kubernetes API server endpoint, set null if do not want to override</param>
+        /// <returns>Instance of the<see cref="KubernetesClientConfiguration"/> class</returns>
         public static async Task<KubernetesClientConfiguration> BuildConfigFromConfigFileAsync(
             Stream kubeconfig,
             string currentContext = null, string masterUrl = null)
@@ -167,9 +173,10 @@ namespace k8s
         /// <summary>
         /// Initializes a new instance of <see cref="KubernetesClientConfiguration"/> from pre-loaded config object.
         /// </summary>
-        /// <param name="k8sConfig">A <see cref="K8SConfiguration"/>, for example loaded from <see cref="LoadKubeConfigAsync(string, bool)" /></param>
+        /// <param name="k8SConfig">A <see cref="K8SConfiguration"/>, for example loaded from <see cref="LoadKubeConfigAsync(string, bool)" /></param>
         /// <param name="currentContext">Override the current context in config, set null if do not want to override</param>
         /// <param name="masterUrl">Override the Kubernetes API server endpoint, set null if do not want to override</param>
+        /// <returns>Instance of the<see cref="KubernetesClientConfiguration"/> class</returns>
         public static KubernetesClientConfiguration BuildConfigFromConfigObject(
             K8SConfiguration k8SConfig,
             string currentContext = null, string masterUrl = null)
@@ -640,7 +647,7 @@ namespace k8s
         /// <summary>
         ///     Loads Kube Config
         /// </summary>
-        /// <param name="kubeconfig">Kube config file contents stream</param>
+        /// <param name="kubeconfigStream">Kube config file contents stream</param>
         /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
         public static K8SConfiguration LoadKubeConfig(Stream kubeconfigStream)
         {
@@ -650,7 +657,7 @@ namespace k8s
         /// <summary>
         ///     Loads Kube Config
         /// </summary>
-        /// <param name="kubeconfigs">List of kube config file contents</param>
+        /// <param name="kubeConfigs">List of kube config file contents</param>
         /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
         /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
         /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>

@@ -3,7 +3,7 @@ namespace k8s
     /// <summary>
     /// Represents a Kubernetes object that has a spec
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">type of Kubernetes object</typeparam>
     public interface ISpec<T>
     {
         /// <summary>

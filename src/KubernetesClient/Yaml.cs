@@ -63,6 +63,7 @@ namespace k8s
         /// <param name="typeMap">
         /// A map from <apiVersion>/<kind> to Type. For example "v1/Pod" -> typeof(V1Pod)
         /// </param>
+        /// <returns>collection of objects</returns>
         public static async Task<List<object>> LoadAllFromStreamAsync(Stream stream, Dictionary<string, Type> typeMap)
         {
             var reader = new StreamReader(stream);
@@ -79,6 +80,7 @@ namespace k8s
         /// <param name="typeMap">
         /// A map from <apiVersion>/<kind> to Type. For example "v1/Pod" -> typeof(V1Pod)
         /// </param>
+        /// <returns>collection of objects</returns>
         public static Task<List<object>> LoadAllFromFileAsync(string fileName, Dictionary<string, Type> typeMap)
         {
             var reader = File.OpenRead(fileName);
@@ -94,6 +96,7 @@ namespace k8s
         /// <param name="typeMap">
         /// A map from <apiVersion>/<kind> to Type. For example "v1/Pod" -> typeof(V1Pod)
         /// </param>
+        /// <returns>collection of objects</returns>
         public static List<object> LoadAllFromString(string content, Dictionary<string, Type> typeMap)
         {
             if (typeMap == null)

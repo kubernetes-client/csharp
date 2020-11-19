@@ -5,7 +5,7 @@ namespace k8s
     /// <summary>
     /// Kubernetes object that exposes list of objects
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">type of the objects</typeparam>
     public interface IItems<T>
     {
         /// <summary>

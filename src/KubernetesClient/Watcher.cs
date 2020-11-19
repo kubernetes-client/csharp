@@ -53,7 +53,7 @@ namespace k8s
         /// <summary>
         /// Initializes a new instance of the <see cref="Watcher{T}"/> class.
         /// </summary>
-        /// <param name="streamReader">
+        /// <param name="streamReaderCreator">
         /// A <see cref="StreamReader"/> from which to read the events.
         /// </param>
         /// <param name="onEvent">
@@ -76,8 +76,8 @@ namespace k8s
         /// <summary>
         /// Initializes a new instance of the <see cref="Watcher{T}"/> class.
         /// </summary>
-        /// <param name="streamReader">
-        /// A <see cref="StreamReader"/> from which to read the events.
+        /// <param name="streamReaderCreator">
+        /// A <see cref="TextReader"/> from which to read the events.
         /// </param>
         /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.

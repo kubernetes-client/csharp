@@ -18,7 +18,7 @@ namespace k8s
             int? limit = null, bool? pretty = null, int? timeoutSeconds = null, string resourceVersion = null,
             Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, T> onEvent = null,
             Action<Exception> onError = null, Action onClosed = null,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             // Tracing
             var shouldTrace = ServiceClientTracing.IsEnabled;

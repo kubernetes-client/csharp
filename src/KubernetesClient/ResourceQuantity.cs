@@ -65,8 +65,19 @@ namespace k8s.Models
     {
         public enum SuffixFormat
         {
+            /// <summary>
+            /// e.g., 12e6
+            /// </summary>
             DecimalExponent,
+
+            /// <summary>
+            /// e.g., 12Mi (12 * 2^20)
+            /// </summary>
             BinarySI,
+
+            /// <summary>
+            /// e.g., 12M  (12 * 10^6)
+            /// </summary>
             DecimalSI,
         }
 
