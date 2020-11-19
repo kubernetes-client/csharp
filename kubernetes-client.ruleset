@@ -223,7 +223,7 @@
     <Rule Id="CA1031" Action="None" />
 
     <!-- Nested types should not be visible https://docs.microsoft.com/en-us/visualstudio/code-quality/CA1034 -->
-    <Rule Id="CA1034" Action="Warning" />
+    <Rule Id="CA1034" Action="None" />
 
     <!-- Do not declare visible instance fields https://docs.microsoft.com/en-us/visualstudio/code-quality/CA1051 -->
     <Rule Id="CA1051" Action="Warning" />
@@ -292,6 +292,9 @@
     <!-- Do not create tasks without passing a TaskScheduler https://docs.microsoft.com/en-us/visualstudio/code-quality/CA2008 -->
     <!-- TODO -->
     <Rule Id="CA2008" Action="None" />
+
+    <!-- TODO only in netcore2.1+-->
+    <Rule Id="CA1835" Action="Info" />
 
   </Rules>
 </RuleSet>
