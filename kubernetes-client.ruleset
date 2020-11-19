@@ -220,7 +220,7 @@
     <Rule Id="CA1028" Action="Warning" />
 
     <!-- Do not catch general exception types https://docs.microsoft.com/en-us/visualstudio/code-quality/CA1031 -->
-    <Rule Id="CA1031" Action="Warning" />
+    <Rule Id="CA1031" Action="None" />
 
     <!-- Nested types should not be visible https://docs.microsoft.com/en-us/visualstudio/code-quality/CA1034 -->
     <Rule Id="CA1034" Action="Warning" />
