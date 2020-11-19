@@ -115,7 +115,7 @@ namespace k8s
             var uriBuilder = new UriBuilder(BaseUri);
             uriBuilder.Scheme = BaseUri.Scheme == "https" ? "wss" : "ws";
 
-            if (!uriBuilder.Path.EndsWith("/"))
+            if (!uriBuilder.Path.EndsWith("/", StringComparison.InvariantCulture))
             {
                 uriBuilder.Path += "/";
             }

@@ -498,7 +498,7 @@ namespace KubernetesWatchGenerator
         {
             var pathExpression = operation.Path;
 
-            if (pathExpression.StartsWith("/"))
+            if (pathExpression.StartsWith("/", StringComparison.InvariantCulture))
             {
                 pathExpression = pathExpression.Substring(1);
             }

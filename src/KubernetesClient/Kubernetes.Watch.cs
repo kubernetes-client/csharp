@@ -41,7 +41,7 @@ namespace k8s
 
             // Construct URL
             var uriBuilder = new UriBuilder(this.BaseUri);
-            if (!uriBuilder.Path.EndsWith("/"))
+            if (!uriBuilder.Path.EndsWith("/", StringComparison.InvariantCulture))
             {
                 uriBuilder.Path += "/";
             }
