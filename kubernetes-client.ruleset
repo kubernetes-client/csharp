@@ -187,7 +187,7 @@
     <Rule Id="SA1028" Action="Warning" />
 
     <!-- All diagnostics of XML documentation comments has been disabled due to the current project configuration. https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA0001.md -->
-    <Rule Id="SA0001" Action="Warning" />
+    <Rule Id="SA0001" Action="None" />
 
     <!-- Call GC.SuppressFinalize correctly https://docs.microsoft.com/en-us/visualstudio/code-quality/CA1816 -->
     <Rule Id="CA1816" Action="Error" />
