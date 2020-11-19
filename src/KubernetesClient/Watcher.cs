@@ -180,7 +180,8 @@ namespace k8s
             {
                 if (disposing)
                 {
-                    _cts.Cancel();
+                    _cts?.Cancel();
+                    _cts?.Dispose();
                     _streamReader?.Dispose();
                 }
 

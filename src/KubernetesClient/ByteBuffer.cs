@@ -311,6 +311,7 @@ namespace k8s
                 if (disposing)
                 {
                     ArrayPool<byte>.Shared.Return(this.buffer);
+                    dataAvailable.Dispose();
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override finalizer

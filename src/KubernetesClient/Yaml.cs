@@ -103,7 +103,7 @@ namespace k8s
 
             var deserializer =
                 new DeserializerBuilder()
-                    .WithNamingConvention(new CamelCaseNamingConvention())
+                    .WithNamingConvention(CamelCaseNamingConvention.Instance)
                     .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
                     .WithTypeConverter(new IntOrStringYamlConverter())
                     .WithTypeConverter(new ByteArrayStringYamlConverter())
@@ -111,8 +111,8 @@ namespace k8s
                     .Build();
             var types = new List<Type>();
             var parser = new Parser(new StringReader(content));
-            parser.Expect<StreamStart>();
-            while (parser.Accept<DocumentStart>())
+            parser.Consume<StreamStart>();
+            while (parser.TryConsume<DocumentStart>(out _))
             {
                 var obj = deserializer.Deserialize<KubernetesObject>(parser);
                 types.Add(typeMap[obj.ApiVersion + "/" + obj.Kind]);
@@ -120,16 +120,16 @@ namespace k8s
 
             deserializer =
                 new DeserializerBuilder()
-                    .WithNamingConvention(new CamelCaseNamingConvention())
+                    .WithNamingConvention(CamelCaseNamingConvention.Instance)
                     .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
                     .WithTypeConverter(new IntOrStringYamlConverter())
                     .WithTypeConverter(new ByteArrayStringYamlConverter())
                     .Build();
             parser = new Parser(new StringReader(content));
-            parser.Expect<StreamStart>();
+            parser.Consume<StreamStart>();
             var ix = 0;
             var results = new List<object>();
-            while (parser.Accept<DocumentStart>())
+            while (parser.TryConsume<DocumentStart>(out _))
             {
                 var objType = types[ix++];
                 var obj = deserializer.Deserialize(parser, objType);
@@ -158,7 +158,7 @@ namespace k8s
         {
             var deserializer =
                 new DeserializerBuilder()
-                    .WithNamingConvention(new CamelCaseNamingConvention())
+                    .WithNamingConvention(CamelCaseNamingConvention.Instance)
                     .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
                     .WithTypeConverter(new IntOrStringYamlConverter())
                     .WithTypeConverter(new ByteArrayStringYamlConverter())
@@ -176,7 +176,7 @@ namespace k8s
             var serializer =
                 new SerializerBuilder()
                     .DisableAliases()
-                    .WithNamingConvention(new CamelCaseNamingConvention())
+                    .WithNamingConvention(CamelCaseNamingConvention.Instance)
                     .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
                     .WithTypeConverter(new IntOrStringYamlConverter())
                     .WithTypeConverter(new ByteArrayStringYamlConverter())

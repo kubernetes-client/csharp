@@ -59,6 +59,7 @@ namespace k8s.Tests.Mock
         {
             _webHost.StopAsync();
             _webHost.WaitForShutdown();
+            _webHost.Dispose();
         }
     }
 }

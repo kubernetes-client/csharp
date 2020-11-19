@@ -267,6 +267,7 @@ namespace k8s
                         if (this.runLoop != null)
                         {
                             this.cts.Cancel();
+                            cts.Dispose();
                             this.runLoop.Wait();
                         }
                     }
