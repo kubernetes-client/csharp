@@ -673,7 +673,7 @@ namespace k8s
         /// <summary>
         ///     Loads Kube Config
         /// </summary>
-        /// <param name="kubeconfigs">List of kube config file contents</param>
+        /// <param name="kubeConfigs">List of kube config file contents</param>
         /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
         /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
         /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>

@@ -61,7 +61,7 @@ namespace k8s
         /// The stream to load the objects from.
         /// </param>
         /// <param name="typeMap">
-        /// A map from <apiVersion>/<kind> to Type. For example "v1/Pod" -> typeof(V1Pod)
+        /// A map from apiVersion/kind to Type. For example "v1/Pod" -> typeof(V1Pod)
         /// </param>
         /// <returns>collection of objects</returns>
         public static async Task<List<object>> LoadAllFromStreamAsync(Stream stream, Dictionary<string, Type> typeMap)
@@ -71,15 +71,12 @@ namespace k8s
             return LoadAllFromString(content, typeMap);
         }
 
+
         /// <summary>
         /// Load a collection of objects from a file asynchronously
         /// </summary>
-        /// <param name="fileName">
-        /// The name of the file to load from.
-        /// </param>
-        /// <param name="typeMap">
-        /// A map from <apiVersion>/<kind> to Type. For example "v1/Pod" -> typeof(V1Pod)
-        /// </param>
+        /// <param name="fileName">The name of the file to load from.</param>
+        /// <param name="typeMap">A map from apiVersion/kind to Type. For example "v1/Pod" -> typeof(V1Pod)</param>
         /// <returns>collection of objects</returns>
         public static Task<List<object>> LoadAllFromFileAsync(string fileName, Dictionary<string, Type> typeMap)
         {
@@ -94,7 +91,7 @@ namespace k8s
         /// The string to load the objects from.
         /// </param>
         /// <param name="typeMap">
-        /// A map from <apiVersion>/<kind> to Type. For example "v1/Pod" -> typeof(V1Pod)
+        /// A map from apiVersion/kind to Type. For example "v1/Pod" -> typeof(V1Pod)
         /// </param>
         /// <returns>collection of objects</returns>
         public static List<object> LoadAllFromString(string content, Dictionary<string, Type> typeMap)
