@@ -29,6 +29,7 @@ namespace k8s.Tests
         private readonly ITestOutputHelper testOutput;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="WebSocketTestBase"/> class.
         ///     Create a new <see cref="WebSocketTestBase"/>.
         /// </summary>
         /// <param name="testOutput">
@@ -330,6 +331,7 @@ namespace k8s.Tests
             public static readonly AnonymousClientCredentials Instance = new AnonymousClientCredentials();
 
             /// <summary>
+            /// Initializes a new instance of the <see cref="AnonymousClientCredentials"/> class.
             ///     Create new <see cref="AnonymousClientCredentials"/>.
             /// </summary>
             private AnonymousClientCredentials()

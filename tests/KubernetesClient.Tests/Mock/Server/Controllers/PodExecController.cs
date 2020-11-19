@@ -13,6 +13,7 @@ namespace k8s.Tests.Mock.Server.Controllers
         : Controller
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="PodExecController"/> class.
         ///     Create a new <see cref="PodExecController"/>.
         /// </summary>
         /// <param name="webSocketTestAdapter">

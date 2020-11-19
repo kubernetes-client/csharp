@@ -11,6 +11,7 @@ namespace k8s.Tests.Logging
         : ILoggerProvider
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="TestOutputLoggerProvider"/> class.
         ///     Create a new <see cref="TestOutputLoggerProvider"/>.
         /// </summary>
         /// <param name="testOutput">

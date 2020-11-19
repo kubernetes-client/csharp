@@ -14,6 +14,7 @@ namespace k8s.Tests.Mock.Server.Controllers
         : Controller
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="PodPortForwardController"/> class.
         ///     Create a new <see cref="PodPortForwardController"/>.
         /// </summary>
         /// <param name="webSocketTestAdapter">

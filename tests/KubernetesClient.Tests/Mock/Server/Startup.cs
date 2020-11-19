@@ -11,6 +11,7 @@ namespace k8s.Tests.Mock.Server
     public class Startup
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="Startup"/> class.
         ///     Create a new <see cref="Startup"/>.
         /// </summary>
         public Startup()

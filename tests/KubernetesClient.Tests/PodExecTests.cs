@@ -28,6 +28,7 @@ namespace k8s.Tests
         private readonly ITestOutputHelper testOutput;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="PodExecTests"/> class.
         ///     Create a new <see cref="KubeApiClient"/> exec-in-pod test suite.
         /// </summary>
         /// <param name="testOutput">
