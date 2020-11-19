@@ -28,13 +28,13 @@ namespace k8s
 
         public virtual WebSocketBuilder SetRequestHeader(string headerName, string headerValue)
         {
-            this.WebSocket.Options.SetRequestHeader(headerName, headerValue);
+            WebSocket.Options.SetRequestHeader(headerName, headerValue);
             return this;
         }
 
         public virtual WebSocketBuilder AddClientCertificate(X509Certificate2 certificate)
         {
-            this.WebSocket.Options.ClientCertificates.Add(certificate);
+            WebSocket.Options.ClientCertificates.Add(certificate);
             return this;
         }
 
@@ -76,8 +76,8 @@ namespace k8s
 
         public virtual async Task<WebSocket> BuildAndConnectAsync(Uri uri, CancellationToken cancellationToken)
         {
-            await this.WebSocket.ConnectAsync(uri, cancellationToken).ConfigureAwait(false);
-            return this.WebSocket;
+            await WebSocket.ConnectAsync(uri, cancellationToken).ConfigureAwait(false);
+            return WebSocket;
         }
     }
 }

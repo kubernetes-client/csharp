@@ -224,7 +224,7 @@ namespace k8s.Models
         /// <inheritdoc/>
         public void Write(IEmitter emitter, ObjectSerializer nestedObjectSerializer)
         {
-            emitter?.Emit(new Scalar(this.ToString()));
+            emitter?.Emit(new Scalar(ToString()));
         }
 
         public static implicit operator ResourceQuantity(decimal v)

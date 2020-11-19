@@ -154,7 +154,7 @@ namespace k8s
                     HttpClientHandler.ServerCertificateCustomValidationCallback =
                         (sender, certificate, chain, sslPolicyErrors) =>
                         {
-                            return Kubernetes.CertificateValidationCallBack(sender, CaCerts, certificate, chain,
+                            return CertificateValidationCallBack(sender, CaCerts, certificate, chain,
                                 sslPolicyErrors);
                         };
 #endif

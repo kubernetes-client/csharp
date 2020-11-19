@@ -40,7 +40,7 @@ namespace k8s
             }
 
             // Construct URL
-            var uriBuilder = new UriBuilder(this.BaseUri);
+            var uriBuilder = new UriBuilder(BaseUri);
             if (!uriBuilder.Path.EndsWith("/", StringComparison.InvariantCulture))
             {
                 uriBuilder.Path += "/";
@@ -104,10 +104,10 @@ namespace k8s
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, uriBuilder.ToString());
 
             // Set Credentials
-            if (this.Credentials != null)
+            if (Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+                await Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
             }
 
             // Set Headers

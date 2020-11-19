@@ -27,7 +27,7 @@ namespace k8s
         public KubernetesException(V1Status status)
             : this(status?.Message)
         {
-            this.Status = status;
+            Status = status;
         }
 
         /// <summary>

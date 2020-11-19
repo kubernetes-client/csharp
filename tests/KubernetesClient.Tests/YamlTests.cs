@@ -99,7 +99,7 @@ metadata:
   name: foo
 ";
 
-            using (var stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(content)))
+            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(content)))
             {
                 var obj = Yaml.LoadFromStreamAsync<V1Pod>(stream).Result;
 

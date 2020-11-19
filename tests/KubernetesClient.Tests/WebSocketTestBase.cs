@@ -118,7 +118,7 @@ namespace k8s.Tests
             }
 
             logging.ClearProviders(); // Don't log to console.
-            logging.AddTestOutput(this.testOutput, LogLevel.Information);
+            logging.AddTestOutput(testOutput, LogLevel.Information);
         }
 
         /// <summary>

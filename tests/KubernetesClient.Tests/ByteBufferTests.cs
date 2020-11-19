@@ -35,7 +35,7 @@ namespace k8s.Tests
             Assert.Equal(0, buffer.WriteWaterMark);
 
             // Write two bytes
-            buffer.Write(this.writeData, 0, 2);
+            buffer.Write(writeData, 0, 2);
 
             Assert.Equal(2, buffer.AvailableReadableBytes);
             Assert.Equal(0x0E, buffer.AvailableWritableBytes);
@@ -87,7 +87,7 @@ namespace k8s.Tests
             Assert.Equal(0x10, buffer.Size);
 
             // Write out 0x0A bytes to the buffer, to increase the high water level for writing bytes
-            buffer.Write(this.writeData, 0, 0x0A);
+            buffer.Write(writeData, 0, 0x0A);
 
             // Assert the initial values.
             Assert.Equal(0x0A, buffer.AvailableReadableBytes);
@@ -107,9 +107,9 @@ namespace k8s.Tests
 
             // Write an additional 0x0A bytes, but now in reverse order. This will cause the data
             // to be wrapped.
-            Array.Reverse(this.writeData);
+            Array.Reverse(writeData);
 
-            buffer.Write(this.writeData, 0, 0x0A);
+            buffer.Write(writeData, 0, 0x0A);
 
             // Assert the resulting state of the buffer.
             Assert.Equal(0x0A, buffer.AvailableReadableBytes);
@@ -155,7 +155,7 @@ namespace k8s.Tests
             Assert.Equal(0x10, buffer.Size);
 
             // Write out 0x0A bytes to the buffer, to increase the high water level for writing bytes
-            buffer.Write(this.writeData, 0, 0x0A);
+            buffer.Write(writeData, 0, 0x0A);
 
             var readData = new byte[0x20];
 
@@ -170,7 +170,7 @@ namespace k8s.Tests
             Assert.Equal(0x0A, buffer.WriteWaterMark);
 
             // Write out 0x0A bytes to the buffer, this will cause the buffer to wrap
-            buffer.Write(this.writeData, 0, 0x0A);
+            buffer.Write(writeData, 0, 0x0A);
 
             Assert.Equal(0x0A, buffer.AvailableReadableBytes);
             Assert.Equal(0x06, buffer.AvailableWritableBytes);
@@ -178,9 +178,9 @@ namespace k8s.Tests
             Assert.Equal(0x04, buffer.WriteWaterMark);
 
             // Write an additional 0x0A bytes, but now in reverse order. This will cause the buffer to be resized.
-            Array.Reverse(this.writeData);
+            Array.Reverse(writeData);
 
-            buffer.Write(this.writeData, 0, 0x0A);
+            buffer.Write(writeData, 0, 0x0A);
 
             // Make sure the buffer has been resized.
             Assert.Equal(0x20, buffer.Size);
@@ -226,7 +226,7 @@ namespace k8s.Tests
             var readData = new byte[0x10];
 
             // Read 0x010 bytes of data when only 0x06 are available
-            buffer.Write(this.writeData, 0, 0x06);
+            buffer.Write(writeData, 0, 0x06);
 
             var read = buffer.Read(readData, 0, readData.Length);
             Assert.Equal(0x06, read);
@@ -258,7 +258,7 @@ namespace k8s.Tests
             Assert.False(readTask.IsCompleted, "Read task completed before data was available.");
 
             // Write data to the buffer
-            buffer.Write(this.writeData, 0, 0x03);
+            buffer.Write(writeData, 0, 0x03);
 
             await TaskAssert.Completed(
                 readTask,
@@ -285,8 +285,8 @@ namespace k8s.Tests
             // assumption not hold.
             Assert.Equal(0x10, buffer.Size);
 
-            buffer.Write(this.writeData, 0, 2);
-            buffer.Write(this.writeData, 2, 2);
+            buffer.Write(writeData, 0, 2);
+            buffer.Write(writeData, 2, 2);
             buffer.WriteEnd();
 
             // Assert the initial state of the buffer
@@ -321,8 +321,8 @@ namespace k8s.Tests
             // assumption not hold.
             Assert.Equal(0x10, buffer.Size);
 
-            buffer.Write(this.writeData, 0, 2);
-            buffer.Write(this.writeData, 2, 2);
+            buffer.Write(writeData, 0, 2);
+            buffer.Write(writeData, 2, 2);
             buffer.WriteEnd();
 
             // Assert the initial state of the buffer

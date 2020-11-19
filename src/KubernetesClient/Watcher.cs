@@ -147,12 +147,12 @@ namespace k8s
                         {
                             var statusEvent = SafeJsonConvert.DeserializeObject<Watcher<V1Status>.WatchEvent>(line);
                             var exception = new KubernetesException(statusEvent.Object);
-                            this.OnError?.Invoke(exception);
+                            OnError?.Invoke(exception);
                         }
                         else
                         {
                             var @event = SafeJsonConvert.DeserializeObject<WatchEvent>(line);
-                            this.OnEvent?.Invoke(@event.Type, @event.Object);
+                            OnEvent?.Invoke(@event.Type, @event.Object);
                         }
                     }
                     catch (Exception e)
