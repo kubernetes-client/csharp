@@ -296,5 +296,10 @@
     <!-- TODO only in netcore2.1+-->
     <Rule Id="CA1835" Action="Info" />
 
+    <!-- TODO missing doc-->
+    <Rule Id="CS1591" Action="None" />
+    <Rule Id="CS1573" Action="None" />
+    <Rule Id="CS1574" Action="None" />
+
   </Rules>
 </RuleSet>

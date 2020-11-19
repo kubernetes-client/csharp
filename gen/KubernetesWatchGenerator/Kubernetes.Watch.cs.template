@@ -14,7 +14,7 @@ namespace k8s
     public partial class Kubernetes
     {
         {{#.}}
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<{{GetClassName operation}}>> {{GetMethodName operation}}(
 {{#operation.actualParameters}}
 {{#isRequired}}
