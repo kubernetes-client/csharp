@@ -21,12 +21,12 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken))
         {
             // Tracing
-            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            var shouldTrace = ServiceClientTracing.IsEnabled;
             string invocationId = null;
             if (shouldTrace)
             {
                 invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                var tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("path", path);
                 tracingParameters.Add("continue", @continue);
                 tracingParameters.Add("fieldSelector", fieldSelector);
@@ -144,7 +144,7 @@ namespace k8s
 
             if (httpResponse.StatusCode != HttpStatusCode.OK)
             {
-                string responseContent = string.Empty;
+                var responseContent = string.Empty;
 
                 var ex = new HttpOperationException(string.Format(
                     "Operation returned an invalid status code '{0}'",
@@ -166,7 +166,7 @@ namespace k8s
                 async () =>
             {
                 var stream = await httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false);
-                StreamReader reader = new StreamReader(stream);
+                var reader = new StreamReader(stream);
 
                 return reader;
             }, onEvent, onError, onClosed);

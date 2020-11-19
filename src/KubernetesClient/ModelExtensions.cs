@@ -40,7 +40,7 @@ namespace k8s.Models
 
             if (obj.ApiVersion != null)
             {
-                int slash = obj.ApiVersion.IndexOf('/');
+                var slash = obj.ApiVersion.IndexOf('/');
                 return slash < 0 ? string.Empty : obj.ApiVersion.Substring(0, slash);
             }
 
@@ -57,7 +57,7 @@ namespace k8s.Models
 
             if (obj.ApiVersion != null)
             {
-                int slash = obj.ApiVersion.IndexOf('/');
+                var slash = obj.ApiVersion.IndexOf('/');
                 return slash < 0 ? obj.ApiVersion : obj.ApiVersion.Substring(slash + 1);
             }
 
@@ -86,7 +86,7 @@ namespace k8s.Models
             }
             else
             {
-                int slash = obj.ApiVersion.IndexOf('/');
+                var slash = obj.ApiVersion.IndexOf('/');
                 if (slash < 0)
                 {
                     (group, version) = (string.Empty, obj.ApiVersion);
@@ -191,7 +191,7 @@ namespace k8s.Models
             var ownerRefs = obj.OwnerReferences();
             if (ownerRefs != null)
             {
-                for (int i = 0; i < ownerRefs.Count; i++)
+                for (var i = 0; i < ownerRefs.Count; i++)
                 {
                     if (predicate(ownerRefs[i]))
                     {
@@ -219,8 +219,8 @@ namespace k8s.Models
                 throw new ArgumentNullException(nameof(key));
             }
 
-            IDictionary<string, string> annotations = obj.Annotations();
-            return annotations != null && annotations.TryGetValue(key, out string value) ? value : null;
+            var annotations = obj.Annotations();
+            return annotations != null && annotations.TryGetValue(key, out var value) ? value : null;
         }
 
         /// <summary>Gets the <see cref="V1OwnerReference"/> for the controller of this object, or null if it couldn't be found.</summary>
@@ -240,8 +240,8 @@ namespace k8s.Models
                 throw new ArgumentNullException(nameof(key));
             }
 
-            IDictionary<string, string> labels = obj.Labels();
-            return labels != null && labels.TryGetValue(key, out string value) ? value : null;
+            var labels = obj.Labels();
+            return labels != null && labels.TryGetValue(key, out var value) ? value : null;
         }
 
         /// <summary>Gets <see cref="V1OwnerReference"/> that matches the given object, or null if no matching reference exists.</summary>
@@ -255,7 +255,7 @@ namespace k8s.Models
             this IMetadata<V1ObjectMeta> obj,
             Predicate<V1OwnerReference> predicate)
         {
-            int index = FindOwnerReference(obj, predicate);
+            var index = FindOwnerReference(obj, predicate);
             return index >= 0 ? obj.Metadata.OwnerReferences[index] : null;
         }
 
@@ -316,8 +316,8 @@ namespace k8s.Models
             this IMetadata<V1ObjectMeta> obj,
             IKubernetesObject<V1ObjectMeta> owner)
         {
-            int index = FindOwnerReference(obj, owner);
-            V1OwnerReference ownerRef = index >= 0 ? obj.Metadata.OwnerReferences[index] : null;
+            var index = FindOwnerReference(obj, owner);
+            var ownerRef = index >= 0 ? obj.Metadata.OwnerReferences[index] : null;
             if (index >= 0)
             {
                 obj.Metadata.OwnerReferences.RemoveAt(index);
@@ -343,11 +343,11 @@ namespace k8s.Models
                 throw new ArgumentNullException(nameof(predicate));
             }
 
-            bool removed = false;
-            IList<V1OwnerReference> refs = obj.Metadata?.OwnerReferences;
+            var removed = false;
+            var refs = obj.Metadata?.OwnerReferences;
             if (refs != null)
             {
-                for (int i = refs.Count - 1; i >= 0; i--)
+                for (var i = refs.Count - 1; i >= 0; i--)
                 {
                     if (predicate(refs[i]))
                     {

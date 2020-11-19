@@ -45,10 +45,10 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            WebSocket webSocket = await this.WebSocketNamespacedPodExecAsync(name: name, @namespace: @namespace,
+            var webSocket = await this.WebSocketNamespacedPodExecAsync(name: name, @namespace: @namespace,
                     command: command, container: container, tty: tty, cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
-            StreamDemuxer muxer = new StreamDemuxer(webSocket);
+            var muxer = new StreamDemuxer(webSocket);
             return muxer;
         }
 
@@ -91,12 +91,12 @@ namespace k8s
             }
 
             // Tracing
-            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            var shouldTrace = ServiceClientTracing.IsEnabled;
             string invocationId = null;
             if (shouldTrace)
             {
                 invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                var tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("command", command);
                 tracingParameters.Add("container", container);
                 tracingParameters.Add("name", name);
@@ -170,12 +170,12 @@ namespace k8s
             }
 
             // Tracing
-            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            var shouldTrace = ServiceClientTracing.IsEnabled;
             string invocationId = null;
             if (shouldTrace)
             {
                 invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                var tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("name", name);
                 tracingParameters.Add("@namespace", @namespace);
                 tracingParameters.Add("ports", ports);
@@ -230,12 +230,12 @@ namespace k8s
             }
 
             // Tracing
-            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            var shouldTrace = ServiceClientTracing.IsEnabled;
             string invocationId = null;
             if (shouldTrace)
             {
                 invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                var tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("container", container);
                 tracingParameters.Add("name", name);
                 tracingParameters.Add("namespace", @namespace);
@@ -277,10 +277,10 @@ namespace k8s
             string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            var shouldTrace = ServiceClientTracing.IsEnabled;
 
             // Create WebSocket transport objects
-            WebSocketBuilder webSocketBuilder = this.CreateWebSocketBuilder();
+            var webSocketBuilder = this.CreateWebSocketBuilder();
 
             // Set Headers
             if (customHeaders != null)
@@ -304,7 +304,7 @@ namespace k8s
             if (this.Credentials != null)
             {
                 // Copy the default (credential-related) request headers from the HttpClient to the WebSocket
-                HttpRequestMessage message = new HttpRequestMessage();
+                var message = new HttpRequestMessage();
                 await this.Credentials.ProcessHttpRequestAsync(message, cancellationToken).ConfigureAwait(false);
 
                 foreach (var header in message.Headers)

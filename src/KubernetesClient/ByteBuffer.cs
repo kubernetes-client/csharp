@@ -172,7 +172,7 @@ namespace k8s
                 }
 
                 // Write the data; first the data that fits between the write watermark and the end of the buffer
-                int availableBeforeWrapping = this.buffer.Length - this.WriteWaterMark;
+                var availableBeforeWrapping = this.buffer.Length - this.WriteWaterMark;
 
                 Array.Copy(data, offset, this.buffer, this.WriteWaterMark, Math.Min(availableBeforeWrapping, length));
                 this.WriteWaterMark += Math.Min(availableBeforeWrapping, length);
@@ -225,7 +225,7 @@ namespace k8s
                 this.dataAvailable.WaitOne();
             }
 
-            int toRead = 0;
+            var toRead = 0;
 
             lock (this.lockObject)
             {
@@ -237,7 +237,7 @@ namespace k8s
 
                 toRead = Math.Min(this.AvailableReadableBytes, count);
 
-                int availableBeforeWrapping = this.buffer.Length - this.ReadWaterMark;
+                var availableBeforeWrapping = this.buffer.Length - this.ReadWaterMark;
 
                 Array.Copy(this.buffer, this.ReadWaterMark, data, offset, Math.Min(availableBeforeWrapping, toRead));
                 this.ReadWaterMark += Math.Min(availableBeforeWrapping, toRead);
@@ -281,7 +281,7 @@ namespace k8s
                 // Copy the data at the start
                 Array.Copy(this.buffer, 0, newBuffer, 0, this.WriteWaterMark);
 
-                int trailingDataLength = this.buffer.Length - this.ReadWaterMark;
+                var trailingDataLength = this.buffer.Length - this.ReadWaterMark;
                 Array.Copy(
                     this.buffer,
                     sourceIndex: this.ReadWaterMark,

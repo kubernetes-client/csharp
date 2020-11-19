@@ -99,7 +99,7 @@ metadata:
   name: foo
 ";
 
-            using (MemoryStream stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(content)))
+            using (var stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(content)))
             {
                 var obj = Yaml.LoadFromStreamAsync<V1Pod>(stream).Result;
 
@@ -278,7 +278,7 @@ spec:
   - port: 3000
     targetPort: 3000";
 
-            Dictionary<string, string> labels = new Dictionary<string, string> { { "app", "test" } };
+            var labels = new Dictionary<string, string> { { "app", "test" } };
             var obj = new V1Service
             {
                 Kind = "Service",
@@ -327,7 +327,7 @@ spec:
         [Fact]
         public void LoadSecret()
         {
-            string kManifest = @"
+            var kManifest = @"
 apiVersion: v1
 kind: Secret
 metadata:

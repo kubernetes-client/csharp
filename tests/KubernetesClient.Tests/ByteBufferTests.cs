@@ -21,7 +21,7 @@ namespace k8s.Tests
         [Fact]
         public void LinearReadWriteTest()
         {
-            ByteBuffer buffer = new ByteBuffer(bufferSize: 0x10, maximumSize: 0x100);
+            var buffer = new ByteBuffer(bufferSize: 0x10, maximumSize: 0x100);
 
             // There's no real guarantee that this will be the case because the ArrayPool does not guarantee
             // a specific buffer size. So let's assert this first to make sure the test fails should this
@@ -43,7 +43,7 @@ namespace k8s.Tests
             Assert.Equal(2, buffer.WriteWaterMark);
 
             // Read two bytes, one byte at a time
-            byte[] readData = new byte[0x10];
+            var readData = new byte[0x10];
 
             var read = buffer.Read(readData, 0, 1);
             Assert.Equal(1, read);
@@ -79,7 +79,7 @@ namespace k8s.Tests
         [Fact]
         public void BoundaryReadWriteTest()
         {
-            ByteBuffer buffer = new ByteBuffer(bufferSize: 0x10, maximumSize: 0x100);
+            var buffer = new ByteBuffer(bufferSize: 0x10, maximumSize: 0x100);
 
             // There's no real guarantee that this will be the case because the ArrayPool does not guarantee
             // a specific buffer size. So let's assert this first to make sure the test fails should this
@@ -96,7 +96,7 @@ namespace k8s.Tests
             Assert.Equal(0x0A, buffer.WriteWaterMark);
 
             // Read 0x0A bytes, to increase the high water level for reading bytes
-            byte[] readData = new byte[0x10];
+            var readData = new byte[0x10];
             var read = buffer.Read(readData, 0, 0x0A);
             Assert.Equal(0x0A, read);
 
@@ -147,7 +147,7 @@ namespace k8s.Tests
         [Fact]
         public void ResizeWriteTest()
         {
-            ByteBuffer buffer = new ByteBuffer(bufferSize: 0x10, maximumSize: 0x100);
+            var buffer = new ByteBuffer(bufferSize: 0x10, maximumSize: 0x100);
 
             // There's no real guarantee that this will be the case because the ArrayPool does not guarantee
             // a specific buffer size. So let's assert this first to make sure the test fails should this
@@ -157,7 +157,7 @@ namespace k8s.Tests
             // Write out 0x0A bytes to the buffer, to increase the high water level for writing bytes
             buffer.Write(this.writeData, 0, 0x0A);
 
-            byte[] readData = new byte[0x20];
+            var readData = new byte[0x20];
 
             // Read these 0x0A bytes.
             var read = buffer.Read(readData, 0, 0x0A);
@@ -278,7 +278,7 @@ namespace k8s.Tests
         [Fact]
         public void ReadUntilEndOfFileTest()
         {
-            ByteBuffer buffer = new ByteBuffer(bufferSize: 0x10, maximumSize: 0x100);
+            var buffer = new ByteBuffer(bufferSize: 0x10, maximumSize: 0x100);
 
             // There's no real guarantee that this will be the case because the ArrayPool does not guarantee
             // a specific buffer size. So let's assert this first to make sure the test fails should this
@@ -296,7 +296,7 @@ namespace k8s.Tests
             Assert.Equal(0x04, buffer.WriteWaterMark);
 
             // Read the data on a chunk-by-chunk basis
-            byte[] readData = new byte[0x03];
+            var readData = new byte[0x03];
             var read = buffer.Read(readData, 0, 3);
             Assert.Equal(3, read);
             Assert.Equal(0xF0, readData[0]);
@@ -314,7 +314,7 @@ namespace k8s.Tests
         [Fact]
         public void ReadUntilEndOfFileTest2()
         {
-            ByteBuffer buffer = new ByteBuffer(bufferSize: 0x10, maximumSize: 0x100);
+            var buffer = new ByteBuffer(bufferSize: 0x10, maximumSize: 0x100);
 
             // There's no real guarantee that this will be the case because the ArrayPool does not guarantee
             // a specific buffer size. So let's assert this first to make sure the test fails should this
@@ -332,7 +332,7 @@ namespace k8s.Tests
             Assert.Equal(0x04, buffer.WriteWaterMark);
 
             // Read the data at once
-            byte[] readData = new byte[0x10];
+            var readData = new byte[0x10];
             var read = buffer.Read(readData, 0, 0x10);
             Assert.Equal(4, read);
             Assert.Equal(0xF0, readData[0]);
@@ -354,12 +354,12 @@ namespace k8s.Tests
         {
             // In the current implementation, the minimum size of the buffer will be 16 bytes,
             // but that's not guaranteed.
-            ByteBuffer buffer = new ByteBuffer(1, 128);
+            var buffer = new ByteBuffer(1, 128);
 
-            byte[] data = new byte[buffer.Size + 1];
+            var data = new byte[buffer.Size + 1];
             RandomNumberGenerator.Create().GetBytes(data);
 
-            byte[] output = new byte[buffer.Size + 1];
+            var output = new byte[buffer.Size + 1];
 
             buffer.Write(data, 0, data.Length);
 
@@ -376,12 +376,12 @@ namespace k8s.Tests
         {
             // In the current implementation, the minimum size of the buffer will be 16 bytes,
             // but that's not guaranteed.
-            ByteBuffer buffer = new ByteBuffer(1, 128);
+            var buffer = new ByteBuffer(1, 128);
 
-            byte[] data = new byte[buffer.Size + 1];
+            var data = new byte[buffer.Size + 1];
             RandomNumberGenerator.Create().GetBytes(data);
 
-            byte[] output = new byte[buffer.Size + 1];
+            var output = new byte[buffer.Size + 1];
 
             buffer.Write(data, 0, 1);
             buffer.Write(data, 0, data.Length);
@@ -402,12 +402,12 @@ namespace k8s.Tests
         [Fact]
         public async Task ReadFirstTest()
         {
-            ByteBuffer buffer = new ByteBuffer(1, 128);
+            var buffer = new ByteBuffer(1, 128);
 
-            byte[] data = new byte[buffer.Size + 1];
+            var data = new byte[buffer.Size + 1];
             RandomNumberGenerator.Create().GetBytes(data);
 
-            byte[] output = new byte[buffer.Size + 1];
+            var output = new byte[buffer.Size + 1];
 
             var readTask = Task.Run(() => buffer.Read(output, 0, output.Length));
             await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(false);

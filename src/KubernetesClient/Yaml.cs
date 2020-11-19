@@ -143,7 +143,7 @@ namespace k8s
 
         public static async Task<T> LoadFromFileAsync<T>(string file)
         {
-            using (FileStream fs = File.OpenRead(file))
+            using (var fs = File.OpenRead(file))
             {
                 return await LoadFromStreamAsync<T>(fs).ConfigureAwait(false);
             }

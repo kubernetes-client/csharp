@@ -179,7 +179,7 @@ namespace k8s.Tests
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                using (MemoryStream serverCertificateStream =
+                using (var serverCertificateStream =
                     new MemoryStream(Convert.FromBase64String(serverCertificateData)))
                 {
                     serverCertificate = OpenCertificateStore(serverCertificateStream);
@@ -286,7 +286,7 @@ namespace k8s.Tests
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                using (MemoryStream serverCertificateStream = new MemoryStream(serverCertificateData))
+                using (var serverCertificateStream = new MemoryStream(serverCertificateData))
                 {
                     serverCertificate = OpenCertificateStore(serverCertificateStream);
                 }
@@ -457,7 +457,7 @@ namespace k8s.Tests
 
         private X509Certificate2 OpenCertificateStore(Stream stream)
         {
-            Pkcs12Store store = new Pkcs12Store();
+            var store = new Pkcs12Store();
             store.Load(stream, new char[] { });
 
             var keyAlias = store.Aliases.Cast<string>().SingleOrDefault(a => store.IsKeyEntry(a));
@@ -468,7 +468,7 @@ namespace k8s.Tests
             var certificate = new X509Certificate2(DotNetUtilities.ToX509Certificate(bouncyCertificate));
             var parameters = DotNetUtilities.ToRSAParameters(key);
 
-            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
+            var rsa = new RSACryptoServiceProvider();
             rsa.ImportParameters(parameters);
 
             certificate = RSACertificateExtensions.CopyWithPrivateKey(certificate, rsa);

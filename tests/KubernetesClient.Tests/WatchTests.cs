@@ -114,9 +114,9 @@ namespace k8s.Tests
         [Fact]
         public async Task SuriveBadLine()
         {
-            AsyncCountdownEvent eventsReceived = new AsyncCountdownEvent(5);
-            AsyncManualResetEvent serverShutdown = new AsyncManualResetEvent();
-            AsyncManualResetEvent connectionClosed = new AsyncManualResetEvent();
+            var eventsReceived = new AsyncCountdownEvent(5);
+            var serverShutdown = new AsyncManualResetEvent();
+            var connectionClosed = new AsyncManualResetEvent();
 
             using (var server =
                 new MockKubeApiServer(
@@ -188,7 +188,7 @@ namespace k8s.Tests
         {
             var connectionClosed = new AsyncManualResetEvent();
             var eventsReceived = new CountdownEvent(1);
-            bool serverRunning = true;
+            var serverRunning = true;
 
             using (var server = new MockKubeApiServer(testOutput, async httpContext =>
             {
@@ -247,9 +247,9 @@ namespace k8s.Tests
         [Fact]
         public async Task WatchAllEvents()
         {
-            AsyncCountdownEvent eventsReceived =
+            var eventsReceived =
                 new AsyncCountdownEvent(4 /* first line of response is eaten by WatcherDelegatingHandler */);
-            AsyncManualResetEvent serverShutdown = new AsyncManualResetEvent();
+            var serverShutdown = new AsyncManualResetEvent();
             var waitForClosed = new AsyncManualResetEvent(false);
 
             using (var server = new MockKubeApiServer(testOutput, async httpContext =>
@@ -315,9 +315,9 @@ namespace k8s.Tests
         [Fact]
         public async Task WatchEventsWithTimeout()
         {
-            AsyncCountdownEvent eventsReceived = new AsyncCountdownEvent(5);
-            AsyncManualResetEvent serverShutdown = new AsyncManualResetEvent();
-            AsyncManualResetEvent connectionClosed = new AsyncManualResetEvent();
+            var eventsReceived = new AsyncCountdownEvent(5);
+            var serverShutdown = new AsyncManualResetEvent();
+            var connectionClosed = new AsyncManualResetEvent();
 
             using (var server = new MockKubeApiServer(testOutput, async httpContext =>
             {
@@ -440,8 +440,8 @@ namespace k8s.Tests
         [Fact]
         public async Task TestWatchWithHandlers()
         {
-            AsyncCountdownEvent eventsReceived = new AsyncCountdownEvent(1);
-            AsyncManualResetEvent serverShutdown = new AsyncManualResetEvent();
+            var eventsReceived = new AsyncCountdownEvent(1);
+            var serverShutdown = new AsyncManualResetEvent();
 
             using (var server = new MockKubeApiServer(testOutput, async httpContext =>
             {
@@ -492,9 +492,9 @@ namespace k8s.Tests
         [Fact]
         public async Task DirectWatchAllEvents()
         {
-            AsyncCountdownEvent eventsReceived = new AsyncCountdownEvent(4);
-            AsyncManualResetEvent serverShutdown = new AsyncManualResetEvent();
-            AsyncManualResetEvent connectionClosed = new AsyncManualResetEvent();
+            var eventsReceived = new AsyncCountdownEvent(4);
+            var serverShutdown = new AsyncManualResetEvent();
+            var connectionClosed = new AsyncManualResetEvent();
 
             using (var server = new MockKubeApiServer(testOutput, async httpContext =>
             {
@@ -597,10 +597,10 @@ namespace k8s.Tests
                 },
                 "default").ConfigureAwait(false);
 
-            Collection<Tuple<WatchEventType, V1Job>> events = new Collection<Tuple<WatchEventType, V1Job>>();
+            var events = new Collection<Tuple<WatchEventType, V1Job>>();
 
-            AsyncManualResetEvent started = new AsyncManualResetEvent();
-            AsyncManualResetEvent connectionClosed = new AsyncManualResetEvent();
+            var started = new AsyncManualResetEvent();
+            var connectionClosed = new AsyncManualResetEvent();
 
             var watcher = await kubernetes.WatchNamespacedJobAsync(
                 job.Metadata.Name,
@@ -631,8 +631,8 @@ namespace k8s.Tests
         [Fact(Skip = "https://github.com/kubernetes-client/csharp/issues/165")]
         public async Task DirectWatchEventsWithTimeout()
         {
-            AsyncCountdownEvent eventsReceived = new AsyncCountdownEvent(4);
-            AsyncManualResetEvent serverShutdown = new AsyncManualResetEvent();
+            var eventsReceived = new AsyncCountdownEvent(4);
+            var serverShutdown = new AsyncManualResetEvent();
 
             using (var server = new MockKubeApiServer(testOutput, async httpContext =>
             {
@@ -695,7 +695,7 @@ namespace k8s.Tests
         [Fact]
         public async Task WatchShouldCancelAfterRequested()
         {
-            AsyncManualResetEvent serverShutdown = new AsyncManualResetEvent();
+            var serverShutdown = new AsyncManualResetEvent();
 
             using (var server = new MockKubeApiServer(testOutput, async httpContext =>
             {

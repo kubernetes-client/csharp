@@ -84,9 +84,9 @@ namespace k8s.Tests.Mock
                 await this.receiveEvent.WaitAsync(cancellationToken).ConfigureAwait(false);
             }
 
-            int bytesReceived = 0;
-            bool endOfMessage = true;
-            WebSocketMessageType messageType = WebSocketMessageType.Close;
+            var bytesReceived = 0;
+            var endOfMessage = true;
+            var messageType = WebSocketMessageType.Close;
 
             MessageData received = null;
             if (this.receiveBuffers.TryPeek(out received))

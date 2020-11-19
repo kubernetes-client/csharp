@@ -7,7 +7,7 @@ namespace k8s.Models
         /// <summary>Converts a <see cref="V1Status"/> object into a short description of the status.</summary>
         public override string ToString()
         {
-            string reason = Reason;
+            var reason = Reason;
             if (string.IsNullOrEmpty(reason) && Code.GetValueOrDefault() != 0)
             {
                 reason = ((HttpStatusCode)Code.Value).ToString();

@@ -171,9 +171,9 @@ namespace KubernetesWatchGenerator
         {
             if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is string)
             {
-                bool first = true;
+                var first = true;
 
-                using (StringReader reader = new StringReader(arguments[0] as string))
+                using (var reader = new StringReader(arguments[0] as string))
                 {
                     string line = null;
                     while ((line = reader.ReadLine()) != null)
@@ -496,7 +496,7 @@ namespace KubernetesWatchGenerator
 
         private static string GetPathExpression(SwaggerOperationDescription operation)
         {
-            string pathExpression = operation.Path;
+            var pathExpression = operation.Path;
 
             if (pathExpression.StartsWith("/"))
             {

@@ -158,13 +158,13 @@ namespace k8s
         public async Task Write(byte index, byte[] buffer, int offset, int count,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            byte[] writeBuffer = ArrayPool<byte>.Shared.Rent(count + 1);
+            var writeBuffer = ArrayPool<byte>.Shared.Rent(count + 1);
 
             try
             {
                 writeBuffer[0] = (byte)index;
                 Array.Copy(buffer, offset, writeBuffer, 1, count);
-                ArraySegment<byte> segment = new ArraySegment<byte>(writeBuffer, 0, count + 1);
+                var segment = new ArraySegment<byte>(writeBuffer, 0, count + 1);
                 await this.webSocket.SendAsync(segment, WebSocketMessageType.Binary, false, cancellationToken)
                     .ConfigureAwait(false);
             }
@@ -177,9 +177,9 @@ namespace k8s
         protected async Task RunLoop(CancellationToken cancellationToken)
         {
             // Get a 1KB buffer
-            byte[] buffer = ArrayPool<byte>.Shared.Rent(1024 * 1024);
+            var buffer = ArrayPool<byte>.Shared.Rent(1024 * 1024);
             // This maps remembers bytes skipped for each stream.
-            Dictionary<byte, int> streamBytesToSkipMap = new Dictionary<byte, int>();
+            var streamBytesToSkipMap = new Dictionary<byte, int>();
             try
             {
                 var segment = new ArraySegment<byte>(buffer);
@@ -202,7 +202,7 @@ namespace k8s
 
                     while (true)
                     {
-                        int bytesToSkip = 0;
+                        var bytesToSkip = 0;
                         if (!streamBytesToSkipMap.TryGetValue(streamIndex, out bytesToSkip))
                         {
                             // When used in port-forwarding, the first 2 bytes from the web socket is port bytes, skip.
@@ -210,7 +210,7 @@ namespace k8s
                             bytesToSkip = this.streamType == StreamType.PortForward ? 2 : 0;
                         }
 
-                        int bytesCount = result.Count - extraByteCount;
+                        var bytesCount = result.Count - extraByteCount;
                         if (bytesToSkip > 0 && bytesToSkip >= bytesCount)
                         {
                             // skip the entire data.

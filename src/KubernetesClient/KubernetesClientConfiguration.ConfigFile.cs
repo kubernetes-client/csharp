@@ -256,7 +256,7 @@ namespace k8s
             Host = clusterDetails.ClusterEndpoint.Server;
             SkipTlsVerify = clusterDetails.ClusterEndpoint.SkipTlsVerify;
 
-            if (!Uri.TryCreate(Host, UriKind.Absolute, out Uri uri))
+            if (!Uri.TryCreate(Host, UriKind.Absolute, out var uri))
             {
                 throw new KubeConfigException($"Bad server host URL `{Host}` (cannot be parsed)");
             }
