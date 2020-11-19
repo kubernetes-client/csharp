@@ -21,7 +21,7 @@ namespace k8s.Tests
         [Fact]
         public void LinearReadWriteTest()
         {
-            var buffer = new ByteBuffer(bufferSize: 0x10, maximumSize: 0x100);
+            var buffer = new ByteBuffer(0x10, 0x100);
 
             // There's no real guarantee that this will be the case because the ArrayPool does not guarantee
             // a specific buffer size. So let's assert this first to make sure the test fails should this
@@ -79,7 +79,7 @@ namespace k8s.Tests
         [Fact]
         public void BoundaryReadWriteTest()
         {
-            var buffer = new ByteBuffer(bufferSize: 0x10, maximumSize: 0x100);
+            var buffer = new ByteBuffer(0x10, 0x100);
 
             // There's no real guarantee that this will be the case because the ArrayPool does not guarantee
             // a specific buffer size. So let's assert this first to make sure the test fails should this
@@ -147,7 +147,7 @@ namespace k8s.Tests
         [Fact]
         public void ResizeWriteTest()
         {
-            var buffer = new ByteBuffer(bufferSize: 0x10, maximumSize: 0x100);
+            var buffer = new ByteBuffer(0x10, 0x100);
 
             // There's no real guarantee that this will be the case because the ArrayPool does not guarantee
             // a specific buffer size. So let's assert this first to make sure the test fails should this
@@ -262,8 +262,8 @@ namespace k8s.Tests
 
             await TaskAssert.Completed(
                 readTask,
-                timeout: TimeSpan.FromMilliseconds(1000),
-                message: "Timed out waiting for read task to complete.").ConfigureAwait(false);
+                TimeSpan.FromMilliseconds(1000),
+                "Timed out waiting for read task to complete.").ConfigureAwait(false);
 
             Assert.Equal(3, read);
             Assert.Equal(0xF0, readData[0]);
@@ -278,7 +278,7 @@ namespace k8s.Tests
         [Fact]
         public void ReadUntilEndOfFileTest()
         {
-            var buffer = new ByteBuffer(bufferSize: 0x10, maximumSize: 0x100);
+            var buffer = new ByteBuffer(0x10, 0x100);
 
             // There's no real guarantee that this will be the case because the ArrayPool does not guarantee
             // a specific buffer size. So let's assert this first to make sure the test fails should this
@@ -314,7 +314,7 @@ namespace k8s.Tests
         [Fact]
         public void ReadUntilEndOfFileTest2()
         {
-            var buffer = new ByteBuffer(bufferSize: 0x10, maximumSize: 0x100);
+            var buffer = new ByteBuffer(0x10, 0x100);
 
             // There's no real guarantee that this will be the case because the ArrayPool does not guarantee
             // a specific buffer size. So let's assert this first to make sure the test fails should this

@@ -52,7 +52,7 @@ namespace k8s.Tests.Mock.Server.Controllers
             }
 
             var webSocket = await HttpContext.WebSockets.AcceptWebSocketAsync(
-                subProtocol: WebSocketProtocol.ChannelWebSocketProtocol).ConfigureAwait(false);
+                WebSocketProtocol.ChannelWebSocketProtocol).ConfigureAwait(false);
 
             WebSocketTestAdapter.AcceptedPodExecV1Connection.AcceptServerSocket(webSocket);
 

@@ -55,7 +55,7 @@ namespace k8s
 
             if (File.Exists(KubeConfigDefaultLocation))
             {
-                return BuildConfigFromConfigFile(kubeconfigPath: KubeConfigDefaultLocation);
+                return BuildConfigFromConfigFile(KubeConfigDefaultLocation);
             }
 
             if (IsInCluster())

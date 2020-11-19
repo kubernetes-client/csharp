@@ -22,7 +22,7 @@ namespace k8s
         private const int DefaultMaximumSize = 40 * 1024 * 1024; // 40 MB
 
         private readonly int maximumSize;
-        private readonly AutoResetEvent dataAvailable = new AutoResetEvent(initialState: false);
+        private readonly AutoResetEvent dataAvailable = new AutoResetEvent(false);
         private readonly object lockObject = new object();
 
         private byte[] buffer;
@@ -284,10 +284,10 @@ namespace k8s
                 var trailingDataLength = this.buffer.Length - this.ReadWaterMark;
                 Array.Copy(
                     this.buffer,
-                    sourceIndex: this.ReadWaterMark,
-                    destinationArray: newBuffer,
-                    destinationIndex: newBuffer.Length - trailingDataLength,
-                    length: trailingDataLength);
+                    this.ReadWaterMark,
+                    newBuffer,
+                    newBuffer.Length - trailingDataLength,
+                    trailingDataLength);
 
                 this.ReadWaterMark += newBuffer.Length - this.buffer.Length;
             }
@@ -329,7 +329,7 @@ namespace k8s
         public void Dispose()
         {
             // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-            Dispose(disposing: true);
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
     }

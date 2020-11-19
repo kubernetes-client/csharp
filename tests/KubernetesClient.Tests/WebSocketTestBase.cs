@@ -261,8 +261,8 @@ namespace k8s.Tests
             Array.Copy(payload, 0, sendBuffer, 1, payload.Length);
 
             await webSocket.SendAsync(sendBuffer, WebSocketMessageType.Binary,
-                endOfMessage: true,
-                cancellationToken: TestCancellation).ConfigureAwait(false);
+                true,
+                TestCancellation).ConfigureAwait(false);
 
             return sendBuffer.Length;
         }
@@ -374,7 +374,7 @@ namespace k8s.Tests
         public void Dispose()
         {
             // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-            Dispose(disposing: true);
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
     }

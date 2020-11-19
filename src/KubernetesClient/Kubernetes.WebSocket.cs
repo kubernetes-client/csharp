@@ -45,8 +45,8 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var webSocket = await this.WebSocketNamespacedPodExecAsync(name: name, @namespace: @namespace,
-                    command: command, container: container, tty: tty, cancellationToken: cancellationToken)
+            var webSocket = await this.WebSocketNamespacedPodExecAsync(name, @namespace,
+                    command, container, tty: tty, cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
             var muxer = new StreamDemuxer(webSocket);
             return muxer;

@@ -163,7 +163,7 @@ namespace k8s.Tests
             var k8sConfig =
                 KubernetesClientConfiguration.LoadKubeConfig(
                     new FileInfo("assets/kubeconfig.yml"),
-                    useRelativePaths: false);
+                    false);
             var cfg = KubernetesClientConfiguration.BuildConfigFromConfigObject(k8sConfig);
             Assert.NotNull(cfg.Host);
         }
@@ -341,7 +341,7 @@ namespace k8s.Tests
         {
             var filePath = "assets/kubeconfig.yml";
             var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(filePath, null, null,
-                useRelativePaths: false);
+                false);
             Assert.NotNull(cfg.Host);
         }
 
@@ -368,7 +368,7 @@ namespace k8s.Tests
             var filePath = "assets/kubeconfig.as-user-extra.yml";
 
             var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(filePath, null, null,
-                useRelativePaths: false);
+                false);
             Assert.NotNull(cfg.Host);
         }
 

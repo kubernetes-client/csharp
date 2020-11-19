@@ -54,7 +54,7 @@ namespace k8s.Tests
         [Fact]
         public async Task CannotWatch()
         {
-            using (var server = new MockKubeApiServer(testOutput: testOutput))
+            using (var server = new MockKubeApiServer(testOutput))
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
@@ -159,7 +159,7 @@ namespace k8s.Tests
                         errors += 1;
                         eventsReceived.Signal();
                     },
-                    onClosed: connectionClosed.Set);
+                    connectionClosed.Set);
 
                 // wait server yields all events
                 await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(false);
@@ -286,7 +286,7 @@ namespace k8s.Tests
                         errors += 1;
                         eventsReceived.Signal();
                     },
-                    onClosed: waitForClosed.Set);
+                    waitForClosed.Set);
 
                 // wait server yields all events
                 await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(false);
@@ -355,7 +355,7 @@ namespace k8s.Tests
                         errors += 1;
                         eventsReceived.Signal();
                     },
-                    onClosed: connectionClosed.Set);
+                    connectionClosed.Set);
 
                 // wait server yields all events
                 await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(false);
@@ -402,13 +402,13 @@ namespace k8s.Tests
                 waitForException.Set();
                 Watcher<V1Pod> watcher;
                 watcher = listTask.Watch<V1Pod, V1PodList>(
-                    onEvent: (type, item) => { },
-                    onError: e =>
+                    (type, item) => { },
+                    e =>
                     {
                         exceptionCatched = e;
                         exceptionReceived.Set();
                     },
-                    onClosed: waitForClosed.Set);
+                    waitForClosed.Set);
 
                 // wait server down
                 await Task.WhenAny(exceptionReceived.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(false);
@@ -514,8 +514,8 @@ namespace k8s.Tests
                 var errors = 0;
 
                 var watcher = await client.WatchNamespacedPodAsync(
-                    name: "myPod",
-                    @namespace: "default",
+                    "myPod",
+                    "default",
                     onEvent:
                     (type, item) =>
                     {
@@ -562,7 +562,7 @@ namespace k8s.Tests
         {
             var kubernetesConfig =
                 KubernetesClientConfiguration.BuildConfigFromConfigFile(
-                    kubeconfigPath: @"C:\Users\frede\Source\Repos\cloud\minikube.config");
+                    @"C:\Users\frede\Source\Repos\cloud\minikube.config");
             var kubernetes = new Kubernetes(kubernetesConfig);
 
             var job = await kubernetes.CreateNamespacedJobAsync(
@@ -653,8 +653,8 @@ namespace k8s.Tests
                 var errors = 0;
 
                 var watcher = await client.WatchNamespacedPodAsync(
-                    name: "myPod",
-                    @namespace: "default",
+                    "myPod",
+                    "default",
                     onEvent:
                     (type, item) =>
                     {

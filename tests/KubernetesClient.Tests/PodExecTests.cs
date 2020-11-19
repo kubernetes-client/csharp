@@ -59,13 +59,13 @@ namespace k8s.Tests
                 testOutput.WriteLine("Invoking exec operation...");
 
                 WebSocket clientSocket = await client.WebSocketNamespacedPodExecAsync(
-                    name: "mypod",
-                    @namespace: "mynamespace",
-                    command: new string[] { "/bin/bash" },
-                    container: "mycontainer",
-                    stderr: false,
-                    stdin: false,
-                    stdout: true,
+                    "mypod",
+                    "mynamespace",
+                    new string[] { "/bin/bash" },
+                    "mycontainer",
+                    false,
+                    false,
+                    true,
                     webSocketSubProtol: WebSocketProtocol.ChannelWebSocketProtocol,
                     cancellationToken: TestCancellation).ConfigureAwait(false);
                 Assert.Equal(
@@ -93,8 +93,8 @@ namespace k8s.Tests
                 Assert.Equal(expectedOutput, receivedText);
 
                 await Disconnect(clientSocket, serverSocket,
-                    closeStatus: WebSocketCloseStatus.NormalClosure,
-                    closeStatusDescription: "Normal Closure").ConfigureAwait(false);
+                    WebSocketCloseStatus.NormalClosure,
+                    "Normal Closure").ConfigureAwait(false);
 
                 WebSocketTestAdapter.CompleteTest();
             }
