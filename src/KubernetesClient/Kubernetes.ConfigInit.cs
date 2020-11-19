@@ -313,8 +313,8 @@ namespace k8s
 
         /// <summary>
         /// Creates <see cref="ServiceClientCredentials"/> based on the given config, or returns null if no such credentials are needed.
-        /// <param name="config">kubenetes config object</param>
         /// </summary>
+        /// <param name="config">kubenetes config object</param>
         /// <returns>instance of <see cref="ServiceClientCredentials"/></returns>
         public static ServiceClientCredentials CreateCredentials(KubernetesClientConfiguration config)
         {
