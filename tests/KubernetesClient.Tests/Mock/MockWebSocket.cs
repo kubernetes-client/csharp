@@ -79,7 +79,7 @@ namespace k8s.Tests.Mock
             ArraySegment<byte> buffer,
             CancellationToken cancellationToken)
         {
-            if (this.receiveBuffers.Count == 0)
+            if (receiveBuffers.IsEmpty)
             {
                 await this.receiveEvent.WaitAsync(cancellationToken).ConfigureAwait(false);
             }
