@@ -24,7 +24,7 @@ namespace k8s
             if (originResponse.IsSuccessStatusCode && request.Method == HttpMethod.Get)
             {
                 var query = request.RequestUri.Query;
-                var index = query.IndexOf("watch=true");
+                var index = query.IndexOf("watch=true", StringComparison.InvariantCulture);
                 if (index > 0 && (query[index - 1] == '&' || query[index - 1] == '?'))
                 {
                     originResponse.Content = new LineSeparatedHttpContent(originResponse.Content, cancellationToken);

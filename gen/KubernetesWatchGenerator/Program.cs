@@ -67,7 +67,7 @@ namespace KubernetesWatchGenerator
                 .ToHashSet();
 
             _classNameToPluralMap = swagger.Operations
-                .Where(x => x.Operation.OperationId.StartsWith("list"))
+                .Where(x => x.Operation.OperationId.StartsWith("list", StringComparison.InvariantCulture))
                 .Select(x =>
                 {
                     return new
@@ -82,7 +82,7 @@ namespace KubernetesWatchGenerator
 
             // dictionary only contains "list" plural maps. assign the same plural names to entities those lists support
             _classNameToPluralMap = _classNameToPluralMap
-                .Where(x => x.Key.EndsWith("List"))
+                .Where(x => x.Key.EndsWith("List", StringComparison.InvariantCulture))
                 .Select(x =>
                     new { ClassName = x.Key.Remove(x.Key.Length - 4), PluralName = x.Value })
                 .ToDictionary(x => x.ClassName, x => x.PluralName)

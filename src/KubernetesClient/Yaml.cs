@@ -214,7 +214,7 @@ namespace k8s
 
             private IPropertyDescriptor TrimPropertySuffix(IPropertyDescriptor pd, Type type)
             {
-                if (!pd.Name.EndsWith("Property"))
+                if (!pd.Name.EndsWith("Property", StringComparison.InvariantCulture))
                 {
                     return pd;
                 }
