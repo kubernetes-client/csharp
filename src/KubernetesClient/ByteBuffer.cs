@@ -26,8 +26,8 @@ namespace k8s
         private readonly object lockObject = new object();
 
         private byte[] buffer;
-        private int bytesWritten = 0;
-        private int bytesRead = 0;
+        private int bytesWritten;
+        private int bytesRead;
 
         /// <summary>
         /// Used by a writer to indicate the end of the file. When set, the reader will be notified that no

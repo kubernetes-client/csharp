@@ -9,7 +9,7 @@ namespace k8s.Tests.Mock
 {
     public class MockWebSocket : WebSocket
     {
-        private WebSocketCloseStatus? closeStatus = null;
+        private WebSocketCloseStatus? closeStatus;
         private string closeStatusDescription;
         private WebSocketState state;
         private string subProtocol;
