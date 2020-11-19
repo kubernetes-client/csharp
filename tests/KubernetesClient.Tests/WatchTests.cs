@@ -64,9 +64,9 @@ namespace k8s.Tests
 
                 using (listTask.Watch<V1Pod, V1PodList>((type, item) => { }, e => { onErrorCalled = true; }))
                 {
+                    await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(false); // delay for onerror to be called
                 }
 
-                await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(false); // delay for onerror to be called
                 Assert.True(onErrorCalled);
 
 
