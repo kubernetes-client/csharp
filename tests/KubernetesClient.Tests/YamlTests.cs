@@ -261,7 +261,7 @@ spec:
             var obj = Yaml.LoadFromString<V1Service>(content);
 
             Assert.Equal(3000, obj.Spec.Ports[0].Port);
-            Assert.Equal(3000, (int)obj.Spec.Ports[0].TargetPort);
+            Assert.Equal(3000, int.Parse(obj.Spec.Ports[0].TargetPort));
         }
 
         [Fact]
@@ -290,7 +290,7 @@ spec:
                 },
             };
 
-            var output = Yaml.SaveToString<V1Service>(obj);
+            var output = Yaml.SaveToString(obj);
             Assert.Equal(ToLines(output), ToLines(content));
         }
 

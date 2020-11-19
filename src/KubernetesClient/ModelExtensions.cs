@@ -122,7 +122,7 @@ namespace k8s.Models
         }
 
         /// <summary>Gets the resource version of a Kubernetes list.</summary>
-        public static string ResourceVersion(this IMetadata<V1ListMeta> list) => list.Metadata?.ResourceVersion;
+        public static string ResourceVersion(this IMetadata<V1ListMeta> list) => list?.Metadata?.ResourceVersion;
 
         /// <summary>Adds an owner reference to the object. No attempt is made to ensure the reference is correct or fits with the
         /// other references.
@@ -144,13 +144,13 @@ namespace k8s.Models
 
         /// <summary>Gets the annotations of a Kubernetes object.</summary>
         public static IDictionary<string, string> Annotations(this IMetadata<V1ObjectMeta> obj) =>
-            obj.Metadata?.Annotations;
+            obj?.Metadata?.Annotations;
 
         /// <summary>Gets the creation time of a Kubernetes object, or null if it hasn't been created yet.</summary>
-        public static DateTime? CreationTimestamp(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.CreationTimestamp;
+        public static DateTime? CreationTimestamp(this IMetadata<V1ObjectMeta> obj) => obj?.Metadata?.CreationTimestamp;
 
         /// <summary>Gets the deletion time of a Kubernetes object, or null if it hasn't been scheduled for deletion.</summary>
-        public static DateTime? DeletionTimestamp(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.DeletionTimestamp;
+        public static DateTime? DeletionTimestamp(this IMetadata<V1ObjectMeta> obj) => obj?.Metadata?.DeletionTimestamp;
 
         /// <summary>Ensures that the <see cref="V1ObjectMeta"/> metadata field is set, and returns it.</summary>
         public static V1ObjectMeta EnsureMetadata(this IMetadata<V1ObjectMeta> obj)
@@ -169,7 +169,7 @@ namespace k8s.Models
         }
 
         /// <summary>Gets the <see cref="V1ObjectMeta.Finalizers"/> of a Kubernetes object.</summary>
-        public static IList<string> Finalizers(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.Finalizers;
+        public static IList<string> Finalizers(this IMetadata<V1ObjectMeta> obj) => obj?.Metadata?.Finalizers;
 
         /// <summary>Gets the index of the <see cref="V1OwnerReference"/> that matches the given object, or -1 if no such
         /// reference could be found.
@@ -208,7 +208,7 @@ namespace k8s.Models
         }
 
         /// <summary>Gets the generation a Kubernetes object.</summary>
-        public static long? Generation(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.Generation;
+        public static long? Generation(this IMetadata<V1ObjectMeta> obj) => obj?.Metadata?.Generation;
 
         /// <summary>Returns the given annotation from a Kubernetes object or null if the annotation was not found.</summary>
         public static string GetAnnotation(this IMetadata<V1ObjectMeta> obj, string key)
@@ -284,17 +284,17 @@ namespace k8s.Models
             FindOwnerReference(obj, owner) >= 0;
 
         /// <summary>Gets the labels of a Kubernetes object.</summary>
-        public static IDictionary<string, string> Labels(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.Labels;
+        public static IDictionary<string, string> Labels(this IMetadata<V1ObjectMeta> obj) => obj?.Metadata?.Labels;
 
         /// <summary>Gets the name of a Kubernetes object.</summary>
-        public static string Name(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.Name;
+        public static string Name(this IMetadata<V1ObjectMeta> obj) => obj?.Metadata?.Name;
 
         /// <summary>Gets the namespace of a Kubernetes object.</summary>
-        public static string Namespace(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.NamespaceProperty;
+        public static string Namespace(this IMetadata<V1ObjectMeta> obj) => obj?.Metadata?.NamespaceProperty;
 
         /// <summary>Gets the owner references of a Kubernetes object.</summary>
         public static IList<V1OwnerReference> OwnerReferences(this IMetadata<V1ObjectMeta> obj) =>
-            obj.Metadata?.OwnerReferences;
+            obj?.Metadata?.OwnerReferences;
 
         /// <summary>Removes the given finalizer from a Kubernetes object if it exists.</summary>
         /// <returns>Returns true if the finalizer was removed and false if it didn't exist.</returns>
@@ -321,10 +321,10 @@ namespace k8s.Models
             IKubernetesObject<V1ObjectMeta> owner)
         {
             var index = FindOwnerReference(obj, owner);
-            var ownerRef = index >= 0 ? obj.Metadata.OwnerReferences[index] : null;
+            var ownerRef = index >= 0 ? obj?.Metadata.OwnerReferences[index] : null;
             if (index >= 0)
             {
-                obj.Metadata.OwnerReferences.RemoveAt(index);
+                obj?.Metadata.OwnerReferences.RemoveAt(index);
             }
 
             return ownerRef;
@@ -373,7 +373,7 @@ namespace k8s.Models
             RemoveOwnerReferences(obj, r => r.Matches(owner));
 
         /// <summary>Gets the resource version of a Kubernetes object.</summary>
-        public static string ResourceVersion(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.ResourceVersion;
+        public static string ResourceVersion(this IMetadata<V1ObjectMeta> obj) => obj?.Metadata?.ResourceVersion;
 
         /// <summary>Sets or removes an annotation on a Kubernetes object.</summary>
         public static void SetAnnotation(this IMetadata<V1ObjectMeta> obj, string key, string value)
@@ -422,7 +422,7 @@ namespace k8s.Models
         }
 
         /// <summary>Gets the unique ID of a Kubernetes object.</summary>
-        public static string Uid(this IMetadata<V1ObjectMeta> obj) => obj.Metadata?.Uid;
+        public static string Uid(this IMetadata<V1ObjectMeta> obj) => obj?.Metadata?.Uid;
 
         /// <summary>Ensures that the <see cref="V1ObjectMeta.Annotations"/> field is not null, and returns it.</summary>
         public static IDictionary<string, string> EnsureAnnotations(this V1ObjectMeta meta)

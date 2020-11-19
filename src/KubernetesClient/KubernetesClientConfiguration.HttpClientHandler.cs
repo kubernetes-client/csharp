@@ -38,6 +38,11 @@ namespace k8s
 
         public void AddCertificates(HttpClientHandler handler)
         {
+            if (handler == null)
+            {
+                throw new ArgumentNullException(nameof(handler));
+            }
+
             if ((!string.IsNullOrWhiteSpace(this.ClientCertificateData) ||
                  !string.IsNullOrWhiteSpace(this.ClientCertificateFilePath)) &&
                 (!string.IsNullOrWhiteSpace(this.ClientCertificateKeyData) ||

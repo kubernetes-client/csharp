@@ -265,6 +265,11 @@ namespace k8s
                 throw new ArgumentNullException(nameof(caCerts));
             }
 
+            if (chain == null)
+            {
+                throw new ArgumentNullException(nameof(chain));
+            }
+
             // If the certificate is a valid, signed certificate, return true.
             if (sslPolicyErrors == SslPolicyErrors.None)
             {

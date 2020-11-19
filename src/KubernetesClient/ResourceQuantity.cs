@@ -216,11 +216,6 @@ namespace k8s.Models
             emitter?.Emit(new Scalar(this.ToString()));
         }
 
-        public static implicit operator decimal(ResourceQuantity v)
-        {
-            return v._unitlessValue.ToDecimal();
-        }
-
         public static implicit operator ResourceQuantity(decimal v)
         {
             return new ResourceQuantity(v, 0, SuffixFormat.DecimalExponent);

@@ -82,7 +82,7 @@ namespace k8s.Tests
         protected CancellationTokenSource CancellationSource { get; } = new CancellationTokenSource();
 
         /// <summary>
-        ///     A <see cref="System.Threading.CancellationToken"/> that can be used to cancel asynchronous operations.
+        ///     A <see cref="CancellationToken"/> that can be used to cancel asynchronous operations.
         /// </summary>
         /// <seealso cref="CancellationSource"/>
         protected CancellationToken TestCancellation => CancellationSource.Token;

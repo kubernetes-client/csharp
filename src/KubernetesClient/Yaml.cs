@@ -27,7 +27,7 @@ namespace k8s
 
             public object ReadYaml(IParser parser, Type type)
             {
-                if (parser?.Current is YamlDotNet.Core.Events.Scalar scalar)
+                if (parser?.Current is Scalar scalar)
                 {
                     try
                     {
@@ -50,7 +50,7 @@ namespace k8s
             public void WriteYaml(IEmitter emitter, object value, Type type)
             {
                 var obj = (byte[])value;
-                emitter.Emit(new YamlDotNet.Core.Events.Scalar(Encoding.UTF8.GetString(obj)));
+                emitter?.Emit(new Scalar(Encoding.UTF8.GetString(obj)));
             }
         }
 
@@ -96,6 +96,11 @@ namespace k8s
         /// </param>
         public static List<object> LoadAllFromString(string content, Dictionary<string, Type> typeMap)
         {
+            if (typeMap == null)
+            {
+                throw new ArgumentNullException(nameof(typeMap));
+            }
+
             var deserializer =
                 new DeserializerBuilder()
                     .WithNamingConvention(new CamelCaseNamingConvention())
