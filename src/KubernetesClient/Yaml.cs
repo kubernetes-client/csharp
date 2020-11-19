@@ -112,7 +112,8 @@ namespace k8s
             var types = new List<Type>();
             var parser = new Parser(new StringReader(content));
             parser.Consume<StreamStart>();
-            while (parser.TryConsume<DocumentStart>(out _))
+            // while (parser.TryConsume<DocumentStart>(out _))
+            while (parser.Accept<DocumentStart>())
             {
                 var obj = deserializer.Deserialize<KubernetesObject>(parser);
                 types.Add(typeMap[obj.ApiVersion + "/" + obj.Kind]);
@@ -129,7 +130,7 @@ namespace k8s
             parser.Consume<StreamStart>();
             var ix = 0;
             var results = new List<object>();
-            while (parser.TryConsume<DocumentStart>(out _))
+            while (parser.Accept<DocumentStart>())
             {
                 var objType = types[ix++];
                 var obj = deserializer.Deserialize(parser, objType);
