@@ -23,8 +23,8 @@ namespace k8s
             // all watches are GETs, so we can ignore others
             if (originResponse.IsSuccessStatusCode && request.Method == HttpMethod.Get)
             {
-                string query = request.RequestUri.Query;
-                int index = query.IndexOf("watch=true");
+                var query = request.RequestUri.Query;
+                var index = query.IndexOf("watch=true", StringComparison.InvariantCulture);
                 if (index > 0 && (query[index - 1] == '&' || query[index - 1] == '?'))
                 {
                     originResponse.Content = new LineSeparatedHttpContent(originResponse.Content, cancellationToken);

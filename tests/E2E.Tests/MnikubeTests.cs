@@ -109,7 +109,6 @@ namespace k8s.E2E
                     pod = client.ListNamespacedPod(namespaceParameter).Items.First(p => p.Metadata.Name == podName);
 
                     Assert.Equal("test-jsonpatch", pod.Labels()["test"]);
-
                 }
 
                 {

@@ -59,7 +59,7 @@ namespace k8s
         /// </summary>
         public void Start()
         {
-            this.runLoop = Task.Run(async () => await RunLoop(cts.Token).ConfigureAwait(false));
+            runLoop = Task.Run(async () => await RunLoop(cts.Token).ConfigureAwait(false));
         }
 
 
@@ -94,16 +94,16 @@ namespace k8s
         /// </returns>
         public Stream GetStream(byte? inputIndex, byte? outputIndex)
         {
-            lock (this.buffers)
+            lock (buffers)
             {
-                if (inputIndex != null && !this.buffers.ContainsKey(inputIndex.Value))
+                if (inputIndex != null && !buffers.ContainsKey(inputIndex.Value))
                 {
                     var buffer = new ByteBuffer();
-                    this.buffers.Add(inputIndex.Value, buffer);
+                    buffers.Add(inputIndex.Value, buffer);
                 }
             }
 
-            var inputBuffer = inputIndex == null ? null : this.buffers[inputIndex.Value];
+            var inputBuffer = inputIndex == null ? null : buffers[inputIndex.Value];
             return new MuxedStream(this, inputBuffer, outputIndex);
         }
 
@@ -129,7 +129,7 @@ namespace k8s
         /// A <see cref="Task"/> which represents the asynchronous operation.
         /// </returns>
         public Task Write(ChannelIndex index, byte[] buffer, int offset, int count,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             return Write((byte)index, buffer, offset, count, cancellationToken);
         }
@@ -156,16 +156,16 @@ namespace k8s
         /// A <see cref="Task"/> which represents the asynchronous operation.
         /// </returns>
         public async Task Write(byte index, byte[] buffer, int offset, int count,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
-            byte[] writeBuffer = ArrayPool<byte>.Shared.Rent(count + 1);
+            var writeBuffer = ArrayPool<byte>.Shared.Rent(count + 1);
 
             try
             {
                 writeBuffer[0] = (byte)index;
                 Array.Copy(buffer, offset, writeBuffer, 1, count);
-                ArraySegment<byte> segment = new ArraySegment<byte>(writeBuffer, 0, count + 1);
-                await this.webSocket.SendAsync(segment, WebSocketMessageType.Binary, false, cancellationToken)
+                var segment = new ArraySegment<byte>(writeBuffer, 0, count + 1);
+                await webSocket.SendAsync(segment, WebSocketMessageType.Binary, false, cancellationToken)
                     .ConfigureAwait(false);
             }
             finally
@@ -177,19 +177,19 @@ namespace k8s
         protected async Task RunLoop(CancellationToken cancellationToken)
         {
             // Get a 1KB buffer
-            byte[] buffer = ArrayPool<byte>.Shared.Rent(1024 * 1024);
+            var buffer = ArrayPool<byte>.Shared.Rent(1024 * 1024);
             // This maps remembers bytes skipped for each stream.
-            Dictionary<byte, int> streamBytesToSkipMap = new Dictionary<byte, int>();
+            var streamBytesToSkipMap = new Dictionary<byte, int>();
             try
             {
                 var segment = new ArraySegment<byte>(buffer);
 
-                while (!cancellationToken.IsCancellationRequested && this.webSocket.CloseStatus == null)
+                while (!cancellationToken.IsCancellationRequested && webSocket.CloseStatus == null)
                 {
                     // We always get data in this format:
                     // [stream index] (1 for stdout, 2 for stderr)
                     // [payload]
-                    var result = await this.webSocket.ReceiveAsync(segment, cancellationToken).ConfigureAwait(false);
+                    var result = await webSocket.ReceiveAsync(segment, cancellationToken).ConfigureAwait(false);
 
                     // Ignore empty messages
                     if (result.Count < 2)
@@ -202,15 +202,15 @@ namespace k8s
 
                     while (true)
                     {
-                        int bytesToSkip = 0;
+                        var bytesToSkip = 0;
                         if (!streamBytesToSkipMap.TryGetValue(streamIndex, out bytesToSkip))
                         {
                             // When used in port-forwarding, the first 2 bytes from the web socket is port bytes, skip.
                             // https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/server/portforward/websocket.go
-                            bytesToSkip = this.streamType == StreamType.PortForward ? 2 : 0;
+                            bytesToSkip = streamType == StreamType.PortForward ? 2 : 0;
                         }
 
-                        int bytesCount = result.Count - extraByteCount;
+                        var bytesCount = result.Count - extraByteCount;
                         if (bytesToSkip > 0 && bytesToSkip >= bytesCount)
                         {
                             // skip the entire data.
@@ -224,9 +224,9 @@ namespace k8s
                             extraByteCount += bytesToSkip;
                             bytesToSkip = 0;
 
-                            if (this.buffers.ContainsKey(streamIndex))
+                            if (buffers.ContainsKey(streamIndex))
                             {
-                                this.buffers[streamIndex].Write(buffer, extraByteCount, bytesCount);
+                                buffers[streamIndex].Write(buffer, extraByteCount, bytesCount);
                             }
                         }
 
@@ -238,21 +238,21 @@ namespace k8s
                         }
 
                         extraByteCount = 0;
-                        result = await this.webSocket.ReceiveAsync(segment, cancellationToken).ConfigureAwait(false);
+                        result = await webSocket.ReceiveAsync(segment, cancellationToken).ConfigureAwait(false);
                     }
                 }
             }
             finally
             {
                 ArrayPool<byte>.Shared.Return(buffer);
-                this.runLoop = null;
+                runLoop = null;
 
-                foreach (var b in this.buffers.Values)
+                foreach (var b in buffers.Values)
                 {
                     b.WriteEnd();
                 }
 
-                this.ConnectionClosed?.Invoke(this, EventArgs.Empty);
+                ConnectionClosed?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -264,10 +264,11 @@ namespace k8s
                 {
                     try
                     {
-                        if (this.runLoop != null)
+                        if (runLoop != null)
                         {
-                            this.cts.Cancel();
-                            this.runLoop.Wait();
+                            cts.Cancel();
+                            cts.Dispose();
+                            runLoop.Wait();
                         }
                     }
                     catch (Exception ex)
@@ -276,9 +277,9 @@ namespace k8s
                         Debug.Write(ex);
                     }
 
-                    if (this.ownsSocket)
+                    if (ownsSocket)
                     {
-                        this.webSocket.Dispose();
+                        webSocket.Dispose();
                     }
                 }
 
@@ -296,7 +297,7 @@ namespace k8s
         public void Dispose()
         {
             // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-            Dispose(disposing: true);
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
     }

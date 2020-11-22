@@ -53,7 +53,7 @@ namespace k8s
         /// <summary>
         /// Initializes a new instance of the <see cref="Watcher{T}"/> class.
         /// </summary>
-        /// <param name="streamReader">
+        /// <param name="streamReaderCreator">
         /// A <see cref="StreamReader"/> from which to read the events.
         /// </param>
         /// <param name="onEvent">
@@ -76,8 +76,8 @@ namespace k8s
         /// <summary>
         /// Initializes a new instance of the <see cref="Watcher{T}"/> class.
         /// </summary>
-        /// <param name="streamReader">
-        /// A <see cref="StreamReader"/> from which to read the events.
+        /// <param name="streamReaderCreator">
+        /// A <see cref="TextReader"/> from which to read the events.
         /// </param>
         /// <param name="onEvent">
         /// The action to invoke when the server sends a new event.
@@ -141,18 +141,18 @@ namespace k8s
                     try
                     {
                         var genericEvent =
-                            SafeJsonConvert.DeserializeObject<k8s.Watcher<KubernetesObject>.WatchEvent>(line);
+                            SafeJsonConvert.DeserializeObject<Watcher<KubernetesObject>.WatchEvent>(line);
 
                         if (genericEvent.Object.Kind == "Status")
                         {
-                            var statusEvent = SafeJsonConvert.DeserializeObject<k8s.Watcher<V1Status>.WatchEvent>(line);
+                            var statusEvent = SafeJsonConvert.DeserializeObject<Watcher<V1Status>.WatchEvent>(line);
                             var exception = new KubernetesException(statusEvent.Object);
-                            this.OnError?.Invoke(exception);
+                            OnError?.Invoke(exception);
                         }
                         else
                         {
-                            var @event = SafeJsonConvert.DeserializeObject<k8s.Watcher<T>.WatchEvent>(line);
-                            this.OnEvent?.Invoke(@event.Type, @event.Object);
+                            var @event = SafeJsonConvert.DeserializeObject<WatchEvent>(line);
+                            OnEvent?.Invoke(@event.Type, @event.Object);
                         }
                     }
                     catch (Exception e)
@@ -180,7 +180,8 @@ namespace k8s
             {
                 if (disposing)
                 {
-                    _cts.Cancel();
+                    _cts?.Cancel();
+                    _cts?.Dispose();
                     _streamReader?.Dispose();
                 }
 
@@ -198,7 +199,7 @@ namespace k8s
         public void Dispose()
         {
             // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-            Dispose(disposing: true);
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
     }

@@ -13,7 +13,7 @@ namespace k8s
 {
     public partial class Kubernetes
     {
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1ConfigMap>> WatchNamespacedConfigMapAsync(
             string name,
             string @namespace,
@@ -37,7 +37,7 @@ namespace k8s
             return WatchObjectAsync<V1ConfigMap>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1Endpoints>> WatchNamespacedEndpointsAsync(
             string name,
             string @namespace,
@@ -61,7 +61,7 @@ namespace k8s
             return WatchObjectAsync<V1Endpoints>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<Corev1Event>> WatchNamespacedEventAsync(
             string name,
             string @namespace,
@@ -85,7 +85,7 @@ namespace k8s
             return WatchObjectAsync<Corev1Event>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1LimitRange>> WatchNamespacedLimitRangeAsync(
             string name,
             string @namespace,
@@ -109,7 +109,7 @@ namespace k8s
             return WatchObjectAsync<V1LimitRange>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1PersistentVolumeClaim>> WatchNamespacedPersistentVolumeClaimAsync(
             string name,
             string @namespace,
@@ -133,7 +133,7 @@ namespace k8s
             return WatchObjectAsync<V1PersistentVolumeClaim>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1Pod>> WatchNamespacedPodAsync(
             string name,
             string @namespace,
@@ -157,7 +157,7 @@ namespace k8s
             return WatchObjectAsync<V1Pod>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1PodTemplate>> WatchNamespacedPodTemplateAsync(
             string name,
             string @namespace,
@@ -181,7 +181,7 @@ namespace k8s
             return WatchObjectAsync<V1PodTemplate>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1ReplicationController>> WatchNamespacedReplicationControllerAsync(
             string name,
             string @namespace,
@@ -205,7 +205,7 @@ namespace k8s
             return WatchObjectAsync<V1ReplicationController>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1ResourceQuota>> WatchNamespacedResourceQuotaAsync(
             string name,
             string @namespace,
@@ -229,7 +229,7 @@ namespace k8s
             return WatchObjectAsync<V1ResourceQuota>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1Secret>> WatchNamespacedSecretAsync(
             string name,
             string @namespace,
@@ -253,7 +253,7 @@ namespace k8s
             return WatchObjectAsync<V1Secret>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1ServiceAccount>> WatchNamespacedServiceAccountAsync(
             string name,
             string @namespace,
@@ -277,7 +277,7 @@ namespace k8s
             return WatchObjectAsync<V1ServiceAccount>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1Service>> WatchNamespacedServiceAsync(
             string name,
             string @namespace,
@@ -301,7 +301,7 @@ namespace k8s
             return WatchObjectAsync<V1Service>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1Namespace>> WatchNamespaceAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -324,7 +324,7 @@ namespace k8s
             return WatchObjectAsync<V1Namespace>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1Node>> WatchNodeAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -347,7 +347,7 @@ namespace k8s
             return WatchObjectAsync<V1Node>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1PersistentVolume>> WatchPersistentVolumeAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -370,7 +370,7 @@ namespace k8s
             return WatchObjectAsync<V1PersistentVolume>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1MutatingWebhookConfiguration>> WatchMutatingWebhookConfigurationAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -393,7 +393,7 @@ namespace k8s
             return WatchObjectAsync<V1MutatingWebhookConfiguration>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1ValidatingWebhookConfiguration>> WatchValidatingWebhookConfigurationAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -416,7 +416,7 @@ namespace k8s
             return WatchObjectAsync<V1ValidatingWebhookConfiguration>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1MutatingWebhookConfiguration>> WatchMutatingWebhookConfigurationAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -439,7 +439,7 @@ namespace k8s
             return WatchObjectAsync<V1beta1MutatingWebhookConfiguration>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1ValidatingWebhookConfiguration>> WatchValidatingWebhookConfigurationAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -462,7 +462,7 @@ namespace k8s
             return WatchObjectAsync<V1beta1ValidatingWebhookConfiguration>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1CustomResourceDefinition>> WatchCustomResourceDefinitionAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -485,7 +485,7 @@ namespace k8s
             return WatchObjectAsync<V1CustomResourceDefinition>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1CustomResourceDefinition>> WatchCustomResourceDefinitionAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -508,7 +508,7 @@ namespace k8s
             return WatchObjectAsync<V1beta1CustomResourceDefinition>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1APIService>> WatchAPIServiceAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -531,7 +531,7 @@ namespace k8s
             return WatchObjectAsync<V1APIService>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1APIService>> WatchAPIServiceAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -554,7 +554,7 @@ namespace k8s
             return WatchObjectAsync<V1beta1APIService>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1ControllerRevision>> WatchNamespacedControllerRevisionAsync(
             string name,
             string @namespace,
@@ -578,7 +578,7 @@ namespace k8s
             return WatchObjectAsync<V1ControllerRevision>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1DaemonSet>> WatchNamespacedDaemonSetAsync(
             string name,
             string @namespace,
@@ -602,7 +602,7 @@ namespace k8s
             return WatchObjectAsync<V1DaemonSet>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1Deployment>> WatchNamespacedDeploymentAsync(
             string name,
             string @namespace,
@@ -626,7 +626,7 @@ namespace k8s
             return WatchObjectAsync<V1Deployment>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1ReplicaSet>> WatchNamespacedReplicaSetAsync(
             string name,
             string @namespace,
@@ -650,7 +650,7 @@ namespace k8s
             return WatchObjectAsync<V1ReplicaSet>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1StatefulSet>> WatchNamespacedStatefulSetAsync(
             string name,
             string @namespace,
@@ -674,7 +674,7 @@ namespace k8s
             return WatchObjectAsync<V1StatefulSet>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1HorizontalPodAutoscaler>> WatchNamespacedHorizontalPodAutoscalerAsync(
             string name,
             string @namespace,
@@ -698,7 +698,7 @@ namespace k8s
             return WatchObjectAsync<V1HorizontalPodAutoscaler>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V2beta1HorizontalPodAutoscaler>> WatchNamespacedHorizontalPodAutoscalerAsync(
             string name,
             string @namespace,
@@ -722,7 +722,7 @@ namespace k8s
             return WatchObjectAsync<V2beta1HorizontalPodAutoscaler>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V2beta2HorizontalPodAutoscaler>> WatchNamespacedHorizontalPodAutoscalerAsync(
             string name,
             string @namespace,
@@ -746,7 +746,7 @@ namespace k8s
             return WatchObjectAsync<V2beta2HorizontalPodAutoscaler>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1Job>> WatchNamespacedJobAsync(
             string name,
             string @namespace,
@@ -770,7 +770,7 @@ namespace k8s
             return WatchObjectAsync<V1Job>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1CronJob>> WatchNamespacedCronJobAsync(
             string name,
             string @namespace,
@@ -794,7 +794,7 @@ namespace k8s
             return WatchObjectAsync<V1beta1CronJob>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V2alpha1CronJob>> WatchNamespacedCronJobAsync(
             string name,
             string @namespace,
@@ -818,7 +818,7 @@ namespace k8s
             return WatchObjectAsync<V2alpha1CronJob>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1CertificateSigningRequest>> WatchCertificateSigningRequestAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -841,7 +841,7 @@ namespace k8s
             return WatchObjectAsync<V1CertificateSigningRequest>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1CertificateSigningRequest>> WatchCertificateSigningRequestAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -864,7 +864,7 @@ namespace k8s
             return WatchObjectAsync<V1beta1CertificateSigningRequest>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1Lease>> WatchNamespacedLeaseAsync(
             string name,
             string @namespace,
@@ -888,7 +888,7 @@ namespace k8s
             return WatchObjectAsync<V1Lease>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1Lease>> WatchNamespacedLeaseAsync(
             string name,
             string @namespace,
@@ -912,7 +912,7 @@ namespace k8s
             return WatchObjectAsync<V1beta1Lease>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1EndpointSlice>> WatchNamespacedEndpointSliceAsync(
             string name,
             string @namespace,
@@ -936,7 +936,7 @@ namespace k8s
             return WatchObjectAsync<V1beta1EndpointSlice>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<Eventsv1Event>> WatchNamespacedEventAsync(
             string name,
             string @namespace,
@@ -960,7 +960,7 @@ namespace k8s
             return WatchObjectAsync<Eventsv1Event>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1Event>> WatchNamespacedEventAsync(
             string name,
             string @namespace,
@@ -984,7 +984,7 @@ namespace k8s
             return WatchObjectAsync<V1beta1Event>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<Extensionsv1beta1Ingress>> WatchNamespacedIngressAsync(
             string name,
             string @namespace,
@@ -1008,7 +1008,7 @@ namespace k8s
             return WatchObjectAsync<Extensionsv1beta1Ingress>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1alpha1FlowSchema>> WatchFlowSchemaAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1031,7 +1031,7 @@ namespace k8s
             return WatchObjectAsync<V1alpha1FlowSchema>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1alpha1PriorityLevelConfiguration>> WatchPriorityLevelConfigurationAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1054,7 +1054,7 @@ namespace k8s
             return WatchObjectAsync<V1alpha1PriorityLevelConfiguration>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1IngressClass>> WatchIngressClassAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1077,7 +1077,7 @@ namespace k8s
             return WatchObjectAsync<V1IngressClass>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1Ingress>> WatchNamespacedIngressAsync(
             string name,
             string @namespace,
@@ -1101,7 +1101,7 @@ namespace k8s
             return WatchObjectAsync<V1Ingress>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1NetworkPolicy>> WatchNamespacedNetworkPolicyAsync(
             string name,
             string @namespace,
@@ -1125,7 +1125,7 @@ namespace k8s
             return WatchObjectAsync<V1NetworkPolicy>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1IngressClass>> WatchIngressClassAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1148,7 +1148,7 @@ namespace k8s
             return WatchObjectAsync<V1beta1IngressClass>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<Networkingv1beta1Ingress>> WatchNamespacedIngressAsync(
             string name,
             string @namespace,
@@ -1172,7 +1172,7 @@ namespace k8s
             return WatchObjectAsync<Networkingv1beta1Ingress>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1alpha1RuntimeClass>> WatchRuntimeClassAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1195,7 +1195,7 @@ namespace k8s
             return WatchObjectAsync<V1alpha1RuntimeClass>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1RuntimeClass>> WatchRuntimeClassAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1218,7 +1218,7 @@ namespace k8s
             return WatchObjectAsync<V1beta1RuntimeClass>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1PodDisruptionBudget>> WatchNamespacedPodDisruptionBudgetAsync(
             string name,
             string @namespace,
@@ -1242,7 +1242,7 @@ namespace k8s
             return WatchObjectAsync<V1beta1PodDisruptionBudget>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1PodSecurityPolicy>> WatchPodSecurityPolicyAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1265,7 +1265,7 @@ namespace k8s
             return WatchObjectAsync<V1beta1PodSecurityPolicy>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1ClusterRoleBinding>> WatchClusterRoleBindingAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1288,7 +1288,7 @@ namespace k8s
             return WatchObjectAsync<V1ClusterRoleBinding>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1ClusterRole>> WatchClusterRoleAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1311,7 +1311,7 @@ namespace k8s
             return WatchObjectAsync<V1ClusterRole>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1RoleBinding>> WatchNamespacedRoleBindingAsync(
             string name,
             string @namespace,
@@ -1335,7 +1335,7 @@ namespace k8s
             return WatchObjectAsync<V1RoleBinding>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1Role>> WatchNamespacedRoleAsync(
             string name,
             string @namespace,
@@ -1359,7 +1359,7 @@ namespace k8s
             return WatchObjectAsync<V1Role>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1alpha1ClusterRoleBinding>> WatchClusterRoleBindingAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1382,7 +1382,7 @@ namespace k8s
             return WatchObjectAsync<V1alpha1ClusterRoleBinding>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1alpha1ClusterRole>> WatchClusterRoleAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1405,7 +1405,7 @@ namespace k8s
             return WatchObjectAsync<V1alpha1ClusterRole>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1alpha1RoleBinding>> WatchNamespacedRoleBindingAsync(
             string name,
             string @namespace,
@@ -1429,7 +1429,7 @@ namespace k8s
             return WatchObjectAsync<V1alpha1RoleBinding>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1alpha1Role>> WatchNamespacedRoleAsync(
             string name,
             string @namespace,
@@ -1453,7 +1453,7 @@ namespace k8s
             return WatchObjectAsync<V1alpha1Role>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1ClusterRoleBinding>> WatchClusterRoleBindingAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1476,7 +1476,7 @@ namespace k8s
             return WatchObjectAsync<V1beta1ClusterRoleBinding>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1ClusterRole>> WatchClusterRoleAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1499,7 +1499,7 @@ namespace k8s
             return WatchObjectAsync<V1beta1ClusterRole>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1RoleBinding>> WatchNamespacedRoleBindingAsync(
             string name,
             string @namespace,
@@ -1523,7 +1523,7 @@ namespace k8s
             return WatchObjectAsync<V1beta1RoleBinding>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1Role>> WatchNamespacedRoleAsync(
             string name,
             string @namespace,
@@ -1547,7 +1547,7 @@ namespace k8s
             return WatchObjectAsync<V1beta1Role>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1PriorityClass>> WatchPriorityClassAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1570,7 +1570,7 @@ namespace k8s
             return WatchObjectAsync<V1PriorityClass>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1alpha1PriorityClass>> WatchPriorityClassAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1593,7 +1593,7 @@ namespace k8s
             return WatchObjectAsync<V1alpha1PriorityClass>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1PriorityClass>> WatchPriorityClassAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1616,7 +1616,7 @@ namespace k8s
             return WatchObjectAsync<V1beta1PriorityClass>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1alpha1PodPreset>> WatchNamespacedPodPresetAsync(
             string name,
             string @namespace,
@@ -1640,7 +1640,7 @@ namespace k8s
             return WatchObjectAsync<V1alpha1PodPreset>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1CSIDriver>> WatchCSIDriverAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1663,7 +1663,7 @@ namespace k8s
             return WatchObjectAsync<V1CSIDriver>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1CSINode>> WatchCSINodeAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1686,7 +1686,7 @@ namespace k8s
             return WatchObjectAsync<V1CSINode>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1StorageClass>> WatchStorageClassAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1709,7 +1709,7 @@ namespace k8s
             return WatchObjectAsync<V1StorageClass>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1VolumeAttachment>> WatchVolumeAttachmentAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1732,7 +1732,7 @@ namespace k8s
             return WatchObjectAsync<V1VolumeAttachment>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1alpha1VolumeAttachment>> WatchVolumeAttachmentAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1755,7 +1755,7 @@ namespace k8s
             return WatchObjectAsync<V1alpha1VolumeAttachment>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1CSIDriver>> WatchCSIDriverAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1778,7 +1778,7 @@ namespace k8s
             return WatchObjectAsync<V1beta1CSIDriver>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1CSINode>> WatchCSINodeAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1801,7 +1801,7 @@ namespace k8s
             return WatchObjectAsync<V1beta1CSINode>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1StorageClass>> WatchStorageClassAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1824,7 +1824,7 @@ namespace k8s
             return WatchObjectAsync<V1beta1StorageClass>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
-        /// <inheritdoc>
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1VolumeAttachment>> WatchVolumeAttachmentAsync(
             string name,
             bool? allowWatchBookmarks = null,

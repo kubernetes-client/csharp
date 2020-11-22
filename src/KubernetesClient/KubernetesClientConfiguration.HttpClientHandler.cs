@@ -10,11 +10,11 @@ namespace k8s
             var httpClientHandler = new HttpClientHandler();
 
 #if !NET452
-            var uriScheme = new Uri(this.Host).Scheme;
+            var uriScheme = new Uri(Host).Scheme;
 
             if (uriScheme == "https")
             {
-                if (this.SkipTlsVerify)
+                if (SkipTlsVerify)
                 {
                     httpClientHandler.ServerCertificateCustomValidationCallback =
                         (sender, certificate, chain, sslPolicyErrors) => true;
@@ -24,7 +24,7 @@ namespace k8s
                     httpClientHandler.ServerCertificateCustomValidationCallback =
                         (sender, certificate, chain, sslPolicyErrors) =>
                         {
-                            return Kubernetes.CertificateValidationCallBack(sender, this.SslCaCerts, certificate, chain,
+                            return Kubernetes.CertificateValidationCallBack(sender, SslCaCerts, certificate, chain,
                                 sslPolicyErrors);
                         };
                 }
@@ -38,10 +38,15 @@ namespace k8s
 
         public void AddCertificates(HttpClientHandler handler)
         {
-            if ((!string.IsNullOrWhiteSpace(this.ClientCertificateData) ||
-                 !string.IsNullOrWhiteSpace(this.ClientCertificateFilePath)) &&
-                (!string.IsNullOrWhiteSpace(this.ClientCertificateKeyData) ||
-                 !string.IsNullOrWhiteSpace(this.ClientKeyFilePath)))
+            if (handler == null)
+            {
+                throw new ArgumentNullException(nameof(handler));
+            }
+
+            if ((!string.IsNullOrWhiteSpace(ClientCertificateData) ||
+                 !string.IsNullOrWhiteSpace(ClientCertificateFilePath)) &&
+                (!string.IsNullOrWhiteSpace(ClientCertificateKeyData) ||
+                 !string.IsNullOrWhiteSpace(ClientKeyFilePath)))
             {
                 var cert = CertUtils.GeneratePfx(this);
 

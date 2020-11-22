@@ -10,7 +10,7 @@ namespace k8s
         /// Executes a command in a container in a pod.
         /// </summary>
         /// <param name="name">
-        /// The name of the pod which contains the container in which to execute the ocmmand.
+        /// The name of the pod which contains the container in which to execute the command.
         /// </param>
         /// <param name="namespace">
         /// The namespace of the container.
@@ -20,6 +20,9 @@ namespace k8s
         /// </param>
         /// <param name="command">
         /// The command to execute.
+        /// </param>
+        /// <param name="tty">
+        /// if allocate a pseudo-TTY
         /// </param>
         /// <param name="action">
         /// A callback which processes the standard input, standard output and standard error.

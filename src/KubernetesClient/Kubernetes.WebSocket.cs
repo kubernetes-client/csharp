@@ -30,7 +30,7 @@ namespace k8s
         public Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default",
             string command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true,
             bool tty = true, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             return WebSocketNamespacedPodExecAsync(name, @namespace, new string[] { command }, container, stderr, stdin,
                 stdout, tty, webSocketSubProtol, customHeaders, cancellationToken);
@@ -43,12 +43,12 @@ namespace k8s
             bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true,
             string webSocketSubProtol = WebSocketProtocol.V4BinaryWebsocketProtocol,
             Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
-            WebSocket webSocket = await this.WebSocketNamespacedPodExecAsync(name: name, @namespace: @namespace,
-                    command: command, container: container, tty: tty, cancellationToken: cancellationToken)
+            var webSocket = await WebSocketNamespacedPodExecAsync(name, @namespace,
+                    command, container, tty: tty, cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
-            StreamDemuxer muxer = new StreamDemuxer(webSocket);
+            var muxer = new StreamDemuxer(webSocket);
             return muxer;
         }
 
@@ -58,7 +58,7 @@ namespace k8s
             bool stdout = true, bool tty = true,
             string webSocketSubProtol = WebSocketProtocol.V4BinaryWebsocketProtocol,
             Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             if (name == null)
             {
@@ -91,12 +91,12 @@ namespace k8s
             }
 
             // Tracing
-            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            var shouldTrace = ServiceClientTracing.IsEnabled;
             string invocationId = null;
             if (shouldTrace)
             {
                 invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                var tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("command", command);
                 tracingParameters.Add("container", container);
                 tracingParameters.Add("name", name);
@@ -115,7 +115,7 @@ namespace k8s
             var uriBuilder = new UriBuilder(BaseUri);
             uriBuilder.Scheme = BaseUri.Scheme == "https" ? "wss" : "ws";
 
-            if (!uriBuilder.Path.EndsWith("/"))
+            if (!uriBuilder.Path.EndsWith("/", StringComparison.InvariantCulture))
             {
                 uriBuilder.Path += "/";
             }
@@ -144,7 +144,7 @@ namespace k8s
             uriBuilder.Query =
                 query.ToString(1, query.Length - 1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
 
-            return this.StreamConnectAsync(uriBuilder.Uri, invocationId, webSocketSubProtol, customHeaders,
+            return StreamConnectAsync(uriBuilder.Uri, invocationId, webSocketSubProtol, customHeaders,
                 cancellationToken);
         }
 
@@ -152,7 +152,7 @@ namespace k8s
         public Task<WebSocket> WebSocketNamespacedPodPortForwardAsync(string name, string @namespace,
             IEnumerable<int> ports, string webSocketSubProtocol = null,
             Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             if (name == null)
             {
@@ -170,12 +170,12 @@ namespace k8s
             }
 
             // Tracing
-            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            var shouldTrace = ServiceClientTracing.IsEnabled;
             string invocationId = null;
             if (shouldTrace)
             {
                 invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                var tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("name", name);
                 tracingParameters.Add("@namespace", @namespace);
                 tracingParameters.Add("ports", ports);
@@ -186,10 +186,10 @@ namespace k8s
             }
 
             // Construct URL
-            var uriBuilder = new UriBuilder(this.BaseUri);
-            uriBuilder.Scheme = this.BaseUri.Scheme == "https" ? "wss" : "ws";
+            var uriBuilder = new UriBuilder(BaseUri);
+            uriBuilder.Scheme = BaseUri.Scheme == "https" ? "wss" : "ws";
 
-            if (!uriBuilder.Path.EndsWith("/"))
+            if (!uriBuilder.Path.EndsWith("/", StringComparison.InvariantCulture))
             {
                 uriBuilder.Path += "/";
             }
@@ -215,9 +215,9 @@ namespace k8s
 
         /// <inheritdoc/>
         public Task<WebSocket> WebSocketNamespacedPodAttachAsync(string name, string @namespace,
-            string container = default(string), bool stderr = true, bool stdin = false, bool stdout = true,
+            string container = default, bool stderr = true, bool stdin = false, bool stdout = true,
             bool tty = false, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             if (name == null)
             {
@@ -230,12 +230,12 @@ namespace k8s
             }
 
             // Tracing
-            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            var shouldTrace = ServiceClientTracing.IsEnabled;
             string invocationId = null;
             if (shouldTrace)
             {
                 invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                var tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("container", container);
                 tracingParameters.Add("name", name);
                 tracingParameters.Add("namespace", @namespace);
@@ -250,10 +250,10 @@ namespace k8s
             }
 
             // Construct URL
-            var uriBuilder = new UriBuilder(this.BaseUri);
-            uriBuilder.Scheme = this.BaseUri.Scheme == "https" ? "wss" : "ws";
+            var uriBuilder = new UriBuilder(BaseUri);
+            uriBuilder.Scheme = BaseUri.Scheme == "https" ? "wss" : "ws";
 
-            if (!uriBuilder.Path.EndsWith("/"))
+            if (!uriBuilder.Path.EndsWith("/", StringComparison.InvariantCulture))
             {
                 uriBuilder.Path += "/";
             }
@@ -275,12 +275,17 @@ namespace k8s
 
         protected async Task<WebSocket> StreamConnectAsync(Uri uri, string invocationId = null,
             string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
-            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            if (uri == null)
+            {
+                throw new ArgumentNullException(nameof(uri));
+            }
+
+            var shouldTrace = ServiceClientTracing.IsEnabled;
 
             // Create WebSocket transport objects
-            WebSocketBuilder webSocketBuilder = this.CreateWebSocketBuilder();
+            var webSocketBuilder = CreateWebSocketBuilder();
 
             // Set Headers
             if (customHeaders != null)
@@ -295,17 +300,17 @@ namespace k8s
 #if NET452
             foreach (var cert in ((WebRequestHandler)this.HttpClientHandler).ClientCertificates.OfType<X509Certificate2>())
 #else
-            foreach (var cert in this.HttpClientHandler.ClientCertificates.OfType<X509Certificate2>())
+            foreach (var cert in HttpClientHandler.ClientCertificates.OfType<X509Certificate2>())
 #endif
             {
                 webSocketBuilder.AddClientCertificate(cert);
             }
 
-            if (this.Credentials != null)
+            if (Credentials != null)
             {
                 // Copy the default (credential-related) request headers from the HttpClient to the WebSocket
-                HttpRequestMessage message = new HttpRequestMessage();
-                await this.Credentials.ProcessHttpRequestAsync(message, cancellationToken).ConfigureAwait(false);
+                var message = new HttpRequestMessage();
+                await Credentials.ProcessHttpRequestAsync(message, cancellationToken).ConfigureAwait(false);
 
                 foreach (var header in message.Headers)
                 {
@@ -314,9 +319,9 @@ namespace k8s
             }
 
 #if (NET452 || NETSTANDARD2_0)
-            if (this.CaCerts != null)
+            if (CaCerts != null)
             {
-                webSocketBuilder.SetServerCertificateValidationCallback(this.ServerCertificateValidationCallback);
+                webSocketBuilder.SetServerCertificateValidationCallback(ServerCertificateValidationCallback);
             }
 #endif
 
@@ -356,7 +361,7 @@ namespace k8s
                 var uriBuilder = new UriBuilder(uri);
                 uriBuilder.Scheme = uri.Scheme == "wss" ? "https" : "http";
 
-                var response = await this.HttpClient.GetAsync(uriBuilder.Uri, cancellationToken).ConfigureAwait(false);
+                var response = await HttpClient.GetAsync(uriBuilder.Uri, cancellationToken).ConfigureAwait(false);
 
                 if (response.StatusCode == HttpStatusCode.SwitchingProtocols)
                 {
@@ -408,10 +413,10 @@ namespace k8s
                 }
 
 #if (NET452 || NETSTANDARD2_0)
-                if (this.CaCerts != null)
+                if (CaCerts != null)
                 {
                     webSocketBuilder.CleanupServerCertificateValidationCallback(
-                        this.ServerCertificateValidationCallback);
+                        ServerCertificateValidationCallback);
                 }
 #endif
             }
@@ -423,7 +428,7 @@ namespace k8s
         internal bool ServerCertificateValidationCallback(object sender, X509Certificate certificate, X509Chain chain,
             SslPolicyErrors sslPolicyErrors)
         {
-            return Kubernetes.CertificateValidationCallBack(sender, this.CaCerts, certificate, chain, sslPolicyErrors);
+            return CertificateValidationCallBack(sender, CaCerts, certificate, chain, sslPolicyErrors);
         }
 #endif
     }

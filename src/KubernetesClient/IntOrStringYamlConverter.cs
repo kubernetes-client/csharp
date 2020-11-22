@@ -13,30 +13,30 @@ namespace k8s.Models
 
         public object ReadYaml(IParser parser, Type type)
         {
-            if (parser.Current is YamlDotNet.Core.Events.Scalar scalar)
+            if (parser?.Current is YamlDotNet.Core.Events.Scalar scalar)
             {
                 try
                 {
-                    if (string.IsNullOrEmpty(scalar.Value))
+                    if (string.IsNullOrEmpty(scalar?.Value))
                     {
                         return null;
                     }
 
-                    return new IntstrIntOrString(scalar.Value);
+                    return new IntstrIntOrString(scalar?.Value);
                 }
                 finally
                 {
-                    parser.MoveNext();
+                    parser?.MoveNext();
                 }
             }
 
-            throw new InvalidOperationException(parser.Current?.ToString());
+            throw new InvalidOperationException(parser?.Current?.ToString());
         }
 
         public void WriteYaml(IEmitter emitter, object value, Type type)
         {
             var obj = (IntstrIntOrString)value;
-            emitter.Emit(new YamlDotNet.Core.Events.Scalar(obj.Value));
+            emitter?.Emit(new YamlDotNet.Core.Events.Scalar(obj?.Value));
         }
     }
 }

@@ -27,7 +27,7 @@ namespace k8s
 
             public object ReadYaml(IParser parser, Type type)
             {
-                if (parser.Current is YamlDotNet.Core.Events.Scalar scalar)
+                if (parser?.Current is Scalar scalar)
                 {
                     try
                     {
@@ -50,7 +50,7 @@ namespace k8s
             public void WriteYaml(IEmitter emitter, object value, Type type)
             {
                 var obj = (byte[])value;
-                emitter.Emit(new YamlDotNet.Core.Events.Scalar(Encoding.UTF8.GetString(obj)));
+                emitter?.Emit(new Scalar(Encoding.UTF8.GetString(obj)));
             }
         }
 
@@ -61,8 +61,9 @@ namespace k8s
         /// The stream to load the objects from.
         /// </param>
         /// <param name="typeMap">
-        /// A map from <apiVersion>/<kind> to Type. For example "v1/Pod" -> typeof(V1Pod)
+        /// A map from apiVersion/kind to Type. For example "v1/Pod" -> typeof(V1Pod)
         /// </param>
+        /// <returns>collection of objects</returns>
         public static async Task<List<object>> LoadAllFromStreamAsync(Stream stream, Dictionary<string, Type> typeMap)
         {
             var reader = new StreamReader(stream);
@@ -70,15 +71,13 @@ namespace k8s
             return LoadAllFromString(content, typeMap);
         }
 
+
         /// <summary>
         /// Load a collection of objects from a file asynchronously
         /// </summary>
-        /// <param name="fileName">
-        /// The name of the file to load from.
-        /// </param>
-        /// <param name="typeMap">
-        /// A map from <apiVersion>/<kind> to Type. For example "v1/Pod" -> typeof(V1Pod)
-        /// </param>
+        /// <param name="fileName">The name of the file to load from.</param>
+        /// <param name="typeMap">A map from apiVersion/kind to Type. For example "v1/Pod" -> typeof(V1Pod)</param>
+        /// <returns>collection of objects</returns>
         public static Task<List<object>> LoadAllFromFileAsync(string fileName, Dictionary<string, Type> typeMap)
         {
             var reader = File.OpenRead(fileName);
@@ -92,13 +91,19 @@ namespace k8s
         /// The string to load the objects from.
         /// </param>
         /// <param name="typeMap">
-        /// A map from <apiVersion>/<kind> to Type. For example "v1/Pod" -> typeof(V1Pod)
+        /// A map from apiVersion/kind to Type. For example "v1/Pod" -> typeof(V1Pod)
         /// </param>
+        /// <returns>collection of objects</returns>
         public static List<object> LoadAllFromString(string content, Dictionary<string, Type> typeMap)
         {
+            if (typeMap == null)
+            {
+                throw new ArgumentNullException(nameof(typeMap));
+            }
+
             var deserializer =
                 new DeserializerBuilder()
-                    .WithNamingConvention(new CamelCaseNamingConvention())
+                    .WithNamingConvention(CamelCaseNamingConvention.Instance)
                     .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
                     .WithTypeConverter(new IntOrStringYamlConverter())
                     .WithTypeConverter(new ByteArrayStringYamlConverter())
@@ -106,8 +111,8 @@ namespace k8s
                     .Build();
             var types = new List<Type>();
             var parser = new Parser(new StringReader(content));
-            parser.Expect<StreamStart>();
-            while (parser.Accept<DocumentStart>())
+            parser.Consume<StreamStart>();
+            while (parser.Accept<DocumentStart>(out _))
             {
                 var obj = deserializer.Deserialize<KubernetesObject>(parser);
                 types.Add(typeMap[obj.ApiVersion + "/" + obj.Kind]);
@@ -115,16 +120,16 @@ namespace k8s
 
             deserializer =
                 new DeserializerBuilder()
-                    .WithNamingConvention(new CamelCaseNamingConvention())
+                    .WithNamingConvention(CamelCaseNamingConvention.Instance)
                     .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
                     .WithTypeConverter(new IntOrStringYamlConverter())
                     .WithTypeConverter(new ByteArrayStringYamlConverter())
                     .Build();
             parser = new Parser(new StringReader(content));
-            parser.Expect<StreamStart>();
+            parser.Consume<StreamStart>();
             var ix = 0;
             var results = new List<object>();
-            while (parser.Accept<DocumentStart>())
+            while (parser.Accept<DocumentStart>(out _))
             {
                 var objType = types[ix++];
                 var obj = deserializer.Deserialize(parser, objType);
@@ -143,7 +148,7 @@ namespace k8s
 
         public static async Task<T> LoadFromFileAsync<T>(string file)
         {
-            using (FileStream fs = File.OpenRead(file))
+            using (var fs = File.OpenRead(file))
             {
                 return await LoadFromStreamAsync<T>(fs).ConfigureAwait(false);
             }
@@ -153,7 +158,7 @@ namespace k8s
         {
             var deserializer =
                 new DeserializerBuilder()
-                    .WithNamingConvention(new CamelCaseNamingConvention())
+                    .WithNamingConvention(CamelCaseNamingConvention.Instance)
                     .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
                     .WithTypeConverter(new IntOrStringYamlConverter())
                     .WithTypeConverter(new ByteArrayStringYamlConverter())
@@ -171,7 +176,7 @@ namespace k8s
             var serializer =
                 new SerializerBuilder()
                     .DisableAliases()
-                    .WithNamingConvention(new CamelCaseNamingConvention())
+                    .WithNamingConvention(CamelCaseNamingConvention.Instance)
                     .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
                     .WithTypeConverter(new IntOrStringYamlConverter())
                     .WithTypeConverter(new ByteArrayStringYamlConverter())
@@ -214,7 +219,7 @@ namespace k8s
 
             private IPropertyDescriptor TrimPropertySuffix(IPropertyDescriptor pd, Type type)
             {
-                if (!pd.Name.EndsWith("Property"))
+                if (!pd.Name.EndsWith("Property", StringComparison.InvariantCulture))
                 {
                     return pd;
                 }

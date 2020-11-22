@@ -18,15 +18,15 @@ namespace k8s
             int? limit = null, bool? pretty = null, int? timeoutSeconds = null, string resourceVersion = null,
             Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, T> onEvent = null,
             Action<Exception> onError = null, Action onClosed = null,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             // Tracing
-            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            var shouldTrace = ServiceClientTracing.IsEnabled;
             string invocationId = null;
             if (shouldTrace)
             {
                 invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                var tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("path", path);
                 tracingParameters.Add("continue", @continue);
                 tracingParameters.Add("fieldSelector", fieldSelector);
@@ -40,8 +40,8 @@ namespace k8s
             }
 
             // Construct URL
-            var uriBuilder = new UriBuilder(this.BaseUri);
-            if (!uriBuilder.Path.EndsWith("/"))
+            var uriBuilder = new UriBuilder(BaseUri);
+            if (!uriBuilder.Path.EndsWith("/", StringComparison.InvariantCulture))
             {
                 uriBuilder.Path += "/";
             }
@@ -104,10 +104,10 @@ namespace k8s
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, uriBuilder.ToString());
 
             // Set Credentials
-            if (this.Credentials != null)
+            if (Credentials != null)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+                await Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
             }
 
             // Set Headers
@@ -144,7 +144,7 @@ namespace k8s
 
             if (httpResponse.StatusCode != HttpStatusCode.OK)
             {
-                string responseContent = string.Empty;
+                var responseContent = string.Empty;
 
                 var ex = new HttpOperationException(string.Format(
                     "Operation returned an invalid status code '{0}'",
@@ -166,7 +166,7 @@ namespace k8s
                 async () =>
             {
                 var stream = await httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false);
-                StreamReader reader = new StreamReader(stream);
+                var reader = new StreamReader(stream);
 
                 return reader;
             }, onEvent, onError, onClosed);

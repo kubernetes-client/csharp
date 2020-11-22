@@ -8,9 +8,24 @@ namespace k8s.Models
     {
         public enum PatchType
         {
+            /// <summary>
+            /// not set, this is not allowed
+            /// </summary>
             Unknown,
+
+            /// <summary>
+            /// content type application/json-patch+json
+            /// </summary>
             JsonPatch,
+
+            /// <summary>
+            /// content type application/merge-patch+json
+            /// </summary>
             MergePatch,
+
+            /// <summary>
+            /// content type application/strategic-merge-patch+json
+            /// </summary>
             StrategicMergePatch,
         }
 

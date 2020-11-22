@@ -15,7 +15,7 @@ namespace k8s.E2E
     {
         public void Initialize(TestLoggerEvents events, Dictionary<string, string> parameters)
         {
-            if (parameters.TryGetValue("file", out var file))
+            if (parameters != null && parameters.TryGetValue("file", out var file))
             {
                 InnerInitialize(events, file);
             }
@@ -27,6 +27,11 @@ namespace k8s.E2E
 
         private static void InnerInitialize(TestLoggerEvents events, string file)
         {
+            if (events == null)
+            {
+                throw new ArgumentNullException(nameof(events));
+            }
+
             Console.WriteLine($"using {file} for skipped test case log");
             events.TestResult += (sender, args) =>
             {

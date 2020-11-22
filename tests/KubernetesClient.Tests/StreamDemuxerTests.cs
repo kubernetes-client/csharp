@@ -22,10 +22,10 @@ namespace k8s.Tests
         [Fact]
         public async Task SendDataRemoteCommand()
         {
-            using (MockWebSocket ws = new MockWebSocket())
-            using (StreamDemuxer demuxer = new StreamDemuxer(ws))
+            using (var ws = new MockWebSocket())
+            using (var demuxer = new StreamDemuxer(ws))
             {
-                List<byte> sentBuffer = new List<byte>();
+                var sentBuffer = new List<byte>();
                 ws.MessageSent += (sender, args) => { sentBuffer.AddRange(args.Data.Buffer); };
 
                 demuxer.Start();
@@ -47,10 +47,10 @@ namespace k8s.Tests
         [Fact]
         public async Task SendMultipleDataRemoteCommand()
         {
-            using (MockWebSocket ws = new MockWebSocket())
-            using (StreamDemuxer demuxer = new StreamDemuxer(ws))
+            using (var ws = new MockWebSocket())
+            using (var demuxer = new StreamDemuxer(ws))
             {
-                List<byte> sentBuffer = new List<byte>();
+                var sentBuffer = new List<byte>();
                 ws.MessageSent += (sender, args) => { sentBuffer.AddRange(args.Data.Buffer); };
 
                 demuxer.Start();
@@ -76,17 +76,17 @@ namespace k8s.Tests
         [Fact]
         public async Task ReceiveDataRemoteCommand()
         {
-            using (MockWebSocket ws = new MockWebSocket())
-            using (StreamDemuxer demuxer = new StreamDemuxer(ws))
+            using (var ws = new MockWebSocket())
+            using (var demuxer = new StreamDemuxer(ws))
             {
                 demuxer.Start();
 
-                List<byte> receivedBuffer = new List<byte>();
+                var receivedBuffer = new List<byte>();
                 byte channelIndex = 12;
                 var stream = demuxer.GetStream(channelIndex, channelIndex);
 
                 // Receive 600 bytes in 3 messages. Exclude 1 channel index byte per message, expect 597 bytes payload.
-                int expectedCount = 597;
+                var expectedCount = 597;
 
                 var t = Task.Run(async () =>
                 {
@@ -112,7 +112,7 @@ namespace k8s.Tests
                         break;
                     }
 
-                    for (int i = 0; i < cRead; i++)
+                    for (var i = 0; i < cRead; i++)
                     {
                         receivedBuffer.Add(buffer[i]);
                     }
@@ -135,18 +135,18 @@ namespace k8s.Tests
         [Fact]
         public async Task ReceiveDataPortForward()
         {
-            using (MockWebSocket ws = new MockWebSocket())
-            using (StreamDemuxer demuxer = new StreamDemuxer(ws, StreamType.PortForward))
+            using (var ws = new MockWebSocket())
+            using (var demuxer = new StreamDemuxer(ws, StreamType.PortForward))
             {
                 demuxer.Start();
 
-                List<byte> receivedBuffer = new List<byte>();
+                var receivedBuffer = new List<byte>();
                 byte channelIndex = 12;
                 var stream = demuxer.GetStream(channelIndex, channelIndex);
 
                 // Receive 600 bytes in 3 messages. Exclude 1 channel index byte per message, and 2 port bytes in the first message.
                 // expect 600 - 3 - 2 = 595 bytes payload.
-                int expectedCount = 595;
+                var expectedCount = 595;
 
                 var t = Task.Run(async () =>
                 {
@@ -172,7 +172,7 @@ namespace k8s.Tests
                         break;
                     }
 
-                    for (int i = 0; i < cRead; i++)
+                    for (var i = 0; i < cRead; i++)
                     {
                         receivedBuffer.Add(buffer[i]);
                     }
@@ -195,18 +195,18 @@ namespace k8s.Tests
         [Fact]
         public async Task ReceiveDataPortForwardOneByteMessage()
         {
-            using (MockWebSocket ws = new MockWebSocket())
-            using (StreamDemuxer demuxer = new StreamDemuxer(ws, StreamType.PortForward))
+            using (var ws = new MockWebSocket())
+            using (var demuxer = new StreamDemuxer(ws, StreamType.PortForward))
             {
                 demuxer.Start();
 
-                List<byte> receivedBuffer = new List<byte>();
+                var receivedBuffer = new List<byte>();
                 byte channelIndex = 12;
                 var stream = demuxer.GetStream(channelIndex, channelIndex);
 
                 // Receive 402 bytes in 3 buffers of 2 messages. Exclude 1 channel index byte per message, and 2 port bytes in the first message.
                 // expect 402 - 1 x 2 - 2 = 398 bytes payload.
-                int expectedCount = 398;
+                var expectedCount = 398;
 
                 var t = Task.Run(async () =>
                 {
@@ -232,7 +232,7 @@ namespace k8s.Tests
                         break;
                     }
 
-                    for (int i = 0; i < cRead; i++)
+                    for (var i = 0; i < cRead; i++)
                     {
                         receivedBuffer.Add(buffer[i]);
                     }
@@ -253,23 +253,23 @@ namespace k8s.Tests
         [Fact]
         public async Task ReceiveDataRemoteCommandMultipleStream()
         {
-            using (MockWebSocket ws = new MockWebSocket())
-            using (StreamDemuxer demuxer = new StreamDemuxer(ws))
+            using (var ws = new MockWebSocket())
+            using (var demuxer = new StreamDemuxer(ws))
             {
                 demuxer.Start();
 
-                List<byte> receivedBuffer1 = new List<byte>();
+                var receivedBuffer1 = new List<byte>();
                 byte channelIndex1 = 1;
                 var stream1 = demuxer.GetStream(channelIndex1, channelIndex1);
-                List<byte> receivedBuffer2 = new List<byte>();
+                var receivedBuffer2 = new List<byte>();
                 byte channelIndex2 = 2;
                 var stream2 = demuxer.GetStream(channelIndex2, channelIndex2);
 
                 // stream 1: receive 100 + 300 = 400 bytes, exclude 1 channel index per message, expect 400 - 1 x 2 = 398 bytes.
-                int expectedCount1 = 398;
+                var expectedCount1 = 398;
 
                 // stream 2: receive 200 bytes, exclude 1 channel index per message, expect 200 - 1 = 199 bytes.
-                int expectedCount2 = 199;
+                var expectedCount2 = 199;
 
                 var t1 = Task.Run(async () =>
                 {
@@ -299,7 +299,7 @@ namespace k8s.Tests
                             break;
                         }
 
-                        for (int i = 0; i < cRead; i++)
+                        for (var i = 0; i < cRead; i++)
                         {
                             receivedBuffer1.Add(buffer[i]);
                         }
@@ -316,7 +316,7 @@ namespace k8s.Tests
                             break;
                         }
 
-                        for (int i = 0; i < cRead; i++)
+                        for (var i = 0; i < cRead; i++)
                         {
                             receivedBuffer2.Add(buffer[i]);
                         }
@@ -342,25 +342,25 @@ namespace k8s.Tests
         [Fact]
         public async Task ReceiveDataPortForwardMultipleStream()
         {
-            using (MockWebSocket ws = new MockWebSocket())
-            using (StreamDemuxer demuxer = new StreamDemuxer(ws, StreamType.PortForward))
+            using (var ws = new MockWebSocket())
+            using (var demuxer = new StreamDemuxer(ws, StreamType.PortForward))
             {
                 demuxer.Start();
 
-                List<byte> receivedBuffer1 = new List<byte>();
+                var receivedBuffer1 = new List<byte>();
                 byte channelIndex1 = 1;
                 var stream1 = demuxer.GetStream(channelIndex1, channelIndex1);
-                List<byte> receivedBuffer2 = new List<byte>();
+                var receivedBuffer2 = new List<byte>();
                 byte channelIndex2 = 2;
                 var stream2 = demuxer.GetStream(channelIndex2, channelIndex2);
 
                 // stream 1: receive 100 + 300 = 400 bytes, exclude 1 channel index per message, exclude port bytes in the first message,
                 // expect 400 - 1 x 2 - 2 = 396 bytes.
-                int expectedCount1 = 396;
+                var expectedCount1 = 396;
 
                 // stream 2: receive 200 bytes, exclude 1 channel index per message, exclude port bytes in the first message,
                 // expect 200 - 1 - 2 = 197 bytes.
-                int expectedCount2 = 197;
+                var expectedCount2 = 197;
 
                 var t1 = Task.Run(async () =>
                 {
@@ -390,7 +390,7 @@ namespace k8s.Tests
                             break;
                         }
 
-                        for (int i = 0; i < cRead; i++)
+                        for (var i = 0; i < cRead; i++)
                         {
                             receivedBuffer1.Add(buffer[i]);
                         }
@@ -407,7 +407,7 @@ namespace k8s.Tests
                             break;
                         }
 
-                        for (int i = 0; i < cRead; i++)
+                        for (var i = 0; i < cRead; i++)
                         {
                             receivedBuffer2.Add(buffer[i]);
                         }
@@ -453,7 +453,7 @@ namespace k8s.Tests
         private static byte[] GenerateRandomBuffer(int length, byte content)
         {
             var buffer = new byte[length];
-            for (int i = 0; i < length; i++)
+            for (var i = 0; i < length; i++)
             {
                 buffer[i] = content;
             }
@@ -463,7 +463,7 @@ namespace k8s.Tests
 
         private async Task<bool> WaitForAsync(Func<bool> handler, float waitForSeconds = 1)
         {
-            Stopwatch w = Stopwatch.StartNew();
+            var w = Stopwatch.StartNew();
             try
             {
                 do

@@ -41,13 +41,13 @@ namespace k8s
         }
 
         /// <inheritdoc/>
-        public override bool CanRead => this.inputBuffer != null;
+        public override bool CanRead => inputBuffer != null;
 
         /// <inheritdoc/>
         public override bool CanSeek => false;
 
         /// <inheritdoc/>
-        public override bool CanWrite => this.outputIndex != null;
+        public override bool CanWrite => outputIndex != null;
 
         /// <inheritdoc/>
         public override long Length => throw new NotSupportedException();
@@ -62,26 +62,26 @@ namespace k8s
         /// <inheritdoc/>
         public override void Write(byte[] buffer, int offset, int count)
         {
-            if (this.outputIndex == null)
+            if (outputIndex == null)
             {
                 throw new InvalidOperationException();
             }
             else
             {
-                this.muxer.Write(this.outputIndex.Value, buffer, offset, count).GetAwaiter().GetResult();
+                muxer.Write(outputIndex.Value, buffer, offset, count).GetAwaiter().GetResult();
             }
         }
 
         /// <inheritdoc/>
         public override int Read(byte[] buffer, int offset, int count)
         {
-            if (this.inputBuffer == null)
+            if (inputBuffer == null)
             {
                 throw new InvalidOperationException();
             }
             else
             {
-                return this.inputBuffer.Read(buffer, offset, count);
+                return inputBuffer.Read(buffer, offset, count);
             }
         }
 

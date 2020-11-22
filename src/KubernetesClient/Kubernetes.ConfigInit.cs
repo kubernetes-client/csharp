@@ -154,7 +154,7 @@ namespace k8s
                     HttpClientHandler.ServerCertificateCustomValidationCallback =
                         (sender, certificate, chain, sslPolicyErrors) =>
                         {
-                            return Kubernetes.CertificateValidationCallBack(sender, CaCerts, certificate, chain,
+                            return CertificateValidationCallBack(sender, CaCerts, certificate, chain,
                                 sslPolicyErrors);
                         };
 #endif
@@ -249,11 +249,11 @@ namespace k8s
         ///     SSl Cert Validation Callback
         /// </summary>
         /// <param name="sender">sender</param>
+        /// <param name="caCerts">client ca</param>
         /// <param name="certificate">client certificate</param>
         /// <param name="chain">chain</param>
         /// <param name="sslPolicyErrors">ssl policy errors</param>
         /// <returns>true if valid cert</returns>
-        [SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", Justification = "Unused by design")]
         public static bool CertificateValidationCallBack(
             object sender,
             X509Certificate2Collection caCerts,
@@ -261,6 +261,16 @@ namespace k8s
             X509Chain chain,
             SslPolicyErrors sslPolicyErrors)
         {
+            if (caCerts == null)
+            {
+                throw new ArgumentNullException(nameof(caCerts));
+            }
+
+            if (chain == null)
+            {
+                throw new ArgumentNullException(nameof(chain));
+            }
+
             // If the certificate is a valid, signed certificate, return true.
             if (sslPolicyErrors == SslPolicyErrors.None)
             {
@@ -301,9 +311,11 @@ namespace k8s
             return false;
         }
 
-        /// <summary>Creates <see cref="ServiceClientCredentials"/> based on the given config, or returns null if no such credentials are
-        /// needed.
+        /// <summary>
+        /// Creates <see cref="ServiceClientCredentials"/> based on the given config, or returns null if no such credentials are needed.
         /// </summary>
+        /// <param name="config">kubenetes config object</param>
+        /// <returns>instance of <see cref="ServiceClientCredentials"/></returns>
         public static ServiceClientCredentials CreateCredentials(KubernetesClientConfiguration config)
         {
             if (config == null)

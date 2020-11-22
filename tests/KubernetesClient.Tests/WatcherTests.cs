@@ -13,16 +13,16 @@ namespace k8s.Tests
         [Fact]
         public void ReadError()
         {
-            byte[] data = Encoding.UTF8.GetBytes(
+            var data = Encoding.UTF8.GetBytes(
                 "{\"type\":\"ERROR\",\"object\":{\"kind\":\"Status\",\"apiVersion\":\"v1\",\"metadata\":{},\"status\":\"Failure\",\"message\":\"too old resource version: 44982(53593)\",\"reason\":\"Gone\",\"code\":410}}");
 
-            using (MemoryStream stream = new MemoryStream(data))
-            using (StreamReader reader = new StreamReader(stream))
+            using (var stream = new MemoryStream(data))
+            using (var reader = new StreamReader(stream))
             {
                 Exception recordedException = null;
-                ManualResetEvent mre = new ManualResetEvent(false);
+                var mre = new ManualResetEvent(false);
 
-                Watcher<V1Pod> watcher = new Watcher<V1Pod>(
+                var watcher = new Watcher<V1Pod>(
                     () => Task.FromResult(reader),
                     null,
                     (exception) =>

@@ -17,26 +17,22 @@
 
       <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
       <PackageReference Include="System.Reactive" Version="4.3.2" />
-      <PackageReference Include="Nito.AsyncEx" Version="5.0.0" />
+      <PackageReference Include="Nito.AsyncEx" Version="5.1.0" />
   </ItemGroup>
-
-  <!-- <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
-      <Compile Remove="Kubernetes.Exec.Tests.cs" />
-  </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.1' ">
-      <Compile Remove="Kubernetes.WebSockets.Tests.cs" />
-  </ItemGroup> -->
 
   <ItemGroup>
 
-    <PackageReference Include="coverlet.msbuild" Version="2.8.0">
+    <PackageReference Include="coverlet.msbuild" Version="2.9.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
 
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Xunit.StaFact" Version="0.3.18" />
     <PackageReference Include="Moq" Version="4.13.1" />
 

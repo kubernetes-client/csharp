@@ -167,7 +167,7 @@ namespace k8s.Tests
 
 #if NETCOREAPP2_1 // The functionality under test, here, is dependent on managed HTTP / WebSocket in .NET Core 2.1 or newer.
         // this test doesn't work on OSX and is inconsistent on windows
-        [OperatingSystemDependentFact(Exclude = OperatingSystem.OSX | OperatingSystem.Windows)]
+        [OperatingSystemDependentFact(Exclude = OperatingSystems.OSX | OperatingSystems.Windows)]
         public void Cert()
         {
             var serverCertificateData = File.ReadAllText("assets/apiserver-pfx-data.txt");
@@ -179,7 +179,7 @@ namespace k8s.Tests
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                using (MemoryStream serverCertificateStream =
+                using (var serverCertificateStream =
                     new MemoryStream(Convert.FromBase64String(serverCertificateData)))
                 {
                     serverCertificate = OpenCertificateStore(serverCertificateStream);
@@ -272,7 +272,7 @@ namespace k8s.Tests
             }
         }
 
-        [OperatingSystemDependentFact(Exclude = OperatingSystem.OSX | OperatingSystem.Windows)]
+        [OperatingSystemDependentFact(Exclude = OperatingSystems.OSX | OperatingSystems.Windows)]
         public void ExternalCertificate()
         {
             const string name = "testing_irrelevant";
@@ -286,7 +286,7 @@ namespace k8s.Tests
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                using (MemoryStream serverCertificateStream = new MemoryStream(serverCertificateData))
+                using (var serverCertificateStream = new MemoryStream(serverCertificateData))
                 {
                     serverCertificate = OpenCertificateStore(serverCertificateStream);
                 }
@@ -457,7 +457,7 @@ namespace k8s.Tests
 
         private X509Certificate2 OpenCertificateStore(Stream stream)
         {
-            Pkcs12Store store = new Pkcs12Store();
+            var store = new Pkcs12Store();
             store.Load(stream, new char[] { });
 
             var keyAlias = store.Aliases.Cast<string>().SingleOrDefault(a => store.IsKeyEntry(a));
@@ -468,7 +468,7 @@ namespace k8s.Tests
             var certificate = new X509Certificate2(DotNetUtilities.ToX509Certificate(bouncyCertificate));
             var parameters = DotNetUtilities.ToRSAParameters(key);
 
-            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
+            var rsa = new RSACryptoServiceProvider();
             rsa.ImportParameters(parameters);
 
             certificate = RSACertificateExtensions.CopyWithPrivateKey(certificate, rsa);

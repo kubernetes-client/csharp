@@ -99,7 +99,7 @@ metadata:
   name: foo
 ";
 
-            using (MemoryStream stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(content)))
+            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(content)))
             {
                 var obj = Yaml.LoadFromStreamAsync<V1Pod>(stream).Result;
 
@@ -261,7 +261,7 @@ spec:
             var obj = Yaml.LoadFromString<V1Service>(content);
 
             Assert.Equal(3000, obj.Spec.Ports[0].Port);
-            Assert.Equal(3000, (int)obj.Spec.Ports[0].TargetPort);
+            Assert.Equal(3000, int.Parse(obj.Spec.Ports[0].TargetPort));
         }
 
         [Fact]
@@ -278,7 +278,7 @@ spec:
   - port: 3000
     targetPort: 3000";
 
-            Dictionary<string, string> labels = new Dictionary<string, string> { { "app", "test" } };
+            var labels = new Dictionary<string, string> { { "app", "test" } };
             var obj = new V1Service
             {
                 Kind = "Service",
@@ -290,7 +290,7 @@ spec:
                 },
             };
 
-            var output = Yaml.SaveToString<V1Service>(obj);
+            var output = Yaml.SaveToString(obj);
             Assert.Equal(ToLines(output), ToLines(content));
         }
 
@@ -327,7 +327,7 @@ spec:
         [Fact]
         public void LoadSecret()
         {
-            string kManifest = @"
+            var kManifest = @"
 apiVersion: v1
 kind: Secret
 metadata:
