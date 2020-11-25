@@ -557,76 +557,7 @@ namespace k8s.Tests
             }
         }
 
-        [Fact(Skip = "Integration Test")]
-        public async Task WatcherIntegrationTest()
-        {
-            var kubernetesConfig =
-                KubernetesClientConfiguration.BuildConfigFromConfigFile(
-                    @"C:\Users\frede\Source\Repos\cloud\minikube.config");
-            var kubernetes = new Kubernetes(kubernetesConfig);
 
-            var job = await kubernetes.CreateNamespacedJobAsync(
-                new V1Job()
-                {
-                    ApiVersion = "batch/v1",
-                    Kind = V1Job.KubeKind,
-                    Metadata = new V1ObjectMeta() { Name = nameof(WatcherIntegrationTest).ToLowerInvariant() },
-                    Spec = new V1JobSpec()
-                    {
-                        Template = new V1PodTemplateSpec()
-                        {
-                            Spec = new V1PodSpec()
-                            {
-                                Containers = new List<V1Container>()
-                                {
-                                    new V1Container()
-                                    {
-                                        Image = "ubuntu/xenial",
-                                        Name = "runner",
-                                        Command = new List<string>() { "/bin/bash", "-c", "--" },
-                                        Args = new List<string>()
-                                        {
-                                            "trap : TERM INT; sleep infinity & wait",
-                                        },
-                                    },
-                                },
-                                RestartPolicy = "Never",
-                            },
-                        },
-                    },
-                },
-                "default").ConfigureAwait(false);
-
-            var events = new Collection<Tuple<WatchEventType, V1Job>>();
-
-            var started = new AsyncManualResetEvent();
-            var connectionClosed = new AsyncManualResetEvent();
-
-            var watcher = await kubernetes.WatchNamespacedJobAsync(
-                job.Metadata.Name,
-                job.Metadata.NamespaceProperty,
-                resourceVersion: job.Metadata.ResourceVersion,
-                timeoutSeconds: 30,
-                onEvent:
-                (type, source) =>
-                {
-                    Debug.WriteLine($"Watcher 1: {type}, {source}");
-                    events.Add(new Tuple<WatchEventType, V1Job>(type, source));
-                    job = source;
-                    started.Set();
-                },
-                onClosed: connectionClosed.Set).ConfigureAwait(false);
-
-            await started.WaitAsync().ConfigureAwait(false);
-
-            await Task.WhenAny(connectionClosed.WaitAsync(), Task.Delay(TimeSpan.FromMinutes(3))).ConfigureAwait(false);
-            Assert.True(connectionClosed.IsSet);
-
-            await kubernetes.DeleteNamespacedJobAsync(
-                job.Metadata.Name,
-                job.Metadata.NamespaceProperty,
-                new V1DeleteOptions()).ConfigureAwait(false);
-        }
 
         [Fact(Skip = "https://github.com/kubernetes-client/csharp/issues/165")]
         public async Task DirectWatchEventsWithTimeout()
