@@ -557,7 +557,7 @@ namespace k8s.Tests
             }
         }
 
-      
+
 
         [Fact(Skip = "https://github.com/kubernetes-client/csharp/issues/165")]
         public async Task DirectWatchEventsWithTimeout()
