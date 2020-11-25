@@ -13,6 +13,11 @@ namespace k8s
                 throw new ArgumentNullException(nameof(body));
             }
 
+            if (body is V1Patch patch)
+            {
+                return GetHeader(patch);
+            }
+
             return MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
         }
 
