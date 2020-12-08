@@ -29,6 +29,7 @@ namespace k8s.Tests
         private readonly ITestOutputHelper testOutput;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="WebSocketTestBase"/> class.
         ///     Create a new <see cref="WebSocketTestBase"/>.
         /// </summary>
         /// <param name="testOutput">
@@ -81,7 +82,7 @@ namespace k8s.Tests
         protected CancellationTokenSource CancellationSource { get; } = new CancellationTokenSource();
 
         /// <summary>
-        ///     A <see cref="System.Threading.CancellationToken"/> that can be used to cancel asynchronous operations.
+        ///     A <see cref="CancellationToken"/> that can be used to cancel asynchronous operations.
         /// </summary>
         /// <seealso cref="CancellationSource"/>
         protected CancellationToken TestCancellation => CancellationSource.Token;
@@ -117,7 +118,7 @@ namespace k8s.Tests
             }
 
             logging.ClearProviders(); // Don't log to console.
-            logging.AddTestOutput(this.testOutput, LogLevel.Information);
+            logging.AddTestOutput(testOutput, LogLevel.Information);
         }
 
         /// <summary>
@@ -260,8 +261,8 @@ namespace k8s.Tests
             Array.Copy(payload, 0, sendBuffer, 1, payload.Length);
 
             await webSocket.SendAsync(sendBuffer, WebSocketMessageType.Binary,
-                endOfMessage: true,
-                cancellationToken: TestCancellation).ConfigureAwait(false);
+                true,
+                TestCancellation).ConfigureAwait(false);
 
             return sendBuffer.Length;
         }
@@ -330,6 +331,7 @@ namespace k8s.Tests
             public static readonly AnonymousClientCredentials Instance = new AnonymousClientCredentials();
 
             /// <summary>
+            /// Initializes a new instance of the <see cref="AnonymousClientCredentials"/> class.
             ///     Create new <see cref="AnonymousClientCredentials"/>.
             /// </summary>
             private AnonymousClientCredentials()
@@ -372,7 +374,7 @@ namespace k8s.Tests
         public void Dispose()
         {
             // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-            Dispose(disposing: true);
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
     }

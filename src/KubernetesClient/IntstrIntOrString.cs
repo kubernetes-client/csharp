@@ -6,11 +6,6 @@ namespace k8s.Models
     [JsonConverter(typeof(IntOrStringConverter))]
     public partial class IntstrIntOrString
     {
-        public static implicit operator int(IntstrIntOrString v)
-        {
-            return int.Parse(v.Value);
-        }
-
         public static implicit operator IntstrIntOrString(int v)
         {
             return new IntstrIntOrString(Convert.ToString(v));
@@ -18,7 +13,7 @@ namespace k8s.Models
 
         public static implicit operator string(IntstrIntOrString v)
         {
-            return v.Value;
+            return v?.Value;
         }
 
         public static implicit operator IntstrIntOrString(string v)
@@ -28,7 +23,7 @@ namespace k8s.Models
 
         protected bool Equals(IntstrIntOrString other)
         {
-            return string.Equals(Value, other.Value);
+            return string.Equals(Value, other?.Value);
         }
 
         public override bool Equals(object obj)
@@ -43,7 +38,7 @@ namespace k8s.Models
                 return true;
             }
 
-            if (obj.GetType() != this.GetType())
+            if (obj.GetType() != GetType())
             {
                 return false;
             }

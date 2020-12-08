@@ -85,7 +85,7 @@
     <Rule Id="SA1402" Action="Error" />
 
     <!-- A call to Debug.Assert in C# code does not include a descriptive message. https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1405.md -->
-    <Rule Id="SA1405" Action="Warning" />
+    <Rule Id="SA1405" Action="None" />
 
     <!-- The last statement in a multi-line C# initializer or list is missing a trailing comma. https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1413.md -->
     <Rule Id="SA1413" Action="Error" />
@@ -187,7 +187,7 @@
     <Rule Id="SA1028" Action="Warning" />
 
     <!-- All diagnostics of XML documentation comments has been disabled due to the current project configuration. https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA0001.md -->
-    <Rule Id="SA0001" Action="Warning" />
+    <Rule Id="SA0001" Action="None" />
 
     <!-- Call GC.SuppressFinalize correctly https://docs.microsoft.com/en-us/visualstudio/code-quality/CA1816 -->
     <Rule Id="CA1816" Action="Error" />
@@ -220,10 +220,10 @@
     <Rule Id="CA1028" Action="Warning" />
 
     <!-- Do not catch general exception types https://docs.microsoft.com/en-us/visualstudio/code-quality/CA1031 -->
-    <Rule Id="CA1031" Action="Warning" />
+    <Rule Id="CA1031" Action="None" />
 
     <!-- Nested types should not be visible https://docs.microsoft.com/en-us/visualstudio/code-quality/CA1034 -->
-    <Rule Id="CA1034" Action="Warning" />
+    <Rule Id="CA1034" Action="None" />
 
     <!-- Do not declare visible instance fields https://docs.microsoft.com/en-us/visualstudio/code-quality/CA1051 -->
     <Rule Id="CA1051" Action="Warning" />
@@ -292,6 +292,14 @@
     <!-- Do not create tasks without passing a TaskScheduler https://docs.microsoft.com/en-us/visualstudio/code-quality/CA2008 -->
     <!-- TODO -->
     <Rule Id="CA2008" Action="None" />
+
+    <!-- TODO only in netcore2.1+-->
+    <Rule Id="CA1835" Action="Info" />
+
+    <!-- TODO missing doc-->
+    <Rule Id="CS1591" Action="None" />
+    <Rule Id="CS1573" Action="None" />
+    <Rule Id="CS1574" Action="None" />
 
   </Rules>
 </RuleSet>

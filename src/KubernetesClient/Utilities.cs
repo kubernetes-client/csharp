@@ -5,8 +5,7 @@ namespace k8s
 {
     internal static class Utilities
     {
-        /// <summary>Given a <see cref="StringBuilder"/> that is building a query string, adds a parameter to it.</summary>
-        public static void AddQueryParameter(StringBuilder sb, string key, string value)
+        internal static void AddQueryParameter(StringBuilder sb, string key, string value)
         {
             if (sb == null)
             {

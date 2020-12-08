@@ -5,8 +5,8 @@ namespace k8s.Tests
 {
     public class OperatingSystemDependentFactAttribute : FactAttribute
     {
-        public OperatingSystem Include { get; set; } = OperatingSystem.Linux | OperatingSystem.Windows | OperatingSystem.OSX;
-        public OperatingSystem Exclude { get; set; }
+        public OperatingSystems Include { get; set; } = OperatingSystems.Linux | OperatingSystems.Windows | OperatingSystems.OSX;
+        public OperatingSystems Exclude { get; set; }
 
         public override string Skip
         {
@@ -14,19 +14,19 @@ namespace k8s.Tests
             set { }
         }
 
-        private bool IsOS(OperatingSystem operatingSystem)
+        private bool IsOS(OperatingSystems operatingSystems)
         {
-            if (operatingSystem.HasFlag(OperatingSystem.Linux) && RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            if (operatingSystems.HasFlag(OperatingSystems.Linux) && RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 return true;
             }
 
-            if (operatingSystem.HasFlag(OperatingSystem.Windows) && RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            if (operatingSystems.HasFlag(OperatingSystems.Windows) && RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 return true;
             }
 
-            if (operatingSystem.HasFlag(OperatingSystem.OSX) && RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            if (operatingSystems.HasFlag(OperatingSystems.OSX) && RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 return true;
             }

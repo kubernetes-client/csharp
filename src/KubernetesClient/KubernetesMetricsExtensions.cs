@@ -12,27 +12,34 @@ namespace k8s
         /// <summary>
         /// Get nodes metrics pull from metrics server API.
         /// </summary>
-        public static async Task<NodeMetricsList> GetKubernetesNodesMetricsAsync(this IKubernetes operations)
+        /// <param name="kubernetes">kubernetes client object</param>
+        /// <returns>the metrics <see cref="PodMetricsList"/></returns>
+        public static async Task<NodeMetricsList> GetKubernetesNodesMetricsAsync(this IKubernetes kubernetes)
         {
-            JObject customObject = (JObject)await operations.GetClusterCustomObjectAsync("metrics.k8s.io", "v1beta1", "nodes", string.Empty).ConfigureAwait(false);
+            var customObject = (JObject)await kubernetes.GetClusterCustomObjectAsync("metrics.k8s.io", "v1beta1", "nodes", string.Empty).ConfigureAwait(false);
             return customObject.ToObject<NodeMetricsList>();
         }
 
         /// <summary>
         /// Get pods metrics pull from metrics server API.
         /// </summary>
-        public static async Task<PodMetricsList> GetKubernetesPodsMetricsAsync(this IKubernetes operations)
+        /// <param name="kubernetes">kubernetes client object</param>
+        /// <returns>the metrics <see cref="PodMetricsList"/></returns>
+        public static async Task<PodMetricsList> GetKubernetesPodsMetricsAsync(this IKubernetes kubernetes)
         {
-            JObject customObject = (JObject)await operations.GetClusterCustomObjectAsync("metrics.k8s.io", "v1beta1", "pods", string.Empty).ConfigureAwait(false);
+            var customObject = (JObject)await kubernetes.GetClusterCustomObjectAsync("metrics.k8s.io", "v1beta1", "pods", string.Empty).ConfigureAwait(false);
             return customObject.ToObject<PodMetricsList>();
         }
 
         /// <summary>
         /// Get pods metrics by namespace pull from metrics server API.
         /// </summary>
-        public static async Task<PodMetricsList> GetKubernetesPodsMetricsByNamespaceAsync(this IKubernetes operations, string namespaceParameter)
+        /// <param name="kubernetes">kubernetes client object</param>
+        /// <param name="namespaceParameter">the querying namespace</param>
+        /// <returns>the metrics <see cref="PodMetricsList"/></returns>
+        public static async Task<PodMetricsList> GetKubernetesPodsMetricsByNamespaceAsync(this IKubernetes kubernetes, string namespaceParameter)
         {
-            JObject customObject = (JObject)await operations.GetNamespacedCustomObjectAsync("metrics.k8s.io", "v1beta1", namespaceParameter, "pods", string.Empty).ConfigureAwait(false);
+            var customObject = (JObject)await kubernetes.GetNamespacedCustomObjectAsync("metrics.k8s.io", "v1beta1", namespaceParameter, "pods", string.Empty).ConfigureAwait(false);
             return customObject.ToObject<PodMetricsList>();
         }
     }

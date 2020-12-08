@@ -65,8 +65,19 @@ namespace k8s.Models
     {
         public enum SuffixFormat
         {
+            /// <summary>
+            /// e.g., 12e6
+            /// </summary>
             DecimalExponent,
+
+            /// <summary>
+            /// e.g., 12Mi (12 * 2^20)
+            /// </summary>
             BinarySI,
+
+            /// <summary>
+            /// e.g., 12M  (12 * 10^6)
+            /// </summary>
             DecimalSI,
         }
 
@@ -95,7 +106,7 @@ namespace k8s.Models
 
         protected bool Equals(ResourceQuantity other)
         {
-            return Format == other.Format && _unitlessValue.Equals(other._unitlessValue);
+            return Format == other?.Format && _unitlessValue.Equals(other._unitlessValue);
         }
 
         public override bool Equals(object obj)
@@ -202,7 +213,7 @@ namespace k8s.Models
                 throw new ArgumentOutOfRangeException(nameof(expectedType));
             }
 
-            if (parser.Current is Scalar)
+            if (parser?.Current is Scalar)
             {
                 Value = ((Scalar)parser.Current).Value;
                 parser.MoveNext();
@@ -213,12 +224,7 @@ namespace k8s.Models
         /// <inheritdoc/>
         public void Write(IEmitter emitter, ObjectSerializer nestedObjectSerializer)
         {
-            emitter.Emit(new Scalar(this.ToString()));
-        }
-
-        public static implicit operator decimal(ResourceQuantity v)
-        {
-            return v._unitlessValue.ToDecimal();
+            emitter?.Emit(new Scalar(ToString()));
         }
 
         public static implicit operator ResourceQuantity(decimal v)

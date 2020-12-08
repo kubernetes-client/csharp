@@ -21,7 +21,7 @@ namespace k8s
         /// <inheritdoc/>
         public override void Emit(ScalarEventInfo eventInfo, IEmitter emitter)
         {
-            var typeCode = eventInfo.Source.Value != null
+            var typeCode = eventInfo?.Source.Value != null
                 ? Type.GetTypeCode(eventInfo.Source.Type)
                 : TypeCode.Empty;
             switch (typeCode)

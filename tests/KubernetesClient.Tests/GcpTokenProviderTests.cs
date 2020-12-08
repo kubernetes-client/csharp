@@ -9,7 +9,7 @@ namespace k8s.Tests
 {
     public class GcpTokenProviderTests
     {
-        [OperatingSystemDependentFact(Exclude = OperatingSystem.OSX)]
+        [OperatingSystemDependentFact(Exclude = OperatingSystems.OSX)]
         public async Task GetToken()
         {
             var isWindows = Environment.OSVersion.Platform == PlatformID.Win32NT;

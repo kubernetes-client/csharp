@@ -17,6 +17,7 @@ namespace k8s
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="KubernetesException"/> class.
         /// Initializes a ne winstance of the <see cref="KubernetesException"/> class using
         /// the data from a <see cref="V1Status"/> object.
         /// </summary>
@@ -26,7 +27,7 @@ namespace k8s
         public KubernetesException(V1Status status)
             : this(status?.Message)
         {
-            this.Status = status;
+            Status = status;
         }
 
         /// <summary>

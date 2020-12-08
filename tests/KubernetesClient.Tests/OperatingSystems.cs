@@ -3,7 +3,7 @@ using System;
 namespace k8s.Tests
 {
     [Flags]
-    public enum OperatingSystem
+    public enum OperatingSystems
     {
         Windows = 1,
         Linux = 2,

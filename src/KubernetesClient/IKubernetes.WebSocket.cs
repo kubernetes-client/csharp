@@ -53,13 +53,13 @@ namespace k8s
         /// <exception cref="ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        /// <return>
+        /// <returns>
         /// A <see cref="ClientWebSocket"/> which can be used to communicate with the process running in the pod.
-        /// </return>
+        /// </returns>
         Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default",
             string command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true,
-            bool tty = true, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            bool tty = true, string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Executes a command in a pod.
@@ -107,14 +107,14 @@ namespace k8s
         /// <exception cref="ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        /// <return>
+        /// <returns>
         /// A <see cref="ClientWebSocket"/> which can be used to communicate with the process running in the pod.
-        /// </return>
+        /// </returns>
         Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default",
             IEnumerable<string> command = null, string container = null, bool stderr = true, bool stdin = true,
-            bool stdout = true, bool tty = true, string webSocketSubProtol = null,
+            bool stdout = true, bool tty = true, string webSocketSubProtocol = null,
             Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Executes a command in a pod.
@@ -162,15 +162,15 @@ namespace k8s
         /// <exception cref="ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        /// <return>
+        /// <returns>
         /// A <see cref="IStreamDemuxer"/> which can be used to communicate with the process running in the pod.
-        /// </return>
+        /// </returns>
         Task<IStreamDemuxer> MuxedStreamNamespacedPodExecAsync(string name, string @namespace = "default",
             IEnumerable<string> command = null, string container = null, bool stderr = true, bool stdin = true,
             bool stdout = true, bool tty = true,
-            string webSocketSubProtol = WebSocketProtocol.V4BinaryWebsocketProtocol,
+            string webSocketSubProtocol = WebSocketProtocol.V4BinaryWebsocketProtocol,
             Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Start port forwarding one or more ports of a pod.
@@ -194,9 +194,13 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
+        /// <returns>
+        /// A <see cref="ClientWebSocket"/> which can be used to communicate with the process running in the pod.
+        /// </returns>
         Task<WebSocket> WebSocketNamespacedPodPortForwardAsync(string name, string @namespace, IEnumerable<int> ports,
             string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            CancellationToken cancellationToken = default);
+
 
         /// <summary>
         /// connect GET requests to attach of Pod
@@ -216,7 +220,7 @@ namespace k8s
         /// call. Defaults to true.
         /// </param>
         /// <param name='stdin'>
-        /// Stdin if true, redirects the standard input stream of the pod for this
+        /// stdin if true, redirects the standard input stream of the pod for this
         /// call. Defaults to false.
         /// </param>
         /// <param name='stdout'>
@@ -238,24 +242,10 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="HttpOperationException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
+        /// <returns>A response object containing the response body and response headers.</returns>
         Task<WebSocket> WebSocketNamespacedPodAttachAsync(string name, string @namespace,
-            string container = default(string), bool stderr = true, bool stdin = false, bool stdout = true,
-            bool tty = false, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            string container = default, bool stderr = true, bool stdin = false, bool stdout = true,
+            bool tty = false, string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
     }
 }

@@ -67,7 +67,7 @@ namespace KubernetesWatchGenerator
                 .ToHashSet();
 
             _classNameToPluralMap = swagger.Operations
-                .Where(x => x.Operation.OperationId.StartsWith("list"))
+                .Where(x => x.Operation.OperationId.StartsWith("list", StringComparison.InvariantCulture))
                 .Select(x =>
                 {
                     return new
@@ -82,7 +82,7 @@ namespace KubernetesWatchGenerator
 
             // dictionary only contains "list" plural maps. assign the same plural names to entities those lists support
             _classNameToPluralMap = _classNameToPluralMap
-                .Where(x => x.Key.EndsWith("List"))
+                .Where(x => x.Key.EndsWith("List", StringComparison.InvariantCulture))
                 .Select(x =>
                     new { ClassName = x.Key.Remove(x.Key.Length - 4), PluralName = x.Value })
                 .ToDictionary(x => x.ClassName, x => x.PluralName)
@@ -171,9 +171,9 @@ namespace KubernetesWatchGenerator
         {
             if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is string)
             {
-                bool first = true;
+                var first = true;
 
-                using (StringReader reader = new StringReader(arguments[0] as string))
+                using (var reader = new StringReader(arguments[0] as string))
                 {
                     string line = null;
                     while ((line = reader.ReadLine()) != null)
@@ -496,9 +496,9 @@ namespace KubernetesWatchGenerator
 
         private static string GetPathExpression(SwaggerOperationDescription operation)
         {
-            string pathExpression = operation.Path;
+            var pathExpression = operation.Path;
 
-            if (pathExpression.StartsWith("/"))
+            if (pathExpression.StartsWith("/", StringComparison.InvariantCulture))
             {
                 pathExpression = pathExpression.Substring(1);
             }

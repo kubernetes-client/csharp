@@ -8,8 +8,8 @@ namespace k8s.Models
     public class KubernetesList<T> : IMetadata<V1ListMeta>, IItems<T>
         where T : IKubernetesObject
     {
-        public KubernetesList(IList<T> items, string apiVersion = default(string), string kind = default(string),
-            V1ListMeta metadata = default(V1ListMeta))
+        public KubernetesList(IList<T> items, string apiVersion = default, string kind = default,
+            V1ListMeta metadata = default)
         {
             ApiVersion = apiVersion;
             Items = items;

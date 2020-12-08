@@ -66,6 +66,11 @@ namespace k8s.Versioning
 
         public static object ConvertToVersion(object source, string apiVersion)
         {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
             var type = source.GetType();
             var attr = GetKubernetesEntityAttribute(type);
             if (attr.ApiVersion == apiVersion)

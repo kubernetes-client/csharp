@@ -45,7 +45,7 @@ namespace k8s.Versioning
                 stream = Stream.Final;
             }
 
-            int.TryParse(match.Groups["minor"].Value, out var minor);
+            _ = int.TryParse(match.Groups["minor"].Value, out var minor);
             return new Version(major, (int)stream, minor);
         }
 
