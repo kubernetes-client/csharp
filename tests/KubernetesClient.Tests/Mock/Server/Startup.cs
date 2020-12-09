@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
+using Microsoft.AspNetCore.Mvc;
 
 namespace k8s.Tests.Mock.Server
 {
@@ -35,7 +36,7 @@ namespace k8s.Tests.Mock.Server
             {
                 logging.ClearProviders(); // Logger provider will be added by the calling test.
             });
-            services.AddMvc();
+            services.AddMvc(opt => opt.EnableEndpointRouting = false);
         }
 
         /// <summary>
@@ -49,7 +50,6 @@ namespace k8s.Tests.Mock.Server
             app.UseWebSockets(new WebSocketOptions
             {
                 KeepAliveInterval = TimeSpan.FromSeconds(5),
-                ReceiveBufferSize = 2048,
             });
             app.UseMvc();
         }
