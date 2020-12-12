@@ -432,7 +432,7 @@ namespace k8s.Versioning
 
 
             cfg.CreateMap<V1alpha1RoleBinding, V1beta1RoleBinding>().ReverseMap();
-            cfg.CreateMap<V1alpha1RoleBinding, V1RoleBinding>() .ReverseMap();
+            cfg.CreateMap<V1alpha1RoleBinding, V1RoleBinding>().ReverseMap();
             cfg.CreateMap<V1beta1RoleBinding, V1RoleBinding>().ReverseMap();
 
             cfg.CreateMap<V1beta1CSIDriverSpec, V1CSIDriverSpec>()
