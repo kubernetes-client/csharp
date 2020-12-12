@@ -140,6 +140,10 @@ namespace k8s.Versioning
             cfg.CreateMap<Rbacv1beta1Subject, Rbacv1alpha1Subject>()
                 .ForMember(dest => dest.ApiVersion, opt => opt.Ignore())
                 .ReverseMap();
+            cfg.CreateMap<V1Subject, Rbacv1beta1Subject>()
+                .ForMember(dest => dest.ApiGroup, opt => opt.Ignore())
+                .ReverseMap();
+
             cfg.CreateMap<V1alpha1RuntimeClass, V1RuntimeClass>()
                 .ForMember(dest => dest.Handler, opt => opt.MapFrom(src => src.Spec.RuntimeHandler))
                 .ForMember(dest => dest.Overhead, opt => opt.MapFrom(src => src.Spec.Overhead))
@@ -425,6 +429,24 @@ namespace k8s.Versioning
                 .ForMember(dest => dest.CurrentAverageValue, opt => opt.MapFrom(src => src.Current.AverageValue))
                 .ForMember(dest => dest.CurrentAverageUtilization, opt => opt.MapFrom(src => src.Current.AverageUtilization))
                 .ReverseMap();
+
+
+            cfg.CreateMap<V1alpha1RoleBinding, V1beta1RoleBinding>().ReverseMap();
+            cfg.CreateMap<V1alpha1RoleBinding, V1RoleBinding>() .ReverseMap();
+            cfg.CreateMap<V1beta1RoleBinding, V1RoleBinding>().ReverseMap();
+
+            cfg.CreateMap<V1beta1CSIDriverSpec, V1CSIDriverSpec>()
+                .ForMember(dest => dest.TokenRequests, opt => opt.Ignore());
+
+            cfg.CreateMap<V1CSIDriverSpec, V1beta1CSIDriverSpec>()
+                .ForMember(dest => dest.TokenRequests, opt => opt.Ignore());
+
+            cfg.CreateMap<V1alpha1ClusterRoleBinding, V1beta1ClusterRoleBinding>().ReverseMap();
+            cfg.CreateMap<V1alpha1ClusterRoleBinding, V1ClusterRoleBinding>().ReverseMap();
+            cfg.CreateMap<V1beta1ClusterRoleBinding, V1ClusterRoleBinding>().ReverseMap();
+            cfg.CreateMap<V1alpha1ClusterRoleBindingList, V1beta1ClusterRoleBindingList>().ReverseMap();
+            cfg.CreateMap<V1alpha1ClusterRoleBindingList, V1ClusterRoleBindingList>().ReverseMap();
+            cfg.CreateMap<V1beta1ClusterRoleBindingList, V1ClusterRoleBindingList>().ReverseMap();
         }
     }
 }
