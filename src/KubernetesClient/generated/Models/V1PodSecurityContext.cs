@@ -46,7 +46,7 @@ namespace k8s.Models
         /// types which support fsGroup based ownership(and permissions). It
         /// will have no effect on ephemeral volume types such as: secret,
         /// configmaps and emptydir. Valid values are "OnRootMismatch" and
-        /// "Always". If not specified defaults to "Always".</param>
+        /// "Always". If not specified, "Always" is used.</param>
         /// <param name="runAsGroup">The GID to run the entrypoint of the
         /// container process. Uses runtime default if unset. May also be set
         /// in SecurityContext.  If set in both SecurityContext and
@@ -125,8 +125,8 @@ namespace k8s.Models
         /// Pod. This field will only apply to volume types which support
         /// fsGroup based ownership(and permissions). It will have no effect on
         /// ephemeral volume types such as: secret, configmaps and emptydir.
-        /// Valid values are "OnRootMismatch" and "Always". If not specified
-        /// defaults to "Always".
+        /// Valid values are "OnRootMismatch" and "Always". If not specified,
+        /// "Always" is used.
         /// </summary>
         [JsonProperty(PropertyName = "fsGroupChangePolicy")]
         public string FsGroupChangePolicy { get; set; }

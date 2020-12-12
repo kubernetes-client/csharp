@@ -100,8 +100,7 @@ namespace k8s.Models
         /// This can be used to provide different probe parameters at the
         /// beginning of a Pod's lifecycle, when it might take a long time to
         /// load data or warm a cache, than during steady-state operation. This
-        /// cannot be updated. This is a beta feature enabled by the
-        /// StartupProbe feature flag. More info:
+        /// cannot be updated. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes</param>
         /// <param name="stdin">Whether this container should allocate a buffer
         /// for stdin in the container runtime. If this is not set, reads from
@@ -309,7 +308,6 @@ namespace k8s.Models
         /// provide different probe parameters at the beginning of a Pod's
         /// lifecycle, when it might take a long time to load data or warm a
         /// cache, than during steady-state operation. This cannot be updated.
-        /// This is a beta feature enabled by the StartupProbe feature flag.
         /// More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>

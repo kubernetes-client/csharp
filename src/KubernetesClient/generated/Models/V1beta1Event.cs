@@ -6,12 +6,18 @@
 
 namespace k8s.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Event is a report of an event somewhere in the cluster. It generally
-    /// denotes some state change in the system.
+    /// denotes some state change in the system. Events have a limited
+    /// retention time and triggers and messages may evolve with time.  Event
+    /// consumers should not rely on the timing of an event with a given Reason
+    /// reflecting a consistent underlying trigger, or the continued existence
+    /// of events with that Reason.  Events should be treated as informative,
+    /// best-effort, supplemental data.
     /// </summary>
     public partial class V1beta1Event
     {
@@ -79,7 +85,7 @@ namespace k8s.Models
         /// <param name="type">type is the type of this event (Normal,
         /// Warning), new types could be added in the future. It is
         /// machine-readable.</param>
-        public V1beta1Event(System.DateTime eventTime, string action = default(string), string apiVersion = default(string), int? deprecatedCount = default(int?), System.DateTime? deprecatedFirstTimestamp = default(System.DateTime?), System.DateTime? deprecatedLastTimestamp = default(System.DateTime?), V1EventSource deprecatedSource = default(V1EventSource), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), string note = default(string), string reason = default(string), V1ObjectReference regarding = default(V1ObjectReference), V1ObjectReference related = default(V1ObjectReference), string reportingController = default(string), string reportingInstance = default(string), V1beta1EventSeries series = default(V1beta1EventSeries), string type = default(string))
+        public V1beta1Event(System.DateTime eventTime, V1ObjectMeta metadata, string action = default(string), string apiVersion = default(string), int? deprecatedCount = default(int?), System.DateTime? deprecatedFirstTimestamp = default(System.DateTime?), System.DateTime? deprecatedLastTimestamp = default(System.DateTime?), V1EventSource deprecatedSource = default(V1EventSource), string kind = default(string), string note = default(string), string reason = default(string), V1ObjectReference regarding = default(V1ObjectReference), V1ObjectReference related = default(V1ObjectReference), string reportingController = default(string), string reportingInstance = default(string), V1beta1EventSeries series = default(V1beta1EventSeries), string type = default(string))
         {
             Action = action;
             ApiVersion = apiVersion;
@@ -239,11 +245,15 @@ namespace k8s.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
+            if (Metadata == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Metadata");
+            }
             if (Series != null)
             {
                 Series.Validate();

@@ -38,8 +38,8 @@ namespace k8s.Models
         /// name are equivalent on every node. For example, a handler called
         /// "runc" might specify that the runc OCI runtime (using native Linux
         /// containers) will be used to run the containers in a pod. The
-        /// RuntimeHandler must conform to the DNS Label (RFC 1123)
-        /// requirements and is immutable.</param>
+        /// RuntimeHandler must be lowercase, conform to the DNS Label (RFC
+        /// 1123) requirements, and is immutable.</param>
         /// <param name="overhead">Overhead represents the resource overhead
         /// associated with running a pod for a given RuntimeClass. For more
         /// details, see
@@ -82,8 +82,8 @@ namespace k8s.Models
         /// equivalent on every node. For example, a handler called "runc"
         /// might specify that the runc OCI runtime (using native Linux
         /// containers) will be used to run the containers in a pod. The
-        /// RuntimeHandler must conform to the DNS Label (RFC 1123)
-        /// requirements and is immutable.
+        /// RuntimeHandler must be lowercase, conform to the DNS Label (RFC
+        /// 1123) requirements, and is immutable.
         /// </summary>
         [JsonProperty(PropertyName = "runtimeHandler")]
         public string RuntimeHandler { get; set; }

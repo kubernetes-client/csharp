@@ -31,9 +31,11 @@ namespace k8s.Models
         /// <param name="completionTime">Represents time when the job was
         /// completed. It is not guaranteed to be set in happens-before order
         /// across separate operations. It is represented in RFC3339 form and
-        /// is in UTC.</param>
+        /// is in UTC. The completion time is only set when the job finishes
+        /// successfully.</param>
         /// <param name="conditions">The latest available observations of an
-        /// object's current state. More info:
+        /// object's current state. When a job fails, one of the conditions
+        /// will have type == "Failed". More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/</param>
         /// <param name="failed">The number of pods which reached phase
         /// Failed.</param>
@@ -68,14 +70,16 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets represents time when the job was completed. It is not
         /// guaranteed to be set in happens-before order across separate
-        /// operations. It is represented in RFC3339 form and is in UTC.
+        /// operations. It is represented in RFC3339 form and is in UTC. The
+        /// completion time is only set when the job finishes successfully.
         /// </summary>
         [JsonProperty(PropertyName = "completionTime")]
         public System.DateTime? CompletionTime { get; set; }
 
         /// <summary>
         /// Gets or sets the latest available observations of an object's
-        /// current state. More info:
+        /// current state. When a job fails, one of the conditions will have
+        /// type == "Failed". More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
         /// </summary>
         [JsonProperty(PropertyName = "conditions")]

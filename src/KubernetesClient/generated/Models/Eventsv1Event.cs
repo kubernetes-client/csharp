@@ -6,12 +6,18 @@
 
 namespace k8s.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Event is a report of an event somewhere in the cluster. It generally
-    /// denotes some state change in the system.
+    /// denotes some state change in the system. Events have a limited
+    /// retention time and triggers and messages may evolve with time.  Event
+    /// consumers should not rely on the timing of an event with a given Reason
+    /// reflecting a consistent underlying trigger, or the continued existence
+    /// of events with that Reason.  Events should be treated as informative,
+    /// best-effort, supplemental data.
     /// </summary>
     public partial class Eventsv1Event
     {
@@ -30,7 +36,8 @@ namespace k8s.Models
         /// first observed. It is required.</param>
         /// <param name="action">action is what action was taken/failed
         /// regarding to the regarding object. It is machine-readable. This
-        /// field can have at most 128 characters.</param>
+        /// field cannot be empty for new Events and it can have at most 128
+        /// characters.</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
@@ -57,7 +64,8 @@ namespace k8s.Models
         /// status of this operation. Maximal length of the note is 1kB, but
         /// libraries should be prepared to handle values up to 64kB.</param>
         /// <param name="reason">reason is why the action was taken. It is
-        /// human-readable. This field can have at most 128 characters.</param>
+        /// human-readable. This field cannot be empty for new Events and it
+        /// can have at most 128 characters.</param>
         /// <param name="regarding">regarding contains the object this Event is
         /// about. In most cases it's an Object reporting controller
         /// implements, e.g. ReplicaSetController implements ReplicaSets and
@@ -78,8 +86,9 @@ namespace k8s.Models
         /// event represents or nil if it's a singleton Event.</param>
         /// <param name="type">type is the type of this event (Normal,
         /// Warning), new types could be added in the future. It is
-        /// machine-readable.</param>
-        public Eventsv1Event(System.DateTime eventTime, string action = default(string), string apiVersion = default(string), int? deprecatedCount = default(int?), System.DateTime? deprecatedFirstTimestamp = default(System.DateTime?), System.DateTime? deprecatedLastTimestamp = default(System.DateTime?), V1EventSource deprecatedSource = default(V1EventSource), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), string note = default(string), string reason = default(string), V1ObjectReference regarding = default(V1ObjectReference), V1ObjectReference related = default(V1ObjectReference), string reportingController = default(string), string reportingInstance = default(string), Eventsv1EventSeries series = default(Eventsv1EventSeries), string type = default(string))
+        /// machine-readable. This field cannot be empty for new
+        /// Events.</param>
+        public Eventsv1Event(System.DateTime eventTime, V1ObjectMeta metadata, string action = default(string), string apiVersion = default(string), int? deprecatedCount = default(int?), System.DateTime? deprecatedFirstTimestamp = default(System.DateTime?), System.DateTime? deprecatedLastTimestamp = default(System.DateTime?), V1EventSource deprecatedSource = default(V1EventSource), string kind = default(string), string note = default(string), string reason = default(string), V1ObjectReference regarding = default(V1ObjectReference), V1ObjectReference related = default(V1ObjectReference), string reportingController = default(string), string reportingInstance = default(string), Eventsv1EventSeries series = default(Eventsv1EventSeries), string type = default(string))
         {
             Action = action;
             ApiVersion = apiVersion;
@@ -108,8 +117,8 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets action is what action was taken/failed regarding to
-        /// the regarding object. It is machine-readable. This field can have
-        /// at most 128 characters.
+        /// the regarding object. It is machine-readable. This field cannot be
+        /// empty for new Events and it can have at most 128 characters.
         /// </summary>
         [JsonProperty(PropertyName = "action")]
         public string Action { get; set; }
@@ -184,7 +193,8 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets reason is why the action was taken. It is
-        /// human-readable. This field can have at most 128 characters.
+        /// human-readable. This field cannot be empty for new Events and it
+        /// can have at most 128 characters.
         /// </summary>
         [JsonProperty(PropertyName = "reason")]
         public string Reason { get; set; }
@@ -231,7 +241,8 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets type is the type of this event (Normal, Warning), new
-        /// types could be added in the future. It is machine-readable.
+        /// types could be added in the future. It is machine-readable. This
+        /// field cannot be empty for new Events.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
@@ -239,11 +250,15 @@ namespace k8s.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
+            if (Metadata == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Metadata");
+            }
             if (Series != null)
             {
                 Series.Validate();

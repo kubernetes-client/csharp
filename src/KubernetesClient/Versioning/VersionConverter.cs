@@ -137,8 +137,18 @@ namespace k8s.Versioning
             cfg.CreateMap<V1Subject, Rbacv1alpha1Subject>()
                 .ForMember(dest => dest.ApiVersion, opt => opt.Ignore())
                 .ReverseMap();
-            cfg.CreateMap<V1beta1Subject, Rbacv1alpha1Subject>()
+            cfg.CreateMap<Rbacv1beta1Subject, Rbacv1alpha1Subject>()
                 .ForMember(dest => dest.ApiVersion, opt => opt.Ignore())
+                .ReverseMap();
+            cfg.CreateMap<V1alpha1RuntimeClass, V1RuntimeClass>()
+                .ForMember(dest => dest.Handler, opt => opt.MapFrom(src => src.Spec.RuntimeHandler))
+                .ForMember(dest => dest.Overhead, opt => opt.MapFrom(src => src.Spec.Overhead))
+                .ForMember(dest => dest.Scheduling, opt => opt.MapFrom(src => src.Spec.Scheduling))
+                .ReverseMap();
+            cfg.CreateMap<V1beta1RuntimeClass, V1RuntimeClass>()
+                .ForMember(dest => dest.Handler, opt => opt.MapFrom(src => src.Handler))
+                .ForMember(dest => dest.Overhead, opt => opt.MapFrom(src => src.Overhead))
+                .ForMember(dest => dest.Scheduling, opt => opt.MapFrom(src => src.Scheduling))
                 .ReverseMap();
             cfg.CreateMap<V1alpha1RuntimeClass, V1beta1RuntimeClass>()
                 .ForMember(dest => dest.Handler, opt => opt.MapFrom(src => src.Spec.RuntimeHandler))
@@ -404,6 +414,16 @@ namespace k8s.Versioning
                 .ForMember(dest => dest.Note, opt => opt.MapFrom(src => src.Message))
                 .ForMember(dest => dest.Regarding, opt => opt.MapFrom(src => src.InvolvedObject))
                 .ForMember(dest => dest.ReportingController, opt => opt.MapFrom(src => src.ReportingComponent))
+                .ReverseMap();
+
+            cfg.CreateMap<V2beta2ContainerResourceMetricSource, V2beta1ContainerResourceMetricSource>()
+                .ForMember(dest => dest.TargetAverageValue, opt => opt.MapFrom(src => src.Target.AverageValue))
+                .ForMember(dest => dest.TargetAverageUtilization, opt => opt.MapFrom(src => src.Target.AverageUtilization))
+                .ReverseMap();
+
+            cfg.CreateMap<V2beta2ContainerResourceMetricStatus, V2beta1ContainerResourceMetricStatus>()
+                .ForMember(dest => dest.CurrentAverageValue, opt => opt.MapFrom(src => src.Current.AverageValue))
+                .ForMember(dest => dest.CurrentAverageUtilization, opt => opt.MapFrom(src => src.Current.AverageUtilization))
                 .ReverseMap();
         }
     }

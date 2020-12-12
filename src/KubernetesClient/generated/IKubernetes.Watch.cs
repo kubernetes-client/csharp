@@ -3650,6 +3650,246 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// watch changes to an object of kind FlowSchema. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+        /// </summary>
+        /// <param name="name">
+        /// name of the FlowSchema
+        /// </param>
+        /// <param name="allowWatchBookmarks">
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. If the feature gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+        /// </param>
+        /// <param name="continue">
+        /// The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+        /// 
+        /// This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+        /// </param>
+        /// <param name="fieldSelector">
+        /// A selector to restrict the list of returned objects by their fields. Defaults to everything.
+        /// </param>
+        /// <param name="labelSelector">
+        /// A selector to restrict the list of returned objects by their labels. Defaults to everything.
+        /// </param>
+        /// <param name="limit">
+        /// limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+        /// 
+        /// The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+        /// </param>
+        /// <param name="pretty">
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name="resourceVersion">
+        /// resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="resourceVersionMatch">
+        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="timeoutSeconds">
+        /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="onEvent">
+        /// The action to invoke when the server sends a new event.
+        /// </param>
+        /// <param name="onError">
+        /// The action to invoke when an error occurs.
+        /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        /// <returns>
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
+        /// </returns>
+        Task<Watcher<V1beta1FlowSchema>> WatchFlowSchemaAsync(
+            string name,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1FlowSchema> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+        /// </summary>
+        /// <param name="name">
+        /// name of the PriorityLevelConfiguration
+        /// </param>
+        /// <param name="allowWatchBookmarks">
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. If the feature gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+        /// </param>
+        /// <param name="continue">
+        /// The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+        /// 
+        /// This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+        /// </param>
+        /// <param name="fieldSelector">
+        /// A selector to restrict the list of returned objects by their fields. Defaults to everything.
+        /// </param>
+        /// <param name="labelSelector">
+        /// A selector to restrict the list of returned objects by their labels. Defaults to everything.
+        /// </param>
+        /// <param name="limit">
+        /// limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+        /// 
+        /// The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+        /// </param>
+        /// <param name="pretty">
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name="resourceVersion">
+        /// resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="resourceVersionMatch">
+        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="timeoutSeconds">
+        /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="onEvent">
+        /// The action to invoke when the server sends a new event.
+        /// </param>
+        /// <param name="onError">
+        /// The action to invoke when an error occurs.
+        /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        /// <returns>
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
+        /// </returns>
+        Task<Watcher<V1beta1PriorityLevelConfiguration>> WatchPriorityLevelConfigurationAsync(
+            string name,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1PriorityLevelConfiguration> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// watch changes to an object of kind StorageVersion. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+        /// </summary>
+        /// <param name="name">
+        /// name of the StorageVersion
+        /// </param>
+        /// <param name="allowWatchBookmarks">
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. If the feature gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+        /// </param>
+        /// <param name="continue">
+        /// The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+        /// 
+        /// This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+        /// </param>
+        /// <param name="fieldSelector">
+        /// A selector to restrict the list of returned objects by their fields. Defaults to everything.
+        /// </param>
+        /// <param name="labelSelector">
+        /// A selector to restrict the list of returned objects by their labels. Defaults to everything.
+        /// </param>
+        /// <param name="limit">
+        /// limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+        /// 
+        /// The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+        /// </param>
+        /// <param name="pretty">
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name="resourceVersion">
+        /// resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="resourceVersionMatch">
+        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="timeoutSeconds">
+        /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="onEvent">
+        /// The action to invoke when the server sends a new event.
+        /// </param>
+        /// <param name="onError">
+        /// The action to invoke when an error occurs.
+        /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        /// <returns>
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
+        /// </returns>
+        Task<Watcher<V1alpha1StorageVersion>> WatchStorageVersionAsync(
+            string name,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1alpha1StorageVersion> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// watch changes to an object of kind IngressClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
         /// </summary>
         /// <param name="name">
@@ -4057,6 +4297,86 @@ namespace k8s
             bool? watch = null,
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, Networkingv1beta1Ingress> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// watch changes to an object of kind RuntimeClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+        /// </summary>
+        /// <param name="name">
+        /// name of the RuntimeClass
+        /// </param>
+        /// <param name="allowWatchBookmarks">
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. If the feature gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+        /// </param>
+        /// <param name="continue">
+        /// The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+        /// 
+        /// This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+        /// </param>
+        /// <param name="fieldSelector">
+        /// A selector to restrict the list of returned objects by their fields. Defaults to everything.
+        /// </param>
+        /// <param name="labelSelector">
+        /// A selector to restrict the list of returned objects by their labels. Defaults to everything.
+        /// </param>
+        /// <param name="limit">
+        /// limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+        /// 
+        /// The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+        /// </param>
+        /// <param name="pretty">
+        /// If 'true', then the output is pretty printed.
+        /// </param>
+        /// <param name="resourceVersion">
+        /// resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="resourceVersionMatch">
+        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="timeoutSeconds">
+        /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+        /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="onEvent">
+        /// The action to invoke when the server sends a new event.
+        /// </param>
+        /// <param name="onError">
+        /// The action to invoke when an error occurs.
+        /// </param>
+        /// <param name="onClosed">
+        /// The action to invoke when the server closes the connection.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        /// <returns>
+        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
+        /// </returns>
+        Task<Watcher<V1RuntimeClass>> WatchRuntimeClassAsync(
+            string name,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1RuntimeClass> onEvent = null,
             Action<Exception> onError = null,
             Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -5605,90 +5925,6 @@ namespace k8s
             bool? watch = null,
             Dictionary<string, List<string>> customHeaders = null,
             Action<WatchEventType, V1beta1PriorityClass> onEvent = null,
-            Action<Exception> onError = null,
-            Action onClosed = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// watch changes to an object of kind PodPreset. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
-        /// </summary>
-        /// <param name="name">
-        /// name of the PodPreset
-        /// </param>
-        /// <param name="namespace">
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. If the feature gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-        /// </param>
-        /// <param name="continue">
-        /// The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
-        /// 
-        /// This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
-        /// </param>
-        /// <param name="fieldSelector">
-        /// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-        /// </param>
-        /// <param name="labelSelector">
-        /// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-        /// </param>
-        /// <param name="limit">
-        /// limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
-        /// 
-        /// The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
-        /// </param>
-        /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
-        /// </param>
-        /// <param name="resourceVersion">
-        /// resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="resourceVersionMatch">
-        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="timeoutSeconds">
-        /// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
-        /// </param>
-        /// <param name="watch">
-        /// Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="onEvent">
-        /// The action to invoke when the server sends a new event.
-        /// </param>
-        /// <param name="onError">
-        /// The action to invoke when an error occurs.
-        /// </param>
-        /// <param name="onClosed">
-        /// The action to invoke when the server closes the connection.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        /// <returns>
-        /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
-        /// </returns>
-        Task<Watcher<V1alpha1PodPreset>> WatchNamespacedPodPresetAsync(
-            string name,
-            string @namespace,
-            bool? allowWatchBookmarks = null,
-            string @continue = null,
-            string fieldSelector = null,
-            string labelSelector = null,
-            int? limit = null,
-            bool? pretty = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            Action<WatchEventType, V1alpha1PodPreset> onEvent = null,
             Action<Exception> onError = null,
             Action onClosed = null,
             CancellationToken cancellationToken = default(CancellationToken));
