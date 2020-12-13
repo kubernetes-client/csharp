@@ -1,5 +1,4 @@
 using System;
-using System.Dynamic;
 
 namespace k8s.LeaderElection
 {

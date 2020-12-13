@@ -11,8 +11,6 @@ using k8s.Models;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.Rest;
 using Nito.AsyncEx;
-using Org.BouncyCastle.Asn1.Cms;
-using Org.BouncyCastle.Math.EC;
 using Xunit;
 
 namespace k8s.E2E

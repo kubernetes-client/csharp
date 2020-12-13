@@ -1,6 +1,5 @@
 using System.Threading;
 using System.Threading.Tasks;
-using k8s.KubeConfigModels;
 
 namespace k8s.LeaderElection
 {
