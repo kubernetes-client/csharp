@@ -57,7 +57,7 @@ namespace k8s.LeaderElection
                 OnStartedLeading?.Invoke();
 
                 // renew loop
-                for (; ;)
+                for (; ; )
                 {
                     cancellationToken.ThrowIfCancellationRequested();
                     var acq = TryAcquireOrRenew(cancellationToken);
