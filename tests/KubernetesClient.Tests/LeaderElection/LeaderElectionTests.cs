@@ -5,6 +5,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Threading;
 using System.Threading.Tasks;
 using k8s.LeaderElection;
+using Moq;
 using Xunit;
 
 namespace k8s.Tests.LeaderElection
@@ -193,6 +194,110 @@ namespace k8s.Tests.LeaderElection
                     "A gets leadership", "A starts leading", "A stops leading",
                     "B gets leadership", "B starts leading", "B stops leading",
                 }));
+        }
+
+        [Fact]
+        public void LeaderElectionWithRenewDeadline()
+        {
+            var electionHistory = new List<string>();
+            var leadershipHistory = new List<string>();
+
+            var renewCount = 3;
+            var mockLock = new MockResourceLock("mock") {UpdateWillFail = () => renewCount <= 0,};
+
+            mockLock.OnCreate += _ =>
+            {
+                renewCount--;
+                electionHistory.Add("create record");
+                leadershipHistory.Add("get leadership");
+            };
+
+            mockLock.OnUpdate += _ =>
+            {
+                renewCount--;
+                electionHistory.Add("update record");
+            };
+
+            mockLock.OnChange += _ => { electionHistory.Add("change record"); };
+
+            mockLock.OnTryUpdate += _ => { electionHistory.Add("try update record"); };
+
+
+            var leaderElectionConfig = new LeaderElectionConfig(mockLock)
+            {
+                LeaseDuration = TimeSpan.FromMilliseconds(1000),
+                RetryPeriod = TimeSpan.FromMilliseconds(200),
+                RenewDeadline = TimeSpan.FromMilliseconds(700),
+            };
+
+            var countdown = new CountdownEvent(2);
+            Task.Run(() =>
+            {
+                var leaderElector = new LeaderElector(leaderElectionConfig);
+
+                leaderElector.OnStartedLeading += () =>
+                {
+                    leadershipHistory.Add("start leading");
+                    countdown.Signal();
+                };
+
+                leaderElector.OnStoppedLeading += () =>
+                {
+                    leadershipHistory.Add("stop leading");
+                    countdown.Signal();
+                };
+
+                leaderElector.RunAsync().Wait();
+            });
+
+            countdown.Wait(TimeSpan.FromSeconds(10));
+
+            Assert.True(electionHistory.SequenceEqual(new[]
+            {
+                "create record", "try update record", "update record", "try update record", "update record",
+                "try update record", "try update record", "try update record", "try update record",
+            }));
+
+            Assert.True(leadershipHistory.SequenceEqual(new[] {"get leadership", "start leading", "stop leading"}));
+        }
+
+        [Fact]
+        public void LeaderElectionThrowException()
+        {
+            var l = new Mock<ILock>();
+            l.Setup(obj => obj.GetAsync(CancellationToken.None))
+                .Throws(new Exception("noxu"));
+
+            var leaderElector = new LeaderElector(new LeaderElectionConfig(l.Object)
+            {
+                LeaseDuration = TimeSpan.FromMilliseconds(1000),
+                RetryPeriod = TimeSpan.FromMilliseconds(200),
+                RenewDeadline = TimeSpan.FromMilliseconds(700),
+            });
+
+            try
+            {
+                leaderElector.RunAsync().Wait();
+            }
+            catch (Exception e)
+            {
+                Assert.Equal("noxu", e.InnerException?.Message);
+                return;
+            }
+
+            Assert.True(false, "exception not thrown");
+        }
+
+        [Fact]
+        public void LeaderElectionReportLeaderOnStart()
+        {
+
+        }
+
+        [Fact]
+        public void LeaderElectionShouldReportLeaderItAcquiresOnStart()
+        {
+
         }
 
         private class MockResourceLock : ILock

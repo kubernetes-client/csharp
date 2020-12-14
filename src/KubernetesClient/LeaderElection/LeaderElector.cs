@@ -60,7 +60,25 @@ namespace k8s.LeaderElection
                 for (; ; )
                 {
                     cancellationToken.ThrowIfCancellationRequested();
-                    var acq = TryAcquireOrRenew(cancellationToken);
+                    var acq = Task.Run(async () =>
+                    {
+                        try
+                        {
+                            while (!await TryAcquireOrRenew(cancellationToken).ConfigureAwait(false))
+                            {
+                                await Task.Delay(config.RetryPeriod, cancellationToken).ConfigureAwait(false);
+                                MaybeReportTransition();
+                            }
+                        }
+                        catch
+                        {
+                            // ignore
+                            return false;
+                        }
+
+                        return true;
+                    });
+
 
                     if (await Task.WhenAny(acq, Task.Delay(config.RenewDeadline, cancellationToken))
                         .ConfigureAwait(false) == acq)
@@ -70,11 +88,11 @@ namespace k8s.LeaderElection
                         if (succ)
                         {
                             await Task.Delay(config.RetryPeriod, cancellationToken).ConfigureAwait(false);
+                            // retry
                             continue;
                         }
 
                         // renew failed
-                        MaybeReportTransition();
                     }
 
                     // timeout
