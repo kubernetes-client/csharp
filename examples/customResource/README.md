@@ -12,7 +12,7 @@ dotnet add package KubernetesClient
 
 ## Create Custom Resource Definition (CRD)
 
-Make sure the  [CRD](./crd.yaml) is created, in order to create an instance of it after.
+Make sure the  [CRD](./config/crd.yaml) is created, in order to create an instance of it after.
 
 ```shell
 kubectl create -f ./crd.yaml
