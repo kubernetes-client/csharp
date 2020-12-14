@@ -227,7 +227,7 @@ namespace k8s.Tests.LeaderElection
             {
                 LeaseDuration = TimeSpan.FromMilliseconds(1000),
                 RetryPeriod = TimeSpan.FromMilliseconds(200),
-                RenewDeadline = TimeSpan.FromMilliseconds(700),
+                RenewDeadline = TimeSpan.FromMilliseconds(650),
             };
 
             var countdown = new CountdownEvent(2);
@@ -384,7 +384,7 @@ namespace k8s.Tests.LeaderElection
         private class MockResourceLock : ILock
         {
             private static LeaderElectionRecord leaderRecord;
-            private static readonly object lockobj = new object();
+            private static readonly object Lockobj = new object();
 
             public static void ResetGloablRecord()
             {
@@ -414,7 +414,7 @@ namespace k8s.Tests.LeaderElection
                 LeaderElectionRecord record,
                 CancellationToken cancellationToken = default)
             {
-                lock (lockobj)
+                lock (Lockobj)
                 {
                     if (leaderRecord != null)
                     {
@@ -429,7 +429,7 @@ namespace k8s.Tests.LeaderElection
 
             public Task<bool> UpdateAsync(LeaderElectionRecord record, CancellationToken cancellationToken = default)
             {
-                lock (lockobj)
+                lock (Lockobj)
                 {
                     OnTryUpdate?.Invoke(record);
 
