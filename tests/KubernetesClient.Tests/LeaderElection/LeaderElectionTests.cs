@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Threading;
 using System.Threading.Tasks;
 using k8s.LeaderElection;
@@ -10,6 +11,11 @@ namespace k8s.Tests.LeaderElection
 {
     public class LeaderElectionTests
     {
+        public LeaderElectionTests()
+        {
+            MockResourceLock.ResetGloablRecord();
+        }
+
         [Fact]
         public void SimpleLeaderElection()
         {
@@ -17,10 +23,7 @@ namespace k8s.Tests.LeaderElection
             var leadershipHistory = new List<string>();
 
             var renewCount = 3;
-            var mockLock = new MockResourceLock("mock")
-            {
-                UpdateWillFail = () => renewCount <= 0,
-            };
+            var mockLock = new MockResourceLock("mock") {UpdateWillFail = () => renewCount <= 0,};
 
             mockLock.OnCreate += _ =>
             {
@@ -35,10 +38,7 @@ namespace k8s.Tests.LeaderElection
                 electionHistory.Add("update record");
             };
 
-            mockLock.OnChange += _ =>
-            {
-                electionHistory.Add("change record");
-            };
+            mockLock.OnChange += _ => { electionHistory.Add("change record"); };
 
 
             var leaderElectionConfig = new LeaderElectionConfig(mockLock)
@@ -71,15 +71,141 @@ namespace k8s.Tests.LeaderElection
             countdown.Wait(TimeSpan.FromSeconds(10));
 
 
-            Assert.True(electionHistory.SequenceEqual(new[] { "create record", "update record", "update record" }));
-            Assert.True(leadershipHistory.SequenceEqual(new[] { "get leadership", "start leading", "stop leading" }));
+            Assert.True(electionHistory.SequenceEqual(new[] {"create record", "update record", "update record"}));
+            Assert.True(leadershipHistory.SequenceEqual(new[] {"get leadership", "start leading", "stop leading"}));
+        }
+
+        [Fact]
+        public void LeaderElection()
+        {
+            var electionHistory = new List<string>();
+            var leadershipHistory = new List<string>();
+
+            var renewCountA = 3;
+            var mockLockA = new MockResourceLock("mockA") {UpdateWillFail = () => renewCountA <= 0};
+
+            mockLockA.OnCreate += (_) =>
+            {
+                renewCountA--;
+
+                electionHistory.Add("A creates record");
+                leadershipHistory.Add("A gets leadership");
+            };
+
+            mockLockA.OnUpdate += (_) =>
+            {
+                renewCountA--;
+                electionHistory.Add("A updates record");
+            };
+
+            mockLockA.OnChange += (_) => { leadershipHistory.Add("A gets leadership"); };
+
+            var leaderElectionConfigA = new LeaderElectionConfig(mockLockA)
+            {
+                LeaseDuration = TimeSpan.FromMilliseconds(500),
+                RetryPeriod = TimeSpan.FromMilliseconds(300),
+                RenewDeadline = TimeSpan.FromMilliseconds(400),
+            };
+
+            var renewCountB = 4;
+            var mockLockB = new MockResourceLock("mockB") {UpdateWillFail = () => renewCountB <= 0};
+
+            mockLockB.OnCreate += (_) =>
+            {
+                renewCountB--;
+
+                electionHistory.Add("B creates record");
+                leadershipHistory.Add("B gets leadership");
+            };
+
+            mockLockB.OnUpdate += (_) =>
+            {
+                renewCountB--;
+                electionHistory.Add("B updates record");
+            };
+
+            mockLockB.OnChange += (_) => { leadershipHistory.Add("B gets leadership"); };
+
+            var leaderElectionConfigB = new LeaderElectionConfig(mockLockB)
+            {
+                LeaseDuration = TimeSpan.FromMilliseconds(500),
+                RetryPeriod = TimeSpan.FromMilliseconds(300),
+                RenewDeadline = TimeSpan.FromMilliseconds(400),
+            };
+
+            var lockAStopLeading = new ManualResetEvent(false);
+            var testLeaderElectionLatch = new CountdownEvent(4);
+
+            Task.Run(() =>
+            {
+                var leaderElector = new LeaderElector(leaderElectionConfigA);
+
+                leaderElector.OnStartedLeading += () =>
+                {
+                    leadershipHistory.Add("A starts leading");
+                    testLeaderElectionLatch.Signal();
+                };
+
+                leaderElector.OnStoppedLeading += () =>
+                {
+                    leadershipHistory.Add("A stops leading");
+                    testLeaderElectionLatch.Signal();
+                    lockAStopLeading.Set();
+                };
+
+                leaderElector.RunAsync().Wait();
+            });
+
+
+            lockAStopLeading.WaitOne(TimeSpan.FromSeconds(3));
+
+            Task.Run(() =>
+            {
+                var leaderElector = new LeaderElector(leaderElectionConfigB);
+
+                leaderElector.OnStartedLeading += () =>
+                {
+                    leadershipHistory.Add("B starts leading");
+                    testLeaderElectionLatch.Signal();
+                };
+
+                leaderElector.OnStoppedLeading += () =>
+                {
+                    leadershipHistory.Add("B stops leading");
+                    testLeaderElectionLatch.Signal();
+                };
+
+                leaderElector.RunAsync().Wait();
+            });
+
+            testLeaderElectionLatch.Wait(TimeSpan.FromSeconds(10));
+
+            Assert.True(electionHistory.SequenceEqual(
+                new[]
+                {
+                    "A creates record", "A updates record", "A updates record",
+                    "B updates record", "B updates record", "B updates record", "B updates record",
+                }));
+
+            Assert.True(leadershipHistory.SequenceEqual(
+                new[]
+                {
+                    "A gets leadership", "A starts leading", "A stops leading",
+                    "B gets leadership", "B starts leading", "B stops leading",
+                }));
         }
 
         private class MockResourceLock : ILock
         {
+            private static LeaderElectionRecord leaderRecord;
+            private static readonly object lockobj = new object();
+
+            public static void ResetGloablRecord()
+            {
+                leaderRecord = null;
+            }
+
             private readonly string id;
-            private LeaderElectionRecord leaderRecord;
-            private readonly object lockobj = new object();
 
             public event Action<LeaderElectionRecord> OnCreate;
             public event Action<LeaderElectionRecord> OnUpdate;
