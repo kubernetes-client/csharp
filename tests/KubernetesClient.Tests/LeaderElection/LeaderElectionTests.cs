@@ -291,13 +291,94 @@ namespace k8s.Tests.LeaderElection
         [Fact]
         public void LeaderElectionReportLeaderOnStart()
         {
+            var l = new Mock<ILock>();
+            l.Setup(obj => obj.Identity)
+                .Returns("foo1");
 
+            l.SetupSequence(obj => obj.GetAsync(CancellationToken.None))
+                .ReturnsAsync(() =>
+                {
+                    return new LeaderElectionRecord()
+                    {
+                        HolderIdentity = "foo2",
+                        AcquireTime = DateTime.Now,
+                        RenewTime = DateTime.Now,
+                        LeaderTransitions = 1,
+                        LeaseDurationSeconds = 60,
+                    };
+                })
+                .ReturnsAsync(() =>
+                {
+                    return new LeaderElectionRecord()
+                    {
+                        HolderIdentity = "foo3",
+                        AcquireTime = DateTime.Now,
+                        RenewTime = DateTime.Now,
+                        LeaderTransitions = 1,
+                        LeaseDurationSeconds = 60,
+                    };
+                });
+
+            var leaderElector = new LeaderElector(new LeaderElectionConfig(l.Object)
+            {
+                LeaseDuration = TimeSpan.FromMilliseconds(1000),
+                RetryPeriod = TimeSpan.FromMilliseconds(200),
+                RenewDeadline = TimeSpan.FromMilliseconds(700),
+            });
+
+            var countdown = new CountdownEvent(2);
+            var notifications = new List<string>();
+            leaderElector.OnNewLeader += id =>
+            {
+                notifications.Add(id);
+                countdown.Signal();
+            };
+
+            Task.Run(() => leaderElector.RunAsync());
+            countdown.Wait(TimeSpan.FromSeconds(10));
+
+            Assert.True(notifications.SequenceEqual(new[]
+            {
+                "foo2", "foo3",
+            }));
         }
 
         [Fact]
         public void LeaderElectionShouldReportLeaderItAcquiresOnStart()
         {
+            var l = new Mock<ILock>();
+            l.Setup(obj => obj.Identity)
+                .Returns("foo1");
 
+            l.Setup(obj => obj.GetAsync(CancellationToken.None))
+                .ReturnsAsync(new LeaderElectionRecord()
+                {
+                    HolderIdentity = "foo1",
+                    AcquireTime = DateTime.Now,
+                    RenewTime = DateTime.Now,
+                    LeaderTransitions = 1,
+                    LeaseDurationSeconds = 60,
+                });
+
+            var leaderElector = new LeaderElector(new LeaderElectionConfig(l.Object)
+            {
+                LeaseDuration = TimeSpan.FromMilliseconds(1000),
+                RetryPeriod = TimeSpan.FromMilliseconds(200),
+                RenewDeadline = TimeSpan.FromMilliseconds(700),
+            });
+
+            var countdown = new CountdownEvent(1);
+            var notifications = new List<string>();
+            leaderElector.OnNewLeader += id =>
+            {
+                notifications.Add(id);
+                countdown.Signal();
+            };
+
+            Task.Run(() => leaderElector.RunAsync());
+            countdown.Wait(TimeSpan.FromSeconds(10));
+
+            Assert.True(notifications.SequenceEqual(new[] {"foo1"}));
         }
 
         private class MockResourceLock : ILock
