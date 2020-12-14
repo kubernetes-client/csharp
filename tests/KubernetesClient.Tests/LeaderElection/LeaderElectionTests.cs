@@ -24,7 +24,7 @@ namespace k8s.Tests.LeaderElection
             var leadershipHistory = new List<string>();
 
             var renewCount = 3;
-            var mockLock = new MockResourceLock("mock") {UpdateWillFail = () => renewCount <= 0,};
+            var mockLock = new MockResourceLock("mock") { UpdateWillFail = () => renewCount <= 0, };
 
             mockLock.OnCreate += _ =>
             {
@@ -72,8 +72,8 @@ namespace k8s.Tests.LeaderElection
             countdown.Wait(TimeSpan.FromSeconds(10));
 
 
-            Assert.True(electionHistory.SequenceEqual(new[] {"create record", "update record", "update record"}));
-            Assert.True(leadershipHistory.SequenceEqual(new[] {"get leadership", "start leading", "stop leading"}));
+            Assert.True(electionHistory.SequenceEqual(new[] { "create record", "update record", "update record" }));
+            Assert.True(leadershipHistory.SequenceEqual(new[] { "get leadership", "start leading", "stop leading" }));
         }
 
         [Fact]
@@ -83,7 +83,7 @@ namespace k8s.Tests.LeaderElection
             var leadershipHistory = new List<string>();
 
             var renewCountA = 3;
-            var mockLockA = new MockResourceLock("mockA") {UpdateWillFail = () => renewCountA <= 0};
+            var mockLockA = new MockResourceLock("mockA") { UpdateWillFail = () => renewCountA <= 0 };
 
             mockLockA.OnCreate += (_) =>
             {
@@ -109,7 +109,7 @@ namespace k8s.Tests.LeaderElection
             };
 
             var renewCountB = 4;
-            var mockLockB = new MockResourceLock("mockB") {UpdateWillFail = () => renewCountB <= 0};
+            var mockLockB = new MockResourceLock("mockB") { UpdateWillFail = () => renewCountB <= 0 };
 
             mockLockB.OnCreate += (_) =>
             {
@@ -203,7 +203,7 @@ namespace k8s.Tests.LeaderElection
             var leadershipHistory = new List<string>();
 
             var renewCount = 3;
-            var mockLock = new MockResourceLock("mock") {UpdateWillFail = () => renewCount <= 0,};
+            var mockLock = new MockResourceLock("mock") { UpdateWillFail = () => renewCount <= 0, };
 
             mockLock.OnCreate += _ =>
             {
@@ -258,7 +258,7 @@ namespace k8s.Tests.LeaderElection
                 "try update record", "try update record", "try update record", "try update record",
             }));
 
-            Assert.True(leadershipHistory.SequenceEqual(new[] {"get leadership", "start leading", "stop leading"}));
+            Assert.True(leadershipHistory.SequenceEqual(new[] { "get leadership", "start leading", "stop leading" }));
         }
 
         [Fact]
@@ -378,7 +378,7 @@ namespace k8s.Tests.LeaderElection
             Task.Run(() => leaderElector.RunAsync());
             countdown.Wait(TimeSpan.FromSeconds(10));
 
-            Assert.True(notifications.SequenceEqual(new[] {"foo1"}));
+            Assert.True(notifications.SequenceEqual(new[] { "foo1" }));
         }
 
         private class MockResourceLock : ILock
