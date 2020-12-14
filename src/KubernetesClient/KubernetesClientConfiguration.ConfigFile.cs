@@ -357,13 +357,7 @@ namespace k8s
                                 {
                                     var expiresOn = int.Parse(config["expires-on"]);
                                     DateTimeOffset expires;
-#if NET452
-                                    var epoch = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
-                                    expires
-     = epoch.AddSeconds(expiresOn);
-#else
                                     expires = DateTimeOffset.FromUnixTimeSeconds(expiresOn);
-#endif
 
                                     if (DateTimeOffset.Compare(
                                         expires,

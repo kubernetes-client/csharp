@@ -1,4 +1,4 @@
-#if !NETCOREAPP2_1
+#if !NETSTANDARD2_1
 /*
  * These tests are only for the netstandard version of the client (there are separate tests for netcoreapp that connect to a local test-hosted server).
  */
@@ -48,17 +48,18 @@ namespace k8s.Tests
                 tty: true,
                 customHeaders: new Dictionary<string, List<string>>()
                 {
-                    {"X-My-Header", new List<string>() {"myHeaderValue", "myHeaderValue2" } },
+                    { "X-My-Header", new List<string>() { "myHeaderValue", "myHeaderValue2" } },
                 },
                 cancellationToken: CancellationToken.None).ConfigureAwait(false);
 
             var expectedHeaders = new Dictionary<string, string>()
             {
-                {"X-My-Header", "myHeaderValue myHeaderValue2" },
-                {"Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ=" },
+                { "X-My-Header", "myHeaderValue myHeaderValue2" },
+                { "Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ=" },
             };
 
-            Assert.Equal(mockWebSocketBuilder.PublicWebSocket,
+            Assert.Equal(
+                mockWebSocketBuilder.PublicWebSocket,
                 webSocket); // Did the method return the correct web socket?
             Assert.Equal(
                 new Uri(
@@ -89,17 +90,18 @@ namespace k8s.Tests
                 ports: new int[] { 80, 8080 },
                 customHeaders: new Dictionary<string, List<string>>()
                 {
-                    {"X-My-Header", new List<string>() {"myHeaderValue", "myHeaderValue2" } },
+                    { "X-My-Header", new List<string>() { "myHeaderValue", "myHeaderValue2" } },
                 },
                 cancellationToken: CancellationToken.None).ConfigureAwait(false);
 
             var expectedHeaders = new Dictionary<string, string>()
             {
-                {"X-My-Header", "myHeaderValue myHeaderValue2" },
-                {"Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ=" },
+                { "X-My-Header", "myHeaderValue myHeaderValue2" },
+                { "Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ=" },
             };
 
-            Assert.Equal(mockWebSocketBuilder.PublicWebSocket,
+            Assert.Equal(
+                mockWebSocketBuilder.PublicWebSocket,
                 webSocket); // Did the method return the correct web socket?
             Assert.Equal(
                 new Uri("ws://localhost/api/v1/namespaces/mynamespace/pods/mypod/portforward?ports=80&ports=8080"),
@@ -133,17 +135,18 @@ namespace k8s.Tests
                 tty: true,
                 customHeaders: new Dictionary<string, List<string>>()
                 {
-                    {"X-My-Header", new List<string>() {"myHeaderValue", "myHeaderValue2" } },
+                    { "X-My-Header", new List<string>() { "myHeaderValue", "myHeaderValue2" } },
                 },
                 cancellationToken: CancellationToken.None).ConfigureAwait(false);
 
             var expectedHeaders = new Dictionary<string, string>()
             {
-                {"X-My-Header", "myHeaderValue myHeaderValue2" },
-                {"Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ=" },
+                { "X-My-Header", "myHeaderValue myHeaderValue2" },
+                { "Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ=" },
             };
 
-            Assert.Equal(mockWebSocketBuilder.PublicWebSocket,
+            Assert.Equal(
+                mockWebSocketBuilder.PublicWebSocket,
                 webSocket); // Did the method return the correct web socket?
             Assert.Equal(
                 new Uri(

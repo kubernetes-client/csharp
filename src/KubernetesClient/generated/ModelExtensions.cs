@@ -69,6 +69,22 @@ namespace k8s.Models
         public const string KubeGroup = "admissionregistration.k8s.io";
     }
 
+    [KubernetesEntity(Group="internal.apiserver.k8s.io", Kind="StorageVersion", ApiVersion="v1alpha1", PluralName="storageversions")]
+    public partial class V1alpha1StorageVersion : IKubernetesObject<V1ObjectMeta>, IValidate
+    {
+        public const string KubeApiVersion = "v1alpha1";
+        public const string KubeKind = "StorageVersion";
+        public const string KubeGroup = "internal.apiserver.k8s.io";
+    }
+
+    [KubernetesEntity(Group="internal.apiserver.k8s.io", Kind="StorageVersionList", ApiVersion="v1alpha1", PluralName="storageversions")]
+    public partial class V1alpha1StorageVersionList : IKubernetesObject<V1ListMeta>, IItems<V1alpha1StorageVersion>, IValidate
+    {
+        public const string KubeApiVersion = "v1alpha1";
+        public const string KubeKind = "StorageVersionList";
+        public const string KubeGroup = "internal.apiserver.k8s.io";
+    }
+
     [KubernetesEntity(Group="apps", Kind="ControllerRevision", ApiVersion="v1", PluralName="controllerrevisions")]
     public partial class V1ControllerRevision : IKubernetesObject<V1ObjectMeta>, IValidate
     {
@@ -150,7 +166,7 @@ namespace k8s.Models
     }
 
     [KubernetesEntity(Group="authentication.k8s.io", Kind="TokenRequest", ApiVersion="v1", PluralName=null)]
-    public partial class V1TokenRequest : IKubernetesObject<V1ObjectMeta>, ISpec<V1TokenRequestSpec>, IValidate
+    public partial class Authenticationv1TokenRequest : IKubernetesObject<V1ObjectMeta>, ISpec<V1TokenRequestSpec>, IValidate
     {
         public const string KubeApiVersion = "v1";
         public const string KubeKind = "TokenRequest";
@@ -765,6 +781,38 @@ namespace k8s.Models
         public const string KubeGroup = "flowcontrol.apiserver.k8s.io";
     }
 
+    [KubernetesEntity(Group="flowcontrol.apiserver.k8s.io", Kind="FlowSchema", ApiVersion="v1beta1", PluralName="flowschemas")]
+    public partial class V1beta1FlowSchema : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1FlowSchemaSpec>, IValidate
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "FlowSchema";
+        public const string KubeGroup = "flowcontrol.apiserver.k8s.io";
+    }
+
+    [KubernetesEntity(Group="flowcontrol.apiserver.k8s.io", Kind="FlowSchemaList", ApiVersion="v1beta1", PluralName="flowschemas")]
+    public partial class V1beta1FlowSchemaList : IKubernetesObject<V1ListMeta>, IItems<V1beta1FlowSchema>, IValidate
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "FlowSchemaList";
+        public const string KubeGroup = "flowcontrol.apiserver.k8s.io";
+    }
+
+    [KubernetesEntity(Group="flowcontrol.apiserver.k8s.io", Kind="PriorityLevelConfiguration", ApiVersion="v1beta1", PluralName="prioritylevelconfigurations")]
+    public partial class V1beta1PriorityLevelConfiguration : IKubernetesObject<V1ObjectMeta>, ISpec<V1beta1PriorityLevelConfigurationSpec>, IValidate
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "PriorityLevelConfiguration";
+        public const string KubeGroup = "flowcontrol.apiserver.k8s.io";
+    }
+
+    [KubernetesEntity(Group="flowcontrol.apiserver.k8s.io", Kind="PriorityLevelConfigurationList", ApiVersion="v1beta1", PluralName="prioritylevelconfigurations")]
+    public partial class V1beta1PriorityLevelConfigurationList : IKubernetesObject<V1ListMeta>, IItems<V1beta1PriorityLevelConfiguration>, IValidate
+    {
+        public const string KubeApiVersion = "v1beta1";
+        public const string KubeKind = "PriorityLevelConfigurationList";
+        public const string KubeGroup = "flowcontrol.apiserver.k8s.io";
+    }
+
     [KubernetesEntity(Group="networking.k8s.io", Kind="Ingress", ApiVersion="v1", PluralName="ingresses")]
     public partial class V1Ingress : IKubernetesObject<V1ObjectMeta>, ISpec<V1IngressSpec>, IValidate
     {
@@ -843,6 +891,22 @@ namespace k8s.Models
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "IngressList";
         public const string KubeGroup = "networking.k8s.io";
+    }
+
+    [KubernetesEntity(Group="node.k8s.io", Kind="RuntimeClass", ApiVersion="v1", PluralName="runtimeclasses")]
+    public partial class V1RuntimeClass : IKubernetesObject<V1ObjectMeta>, IValidate
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "RuntimeClass";
+        public const string KubeGroup = "node.k8s.io";
+    }
+
+    [KubernetesEntity(Group="node.k8s.io", Kind="RuntimeClassList", ApiVersion="v1", PluralName="runtimeclasses")]
+    public partial class V1RuntimeClassList : IKubernetesObject<V1ListMeta>, IItems<V1RuntimeClass>, IValidate
+    {
+        public const string KubeApiVersion = "v1";
+        public const string KubeKind = "RuntimeClassList";
+        public const string KubeGroup = "node.k8s.io";
     }
 
     [KubernetesEntity(Group="node.k8s.io", Kind="RuntimeClass", ApiVersion="v1alpha1", PluralName="runtimeclasses")]
@@ -1155,22 +1219,6 @@ namespace k8s.Models
         public const string KubeApiVersion = "v1beta1";
         public const string KubeKind = "PriorityClassList";
         public const string KubeGroup = "scheduling.k8s.io";
-    }
-
-    [KubernetesEntity(Group="settings.k8s.io", Kind="PodPreset", ApiVersion="v1alpha1", PluralName="podpresets")]
-    public partial class V1alpha1PodPreset : IKubernetesObject<V1ObjectMeta>, ISpec<V1alpha1PodPresetSpec>
-    {
-        public const string KubeApiVersion = "v1alpha1";
-        public const string KubeKind = "PodPreset";
-        public const string KubeGroup = "settings.k8s.io";
-    }
-
-    [KubernetesEntity(Group="settings.k8s.io", Kind="PodPresetList", ApiVersion="v1alpha1", PluralName="podpresets")]
-    public partial class V1alpha1PodPresetList : IKubernetesObject<V1ListMeta>, IItems<V1alpha1PodPreset>, IValidate
-    {
-        public const string KubeApiVersion = "v1alpha1";
-        public const string KubeKind = "PodPresetList";
-        public const string KubeGroup = "settings.k8s.io";
     }
 
     [KubernetesEntity(Group="storage.k8s.io", Kind="CSIDriver", ApiVersion="v1", PluralName="csidrivers")]

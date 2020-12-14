@@ -39,8 +39,9 @@ namespace k8s.Models
         /// on every node, and handlers of the same name are equivalent on
         /// every node. For example, a handler called "runc" might specify that
         /// the runc OCI runtime (using native Linux containers) will be used
-        /// to run the containers in a pod. The Handler must conform to the DNS
-        /// Label (RFC 1123) requirements, and is immutable.</param>
+        /// to run the containers in a pod. The Handler must be lowercase,
+        /// conform to the DNS Label (RFC 1123) requirements, and is
+        /// immutable.</param>
         /// <param name="apiVersion">APIVersion defines the versioned schema of
         /// this representation of an object. Servers should convert recognized
         /// schemas to the latest internal value, and may reject unrecognized
@@ -98,8 +99,8 @@ namespace k8s.Models
         /// equivalent on every node. For example, a handler called "runc"
         /// might specify that the runc OCI runtime (using native Linux
         /// containers) will be used to run the containers in a pod. The
-        /// Handler must conform to the DNS Label (RFC 1123) requirements, and
-        /// is immutable.
+        /// Handler must be lowercase, conform to the DNS Label (RFC 1123)
+        /// requirements, and is immutable.
         /// </summary>
         [JsonProperty(PropertyName = "handler")]
         public string Handler { get; set; }

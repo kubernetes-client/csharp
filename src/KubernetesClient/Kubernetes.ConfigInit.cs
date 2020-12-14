@@ -96,19 +96,8 @@ namespace k8s
             {
                 if (config.SkipTlsVerify)
                 {
-#if NET452
-                    ((WebRequestHandler)HttpClientHandler).ServerCertificateValidationCallback =
-                        (sender, certificate, chain, sslPolicyErrors) => true;
-#elif XAMARINIOS1_0 || MONOANDROID8_1
-                    System.Net.ServicePointManager.ServerCertificateValidationCallback +=
- (sender, certificate, chain, sslPolicyErrors) =>
-                    {
-                        return true;
-                    };
-#else
                     HttpClientHandler.ServerCertificateCustomValidationCallback =
                         (sender, certificate, chain, sslPolicyErrors) => true;
-#endif
                 }
                 else
                 {
@@ -116,48 +105,13 @@ namespace k8s
                     {
                         throw new KubeConfigException("A CA must be set when SkipTlsVerify === false");
                     }
-#if NET452
-                    ((WebRequestHandler)HttpClientHandler).ServerCertificateValidationCallback =
- (sender, certificate, chain, sslPolicyErrors) =>
-                    {
-                        return Kubernetes.CertificateValidationCallBack(sender, CaCerts, certificate, chain, sslPolicyErrors);
-                    };
-#elif XAMARINIOS1_0
-                    System.Net.ServicePointManager.ServerCertificateValidationCallback +=
- (sender, certificate, chain, sslPolicyErrors) =>
-                    {
-                        var cert
- = new X509Certificate2(certificate);
-                        return Kubernetes.CertificateValidationCallBack(sender, CaCerts, cert, chain, sslPolicyErrors);
-                    };
-#elif MONOANDROID8_1
-                    var certList = new System.Collections.Generic.List<Java.Security.Cert.Certificate>();
 
-                    foreach (X509Certificate2 caCert in CaCerts)
-                    {
-                        using (var certStream
- = new System.IO.MemoryStream(caCert.RawData))
-                        {
-                            Java.Security.Cert.Certificate cert
- = Java.Security.Cert.CertificateFactory.GetInstance("X509").GenerateCertificate(certStream);
-
-                            certList.Add(cert);
-                        }
-                    }
-
-                    var handler
- = (Xamarin.Android.Net.AndroidClientHandler)this.HttpClientHandler;
-
-                    handler.TrustedCerts
- = certList;
-#else
                     HttpClientHandler.ServerCertificateCustomValidationCallback =
                         (sender, certificate, chain, sslPolicyErrors) =>
                         {
                             return CertificateValidationCallBack(sender, CaCerts, certificate, chain,
                                 sslPolicyErrors);
                         };
-#endif
                 }
             }
 
@@ -172,9 +126,6 @@ namespace k8s
 
         partial void CustomInitialize()
         {
-#if NET452
-            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
-#endif
             DeserializationSettings.Converters.Add(new V1Status.V1StatusObjectViewConverter());
         }
 

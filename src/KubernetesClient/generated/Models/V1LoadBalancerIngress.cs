@@ -7,6 +7,8 @@
 namespace k8s.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -31,10 +33,14 @@ namespace k8s.Models
         /// points that are DNS based (typically AWS load-balancers)</param>
         /// <param name="ip">IP is set for load-balancer ingress points that
         /// are IP based (typically GCE or OpenStack load-balancers)</param>
-        public V1LoadBalancerIngress(string hostname = default(string), string ip = default(string))
+        /// <param name="ports">Ports is a list of records of service ports If
+        /// used, every port defined in the service should have an entry in
+        /// it</param>
+        public V1LoadBalancerIngress(string hostname = default(string), string ip = default(string), IList<V1PortStatus> ports = default(IList<V1PortStatus>))
         {
             Hostname = hostname;
             Ip = ip;
+            Ports = ports;
             CustomInit();
         }
 
@@ -56,6 +62,13 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "ip")]
         public string Ip { get; set; }
+
+        /// <summary>
+        /// Gets or sets ports is a list of records of service ports If used,
+        /// every port defined in the service should have an entry in it
+        /// </summary>
+        [JsonProperty(PropertyName = "ports")]
+        public IList<V1PortStatus> Ports { get; set; }
 
     }
 }

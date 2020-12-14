@@ -511,10 +511,6 @@ namespace k8s.Models
             {
                 PortworxVolume.Validate();
             }
-            if (Projected != null)
-            {
-                Projected.Validate();
-            }
             if (Quobyte != null)
             {
                 Quobyte.Validate();

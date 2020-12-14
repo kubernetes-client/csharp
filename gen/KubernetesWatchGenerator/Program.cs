@@ -302,7 +302,11 @@ namespace KubernetesWatchGenerator
 
             if (definition.Properties.TryGetValue("spec", out var specProperty))
             {
-                interfaces.Add($"ISpec<{GetClassNameForSchemaDefinition(specProperty.Reference)}>");
+                // ignore empty spec placeholder
+                if (specProperty.Reference.ActualProperties.Any())
+                {
+                    interfaces.Add($"ISpec<{GetClassNameForSchemaDefinition(specProperty.Reference)}>");
+                }
             }
 
             if (_classesWithValidation.Contains(className))

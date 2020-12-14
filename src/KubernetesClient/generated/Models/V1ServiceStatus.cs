@@ -7,6 +7,8 @@
 namespace k8s.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -25,10 +27,12 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1ServiceStatus class.
         /// </summary>
+        /// <param name="conditions">Current service state</param>
         /// <param name="loadBalancer">LoadBalancer contains the current status
         /// of the load-balancer, if one is present.</param>
-        public V1ServiceStatus(V1LoadBalancerStatus loadBalancer = default(V1LoadBalancerStatus))
+        public V1ServiceStatus(IList<V1Condition> conditions = default(IList<V1Condition>), V1LoadBalancerStatus loadBalancer = default(V1LoadBalancerStatus))
         {
+            Conditions = conditions;
             LoadBalancer = loadBalancer;
             CustomInit();
         }
@@ -37,6 +41,12 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets current service state
+        /// </summary>
+        [JsonProperty(PropertyName = "conditions")]
+        public IList<V1Condition> Conditions { get; set; }
 
         /// <summary>
         /// Gets or sets loadBalancer contains the current status of the

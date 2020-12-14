@@ -68,6 +68,17 @@ namespace k8s.Models
         /// support this field, drivers can only support one mode when deployed
         /// on such a cluster and the deployment determines which mode that is,
         /// for example via a command line parameter of the driver.</param>
+        /// <param name="requiresRepublish">RequiresRepublish indicates the CSI
+        /// driver wants `NodePublishVolume` being periodically called to
+        /// reflect any possible change in the mounted volume. This field
+        /// defaults to false.
+        ///
+        /// Note: After a successful initial NodePublishVolume call, subsequent
+        /// calls to NodePublishVolume should only update the contents of the
+        /// volume. New mount points will not be seen by a running container.
+        ///
+        /// This is an alpha feature and only available when the
+        /// CSIServiceAccountToken feature is enabled.</param>
         /// <param name="storageCapacity">If set to true, storageCapacity
         /// indicates that the CSI volume driver wants pod scheduling to
         /// consider the storage capacity that the driver deployment will
@@ -86,6 +97,26 @@ namespace k8s.Models
         /// This is an alpha field and only available when the
         /// CSIStorageCapacity feature is enabled. The default is
         /// false.</param>
+        /// <param name="tokenRequests">TokenRequests indicates the CSI driver
+        /// needs pods' service account tokens it is mounting volume for to do
+        /// necessary authentication. Kubelet will pass the tokens in
+        /// VolumeContext in the CSI NodePublishVolume calls. The CSI driver
+        /// should parse and validate the following VolumeContext:
+        /// "csi.storage.k8s.io/serviceAccount.tokens": {
+        /// "&lt;audience&gt;": {
+        /// "token": &lt;token&gt;,
+        /// "expirationTimestamp": &lt;expiration timestamp in RFC3339&gt;,
+        /// },
+        /// ...
+        /// }
+        ///
+        /// Note: Audience in each TokenRequest should be different and at most
+        /// one token is empty string. To receive a new token after expiry,
+        /// RequiresRepublish can be used to trigger NodePublishVolume
+        /// periodically.
+        ///
+        /// This is an alpha feature and only available when the
+        /// CSIServiceAccountToken feature is enabled.</param>
         /// <param name="volumeLifecycleModes">VolumeLifecycleModes defines
         /// what kind of volumes this CSI volume driver supports. The default
         /// if the list is empty is "Persistent", which is the usage defined by
@@ -99,12 +130,14 @@ namespace k8s.Models
         /// https://kubernetes-csi.github.io/docs/ephemeral-local-volumes.html
         /// A driver can support one or more of these modes and more modes may
         /// be added in the future.</param>
-        public V1beta1CSIDriverSpec(bool? attachRequired = default(bool?), string fsGroupPolicy = default(string), bool? podInfoOnMount = default(bool?), bool? storageCapacity = default(bool?), IList<string> volumeLifecycleModes = default(IList<string>))
+        public V1beta1CSIDriverSpec(bool? attachRequired = default(bool?), string fsGroupPolicy = default(string), bool? podInfoOnMount = default(bool?), bool? requiresRepublish = default(bool?), bool? storageCapacity = default(bool?), IList<V1beta1TokenRequest> tokenRequests = default(IList<V1beta1TokenRequest>), IList<string> volumeLifecycleModes = default(IList<string>))
         {
             AttachRequired = attachRequired;
             FsGroupPolicy = fsGroupPolicy;
             PodInfoOnMount = podInfoOnMount;
+            RequiresRepublish = requiresRepublish;
             StorageCapacity = storageCapacity;
+            TokenRequests = tokenRequests;
             VolumeLifecycleModes = volumeLifecycleModes;
             CustomInit();
         }
@@ -170,6 +203,22 @@ namespace k8s.Models
         public bool? PodInfoOnMount { get; set; }
 
         /// <summary>
+        /// Gets or sets requiresRepublish indicates the CSI driver wants
+        /// `NodePublishVolume` being periodically called to reflect any
+        /// possible change in the mounted volume. This field defaults to
+        /// false.
+        ///
+        /// Note: After a successful initial NodePublishVolume call, subsequent
+        /// calls to NodePublishVolume should only update the contents of the
+        /// volume. New mount points will not be seen by a running container.
+        ///
+        /// This is an alpha feature and only available when the
+        /// CSIServiceAccountToken feature is enabled.
+        /// </summary>
+        [JsonProperty(PropertyName = "requiresRepublish")]
+        public bool? RequiresRepublish { get; set; }
+
+        /// <summary>
         /// Gets or sets if set to true, storageCapacity indicates that the CSI
         /// volume driver wants pod scheduling to consider the storage capacity
         /// that the driver deployment will report by creating
@@ -189,6 +238,32 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "storageCapacity")]
         public bool? StorageCapacity { get; set; }
+
+        /// <summary>
+        /// Gets or sets tokenRequests indicates the CSI driver needs pods'
+        /// service account tokens it is mounting volume for to do necessary
+        /// authentication. Kubelet will pass the tokens in VolumeContext in
+        /// the CSI NodePublishVolume calls. The CSI driver should parse and
+        /// validate the following VolumeContext:
+        /// "csi.storage.k8s.io/serviceAccount.tokens": {
+        /// "&amp;lt;audience&amp;gt;": {
+        /// "token": &amp;lt;token&amp;gt;,
+        /// "expirationTimestamp": &amp;lt;expiration timestamp in
+        /// RFC3339&amp;gt;,
+        /// },
+        /// ...
+        /// }
+        ///
+        /// Note: Audience in each TokenRequest should be different and at most
+        /// one token is empty string. To receive a new token after expiry,
+        /// RequiresRepublish can be used to trigger NodePublishVolume
+        /// periodically.
+        ///
+        /// This is an alpha feature and only available when the
+        /// CSIServiceAccountToken feature is enabled.
+        /// </summary>
+        [JsonProperty(PropertyName = "tokenRequests")]
+        public IList<V1beta1TokenRequest> TokenRequests { get; set; }
 
         /// <summary>
         /// Gets or sets volumeLifecycleModes defines what kind of volumes this

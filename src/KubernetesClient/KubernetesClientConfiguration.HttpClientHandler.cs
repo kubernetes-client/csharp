@@ -9,8 +9,7 @@ namespace k8s
         {
             var httpClientHandler = new HttpClientHandler();
 
-#if !NET452
-            var uriScheme = new Uri(Host).Scheme;
+            var uriScheme = new Uri(this.Host).Scheme;
 
             if (uriScheme == "https")
             {
@@ -29,7 +28,6 @@ namespace k8s
                         };
                 }
             }
-#endif
 
             AddCertificates(httpClientHandler);
 
@@ -50,11 +48,7 @@ namespace k8s
             {
                 var cert = CertUtils.GeneratePfx(this);
 
-#if NET452
-                ((WebRequestHandler)handler).ClientCertificates.Add(cert);
-#else
                 handler.ClientCertificates.Add(cert);
-#endif
             }
         }
 

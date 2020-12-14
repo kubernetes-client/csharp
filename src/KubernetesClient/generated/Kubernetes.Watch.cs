@@ -1055,6 +1055,75 @@ namespace k8s
         }
 
         /// <inheritdoc/>
+        public Task<Watcher<V1beta1FlowSchema>> WatchFlowSchemaAsync(
+            string name,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1FlowSchema> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}";
+            return WatchObjectAsync<V1beta1FlowSchema>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc/>
+        public Task<Watcher<V1beta1PriorityLevelConfiguration>> WatchPriorityLevelConfigurationAsync(
+            string name,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1PriorityLevelConfiguration> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}";
+            return WatchObjectAsync<V1beta1PriorityLevelConfiguration>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc/>
+        public Task<Watcher<V1alpha1StorageVersion>> WatchStorageVersionAsync(
+            string name,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1alpha1StorageVersion> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}";
+            return WatchObjectAsync<V1alpha1StorageVersion>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc/>
         public Task<Watcher<V1IngressClass>> WatchIngressClassAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1170,6 +1239,29 @@ namespace k8s
         {
             string path = $"apis/networking.k8s.io/v1beta1/watch/namespaces/{@namespace}/ingresses/{name}";
             return WatchObjectAsync<Networkingv1beta1Ingress>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc/>
+        public Task<Watcher<V1RuntimeClass>> WatchRuntimeClassAsync(
+            string name,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1RuntimeClass> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/node.k8s.io/v1/watch/runtimeclasses/{name}";
+            return WatchObjectAsync<V1RuntimeClass>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
         /// <inheritdoc/>
@@ -1614,30 +1706,6 @@ namespace k8s
         {
             string path = $"apis/scheduling.k8s.io/v1beta1/watch/priorityclasses/{name}";
             return WatchObjectAsync<V1beta1PriorityClass>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
-        }
-
-        /// <inheritdoc/>
-        public Task<Watcher<V1alpha1PodPreset>> WatchNamespacedPodPresetAsync(
-            string name,
-            string @namespace,
-            bool? allowWatchBookmarks = null,
-            string @continue = null,
-            string fieldSelector = null,
-            string labelSelector = null,
-            int? limit = null,
-            bool? pretty = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            Action<WatchEventType, V1alpha1PodPreset> onEvent = null,
-            Action<Exception> onError = null,
-            Action onClosed = null,
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            string path = $"apis/settings.k8s.io/v1alpha1/watch/namespaces/{@namespace}/podpresets/{name}";
-            return WatchObjectAsync<V1alpha1PodPreset>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
         /// <inheritdoc/>

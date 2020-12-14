@@ -1,20 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <IsPackable>false</IsPackable>
     <LangVersion>8</LangVersion>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\..\src\KubernetesClient\kubernetes-client.snk</AssemblyOriginatorKeyFile>
     <RootNamespace>k8s.Tests</RootNamespace>
-    <TargetFrameworks>netcoreapp2.1</TargetFrameworks>
+    <TargetFrameworks>net5</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
       <PackageReference Include="FluentAssertions" Version="5.10.3" />
-      <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9">
-          <!-- this is due to aspnet core 2.1 is not compatible with our code -->
-          <AllowExplicitVersion>true</AllowExplicitVersion>
-      </PackageReference>
-
       <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
       <PackageReference Include="System.Reactive" Version="4.3.2" />
       <PackageReference Include="Nito.AsyncEx" Version="5.1.0" />
@@ -33,7 +27,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Xunit.StaFact" Version="0.3.18" />
+    <PackageReference Include="Xunit.StaFact" Version="1.0.37" />
     <PackageReference Include="Moq" Version="4.13.1" />
 
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />

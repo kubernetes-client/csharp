@@ -7,9 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.WebSockets;
-#if (NET452 || NETSTANDARD2_0)
 using System.Net.Security;
-#endif
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
@@ -297,11 +295,7 @@ namespace k8s
             }
 
             // Set Credentials
-#if NET452
-            foreach (var cert in ((WebRequestHandler)this.HttpClientHandler).ClientCertificates.OfType<X509Certificate2>())
-#else
-            foreach (var cert in HttpClientHandler.ClientCertificates.OfType<X509Certificate2>())
-#endif
+            foreach (var cert in this.HttpClientHandler.ClientCertificates.OfType<X509Certificate2>())
             {
                 webSocketBuilder.AddClientCertificate(cert);
             }
@@ -318,14 +312,14 @@ namespace k8s
                 }
             }
 
-#if (NET452 || NETSTANDARD2_0)
-            if (CaCerts != null)
+#if (NETSTANDARD2_0)
+            if (this.CaCerts != null)
             {
                 webSocketBuilder.SetServerCertificateValidationCallback(ServerCertificateValidationCallback);
             }
 #endif
 
-#if NETCOREAPP2_1
+#if NETSTANDARD2_1
             if (this.CaCerts != null)
             {
                 webSocketBuilder.ExpectServerCertificate(this.CaCerts);
@@ -340,7 +334,7 @@ namespace k8s
             {
                 webSocketBuilder.Options.AddSubProtocol(webSocketSubProtocol);
             }
-#endif // NETCOREAPP2_1
+#endif // NETSTANDARD2_1
 
             // Send Request
             cancellationToken.ThrowIfCancellationRequested();
@@ -412,8 +406,8 @@ namespace k8s
                     ServiceClientTracing.Exit(invocationId, null);
                 }
 
-#if (NET452 || NETSTANDARD2_0)
-                if (CaCerts != null)
+#if (NETSTANDARD2_0)
+                if (this.CaCerts != null)
                 {
                     webSocketBuilder.CleanupServerCertificateValidationCallback(
                         ServerCertificateValidationCallback);
@@ -424,7 +418,7 @@ namespace k8s
             return webSocket;
         }
 
-#if (NET452 || NETSTANDARD2_0)
+#if (NETSTANDARD2_0)
         internal bool ServerCertificateValidationCallback(object sender, X509Certificate certificate, X509Chain chain,
             SslPolicyErrors sslPolicyErrors)
         {
