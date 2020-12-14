@@ -18,7 +18,7 @@ namespace k8s.LeaderElection.ResourceLock
         protected override Task<V1Endpoints> CreateMetaObjectAsync(IKubernetes client, V1Endpoints obj, string namespaceParameter,
             CancellationToken cancellationToken)
         {
-           return client.CreateNamespacedEndpointsAsync(obj, namespaceParameter, cancellationToken: cancellationToken);
+            return client.CreateNamespacedEndpointsAsync(obj, namespaceParameter, cancellationToken: cancellationToken);
         }
 
         protected override Task<V1Endpoints> ReplaceMetaObjectAsync(IKubernetes client, V1Endpoints obj, string name, string namespaceParameter,
