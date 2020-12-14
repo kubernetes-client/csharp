@@ -4,10 +4,10 @@ using k8s.Models;
 
 namespace k8s.LeaderElection.ResourceLock
 {
-    public class ConfigMapLock : MetaObjectLock<V1ConfigMap>
+    public class ConfigMapLock : MetaObjectAnnotationLock<V1ConfigMap>
     {
-        public ConfigMapLock(IKubernetes client, string @namespace, string name, string identity) : base(client,
-            @namespace, name, identity)
+        public ConfigMapLock(IKubernetes client, string @namespace, string name, string identity)
+            : base(client, @namespace, name, identity)
         {
         }
 

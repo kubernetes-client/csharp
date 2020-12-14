@@ -4,9 +4,10 @@ using k8s.Models;
 
 namespace k8s.LeaderElection.ResourceLock
 {
-    public class EndpointsLock : MetaObjectLock<V1Endpoints>
+    public class EndpointsLock : MetaObjectAnnotationLock<V1Endpoints>
     {
-        public EndpointsLock(IKubernetes client, string @namespace, string name, string identity) : base(client, @namespace, name, identity)
+        public EndpointsLock(IKubernetes client, string @namespace, string name, string identity)
+            : base(client, @namespace, name, identity)
         {
         }
 

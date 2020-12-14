@@ -18,30 +18,18 @@ namespace k8s.LeaderElection.ResourceLock
 
         protected MetaObjectLock(IKubernetes client, string @namespace, string name, string identity)
         {
-            this.client = client;
+            this.client = client ?? throw new ArgumentNullException(nameof(client));
             ns = @namespace;
             this.name = name;
             this.identity = identity;
         }
-
-        private const string LeaderElectionRecordAnnotationKey = "control-plane.alpha.kubernetes.io/leader";
 
         public string Identity => identity;
 
         public async Task<LeaderElectionRecord> GetAsync(CancellationToken cancellationToken = default)
         {
             var obj = await ReadMetaObjectAsync(client, name, ns, cancellationToken).ConfigureAwait(false);
-            var recordRawStringContent = obj.GetAnnotation(LeaderElectionRecordAnnotationKey);
-
-            if (string.IsNullOrEmpty(recordRawStringContent))
-            {
-                return new LeaderElectionRecord();
-            }
-
-            var record =
-                JsonConvert.DeserializeObject<LeaderElectionRecord>(
-                    recordRawStringContent,
-                    client.DeserializationSettings);
+            var record = GetLeaderElectionRecord(obj);
 
             Interlocked.Exchange(ref metaObjCache, obj);
             return record;
@@ -56,9 +44,7 @@ namespace k8s.LeaderElection.ResourceLock
                 Metadata = new V1ObjectMeta() { Name = name, NamespaceProperty = ns },
             };
 
-            metaObj.SetAnnotation(
-                LeaderElectionRecordAnnotationKey,
-                JsonConvert.SerializeObject(record, client.SerializationSettings));
+            metaObj = SetLeaderElectionRecord(record, metaObj);
 
             try
             {
@@ -76,8 +62,12 @@ namespace k8s.LeaderElection.ResourceLock
             return false;
         }
 
-        protected abstract Task<T> CreateMetaObjectAsync(IKubernetes client, T obj, string namespaceParameter, CancellationToken cancellationToken);
+        protected abstract LeaderElectionRecord GetLeaderElectionRecord(T obj);
 
+        protected abstract T SetLeaderElectionRecord(LeaderElectionRecord record, T metaObj);
+
+
+        protected abstract Task<T> CreateMetaObjectAsync(IKubernetes client, T obj, string namespaceParameter, CancellationToken cancellationToken);
 
         public async Task<bool> UpdateAsync(LeaderElectionRecord record, CancellationToken cancellationToken = default)
         {
@@ -87,13 +77,11 @@ namespace k8s.LeaderElection.ResourceLock
                 throw new InvalidOperationException("endpoint not initialized, call get or create first");
             }
 
-            metaObj.SetAnnotation(
-                LeaderElectionRecordAnnotationKey,
-                JsonConvert.SerializeObject(record, client.DeserializationSettings));
+            metaObj = SetLeaderElectionRecord(record, metaObj);
 
             try
             {
-                var replacedObj = await ReplaceMetaObjectAsync(client, metaObjCache, name, ns, cancellationToken).ConfigureAwait(false);
+                var replacedObj = await ReplaceMetaObjectAsync(client, metaObj, name, ns, cancellationToken).ConfigureAwait(false);
 
                 Interlocked.Exchange(ref metaObjCache, replacedObj);
                 return true;
