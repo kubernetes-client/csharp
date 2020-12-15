@@ -252,6 +252,8 @@ namespace k8s.Tests.LeaderElection
 
             countdown.Wait(TimeSpan.FromSeconds(10));
 
+            Assert.Equal(9, electionHistory.Count);
+
             Assert.True(electionHistory.SequenceEqual(new[]
             {
                 "create record", "try update record", "update record", "try update record", "update record",
