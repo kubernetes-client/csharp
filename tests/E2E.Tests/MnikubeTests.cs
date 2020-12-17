@@ -5,6 +5,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using k8s.LeaderElection;
+using k8s.LeaderElection.ResourceLock;
 using k8s.Models;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.Rest;
@@ -227,6 +229,102 @@ namespace k8s.E2E
                 new V1DeleteOptions() { PropagationPolicy = "Foreground" }).ConfigureAwait(false);
         }
 
+
+        [MinikubeFact]
+        public void LeaderIntegrationTest()
+        {
+            var client = CreateClient();
+            var namespaceParameter = "default";
+
+            void Cleanup()
+            {
+                var endpoints = client.ListNamespacedEndpoints(namespaceParameter);
+
+                void DeleteEndpoints(string name)
+                {
+                    while (endpoints.Items.Any(p => p.Metadata.Name == name))
+                    {
+                        try
+                        {
+                            client.DeleteNamespacedEndpoints(name, namespaceParameter);
+                        }
+                        catch (HttpOperationException e)
+                        {
+                            if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                            {
+                                return;
+                            }
+                        }
+                    }
+                }
+
+                DeleteEndpoints("leaderendpoint");
+            }
+
+            var cts = new CancellationTokenSource();
+
+            var leader1acq = new ManualResetEvent(false);
+            var leader1lose = new ManualResetEvent(false);
+
+            try
+            {
+                Cleanup();
+
+                var tasks = new List<Task>();
+
+                // 1
+                {
+                    var l = new EndpointsLock(client, namespaceParameter, "leaderendpoint", "leader1");
+                    var le = new LeaderElector(new LeaderElectionConfig(l)
+                    {
+                        LeaseDuration = TimeSpan.FromSeconds(1),
+                        RetryPeriod = TimeSpan.FromMilliseconds(400),
+                    });
+
+                    le.OnStartedLeading += () => leader1acq.Set();
+                    le.OnStoppedLeading += () => leader1lose.Set();
+
+                    tasks.Add(le.RunAsync(cts.Token));
+                }
+
+                // wait 1 become leader
+                Assert.True(leader1acq.WaitOne(TimeSpan.FromSeconds(30)));
+
+                // 2
+                {
+                    var l = new EndpointsLock(client, namespaceParameter, "leaderendpoint", "leader2");
+                    var le = new LeaderElector(new LeaderElectionConfig(l)
+                    {
+                        LeaseDuration = TimeSpan.FromSeconds(1),
+                        RetryPeriod = TimeSpan.FromMilliseconds(400),
+                    });
+
+                    var leader2init = new ManualResetEvent(false);
+
+                    le.OnNewLeader += _ =>
+                    {
+                        leader2init.Set();
+                    };
+
+                    tasks.Add(le.RunAsync());
+                    Assert.True(leader2init.WaitOne(TimeSpan.FromSeconds(30)));
+
+                    Assert.Equal("leader1", le.GetLeader());
+                    cts.Cancel();
+
+                    Assert.True(leader1lose.WaitOne(TimeSpan.FromSeconds(30)));
+                    Task.Delay(TimeSpan.FromSeconds(3)).Wait();
+
+                    Assert.True(le.IsLeader());
+                }
+
+                Task.WaitAll(tasks.ToArray(), TimeSpan.FromSeconds(30));
+            }
+            finally
+            {
+                Cleanup();
+            }
+        }
 
         private static IKubernetes CreateClient()
         {
