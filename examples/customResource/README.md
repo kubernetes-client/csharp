@@ -43,8 +43,8 @@ creating CR cr-instance-london
 CR list:
 - CR Item 0 = cr-instance-london
 - CR Item 1 = cr-instance-paris
-fetchedCR = cr-instance-london (Labels: {identifier : super-mini-head, key : value}), Spec: London
-deleted the CR
+fetchedCR = cr-instance-london (Labels: {identifier : city, newKey : newValue}), Spec: London
+Deleted the CR
 ```
 
 ## Under the hood
