@@ -1,0 +1,8 @@
+apiVersion: csharp.com/v1alpha1
+kind: CResource
+metadata:
+  name: cr-instance-paris
+  namespace: default
+spec:
+  cityName: Paris
+ 
