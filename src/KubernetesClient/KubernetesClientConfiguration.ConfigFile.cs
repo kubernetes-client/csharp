@@ -346,7 +346,7 @@ namespace k8s
             if (userDetails.UserCredentials.AuthProvider != null)
             {
                 if (userDetails.UserCredentials.AuthProvider.Config != null
-                    && userDetails.UserCredentials.AuthProvider.Config.ContainsKey("access-token") || userDetails.UserCredentials.AuthProvider.Config.ContainsKey("id-token"))
+                    && (userDetails.UserCredentials.AuthProvider.Config.ContainsKey("access-token") || userDetails.UserCredentials.AuthProvider.Config.ContainsKey("id-token")))
                 {
                     switch (userDetails.UserCredentials.AuthProvider.Name)
                     {
@@ -393,12 +393,12 @@ namespace k8s
 
                         case "oidc":
                             {
-                                Console.WriteLine("OIDC");
                                 var config = userDetails.UserCredentials.AuthProvider.Config;
-                                if (config.ContainsKey("id-token"))
+                                if (config.ContainsKey("client-id") && config.ContainsKey("client-secret") && config.ContainsKey("idp-issuer-url") && config.ContainsKey("id-token") && config.ContainsKey("refresh-token"))
                                 {
-                                    Console.WriteLine("id-token present");
-                                    AccessToken = config["id-token"];
+                                    Console.WriteLine("config complete");
+                                    TokenProvider = new OidcTokenProvider(config["client-id"], config["client-secret"], config["idp-issuer-url"], config["id-token"], config["refresh-token"]);
+                                    // AccessToken = config["id-token"];
                                     userCredentialsFound = true;
                                 }
 
