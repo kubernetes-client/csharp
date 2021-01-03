@@ -346,7 +346,7 @@ namespace k8s
             if (userDetails.UserCredentials.AuthProvider != null)
             {
                 if (userDetails.UserCredentials.AuthProvider.Config != null
-                    && userDetails.UserCredentials.AuthProvider.Config.ContainsKey("access-token"))
+                    && userDetails.UserCredentials.AuthProvider.Config.ContainsKey("access-token") || userDetails.UserCredentials.AuthProvider.Config.ContainsKey("id-token"))
                 {
                     switch (userDetails.UserCredentials.AuthProvider.Name)
                     {
@@ -388,6 +388,20 @@ namespace k8s
                                 var config = userDetails.UserCredentials.AuthProvider.Config;
                                 TokenProvider = new GcpTokenProvider(config["cmd-path"]);
                                 userCredentialsFound = true;
+                                break;
+                            }
+
+                        case "oidc":
+                            {
+                                Console.WriteLine("OIDC");
+                                var config = userDetails.UserCredentials.AuthProvider.Config;
+                                if (config.ContainsKey("id-token"))
+                                {
+                                    Console.WriteLine("id-token present");
+                                    AccessToken = config["id-token"];
+                                    userCredentialsFound = true;
+                                }
+
                                 break;
                             }
                     }
