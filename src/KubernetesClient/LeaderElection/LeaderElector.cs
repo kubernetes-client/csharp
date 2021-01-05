@@ -189,7 +189,7 @@ namespace k8s.LeaderElection
 
         private async Task AcquireAsync(CancellationToken cancellationToken)
         {
-            var delay = config.RetryPeriod.TotalMilliseconds;
+            var delay = (int)config.RetryPeriod.TotalMilliseconds;
             for (; ; )
             {
                 try
