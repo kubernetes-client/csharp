@@ -203,10 +203,14 @@ namespace k8s.LeaderElection
                         {
                             return;
                         }
+
+                        // wait RetryPeriod since acq return immediately
+                        await Task.Delay(delay, cancellationToken).ConfigureAwait(false);
                     }
 
+                    // else timeout
+
                     delay = (int)(delay * JitterFactor);
-                    await Task.Delay(delay, cancellationToken).ConfigureAwait(false);
                 }
                 finally
                 {
