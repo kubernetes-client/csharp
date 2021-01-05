@@ -189,7 +189,7 @@ namespace k8s.LeaderElection
 
         private async Task AcquireAsync(CancellationToken cancellationToken)
         {
-            var delay = config.RetryPeriod;
+            var delay = (int)config.RetryPeriod.TotalMilliseconds;
             for (; ; )
             {
                 try
@@ -210,7 +210,7 @@ namespace k8s.LeaderElection
 
                     // else timeout
 
-                    delay *= JitterFactor;
+                    delay = (int)(delay * JitterFactor);
                 }
                 finally
                 {
