@@ -21,13 +21,7 @@ namespace k8s.Authentication
         {
             _idToken = idToken;
             _refreshToken = refreshToken;
-            OidcClientOptions options = new OidcClientOptions
-            {
-                ClientId = clientId,
-                ClientSecret = clientSecret,
-                Authority = idpIssuerUrl,
-            };
-            _oidcClient = new OidcClient(options);
+            _oidcClient = getClient(clientId, clientSecret, idpIssuerUrl);
         }
 
         public async Task<AuthenticationHeaderValue> GetAuthenticationHeaderAsync(CancellationToken cancellationToken)
@@ -38,6 +32,18 @@ namespace k8s.Authentication
             }
 
             return new AuthenticationHeaderValue("Bearer", _accessToken);
+        }
+
+        private OidcClient getClient(string clientId, string clientSecret, string idpIssuerUrl)
+        {
+            OidcClientOptions options = new OidcClientOptions
+            {
+                ClientId = clientId,
+                ClientSecret = clientSecret ?? "",
+                Authority = idpIssuerUrl,
+            };
+
+            return new OidcClient(options);
         }
 
         private async Task RefreshToken()

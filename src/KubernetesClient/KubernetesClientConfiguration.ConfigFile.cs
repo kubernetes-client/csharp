@@ -394,10 +394,18 @@ namespace k8s
                         case "oidc":
                             {
                                 var config = userDetails.UserCredentials.AuthProvider.Config;
-                                if (config.ContainsKey("client-id") && config.ContainsKey("client-secret") && config.ContainsKey("idp-issuer-url") && config.ContainsKey("id-token") && config.ContainsKey("refresh-token"))
+                                if (config.ContainsKey("client-id") && config.ContainsKey("idp-issuer-url") && config.ContainsKey("id-token") && config.ContainsKey("refresh-token"))
                                 {
                                     Console.WriteLine("config complete");
-                                    TokenProvider = new OidcTokenProvider(config["client-id"], config["client-secret"], config["idp-issuer-url"], config["id-token"], config["refresh-token"]);
+
+                                    string clientId = config["client-id"];
+                                    string clientSecret = config.ContainsKey("client-secret") ? config["client-secret"] : '';
+                                    string idpIssuerUrl = config["idp-issuer-url"];
+                                    string idToken = config["id-token"];
+                                    string refreshToken = config["refresh-token"];
+
+                                    TokenProvider = new OidcTokenProvider(clientId, clientSecret, idpIssuerUrl, idToken, refreshToken);
+
                                     // AccessToken = config["id-token"];
                                     userCredentialsFound = true;
                                 }
