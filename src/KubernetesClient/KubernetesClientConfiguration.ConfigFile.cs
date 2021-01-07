@@ -395,6 +395,7 @@ namespace k8s
                         case "oidc":
                             {
                                 var config = userDetails.UserCredentials.AuthProvider.Config;
+                                AccessToken = config["id-token"];
                                 if (config.ContainsKey("client-id")
                                     && config.ContainsKey("idp-issuer-url")
                                     && config.ContainsKey("id-token")
@@ -408,7 +409,6 @@ namespace k8s
 
                                     TokenProvider = new OidcTokenProvider(clientId, clientSecret, idpIssuerUrl, idToken, refreshToken);
 
-                                    // AccessToken = config["id-token"];
                                     userCredentialsFound = true;
                                 }
 
