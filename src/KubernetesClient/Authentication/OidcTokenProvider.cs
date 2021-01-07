@@ -2,10 +2,9 @@ using System;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Linq;
 using Microsoft.Rest;
 using IdentityModel.OidcClient;
-using System.Security.Claims;
+using k8s.Exceptions;
 
 namespace k8s.Authentication
 {
@@ -48,20 +47,19 @@ namespace k8s.Authentication
 
         private async Task RefreshToken()
         {
-            Console.WriteLine("refreshing Token");
-            IdentityModel.OidcClient.Results.RefreshTokenResult result = await _oidcClient.RefreshTokenAsync(_refreshToken).ConfigureAwait(false);
-            _accessToken = result.AccessToken;
-            _idToken = result.IdentityToken;
-            _refreshToken = result.RefreshToken;
-            _expiry = result.AccessTokenExpiration;
-            Console.WriteLine("idToken");
-            Console.WriteLine(_idToken);
-            Console.WriteLine("accessToken");
-            Console.WriteLine(_accessToken);
-            Console.WriteLine("refreshToken");
-            Console.WriteLine(_refreshToken);
-            Console.WriteLine("expiry");
-            Console.WriteLine(_expiry);
+            try
+            {
+                IdentityModel.OidcClient.Results.RefreshTokenResult result =
+                    await _oidcClient.RefreshTokenAsync(_refreshToken).ConfigureAwait(false);
+                _accessToken = result.AccessToken;
+                _idToken = result.IdentityToken;
+                _refreshToken = result.RefreshToken;
+                _expiry = result.AccessTokenExpiration;
+            }
+            catch (Exception ex)
+            {
+                throw new KubernetesClientException($"Unable to refresh OIDC token. \n {ex.Message}");
+            }
         }
     }
 }
