@@ -56,9 +56,9 @@ namespace k8s.Authentication
                 _refreshToken = result.RefreshToken;
                 _expiry = result.AccessTokenExpiration;
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                throw new KubernetesClientException($"Unable to refresh OIDC token. \n {ex.Message}", e);
+                throw new KubernetesClientException($"Unable to refresh OIDC token. \n {e.Message}", e);
             }
         }
     }
