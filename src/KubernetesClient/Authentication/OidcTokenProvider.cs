@@ -49,7 +49,7 @@ namespace k8s.Authentication
         {
             try
             {
-                IdentityModel.OidcClient.Results.RefreshTokenResult result =
+                var result =
                     await _oidcClient.RefreshTokenAsync(_refreshToken).ConfigureAwait(false);
                 _accessToken = result.AccessToken;
                 _idToken = result.IdentityToken;
