@@ -58,7 +58,7 @@ namespace k8s.Authentication
             }
             catch (Exception ex)
             {
-                throw new KubernetesClientException($"Unable to refresh OIDC token. \n {ex.Message}");
+                throw new KubernetesClientException($"Unable to refresh OIDC token. \n {ex.Message}", e);
             }
         }
     }
