@@ -300,6 +300,7 @@
     <Rule Id="CS1591" Action="None" />
     <Rule Id="CS1573" Action="None" />
     <Rule Id="CS1574" Action="None" />
-
+    <!-- Rename k8s.Extensions type to mitigate conflict with Microsoft.Extensions namespace https://github.com/kubernetes-client/csharp/pull/544#issuecomment-759230655-->
+    <Rule Id="CA1724" Action="None" />
   </Rules>
 </RuleSet>

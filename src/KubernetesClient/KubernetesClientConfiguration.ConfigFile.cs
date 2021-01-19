@@ -40,7 +40,7 @@ namespace k8s
         /// </summary>
         /// <remarks>
         ///     If multiple kubeconfig files are specified in the KUBECONFIG environment variable,
-        ///     merges the files, where first occurence wins. See https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#merging-kubeconfig-files.
+        ///     merges the files, where first occurrence wins. See https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#merging-kubeconfig-files.
         /// </remarks>
         /// <returns>Instance of the<see cref="KubernetesClientConfiguration"/> class</returns>
         public static KubernetesClientConfiguration BuildDefaultConfig()
@@ -214,7 +214,7 @@ namespace k8s
         }
 
         /// <summary>
-        ///     Validates and Intializes Client Configuration
+        ///     Validates and Initializes Client Configuration
         /// </summary>
         /// <param name="k8SConfig">Kubernetes Configuration</param>
         /// <param name="currentContext">Current Context</param>
@@ -346,7 +346,8 @@ namespace k8s
             if (userDetails.UserCredentials.AuthProvider != null)
             {
                 if (userDetails.UserCredentials.AuthProvider.Config != null
-                    && userDetails.UserCredentials.AuthProvider.Config.ContainsKey("access-token"))
+                    && (userDetails.UserCredentials.AuthProvider.Config.ContainsKey("access-token")
+                        || userDetails.UserCredentials.AuthProvider.Config.ContainsKey("id-token")))
                 {
                     switch (userDetails.UserCredentials.AuthProvider.Name)
                     {
@@ -388,6 +389,29 @@ namespace k8s
                                 var config = userDetails.UserCredentials.AuthProvider.Config;
                                 TokenProvider = new GcpTokenProvider(config["cmd-path"]);
                                 userCredentialsFound = true;
+                                break;
+                            }
+
+                        case "oidc":
+                            {
+                                var config = userDetails.UserCredentials.AuthProvider.Config;
+                                AccessToken = config["id-token"];
+                                if (config.ContainsKey("client-id")
+                                    && config.ContainsKey("idp-issuer-url")
+                                    && config.ContainsKey("id-token")
+                                    && config.ContainsKey("refresh-token"))
+                                {
+                                    string clientId = config["client-id"];
+                                    string clientSecret = config.ContainsKey("client-secret") ? config["client-secret"] : null;
+                                    string idpIssuerUrl = config["idp-issuer-url"];
+                                    string idToken = config["id-token"];
+                                    string refreshToken = config["refresh-token"];
+
+                                    TokenProvider = new OidcTokenProvider(clientId, clientSecret, idpIssuerUrl, idToken, refreshToken);
+
+                                    userCredentialsFound = true;
+                                }
+
                                 break;
                             }
                     }
@@ -656,7 +680,7 @@ namespace k8s
         /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
         /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
         /// <remarks>
-        ///     The kube config files will be merges into a single <see cref="K8SConfiguration"/>, where first occurence wins.
+        ///     The kube config files will be merges into a single <see cref="K8SConfiguration"/>, where first occurrence wins.
         ///     See https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#merging-kubeconfig-files.
         /// </remarks>
         internal static K8SConfiguration LoadKubeConfig(FileInfo[] kubeConfigs, bool useRelativePaths = true)
@@ -672,7 +696,7 @@ namespace k8s
         /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
         /// <returns>Instance of the <see cref="K8SConfiguration"/> class</returns>
         /// <remarks>
-        ///     The kube config files will be merges into a single <see cref="K8SConfiguration"/>, where first occurence wins.
+        ///     The kube config files will be merges into a single <see cref="K8SConfiguration"/>, where first occurrence wins.
         ///     See https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#merging-kubeconfig-files.
         /// </remarks>
         internal static async Task<K8SConfiguration> LoadKubeConfigAsync(
