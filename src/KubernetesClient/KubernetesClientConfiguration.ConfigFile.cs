@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using k8s.Authentication;
 using k8s.Exceptions;
 using k8s.KubeConfigModels;
+using System.Net;
 
 namespace k8s
 {
@@ -271,6 +272,22 @@ namespace k8s
             if (!Uri.TryCreate(Host, UriKind.Absolute, out var uri))
             {
                 throw new KubeConfigException($"Bad server host URL `{Host}` (cannot be parsed)");
+            }
+
+            if (IPAddress.TryParse(uri.Host, out var ipAddress))
+            {
+                if (IPAddress.Equals(IPAddress.Any, ipAddress))
+                {
+                    var builder = new UriBuilder(Host);
+                    builder.Host = $"{IPAddress.Loopback}";
+                    Host = builder.ToString();
+                }
+                else if (IPAddress.Equals(IPAddress.IPv6Any, ipAddress))
+                {
+                    var builder = new UriBuilder(Host);
+                    builder.Host = $"{IPAddress.IPv6Loopback}";
+                    Host = builder.ToString();
+                }
             }
 
             if (uri.Scheme == "https")

@@ -381,6 +381,33 @@ namespace k8s.Tests
             var cfg = await KubernetesClientConfiguration.BuildConfigFromConfigFileAsync(new FileInfo(path)).ConfigureAwait(false);
         }
 
+        [Fact]
+        public void ContextWithWildcardIPv4()
+        {
+            var path = Path.GetFullPath("assets/kubeconfig.wildcard-ipv4.yml");
+
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(path);
+            Assert.Equal("https://127.0.0.1:443/", cfg.Host);
+        }
+
+        [Fact]
+        public void ContextWithWildcardIPv6()
+        {
+            var path = Path.GetFullPath("assets/kubeconfig.wildcard-ipv6.yml");
+
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(path);
+            Assert.Equal("https://[::1]:443/", cfg.Host);
+        }
+
+        [Fact]
+        public void ContextWithWildcardIPv62()
+        {
+            var path = Path.GetFullPath("assets/kubeconfig.wildcard-ipv6.yml");
+
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(path);
+            Assert.Equal("https://[::1]:443/", cfg.Host);
+        }
+
         /// <summary>
         ///     Ensures Kube config file is loaded from explicit file
         /// </summary>
