@@ -773,19 +773,9 @@ namespace k8s
                 }
             }
 
-            if (mergek8SConfig.Extensions != null)
-            {
-                foreach (var extension in mergek8SConfig.Extensions)
-                {
-                    if (basek8SConfig.Extensions?.ContainsKey(extension.Key) == false)
-                    {
-                        basek8SConfig.Extensions[extension.Key] = extension.Value;
-                    }
-                }
-            }
-
             // Note, Clusters, Contexts, and Extensions are map-like in config despite being represented as a list here:
             // https://github.com/kubernetes/client-go/blob/ede92e0fe62deed512d9ceb8bf4186db9f3776ff/tools/clientcmd/api/types.go#L238
+            basek8SConfig.Extensions = MergeLists(basek8SConfig.Extensions, mergek8SConfig.Extensions, (s) => s.Name);
             basek8SConfig.Clusters = MergeLists(basek8SConfig.Clusters, mergek8SConfig.Clusters, (s) => s.Name);
             basek8SConfig.Users = MergeLists(basek8SConfig.Users, mergek8SConfig.Users, (s) => s.Name);
             basek8SConfig.Contexts = MergeLists(basek8SConfig.Contexts, mergek8SConfig.Contexts, (s) => s.Name);
