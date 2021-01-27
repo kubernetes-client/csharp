@@ -1,10 +1,11 @@
+using k8s.Exceptions;
+using k8s.KubeConfigModels;
 using System;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
-using k8s.Exceptions;
-using k8s.KubeConfigModels;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace k8s.Tests
@@ -372,6 +373,14 @@ namespace k8s.Tests
             Assert.NotNull(cfg.Host);
         }
 
+        [Fact]
+        public async Task ContextWithClusterExtensions()
+        {
+            var path = Path.GetFullPath("assets/kubeconfig.cluster-extensions.yml");
+
+            var cfg = await KubernetesClientConfiguration.BuildConfigFromConfigFileAsync(new FileInfo(path)).ConfigureAwait(false);
+        }
+
         /// <summary>
         ///     Ensures Kube config file is loaded from explicit file
         /// </summary>
@@ -525,8 +534,8 @@ namespace k8s.Tests
                 new FileInfo(path), new FileInfo(path),
             });
 
-            Assert.Equal(1, cfg.Extensions.Count);
-            Assert.Equal(1, cfg.Preferences.Count);
+            Assert.Single(cfg.Extensions);
+            Assert.Single(cfg.Preferences);
         }
 
         /// <summary>
