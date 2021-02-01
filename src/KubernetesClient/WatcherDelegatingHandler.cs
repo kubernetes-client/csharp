@@ -142,7 +142,7 @@ namespace k8s
             }
         }
 
-        internal class LineSeparatedHttpContent : HttpContent
+        public class LineSeparatedHttpContent : HttpContent
         {
             private readonly HttpContent _originContent;
             private readonly CancellationToken _cancellationToken;
@@ -154,15 +154,16 @@ namespace k8s
                 _cancellationToken = cancellationToken;
             }
 
-            internal PeekableStreamReader StreamReader { get; private set; }
+            public TextReader StreamReader { get; private set; }
 
             protected override async Task SerializeToStreamAsync(Stream stream, TransportContext context)
             {
                 _originStream = await _originContent.ReadAsStreamAsync().ConfigureAwait(false);
 
-                StreamReader = new PeekableStreamReader(new CancelableStream(_originStream, _cancellationToken));
+                var reader = new PeekableStreamReader(new CancelableStream(_originStream, _cancellationToken));
+                StreamReader = reader;
 
-                var firstLine = await StreamReader.PeekLineAsync().ConfigureAwait(false);
+                var firstLine = await reader.PeekLineAsync().ConfigureAwait(false);
 
                 var writer = new StreamWriter(stream);
 
