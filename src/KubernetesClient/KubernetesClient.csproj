@@ -13,6 +13,13 @@
     <RootNamespace>k8s</RootNamespace>
     <SignAssembly>true</SignAssembly>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+      
+    <!-- Annotate the project so that automated dependency tools such as Renovate can use this information
+         This is used to include changelog during PRs to bump the version
+         See: https://docs.renovatebot.com/nuget/#how-it-works
+     -->
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/kubernetes-client/csharp</RepositoryUrl>
   
     <!-- Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
