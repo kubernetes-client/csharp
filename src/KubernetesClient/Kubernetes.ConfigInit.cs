@@ -184,7 +184,6 @@ namespace k8s
                 var ip = Dns.GetHostEntry(context.DnsEndPoint.Host).AddressList.First();
                 var ep = new IPEndPoint(ip, context.DnsEndPoint.Port);
 
-                // Console.WriteLine(ep);
                 await socket.ConnectAsync(ep, token).ConfigureAwait(false);
 
 
