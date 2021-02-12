@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Security;
+using System.Net.Sockets;
+using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using k8s.Exceptions;
 using k8s.Models;
@@ -166,6 +168,33 @@ namespace k8s
         private void CreateHttpClient(DelegatingHandler[] handlers)
         {
             FirstMessageHandler = HttpClientHandler = CreateRootHandler();
+
+
+#if NET5_0
+            var sh = new SocketsHttpHandler();
+            sh.ConnectCallback = async (context, token) =>
+            {
+                var socket = new Socket(SocketType.Stream, ProtocolType.Tcp)
+                {
+                    NoDelay = true,
+                };
+
+                socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
+
+                var ip = Dns.GetHostEntry(context.DnsEndPoint.Host).AddressList.First();
+                var ep = new IPEndPoint(ip, context.DnsEndPoint.Port);
+
+                // Console.WriteLine(ep);
+                await socket.ConnectAsync(ep, token).ConfigureAwait(false);
+
+
+                return new NetworkStream(socket, ownsSocket: true);
+            };
+
+            var p = HttpClientHandler.GetType().GetField("_underlyingHandler", BindingFlags.NonPublic | BindingFlags.Instance);
+            p.SetValue(HttpClientHandler, (sh));
+#endif
+
             if (handlers == null || handlers.Length == 0)
             {
                 // ensure we have at least one DelegatingHandler so AppendDelegatingHandler will work
