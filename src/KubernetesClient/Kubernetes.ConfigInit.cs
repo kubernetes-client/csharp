@@ -181,12 +181,7 @@ namespace k8s
 
                 socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
 
-                var ip = Dns.GetHostEntry(context.DnsEndPoint.Host).AddressList.First();
-                var ep = new IPEndPoint(ip, context.DnsEndPoint.Port);
-
-                await socket.ConnectAsync(ep, token).ConfigureAwait(false);
-
-
+                await socket.ConnectAsync(context.DnsEndPoint.Host, context.DnsEndPoint.Port, token).ConfigureAwait(false);
                 return new NetworkStream(socket, ownsSocket: true);
             };
 
