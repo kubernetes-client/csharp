@@ -319,7 +319,7 @@ namespace k8s
             }
 #endif
 
-#if NETSTANDARD2_1
+#if NETSTANDARD2_1 || NET5_0
             if (this.CaCerts != null)
             {
                 webSocketBuilder.ExpectServerCertificate(this.CaCerts);
@@ -334,7 +334,7 @@ namespace k8s
             {
                 webSocketBuilder.Options.AddSubProtocol(webSocketSubProtocol);
             }
-#endif // NETSTANDARD2_1
+#endif // NETSTANDARD2_1 || NET5_0
 
             // Send Request
             cancellationToken.ThrowIfCancellationRequested();
