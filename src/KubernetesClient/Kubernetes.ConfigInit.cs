@@ -178,13 +178,13 @@ namespace k8s
                 {
                     NoDelay = true,
                 };
-            
+
                 socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
-            
+
                 await socket.ConnectAsync(context.DnsEndPoint.Host, context.DnsEndPoint.Port, token).ConfigureAwait(false);
                 return new NetworkStream(socket, ownsSocket: true);
             };
-            
+
             var p = HttpClientHandler.GetType().GetField("_underlyingHandler", BindingFlags.NonPublic | BindingFlags.Instance);
             p.SetValue(HttpClientHandler, (sh));
 #endif
