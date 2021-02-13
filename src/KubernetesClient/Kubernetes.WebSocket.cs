@@ -366,8 +366,11 @@ namespace k8s
                 }
                 else
                 {
+#if NET5_0
+                    var content = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+#else
                     var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-
+#endif
                     // Try to parse the content as a V1Status object
                     var genericObject = SafeJsonConvert.DeserializeObject<KubernetesObject>(content);
                     V1Status status = null;
