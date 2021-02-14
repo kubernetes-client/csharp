@@ -28,7 +28,7 @@ jobs:
       - name: Check Format
         # don't check formatting on Windows b/c of CRLF issues.
         if: matrix.os != 'windows-latest'
-        run: dotnet format --check --dry-run --exclude ./src/KubernetesClient/generated/
+        run: dotnet format --check --exclude ./src/KubernetesClient/generated/
       - name: Build
         run: dotnet build --configuration Release
       - name: Test
