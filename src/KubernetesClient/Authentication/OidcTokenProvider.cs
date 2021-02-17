@@ -25,7 +25,7 @@ namespace k8s.Authentication
 
         public async Task<AuthenticationHeaderValue> GetAuthenticationHeaderAsync(CancellationToken cancellationToken)
         {
-            if (_expiry == null || _accessToken == null || DateTime.UtcNow.AddSeconds(30) > _expiry)
+            if (_accessToken == null || DateTime.UtcNow.AddSeconds(30) > _expiry)
             {
                 await RefreshToken().ConfigureAwait(false);
             }
