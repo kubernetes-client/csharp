@@ -43294,6 +43294,16 @@ namespace k8s
         /// The custom resource's plural name. For TPRs this would be lowercase
         /// plural kind.
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -43359,6 +43369,15 @@ namespace k8s
         /// no guarantee; - if set to non zero, then the result is at least as
         /// fresh as given rv.
         /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
@@ -43376,7 +43395,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> ListNamespacedCustomObjectWithHttpMessagesAsync(string group, string version, string namespaceParameter, string plural, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> ListNamespacedCustomObjectWithHttpMessagesAsync(string group, string version, string namespaceParameter, string plural, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Creates a cluster scoped Custom object
@@ -43484,6 +43503,16 @@ namespace k8s
         /// The custom resource's plural name. For TPRs this would be lowercase
         /// plural kind.
         /// </param>
+        /// <param name='allowWatchBookmarks'>
+        /// allowWatchBookmarks requests watch events with type "BOOKMARK".
+        /// Servers that do not implement bookmarks may ignore this flag and
+        /// bookmarks are sent at the server's discretion. Clients should not
+        /// assume bookmarks are returned at any specific interval, nor may
+        /// they assume the server will send any BOOKMARK event during a
+        /// session. If this is not a watch, this field is ignored. If the
+        /// feature gate WatchBookmarks is not enabled in apiserver, this field
+        /// is ignored.
+        /// </param>
         /// <param name='continueParameter'>
         /// The continue option should be set when retrieving more results from
         /// the server. Since this value is server defined, clients may only
@@ -43549,6 +43578,15 @@ namespace k8s
         /// no guarantee; - if set to non zero, then the result is at least as
         /// fresh as given rv.
         /// </param>
+        /// <param name='resourceVersionMatch'>
+        /// resourceVersionMatch determines how resourceVersion is applied to
+        /// list calls. It is highly recommended that resourceVersionMatch be
+        /// set for list calls where resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        ///
+        /// Defaults to unset
+        /// </param>
         /// <param name='timeoutSeconds'>
         /// Timeout for the list/watch call. This limits the duration of the
         /// call, regardless of any activity or inactivity.
@@ -43566,7 +43604,7 @@ namespace k8s
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<object>> ListClusterCustomObjectWithHttpMessagesAsync(string group, string version, string plural, string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> ListClusterCustomObjectWithHttpMessagesAsync(string group, string version, string plural, bool? allowWatchBookmarks = default(bool?), string continueParameter = default(string), string fieldSelector = default(string), string labelSelector = default(string), int? limit = default(int?), string resourceVersion = default(string), string resourceVersionMatch = default(string), int? timeoutSeconds = default(int?), bool? watch = default(bool?), string pretty = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// replace status of the cluster scoped specified custom object
