@@ -39,13 +39,13 @@ namespace k8s.KubeConfigModels
         public string Token { get; set; }
 
         /// <summary>
-        /// Gets or sets the username to imperonate. The name matches the flag.
+        /// Gets or sets the username to impersonate. The name matches the flag.
         /// </summary>
         [YamlMember(Alias = "as")]
         public string Impersonate { get; set; }
 
         /// <summary>
-        /// Gets or sets the groups to imperonate.
+        /// Gets or sets the groups to impersonate.
         /// </summary>
         [YamlMember(Alias = "as-groups", ApplyNamingConventions = false)]
         public IEnumerable<string> ImpersonateGroups { get; set; } = new string[0];
