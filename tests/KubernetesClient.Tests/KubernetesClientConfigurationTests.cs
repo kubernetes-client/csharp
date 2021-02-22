@@ -504,6 +504,19 @@ namespace k8s.Tests
         }
 
         [Fact]
+        public void LoadKubeConfigWithAdditionalProperties()
+        {
+            var txt = File.ReadAllText("assets/kubeconfig.additional-properties.yml");
+            var expectedCfg = Yaml.LoadFromString<K8SConfiguration>(txt);
+
+            var fileInfo = new FileInfo(Path.GetFullPath("assets/kubeconfig.additional-properties.yml"));
+
+            var cfg = KubernetesClientConfiguration.LoadKubeConfig(new FileInfo[] { fileInfo, fileInfo });
+
+            AssertConfigEqual(expectedCfg, cfg);
+        }
+
+        [Fact]
         public void MergeKubeConfigNoDuplicates()
         {
             var firstPath = Path.GetFullPath("assets/kubeconfig.as-user-extra.yml");

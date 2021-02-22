@@ -103,7 +103,7 @@ namespace k8s
 
             var deserializer =
                 new DeserializerBuilder()
-                    .WithNamingConvention(CamelCaseNamingConvention.Instance)
+                    .WithNamingConvention(YamlRenameCamelCaseConvention.Instance)
                     .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
                     .WithTypeConverter(new IntOrStringYamlConverter())
                     .WithTypeConverter(new ByteArrayStringYamlConverter())
@@ -120,10 +120,11 @@ namespace k8s
 
             deserializer =
                 new DeserializerBuilder()
-                    .WithNamingConvention(CamelCaseNamingConvention.Instance)
+                    .WithNamingConvention(YamlRenameCamelCaseConvention.Instance)
                     .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
                     .WithTypeConverter(new IntOrStringYamlConverter())
                     .WithTypeConverter(new ByteArrayStringYamlConverter())
+                    .IgnoreUnmatchedProperties()
                     .Build();
             parser = new Parser(new StringReader(content));
             parser.Consume<StreamStart>();
@@ -158,10 +159,11 @@ namespace k8s
         {
             var deserializer =
                 new DeserializerBuilder()
-                    .WithNamingConvention(CamelCaseNamingConvention.Instance)
+                    .WithNamingConvention(YamlRenameCamelCaseConvention.Instance)
                     .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
                     .WithTypeConverter(new IntOrStringYamlConverter())
                     .WithTypeConverter(new ByteArrayStringYamlConverter())
+                    .IgnoreUnmatchedProperties()
                     .Build();
             var obj = deserializer.Deserialize<T>(content);
             return obj;
@@ -188,6 +190,33 @@ namespace k8s
             serializer.SerializeValue(emitter, value, typeof(T));
 
             return stringBuilder.ToString();
+        }
+
+        private class YamlRenameCamelCaseConvention : INamingConvention
+        {
+            public static readonly YamlRenameCamelCaseConvention Instance = new YamlRenameCamelCaseConvention();
+
+            private YamlRenameCamelCaseConvention()
+            {
+            }
+
+            private readonly INamingConvention _camelCase = CamelCaseNamingConvention.Instance;
+
+            private readonly IDictionary<string, string> _rename = new Dictionary<string, string>
+            {
+                { "namespaceProperty", "namespace" },
+                { "enumProperty", "enum" },
+                { "objectProperty", "object" },
+                { "readOnlyProperty", "readOnly" },
+            };
+
+            public string Apply(string value)
+            {
+                var camelCase = _camelCase.Apply(value);
+                return _rename.ContainsKey(camelCase)
+                    ? _rename[camelCase]
+                    : camelCase;
+            }
         }
 
         private class AutoRestTypeInspector : ITypeInspector
