@@ -56,6 +56,8 @@ namespace k8s
 
         /// <summary>
         /// Load a collection of objects from a stream asynchronously
+        ///
+        /// caller is responsible for closing the stream
         /// </summary>
         /// <param name="stream">
         /// The stream to load the objects from.
@@ -80,8 +82,10 @@ namespace k8s
         /// <returns>collection of objects</returns>
         public static Task<List<object>> LoadAllFromFileAsync(string fileName, Dictionary<string, Type> typeMap)
         {
-            var reader = File.OpenRead(fileName);
-            return LoadAllFromStreamAsync(reader, typeMap);
+            using (var reader = File.OpenRead(fileName))
+            {
+                return LoadAllFromStreamAsync(reader, typeMap);
+            }
         }
 
         /// <summary>
