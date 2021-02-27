@@ -208,7 +208,7 @@ namespace k8s
                         continue;
                     }
 
-                    var yamlAttribute = new YamlMemberAttribute { Alias = jsonAttribute?.PropertyName };
+                    var yamlAttribute = new YamlMemberAttribute { Alias = jsonAttribute.PropertyName };
                     builder.WithAttributeOverride(type, property.Name, yamlAttribute);
                 }
             }
