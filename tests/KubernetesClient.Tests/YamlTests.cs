@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using k8s.Models;
 using Xunit;
 
@@ -32,6 +33,44 @@ metadata:
             Assert.IsType<V1Namespace>(objs[1]);
             Assert.Equal("foo", ((V1Pod)objs[0]).Metadata.Name);
             Assert.Equal("ns", ((V1Namespace)objs[1]).Metadata.Name);
+        }
+
+        [Fact]
+        public async Task LoadAllFromFile()
+        {
+            var content = @"apiVersion: v1
+kind: Pod
+metadata:
+  name: foo
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns";
+
+            var types = new Dictionary<string, Type>();
+            types.Add("v1/Pod", typeof(V1Pod));
+            types.Add("v1/Namespace", typeof(V1Namespace));
+
+            var tempFileName = Path.GetTempFileName();
+            try
+            {
+                await File.WriteAllTextAsync(tempFileName, content).ConfigureAwait(false);
+
+                var objs = await Yaml.LoadAllFromFileAsync(tempFileName, types).ConfigureAwait(false);
+                Assert.Equal(2, objs.Count);
+                Assert.IsType<V1Pod>(objs[0]);
+                Assert.IsType<V1Namespace>(objs[1]);
+                Assert.Equal("foo", ((V1Pod)objs[0]).Metadata.Name);
+                Assert.Equal("ns", ((V1Namespace)objs[1]).Metadata.Name);
+            }
+            finally
+            {
+                if (File.Exists(tempFileName))
+                {
+                    File.Delete(tempFileName);
+                }
+            }
         }
 
         [Fact]
@@ -104,6 +143,32 @@ metadata:
                 var obj = Yaml.LoadFromStreamAsync<V1Pod>(stream).Result;
 
                 Assert.Equal("foo", obj.Metadata.Name);
+            }
+        }
+
+        [Fact]
+        public async Task LoadFromFile()
+        {
+            var content = @"apiVersion: v1
+kind: Pod
+metadata:
+  name: foo
+";
+
+            var tempFileName = Path.GetTempFileName();
+            try
+            {
+                await File.WriteAllTextAsync(tempFileName, content).ConfigureAwait(false);
+
+                var obj = await Yaml.LoadFromFileAsync<V1Pod>(tempFileName).ConfigureAwait(false);
+                Assert.Equal("foo", obj.Metadata.Name);
+            }
+            finally
+            {
+                if (File.Exists(tempFileName))
+                {
+                    File.Delete(tempFileName);
+                }
             }
         }
 
