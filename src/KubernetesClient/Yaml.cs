@@ -80,11 +80,11 @@ namespace k8s
         /// <param name="fileName">The name of the file to load from.</param>
         /// <param name="typeMap">A map from apiVersion/kind to Type. For example "v1/Pod" -> typeof(V1Pod)</param>
         /// <returns>collection of objects</returns>
-        public static Task<List<object>> LoadAllFromFileAsync(string fileName, Dictionary<string, Type> typeMap)
+        public static async Task<List<object>> LoadAllFromFileAsync(string fileName, Dictionary<string, Type> typeMap)
         {
-            using (var reader = File.OpenRead(fileName))
+            using (var fileStream = File.OpenRead(fileName))
             {
-                return LoadAllFromStreamAsync(reader, typeMap);
+                return await LoadAllFromStreamAsync(fileStream, typeMap).ConfigureAwait(false);
             }
         }
 
