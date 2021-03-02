@@ -36,6 +36,35 @@ metadata:
         }
 
         [Fact]
+        public void LoadAllFromStringWithAdditionalProperties()
+        {
+            var content = @"apiVersion: v1
+kind: Pod
+metadata:
+  name: foo
+  namespace: ns
+  youDontKnow: Me
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns
+  youDontKnow: Me";
+
+            var types = new Dictionary<string, Type>();
+            types.Add("v1/Pod", typeof(V1Pod));
+            types.Add("v1/Namespace", typeof(V1Namespace));
+
+            var objs = Yaml.LoadAllFromString(content, types);
+            Assert.Equal(2, objs.Count);
+            Assert.IsType<V1Pod>(objs[0]);
+            Assert.IsType<V1Namespace>(objs[1]);
+            Assert.Equal("foo", ((V1Pod)objs[0]).Metadata.Name);
+            Assert.Equal("ns", ((V1Pod)objs[0]).Metadata.NamespaceProperty);
+            Assert.Equal("ns", ((V1Namespace)objs[1]).Metadata.Name);
+        }
+
+        [Fact]
         public async Task LoadAllFromFile()
         {
             var content = @"apiVersion: v1
@@ -80,6 +109,21 @@ metadata:
 kind: Pod
 metadata:
   name: foo
+";
+
+            var obj = Yaml.LoadFromString<V1Pod>(content);
+
+            Assert.Equal("foo", obj.Metadata.Name);
+        }
+
+        [Fact]
+        public void LoadFromStringWithAdditionalProperties()
+        {
+            var content = @"apiVersion: v1
+kind: Pod
+metadata:
+  name: foo
+  youDontKnow: Me
 ";
 
             var obj = Yaml.LoadFromString<V1Pod>(content);
@@ -170,6 +214,18 @@ metadata:
                     File.Delete(tempFileName);
                 }
             }
+        }
+
+        [Fact]
+        public void RoundtripTypeWithMismatchedPropertyName()
+        {
+            var content = @"namespace: foo";
+
+            var deserialized = Yaml.LoadFromString<V1ObjectMeta>(content);
+            Assert.Equal("foo", deserialized.NamespaceProperty);
+
+            var serialized = Yaml.SaveToString(deserialized);
+            Assert.Equal(content, serialized);
         }
 
         [Fact]
