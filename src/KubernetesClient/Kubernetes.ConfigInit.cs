@@ -171,6 +171,18 @@ namespace k8s
 
 
 #if NET5_0
+
+            // https://github.com/kubernetes-client/csharp/issues/533
+            // net5 only
+            // this is a temp fix to attach SocketsHttpHandler to HttpClient in order to set SO_KEEPALIVE
+            // https://tldp.org/HOWTO/html_single/TCP-Keepalive-HOWTO/
+            //
+            // _underlyingHandler is not a public accessible field
+            // src of net5 HttpClientHandler and _underlyingHandler field defined here
+            // https://github.com/dotnet/runtime/blob/79ae74f5ca5c8a6fe3a48935e85bd7374959c570/src/libraries/System.Net.Http/src/System/Net/Http/HttpClientHandler.cs#L22
+            //
+            // Should remove after better solution
+
             var sh = new SocketsHttpHandler();
             sh.ConnectCallback = async (context, token) =>
             {
