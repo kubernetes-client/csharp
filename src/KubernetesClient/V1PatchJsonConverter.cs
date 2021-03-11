@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace k8s.Models
 {
-    internal class V1PathJsonConverter : JsonConverter
+    internal class V1PatchJsonConverter : JsonConverter
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {

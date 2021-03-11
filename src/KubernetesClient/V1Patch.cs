@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace k8s.Models
 {
-    [JsonConverter(typeof(V1PathJsonConverter))]
+    [JsonConverter(typeof(V1PatchJsonConverter))]
     public partial class V1Patch
     {
         public enum PatchType
