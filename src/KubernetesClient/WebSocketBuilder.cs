@@ -50,7 +50,7 @@ namespace k8s
         }
 #endif
 
-#if NETSTANDARD2_1
+#if NETSTANDARD2_1 || NET5_0
         public WebSocketBuilder ExpectServerCertificate(X509Certificate2Collection serverCertificate)
         {
             Options.RemoteCertificateValidationCallback
@@ -70,7 +70,7 @@ namespace k8s
             return this;
         }
 
-#endif // NETSTANDARD2_1
+#endif // NETSTANDARD2_1 || NET5_0
 
         public virtual async Task<WebSocket> BuildAndConnectAsync(Uri uri, CancellationToken cancellationToken)
         {

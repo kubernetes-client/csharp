@@ -151,7 +151,11 @@ namespace k8s
                     httpResponse.StatusCode));
                 if (httpResponse.Content != null)
                 {
+#if NET5_0
+                    responseContent = await httpResponse.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+#else
                     responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+#endif
                 }
 
                 ex.Request = new HttpRequestMessageWrapper(httpRequest, responseContent);
