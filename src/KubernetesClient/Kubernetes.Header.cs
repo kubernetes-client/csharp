@@ -37,6 +37,8 @@ namespace k8s
                     return MediaTypeHeaderValue.Parse("application/merge-patch+json; charset=utf-8");
                 case V1Patch.PatchType.StrategicMergePatch:
                     return MediaTypeHeaderValue.Parse("application/strategic-merge-patch+json; charset=utf-8");
+                case V1Patch.PatchType.ApplyPatch:
+                    return MediaTypeHeaderValue.Parse("application/apply-patch+yaml; charset=utf-8");
                 default:
                     throw new ArgumentOutOfRangeException(nameof(body.Type), "");
             }
