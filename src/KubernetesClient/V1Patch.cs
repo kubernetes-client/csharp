@@ -27,6 +27,11 @@ namespace k8s.Models
             /// content type application/strategic-merge-patch+json
             /// </summary>
             StrategicMergePatch,
+
+            /// <summary>
+            /// content type application/apply-patch+yaml
+            /// </summary>
+            ApplyPatch,
         }
 
         public PatchType Type { get; private set; }
