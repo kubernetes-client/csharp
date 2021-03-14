@@ -112,7 +112,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public async Task SuriveBadLine()
+        public async Task SurviveBadLine()
         {
             var eventsReceived = new AsyncCountdownEvent(5);
             var serverShutdown = new AsyncManualResetEvent();
