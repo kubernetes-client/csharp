@@ -234,10 +234,7 @@ namespace k8s.Tests
 
                 var timeout = Task.Delay(TestTimeout);
 
-                while (!timeout.IsCompleted && watcher.Watching)
-                {
-                    await Task.Yield();
-                }
+                await Task.WhenAny(connectionClosed.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(false);
 
                 Assert.False(watcher.Watching);
                 Assert.True(connectionClosed.IsSet);
