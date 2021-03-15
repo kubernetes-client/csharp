@@ -168,7 +168,7 @@ namespace k8s
 
             using var streamReader = await AttachCancellationToken(streamReaderCreator()).ConfigureAwait(false);
 
-            for (; ;)
+            for (; ; )
             {
                 // ReadLineAsync will return null when we've reached the end of the stream.
                 var line = await AttachCancellationToken(streamReader.ReadLineAsync()).ConfigureAwait(false);
