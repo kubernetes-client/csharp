@@ -155,15 +155,35 @@ namespace k8s
             Action<Exception> onError = null,
             [EnumeratorCancellation] CancellationToken cancellationToken = default)
         {
-            string line;
-            using var streamReader = await streamReaderCreator().ConfigureAwait(false);
-            // ReadLineAsync will return null when we've reached the end of the stream.
-            while ((line = await streamReader.ReadLineAsync().ConfigureAwait(false)) != null)
+            Task<TR> AttachCancellationToken<TR>(Task<TR> task)
             {
+                if (!task.IsCompleted)
+                {
+                    // here to pass cancellationToken into task
+                    return task.ContinueWith(t => t.GetAwaiter().GetResult(), cancellationToken);
+                }
+
+                return task;
+            }
+
+            using var streamReader = await AttachCancellationToken(streamReaderCreator()).ConfigureAwait(false);
+
+            for (; ;)
+            {
+                // ReadLineAsync will return null when we've reached the end of the stream.
+                var line = await AttachCancellationToken(streamReader.ReadLineAsync()).ConfigureAwait(false);
+
                 if (cancellationToken.IsCancellationRequested)
                 {
                     yield break;
                 }
+
+                if (line == null)
+                {
+                    yield break;
+                }
+
+                WatchEvent @event = null;
 
                 try
                 {
@@ -174,17 +194,22 @@ namespace k8s
                         var statusEvent = SafeJsonConvert.DeserializeObject<Watcher<V1Status>.WatchEvent>(line);
                         var exception = new KubernetesException(statusEvent.Object);
                         onError?.Invoke(exception);
-                        continue;
+                    }
+                    else
+                    {
+                        @event = SafeJsonConvert.DeserializeObject<WatchEvent>(line);
                     }
                 }
                 catch (Exception e)
                 {
                     onError?.Invoke(e);
-                    continue;
                 }
 
-                var @event = SafeJsonConvert.DeserializeObject<Watcher<T>.WatchEvent>(line);
-                yield return (@event.Type, @event.Object);
+
+                if (@event != null)
+                {
+                    yield return (@event.Type, @event.Object);
+                }
             }
         }
 
