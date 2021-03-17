@@ -166,8 +166,7 @@ namespace k8s
         // and it does insert the WatcherDelegatingHandler. we don't want the RetryDelegatingHandler because it has a very broad definition
         // of what requests have failed. it considers everything outside 2xx to be failed, including 1xx (e.g. 101 Switching Protocols) and
         // 3xx. in particular, this prevents upgraded connections and certain generic/custom requests from working.
-        private void CreateHttpClient(DelegatingHandler[] handlers,
-            KubernetesClientConfiguration config)
+        private void CreateHttpClient(DelegatingHandler[] handlers, KubernetesClientConfiguration config)
         {
             FirstMessageHandler = HttpClientHandler = CreateRootHandler();
 
