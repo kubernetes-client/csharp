@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Net.Security;
 using System.Net.Sockets;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using k8s.Exceptions;
 using k8s.Models;
@@ -197,7 +198,22 @@ namespace k8s
 
                     socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
 
-                    await socket.ConnectAsync(context.DnsEndPoint.Host, context.DnsEndPoint.Port, token).ConfigureAwait(false);
+                    var host = context.DnsEndPoint.Host;
+
+                    if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                    {
+                        // https://github.com/dotnet/runtime/issues/24917
+                        // GetHostAddresses will return {host} if host is an ip
+                        var ips = Dns.GetHostAddresses(host);
+                        if (ips.Length == 0)
+                        {
+                            throw new Exception($"{host} DNS lookup failed");
+                        }
+
+                        host = ips[new Random().Next(ips.Length)].ToString();
+                    }
+
+                    await socket.ConnectAsync(host, context.DnsEndPoint.Port, token).ConfigureAwait(false);
                     return new NetworkStream(socket, ownsSocket: true);
                 };
 

@@ -81,6 +81,6 @@ namespace k8s
 
         public ITokenProvider TokenProvider { get; set; }
 
-        public bool TcpKeepAlive { get; set; } = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+        public bool TcpKeepAlive { get; set; } = true;
     }
 }
