@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Net.Security;
 using System.Net.Sockets;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using k8s.Exceptions;
 using k8s.Models;
@@ -64,7 +65,7 @@ namespace k8s
         {
             Initialize();
             ValidateConfig(config);
-            CreateHttpClient(handlers);
+            CreateHttpClient(handlers, config);
             CaCerts = config.SslCaCerts;
             SkipTlsVerify = config.SkipTlsVerify;
             InitializeFromConfig(config);
@@ -165,40 +166,59 @@ namespace k8s
         // and it does insert the WatcherDelegatingHandler. we don't want the RetryDelegatingHandler because it has a very broad definition
         // of what requests have failed. it considers everything outside 2xx to be failed, including 1xx (e.g. 101 Switching Protocols) and
         // 3xx. in particular, this prevents upgraded connections and certain generic/custom requests from working.
-        private void CreateHttpClient(DelegatingHandler[] handlers)
+        private void CreateHttpClient(DelegatingHandler[] handlers, KubernetesClientConfiguration config)
         {
             FirstMessageHandler = HttpClientHandler = CreateRootHandler();
 
 
 #if NET5_0
-
-            // https://github.com/kubernetes-client/csharp/issues/533
-            // net5 only
-            // this is a temp fix to attach SocketsHttpHandler to HttpClient in order to set SO_KEEPALIVE
-            // https://tldp.org/HOWTO/html_single/TCP-Keepalive-HOWTO/
-            //
-            // _underlyingHandler is not a public accessible field
-            // src of net5 HttpClientHandler and _underlyingHandler field defined here
-            // https://github.com/dotnet/runtime/blob/79ae74f5ca5c8a6fe3a48935e85bd7374959c570/src/libraries/System.Net.Http/src/System/Net/Http/HttpClientHandler.cs#L22
-            //
-            // Should remove after better solution
-
-            var sh = new SocketsHttpHandler();
-            sh.ConnectCallback = async (context, token) =>
+            // https://github.com/kubernetes-client/csharp/issues/587
+            // let user control if tcp keep alive until better fix
+            if (config.TcpKeepAlive)
             {
-                var socket = new Socket(SocketType.Stream, ProtocolType.Tcp)
+                // https://github.com/kubernetes-client/csharp/issues/533
+                // net5 only
+                // this is a temp fix to attach SocketsHttpHandler to HttpClient in order to set SO_KEEPALIVE
+                // https://tldp.org/HOWTO/html_single/TCP-Keepalive-HOWTO/
+                //
+                // _underlyingHandler is not a public accessible field
+                // src of net5 HttpClientHandler and _underlyingHandler field defined here
+                // https://github.com/dotnet/runtime/blob/79ae74f5ca5c8a6fe3a48935e85bd7374959c570/src/libraries/System.Net.Http/src/System/Net/Http/HttpClientHandler.cs#L22
+                //
+                // Should remove after better solution
+
+                var sh = new SocketsHttpHandler();
+                sh.ConnectCallback = async (context, token) =>
                 {
-                    NoDelay = true,
+                    var socket = new Socket(SocketType.Stream, ProtocolType.Tcp)
+                    {
+                        NoDelay = true,
+                    };
+
+                    socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
+
+                    var host = context.DnsEndPoint.Host;
+
+                    if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                    {
+                        // https://github.com/dotnet/runtime/issues/24917
+                        // GetHostAddresses will return {host} if host is an ip
+                        var ips = Dns.GetHostAddresses(host);
+                        if (ips.Length == 0)
+                        {
+                            throw new Exception($"{host} DNS lookup failed");
+                        }
+
+                        host = ips[new Random().Next(ips.Length)].ToString();
+                    }
+
+                    await socket.ConnectAsync(host, context.DnsEndPoint.Port, token).ConfigureAwait(false);
+                    return new NetworkStream(socket, ownsSocket: true);
                 };
 
-                socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
-
-                await socket.ConnectAsync(context.DnsEndPoint.Host, context.DnsEndPoint.Port, token).ConfigureAwait(false);
-                return new NetworkStream(socket, ownsSocket: true);
-            };
-
-            var p = HttpClientHandler.GetType().GetField("_underlyingHandler", BindingFlags.NonPublic | BindingFlags.Instance);
-            p.SetValue(HttpClientHandler, (sh));
+                var p = HttpClientHandler.GetType().GetField("_underlyingHandler", BindingFlags.NonPublic | BindingFlags.Instance);
+                p.SetValue(HttpClientHandler, (sh));
+            }
 #endif
 
             if (handlers == null || handlers.Length == 0)
