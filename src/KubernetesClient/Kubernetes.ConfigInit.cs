@@ -170,24 +170,22 @@ namespace k8s
         {
             FirstMessageHandler = HttpClientHandler = CreateRootHandler();
 
-
 #if NET5_0
+            // https://github.com/kubernetes-client/csharp/issues/533
+            // net5 only
+            var sh = new SocketsHttpHandler
+            {
+                KeepAlivePingPolicy = HttpKeepAlivePingPolicy.WithActiveRequests,
+                KeepAlivePingDelay = new TimeSpan(0, 3, 0),    // Send pings every three minutes
+                KeepAlivePingTimeout = new TimeSpan(0, 0, 30), // Timeout pings after 30s of no response
+            };
             // https://github.com/kubernetes-client/csharp/issues/587
             // let user control if tcp keep alive until better fix
             if (config.TcpKeepAlive)
             {
-                // https://github.com/kubernetes-client/csharp/issues/533
-                // net5 only
                 // this is a temp fix to attach SocketsHttpHandler to HttpClient in order to set SO_KEEPALIVE
                 // https://tldp.org/HOWTO/html_single/TCP-Keepalive-HOWTO/
                 //
-                // _underlyingHandler is not a public accessible field
-                // src of net5 HttpClientHandler and _underlyingHandler field defined here
-                // https://github.com/dotnet/runtime/blob/79ae74f5ca5c8a6fe3a48935e85bd7374959c570/src/libraries/System.Net.Http/src/System/Net/Http/HttpClientHandler.cs#L22
-                //
-                // Should remove after better solution
-
-                var sh = new SocketsHttpHandler();
                 sh.ConnectCallback = async (context, token) =>
                 {
                     var socket = new Socket(SocketType.Stream, ProtocolType.Tcp)
@@ -215,10 +213,15 @@ namespace k8s
                     await socket.ConnectAsync(host, context.DnsEndPoint.Port, token).ConfigureAwait(false);
                     return new NetworkStream(socket, ownsSocket: true);
                 };
-
-                var p = HttpClientHandler.GetType().GetField("_underlyingHandler", BindingFlags.NonPublic | BindingFlags.Instance);
-                p.SetValue(HttpClientHandler, (sh));
             }
+
+            // _underlyingHandler is not a public accessible field
+            // src of net5 HttpClientHandler and _underlyingHandler field defined here
+            // https://github.com/dotnet/runtime/blob/79ae74f5ca5c8a6fe3a48935e85bd7374959c570/src/libraries/System.Net.Http/src/System/Net/Http/HttpClientHandler.cs#L22
+            //
+            // Should remove after better solution
+            var p = HttpClientHandler.GetType().GetField("_underlyingHandler", BindingFlags.NonPublic | BindingFlags.Instance);
+            p.SetValue(HttpClientHandler, (sh));
 #endif
 
             if (handlers == null || handlers.Length == 0)
@@ -243,6 +246,10 @@ namespace k8s
 
             AppendDelegatingHandler<WatcherDelegatingHandler>();
             HttpClient = new HttpClient(FirstMessageHandler, false);
+
+#if NET5_0
+            HttpClient.DefaultRequestVersion = HttpVersion.Version20;
+#endif
         }
 
         /// <summary>
