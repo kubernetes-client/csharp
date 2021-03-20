@@ -131,12 +131,17 @@ namespace k8s
             {
                 Watching = true;
 
-                await foreach (var (t, evt) in CreateWatchEventEnumerator(_streamReaderCreator, OnError, cancellationToken)
-                   .ConfigureAwait(false)
+                await foreach (var (t, evt) in CreateWatchEventEnumerator(_streamReaderCreator, OnError,
+                        cancellationToken)
+                    .ConfigureAwait(false)
                 )
                 {
                     OnEvent?.Invoke(t, evt);
                 }
+            }
+            catch (OperationCanceledException)
+            {
+                // ignore
             }
             catch (Exception e)
             {
@@ -173,10 +178,7 @@ namespace k8s
                 // ReadLineAsync will return null when we've reached the end of the stream.
                 var line = await AttachCancellationToken(streamReader.ReadLineAsync()).ConfigureAwait(false);
 
-                if (cancellationToken.IsCancellationRequested)
-                {
-                    yield break;
-                }
+                cancellationToken.ThrowIfCancellationRequested();
 
                 if (line == null)
                 {
