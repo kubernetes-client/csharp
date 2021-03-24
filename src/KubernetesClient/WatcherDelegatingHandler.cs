@@ -18,6 +18,9 @@ namespace k8s
             HttpRequestMessage request,
             CancellationToken cancellationToken)
         {
+#if NET5_0 || NETSTANDARD2_1
+            request.Version = HttpVersion.Version20;
+#endif
             var originResponse = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
 
             // all watches are GETs, so we can ignore others
