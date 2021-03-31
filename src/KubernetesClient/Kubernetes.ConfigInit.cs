@@ -65,9 +65,9 @@ namespace k8s
         {
             Initialize();
             ValidateConfig(config);
-            CreateHttpClient(handlers, config);
             CaCerts = config.SslCaCerts;
             SkipTlsVerify = config.SkipTlsVerify;
+            CreateHttpClient(handlers, config);
             InitializeFromConfig(config);
         }
 
@@ -215,6 +215,11 @@ namespace k8s
                     await socket.ConnectAsync(host, context.DnsEndPoint.Port, token).ConfigureAwait(false);
                     return new NetworkStream(socket, ownsSocket: true);
                 };
+
+
+                // set HttpClientHandler's cert callback before replace _underlyingHandler
+                // force HttpClientHandler use our callback
+                InitializeFromConfig(config);
 
                 var p = HttpClientHandler.GetType().GetField("_underlyingHandler", BindingFlags.NonPublic | BindingFlags.Instance);
                 p.SetValue(HttpClientHandler, (sh));
