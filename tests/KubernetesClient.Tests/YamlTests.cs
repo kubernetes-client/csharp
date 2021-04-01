@@ -23,15 +23,41 @@ kind: Namespace
 metadata:
   name: ns";
 
-            var types = new Dictionary<string, Type>();
-            types.Add("v1/Pod", typeof(V1Pod));
-            types.Add("v1/Namespace", typeof(V1Namespace));
-
-            var objs = Yaml.LoadAllFromString(content, types);
+            var objs = Yaml.LoadAllFromString(content);
             Assert.Equal(2, objs.Count);
             Assert.IsType<V1Pod>(objs[0]);
             Assert.IsType<V1Namespace>(objs[1]);
             Assert.Equal("foo", ((V1Pod)objs[0]).Metadata.Name);
+            Assert.Equal("ns", ((V1Namespace)objs[1]).Metadata.Name);
+        }
+
+#pragma warning disable CA1812 // Class is used for YAML deserialization tests
+        private class MyPod : V1Pod
+        {
+        }
+#pragma warning restore CA1812
+
+        [Fact]
+        public void LoadAllFromStringWithTypes()
+        {
+            var types = new Dictionary<string, Type>();
+            types.Add("v1/Pod", typeof(MyPod));
+
+            var content = @"apiVersion: v1
+kind: Pod
+metadata:
+  name: foo
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns";
+
+            var objs = Yaml.LoadAllFromString(content, types);
+            Assert.Equal(2, objs.Count);
+            Assert.IsType<MyPod>(objs[0]);
+            Assert.IsType<V1Namespace>(objs[1]);
+            Assert.Equal("foo", ((MyPod)objs[0]).Metadata.Name);
             Assert.Equal("ns", ((V1Namespace)objs[1]).Metadata.Name);
         }
 
@@ -51,16 +77,39 @@ metadata:
   name: ns
   youDontKnow: Me";
 
-            var types = new Dictionary<string, Type>();
-            types.Add("v1/Pod", typeof(V1Pod));
-            types.Add("v1/Namespace", typeof(V1Namespace));
-
-            var objs = Yaml.LoadAllFromString(content, types);
+            var objs = Yaml.LoadAllFromString(content);
             Assert.Equal(2, objs.Count);
             Assert.IsType<V1Pod>(objs[0]);
             Assert.IsType<V1Namespace>(objs[1]);
             Assert.Equal("foo", ((V1Pod)objs[0]).Metadata.Name);
             Assert.Equal("ns", ((V1Pod)objs[0]).Metadata.NamespaceProperty);
+            Assert.Equal("ns", ((V1Namespace)objs[1]).Metadata.Name);
+        }
+
+        [Fact]
+        public void LoadAllFromStringWithAdditionalPropertiesAndTypes()
+        {
+            var types = new Dictionary<string, Type>();
+            types.Add("v1/Pod", typeof(MyPod));
+            var content = @"apiVersion: v1
+kind: Pod
+metadata:
+  name: foo
+  namespace: ns
+  youDontKnow: Me
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns
+  youDontKnow: Me";
+
+            var objs = Yaml.LoadAllFromString(content, types);
+            Assert.Equal(2, objs.Count);
+            Assert.IsType<MyPod>(objs[0]);
+            Assert.IsType<V1Namespace>(objs[1]);
+            Assert.Equal("foo", ((MyPod)objs[0]).Metadata.Name);
+            Assert.Equal("ns", ((MyPod)objs[0]).Metadata.NamespaceProperty);
             Assert.Equal("ns", ((V1Namespace)objs[1]).Metadata.Name);
         }
 
@@ -77,9 +126,42 @@ kind: Namespace
 metadata:
   name: ns";
 
+            var tempFileName = Path.GetTempFileName();
+            try
+            {
+                await File.WriteAllTextAsync(tempFileName, content).ConfigureAwait(false);
+
+                var objs = await Yaml.LoadAllFromFileAsync(tempFileName).ConfigureAwait(false);
+                Assert.Equal(2, objs.Count);
+                Assert.IsType<V1Pod>(objs[0]);
+                Assert.IsType<V1Namespace>(objs[1]);
+                Assert.Equal("foo", ((V1Pod)objs[0]).Metadata.Name);
+                Assert.Equal("ns", ((V1Namespace)objs[1]).Metadata.Name);
+            }
+            finally
+            {
+                if (File.Exists(tempFileName))
+                {
+                    File.Delete(tempFileName);
+                }
+            }
+        }
+
+        [Fact]
+        public async Task LoadAllFromFileWithTypes()
+        {
             var types = new Dictionary<string, Type>();
-            types.Add("v1/Pod", typeof(V1Pod));
-            types.Add("v1/Namespace", typeof(V1Namespace));
+            types.Add("v1/Pod", typeof(MyPod));
+
+            var content = @"apiVersion: v1
+kind: Pod
+metadata:
+  name: foo
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns";
 
             var tempFileName = Path.GetTempFileName();
             try
@@ -88,9 +170,9 @@ metadata:
 
                 var objs = await Yaml.LoadAllFromFileAsync(tempFileName, types).ConfigureAwait(false);
                 Assert.Equal(2, objs.Count);
-                Assert.IsType<V1Pod>(objs[0]);
+                Assert.IsType<MyPod>(objs[0]);
                 Assert.IsType<V1Namespace>(objs[1]);
-                Assert.Equal("foo", ((V1Pod)objs[0]).Metadata.Name);
+                Assert.Equal("foo", ((MyPod)objs[0]).Metadata.Name);
                 Assert.Equal("ns", ((V1Namespace)objs[1]).Metadata.Name);
             }
             finally
@@ -118,6 +200,21 @@ metadata:
 
         [Fact]
         public void LoadFromStringWithAdditionalProperties()
+        {
+            var content = @"apiVersion: v1
+kind: Pod
+metadata:
+  name: foo
+  youDontKnow: Me
+";
+
+            var obj = Yaml.LoadFromString<V1Pod>(content);
+
+            Assert.Equal("foo", obj.Metadata.Name);
+        }
+
+        [Fact]
+        public void LoadFromStringWithAdditionalPropertiesAndCustomType()
         {
             var content = @"apiVersion: v1
 kind: Pod
@@ -442,7 +539,7 @@ spec:
             var container = Assert.Single(obj.Spec.Containers);
             Assert.NotNull(container.Env);
             var objStr = Yaml.SaveToString(obj);
-            Assert.Equal(content, objStr);
+            Assert.Equal(content.Replace("\r\n", "\n"), objStr.Replace("\r\n", "\n"));
         }
 
         [Fact]
