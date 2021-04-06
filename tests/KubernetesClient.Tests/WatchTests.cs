@@ -192,8 +192,6 @@ namespace k8s.Tests
 
             using (var server = new MockKubeApiServer(testOutput, async httpContext =>
             {
-                await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse).ConfigureAwait(false);
-
                 while (serverRunning)
                 {
                     await WriteStreamLine(httpContext, MockAddedEventStreamLine).ConfigureAwait(false);
