@@ -190,7 +190,6 @@ namespace k8s.Tests
             var eventsReceived = new AsyncCountdownEvent(1);
             var serverShutdown = new AsyncManualResetEvent();
 
-
             using (var server = new MockKubeApiServer(testOutput, async httpContext =>
             {
                 await WriteStreamLine(httpContext, MockAddedEventStreamLine).ConfigureAwait(false);
@@ -230,13 +229,12 @@ namespace k8s.Tests
 
                 events.Clear();
 
-                // Let the server disconnect
-                serverShutdown.Set();
-
                 await Task.WhenAny(connectionClosed.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(false);
 
                 Assert.False(watcher.Watching);
                 Assert.True(connectionClosed.IsSet);
+
+                serverShutdown.Set();
             }
         }
 
