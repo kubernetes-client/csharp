@@ -92,7 +92,7 @@ namespace k8s.Models
         /// that discovery mechanisms will return as an alias for this service
         /// (e.g. a DNS CNAME record). No proxying will be involved.  Must be a
         /// lowercase RFC-1123 hostname (https://tools.ietf.org/html/rfc1123)
-        /// and requires Type to be</param>
+        /// and requires `type` to be "ExternalName".</param>
         /// <param name="externalTrafficPolicy">externalTrafficPolicy denotes
         /// if this Service desires to route external traffic to node-local or
         /// cluster-wide endpoints. "Local" preserves the client source IP and
@@ -110,6 +110,12 @@ namespace k8s.Models
         /// If this field is specified when creating a Service which does not
         /// need it, creation will fail. This field will be wiped when updating
         /// a Service to no longer need it (e.g. changing type).</param>
+        /// <param name="internalTrafficPolicy">InternalTrafficPolicy specifies
+        /// if the cluster internal traffic should be routed to all endpoints
+        /// or node-local endpoints only. "Cluster" routes internal traffic to
+        /// a Service to all endpoints. "Local" routes traffic to node-local
+        /// endpoints only, traffic is dropped if no node-local endpoints are
+        /// ready. The default value is "Cluster".</param>
         /// <param name="ipFamilies">IPFamilies is a list of IP families (e.g.
         /// IPv4, IPv6) assigned to this service, and is gated by the
         /// "IPv6DualStack" feature gate.  This field is usually assigned
@@ -138,6 +144,22 @@ namespace k8s.Models
         /// dual-stack configured clusters, otherwise fail). The ipFamilies and
         /// clusterIPs fields depend on the value of this field.  This field
         /// will be wiped when updating a service to type ExternalName.</param>
+        /// <param name="loadBalancerClass">loadBalancerClass is the class of
+        /// the load balancer implementation this Service belongs to. If
+        /// specified, the value of this field must be a label-style
+        /// identifier, with an optional prefix, e.g. "internal-vip" or
+        /// "example.com/internal-vip". Unprefixed names are reserved for
+        /// end-users. This field can only be set when the Service type is
+        /// 'LoadBalancer'. If not set, the default load balancer
+        /// implementation is used, today this is typically done through the
+        /// cloud provider integration, but should apply for any default
+        /// implementation. If set, it is assumed that a load balancer
+        /// implementation is watching for Services with a matching class. Any
+        /// default load balancer implementation (e.g. cloud providers) should
+        /// ignore Services that set this field. This field can only be set
+        /// when creating or updating a Service to type 'LoadBalancer'. Once
+        /// set, it can not be changed. This field will be wiped when a service
+        /// is updated to a non 'LoadBalancer' type.</param>
         /// <param name="loadBalancerIP">Only applies to Service Type:
         /// LoadBalancer LoadBalancer will get created with the IP specified in
         /// this field. This feature depends on whether the underlying
@@ -190,7 +212,8 @@ namespace k8s.Models
         /// catch-all value, if used, only makes sense as the last value in the
         /// list. If this is not specified or empty, no topology constraints
         /// will be applied. This field is alpha-level and is only honored by
-        /// servers that enable the ServiceTopology feature.</param>
+        /// servers that enable the ServiceTopology feature. This field is
+        /// deprecated and will be removed in a future version.</param>
         /// <param name="type">type determines how the Service is exposed.
         /// Defaults to ClusterIP. Valid options are ExternalName, ClusterIP,
         /// NodePort, and LoadBalancer. "ClusterIP" allocates a
@@ -207,7 +230,7 @@ namespace k8s.Models
         /// aliases this service to the specified externalName. Several other
         /// fields do not apply to ExternalName services. More info:
         /// https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types</param>
-        public V1ServiceSpec(bool? allocateLoadBalancerNodePorts = default(bool?), string clusterIP = default(string), IList<string> clusterIPs = default(IList<string>), IList<string> externalIPs = default(IList<string>), string externalName = default(string), string externalTrafficPolicy = default(string), int? healthCheckNodePort = default(int?), IList<string> ipFamilies = default(IList<string>), string ipFamilyPolicy = default(string), string loadBalancerIP = default(string), IList<string> loadBalancerSourceRanges = default(IList<string>), IList<V1ServicePort> ports = default(IList<V1ServicePort>), bool? publishNotReadyAddresses = default(bool?), IDictionary<string, string> selector = default(IDictionary<string, string>), string sessionAffinity = default(string), V1SessionAffinityConfig sessionAffinityConfig = default(V1SessionAffinityConfig), IList<string> topologyKeys = default(IList<string>), string type = default(string))
+        public V1ServiceSpec(bool? allocateLoadBalancerNodePorts = default(bool?), string clusterIP = default(string), IList<string> clusterIPs = default(IList<string>), IList<string> externalIPs = default(IList<string>), string externalName = default(string), string externalTrafficPolicy = default(string), int? healthCheckNodePort = default(int?), string internalTrafficPolicy = default(string), IList<string> ipFamilies = default(IList<string>), string ipFamilyPolicy = default(string), string loadBalancerClass = default(string), string loadBalancerIP = default(string), IList<string> loadBalancerSourceRanges = default(IList<string>), IList<V1ServicePort> ports = default(IList<V1ServicePort>), bool? publishNotReadyAddresses = default(bool?), IDictionary<string, string> selector = default(IDictionary<string, string>), string sessionAffinity = default(string), V1SessionAffinityConfig sessionAffinityConfig = default(V1SessionAffinityConfig), IList<string> topologyKeys = default(IList<string>), string type = default(string))
         {
             AllocateLoadBalancerNodePorts = allocateLoadBalancerNodePorts;
             ClusterIP = clusterIP;
@@ -216,8 +239,10 @@ namespace k8s.Models
             ExternalName = externalName;
             ExternalTrafficPolicy = externalTrafficPolicy;
             HealthCheckNodePort = healthCheckNodePort;
+            InternalTrafficPolicy = internalTrafficPolicy;
             IpFamilies = ipFamilies;
             IpFamilyPolicy = ipFamilyPolicy;
+            LoadBalancerClass = loadBalancerClass;
             LoadBalancerIP = loadBalancerIP;
             LoadBalancerSourceRanges = loadBalancerSourceRanges;
             Ports = ports;
@@ -319,7 +344,7 @@ namespace k8s.Models
         /// mechanisms will return as an alias for this service (e.g. a DNS
         /// CNAME record). No proxying will be involved.  Must be a lowercase
         /// RFC-1123 hostname (https://tools.ietf.org/html/rfc1123) and
-        /// requires Type to be
+        /// requires `type` to be "ExternalName".
         /// </summary>
         [JsonProperty(PropertyName = "externalName")]
         public string ExternalName { get; set; }
@@ -350,6 +375,17 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "healthCheckNodePort")]
         public int? HealthCheckNodePort { get; set; }
+
+        /// <summary>
+        /// Gets or sets internalTrafficPolicy specifies if the cluster
+        /// internal traffic should be routed to all endpoints or node-local
+        /// endpoints only. "Cluster" routes internal traffic to a Service to
+        /// all endpoints. "Local" routes traffic to node-local endpoints only,
+        /// traffic is dropped if no node-local endpoints are ready. The
+        /// default value is "Cluster".
+        /// </summary>
+        [JsonProperty(PropertyName = "internalTrafficPolicy")]
+        public string InternalTrafficPolicy { get; set; }
 
         /// <summary>
         /// Gets or sets iPFamilies is a list of IP families (e.g. IPv4, IPv6)
@@ -388,6 +424,26 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "ipFamilyPolicy")]
         public string IpFamilyPolicy { get; set; }
+
+        /// <summary>
+        /// Gets or sets loadBalancerClass is the class of the load balancer
+        /// implementation this Service belongs to. If specified, the value of
+        /// this field must be a label-style identifier, with an optional
+        /// prefix, e.g. "internal-vip" or "example.com/internal-vip".
+        /// Unprefixed names are reserved for end-users. This field can only be
+        /// set when the Service type is 'LoadBalancer'. If not set, the
+        /// default load balancer implementation is used, today this is
+        /// typically done through the cloud provider integration, but should
+        /// apply for any default implementation. If set, it is assumed that a
+        /// load balancer implementation is watching for Services with a
+        /// matching class. Any default load balancer implementation (e.g.
+        /// cloud providers) should ignore Services that set this field. This
+        /// field can only be set when creating or updating a Service to type
+        /// 'LoadBalancer'. Once set, it can not be changed. This field will be
+        /// wiped when a service is updated to a non 'LoadBalancer' type.
+        /// </summary>
+        [JsonProperty(PropertyName = "loadBalancerClass")]
+        public string LoadBalancerClass { get; set; }
 
         /// <summary>
         /// Gets or sets only applies to Service Type: LoadBalancer
@@ -476,7 +532,8 @@ namespace k8s.Models
         /// makes sense as the last value in the list. If this is not specified
         /// or empty, no topology constraints will be applied. This field is
         /// alpha-level and is only honored by servers that enable the
-        /// ServiceTopology feature.
+        /// ServiceTopology feature. This field is deprecated and will be
+        /// removed in a future version.
         /// </summary>
         [JsonProperty(PropertyName = "topologyKeys")]
         public IList<string> TopologyKeys { get; set; }

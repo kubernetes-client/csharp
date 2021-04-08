@@ -747,6 +747,30 @@ namespace k8s
         }
 
         /// <inheritdoc/>
+        public Task<Watcher<V1CronJob>> WatchNamespacedCronJobAsync(
+            string name,
+            string @namespace,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1CronJob> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/batch/v1/watch/namespaces/{@namespace}/cronjobs/{name}";
+            return WatchObjectAsync<V1CronJob>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc/>
         public Task<Watcher<V1Job>> WatchNamespacedJobAsync(
             string name,
             string @namespace,
@@ -792,30 +816,6 @@ namespace k8s
         {
             string path = $"apis/batch/v1beta1/watch/namespaces/{@namespace}/cronjobs/{name}";
             return WatchObjectAsync<V1beta1CronJob>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
-        }
-
-        /// <inheritdoc/>
-        public Task<Watcher<V2alpha1CronJob>> WatchNamespacedCronJobAsync(
-            string name,
-            string @namespace,
-            bool? allowWatchBookmarks = null,
-            string @continue = null,
-            string fieldSelector = null,
-            string labelSelector = null,
-            int? limit = null,
-            bool? pretty = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            Action<WatchEventType, V2alpha1CronJob> onEvent = null,
-            Action<Exception> onError = null,
-            Action onClosed = null,
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            string path = $"apis/batch/v2alpha1/watch/namespaces/{@namespace}/cronjobs/{name}";
-            return WatchObjectAsync<V2alpha1CronJob>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
         /// <inheritdoc/>
@@ -913,6 +913,30 @@ namespace k8s
         }
 
         /// <inheritdoc/>
+        public Task<Watcher<V1EndpointSlice>> WatchNamespacedEndpointSliceAsync(
+            string name,
+            string @namespace,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1EndpointSlice> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/discovery.k8s.io/v1/watch/namespaces/{@namespace}/endpointslices/{name}";
+            return WatchObjectAsync<V1EndpointSlice>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc/>
         public Task<Watcher<V1beta1EndpointSlice>> WatchNamespacedEndpointSliceAsync(
             string name,
             string @namespace,
@@ -1006,52 +1030,6 @@ namespace k8s
         {
             string path = $"apis/extensions/v1beta1/watch/namespaces/{@namespace}/ingresses/{name}";
             return WatchObjectAsync<Extensionsv1beta1Ingress>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
-        }
-
-        /// <inheritdoc/>
-        public Task<Watcher<V1alpha1FlowSchema>> WatchFlowSchemaAsync(
-            string name,
-            bool? allowWatchBookmarks = null,
-            string @continue = null,
-            string fieldSelector = null,
-            string labelSelector = null,
-            int? limit = null,
-            bool? pretty = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            Action<WatchEventType, V1alpha1FlowSchema> onEvent = null,
-            Action<Exception> onError = null,
-            Action onClosed = null,
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            string path = $"apis/flowcontrol.apiserver.k8s.io/v1alpha1/watch/flowschemas/{name}";
-            return WatchObjectAsync<V1alpha1FlowSchema>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
-        }
-
-        /// <inheritdoc/>
-        public Task<Watcher<V1alpha1PriorityLevelConfiguration>> WatchPriorityLevelConfigurationAsync(
-            string name,
-            bool? allowWatchBookmarks = null,
-            string @continue = null,
-            string fieldSelector = null,
-            string labelSelector = null,
-            int? limit = null,
-            bool? pretty = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            Action<WatchEventType, V1alpha1PriorityLevelConfiguration> onEvent = null,
-            Action<Exception> onError = null,
-            Action onClosed = null,
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            string path = $"apis/flowcontrol.apiserver.k8s.io/v1alpha1/watch/prioritylevelconfigurations/{name}";
-            return WatchObjectAsync<V1alpha1PriorityLevelConfiguration>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
         /// <inheritdoc/>
@@ -1308,6 +1286,30 @@ namespace k8s
         {
             string path = $"apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}";
             return WatchObjectAsync<V1beta1RuntimeClass>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc/>
+        public Task<Watcher<V1PodDisruptionBudget>> WatchNamespacedPodDisruptionBudgetAsync(
+            string name,
+            string @namespace,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1PodDisruptionBudget> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/policy/v1/watch/namespaces/{@namespace}/poddisruptionbudgets/{name}";
+            return WatchObjectAsync<V1PodDisruptionBudget>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
         /// <inheritdoc/>
@@ -1801,6 +1803,30 @@ namespace k8s
         }
 
         /// <inheritdoc/>
+        public Task<Watcher<V1alpha1CSIStorageCapacity>> WatchNamespacedCSIStorageCapacityAsync(
+            string name,
+            string @namespace,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1alpha1CSIStorageCapacity> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/storage.k8s.io/v1alpha1/watch/namespaces/{@namespace}/csistoragecapacities/{name}";
+            return WatchObjectAsync<V1alpha1CSIStorageCapacity>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc/>
         public Task<Watcher<V1alpha1VolumeAttachment>> WatchVolumeAttachmentAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1867,6 +1893,30 @@ namespace k8s
         {
             string path = $"apis/storage.k8s.io/v1beta1/watch/csinodes/{name}";
             return WatchObjectAsync<V1beta1CSINode>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc/>
+        public Task<Watcher<V1beta1CSIStorageCapacity>> WatchNamespacedCSIStorageCapacityAsync(
+            string name,
+            string @namespace,
+            bool? allowWatchBookmarks = null,
+            string @continue = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta1CSIStorageCapacity> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/storage.k8s.io/v1beta1/watch/namespaces/{@namespace}/csistoragecapacities/{name}";
+            return WatchObjectAsync<V1beta1CSIStorageCapacity>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
         /// <inheritdoc/>

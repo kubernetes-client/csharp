@@ -6,7 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -59,6 +58,8 @@ namespace k8s.Models
         /// endpoint the client submits requests to. Cannot be updated. In
         /// CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</param>
+        /// <param name="metadata">Standard object's metadata. More info:
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</param>
         /// <param name="note">note is a human-readable description of the
         /// status of this operation. Maximal length of the note is 1kB, but
         /// libraries should be prepared to handle values up to 64kB.</param>
@@ -85,7 +86,7 @@ namespace k8s.Models
         /// <param name="type">type is the type of this event (Normal,
         /// Warning), new types could be added in the future. It is
         /// machine-readable.</param>
-        public V1beta1Event(System.DateTime eventTime, V1ObjectMeta metadata, string action = default(string), string apiVersion = default(string), int? deprecatedCount = default(int?), System.DateTime? deprecatedFirstTimestamp = default(System.DateTime?), System.DateTime? deprecatedLastTimestamp = default(System.DateTime?), V1EventSource deprecatedSource = default(V1EventSource), string kind = default(string), string note = default(string), string reason = default(string), V1ObjectReference regarding = default(V1ObjectReference), V1ObjectReference related = default(V1ObjectReference), string reportingController = default(string), string reportingInstance = default(string), V1beta1EventSeries series = default(V1beta1EventSeries), string type = default(string))
+        public V1beta1Event(System.DateTime eventTime, string action = default(string), string apiVersion = default(string), int? deprecatedCount = default(int?), System.DateTime? deprecatedFirstTimestamp = default(System.DateTime?), System.DateTime? deprecatedLastTimestamp = default(System.DateTime?), V1EventSource deprecatedSource = default(V1EventSource), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), string note = default(string), string reason = default(string), V1ObjectReference regarding = default(V1ObjectReference), V1ObjectReference related = default(V1ObjectReference), string reportingController = default(string), string reportingInstance = default(string), V1beta1EventSeries series = default(V1beta1EventSeries), string type = default(string))
         {
             Action = action;
             ApiVersion = apiVersion;
@@ -176,6 +177,8 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
+        /// Gets or sets standard object's metadata. More info:
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ObjectMeta Metadata { get; set; }
@@ -245,15 +248,11 @@ namespace k8s.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (Metadata == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Metadata");
-            }
             if (Series != null)
             {
                 Series.Validate();

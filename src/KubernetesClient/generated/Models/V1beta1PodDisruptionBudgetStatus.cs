@@ -37,6 +37,22 @@ namespace k8s.Models
         /// currently allowed.</param>
         /// <param name="expectedPods">total number of pods counted by this
         /// disruption budget</param>
+        /// <param name="conditions">Conditions contain conditions for PDB. The
+        /// disruption controller sets the DisruptionAllowed condition. The
+        /// following are known values for the reason field (additional reasons
+        /// could be added in the future): - SyncFailed: The controller
+        /// encountered an error and wasn't able to compute
+        /// the number of allowed disruptions. Therefore no disruptions are
+        /// allowed and the status of the condition will be False.
+        /// - InsufficientPods: The number of pods are either at or below the
+        /// number
+        /// required by the PodDisruptionBudget. No disruptions are
+        /// allowed and the status of the condition will be False.
+        /// - SufficientPods: There are more pods than required by the
+        /// PodDisruptionBudget.
+        /// The condition will be True, and the number of allowed
+        /// disruptions are provided by the disruptionsAllowed
+        /// property.</param>
         /// <param name="disruptedPods">DisruptedPods contains information
         /// about pods whose eviction was processed by the API server eviction
         /// subresource handler but has not yet been observed by the
@@ -55,8 +71,9 @@ namespace k8s.Models
         /// when updating this PDB status. DisruptionsAllowed and other status
         /// information is valid only if observedGeneration equals to PDB's
         /// object generation.</param>
-        public V1beta1PodDisruptionBudgetStatus(int currentHealthy, int desiredHealthy, int disruptionsAllowed, int expectedPods, IDictionary<string, System.DateTime?> disruptedPods = default(IDictionary<string, System.DateTime?>), long? observedGeneration = default(long?))
+        public V1beta1PodDisruptionBudgetStatus(int currentHealthy, int desiredHealthy, int disruptionsAllowed, int expectedPods, IList<V1Condition> conditions = default(IList<V1Condition>), IDictionary<string, System.DateTime?> disruptedPods = default(IDictionary<string, System.DateTime?>), long? observedGeneration = default(long?))
         {
+            Conditions = conditions;
             CurrentHealthy = currentHealthy;
             DesiredHealthy = desiredHealthy;
             DisruptedPods = disruptedPods;
@@ -70,6 +87,26 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets conditions contain conditions for PDB. The disruption
+        /// controller sets the DisruptionAllowed condition. The following are
+        /// known values for the reason field (additional reasons could be
+        /// added in the future): - SyncFailed: The controller encountered an
+        /// error and wasn't able to compute
+        /// the number of allowed disruptions. Therefore no disruptions are
+        /// allowed and the status of the condition will be False.
+        /// - InsufficientPods: The number of pods are either at or below the
+        /// number
+        /// required by the PodDisruptionBudget. No disruptions are
+        /// allowed and the status of the condition will be False.
+        /// - SufficientPods: There are more pods than required by the
+        /// PodDisruptionBudget.
+        /// The condition will be True, and the number of allowed
+        /// disruptions are provided by the disruptionsAllowed property.
+        /// </summary>
+        [JsonProperty(PropertyName = "conditions")]
+        public IList<V1Condition> Conditions { get; set; }
 
         /// <summary>
         /// Gets or sets current number of healthy pods
@@ -129,6 +166,16 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
+            if (Conditions != null)
+            {
+                foreach (var element in Conditions)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
         }
     }
 }

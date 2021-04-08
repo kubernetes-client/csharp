@@ -187,12 +187,13 @@ namespace k8s.Models
         /// <param name="terminationGracePeriodSeconds">Optional duration in
         /// seconds the pod needs to terminate gracefully. May be decreased in
         /// delete request. Value must be non-negative integer. The value zero
-        /// indicates delete immediately. If this value is nil, the default
-        /// grace period will be used instead. The grace period is the duration
-        /// in seconds after the processes running in the pod are sent a
-        /// termination signal and the time when the processes are forcibly
-        /// halted with a kill signal. Set this value longer than the expected
-        /// cleanup time for your process. Defaults to 30 seconds.</param>
+        /// indicates stop immediately via the kill signal (no opportunity to
+        /// shut down). If this value is nil, the default grace period will be
+        /// used instead. The grace period is the duration in seconds after the
+        /// processes running in the pod are sent a termination signal and the
+        /// time when the processes are forcibly halted with a kill signal. Set
+        /// this value longer than the expected cleanup time for your process.
+        /// Defaults to 30 seconds.</param>
         /// <param name="tolerations">If specified, the pod's
         /// tolerations.</param>
         /// <param name="topologySpreadConstraints">TopologySpreadConstraints
@@ -551,12 +552,13 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets optional duration in seconds the pod needs to
         /// terminate gracefully. May be decreased in delete request. Value
-        /// must be non-negative integer. The value zero indicates delete
-        /// immediately. If this value is nil, the default grace period will be
-        /// used instead. The grace period is the duration in seconds after the
-        /// processes running in the pod are sent a termination signal and the
-        /// time when the processes are forcibly halted with a kill signal. Set
-        /// this value longer than the expected cleanup time for your process.
+        /// must be non-negative integer. The value zero indicates stop
+        /// immediately via the kill signal (no opportunity to shut down). If
+        /// this value is nil, the default grace period will be used instead.
+        /// The grace period is the duration in seconds after the processes
+        /// running in the pod are sent a termination signal and the time when
+        /// the processes are forcibly halted with a kill signal. Set this
+        /// value longer than the expected cleanup time for your process.
         /// Defaults to 30 seconds.
         /// </summary>
         [JsonProperty(PropertyName = "terminationGracePeriodSeconds")]

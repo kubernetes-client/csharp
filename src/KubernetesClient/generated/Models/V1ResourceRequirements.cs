@@ -29,12 +29,12 @@ namespace k8s.Models
         /// </summary>
         /// <param name="limits">Limits describes the maximum amount of compute
         /// resources allowed. More info:
-        /// https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/</param>
+        /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/</param>
         /// <param name="requests">Requests describes the minimum amount of
         /// compute resources required. If Requests is omitted for a container,
         /// it defaults to Limits if that is explicitly specified, otherwise to
         /// an implementation-defined value. More info:
-        /// https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/</param>
+        /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/</param>
         public V1ResourceRequirements(IDictionary<string, ResourceQuantity> limits = default(IDictionary<string, ResourceQuantity>), IDictionary<string, ResourceQuantity> requests = default(IDictionary<string, ResourceQuantity>))
         {
             Limits = limits;
@@ -50,7 +50,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets limits describes the maximum amount of compute
         /// resources allowed. More info:
-        /// https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+        /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
         /// </summary>
         [JsonProperty(PropertyName = "limits")]
         public IDictionary<string, ResourceQuantity> Limits { get; set; }
@@ -60,7 +60,7 @@ namespace k8s.Models
         /// resources required. If Requests is omitted for a container, it
         /// defaults to Limits if that is explicitly specified, otherwise to an
         /// implementation-defined value. More info:
-        /// https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+        /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
         /// </summary>
         [JsonProperty(PropertyName = "requests")]
         public IDictionary<string, ResourceQuantity> Requests { get; set; }

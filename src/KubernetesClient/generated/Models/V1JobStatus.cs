@@ -28,26 +28,40 @@ namespace k8s.Models
         /// Initializes a new instance of the V1JobStatus class.
         /// </summary>
         /// <param name="active">The number of actively running pods.</param>
+        /// <param name="completedIndexes">CompletedIndexes holds the completed
+        /// indexes when .spec.completionMode = "Indexed" in a text format. The
+        /// indexes are represented as decimal integers separated by commas.
+        /// The numbers are listed in increasing order. Three or more
+        /// consecutive numbers are compressed and represented by the first and
+        /// last element of the series, separated by a hyphen. For example, if
+        /// the completed indexes are 1, 3, 4, 5 and 7, they are represented as
+        /// "1,3-5,7".</param>
         /// <param name="completionTime">Represents time when the job was
         /// completed. It is not guaranteed to be set in happens-before order
         /// across separate operations. It is represented in RFC3339 form and
         /// is in UTC. The completion time is only set when the job finishes
         /// successfully.</param>
         /// <param name="conditions">The latest available observations of an
-        /// object's current state. When a job fails, one of the conditions
-        /// will have type == "Failed". More info:
+        /// object's current state. When a Job fails, one of the conditions
+        /// will have type "Failed" and status true. When a Job is suspended,
+        /// one of the conditions will have type "Suspended" and status true;
+        /// when the Job is resumed, the status of this condition will become
+        /// false. When a Job is completed, one of the conditions will have
+        /// type "Complete" and status true. More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/</param>
         /// <param name="failed">The number of pods which reached phase
         /// Failed.</param>
-        /// <param name="startTime">Represents time when the job was
-        /// acknowledged by the job controller. It is not guaranteed to be set
-        /// in happens-before order across separate operations. It is
-        /// represented in RFC3339 form and is in UTC.</param>
+        /// <param name="startTime">Represents time when the job controller
+        /// started processing a job. When a Job is created in the suspended
+        /// state, this field is not set until the first time it is resumed.
+        /// This field is reset every time a Job is resumed from suspension. It
+        /// is represented in RFC3339 form and is in UTC.</param>
         /// <param name="succeeded">The number of pods which reached phase
         /// Succeeded.</param>
-        public V1JobStatus(int? active = default(int?), System.DateTime? completionTime = default(System.DateTime?), IList<V1JobCondition> conditions = default(IList<V1JobCondition>), int? failed = default(int?), System.DateTime? startTime = default(System.DateTime?), int? succeeded = default(int?))
+        public V1JobStatus(int? active = default(int?), string completedIndexes = default(string), System.DateTime? completionTime = default(System.DateTime?), IList<V1JobCondition> conditions = default(IList<V1JobCondition>), int? failed = default(int?), System.DateTime? startTime = default(System.DateTime?), int? succeeded = default(int?))
         {
             Active = active;
+            CompletedIndexes = completedIndexes;
             CompletionTime = completionTime;
             Conditions = conditions;
             Failed = failed;
@@ -68,6 +82,18 @@ namespace k8s.Models
         public int? Active { get; set; }
 
         /// <summary>
+        /// Gets or sets completedIndexes holds the completed indexes when
+        /// .spec.completionMode = "Indexed" in a text format. The indexes are
+        /// represented as decimal integers separated by commas. The numbers
+        /// are listed in increasing order. Three or more consecutive numbers
+        /// are compressed and represented by the first and last element of the
+        /// series, separated by a hyphen. For example, if the completed
+        /// indexes are 1, 3, 4, 5 and 7, they are represented as "1,3-5,7".
+        /// </summary>
+        [JsonProperty(PropertyName = "completedIndexes")]
+        public string CompletedIndexes { get; set; }
+
+        /// <summary>
         /// Gets or sets represents time when the job was completed. It is not
         /// guaranteed to be set in happens-before order across separate
         /// operations. It is represented in RFC3339 form and is in UTC. The
@@ -78,8 +104,12 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets the latest available observations of an object's
-        /// current state. When a job fails, one of the conditions will have
-        /// type == "Failed". More info:
+        /// current state. When a Job fails, one of the conditions will have
+        /// type "Failed" and status true. When a Job is suspended, one of the
+        /// conditions will have type "Suspended" and status true; when the Job
+        /// is resumed, the status of this condition will become false. When a
+        /// Job is completed, one of the conditions will have type "Complete"
+        /// and status true. More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
         /// </summary>
         [JsonProperty(PropertyName = "conditions")]
@@ -92,10 +122,11 @@ namespace k8s.Models
         public int? Failed { get; set; }
 
         /// <summary>
-        /// Gets or sets represents time when the job was acknowledged by the
-        /// job controller. It is not guaranteed to be set in happens-before
-        /// order across separate operations. It is represented in RFC3339 form
-        /// and is in UTC.
+        /// Gets or sets represents time when the job controller started
+        /// processing a job. When a Job is created in the suspended state,
+        /// this field is not set until the first time it is resumed. This
+        /// field is reset every time a Job is resumed from suspension. It is
+        /// represented in RFC3339 form and is in UTC.
         /// </summary>
         [JsonProperty(PropertyName = "startTime")]
         public System.DateTime? StartTime { get; set; }

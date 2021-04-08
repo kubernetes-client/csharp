@@ -26,8 +26,6 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1EphemeralVolumeSource class.
         /// </summary>
-        /// <param name="readOnlyProperty">Specifies a read-only configuration
-        /// for the volume. Defaults to false (read/write).</param>
         /// <param name="volumeClaimTemplate">Will be used to create a
         /// stand-alone PVC to provision the volume. The pod in which this
         /// EphemeralVolumeSource is embedded will be the owner of the PVC,
@@ -49,9 +47,8 @@ namespace k8s.Models
         /// to the PVC after it has been created.
         ///
         /// Required, must not be nil.</param>
-        public V1EphemeralVolumeSource(bool? readOnlyProperty = default(bool?), V1PersistentVolumeClaimTemplate volumeClaimTemplate = default(V1PersistentVolumeClaimTemplate))
+        public V1EphemeralVolumeSource(V1PersistentVolumeClaimTemplate volumeClaimTemplate = default(V1PersistentVolumeClaimTemplate))
         {
-            ReadOnlyProperty = readOnlyProperty;
             VolumeClaimTemplate = volumeClaimTemplate;
             CustomInit();
         }
@@ -60,13 +57,6 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets specifies a read-only configuration for the volume.
-        /// Defaults to false (read/write).
-        /// </summary>
-        [JsonProperty(PropertyName = "readOnly")]
-        public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>
         /// Gets or sets will be used to create a stand-alone PVC to provision
