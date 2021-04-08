@@ -18,10 +18,10 @@ namespace k8s
             }
         }
 
-        private IKubernetes kubernetes;
-        private string group;
-        private string version;
-        private string plural;
+        private readonly IKubernetes kubernetes;
+        private readonly string group;
+        private readonly string version;
+        private readonly string plural;
 
 
         public GenericClient(KubernetesClientConfiguration config, string group, string version, string plural)
