@@ -8,7 +8,7 @@ namespace k8s
     /// a container.
     /// </summary>
     /// <param name="stdIn">
-    /// The standard intput stream of the process.
+    /// The standard input stream of the process.
     /// </param>
     /// <param name="stdOut">
     /// The standard output stream of the process.
