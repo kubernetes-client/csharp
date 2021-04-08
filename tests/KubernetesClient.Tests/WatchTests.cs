@@ -187,17 +187,16 @@ namespace k8s.Tests
         public async Task DisposeWatch()
         {
             var connectionClosed = new AsyncManualResetEvent();
-            var eventsReceived = new CountdownEvent(1);
-            var serverRunning = true;
+            var eventsReceived = new AsyncCountdownEvent(1);
+            var serverShutdown = new AsyncManualResetEvent();
+
 
             using (var server = new MockKubeApiServer(testOutput, async httpContext =>
             {
-                while (serverRunning)
-                {
-                    await WriteStreamLine(httpContext, MockAddedEventStreamLine).ConfigureAwait(false);
-                }
+                await WriteStreamLine(httpContext, MockAddedEventStreamLine).ConfigureAwait(false);
+                await serverShutdown.WaitAsync().ConfigureAwait(false);
 
-                return true;
+                return false;
             }))
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
@@ -212,10 +211,14 @@ namespace k8s.Tests
                         events.Add(type);
                         eventsReceived.Signal();
                     },
+                    error =>
+                    {
+                        testOutput.WriteLine($"Watcher received '{error.GetType().FullName}' error.");
+                    },
                     onClosed: connectionClosed.Set);
 
                 // wait at least an event
-                await Task.WhenAny(Task.Run(() => eventsReceived.Wait()), Task.Delay(TestTimeout)).ConfigureAwait(false);
+                await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(false);
                 Assert.True(
                     eventsReceived.CurrentCount == 0,
                     "Timed out waiting for events.");
@@ -228,9 +231,7 @@ namespace k8s.Tests
                 events.Clear();
 
                 // Let the server disconnect
-                serverRunning = false;
-
-                var timeout = Task.Delay(TestTimeout);
+                serverShutdown.Set();
 
                 await Task.WhenAny(connectionClosed.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(false);
 
