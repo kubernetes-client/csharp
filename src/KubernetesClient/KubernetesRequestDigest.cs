@@ -37,9 +37,9 @@ namespace k8s
             }
 
             string urlPath = request.RequestUri.AbsolutePath;
-            if (!isResourceRequest(urlPath))
+            if (!IsResourceRequest(urlPath))
             {
-                return nonResource(urlPath);
+                return NonResource(urlPath);
             }
 
             try
@@ -49,7 +49,7 @@ namespace k8s
                 string kind;
 
                 var parts = urlPath.Split('/');
-                var namespaced = urlPath.IndexOf("namespaces/", StringComparison.Ordinal) != -1;
+                var namespaced = urlPath.IndexOf("/namespaces/", StringComparison.Ordinal) != -1;
 
                 if (urlPath.StartsWith("/api/v1", StringComparison.Ordinal))
                 {
@@ -85,26 +85,26 @@ namespace k8s
                     apiGroup,
                     apiVersion,
                     kind,
-                    hasWatchParameter(request) ? "watch" : request.Method.ToString());
+                    HasWatchParameter(request) ? "WATCH" : request.Method.ToString());
             }
             catch (Exception)
             {
-                return nonResource(urlPath);
+                return NonResource(urlPath);
             }
         }
 
-        private static KubernetesRequestDigest nonResource(string urlPath)
+        private static KubernetesRequestDigest NonResource(string urlPath)
         {
             KubernetesRequestDigest digest = new KubernetesRequestDigest(urlPath, true, "nonresource", "na", "na", "na");
             return digest;
         }
 
-        public static bool isResourceRequest(string urlPath)
+        public static bool IsResourceRequest(string urlPath)
         {
             return resourcePattern.Matches(urlPath).Count > 0;
         }
 
-        private static bool hasWatchParameter(HttpRequestMessage request)
+        private static bool HasWatchParameter(HttpRequestMessage request)
         {
             return !string.IsNullOrEmpty(HttpUtility.ParseQueryString(request.RequestUri.Query).Get("watch"));
         }

@@ -45,8 +45,8 @@ namespace k8s.Monitoring
             }
 
             var digest = KubernetesRequestDigest.Parse(request);
-            requests.WithLabels(request.Method.ToString()).Inc();
-            using (activeRequests.WithLabels(request.Method.ToString()).TrackInProgress())
+            requests.WithLabels(digest.Verb).Inc();
+            using (activeRequests.WithLabels(digest.Verb).TrackInProgress())
             using (requestLatency.WithLabels(digest.Verb, digest.ApiGroup, digest.ApiVersion, digest.Kind).NewTimer())
             {
                 var resp = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
