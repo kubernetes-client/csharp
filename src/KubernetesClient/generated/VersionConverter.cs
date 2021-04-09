@@ -67,7 +67,6 @@ namespace k8s.Versioning
                 cfg.CreateMap<V1beta1CustomResourceSubresources, V1CustomResourceSubresources>().ReverseMap();
                 cfg.CreateMap<V1beta1CustomResourceSubresourceScale, V1CustomResourceSubresourceScale>().ReverseMap();
                 cfg.CreateMap<V1beta1CustomResourceValidation, V1CustomResourceValidation>().ReverseMap();
-                cfg.CreateMap<V1beta1Endpoint, V1Endpoint>().ReverseMap();
                 cfg.CreateMap<V1beta1EndpointConditions, V1EndpointConditions>().ReverseMap();
                 cfg.CreateMap<V1beta1EndpointHints, V1EndpointHints>().ReverseMap();
                 cfg.CreateMap<V1beta1EndpointSlice, V1EndpointSlice>().ReverseMap();
