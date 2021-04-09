@@ -36,21 +36,6 @@ namespace k8s
             return this;
         }
 
-#if (NETSTANDARD2_0)
-        public WebSocketBuilder SetServerCertificateValidationCallback(
-            RemoteCertificateValidationCallback validationCallback)
-        {
-            System.Net.ServicePointManager.ServerCertificateValidationCallback += validationCallback;
-            return this;
-        }
-
-        public void CleanupServerCertificateValidationCallback(RemoteCertificateValidationCallback validationCallback)
-        {
-            System.Net.ServicePointManager.ServerCertificateValidationCallback -= validationCallback;
-        }
-#endif
-
-#if NETSTANDARD2_1 || NET5_0
         public WebSocketBuilder ExpectServerCertificate(X509Certificate2Collection serverCertificate)
         {
             Options.RemoteCertificateValidationCallback
@@ -69,8 +54,6 @@ namespace k8s
 
             return this;
         }
-
-#endif // NETSTANDARD2_1 || NET5_0
 
         public virtual async Task<WebSocket> BuildAndConnectAsync(Uri uri, CancellationToken cancellationToken)
         {

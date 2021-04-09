@@ -165,7 +165,6 @@ namespace k8s.Tests
             }
         }
 
-#if NETSTANDARD2_1 || NET5_0 // The functionality under test, here, is dependent on managed HTTP / WebSocket in .NET Core 2.1 or newer.
         // this test doesn't work on OSX and is inconsistent on windows
         [OperatingSystemDependentFact(Exclude = OperatingSystems.OSX | OperatingSystems.Windows)]
         public void Cert()
@@ -338,7 +337,6 @@ namespace k8s.Tests
                 }
             }
         }
-#endif // NETSTANDARD2_1 || NET5_0
 
         [Fact]
         public void ExternalToken()
