@@ -19,6 +19,16 @@ methods are currently supported, but a few are not, see the
 You should also be able to authenticate using the in-cluster service
 account using the `InClusterConfig` function shown below.
 
+## Monitoring
+There is optional built-in metric generation for prometheus client metrics.
+The metrics exported are:
+
+* `k8s_dotnet_request_total` - Counter of request, broken down by HTTP Method
+* `k8s_dotnet_response_code_total` - Counter of responses, broken down by HTTP Method and response code
+* `k8s_request_latency_seconds` - Latency histograms broken down by method, api group, api version and resource kind
+
+There is an example integrating these monitors in the examples/prometheus directory.
+
 ## Sample Code
 
 ### Creating the client
