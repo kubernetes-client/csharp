@@ -33,7 +33,7 @@ namespace k8s.Models
         /// pod's inline VolumeSource. This field is populated only for the
         /// CSIMigration feature. It contains translated fields from a pod's
         /// inline VolumeSource to a PersistentVolumeSpec. This field is
-        /// alpha-level and is only honored by servers that enabled the
+        /// beta-level and is only honored by servers that enabled the
         /// CSIMigration feature.</param>
         /// <param name="persistentVolumeName">Name of the persistent volume to
         /// attach.</param>
@@ -54,7 +54,7 @@ namespace k8s.Models
         /// necessary to attach a persistent volume defined by a pod's inline
         /// VolumeSource. This field is populated only for the CSIMigration
         /// feature. It contains translated fields from a pod's inline
-        /// VolumeSource to a PersistentVolumeSpec. This field is alpha-level
+        /// VolumeSource to a PersistentVolumeSpec. This field is beta-level
         /// and is only honored by servers that enabled the CSIMigration
         /// feature.
         /// </summary>

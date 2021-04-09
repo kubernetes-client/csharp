@@ -48,7 +48,7 @@ namespace k8s.Models
         /// <param name="metadata">Standard object's metadata.</param>
         /// <param name="subjects">Subjects holds references to the objects the
         /// role applies to.</param>
-        public V1alpha1ClusterRoleBinding(V1alpha1RoleRef roleRef, string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), IList<Rbacv1alpha1Subject> subjects = default(IList<Rbacv1alpha1Subject>))
+        public V1alpha1ClusterRoleBinding(V1alpha1RoleRef roleRef, string apiVersion = default(string), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), IList<V1alpha1Subject> subjects = default(IList<V1alpha1Subject>))
         {
             ApiVersion = apiVersion;
             Kind = kind;
@@ -102,7 +102,7 @@ namespace k8s.Models
         /// applies to.
         /// </summary>
         [JsonProperty(PropertyName = "subjects")]
-        public IList<Rbacv1alpha1Subject> Subjects { get; set; }
+        public IList<V1alpha1Subject> Subjects { get; set; }
 
         /// <summary>
         /// Validate the object.

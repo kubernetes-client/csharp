@@ -36,7 +36,7 @@ namespace k8s.Models
         /// containing additional configuration for the controller. This is
         /// optional if the controller does not require extra
         /// parameters.</param>
-        public V1IngressClassSpec(string controller = default(string), V1TypedLocalObjectReference parameters = default(V1TypedLocalObjectReference))
+        public V1IngressClassSpec(string controller = default(string), V1IngressClassParametersReference parameters = default(V1IngressClassParametersReference))
         {
             Controller = controller;
             Parameters = parameters;
@@ -66,7 +66,7 @@ namespace k8s.Models
         /// the controller does not require extra parameters.
         /// </summary>
         [JsonProperty(PropertyName = "parameters")]
-        public V1TypedLocalObjectReference Parameters { get; set; }
+        public V1IngressClassParametersReference Parameters { get; set; }
 
         /// <summary>
         /// Validate the object.

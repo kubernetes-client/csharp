@@ -12,6 +12,7 @@ namespace k8s.Models
     /// <summary>
     /// PodSecurityPolicy governs the ability to make requests that affect the
     /// Security Context that will be applied to a pod and container.
+    /// Deprecated in 1.21.
     /// </summary>
     public partial class V1beta1PodSecurityPolicy
     {

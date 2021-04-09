@@ -35,6 +35,8 @@ namespace k8s.Models
         /// must contain at least one address but no more than 100.</param>
         /// <param name="conditions">conditions contains information about the
         /// current status of the endpoint.</param>
+        /// <param name="hints">hints contains information associated with how
+        /// an endpoint should be consumed.</param>
         /// <param name="hostname">hostname of this endpoint. This field may be
         /// used by consumers of endpoints to distinguish endpoints from each
         /// other (e.g. in DNS names). Multiple endpoints which use the same
@@ -67,10 +69,11 @@ namespace k8s.Models
         /// label.
         /// This field is deprecated and will be removed in future api
         /// versions.</param>
-        public V1beta1Endpoint(IList<string> addresses, V1beta1EndpointConditions conditions = default(V1beta1EndpointConditions), string hostname = default(string), string nodeName = default(string), V1ObjectReference targetRef = default(V1ObjectReference), IDictionary<string, string> topology = default(IDictionary<string, string>))
+        public V1beta1Endpoint(IList<string> addresses, V1beta1EndpointConditions conditions = default(V1beta1EndpointConditions), V1beta1EndpointHints hints = default(V1beta1EndpointHints), string hostname = default(string), string nodeName = default(string), V1ObjectReference targetRef = default(V1ObjectReference), IDictionary<string, string> topology = default(IDictionary<string, string>))
         {
             Addresses = addresses;
             Conditions = conditions;
+            Hints = hints;
             Hostname = hostname;
             NodeName = nodeName;
             TargetRef = targetRef;
@@ -99,6 +102,13 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "conditions")]
         public V1beta1EndpointConditions Conditions { get; set; }
+
+        /// <summary>
+        /// Gets or sets hints contains information associated with how an
+        /// endpoint should be consumed.
+        /// </summary>
+        [JsonProperty(PropertyName = "hints")]
+        public V1beta1EndpointHints Hints { get; set; }
 
         /// <summary>
         /// Gets or sets hostname of this endpoint. This field may be used by

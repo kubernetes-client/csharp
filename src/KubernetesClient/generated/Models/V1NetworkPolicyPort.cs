@@ -25,14 +25,23 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1NetworkPolicyPort class.
         /// </summary>
+        /// <param name="endPort">If set, indicates that the range of ports
+        /// from port to endPort, inclusive, should be allowed by the policy.
+        /// This field cannot be defined if the port field is not defined or if
+        /// the port field is defined as a named (string) port. The endPort
+        /// must be equal or greater than port. This feature is in Alpha state
+        /// and should be enabled using the Feature Gate
+        /// "NetworkPolicyEndPort".</param>
         /// <param name="port">The port on the given protocol. This can either
         /// be a numerical or named port on a pod. If this field is not
-        /// provided, this matches all port names and numbers.</param>
+        /// provided, this matches all port names and numbers. If present, only
+        /// traffic on the specified protocol AND port will be matched.</param>
         /// <param name="protocol">The protocol (TCP, UDP, or SCTP) which
         /// traffic must match. If not specified, this field defaults to
         /// TCP.</param>
-        public V1NetworkPolicyPort(IntstrIntOrString port = default(IntstrIntOrString), string protocol = default(string))
+        public V1NetworkPolicyPort(int? endPort = default(int?), IntstrIntOrString port = default(IntstrIntOrString), string protocol = default(string))
         {
+            EndPort = endPort;
             Port = port;
             Protocol = protocol;
             CustomInit();
@@ -44,9 +53,21 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets if set, indicates that the range of ports from port to
+        /// endPort, inclusive, should be allowed by the policy. This field
+        /// cannot be defined if the port field is not defined or if the port
+        /// field is defined as a named (string) port. The endPort must be
+        /// equal or greater than port. This feature is in Alpha state and
+        /// should be enabled using the Feature Gate "NetworkPolicyEndPort".
+        /// </summary>
+        [JsonProperty(PropertyName = "endPort")]
+        public int? EndPort { get; set; }
+
+        /// <summary>
         /// Gets or sets the port on the given protocol. This can either be a
         /// numerical or named port on a pod. If this field is not provided,
-        /// this matches all port names and numbers.
+        /// this matches all port names and numbers. If present, only traffic
+        /// on the specified protocol AND port will be matched.
         /// </summary>
         [JsonProperty(PropertyName = "port")]
         public IntstrIntOrString Port { get; set; }

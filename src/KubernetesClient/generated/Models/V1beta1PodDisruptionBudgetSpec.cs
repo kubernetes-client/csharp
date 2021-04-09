@@ -38,7 +38,10 @@ namespace k8s.Models
         /// So for example you can prevent all voluntary evictions by
         /// specifying "100%".</param>
         /// <param name="selector">Label query over pods whose evictions are
-        /// managed by the disruption budget.</param>
+        /// managed by the disruption budget. A null selector selects no pods.
+        /// An empty selector ({}) also selects no pods, which differs from
+        /// standard behavior of selecting all pods. In policy/v1, an empty
+        /// selector will select all pods in the namespace.</param>
         public V1beta1PodDisruptionBudgetSpec(IntstrIntOrString maxUnavailable = default(IntstrIntOrString), IntstrIntOrString minAvailable = default(IntstrIntOrString), V1LabelSelector selector = default(V1LabelSelector))
         {
             MaxUnavailable = maxUnavailable;
@@ -73,7 +76,10 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets label query over pods whose evictions are managed by
-        /// the disruption budget.
+        /// the disruption budget. A null selector selects no pods. An empty
+        /// selector ({}) also selects no pods, which differs from standard
+        /// behavior of selecting all pods. In policy/v1, an empty selector
+        /// will select all pods in the namespace.
         /// </summary>
         [JsonProperty(PropertyName = "selector")]
         public V1LabelSelector Selector { get; set; }

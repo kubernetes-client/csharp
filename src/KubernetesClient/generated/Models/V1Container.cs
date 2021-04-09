@@ -87,7 +87,7 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes</param>
         /// <param name="resources">Compute Resources required by this
         /// container. Cannot be updated. More info:
-        /// https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/</param>
+        /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/</param>
         /// <param name="securityContext">Security options the pod should run
         /// with. More info:
         /// https://kubernetes.io/docs/concepts/policy/security-context/ More
@@ -286,7 +286,7 @@ namespace k8s.Models
         /// <summary>
         /// Gets or sets compute Resources required by this container. Cannot
         /// be updated. More info:
-        /// https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+        /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
         /// </summary>
         [JsonProperty(PropertyName = "resources")]
         public V1ResourceRequirements Resources { get; set; }
