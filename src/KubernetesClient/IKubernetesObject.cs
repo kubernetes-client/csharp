@@ -35,7 +35,7 @@ namespace k8s
     }
 
     /// <summary>Represents a generic Kubernetes object that has an API version, a kind, and metadata.</summary>
-    /// <typeparam name="TMetadata">type of metedata</typeparam>
+    /// <typeparam name="TMetadata">type of metadata</typeparam>
     public interface IKubernetesObject<TMetadata> : IKubernetesObject, IMetadata<TMetadata>
     {
     }

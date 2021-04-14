@@ -134,10 +134,10 @@ namespace k8s.Versioning
                     obj.Kind = metadata.Kind;
                 });
             });
-            cfg.CreateMap<V1Subject, Rbacv1alpha1Subject>()
+            cfg.CreateMap<V1Subject, V1alpha1Subject>()
                 .ForMember(dest => dest.ApiVersion, opt => opt.Ignore())
                 .ReverseMap();
-            cfg.CreateMap<Rbacv1beta1Subject, Rbacv1alpha1Subject>()
+            cfg.CreateMap<Rbacv1beta1Subject, V1alpha1Subject>()
                 .ForMember(dest => dest.ApiVersion, opt => opt.Ignore())
                 .ReverseMap();
             cfg.CreateMap<V1Subject, Rbacv1beta1Subject>()
@@ -447,6 +447,14 @@ namespace k8s.Versioning
             cfg.CreateMap<V1alpha1ClusterRoleBindingList, V1beta1ClusterRoleBindingList>().ReverseMap();
             cfg.CreateMap<V1alpha1ClusterRoleBindingList, V1ClusterRoleBindingList>().ReverseMap();
             cfg.CreateMap<V1beta1ClusterRoleBindingList, V1ClusterRoleBindingList>().ReverseMap();
+
+            cfg.CreateMap<V1beta1Endpoint, V1Endpoint>()
+                .ForMember(dest => dest.DeprecatedTopology, opt => opt.Ignore())
+                .ForMember(dest => dest.Zone, opt => opt.Ignore())
+                .ReverseMap();
+
+            cfg.CreateMap<V1beta1EndpointPort, Discoveryv1EndpointPort>()
+                .ReverseMap();
         }
     }
 }

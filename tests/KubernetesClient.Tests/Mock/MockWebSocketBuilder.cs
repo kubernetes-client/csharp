@@ -1,4 +1,3 @@
-#if !NETSTANDARD2_1 || NET5_0
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -42,5 +41,3 @@ namespace k8s.Tests.Mock
         }
     }
 }
-
-#endif // !NETSTANDARD2_1 || NET5_0

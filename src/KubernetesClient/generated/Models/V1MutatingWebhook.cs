@@ -48,7 +48,7 @@ namespace k8s.Models
         /// (webhooks created via v1beta1 may also specify Some or Unknown).
         /// Webhooks with side effects MUST implement a reconciliation system,
         /// since a request may be rejected by a future step in the admission
-        /// change and the side effects therefore need to be undone. Requests
+        /// chain and the side effects therefore need to be undone. Requests
         /// with the dryRun attribute will be auto-rejected if they match a
         /// webhook with sideEffects == Unknown or Some.</param>
         /// <param name="failurePolicy">FailurePolicy defines how unrecognized
@@ -357,8 +357,8 @@ namespace k8s.Models
         /// effects. Acceptable values are: None, NoneOnDryRun (webhooks
         /// created via v1beta1 may also specify Some or Unknown). Webhooks
         /// with side effects MUST implement a reconciliation system, since a
-        /// request may be rejected by a future step in the admission change
-        /// and the side effects therefore need to be undone. Requests with the
+        /// request may be rejected by a future step in the admission chain and
+        /// the side effects therefore need to be undone. Requests with the
         /// dryRun attribute will be auto-rejected if they match a webhook with
         /// sideEffects == Unknown or Some.
         /// </summary>

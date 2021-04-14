@@ -39,6 +39,19 @@ namespace k8s
                 .WithOverridesFromJsonPropertyAttributes()
                 .BuildValueSerializer();
 
+        private static readonly IDictionary<string, Type> ModelTypeMap = typeof(KubernetesEntityAttribute).Assembly
+            .GetTypes()
+            .Where(t => t.GetCustomAttributes(typeof(KubernetesEntityAttribute), true).Any())
+            .ToDictionary(
+                t =>
+                {
+                    var attr = (KubernetesEntityAttribute)t.GetCustomAttribute(
+                        typeof(KubernetesEntityAttribute), true);
+                    var groupPrefix = string.IsNullOrEmpty(attr.Group) ? "" : $"{attr.Group}/";
+                    return $"{groupPrefix}{attr.ApiVersion}/{attr.Kind}";
+                },
+                t => t);
+
         public class ByteArrayStringYamlConverter : IYamlTypeConverter
         {
             public bool Accepts(Type type)
@@ -84,10 +97,11 @@ namespace k8s
         /// The stream to load the objects from.
         /// </param>
         /// <param name="typeMap">
-        /// A map from apiVersion/kind to Type. For example "v1/Pod" -> typeof(V1Pod)
+        /// A map from apiVersion/kind to Type. For example "v1/Pod" -> typeof(V1Pod). If null, a default mapping will
+        /// be used.
         /// </param>
         /// <returns>collection of objects</returns>
-        public static async Task<List<object>> LoadAllFromStreamAsync(Stream stream, Dictionary<string, Type> typeMap)
+        public static async Task<List<object>> LoadAllFromStreamAsync(Stream stream, IDictionary<string, Type> typeMap = null)
         {
             var reader = new StreamReader(stream);
             var content = await reader.ReadToEndAsync().ConfigureAwait(false);
@@ -99,9 +113,12 @@ namespace k8s
         /// Load a collection of objects from a file asynchronously
         /// </summary>
         /// <param name="fileName">The name of the file to load from.</param>
-        /// <param name="typeMap">A map from apiVersion/kind to Type. For example "v1/Pod" -> typeof(V1Pod)</param>
+        /// <param name="typeMap">
+        /// A map from apiVersion/kind to Type. For example "v1/Pod" -> typeof(V1Pod). If null, a default mapping will
+        /// be used.
+        /// </param>
         /// <returns>collection of objects</returns>
-        public static async Task<List<object>> LoadAllFromFileAsync(string fileName, Dictionary<string, Type> typeMap)
+        public static async Task<List<object>> LoadAllFromFileAsync(string fileName, IDictionary<string, Type> typeMap = null)
         {
             using (var fileStream = File.OpenRead(fileName))
             {
@@ -116,15 +133,15 @@ namespace k8s
         /// The string to load the objects from.
         /// </param>
         /// <param name="typeMap">
-        /// A map from apiVersion/kind to Type. For example "v1/Pod" -> typeof(V1Pod)
+        /// A map from apiVersion/kind to Type. For example "v1/Pod" -> typeof(V1Pod). If null, a default mapping will
+        /// be used.
         /// </param>
         /// <returns>collection of objects</returns>
-        public static List<object> LoadAllFromString(string content, Dictionary<string, Type> typeMap)
+        public static List<object> LoadAllFromString(string content, IDictionary<string, Type> typeMap = null)
         {
-            if (typeMap == null)
-            {
-                throw new ArgumentNullException(nameof(typeMap));
-            }
+            var mergedTypeMap = new Dictionary<string, Type>(ModelTypeMap);
+            // merge in KVPs from typeMap, overriding any in ModelTypeMap
+            typeMap?.ToList().ForEach(x => mergedTypeMap[x.Key] = x.Value);
 
             var types = new List<Type>();
             var parser = new Parser(new StringReader(content));
@@ -132,7 +149,7 @@ namespace k8s
             while (parser.Accept<DocumentStart>(out _))
             {
                 var obj = Deserializer.Deserialize<KubernetesObject>(parser);
-                types.Add(typeMap[obj.ApiVersion + "/" + obj.Kind]);
+                types.Add(mergedTypeMap[obj.ApiVersion + "/" + obj.Kind]);
             }
 
             parser = new Parser(new StringReader(content));

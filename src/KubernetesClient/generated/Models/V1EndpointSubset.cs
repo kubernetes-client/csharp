@@ -45,7 +45,7 @@ namespace k8s.Models
         /// check, or have recently failed a liveness check.</param>
         /// <param name="ports">Port numbers available on the related IP
         /// addresses.</param>
-        public V1EndpointSubset(IList<V1EndpointAddress> addresses = default(IList<V1EndpointAddress>), IList<V1EndpointAddress> notReadyAddresses = default(IList<V1EndpointAddress>), IList<V1EndpointPort> ports = default(IList<V1EndpointPort>))
+        public V1EndpointSubset(IList<V1EndpointAddress> addresses = default(IList<V1EndpointAddress>), IList<V1EndpointAddress> notReadyAddresses = default(IList<V1EndpointAddress>), IList<Corev1EndpointPort> ports = default(IList<Corev1EndpointPort>))
         {
             Addresses = addresses;
             NotReadyAddresses = notReadyAddresses;
@@ -79,7 +79,7 @@ namespace k8s.Models
         /// Gets or sets port numbers available on the related IP addresses.
         /// </summary>
         [JsonProperty(PropertyName = "ports")]
-        public IList<V1EndpointPort> Ports { get; set; }
+        public IList<Corev1EndpointPort> Ports { get; set; }
 
     }
 }

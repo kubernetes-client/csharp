@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Rest;
 
@@ -79,5 +80,7 @@ namespace k8s
         public string AccessToken { get; set; }
 
         public ITokenProvider TokenProvider { get; set; }
+
+        public bool TcpKeepAlive { get; set; } = true;
     }
 }

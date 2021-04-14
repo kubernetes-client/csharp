@@ -18,6 +18,7 @@ namespace k8s
             HttpRequestMessage request,
             CancellationToken cancellationToken)
         {
+            request.Version = HttpVersion.Version20;
             var originResponse = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
 
             // all watches are GETs, so we can ignore others

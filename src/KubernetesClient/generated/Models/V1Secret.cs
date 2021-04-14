@@ -41,8 +41,7 @@ namespace k8s.Models
         /// <param name="immutable">Immutable, if set to true, ensures that
         /// data stored in the Secret cannot be updated (only object metadata
         /// can be modified). If not set to true, the field can be modified at
-        /// any time. Defaulted to nil. This is a beta field enabled by
-        /// ImmutableEphemeralVolumes feature gate.</param>
+        /// any time. Defaulted to nil.</param>
         /// <param name="kind">Kind is a string value representing the REST
         /// resource this object represents. Servers may infer this from the
         /// endpoint the client submits requests to. Cannot be updated. In
@@ -51,10 +50,10 @@ namespace k8s.Models
         /// <param name="metadata">Standard object's metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</param>
         /// <param name="stringData">stringData allows specifying non-binary
-        /// secret data in string form. It is provided as a write-only
-        /// convenience method. All keys and values are merged into the data
-        /// field on write, overwriting any existing values. It is never output
-        /// when reading from the API.</param>
+        /// secret data in string form. It is provided as a write-only input
+        /// field for convenience. All keys and values are merged into the data
+        /// field on write, overwriting any existing values. The stringData
+        /// field is never output when reading from the API.</param>
         /// <param name="type">Used to facilitate programmatic handling of
         /// secret data.</param>
         public V1Secret(string apiVersion = default(string), IDictionary<string, byte[]> data = default(IDictionary<string, byte[]>), bool? immutable = default(bool?), string kind = default(string), V1ObjectMeta metadata = default(V1ObjectMeta), IDictionary<string, string> stringData = default(IDictionary<string, string>), string type = default(string))
@@ -98,8 +97,7 @@ namespace k8s.Models
         /// Gets or sets immutable, if set to true, ensures that data stored in
         /// the Secret cannot be updated (only object metadata can be
         /// modified). If not set to true, the field can be modified at any
-        /// time. Defaulted to nil. This is a beta field enabled by
-        /// ImmutableEphemeralVolumes feature gate.
+        /// time. Defaulted to nil.
         /// </summary>
         [JsonProperty(PropertyName = "immutable")]
         public bool? Immutable { get; set; }
@@ -123,10 +121,10 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets stringData allows specifying non-binary secret data in
-        /// string form. It is provided as a write-only convenience method. All
-        /// keys and values are merged into the data field on write,
-        /// overwriting any existing values. It is never output when reading
-        /// from the API.
+        /// string form. It is provided as a write-only input field for
+        /// convenience. All keys and values are merged into the data field on
+        /// write, overwriting any existing values. The stringData field is
+        /// never output when reading from the API.
         /// </summary>
         [JsonProperty(PropertyName = "stringData")]
         public IDictionary<string, string> StringData { get; set; }

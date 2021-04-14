@@ -1,4 +1,3 @@
-#if !NETSTANDARD2_1 || NET5_0
 /*
  * These tests are only for the netstandard version of the client (there are separate tests for netcoreapp that connect to a local test-hosted server).
  */
@@ -157,4 +156,3 @@ namespace k8s.Tests
         }
     }
 }
-#endif

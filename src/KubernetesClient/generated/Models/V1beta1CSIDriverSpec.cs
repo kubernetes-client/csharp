@@ -37,13 +37,16 @@ namespace k8s.Models
         /// the volumeattachment status when the attach operation is complete.
         /// If the CSIDriverRegistry feature gate is enabled and the value is
         /// specified to false, the attach operation will be skipped. Otherwise
-        /// the attach operation will be called.</param>
+        /// the attach operation will be called.
+        ///
+        /// This field is immutable.</param>
         /// <param name="fsGroupPolicy">Defines if the underlying volume
         /// supports changing ownership and permission of the volume before
         /// being mounted. Refer to the specific FSGroupPolicy values for
         /// additional details. This field is alpha-level, and is only honored
-        /// by servers that enable the CSIVolumeFSGroupPolicy feature
-        /// gate.</param>
+        /// by servers that enable the CSIVolumeFSGroupPolicy feature gate.
+        ///
+        /// This field is immutable.</param>
         /// <param name="podInfoOnMount">If set to true, podInfoOnMount
         /// indicates this CSI volume driver requires additional pod
         /// information (like podName, podUID, etc.) during mount operations.
@@ -57,7 +60,7 @@ namespace k8s.Models
         /// will be used. "csi.storage.k8s.io/pod.name": pod.Name
         /// "csi.storage.k8s.io/pod.namespace": pod.Namespace
         /// "csi.storage.k8s.io/pod.uid": string(pod.UID)
-        /// "csi.storage.k8s.io/ephemeral": "true" iff the volume is an
+        /// "csi.storage.k8s.io/ephemeral": "true" if the volume is an
         /// ephemeral inline volume
         /// defined by a CSIVolumeSource, otherwise "false"
         ///
@@ -67,7 +70,9 @@ namespace k8s.Models
         /// info disabled and/or ignore this field. As Kubernetes 1.15 doesn't
         /// support this field, drivers can only support one mode when deployed
         /// on such a cluster and the deployment determines which mode that is,
-        /// for example via a command line parameter of the driver.</param>
+        /// for example via a command line parameter of the driver.
+        ///
+        /// This field is immutable.</param>
         /// <param name="requiresRepublish">RequiresRepublish indicates the CSI
         /// driver wants `NodePublishVolume` being periodically called to
         /// reflect any possible change in the mounted volume. This field
@@ -77,7 +82,7 @@ namespace k8s.Models
         /// calls to NodePublishVolume should only update the contents of the
         /// volume. New mount points will not be seen by a running container.
         ///
-        /// This is an alpha feature and only available when the
+        /// This is a beta feature and only available when the
         /// CSIServiceAccountToken feature is enabled.</param>
         /// <param name="storageCapacity">If set to true, storageCapacity
         /// indicates that the CSI volume driver wants pod scheduling to
@@ -94,9 +99,10 @@ namespace k8s.Models
         /// false and it can be flipped later when storage capacity information
         /// has been published.
         ///
-        /// This is an alpha field and only available when the
-        /// CSIStorageCapacity feature is enabled. The default is
-        /// false.</param>
+        /// This field is immutable.
+        ///
+        /// This is a beta field and only available when the CSIStorageCapacity
+        /// feature is enabled. The default is false.</param>
         /// <param name="tokenRequests">TokenRequests indicates the CSI driver
         /// needs pods' service account tokens it is mounting volume for to do
         /// necessary authentication. Kubelet will pass the tokens in
@@ -115,7 +121,7 @@ namespace k8s.Models
         /// RequiresRepublish can be used to trigger NodePublishVolume
         /// periodically.
         ///
-        /// This is an alpha feature and only available when the
+        /// This is a beta feature and only available when the
         /// CSIServiceAccountToken feature is enabled.</param>
         /// <param name="volumeLifecycleModes">VolumeLifecycleModes defines
         /// what kind of volumes this CSI volume driver supports. The default
@@ -129,7 +135,9 @@ namespace k8s.Models
         /// about implementing this mode, see
         /// https://kubernetes-csi.github.io/docs/ephemeral-local-volumes.html
         /// A driver can support one or more of these modes and more modes may
-        /// be added in the future.</param>
+        /// be added in the future.
+        ///
+        /// This field is immutable.</param>
         public V1beta1CSIDriverSpec(bool? attachRequired = default(bool?), string fsGroupPolicy = default(string), bool? podInfoOnMount = default(bool?), bool? requiresRepublish = default(bool?), bool? storageCapacity = default(bool?), IList<V1beta1TokenRequest> tokenRequests = default(IList<V1beta1TokenRequest>), IList<string> volumeLifecycleModes = default(IList<string>))
         {
             AttachRequired = attachRequired;
@@ -159,6 +167,8 @@ namespace k8s.Models
         /// CSIDriverRegistry feature gate is enabled and the value is
         /// specified to false, the attach operation will be skipped. Otherwise
         /// the attach operation will be called.
+        ///
+        /// This field is immutable.
         /// </summary>
         [JsonProperty(PropertyName = "attachRequired")]
         public bool? AttachRequired { get; set; }
@@ -169,6 +179,8 @@ namespace k8s.Models
         /// to the specific FSGroupPolicy values for additional details. This
         /// field is alpha-level, and is only honored by servers that enable
         /// the CSIVolumeFSGroupPolicy feature gate.
+        ///
+        /// This field is immutable.
         /// </summary>
         [JsonProperty(PropertyName = "fsGroupPolicy")]
         public string FsGroupPolicy { get; set; }
@@ -187,7 +199,7 @@ namespace k8s.Models
         /// "csi.storage.k8s.io/pod.name": pod.Name
         /// "csi.storage.k8s.io/pod.namespace": pod.Namespace
         /// "csi.storage.k8s.io/pod.uid": string(pod.UID)
-        /// "csi.storage.k8s.io/ephemeral": "true" iff the volume is an
+        /// "csi.storage.k8s.io/ephemeral": "true" if the volume is an
         /// ephemeral inline volume
         /// defined by a CSIVolumeSource, otherwise "false"
         ///
@@ -198,6 +210,8 @@ namespace k8s.Models
         /// support this field, drivers can only support one mode when deployed
         /// on such a cluster and the deployment determines which mode that is,
         /// for example via a command line parameter of the driver.
+        ///
+        /// This field is immutable.
         /// </summary>
         [JsonProperty(PropertyName = "podInfoOnMount")]
         public bool? PodInfoOnMount { get; set; }
@@ -212,7 +226,7 @@ namespace k8s.Models
         /// calls to NodePublishVolume should only update the contents of the
         /// volume. New mount points will not be seen by a running container.
         ///
-        /// This is an alpha feature and only available when the
+        /// This is a beta feature and only available when the
         /// CSIServiceAccountToken feature is enabled.
         /// </summary>
         [JsonProperty(PropertyName = "requiresRepublish")]
@@ -233,8 +247,10 @@ namespace k8s.Models
         /// false and it can be flipped later when storage capacity information
         /// has been published.
         ///
-        /// This is an alpha field and only available when the
-        /// CSIStorageCapacity feature is enabled. The default is false.
+        /// This field is immutable.
+        ///
+        /// This is a beta field and only available when the CSIStorageCapacity
+        /// feature is enabled. The default is false.
         /// </summary>
         [JsonProperty(PropertyName = "storageCapacity")]
         public bool? StorageCapacity { get; set; }
@@ -259,7 +275,7 @@ namespace k8s.Models
         /// RequiresRepublish can be used to trigger NodePublishVolume
         /// periodically.
         ///
-        /// This is an alpha feature and only available when the
+        /// This is a beta feature and only available when the
         /// CSIServiceAccountToken feature is enabled.
         /// </summary>
         [JsonProperty(PropertyName = "tokenRequests")]
@@ -278,6 +294,8 @@ namespace k8s.Models
         /// https://kubernetes-csi.github.io/docs/ephemeral-local-volumes.html
         /// A driver can support one or more of these modes and more modes may
         /// be added in the future.
+        ///
+        /// This field is immutable.
         /// </summary>
         [JsonProperty(PropertyName = "volumeLifecycleModes")]
         public IList<string> VolumeLifecycleModes { get; set; }

@@ -41,12 +41,22 @@ namespace k8s.Models
         /// pods is running. Empty topologyKey is not allowed.</param>
         /// <param name="labelSelector">A label query over a set of resources,
         /// in this case pods.</param>
-        /// <param name="namespaces">namespaces specifies which namespaces the
-        /// labelSelector applies to (matches against); null or empty list
-        /// means "this pod's namespace"</param>
-        public V1PodAffinityTerm(string topologyKey, V1LabelSelector labelSelector = default(V1LabelSelector), IList<string> namespaces = default(IList<string>))
+        /// <param name="namespaceSelector">A label query over the set of
+        /// namespaces that the term applies to. The term is applied to the
+        /// union of the namespaces selected by this field and the ones listed
+        /// in the namespaces field. null selector and null or empty namespaces
+        /// list means "this pod's namespace". An empty selector ({}) matches
+        /// all namespaces. This field is alpha-level and is only honored when
+        /// PodAffinityNamespaceSelector feature is enabled.</param>
+        /// <param name="namespaces">namespaces specifies a static list of
+        /// namespace names that the term applies to. The term is applied to
+        /// the union of the namespaces listed in this field and the ones
+        /// selected by namespaceSelector. null or empty namespaces list and
+        /// null namespaceSelector means "this pod's namespace"</param>
+        public V1PodAffinityTerm(string topologyKey, V1LabelSelector labelSelector = default(V1LabelSelector), V1LabelSelector namespaceSelector = default(V1LabelSelector), IList<string> namespaces = default(IList<string>))
         {
             LabelSelector = labelSelector;
+            NamespaceSelector = namespaceSelector;
             Namespaces = namespaces;
             TopologyKey = topologyKey;
             CustomInit();
@@ -65,9 +75,23 @@ namespace k8s.Models
         public V1LabelSelector LabelSelector { get; set; }
 
         /// <summary>
-        /// Gets or sets namespaces specifies which namespaces the
-        /// labelSelector applies to (matches against); null or empty list
-        /// means "this pod's namespace"
+        /// Gets or sets a label query over the set of namespaces that the term
+        /// applies to. The term is applied to the union of the namespaces
+        /// selected by this field and the ones listed in the namespaces field.
+        /// null selector and null or empty namespaces list means "this pod's
+        /// namespace". An empty selector ({}) matches all namespaces. This
+        /// field is alpha-level and is only honored when
+        /// PodAffinityNamespaceSelector feature is enabled.
+        /// </summary>
+        [JsonProperty(PropertyName = "namespaceSelector")]
+        public V1LabelSelector NamespaceSelector { get; set; }
+
+        /// <summary>
+        /// Gets or sets namespaces specifies a static list of namespace names
+        /// that the term applies to. The term is applied to the union of the
+        /// namespaces listed in this field and the ones selected by
+        /// namespaceSelector. null or empty namespaces list and null
+        /// namespaceSelector means "this pod's namespace"
         /// </summary>
         [JsonProperty(PropertyName = "namespaces")]
         public IList<string> Namespaces { get; set; }

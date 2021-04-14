@@ -312,14 +312,6 @@ namespace k8s
                 }
             }
 
-#if (NETSTANDARD2_0)
-            if (this.CaCerts != null)
-            {
-                webSocketBuilder.SetServerCertificateValidationCallback(ServerCertificateValidationCallback);
-            }
-#endif
-
-#if NETSTANDARD2_1 || NET5_0
             if (this.CaCerts != null)
             {
                 webSocketBuilder.ExpectServerCertificate(this.CaCerts);
@@ -334,7 +326,6 @@ namespace k8s
             {
                 webSocketBuilder.Options.AddSubProtocol(webSocketSubProtocol);
             }
-#endif // NETSTANDARD2_1 || NET5_0
 
             // Send Request
             cancellationToken.ThrowIfCancellationRequested();
@@ -408,25 +399,9 @@ namespace k8s
                 {
                     ServiceClientTracing.Exit(invocationId, null);
                 }
-
-#if (NETSTANDARD2_0)
-                if (this.CaCerts != null)
-                {
-                    webSocketBuilder.CleanupServerCertificateValidationCallback(
-                        ServerCertificateValidationCallback);
-                }
-#endif
             }
 
             return webSocket;
         }
-
-#if (NETSTANDARD2_0)
-        internal bool ServerCertificateValidationCallback(object sender, X509Certificate certificate, X509Chain chain,
-            SslPolicyErrors sslPolicyErrors)
-        {
-            return CertificateValidationCallBack(sender, CaCerts, certificate, chain, sslPolicyErrors);
-        }
-#endif
     }
 }

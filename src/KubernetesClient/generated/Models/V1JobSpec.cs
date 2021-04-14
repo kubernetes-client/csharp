@@ -30,11 +30,34 @@ namespace k8s.Models
         /// executing a job. More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/</param>
         /// <param name="activeDeadlineSeconds">Specifies the duration in
-        /// seconds relative to the startTime that the job may be active before
-        /// the system tries to terminate it; value must be positive
-        /// integer</param>
+        /// seconds relative to the startTime that the job may be continuously
+        /// active before the system tries to terminate it; value must be
+        /// positive integer. If a Job is suspended (at creation or through an
+        /// update), this timer will effectively be stopped and reset when the
+        /// Job is resumed again.</param>
         /// <param name="backoffLimit">Specifies the number of retries before
         /// marking this job failed. Defaults to 6</param>
+        /// <param name="completionMode">CompletionMode specifies how Pod
+        /// completions are tracked. It can be `NonIndexed` (default) or
+        /// `Indexed`.
+        ///
+        /// `NonIndexed` means that the Job is considered complete when there
+        /// have been .spec.completions successfully completed Pods. Each Pod
+        /// completion is homologous to each other.
+        ///
+        /// `Indexed` means that the Pods of a Job get an associated completion
+        /// index from 0 to (.spec.completions - 1), available in the
+        /// annotation batch.kubernetes.io/job-completion-index. The Job is
+        /// considered complete when there is one successfully completed Pod
+        /// for each index. When value is `Indexed`, .spec.completions must be
+        /// specified and `.spec.parallelism` must be less than or equal to
+        /// 10^5.
+        ///
+        /// This field is alpha-level and is only honored by servers that
+        /// enable the IndexedJob feature gate. More completion modes can be
+        /// added in the future. If the Job controller observes a mode that it
+        /// doesn't recognize, the controller skips updates for the
+        /// Job.</param>
         /// <param name="completions">Specifies the desired number of
         /// successfully finished pods the job should be run with.  Setting to
         /// nil means that the success of any pod signals the success of all
@@ -63,6 +86,17 @@ namespace k8s.Models
         /// the pod count. Normally, the system sets this field for you. More
         /// info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors</param>
+        /// <param name="suspend">Suspend specifies whether the Job controller
+        /// should create Pods or not. If a Job is created with suspend set to
+        /// true, no Pods are created by the Job controller. If a Job is
+        /// suspended after creation (i.e. the flag goes from false to true),
+        /// the Job controller will delete all active Pods associated with this
+        /// Job. Users must design their workload to gracefully handle this.
+        /// Suspending a Job will reset the StartTime field of the Job,
+        /// effectively resetting the ActiveDeadlineSeconds timer too. This is
+        /// an alpha field and requires the SuspendJob feature gate to be
+        /// enabled; otherwise this field may not be set to true. Defaults to
+        /// false.</param>
         /// <param name="ttlSecondsAfterFinished">ttlSecondsAfterFinished
         /// limits the lifetime of a Job that has finished execution (either
         /// Complete or Failed). If this field is set, ttlSecondsAfterFinished
@@ -73,14 +107,16 @@ namespace k8s.Models
         /// becomes eligible to be deleted immediately after it finishes. This
         /// field is alpha-level and is only honored by servers that enable the
         /// TTLAfterFinished feature.</param>
-        public V1JobSpec(V1PodTemplateSpec template, long? activeDeadlineSeconds = default(long?), int? backoffLimit = default(int?), int? completions = default(int?), bool? manualSelector = default(bool?), int? parallelism = default(int?), V1LabelSelector selector = default(V1LabelSelector), int? ttlSecondsAfterFinished = default(int?))
+        public V1JobSpec(V1PodTemplateSpec template, long? activeDeadlineSeconds = default(long?), int? backoffLimit = default(int?), string completionMode = default(string), int? completions = default(int?), bool? manualSelector = default(bool?), int? parallelism = default(int?), V1LabelSelector selector = default(V1LabelSelector), bool? suspend = default(bool?), int? ttlSecondsAfterFinished = default(int?))
         {
             ActiveDeadlineSeconds = activeDeadlineSeconds;
             BackoffLimit = backoffLimit;
+            CompletionMode = completionMode;
             Completions = completions;
             ManualSelector = manualSelector;
             Parallelism = parallelism;
             Selector = selector;
+            Suspend = suspend;
             Template = template;
             TtlSecondsAfterFinished = ttlSecondsAfterFinished;
             CustomInit();
@@ -93,8 +129,10 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets specifies the duration in seconds relative to the
-        /// startTime that the job may be active before the system tries to
-        /// terminate it; value must be positive integer
+        /// startTime that the job may be continuously active before the system
+        /// tries to terminate it; value must be positive integer. If a Job is
+        /// suspended (at creation or through an update), this timer will
+        /// effectively be stopped and reset when the Job is resumed again.
         /// </summary>
         [JsonProperty(PropertyName = "activeDeadlineSeconds")]
         public long? ActiveDeadlineSeconds { get; set; }
@@ -105,6 +143,30 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "backoffLimit")]
         public int? BackoffLimit { get; set; }
+
+        /// <summary>
+        /// Gets or sets completionMode specifies how Pod completions are
+        /// tracked. It can be `NonIndexed` (default) or `Indexed`.
+        ///
+        /// `NonIndexed` means that the Job is considered complete when there
+        /// have been .spec.completions successfully completed Pods. Each Pod
+        /// completion is homologous to each other.
+        ///
+        /// `Indexed` means that the Pods of a Job get an associated completion
+        /// index from 0 to (.spec.completions - 1), available in the
+        /// annotation batch.kubernetes.io/job-completion-index. The Job is
+        /// considered complete when there is one successfully completed Pod
+        /// for each index. When value is `Indexed`, .spec.completions must be
+        /// specified and `.spec.parallelism` must be less than or equal to
+        /// 10^5.
+        ///
+        /// This field is alpha-level and is only honored by servers that
+        /// enable the IndexedJob feature gate. More completion modes can be
+        /// added in the future. If the Job controller observes a mode that it
+        /// doesn't recognize, the controller skips updates for the Job.
+        /// </summary>
+        [JsonProperty(PropertyName = "completionMode")]
+        public string CompletionMode { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the desired number of successfully finished
@@ -151,6 +213,22 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "selector")]
         public V1LabelSelector Selector { get; set; }
+
+        /// <summary>
+        /// Gets or sets suspend specifies whether the Job controller should
+        /// create Pods or not. If a Job is created with suspend set to true,
+        /// no Pods are created by the Job controller. If a Job is suspended
+        /// after creation (i.e. the flag goes from false to true), the Job
+        /// controller will delete all active Pods associated with this Job.
+        /// Users must design their workload to gracefully handle this.
+        /// Suspending a Job will reset the StartTime field of the Job,
+        /// effectively resetting the ActiveDeadlineSeconds timer too. This is
+        /// an alpha field and requires the SuspendJob feature gate to be
+        /// enabled; otherwise this field may not be set to true. Defaults to
+        /// false.
+        /// </summary>
+        [JsonProperty(PropertyName = "suspend")]
+        public bool? Suspend { get; set; }
 
         /// <summary>
         /// Gets or sets describes the pod that will be created when executing

@@ -54,9 +54,9 @@ namespace k8s.Models
         /// that shares a pod's lifetime. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#emptydir</param>
         /// <param name="ephemeral">Ephemeral represents a volume that is
-        /// handled by a cluster storage driver (Alpha feature). The volume's
-        /// lifecycle is tied to the pod that defines it - it will be created
-        /// before the pod starts, and deleted when the pod is removed.
+        /// handled by a cluster storage driver. The volume's lifecycle is tied
+        /// to the pod that defines it - it will be created before the pod
+        /// starts, and deleted when the pod is removed.
         ///
         /// Use this if: a) the volume is only needed while the pod runs, b)
         /// features of normal volumes like restoring from snapshot or capacity
@@ -76,7 +76,10 @@ namespace k8s.Models
         /// for more information.
         ///
         /// A pod can use both types of ephemeral volumes and persistent
-        /// volumes at the same time.</param>
+        /// volumes at the same time.
+        ///
+        /// This is a beta feature and only available when the
+        /// GenericEphemeralVolume feature gate is enabled.</param>
         /// <param name="fc">FC represents a Fibre Channel resource that is
         /// attached to a kubelet's host machine and then exposed to the
         /// pod.</param>
@@ -246,9 +249,9 @@ namespace k8s.Models
 
         /// <summary>
         /// Gets or sets ephemeral represents a volume that is handled by a
-        /// cluster storage driver (Alpha feature). The volume's lifecycle is
-        /// tied to the pod that defines it - it will be created before the pod
-        /// starts, and deleted when the pod is removed.
+        /// cluster storage driver. The volume's lifecycle is tied to the pod
+        /// that defines it - it will be created before the pod starts, and
+        /// deleted when the pod is removed.
         ///
         /// Use this if: a) the volume is only needed while the pod runs, b)
         /// features of normal volumes like restoring from snapshot or capacity
@@ -269,6 +272,9 @@ namespace k8s.Models
         ///
         /// A pod can use both types of ephemeral volumes and persistent
         /// volumes at the same time.
+        ///
+        /// This is a beta feature and only available when the
+        /// GenericEphemeralVolume feature gate is enabled.
         /// </summary>
         [JsonProperty(PropertyName = "ephemeral")]
         public V1EphemeralVolumeSource Ephemeral { get; set; }

@@ -31,10 +31,13 @@ namespace k8s.Models
         /// jobs.</param>
         /// <param name="lastScheduleTime">Information when was the last time
         /// the job was successfully scheduled.</param>
-        public V1beta1CronJobStatus(IList<V1ObjectReference> active = default(IList<V1ObjectReference>), System.DateTime? lastScheduleTime = default(System.DateTime?))
+        /// <param name="lastSuccessfulTime">Information when was the last time
+        /// the job successfully completed.</param>
+        public V1beta1CronJobStatus(IList<V1ObjectReference> active = default(IList<V1ObjectReference>), System.DateTime? lastScheduleTime = default(System.DateTime?), System.DateTime? lastSuccessfulTime = default(System.DateTime?))
         {
             Active = active;
             LastScheduleTime = lastScheduleTime;
+            LastSuccessfulTime = lastSuccessfulTime;
             CustomInit();
         }
 
@@ -55,6 +58,13 @@ namespace k8s.Models
         /// </summary>
         [JsonProperty(PropertyName = "lastScheduleTime")]
         public System.DateTime? LastScheduleTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets information when was the last time the job
+        /// successfully completed.
+        /// </summary>
+        [JsonProperty(PropertyName = "lastSuccessfulTime")]
+        public System.DateTime? LastSuccessfulTime { get; set; }
 
     }
 }
