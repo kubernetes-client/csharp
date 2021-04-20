@@ -50,7 +50,7 @@ namespace k8s
             if (kubeconfig != null)
             {
                 var configList = kubeconfig.Split(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ';' : ':')
-                    .Select((s) => new FileInfo(s));
+                    .Select((s) => new FileInfo(s.Trim('"')));
                 var k8sConfig = LoadKubeConfig(configList.ToArray());
                 return BuildConfigFromConfigObject(k8sConfig);
             }
