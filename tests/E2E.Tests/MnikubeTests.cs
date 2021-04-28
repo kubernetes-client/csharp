@@ -352,8 +352,7 @@ namespace k8s.E2E
                     firstTimestamp: DateTime.Now,
                     lastTimestamp: DateTime.Now,
                     reportingComponent: "37",
-                    reportingInstance: "38"
-                    ), "default").ConfigureAwait(false);
+                    reportingInstance: "38"), "default").ConfigureAwait(false);
         }
 
         private static IKubernetes CreateClient()
