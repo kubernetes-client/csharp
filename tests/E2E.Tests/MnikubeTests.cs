@@ -332,7 +332,7 @@ namespace k8s.E2E
             var kubernetes = CreateClient();
 
             await kubernetes.CreateNamespacedEventAsync(
-                new Corev1Event (
+                new Corev1Event(
                     new V1ObjectReference(
                         "v1alpha1",
                         kind: "Test",
