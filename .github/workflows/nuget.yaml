@@ -10,20 +10,28 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    - name: Setup dotnet SDK 3.1
+
+    - name: .NET Core 3.1.x SDK
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '3.1.x'
-    - name: Setup dotnet SDK 5
+        dotnet-version: 3.1.x
+
+    - name: .NET 5.x SDK
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '5.0.x'          
-    - name: Test
+        dotnet-version: 5.0.x
+
+    - name: dotnet restore
+      run: dotnet restore --verbosity minimal --configfile nuget.config
+
+    - name: dotnet test
       run: dotnet test
-    - name: Pack
-      run: dotnet pack --configuration Release src/KubernetesClient -o pkg
-    - name: Push
+
+    - name: dotnet pack
+      run: dotnet pack -c Release src/KubernetesClient -o pkg --include-symbols
+
+    - name: dotnet nuget push
       run: dotnet nuget push pkg\*.nupkg -s https://www.nuget.org/ -k ${{ secrets.nuget_api_key }}
