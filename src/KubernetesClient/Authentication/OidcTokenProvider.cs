@@ -6,7 +6,6 @@ using System.IdentityModel.Tokens.Jwt;
 using Microsoft.Rest;
 using IdentityModel.OidcClient;
 using k8s.Exceptions;
-using Serilog;
 
 namespace k8s.Authentication
 {
@@ -53,18 +52,6 @@ namespace k8s.Authentication
                 ClientSecret = clientSecret ?? "",
                 Authority = idpIssuerUrl,
             };
-
-            var shouldTrace = ServiceClientTracing.IsEnabled;
-            if (shouldTrace)
-            {
-                var serilog = new LoggerConfiguration()
-                    .MinimumLevel.Verbose()
-                    .Enrich.FromLogContext()
-                    .WriteTo.LiterateConsole(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message}{NewLine}{Exception}{NewLine}")
-                    .CreateLogger();
-
-                options.LoggerFactory.AddSerilog(serilog);
-            }
 
             return new OidcClient(options);
         }

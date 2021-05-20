@@ -1,6 +1,5 @@
 using System;
 using k8s;
-using Microsoft.Rest;
 
 namespace simple
 {
