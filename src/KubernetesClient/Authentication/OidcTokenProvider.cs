@@ -40,8 +40,8 @@ namespace k8s.Authentication
             var handler = new JwtSecurityTokenHandler();
             var token = handler.ReadJwtToken(_accessToken ?? _idToken);
             var expiry = token.Payload.Exp ?? 0;
-            var dateTime = DateTimeOffset.FromUnixTimeSeconds(expiry);
-            return dateTime;
+            var dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(expiry);
+            return dateTimeOffset;
         }
 
         private OidcClient getClient(string clientId, string clientSecret, string idpIssuerUrl)
