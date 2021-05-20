@@ -2,9 +2,11 @@ using System;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
+using System.IdentityModel.Tokens.Jwt;
 using Microsoft.Rest;
 using IdentityModel.OidcClient;
 using k8s.Exceptions;
+using Serilog;
 
 namespace k8s.Authentication
 {
@@ -14,23 +16,33 @@ namespace k8s.Authentication
         private string _idToken;
         private string _refreshToken;
         private string _accessToken;
-        private DateTime _expiry;
+        private DateTimeOffset _expiry;
 
         public OidcTokenProvider(string clientId, string clientSecret, string idpIssuerUrl, string idToken, string refreshToken)
         {
             _idToken = idToken;
             _refreshToken = refreshToken;
             _oidcClient = getClient(clientId, clientSecret, idpIssuerUrl);
+            _expiry = getExpiryFromToken();
         }
 
         public async Task<AuthenticationHeaderValue> GetAuthenticationHeaderAsync(CancellationToken cancellationToken)
         {
-            if (_accessToken == null || DateTime.UtcNow.AddSeconds(30) > _expiry)
+            if ((_accessToken == null && _idToken == null) || DateTimeOffset.UtcNow.AddSeconds(30) > _expiry)
             {
                 await RefreshToken().ConfigureAwait(false);
             }
 
-            return new AuthenticationHeaderValue("Bearer", _accessToken);
+            return new AuthenticationHeaderValue("Bearer", _accessToken ?? _idToken);
+        }
+
+        private DateTimeOffset getExpiryFromToken()
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var token = handler.ReadJwtToken(_accessToken ?? _idToken);
+            var expiry = token.Payload.Exp ?? 0;
+            var dateTime = DateTimeOffset.FromUnixTimeSeconds(expiry);
+            return dateTime;
         }
 
         private OidcClient getClient(string clientId, string clientSecret, string idpIssuerUrl)
@@ -42,6 +54,18 @@ namespace k8s.Authentication
                 Authority = idpIssuerUrl,
             };
 
+            var shouldTrace = ServiceClientTracing.IsEnabled;
+            if (shouldTrace)
+            {
+                var serilog = new LoggerConfiguration()
+                    .MinimumLevel.Verbose()
+                    .Enrich.FromLogContext()
+                    .WriteTo.LiterateConsole(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message}{NewLine}{Exception}{NewLine}")
+                    .CreateLogger();
+
+                options.LoggerFactory.AddSerilog(serilog);
+            }
+
             return new OidcClient(options);
         }
 
@@ -49,8 +73,13 @@ namespace k8s.Authentication
         {
             try
             {
-                var result =
-                    await _oidcClient.RefreshTokenAsync(_refreshToken).ConfigureAwait(false);
+                var result = await _oidcClient.RefreshTokenAsync(_refreshToken).ConfigureAwait(false);
+
+                if (result.IsError)
+                {
+                    throw new Exception($"{result.Error}: {result.ErrorDescription}");
+                }
+
                 _accessToken = result.AccessToken;
                 _idToken = result.IdentityToken;
                 _refreshToken = result.RefreshToken;
