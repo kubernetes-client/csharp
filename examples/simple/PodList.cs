@@ -8,7 +8,6 @@ namespace simple
     {
         private static void Main(string[] args)
         {
-            ServiceClientTracing.IsEnabled = true;
             var config = KubernetesClientConfiguration.BuildDefaultConfig();
             IKubernetes client = new Kubernetes(config);
             Console.WriteLine("Starting Request!");
