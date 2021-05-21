@@ -326,6 +326,35 @@ namespace k8s.E2E
             }
         }
 
+        [MinikubeFact]
+        public async Task DatetimeFieldTest()
+        {
+            var kubernetes = CreateClient();
+
+            await kubernetes.CreateNamespacedEventAsync(
+                new Corev1Event(
+                    new V1ObjectReference(
+                        "v1alpha1",
+                        kind: "Test",
+                        name: "test",
+                        namespaceProperty: "default",
+                        resourceVersion: "1",
+                        uid: "1"),
+                    new V1ObjectMeta()
+                    {
+                        GenerateName = "started-",
+                    },
+                    action: "STARTED",
+                    type: "Normal",
+                    reason: "STARTED",
+                    message: "Started",
+                    eventTime: DateTime.Now,
+                    firstTimestamp: DateTime.Now,
+                    lastTimestamp: DateTime.Now,
+                    reportingComponent: "37",
+                    reportingInstance: "38"), "default").ConfigureAwait(false);
+        }
+
         private static IKubernetes CreateClient()
         {
             return new Kubernetes(KubernetesClientConfiguration.BuildDefaultConfig());

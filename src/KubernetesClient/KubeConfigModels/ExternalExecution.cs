@@ -25,5 +25,18 @@ namespace k8s.KubeConfigModels
         /// </summary>
         [YamlMember(Alias = "args")]
         public IList<string> Arguments { get; set; }
+
+        /// <summary>
+        /// Text shown to the user when the executable doesn't seem to be present. Optional.
+        /// </summary>
+        [YamlMember(Alias = "installHint")]
+        public string InstallHint { get; set; }
+
+        /// <summary>
+        /// Whether or not to provide cluster information to this exec plugin as a part of
+        /// the KUBERNETES_EXEC_INFO environment variable. Optional.
+        /// </summary>
+        [YamlMember(Alias = "provideClusterInfo")]
+        public bool ProvideClusterInfo { get; set; }
     }
 }

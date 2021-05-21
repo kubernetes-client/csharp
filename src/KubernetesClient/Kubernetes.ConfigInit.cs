@@ -130,6 +130,7 @@ namespace k8s
         partial void CustomInitialize()
         {
             DeserializationSettings.Converters.Add(new V1Status.V1StatusObjectViewConverter());
+            SerializationSettings.DateFormatString = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.ffffffK";
         }
 
         /// <summary>A <see cref="DelegatingHandler"/> that simply forwards a request with no further processing.</summary>
