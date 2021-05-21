@@ -19,7 +19,7 @@ namespace k8s
         /// <summary>
         ///     kubeconfig Default Location
         /// </summary>
-        private static readonly string KubeConfigDefaultLocation =
+        public static readonly string KubeConfigDefaultLocation =
             RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
                 ? Path.Combine(Environment.GetEnvironmentVariable("USERPROFILE"), @".kube\config")
                 : Path.Combine(Environment.GetEnvironmentVariable("HOME"), ".kube/config");
