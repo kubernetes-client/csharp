@@ -1,3 +1,4 @@
+using k8s.Authentication;
 using k8s.Exceptions;
 using k8s.KubeConfigModels;
 using System;
@@ -243,6 +244,18 @@ namespace k8s.Tests
             var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, useRelativePaths: false);
             Assert.Equal("admin", cfg.Username);
             Assert.Equal("secret", cfg.Password);
+        }
+
+        /// <summary>
+        ///     Checks oidc authentication provider information is read properly
+        /// </summary>
+        [Fact]
+        public void UserOidcAuthentication()
+        {
+            var fi = new FileInfo("assets/kubeconfig.user-oidc.yml");
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, useRelativePaths: false);
+            Assert.Equal("ID_TOKEN", cfg.AccessToken);
+            Assert.IsType<OidcTokenProvider>(cfg.TokenProvider);
         }
 
         /// <summary>

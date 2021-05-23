@@ -14,8 +14,7 @@ namespace k8s.Authentication
         private OidcClient _oidcClient;
         private string _idToken;
         private string _refreshToken;
-        private string _accessToken;
-        private DateTimeOffset _expiry;
+        private DateTime _expiry;
 
         public OidcTokenProvider(string clientId, string clientSecret, string idpIssuerUrl, string idToken, string refreshToken)
         {
@@ -27,21 +26,29 @@ namespace k8s.Authentication
 
         public async Task<AuthenticationHeaderValue> GetAuthenticationHeaderAsync(CancellationToken cancellationToken)
         {
-            if ((_accessToken == null && _idToken == null) || DateTimeOffset.UtcNow.AddSeconds(30) > _expiry)
+            if (_idToken == null || DateTime.UtcNow.AddSeconds(30) > _expiry)
             {
                 await RefreshToken().ConfigureAwait(false);
             }
 
-            return new AuthenticationHeaderValue("Bearer", _accessToken ?? _idToken);
+            return new AuthenticationHeaderValue("Bearer", _idToken);
         }
 
-        private DateTimeOffset getExpiryFromToken()
+        private DateTime getExpiryFromToken()
         {
+            int expiry;
             var handler = new JwtSecurityTokenHandler();
-            var token = handler.ReadJwtToken(_accessToken ?? _idToken);
-            var expiry = token.Payload.Exp ?? 0;
-            var dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(expiry);
-            return dateTimeOffset;
+            try
+            {
+                var token = handler.ReadJwtToken(_idToken);
+                expiry = token.Payload.Exp ?? 0;
+            }
+            catch
+            {
+                expiry = 0;
+            }
+
+            return DateTimeOffset.FromUnixTimeSeconds(expiry).UtcDateTime;
         }
 
         private OidcClient getClient(string clientId, string clientSecret, string idpIssuerUrl)
@@ -64,10 +71,9 @@ namespace k8s.Authentication
 
                 if (result.IsError)
                 {
-                    throw new Exception($"{result.Error}: {result.ErrorDescription}");
+                    throw new Exception(result.Error);
                 }
 
-                _accessToken = result.AccessToken;
                 _idToken = result.IdentityToken;
                 _refreshToken = result.RefreshToken;
                 _expiry = result.AccessTokenExpiration;
