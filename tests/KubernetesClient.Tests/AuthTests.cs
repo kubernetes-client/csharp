@@ -9,6 +9,8 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using k8s.Authentication;
+using k8s.Exceptions;
 using k8s.KubeConfigModels;
 using k8s.Models;
 using k8s.Tests.Mock;
@@ -436,6 +438,87 @@ namespace k8s.Tests
                     var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
                     ShouldThrowUnauthorized(client);
+                }
+            }
+        }
+
+        [Fact]
+        public void Oidc()
+        {
+            var clientId = "CLIENT_ID";
+            var clientSecret = "CLIENT_SECRET";
+            var idpIssuerUrl = "https://idp.issuer.url";
+            var unexpiredIdToken = "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjAsImV4cCI6MjAwMDAwMDAwMH0.8Ata5uKlrqYfeIaMwS91xVgVFHu7ntHx1sGN95i2Zho";
+            var expiredIdToken = "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjB9.f37LFpIw_XIS5TZt3wdtEjjyCNshYy03lOWpyDViRM0";
+            var refreshToken = "REFRESH_TOKEN";
+
+            using (var server = new MockKubeApiServer(testOutput, cxt =>
+            {
+                var header = cxt.Request.Headers["Authorization"].FirstOrDefault();
+
+                var expect = new AuthenticationHeaderValue("Bearer", unexpiredIdToken).ToString();
+
+                if (header != expect)
+                {
+                    cxt.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                    return Task.FromResult(false);
+                }
+
+                return Task.FromResult(true);
+            }))
+            {
+                {
+                    // use unexpired id token as bearer, do not attempt to refresh
+                    var client = new Kubernetes(new KubernetesClientConfiguration
+                    {
+                        Host = server.Uri.ToString(),
+                        AccessToken = unexpiredIdToken,
+                        TokenProvider = new OidcTokenProvider(clientId, clientSecret, idpIssuerUrl, unexpiredIdToken, refreshToken),
+                    });
+
+                    var listTask = ExecuteListPods(client);
+                    Assert.True(listTask.Response.IsSuccessStatusCode);
+                    Assert.Equal(1, listTask.Body.Items.Count);
+                }
+
+                {
+                    // attempt to refresh id token when expired
+                    var client = new Kubernetes(new KubernetesClientConfiguration
+                    {
+                        Host = server.Uri.ToString(),
+                        AccessToken = expiredIdToken,
+                        TokenProvider = new OidcTokenProvider(clientId, clientSecret, idpIssuerUrl, expiredIdToken, refreshToken),
+                    });
+
+                    try
+                    {
+                        PeelAggregate(() => ExecuteListPods(client));
+                        Assert.True(false, "should not be here");
+                    }
+                    catch (KubernetesClientException e)
+                    {
+                        Assert.StartsWith("Unable to refresh OIDC token.", e.Message);
+                    }
+                }
+
+                {
+                    // attempt to refresh id token when null
+                    var client = new Kubernetes(new KubernetesClientConfiguration
+                    {
+                        Host = server.Uri.ToString(),
+                        AccessToken = expiredIdToken,
+                        TokenProvider = new OidcTokenProvider(clientId, clientSecret, idpIssuerUrl, null, refreshToken),
+                    });
+
+                    try
+                    {
+                        PeelAggregate(() => ExecuteListPods(client));
+                        Assert.True(false, "should not be here");
+                    }
+                    catch (KubernetesClientException e)
+                    {
+                        Assert.StartsWith("Unable to refresh OIDC token.", e.Message);
+                    }
                 }
             }
         }
