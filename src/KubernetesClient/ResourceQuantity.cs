@@ -377,5 +377,40 @@ namespace k8s.Models
                 return lastv;
             }
         }
+
+        public int ToInt32()
+        {
+            return _unitlessValue.ToInt32();
+        }
+
+        public long ToInt64()
+        {
+            return _unitlessValue.ToInt64();
+        }
+
+        public uint ToUInt32()
+        {
+            return _unitlessValue.ToUInt32();
+        }
+
+        public ulong ToUInt64()
+        {
+            return _unitlessValue.ToUInt64();
+        }
+
+        public BigInteger ToBigInteger()
+        {
+            return _unitlessValue.ToBigInteger();
+        }
+
+        public decimal ToDecimal()
+        {
+            return _unitlessValue.ToDecimal();
+        }
+
+        public double ToDouble()
+        {
+            return _unitlessValue.ToDouble();
+        }
     }
 }
