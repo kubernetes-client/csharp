@@ -19,15 +19,18 @@ namespace k8s
         /// <returns>List of x509 instances.</returns>
         public static X509Certificate2Collection LoadPemFileCert(string file)
         {
-            var certs = new X509CertificateParser().ReadCertificates(File.OpenRead(file));
             var certCollection = new X509Certificate2Collection();
-
-            // Convert BouncyCastle X509Certificates to the .NET cryptography implementation and add
-            // it to the certificate collection
-            //
-            foreach (Org.BouncyCastle.X509.X509Certificate cert in certs)
+            using (var stream = FileUtils.FileSystem().File.OpenRead(file))
             {
-                certCollection.Add(new X509Certificate2(cert.GetEncoded()));
+                var certs = new X509CertificateParser().ReadCertificates(stream);
+
+                // Convert BouncyCastle X509Certificates to the .NET cryptography implementation and add
+                // it to the certificate collection
+                //
+                foreach (Org.BouncyCastle.X509.X509Certificate cert in certs)
+                {
+                    certCollection.Add(new X509Certificate2(cert.GetEncoded()));
+                }
             }
 
             return certCollection;
