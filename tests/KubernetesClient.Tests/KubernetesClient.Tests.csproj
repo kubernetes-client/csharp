@@ -10,6 +10,7 @@
   <ItemGroup>
       <PackageReference Include="FluentAssertions" Version="5.10.3" />
       <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+      <PackageReference Include="System.IO.Abstractions.TestingHelpers" Version="13.2.33" />
       <PackageReference Include="System.Reactive" Version="4.3.2" />
       <PackageReference Include="Nito.AsyncEx" Version="5.1.0" />
   </ItemGroup>

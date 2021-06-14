@@ -7,32 +7,32 @@ namespace k8s
 {
     public partial class KubernetesClientConfiguration
     {
-        private static string serviceAccountPath =
+#pragma warning disable SA1401
+        // internal for testing
+        internal static string ServiceAccountPath =
             Path.Combine(new string[]
             {
                 $"{Path.DirectorySeparatorChar}var", "run", "secrets", "kubernetes.io", "serviceaccount",
             });
+#pragma warning restore SA1401
 
-        private const string ServiceAccountTokenKeyFileName = "token";
-        private const string ServiceAccountRootCAKeyFileName = "ca.crt";
+        internal const string ServiceAccountTokenKeyFileName = "token";
+        internal const string ServiceAccountRootCAKeyFileName = "ca.crt";
+        internal const string ServiceAccountNamespaceFileName = "namespace";
 
         public static bool IsInCluster()
         {
             var host = Environment.GetEnvironmentVariable("KUBERNETES_SERVICE_HOST");
             var port = Environment.GetEnvironmentVariable("KUBERNETES_SERVICE_PORT");
-            if (string.IsNullOrWhiteSpace(host) || string.IsNullOrWhiteSpace(port))
+
+            var tokenPath = Path.Combine(ServiceAccountPath, ServiceAccountTokenKeyFileName);
+            if (!FileUtils.FileSystem().File.Exists(tokenPath))
             {
                 return false;
             }
 
-            var tokenPath = Path.Combine(serviceAccountPath, ServiceAccountTokenKeyFileName);
-            if (!File.Exists(tokenPath))
-            {
-                return false;
-            }
-
-            var certPath = Path.Combine(serviceAccountPath, ServiceAccountRootCAKeyFileName);
-            return File.Exists(certPath);
+            var certPath = Path.Combine(ServiceAccountPath, ServiceAccountRootCAKeyFileName);
+            return FileUtils.FileSystem().File.Exists(certPath);
         }
 
         public static KubernetesClientConfiguration InClusterConfig()
@@ -43,16 +43,33 @@ namespace k8s
                     "unable to load in-cluster configuration, KUBERNETES_SERVICE_HOST and KUBERNETES_SERVICE_PORT must be defined");
             }
 
-            var rootCAFile = Path.Combine(serviceAccountPath, ServiceAccountRootCAKeyFileName);
+            var rootCAFile = Path.Combine(ServiceAccountPath, ServiceAccountRootCAKeyFileName);
             var host = Environment.GetEnvironmentVariable("KUBERNETES_SERVICE_HOST");
             var port = Environment.GetEnvironmentVariable("KUBERNETES_SERVICE_PORT");
+            if (string.IsNullOrEmpty(host))
+            {
+                host = "kubernetes.default.svc";
+            }
 
-            return new KubernetesClientConfiguration
+            if (string.IsNullOrEmpty(port))
+            {
+                port = "443";
+            }
+
+            var result = new KubernetesClientConfiguration
             {
                 Host = new UriBuilder("https", host, Convert.ToInt32(port)).ToString(),
-                TokenProvider = new TokenFileAuth(Path.Combine(serviceAccountPath, ServiceAccountTokenKeyFileName)),
+                TokenProvider = new TokenFileAuth(Path.Combine(ServiceAccountPath, ServiceAccountTokenKeyFileName)),
                 SslCaCerts = CertUtils.LoadPemFileCert(rootCAFile),
             };
+
+            var namespaceFile = Path.Combine(ServiceAccountPath, ServiceAccountNamespaceFileName);
+            if (FileUtils.FileSystem().File.Exists(namespaceFile))
+            {
+                result.Namespace = FileUtils.FileSystem().File.ReadAllText(namespaceFile);
+            }
+
+            return result;
         }
     }
 }

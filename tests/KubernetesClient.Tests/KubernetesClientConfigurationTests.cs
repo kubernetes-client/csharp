@@ -2,7 +2,9 @@ using k8s.Authentication;
 using k8s.Exceptions;
 using k8s.KubeConfigModels;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.IO.Abstractions.TestingHelpers;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -670,6 +672,75 @@ namespace k8s.Tests
             if (expectedCreds.AuthProvider != null)
             {
                 Assert.True(expectedCreds.AuthProvider.Config.All(x => actualCreds.AuthProvider.Config.Contains(x)));
+            }
+        }
+
+        /// <summary>
+        ///    Test in cluster configuration.
+        /// </summary>
+        [Fact]
+        public void IsInCluster()
+        {
+            Assert.False(KubernetesClientConfiguration.IsInCluster());
+
+            var tokenPath = Path.Combine(KubernetesClientConfiguration.ServiceAccountPath, KubernetesClientConfiguration.ServiceAccountTokenKeyFileName);
+            var certPath = Path.Combine(KubernetesClientConfiguration.ServiceAccountPath, KubernetesClientConfiguration.ServiceAccountRootCAKeyFileName);
+
+            var fileSystem = new MockFileSystem(new Dictionary<string, MockFileData>
+            {
+                { tokenPath, new MockFileData("foo") },
+                { certPath, new MockFileData("bar") },
+            });
+            using (new FileUtils.InjectedFileSystem(fileSystem))
+            {
+                Assert.True(KubernetesClientConfiguration.IsInCluster());
+            }
+        }
+
+        /// <summary>
+        ///    Test in cluster configuration loading.
+        /// </summary>
+        [Fact]
+        public void LoadInCluster()
+        {
+            var tokenPath = Path.Combine(KubernetesClientConfiguration.ServiceAccountPath, KubernetesClientConfiguration.ServiceAccountTokenKeyFileName);
+            var certPath = Path.Combine(KubernetesClientConfiguration.ServiceAccountPath, KubernetesClientConfiguration.ServiceAccountRootCAKeyFileName);
+
+            var fileSystem = new MockFileSystem(new Dictionary<string, MockFileData>
+            {
+                { tokenPath, new MockFileData("foo") },
+                { certPath, new MockFileData("bar") },
+            });
+
+            using (new FileUtils.InjectedFileSystem(fileSystem))
+            {
+                var config = KubernetesClientConfiguration.InClusterConfig();
+                Assert.Equal("https://kubernetes.default.svc:443/", config.Host);
+                Assert.Null(config.Namespace);
+            }
+        }
+
+        /// <summary>
+        ///    Test in cluster configuration loading of namespaces.
+        /// </summary>
+        [Fact]
+        public void LoadInClusterNamespace()
+        {
+            var tokenPath = Path.Combine(KubernetesClientConfiguration.ServiceAccountPath, KubernetesClientConfiguration.ServiceAccountTokenKeyFileName);
+            var certPath = Path.Combine(KubernetesClientConfiguration.ServiceAccountPath, KubernetesClientConfiguration.ServiceAccountRootCAKeyFileName);
+            var namespacePath = Path.Combine(KubernetesClientConfiguration.ServiceAccountPath, KubernetesClientConfiguration.ServiceAccountNamespaceFileName);
+            var fileSystem = new MockFileSystem(new Dictionary<string, MockFileData>
+            {
+                { tokenPath, new MockFileData("foo") },
+                { certPath, new MockFileData("bar") },
+                { namespacePath, new MockFileData("some namespace") },
+            });
+
+            using (new FileUtils.InjectedFileSystem(fileSystem))
+            {
+                var config = KubernetesClientConfiguration.InClusterConfig();
+                Assert.Equal("https://kubernetes.default.svc:443/", config.Host);
+                Assert.Equal("some namespace", config.Namespace);
             }
         }
     }
