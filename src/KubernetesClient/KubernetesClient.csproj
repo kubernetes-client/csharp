@@ -38,10 +38,11 @@
     <PackageReference Include="prometheus-net" Version="4.1.1" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.1" />
     <PackageReference Include="System.IO.Abstractions" Version="13.2.33" />
+    <PackageReference Include="System.Text.Encodings.Web" Version="4.5.1" />
     <PackageReference Include="YamlDotNet" Version="8.1.2" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="System.Buffers" Version="4.5.1" />
-    <PackageReference Include="IdentityModel.OidcClient" Version="4.0.0" />
+    <PackageReference Include="IdentityModel.OidcClient" Version="3.1.2" />
   </ItemGroup>
 
 </Project>
