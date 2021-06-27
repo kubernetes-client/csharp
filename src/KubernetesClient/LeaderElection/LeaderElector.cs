@@ -111,7 +111,7 @@ namespace k8s.LeaderElection
             var leaderElectionRecord = new LeaderElectionRecord()
             {
                 HolderIdentity = l.Identity,
-                LeaseDurationSeconds = config.LeaseDuration.Seconds,
+                LeaseDurationSeconds = (int)config.LeaseDuration.TotalSeconds,
                 AcquireTime = DateTime.UtcNow,
                 RenewTime = DateTime.UtcNow,
                 LeaderTransitions = 0,
