@@ -5,7 +5,7 @@ namespace k8s
 {
     public static class FileUtils
     {
-        private static IFileSystem realFileSystem = new FileSystem();
+        private static readonly IFileSystem realFileSystem = new FileSystem();
         private static IFileSystem currentFileSystem = null;
 
         public static void InjectFilesystem(IFileSystem fs)
