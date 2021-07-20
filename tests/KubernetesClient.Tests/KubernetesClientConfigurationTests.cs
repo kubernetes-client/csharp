@@ -743,5 +743,27 @@ namespace k8s.Tests
                 Assert.Equal("some namespace", config.Namespace);
             }
         }
+
+        [Fact]
+        public void ChangeCurrentContext()
+        {
+
+            var k8sConfig =
+                KubernetesClientConfiguration.LoadKubeConfig(
+                    new FileInfo("assets/kubeconfig.yml"),
+                    false);
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigObject(k8sConfig);
+            k8sConfig.CurrentContext = "horse-cluster";
+
+            var fileSystem = new MockFileSystem();
+
+            using (new FileUtils.InjectedFileSystem(fileSystem))
+            {
+                KubernetesClientConfiguration.SaveKubeConfig(k8sConfig, "somepath");
+                Assert.True(fileSystem.FileExists("somepath"));
+            }
+
+            Assert.NotNull(cfg.Host);
+        }
     }
 }

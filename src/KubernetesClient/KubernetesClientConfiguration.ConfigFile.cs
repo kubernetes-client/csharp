@@ -690,6 +690,16 @@ namespace k8s
         }
 
         /// <summary>
+        ///     Saves Kube Config
+        /// </summary>
+        /// <param name="kubeconfig">Kube config file contents</param>
+        /// <param name="kubeconfigPath">Path to save the kubeconfig file</param>
+        public static void SaveKubeConfig(K8SConfiguration kubeconfig, string kubeconfigPath = null)
+        {
+            File.WriteAllTextAsync(kubeconfigPath ?? kubeconfig.FileName, Yaml.SaveToString(kubeconfig)).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
         ///     Loads Kube Config
         /// </summary>
         /// <param name="kubeConfigs">List of kube config file contents</param>
