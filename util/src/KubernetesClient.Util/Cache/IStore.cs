@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using k8s.Models;
 
 namespace k8s.Util.Cache
 {
     public interface IStore<TApiType>
+      where TApiType : class, IKubernetesObject<V1ObjectMeta>
     {
       /// <summary>
       /// add inserts an item into the store.
