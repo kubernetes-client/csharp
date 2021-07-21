@@ -181,6 +181,7 @@ namespace k8s.Util.Cache
 
       lock (_lock)
       {
+        // Todo: to make this lock striped or reader/writer (or use ConcurrentDictionary)
         return _items.GetValueOrDefault(key);
       }
     }
