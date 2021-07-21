@@ -693,7 +693,7 @@ namespace k8s
         ///     Saves Kube Config
         /// </summary>
         /// <param name="kubeconfig">Instance of the <see cref="K8SConfiguration"/> class to save</param>
-        /// <param name="kubeconfigPath">Path to save the kubeconfig file</param>
+        /// <param name="kubeconfigPath">Path to save the kubeconfig file or <see cref="KubeConfigDefaultLocation"/> if not provided</param>
         public static void SaveKubeConfig(K8SConfiguration kubeconfig, string kubeconfigPath = null)
         {
             if (kubeconfig == null)
@@ -701,12 +701,7 @@ namespace k8s
                 throw new NullReferenceException(nameof(kubeconfig));
             }
 
-            kubeconfigPath ??= kubeconfig.FileName;
-
-            if (kubeconfigPath == null)
-            {
-                throw new NullReferenceException(nameof(kubeconfigPath));
-            }
+            kubeconfigPath ??= kubeconfig.FileName ?? KubeConfigDefaultLocation;
 
             File.WriteAllTextAsync(kubeconfigPath, Yaml.SaveToString(kubeconfig)).GetAwaiter().GetResult();
         }
