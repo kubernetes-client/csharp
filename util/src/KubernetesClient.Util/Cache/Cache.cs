@@ -133,15 +133,15 @@ namespace k8s.Util.Cache
         throw new ArgumentNullException(nameof(list));
       }
 
+      var newItems = new Dictionary<string, TApiType>();
+      foreach (var item in list)
+      {
+        var key = _keyFunc(item);
+        newItems[key] = item;
+      }
+
       lock (_lock)
       {
-        var newItems = new Dictionary<string, TApiType>();
-        foreach (var item in list)
-        {
-          var key = _keyFunc(item);
-          newItems[key] = item;
-        }
-
         _items = newItems;
 
         // rebuild any index
