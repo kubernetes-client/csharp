@@ -747,7 +747,6 @@ namespace k8s.Tests
         [Fact]
         public void ChangeCurrentContext()
         {
-
             var k8sConfig =
                 KubernetesClientConfiguration.LoadKubeConfig(
                     new FileInfo("assets/kubeconfig.yml"),
@@ -759,8 +758,8 @@ namespace k8s.Tests
 
             using (new FileUtils.InjectedFileSystem(fileSystem))
             {
-                KubernetesClientConfiguration.SaveKubeConfig(k8sConfig, "somepath");
-                Assert.True(fileSystem.FileExists("somepath"));
+                KubernetesClientConfiguration.SaveKubeConfig(k8sConfig, "assets/kubeconfig-Save.yml");
+                Assert.True(File.Exists("assets/kubeconfig-Save.yml"));
             }
 
             Assert.NotNull(cfg.Host);
