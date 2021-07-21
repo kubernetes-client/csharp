@@ -752,17 +752,20 @@ namespace k8s.Tests
                     new FileInfo("assets/kubeconfig.yml"),
                     false);
             var cfg = KubernetesClientConfiguration.BuildConfigFromConfigObject(k8sConfig);
-            k8sConfig.CurrentContext = "horse-cluster";
+            k8sConfig.CurrentContext = "federal-context";
+            var originalConfg = File.ReadAllText("assets/kubeconfig.yml");
 
             var fileSystem = new MockFileSystem();
 
             using (new FileUtils.InjectedFileSystem(fileSystem))
             {
                 KubernetesClientConfiguration.SaveKubeConfig(k8sConfig, "assets/kubeconfig-Save.yml");
-                Assert.True(File.Exists("assets/kubeconfig-Save.yml"));
-            }
+                var newConf = File.ReadAllText("assets/kubeconfig-Save.yml");
 
-            Assert.NotNull(cfg.Host);
+                Assert.True(File.Exists("assets/kubeconfig-Save.yml"));
+                Assert.Matches("current-context: federal-context", newConf);
+                Assert.Matches(@"cluster: horse-cluster[\n\r]{1,2}\W+user: green-user[\n\r]{1,2}\W+namespace: chisel-ns[\n\r]{1,2}\W+name: federal-context", newConf);
+            }
         }
     }
 }
