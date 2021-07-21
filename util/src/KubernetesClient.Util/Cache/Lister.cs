@@ -8,7 +8,7 @@ namespace k8s.Util.Cache
   /// </summary>
   /// <typeparam name="TApiType">the type</typeparam>
   public class Lister<TApiType>
-    where TApiType : IKubernetesObject<V1ObjectMeta>
+    where TApiType : class, IKubernetesObject<V1ObjectMeta>
   {
     private readonly string _namespace;
     private readonly string _indexName;
