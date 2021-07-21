@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using k8s.Models;
 
 namespace k8s.Util.Cache
 {
   public interface IIndexer<TApiType> : IStore<TApiType>
+    where TApiType : class, IKubernetesObject<V1ObjectMeta>
   {
     /// <summary>
     /// Retrieve list of objects that match on the named indexing function.
