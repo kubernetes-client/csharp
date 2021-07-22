@@ -690,6 +690,23 @@ namespace k8s
         }
 
         /// <summary>
+        ///     Saves Kube Config
+        /// </summary>
+        /// <param name="kubeconfig">Instance of the <see cref="K8SConfiguration"/> class to save</param>
+        /// <param name="kubeconfigPath">Path to save the kubeconfig file or <see cref="KubeConfigDefaultLocation"/> if not provided</param>
+        public static void SaveKubeConfig(K8SConfiguration kubeconfig, string kubeconfigPath = null)
+        {
+            if (kubeconfig == null)
+            {
+                throw new NullReferenceException(nameof(kubeconfig));
+            }
+
+            kubeconfigPath ??= kubeconfig.FileName ?? KubeConfigDefaultLocation;
+
+            File.WriteAllTextAsync(kubeconfigPath, Yaml.SaveToString(kubeconfig)).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
         ///     Loads Kube Config
         /// </summary>
         /// <param name="kubeConfigs">List of kube config file contents</param>
