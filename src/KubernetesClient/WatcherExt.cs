@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using k8s.Exceptions;
 using Microsoft.Rest;
@@ -25,8 +27,12 @@ namespace k8s
             Action<Exception> onError = null,
             Action onClosed = null)
         {
-            return new Watcher<T>(
-                async () =>
+            return new Watcher<T>(MakeStreamReaderCreator<T, L>(responseTask), onEvent, onError, onClosed);
+        }
+
+        private static Func<Task<TextReader>> MakeStreamReaderCreator<T, L>(Task<HttpOperationResponse<L>> responseTask)
+        {
+            return async () =>
             {
                 var response = await responseTask.ConfigureAwait(false);
 
@@ -36,7 +42,7 @@ namespace k8s
                 }
 
                 return content.StreamReader;
-            }, onEvent, onError, onClosed);
+            };
         }
 
         /// <summary>
@@ -58,6 +64,13 @@ namespace k8s
             Action onClosed = null)
         {
             return Watch(Task.FromResult(response), onEvent, onError, onClosed);
+        }
+
+        public static IAsyncEnumerable<(WatchEventType, T)> WatchAsync<T, L>(
+            this Task<HttpOperationResponse<L>> responseTask,
+            Action<Exception> onError = null)
+        {
+            return Watcher<T>.CreateWatchEventEnumerator(MakeStreamReaderCreator<T, L>(responseTask), onError);
         }
     }
 }
