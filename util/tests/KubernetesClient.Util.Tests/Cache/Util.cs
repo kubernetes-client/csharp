@@ -1,45 +1,45 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using k8s.Models;
 
 namespace k8s.Util.Tests.Cache
 {
-  internal static class Util
-  {
-    internal static IEnumerable<V1Pod> CreatePods(int cnt)
+    internal static class Util
     {
-      var pods = new List<V1Pod>();
-      for (var i = 0; i < cnt; i++)
-      {
-        pods.Add(new V1Pod()
+        internal static IEnumerable<V1Pod> CreatePods(int cnt)
         {
-          ApiVersion = "Pod/V1",
-          Kind = "Pod",
-          Metadata = new V1ObjectMeta()
-          {
-            Name = Guid.NewGuid().ToString(),
-            NamespaceProperty = "the-namespace",
-            ResourceVersion = "1",
-          },
-        });
-      }
+            var pods = new List<V1Pod>();
+            for (var i = 0; i < cnt; i++)
+            {
+                pods.Add(new V1Pod()
+                {
+                    ApiVersion = "Pod/V1",
+                    Kind = "Pod",
+                    Metadata = new V1ObjectMeta()
+                    {
+                        Name = Guid.NewGuid().ToString(),
+                        NamespaceProperty = "the-namespace",
+                        ResourceVersion = "1",
+                    },
+                });
+            }
 
-      return pods;
-    }
+            return pods;
+        }
 
-    internal static V1PodList CreatePostList(int cnt)
-    {
-      return new ()
-      {
-        ApiVersion = "Pod/V1",
-        Kind = "Pod",
-        Metadata = new V1ListMeta()
+        internal static V1PodList CreatePostList(int cnt)
         {
-          ResourceVersion = "1",
-        },
-        Items = CreatePods(cnt).ToList(),
-      };
+            return new()
+            {
+                ApiVersion = "Pod/V1",
+                Kind = "Pod",
+                Metadata = new V1ListMeta()
+                {
+                    ResourceVersion = "1",
+                },
+                Items = CreatePods(cnt).ToList(),
+            };
+        }
     }
-  }
 }
