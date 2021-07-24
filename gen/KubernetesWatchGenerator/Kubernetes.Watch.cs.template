@@ -18,7 +18,7 @@ namespace k8s
         public Task<Watcher<{{GetClassName operation}}>> {{GetMethodName operation}}(
 {{#operation.actualParameters}}
 {{#isRequired}}
-            {{GetDotNetType type name isRequired}} {{GetDotNetName name}},
+            {{GetDotNetType type name isRequired format}} {{GetDotNetName name}},
 {{/isRequired}}
 {{/operation.actualParameters}}
 {{#operation.actualParameters}}
@@ -33,7 +33,7 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken))
         {
             string path = $"{{GetPathExpression .}}";
-            return WatchObjectAsync<{{GetClassName operation}}>(path: path, @continue: @continue, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+            return WatchObjectAsync<{{GetClassName operation}}>(path: path, @continue: continueParameter, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
         {{/.}}
