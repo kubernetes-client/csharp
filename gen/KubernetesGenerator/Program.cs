@@ -142,7 +142,7 @@ namespace KubernetesWatchGenerator
                             {
                                 var gs = g.ToArray();
 
-                                for (int i =1; i < g.Count(); i++)
+                                for (int i = 1; i < g.Count(); i++)
                                 {
                                     gs[i].Operation.OperationId += i;
                                 }
@@ -842,7 +842,7 @@ namespace KubernetesWatchGenerator
                         return GetClassNameForSchemaDefinition(schema.Reference);
                     }
 
-                    return  GetDotNetType(schema.Type, "", true, schema.Format);
+                    return GetDotNetType(schema.Type, "", true, schema.Format);
                 }
 
                 return "";
