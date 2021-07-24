@@ -117,7 +117,7 @@ namespace KubernetesWatchGenerator
             Helpers.Register(nameof(EscapeDataString), EscapeDataString);
             Helpers.Register(nameof(IfReturnType), IfReturnType);
             Helpers.Register(nameof(GetModelCtorParam), GetModelCtorParam);
-            Helpers.Register(nameof(ToPascalCase), ToPascalCase);
+            Helpers.Register(nameof(IfType), IfType);
 
             // Generate the Watcher operations
             // We skip operations where the name of the class in the C# client could not be determined correctly.
@@ -142,7 +142,7 @@ namespace KubernetesWatchGenerator
                             {
                                 var gs = g.ToArray();
 
-                                for(int i =1; i < g.Count(); i++)
+                                for (int i =1; i < g.Count(); i++)
                                 {
                                     gs[i].Operation.OperationId += i;
                                 }
@@ -248,9 +248,8 @@ namespace KubernetesWatchGenerator
                     string line = null;
                     while ((line = reader.ReadLine()) != null)
                     {
-                        foreach(var wline in WordWrap(line, 80))
+                        foreach (var wline in WordWrap(line, 80))
                         {
-
                             if (!first)
                             {
                                 context.Write("\n");
@@ -505,7 +504,7 @@ namespace KubernetesWatchGenerator
                 {
                     context.Write(GetClassNameForSchemaDefinition(parameter.Schema.Reference));
                 }
-                else if(parameter.Schema != null)
+                else if (parameter.Schema != null)
                 {
                     context.Write(GetDotNetType(parameter.Schema.Type, parameter.Name, parameter.IsRequired, parameter.Schema.Format));
                 }
@@ -557,7 +556,6 @@ namespace KubernetesWatchGenerator
                 case JsonObjectType.Integer:
                     switch (format)
                     {
-
                         case "int64":
                             if (required)
                             {
@@ -624,16 +622,11 @@ namespace KubernetesWatchGenerator
             {
                 if (schema.IsArray)
                 {
-                    // getType
                     return $"IList<{GetDotNetType(schema.Item, parent)}>";
                 }
 
                 if (schema.IsDictionary && schema.AdditionalPropertiesSchema != null)
                 {
-                    //if (schema.AdditionalPropertiesSchema == null)
-                    //{
-                    //    return $"IDictionary<string, object>";
-                    //}
                     return $"IDictionary<string, {GetDotNetType(schema.AdditionalPropertiesSchema, parent)}>";
                 }
 
@@ -642,7 +635,7 @@ namespace KubernetesWatchGenerator
                 {
                     return GetClassNameForSchemaDefinition(schema.Reference);
                 }
-                else if(schema != null)
+                else if (schema != null)
                 {
                     return GetDotNetType(schema.Type, parent.Name, parent.IsRequired, schema.Format);
                 }
@@ -844,7 +837,7 @@ namespace KubernetesWatchGenerator
                     }
 
 
-                    if(schema.Reference != null)
+                    if (schema.Reference != null)
                     {
                         return GetClassNameForSchemaDefinition(schema.Reference);
                     }
@@ -1013,11 +1006,29 @@ namespace KubernetesWatchGenerator
             }
         }
 
-        private static void ToPascalCase(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
-          RenderBlock fn, RenderBlock inverse)
+        private static void IfType(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
+            RenderBlock fn, RenderBlock inverse)
         {
-            context.Write(ToPascalCase(arguments[0] as string));
+            var property = arguments?.FirstOrDefault() as JsonProperty;
+            if (property != null)
+            {
+                string type = null;
+                if (arguments.Count > 1)
+                {
+                    type = arguments[1] as string;
+                }
+
+                if (type == "object" && property.Reference != null && !property.IsArray && property.AdditionalPropertiesSchema == null)
+                {
+                    fn(null);
+                }
+                else if (type == "objectarray" && property.IsArray && property.Item?.Reference != null)
+                {
+                    fn(null);
+                }
+            }
         }
+
 
         private static string ToPascalCase(string name)
         {
