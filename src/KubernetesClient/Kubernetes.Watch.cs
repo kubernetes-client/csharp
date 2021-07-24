@@ -15,7 +15,7 @@ namespace k8s
         /// <inheritdoc/>
         public async Task<Watcher<T>> WatchObjectAsync<T>(string path, string @continue = null,
             string fieldSelector = null, bool? includeUninitialized = null, string labelSelector = null,
-            int? limit = null, bool? pretty = null, int? timeoutSeconds = null, string resourceVersion = null,
+            int? limit = null, string pretty = null, int? timeoutSeconds = null, string resourceVersion = null,
             Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, T> onEvent = null,
             Action<Exception> onError = null, Action onClosed = null,
             CancellationToken cancellationToken = default)
@@ -80,7 +80,7 @@ namespace k8s
 
             if (pretty != null)
             {
-                Utilities.AddQueryParameter(query, "pretty", pretty.Value ? "true" : "false");
+                Utilities.AddQueryParameter(query, "pretty", pretty);
             }
 
             if (timeoutSeconds != null)

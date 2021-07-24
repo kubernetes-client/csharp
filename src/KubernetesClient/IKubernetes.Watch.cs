@@ -61,7 +61,7 @@ namespace k8s
         /// A <see cref="Task"/> which represents the asynchronous operation, and returns a new watcher.
         /// </returns>
         Task<Watcher<T>> WatchObjectAsync<T>(string path, string @continue = null, string fieldSelector = null,
-        bool? includeUninitialized = null, string labelSelector = null, int? limit = null, bool? pretty = null,
+        bool? includeUninitialized = null, string labelSelector = null, int? limit = null, string pretty = null,
         int? timeoutSeconds = null, string resourceVersion = null,
         Dictionary<string, List<string>> customHeaders = null, Action<WatchEventType, T> onEvent = null,
         Action<Exception> onError = null, Action onClosed = null,
