@@ -19,14 +19,14 @@ namespace k8s
         /// </summary>
         {{#operation.actualParameters}}
         {{#isRequired}}
-        /// <param name="{{name}}">
+        /// <param name="{{GetDotNetName name}}">
         /// {{ToXmlDoc description}}
         /// </param>
         {{/isRequired}}
         {{/operation.actualParameters}}
         {{#operation.actualParameters}}
         {{^isRequired}}
-        /// <param name="{{name}}">
+        /// <param name="{{GetDotNetName name}}">
         /// {{ToXmlDoc description}}
         /// </param>
         {{/isRequired}}
