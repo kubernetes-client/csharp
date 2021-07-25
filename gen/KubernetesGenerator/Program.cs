@@ -748,6 +748,10 @@ namespace KubernetesWatchGenerator
                     {
                         return "readOnlyProperty";
                     }
+                    else if (jsonName == "from")
+                    {
+                        return "fromProperty";
+                    }
 
                     if (jsonName.Contains("-"))
                     {
