@@ -30,7 +30,7 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1NetworkPolicyIngressRule class.
         /// </summary>
-        /// <param name="from">
+        /// <param name="fromProperty">
         /// List of sources which should be able to access the pods selected for this rule.
         /// Items in this list are combined using a logical OR operation. If this field is
         /// empty or missing, this rule matches all sources (traffic not restricted by
@@ -44,9 +44,9 @@ namespace k8s.Models
         /// If this field is present and contains at least one item, then this rule allows
         /// traffic only if the traffic matches at least one port in the list.
         /// </param>
-        public V1NetworkPolicyIngressRule(IList<V1NetworkPolicyPeer> from = null, IList<V1NetworkPolicyPort> ports = null)
+        public V1NetworkPolicyIngressRule(IList<V1NetworkPolicyPeer> fromProperty = null, IList<V1NetworkPolicyPort> ports = null)
         {
-            From = from;
+            FromProperty = fromProperty;
             Ports = ports;
             CustomInit();
         }
@@ -64,7 +64,7 @@ namespace k8s.Models
         /// allows traffic only if the traffic matches at least one item in the from list.
         /// </summary>
         [JsonProperty(PropertyName = "from")]
-        public IList<V1NetworkPolicyPeer> From { get; set; }
+        public IList<V1NetworkPolicyPeer> FromProperty { get; set; }
 
         /// <summary>
         /// List of ports which should be made accessible on the pods selected for this
@@ -84,7 +84,7 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in From)
+            foreach(var obj in FromProperty)
             {
                 obj.Validate();
             }
