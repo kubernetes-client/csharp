@@ -33,7 +33,7 @@ namespace k8s.Models
         /// RollingUpdate.
         /// </param>
         /// <param name="type">
-        /// Type of deployment. Can be "Recreate" or "RollingUpdate". Default is
+        /// Type of deployment. Can be &quot;Recreate&quot; or &quot;RollingUpdate&quot;. Default is
         /// RollingUpdate.
         /// </param>
         public V1DeploymentStrategy(V1RollingUpdateDeployment rollingUpdate = null, string type = null)
@@ -56,7 +56,7 @@ namespace k8s.Models
         public V1RollingUpdateDeployment RollingUpdate { get; set; }
 
         /// <summary>
-        /// Type of deployment. Can be "Recreate" or "RollingUpdate". Default is
+        /// Type of deployment. Can be &quot;Recreate&quot; or &quot;RollingUpdate&quot;. Default is
         /// RollingUpdate.
         /// </summary>
         [JsonProperty(PropertyName = "type")]

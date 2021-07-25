@@ -105,10 +105,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (MetricName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "MetricName");    
-            }
             if (Target == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Target");    

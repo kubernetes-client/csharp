@@ -31,7 +31,7 @@ namespace k8s.Models
         /// </summary>
         /// <param name="timeoutSeconds">
         /// timeoutSeconds specifies the seconds of ClientIP type session sticky time. The
-        /// value must be >0 && <=86400(for 1 day) if ServiceAffinity == "ClientIP". Default
+        /// value must be &gt;0 &amp;&amp; &lt;=86400(for 1 day) if ServiceAffinity == &quot;ClientIP&quot;. Default
         /// value is 10800(for 3 hours).
         /// </param>
         public V1ClientIPConfig(int? timeoutSeconds = null)
@@ -47,7 +47,7 @@ namespace k8s.Models
 
         /// <summary>
         /// timeoutSeconds specifies the seconds of ClientIP type session sticky time. The
-        /// value must be >0 && <=86400(for 1 day) if ServiceAffinity == "ClientIP". Default
+        /// value must be &gt;0 &amp;&amp; &lt;=86400(for 1 day) if ServiceAffinity == &quot;ClientIP&quot;. Default
         /// value is 10800(for 3 hours).
         /// </summary>
         [JsonProperty(PropertyName = "timeoutSeconds")]

@@ -19,12 +19,12 @@ namespace k8s.Models
         /// 
         /// Kubelets use this API to obtain:
         /// 1. client certificates to authenticate to kube-apiserver (with the
-        /// "kubernetes.io/kube-apiserver-client-kubelet" signerName).
+        /// &quot;kubernetes.io/kube-apiserver-client-kubelet&quot; signerName).
         /// 2. serving certificates for TLS endpoints kube-apiserver can connect to securely
-        /// (with the "kubernetes.io/kubelet-serving" signerName).
+        /// (with the &quot;kubernetes.io/kubelet-serving&quot; signerName).
         /// 
         /// This API can be used to request client certificates to authenticate to
-        /// kube-apiserver (with the "kubernetes.io/kube-apiserver-client" signerName), or
+        /// kube-apiserver (with the &quot;kubernetes.io/kube-apiserver-client&quot; signerName), or
         /// to obtain certificates from custom non-Kubernetes signers.
     /// </summary>
     public partial class V1CertificateSigningRequest

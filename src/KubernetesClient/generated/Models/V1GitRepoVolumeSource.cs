@@ -19,7 +19,7 @@ namespace k8s.Models
         /// 
         /// DEPRECATED: GitRepo is deprecated. To provision a container with a git repo,
         /// mount an EmptyDir into an InitContainer that clones the repo using git, then
-        /// mount the EmptyDir into the Pod's container.
+        /// mount the EmptyDir into the Pod&apos;s container.
     /// </summary>
     public partial class V1GitRepoVolumeSource
     {
@@ -38,7 +38,7 @@ namespace k8s.Models
         /// Repository URL
         /// </param>
         /// <param name="directory">
-        /// Target directory name. Must not contain or start with '..'.  If '.' is supplied,
+        /// Target directory name. Must not contain or start with &apos;..&apos;.  If &apos;.&apos; is supplied,
         /// the volume directory will be the git repository.  Otherwise, if specified, the
         /// volume will contain the git repository in the subdirectory with the given name.
         /// </param>
@@ -59,7 +59,7 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Target directory name. Must not contain or start with '..'.  If '.' is supplied,
+        /// Target directory name. Must not contain or start with &apos;..&apos;.  If &apos;.&apos; is supplied,
         /// the volume directory will be the git repository.  Otherwise, if specified, the
         /// volume will contain the git repository in the subdirectory with the given name.
         /// </summary>
@@ -86,10 +86,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Repository == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Repository");    
-            }
         }
     }
 }

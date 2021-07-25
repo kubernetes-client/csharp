@@ -101,14 +101,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Endpoints == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Endpoints");    
-            }
-            if (Path == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Path");    
-            }
         }
     }
 }

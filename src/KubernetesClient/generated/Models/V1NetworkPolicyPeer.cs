@@ -47,7 +47,7 @@ namespace k8s.Models
         /// 
         /// If NamespaceSelector is also set, then the NetworkPolicyPeer as a whole selects
         /// the Pods matching PodSelector in the Namespaces selected by NamespaceSelector.
-        /// Otherwise it selects the Pods matching PodSelector in the policy's own
+        /// Otherwise it selects the Pods matching PodSelector in the policy&apos;s own
         /// Namespace.
         /// </param>
         public V1NetworkPolicyPeer(V1IPBlock ipBlock = null, V1LabelSelector namespaceSelector = null, V1LabelSelector podSelector = null)
@@ -87,7 +87,7 @@ namespace k8s.Models
         /// 
         /// If NamespaceSelector is also set, then the NetworkPolicyPeer as a whole selects
         /// the Pods matching PodSelector in the Namespaces selected by NamespaceSelector.
-        /// Otherwise it selects the Pods matching PodSelector in the policy's own
+        /// Otherwise it selects the Pods matching PodSelector in the policy&apos;s own
         /// Namespace.
         /// </summary>
         [JsonProperty(PropertyName = "podSelector")]

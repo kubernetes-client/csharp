@@ -34,17 +34,17 @@ namespace k8s.Models
         /// Approved condition is present. This field is set via the /status subresource.
         /// Once populated, this field is immutable.
         /// 
-        /// If the certificate signing request is denied, a condition of type "Denied" is
+        /// If the certificate signing request is denied, a condition of type &quot;Denied&quot; is
         /// added and this field remains empty. If the signer cannot issue the certificate,
-        /// a condition of type "Failed" is added and this field remains empty.
+        /// a condition of type &quot;Failed&quot; is added and this field remains empty.
         /// 
         /// Validation requirements:
         /// 1. certificate must contain one or more PEM blocks.
-        /// 2. All PEM blocks must have the "CERTIFICATE" label, contain no headers, and the
+        /// 2. All PEM blocks must have the &quot;CERTIFICATE&quot; label, contain no headers, and the
         /// encoded data
         /// must be a BER-encoded ASN.1 Certificate structure as described in section 4 of
         /// RFC5280.
-        /// 3. Non-PEM content may appear before or after the "CERTIFICATE" PEM blocks and
+        /// 3. Non-PEM content may appear before or after the &quot;CERTIFICATE&quot; PEM blocks and
         /// is unvalidated,
         /// to allow for explanatory text as described in section 5.2 of RFC7468.
         /// 
@@ -65,8 +65,8 @@ namespace k8s.Models
         /// )
         /// </param>
         /// <param name="conditions">
-        /// conditions applied to the request. Known conditions are "Approved", "Denied",
-        /// and "Failed".
+        /// conditions applied to the request. Known conditions are &quot;Approved&quot;, &quot;Denied&quot;,
+        /// and &quot;Failed&quot;.
         /// </param>
         public V1CertificateSigningRequestStatus(byte[] certificate = null, IList<V1CertificateSigningRequestCondition> conditions = null)
         {
@@ -85,17 +85,17 @@ namespace k8s.Models
         /// Approved condition is present. This field is set via the /status subresource.
         /// Once populated, this field is immutable.
         /// 
-        /// If the certificate signing request is denied, a condition of type "Denied" is
+        /// If the certificate signing request is denied, a condition of type &quot;Denied&quot; is
         /// added and this field remains empty. If the signer cannot issue the certificate,
-        /// a condition of type "Failed" is added and this field remains empty.
+        /// a condition of type &quot;Failed&quot; is added and this field remains empty.
         /// 
         /// Validation requirements:
         /// 1. certificate must contain one or more PEM blocks.
-        /// 2. All PEM blocks must have the "CERTIFICATE" label, contain no headers, and the
+        /// 2. All PEM blocks must have the &quot;CERTIFICATE&quot; label, contain no headers, and the
         /// encoded data
         /// must be a BER-encoded ASN.1 Certificate structure as described in section 4 of
         /// RFC5280.
-        /// 3. Non-PEM content may appear before or after the "CERTIFICATE" PEM blocks and
+        /// 3. Non-PEM content may appear before or after the &quot;CERTIFICATE&quot; PEM blocks and
         /// is unvalidated,
         /// to allow for explanatory text as described in section 5.2 of RFC7468.
         /// 
@@ -119,8 +119,8 @@ namespace k8s.Models
         public byte[] Certificate { get; set; }
 
         /// <summary>
-        /// conditions applied to the request. Known conditions are "Approved", "Denied",
-        /// and "Failed".
+        /// conditions applied to the request. Known conditions are &quot;Approved&quot;, &quot;Denied&quot;,
+        /// and &quot;Failed&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "conditions")]
         public IList<V1CertificateSigningRequestCondition> Conditions { get; set; }

@@ -30,7 +30,7 @@ namespace k8s.Models
         /// </summary>
         /// <param name="name">
         /// name is the version name, e.g. “v1”, “v2beta1”, etc. The custom resources are
-        /// served under this version at `/apis/<group>/<version>/...` if `served` is true.
+        /// served under this version at `/apis/&lt;group&gt;/&lt;version&gt;/...` if `served` is true.
         /// </param>
         /// <param name="served">
         /// served is a flag enabling/disabling this version from being served via REST APIs
@@ -120,7 +120,7 @@ namespace k8s.Models
 
         /// <summary>
         /// name is the version name, e.g. “v1”, “v2beta1”, etc. The custom resources are
-        /// served under this version at `/apis/<group>/<version>/...` if `served` is true.
+        /// served under this version at `/apis/&lt;group&gt;/&lt;version&gt;/...` if `served` is true.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
@@ -164,18 +164,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
-            if (Served == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Served");    
-            }
-            if (Storage == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Storage");    
-            }
             foreach(var obj in AdditionalPrinterColumns)
             {
                 obj.Validate();

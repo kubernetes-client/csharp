@@ -31,19 +31,19 @@ namespace k8s.Models
         /// <param name="audiences">
         /// Audiences are audience identifiers chosen by the authenticator that are
         /// compatible with both the TokenReview and token. An identifier is any identifier
-        /// in the intersection of the TokenReviewSpec audiences and the token's audiences.
+        /// in the intersection of the TokenReviewSpec audiences and the token&apos;s audiences.
         /// A client of the TokenReview API that sets the spec.audiences field should
         /// validate that a compatible audience identifier is returned in the
         /// status.audiences field to ensure that the TokenReview server is audience aware.
         /// If a TokenReview returns an empty status.audience field where
-        /// status.authenticated is "true", the token is valid against the audience of the
+        /// status.authenticated is &quot;true&quot;, the token is valid against the audience of the
         /// Kubernetes API server.
         /// </param>
         /// <param name="authenticated">
         /// Authenticated indicates that the token was associated with a known user.
         /// </param>
         /// <param name="error">
-        /// Error indicates that the token couldn't be checked
+        /// Error indicates that the token couldn&apos;t be checked
         /// </param>
         /// <param name="user">
         /// User is the UserInfo associated with the provided token.
@@ -65,12 +65,12 @@ namespace k8s.Models
         /// <summary>
         /// Audiences are audience identifiers chosen by the authenticator that are
         /// compatible with both the TokenReview and token. An identifier is any identifier
-        /// in the intersection of the TokenReviewSpec audiences and the token's audiences.
+        /// in the intersection of the TokenReviewSpec audiences and the token&apos;s audiences.
         /// A client of the TokenReview API that sets the spec.audiences field should
         /// validate that a compatible audience identifier is returned in the
         /// status.audiences field to ensure that the TokenReview server is audience aware.
         /// If a TokenReview returns an empty status.audience field where
-        /// status.authenticated is "true", the token is valid against the audience of the
+        /// status.authenticated is &quot;true&quot;, the token is valid against the audience of the
         /// Kubernetes API server.
         /// </summary>
         [JsonProperty(PropertyName = "audiences")]
@@ -83,7 +83,7 @@ namespace k8s.Models
         public bool? Authenticated { get; set; }
 
         /// <summary>
-        /// Error indicates that the token couldn't be checked
+        /// Error indicates that the token couldn&apos;t be checked
         /// </summary>
         [JsonProperty(PropertyName = "error")]
         public string Error { get; set; }

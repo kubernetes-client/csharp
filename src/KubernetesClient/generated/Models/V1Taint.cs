@@ -13,7 +13,7 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// The node this Taint is attached to has the "effect" on any pod that does not
+    /// The node this Taint is attached to has the &quot;effect&quot; on any pod that does not
         /// tolerate the Taint.
     /// </summary>
     public partial class V1Taint
@@ -91,14 +91,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Effect == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Effect");    
-            }
-            if (Key == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Key");    
-            }
         }
     }
 }

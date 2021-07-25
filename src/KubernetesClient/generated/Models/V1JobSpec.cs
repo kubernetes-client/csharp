@@ -58,7 +58,7 @@ namespace k8s.Models
         /// 
         /// This field is alpha-level and is only honored by servers that enable the
         /// IndexedJob feature gate. More completion modes can be added in the future. If
-        /// the Job controller observes a mode that it doesn't recognize, the controller
+        /// the Job controller observes a mode that it doesn&apos;t recognize, the controller
         /// skips updates for the Job.
         /// </param>
         /// <param name="completions">
@@ -83,7 +83,7 @@ namespace k8s.Models
         /// <param name="parallelism">
         /// Specifies the maximum desired number of pods the job should run at any given
         /// time. The actual number of pods running in steady state will be less than this
-        /// number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e.
+        /// number when ((.spec.completions - .status.successful) &lt; .spec.parallelism), i.e.
         /// when the work left to do is less than max parallelism. More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
         /// </param>
@@ -108,7 +108,7 @@ namespace k8s.Models
         /// (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after
         /// the Job finishes, it is eligible to be automatically deleted. When the Job is
         /// being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If
-        /// this field is unset, the Job won't be automatically deleted. If this field is
+        /// this field is unset, the Job won&apos;t be automatically deleted. If this field is
         /// set to zero, the Job becomes eligible to be deleted immediately after it
         /// finishes. This field is alpha-level and is only honored by servers that enable
         /// the TTLAfterFinished feature.
@@ -165,7 +165,7 @@ namespace k8s.Models
         /// 
         /// This field is alpha-level and is only honored by servers that enable the
         /// IndexedJob feature gate. More completion modes can be added in the future. If
-        /// the Job controller observes a mode that it doesn't recognize, the controller
+        /// the Job controller observes a mode that it doesn&apos;t recognize, the controller
         /// skips updates for the Job.
         /// </summary>
         [JsonProperty(PropertyName = "completionMode")]
@@ -199,7 +199,7 @@ namespace k8s.Models
         /// <summary>
         /// Specifies the maximum desired number of pods the job should run at any given
         /// time. The actual number of pods running in steady state will be less than this
-        /// number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e.
+        /// number when ((.spec.completions - .status.successful) &lt; .spec.parallelism), i.e.
         /// when the work left to do is less than max parallelism. More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
         /// </summary>
@@ -240,7 +240,7 @@ namespace k8s.Models
         /// (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after
         /// the Job finishes, it is eligible to be automatically deleted. When the Job is
         /// being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If
-        /// this field is unset, the Job won't be automatically deleted. If this field is
+        /// this field is unset, the Job won&apos;t be automatically deleted. If this field is
         /// set to zero, the Job becomes eligible to be deleted immediately after it
         /// finishes. This field is alpha-level and is only honored by servers that enable
         /// the TTLAfterFinished feature.

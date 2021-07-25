@@ -45,7 +45,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="reason">
         /// Unique, this should be a short, machine understandable string that gives the
-        /// reason for condition's last transition. If it reports "ResizeStarted" that means
+        /// reason for condition&apos;s last transition. If it reports &quot;ResizeStarted&quot; that means
         /// the underlying persistent volume is being resized.
         /// </param>
         public V1PersistentVolumeClaimCondition(string status, string type, System.DateTime? lastProbeTime = null, System.DateTime? lastTransitionTime = null, string message = null, string reason = null)
@@ -84,7 +84,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Unique, this should be a short, machine understandable string that gives the
-        /// reason for condition's last transition. If it reports "ResizeStarted" that means
+        /// reason for condition&apos;s last transition. If it reports &quot;ResizeStarted&quot; that means
         /// the underlying persistent volume is being resized.
         /// </summary>
         [JsonProperty(PropertyName = "reason")]
@@ -110,14 +110,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Status == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Status");    
-            }
-            if (Type == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Type");    
-            }
         }
     }
 }

@@ -88,10 +88,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Kind == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Kind");    
-            }
             Group?.Validate();
             ServiceAccount?.Validate();
             User?.Validate();

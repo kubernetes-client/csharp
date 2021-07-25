@@ -32,7 +32,7 @@ namespace k8s.Models
         /// <param name="clusterRoleSelectors">
         /// ClusterRoleSelectors holds a list of selectors which will be used to find
         /// ClusterRoles and create the rules. If any of the selectors match, then the
-        /// ClusterRole's permissions will be added
+        /// ClusterRole&apos;s permissions will be added
         /// </param>
         public V1AggregationRule(IList<V1LabelSelector> clusterRoleSelectors = null)
         {
@@ -48,7 +48,7 @@ namespace k8s.Models
         /// <summary>
         /// ClusterRoleSelectors holds a list of selectors which will be used to find
         /// ClusterRoles and create the rules. If any of the selectors match, then the
-        /// ClusterRole's permissions will be added
+        /// ClusterRole&apos;s permissions will be added
         /// </summary>
         [JsonProperty(PropertyName = "clusterRoleSelectors")]
         public IList<V1LabelSelector> ClusterRoleSelectors { get; set; }

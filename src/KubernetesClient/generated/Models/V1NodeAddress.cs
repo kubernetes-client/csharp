@@ -13,7 +13,7 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// NodeAddress contains information for the node's address.
+    /// NodeAddress contains information for the node&apos;s address.
     /// </summary>
     public partial class V1NodeAddress
     {
@@ -66,14 +66,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Address == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Address");    
-            }
-            if (Type == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Type");    
-            }
         }
     }
 }

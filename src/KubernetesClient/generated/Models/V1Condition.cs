@@ -40,7 +40,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="reason">
         /// reason contains a programmatic identifier indicating the reason for the
-        /// condition's last transition. Producers of specific condition types may define
+        /// condition&apos;s last transition. Producers of specific condition types may define
         /// expected values and meanings for this field, and whether the values are
         /// considered a guaranteed API. The value should be a CamelCase string. This field
         /// may not be empty.
@@ -99,7 +99,7 @@ namespace k8s.Models
 
         /// <summary>
         /// reason contains a programmatic identifier indicating the reason for the
-        /// condition's last transition. Producers of specific condition types may define
+        /// condition&apos;s last transition. Producers of specific condition types may define
         /// expected values and meanings for this field, and whether the values are
         /// considered a guaranteed API. The value should be a CamelCase string. This field
         /// may not be empty.
@@ -127,26 +127,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (LastTransitionTime == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "LastTransitionTime");    
-            }
-            if (Message == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Message");    
-            }
-            if (Reason == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Reason");    
-            }
-            if (Status == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Status");    
-            }
-            if (Type == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Type");    
-            }
         }
     }
 }

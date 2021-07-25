@@ -13,7 +13,7 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// Info contains versioning information. how we'll want to distribute that
+    /// Info contains versioning information. how we&apos;ll want to distribute that
         /// information.
     /// </summary>
     public partial class VersionInfo
@@ -137,42 +137,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (BuildDate == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "BuildDate");    
-            }
-            if (Compiler == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Compiler");    
-            }
-            if (GitCommit == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "GitCommit");    
-            }
-            if (GitTreeState == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "GitTreeState");    
-            }
-            if (GitVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "GitVersion");    
-            }
-            if (GoVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "GoVersion");    
-            }
-            if (Major == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Major");    
-            }
-            if (Minor == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Minor");    
-            }
-            if (Platform == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Platform");    
-            }
         }
     }
 }

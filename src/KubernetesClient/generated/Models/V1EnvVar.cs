@@ -37,10 +37,10 @@ namespace k8s.Models
         /// a variable cannot be resolved, the reference in the input string will be
         /// unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
         /// $$(VAR_NAME). Escaped references will never be expanded, regardless of whether
-        /// the variable exists or not. Defaults to "".
+        /// the variable exists or not. Defaults to &quot;&quot;.
         /// </param>
         /// <param name="valueFrom">
-        /// Source for the environment variable's value. Cannot be used if value is not
+        /// Source for the environment variable&apos;s value. Cannot be used if value is not
         /// empty.
         /// </param>
         public V1EnvVar(string name, string value = null, V1EnvVarSource valueFrom = null)
@@ -68,13 +68,13 @@ namespace k8s.Models
         /// a variable cannot be resolved, the reference in the input string will be
         /// unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
         /// $$(VAR_NAME). Escaped references will never be expanded, regardless of whether
-        /// the variable exists or not. Defaults to "".
+        /// the variable exists or not. Defaults to &quot;&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }
 
         /// <summary>
-        /// Source for the environment variable's value. Cannot be used if value is not
+        /// Source for the environment variable&apos;s value. Cannot be used if value is not
         /// empty.
         /// </summary>
         [JsonProperty(PropertyName = "valueFrom")]
@@ -88,10 +88,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
             ValueFrom?.Validate();
         }
     }

@@ -34,7 +34,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="fsType">
         /// Filesystem type to mount. Must be a filesystem type supported by the host
-        /// operating system. Ex. "ext4", "xfs", "ntfs". The default filesystem depends on
+        /// operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;. The default filesystem depends on
         /// FlexVolume script.
         /// </param>
         /// <param name="options">
@@ -73,7 +73,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Filesystem type to mount. Must be a filesystem type supported by the host
-        /// operating system. Ex. "ext4", "xfs", "ntfs". The default filesystem depends on
+        /// operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;. The default filesystem depends on
         /// FlexVolume script.
         /// </summary>
         [JsonProperty(PropertyName = "fsType")]
@@ -109,10 +109,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Driver == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Driver");    
-            }
             SecretRef?.Validate();
         }
     }

@@ -15,15 +15,15 @@ namespace k8s.Models
     /// <summary>
     /// Endpoints is a collection of endpoints that implement the actual service.
         /// Example:
-        /// Name: "mysvc",
+        /// Name: &quot;mysvc&quot;,
         /// Subsets: [
         /// {
-        /// Addresses: [{"ip": "10.10.1.1"}, {"ip": "10.10.2.2"}],
-        /// Ports: [{"name": "a", "port": 8675}, {"name": "b", "port": 309}]
+        /// Addresses: [{&quot;ip&quot;: &quot;10.10.1.1&quot;}, {&quot;ip&quot;: &quot;10.10.2.2&quot;}],
+        /// Ports: [{&quot;name&quot;: &quot;a&quot;, &quot;port&quot;: 8675}, {&quot;name&quot;: &quot;b&quot;, &quot;port&quot;: 309}]
         /// },
         /// {
-        /// Addresses: [{"ip": "10.10.3.3"}],
-        /// Ports: [{"name": "a", "port": 93}, {"name": "b", "port": 76}]
+        /// Addresses: [{&quot;ip&quot;: &quot;10.10.3.3&quot;}],
+        /// Ports: [{&quot;name&quot;: &quot;a&quot;, &quot;port&quot;: 93}, {&quot;name&quot;: &quot;b&quot;, &quot;port&quot;: 76}]
         /// },
         /// ]
     /// </summary>
@@ -53,7 +53,7 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </param>
         /// <param name="metadata">
-        /// Standard object's metadata. More info:
+        /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </param>
         /// <param name="subsets">
@@ -98,7 +98,7 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// Standard object's metadata. More info:
+        /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]

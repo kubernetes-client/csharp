@@ -43,7 +43,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="name">
         /// The name of the admission webhook. Name should be fully qualified, e.g.,
-        /// imagepolicy.kubernetes.io, where "imagepolicy" is the name of the webhook, and
+        /// imagepolicy.kubernetes.io, where &quot;imagepolicy&quot; is the name of the webhook, and
         /// kubernetes.io is the name of the organization. Required.
         /// </param>
         /// <param name="sideEffects">
@@ -60,23 +60,23 @@ namespace k8s.Models
         /// handled - allowed values are Ignore or Fail. Defaults to Fail.
         /// </param>
         /// <param name="matchPolicy">
-        /// matchPolicy defines how the "rules" list is used to match incoming requests.
-        /// Allowed values are "Exact" or "Equivalent".
+        /// matchPolicy defines how the &quot;rules&quot; list is used to match incoming requests.
+        /// Allowed values are &quot;Exact&quot; or &quot;Equivalent&quot;.
         /// 
         /// - Exact: match a request only if it exactly matches a specified rule. For
         /// example, if deployments can be modified via apps/v1, apps/v1beta1, and
-        /// extensions/v1beta1, but "rules" only included `apiGroups:["apps"],
-        /// apiVersions:["v1"], resources: ["deployments"]`, a request to apps/v1beta1 or
+        /// extensions/v1beta1, but &quot;rules&quot; only included `apiGroups:[&quot;apps&quot;],
+        /// apiVersions:[&quot;v1&quot;], resources: [&quot;deployments&quot;]`, a request to apps/v1beta1 or
         /// extensions/v1beta1 would not be sent to the webhook.
         /// 
         /// - Equivalent: match a request if modifies a resource listed in rules, even via
         /// another API group or version. For example, if deployments can be modified via
-        /// apps/v1, apps/v1beta1, and extensions/v1beta1, and "rules" only included
-        /// `apiGroups:["apps"], apiVersions:["v1"], resources: ["deployments"]`, a request
+        /// apps/v1, apps/v1beta1, and extensions/v1beta1, and &quot;rules&quot; only included
+        /// `apiGroups:[&quot;apps&quot;], apiVersions:[&quot;v1&quot;], resources: [&quot;deployments&quot;]`, a request
         /// to apps/v1beta1 or extensions/v1beta1 would be converted to apps/v1 and sent to
         /// the webhook.
         /// 
-        /// Defaults to "Equivalent"
+        /// Defaults to &quot;Equivalent&quot;
         /// </param>
         /// <param name="namespaceSelector">
         /// NamespaceSelector decides whether to run the webhook on an object based on
@@ -85,30 +85,30 @@ namespace k8s.Models
         /// object is another cluster scoped resource, it never skips the webhook.
         /// 
         /// For example, to run the webhook on any objects whose namespace is not associated
-        /// with "runlevel" of "0" or "1";  you will set the selector as follows:
-        /// "namespaceSelector": {
-        /// "matchExpressions": [
+        /// with &quot;runlevel&quot; of &quot;0&quot; or &quot;1&quot;;  you will set the selector as follows:
+        /// &quot;namespaceSelector&quot;: {
+        /// &quot;matchExpressions&quot;: [
         /// {
-        /// "key": "runlevel",
-        /// "operator": "NotIn",
-        /// "values": [
-        /// "0",
-        /// "1"
+        /// &quot;key&quot;: &quot;runlevel&quot;,
+        /// &quot;operator&quot;: &quot;NotIn&quot;,
+        /// &quot;values&quot;: [
+        /// &quot;0&quot;,
+        /// &quot;1&quot;
         /// ]
         /// }
         /// ]
         /// }
         /// 
         /// If instead you want to only run the webhook on any objects whose namespace is
-        /// associated with the "environment" of "prod" or "staging"; you will set the
-        /// selector as follows: "namespaceSelector": {
-        /// "matchExpressions": [
+        /// associated with the &quot;environment&quot; of &quot;prod&quot; or &quot;staging&quot;; you will set the
+        /// selector as follows: &quot;namespaceSelector&quot;: {
+        /// &quot;matchExpressions&quot;: [
         /// {
-        /// "key": "environment",
-        /// "operator": "In",
-        /// "values": [
-        /// "prod",
-        /// "staging"
+        /// &quot;key&quot;: &quot;environment&quot;,
+        /// &quot;operator&quot;: &quot;In&quot;,
+        /// &quot;values&quot;: [
+        /// &quot;prod&quot;,
+        /// &quot;staging&quot;
         /// ]
         /// }
         /// ]
@@ -132,8 +132,8 @@ namespace k8s.Models
         /// </param>
         /// <param name="reinvocationPolicy">
         /// reinvocationPolicy indicates whether this webhook should be called multiple
-        /// times as part of a single admission evaluation. Allowed values are "Never" and
-        /// "IfNeeded".
+        /// times as part of a single admission evaluation. Allowed values are &quot;Never&quot; and
+        /// &quot;IfNeeded&quot;.
         /// 
         /// Never: the webhook will not be called more than once in a single admission
         /// evaluation.
@@ -149,7 +149,7 @@ namespace k8s.Models
         /// object after all mutations are guaranteed complete, use a validating admission
         /// webhook instead.
         /// 
-        /// Defaults to "Never".
+        /// Defaults to &quot;Never&quot;.
         /// </param>
         /// <param name="rules">
         /// Rules describes what operations on what resources/subresources the webhook cares
@@ -213,30 +213,30 @@ namespace k8s.Models
         public string FailurePolicy { get; set; }
 
         /// <summary>
-        /// matchPolicy defines how the "rules" list is used to match incoming requests.
-        /// Allowed values are "Exact" or "Equivalent".
+        /// matchPolicy defines how the &quot;rules&quot; list is used to match incoming requests.
+        /// Allowed values are &quot;Exact&quot; or &quot;Equivalent&quot;.
         /// 
         /// - Exact: match a request only if it exactly matches a specified rule. For
         /// example, if deployments can be modified via apps/v1, apps/v1beta1, and
-        /// extensions/v1beta1, but "rules" only included `apiGroups:["apps"],
-        /// apiVersions:["v1"], resources: ["deployments"]`, a request to apps/v1beta1 or
+        /// extensions/v1beta1, but &quot;rules&quot; only included `apiGroups:[&quot;apps&quot;],
+        /// apiVersions:[&quot;v1&quot;], resources: [&quot;deployments&quot;]`, a request to apps/v1beta1 or
         /// extensions/v1beta1 would not be sent to the webhook.
         /// 
         /// - Equivalent: match a request if modifies a resource listed in rules, even via
         /// another API group or version. For example, if deployments can be modified via
-        /// apps/v1, apps/v1beta1, and extensions/v1beta1, and "rules" only included
-        /// `apiGroups:["apps"], apiVersions:["v1"], resources: ["deployments"]`, a request
+        /// apps/v1, apps/v1beta1, and extensions/v1beta1, and &quot;rules&quot; only included
+        /// `apiGroups:[&quot;apps&quot;], apiVersions:[&quot;v1&quot;], resources: [&quot;deployments&quot;]`, a request
         /// to apps/v1beta1 or extensions/v1beta1 would be converted to apps/v1 and sent to
         /// the webhook.
         /// 
-        /// Defaults to "Equivalent"
+        /// Defaults to &quot;Equivalent&quot;
         /// </summary>
         [JsonProperty(PropertyName = "matchPolicy")]
         public string MatchPolicy { get; set; }
 
         /// <summary>
         /// The name of the admission webhook. Name should be fully qualified, e.g.,
-        /// imagepolicy.kubernetes.io, where "imagepolicy" is the name of the webhook, and
+        /// imagepolicy.kubernetes.io, where &quot;imagepolicy&quot; is the name of the webhook, and
         /// kubernetes.io is the name of the organization. Required.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
@@ -249,30 +249,30 @@ namespace k8s.Models
         /// object is another cluster scoped resource, it never skips the webhook.
         /// 
         /// For example, to run the webhook on any objects whose namespace is not associated
-        /// with "runlevel" of "0" or "1";  you will set the selector as follows:
-        /// "namespaceSelector": {
-        /// "matchExpressions": [
+        /// with &quot;runlevel&quot; of &quot;0&quot; or &quot;1&quot;;  you will set the selector as follows:
+        /// &quot;namespaceSelector&quot;: {
+        /// &quot;matchExpressions&quot;: [
         /// {
-        /// "key": "runlevel",
-        /// "operator": "NotIn",
-        /// "values": [
-        /// "0",
-        /// "1"
+        /// &quot;key&quot;: &quot;runlevel&quot;,
+        /// &quot;operator&quot;: &quot;NotIn&quot;,
+        /// &quot;values&quot;: [
+        /// &quot;0&quot;,
+        /// &quot;1&quot;
         /// ]
         /// }
         /// ]
         /// }
         /// 
         /// If instead you want to only run the webhook on any objects whose namespace is
-        /// associated with the "environment" of "prod" or "staging"; you will set the
-        /// selector as follows: "namespaceSelector": {
-        /// "matchExpressions": [
+        /// associated with the &quot;environment&quot; of &quot;prod&quot; or &quot;staging&quot;; you will set the
+        /// selector as follows: &quot;namespaceSelector&quot;: {
+        /// &quot;matchExpressions&quot;: [
         /// {
-        /// "key": "environment",
-        /// "operator": "In",
-        /// "values": [
-        /// "prod",
-        /// "staging"
+        /// &quot;key&quot;: &quot;environment&quot;,
+        /// &quot;operator&quot;: &quot;In&quot;,
+        /// &quot;values&quot;: [
+        /// &quot;prod&quot;,
+        /// &quot;staging&quot;
         /// ]
         /// }
         /// ]
@@ -302,8 +302,8 @@ namespace k8s.Models
 
         /// <summary>
         /// reinvocationPolicy indicates whether this webhook should be called multiple
-        /// times as part of a single admission evaluation. Allowed values are "Never" and
-        /// "IfNeeded".
+        /// times as part of a single admission evaluation. Allowed values are &quot;Never&quot; and
+        /// &quot;IfNeeded&quot;.
         /// 
         /// Never: the webhook will not be called more than once in a single admission
         /// evaluation.
@@ -319,7 +319,7 @@ namespace k8s.Models
         /// object after all mutations are guaranteed complete, use a validating admission
         /// webhook instead.
         /// 
-        /// Defaults to "Never".
+        /// Defaults to &quot;Never&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "reinvocationPolicy")]
         public string ReinvocationPolicy { get; set; }
@@ -365,21 +365,9 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (AdmissionReviewVersions == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "AdmissionReviewVersions");    
-            }
             if (ClientConfig == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "ClientConfig");    
-            }
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
-            if (SideEffects == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "SideEffects");    
             }
             ClientConfig?.Validate();
             NamespaceSelector?.Validate();

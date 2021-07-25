@@ -29,15 +29,15 @@ namespace k8s.Models
         /// Initializes a new instance of the V1ContainerPort class.
         /// </summary>
         /// <param name="containerPort">
-        /// Number of port to expose on the pod's IP address. This must be a valid port
-        /// number, 0 < x < 65536.
+        /// Number of port to expose on the pod&apos;s IP address. This must be a valid port
+        /// number, 0 &lt; x &lt; 65536.
         /// </param>
         /// <param name="hostIP">
         /// What host IP to bind the external port to.
         /// </param>
         /// <param name="hostPort">
         /// Number of port to expose on the host. If specified, this must be a valid port
-        /// number, 0 < x < 65536. If HostNetwork is specified, this must match
+        /// number, 0 &lt; x &lt; 65536. If HostNetwork is specified, this must match
         /// ContainerPort. Most containers do not need this.
         /// </param>
         /// <param name="name">
@@ -46,7 +46,7 @@ namespace k8s.Models
         /// referred to by services.
         /// </param>
         /// <param name="protocol">
-        /// Protocol for port. Must be UDP, TCP, or SCTP. Defaults to "TCP".
+        /// Protocol for port. Must be UDP, TCP, or SCTP. Defaults to &quot;TCP&quot;.
         /// </param>
         public V1ContainerPort(int containerPort, string hostIP = null, int? hostPort = null, string name = null, string protocol = null)
         {
@@ -64,8 +64,8 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Number of port to expose on the pod's IP address. This must be a valid port
-        /// number, 0 < x < 65536.
+        /// Number of port to expose on the pod&apos;s IP address. This must be a valid port
+        /// number, 0 &lt; x &lt; 65536.
         /// </summary>
         [JsonProperty(PropertyName = "containerPort")]
         public int ContainerPort { get; set; }
@@ -78,7 +78,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Number of port to expose on the host. If specified, this must be a valid port
-        /// number, 0 < x < 65536. If HostNetwork is specified, this must match
+        /// number, 0 &lt; x &lt; 65536. If HostNetwork is specified, this must match
         /// ContainerPort. Most containers do not need this.
         /// </summary>
         [JsonProperty(PropertyName = "hostPort")]
@@ -93,7 +93,7 @@ namespace k8s.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Protocol for port. Must be UDP, TCP, or SCTP. Defaults to "TCP".
+        /// Protocol for port. Must be UDP, TCP, or SCTP. Defaults to &quot;TCP&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "protocol")]
         public string Protocol { get; set; }
@@ -106,10 +106,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (ContainerPort == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ContainerPort");    
-            }
         }
     }
 }

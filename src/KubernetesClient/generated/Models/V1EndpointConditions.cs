@@ -32,7 +32,7 @@ namespace k8s.Models
         /// ready indicates that this endpoint is prepared to receive traffic, according to
         /// whatever system is managing the endpoint. A nil value indicates an unknown
         /// state. In most cases consumers should interpret this unknown state as ready. For
-        /// compatibility reasons, ready should never be "true" for terminating endpoints.
+        /// compatibility reasons, ready should never be &quot;true&quot; for terminating endpoints.
         /// </param>
         /// <param name="serving">
         /// serving is identical to ready except that it is set regardless of the
@@ -64,7 +64,7 @@ namespace k8s.Models
         /// ready indicates that this endpoint is prepared to receive traffic, according to
         /// whatever system is managing the endpoint. A nil value indicates an unknown
         /// state. In most cases consumers should interpret this unknown state as ready. For
-        /// compatibility reasons, ready should never be "true" for terminating endpoints.
+        /// compatibility reasons, ready should never be &quot;true&quot; for terminating endpoints.
         /// </summary>
         [JsonProperty(PropertyName = "ready")]
         public bool? Ready { get; set; }

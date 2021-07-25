@@ -16,7 +16,7 @@ namespace k8s.Models
     /// EventSeries contain information on series of events, i.e. thing that was/is
         /// happening continuously for some time. How often to update the EventSeries is up
         /// to the event reporters. The default event reporter in
-        /// "k8s.io/client-go/tools/events/event_broadcaster.go" shows how this struct is
+        /// &quot;k8s.io/client-go/tools/events/event_broadcaster.go&quot; shows how this struct is
         /// updated on heartbeats and can guide customized reporter implementations.
     /// </summary>
     public partial class Eventsv1EventSeries
@@ -72,14 +72,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Count == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Count");    
-            }
-            if (LastObservedTime == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "LastObservedTime");    
-            }
         }
     }
 }

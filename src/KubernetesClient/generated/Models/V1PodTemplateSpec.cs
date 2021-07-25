@@ -30,7 +30,7 @@ namespace k8s.Models
         /// Initializes a new instance of the V1PodTemplateSpec class.
         /// </summary>
         /// <param name="metadata">
-        /// Standard object's metadata. More info:
+        /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </param>
         /// <param name="spec">
@@ -50,7 +50,7 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Standard object's metadata. More info:
+        /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]

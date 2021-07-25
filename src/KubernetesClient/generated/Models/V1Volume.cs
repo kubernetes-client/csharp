@@ -30,12 +30,12 @@ namespace k8s.Models
         /// Initializes a new instance of the V1Volume class.
         /// </summary>
         /// <param name="name">
-        /// Volume's name. Must be a DNS_LABEL and unique within the pod. More info:
+        /// Volume&apos;s name. Must be a DNS_LABEL and unique within the pod. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         /// </param>
         /// <param name="awsElasticBlockStore">
         /// AWSElasticBlockStore represents an AWS Disk resource that is attached to a
-        /// kubelet's host machine and then exposed to the pod. More info:
+        /// kubelet&apos;s host machine and then exposed to the pod. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
         /// </param>
         /// <param name="azureDisk">
@@ -47,7 +47,7 @@ namespace k8s.Models
         /// the pod.
         /// </param>
         /// <param name="cephfs">
-        /// CephFS represents a Ceph FS mount on the host that shares a pod's lifetime
+        /// CephFS represents a Ceph FS mount on the host that shares a pod&apos;s lifetime
         /// </param>
         /// <param name="cinder">
         /// Cinder represents a cinder volume attached and mounted on kubelets host machine.
@@ -65,12 +65,12 @@ namespace k8s.Models
         /// volume
         /// </param>
         /// <param name="emptyDir">
-        /// EmptyDir represents a temporary directory that shares a pod's lifetime. More
+        /// EmptyDir represents a temporary directory that shares a pod&apos;s lifetime. More
         /// info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
         /// </param>
         /// <param name="ephemeral">
         /// Ephemeral represents a volume that is handled by a cluster storage driver. The
-        /// volume's lifecycle is tied to the pod that defines it - it will be created
+        /// volume&apos;s lifecycle is tied to the pod that defines it - it will be created
         /// before the pod starts, and deleted when the pod is removed.
         /// 
         /// Use this if: a) the volume is only needed while the pod runs, b) features of
@@ -95,7 +95,7 @@ namespace k8s.Models
         /// feature gate is enabled.
         /// </param>
         /// <param name="fc">
-        /// FC represents a Fibre Channel resource that is attached to a kubelet's host
+        /// FC represents a Fibre Channel resource that is attached to a kubelet&apos;s host
         /// machine and then exposed to the pod.
         /// </param>
         /// <param name="flexVolume">
@@ -103,11 +103,11 @@ namespace k8s.Models
         /// using an exec based plugin.
         /// </param>
         /// <param name="flocker">
-        /// Flocker represents a Flocker volume attached to a kubelet's host machine. This
+        /// Flocker represents a Flocker volume attached to a kubelet&apos;s host machine. This
         /// depends on the Flocker control service being running
         /// </param>
         /// <param name="gcePersistentDisk">
-        /// GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet's
+        /// GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet&apos;s
         /// host machine and then exposed to the pod. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
         /// </param>
@@ -115,10 +115,10 @@ namespace k8s.Models
         /// GitRepo represents a git repository at a particular revision. DEPRECATED:
         /// GitRepo is deprecated. To provision a container with a git repo, mount an
         /// EmptyDir into an InitContainer that clones the repo using git, then mount the
-        /// EmptyDir into the Pod's container.
+        /// EmptyDir into the Pod&apos;s container.
         /// </param>
         /// <param name="glusterfs">
-        /// Glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime.
+        /// Glusterfs represents a Glusterfs mount on the host that shares a pod&apos;s lifetime.
         /// More info: https://examples.k8s.io/volumes/glusterfs/README.md
         /// </param>
         /// <param name="hostPath">
@@ -129,12 +129,12 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/storage/volumes#hostpath
         /// </param>
         /// <param name="iscsi">
-        /// ISCSI represents an ISCSI Disk resource that is attached to a kubelet's host
+        /// ISCSI represents an ISCSI Disk resource that is attached to a kubelet&apos;s host
         /// machine and then exposed to the pod. More info:
         /// https://examples.k8s.io/volumes/iscsi/README.md
         /// </param>
         /// <param name="nfs">
-        /// NFS represents an NFS mount on the host that shares a pod's lifetime More info:
+        /// NFS represents an NFS mount on the host that shares a pod&apos;s lifetime More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#nfs
         /// </param>
         /// <param name="persistentVolumeClaim">
@@ -154,10 +154,10 @@ namespace k8s.Models
         /// Items for all in one resources secrets, configmaps, and downward API
         /// </param>
         /// <param name="quobyte">
-        /// Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+        /// Quobyte represents a Quobyte mount on the host that shares a pod&apos;s lifetime
         /// </param>
         /// <param name="rbd">
-        /// RBD represents a Rados Block Device mount on the host that shares a pod's
+        /// RBD represents a Rados Block Device mount on the host that shares a pod&apos;s
         /// lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
         /// </param>
         /// <param name="scaleIO">
@@ -218,7 +218,7 @@ namespace k8s.Models
 
         /// <summary>
         /// AWSElasticBlockStore represents an AWS Disk resource that is attached to a
-        /// kubelet's host machine and then exposed to the pod. More info:
+        /// kubelet&apos;s host machine and then exposed to the pod. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
         /// </summary>
         [JsonProperty(PropertyName = "awsElasticBlockStore")]
@@ -239,7 +239,7 @@ namespace k8s.Models
         public V1AzureFileVolumeSource AzureFile { get; set; }
 
         /// <summary>
-        /// CephFS represents a Ceph FS mount on the host that shares a pod's lifetime
+        /// CephFS represents a Ceph FS mount on the host that shares a pod&apos;s lifetime
         /// </summary>
         [JsonProperty(PropertyName = "cephfs")]
         public V1CephFSVolumeSource Cephfs { get; set; }
@@ -272,7 +272,7 @@ namespace k8s.Models
         public V1DownwardAPIVolumeSource DownwardAPI { get; set; }
 
         /// <summary>
-        /// EmptyDir represents a temporary directory that shares a pod's lifetime. More
+        /// EmptyDir represents a temporary directory that shares a pod&apos;s lifetime. More
         /// info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
         /// </summary>
         [JsonProperty(PropertyName = "emptyDir")]
@@ -280,7 +280,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Ephemeral represents a volume that is handled by a cluster storage driver. The
-        /// volume's lifecycle is tied to the pod that defines it - it will be created
+        /// volume&apos;s lifecycle is tied to the pod that defines it - it will be created
         /// before the pod starts, and deleted when the pod is removed.
         /// 
         /// Use this if: a) the volume is only needed while the pod runs, b) features of
@@ -308,7 +308,7 @@ namespace k8s.Models
         public V1EphemeralVolumeSource Ephemeral { get; set; }
 
         /// <summary>
-        /// FC represents a Fibre Channel resource that is attached to a kubelet's host
+        /// FC represents a Fibre Channel resource that is attached to a kubelet&apos;s host
         /// machine and then exposed to the pod.
         /// </summary>
         [JsonProperty(PropertyName = "fc")]
@@ -322,14 +322,14 @@ namespace k8s.Models
         public V1FlexVolumeSource FlexVolume { get; set; }
 
         /// <summary>
-        /// Flocker represents a Flocker volume attached to a kubelet's host machine. This
+        /// Flocker represents a Flocker volume attached to a kubelet&apos;s host machine. This
         /// depends on the Flocker control service being running
         /// </summary>
         [JsonProperty(PropertyName = "flocker")]
         public V1FlockerVolumeSource Flocker { get; set; }
 
         /// <summary>
-        /// GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet's
+        /// GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet&apos;s
         /// host machine and then exposed to the pod. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
         /// </summary>
@@ -340,13 +340,13 @@ namespace k8s.Models
         /// GitRepo represents a git repository at a particular revision. DEPRECATED:
         /// GitRepo is deprecated. To provision a container with a git repo, mount an
         /// EmptyDir into an InitContainer that clones the repo using git, then mount the
-        /// EmptyDir into the Pod's container.
+        /// EmptyDir into the Pod&apos;s container.
         /// </summary>
         [JsonProperty(PropertyName = "gitRepo")]
         public V1GitRepoVolumeSource GitRepo { get; set; }
 
         /// <summary>
-        /// Glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime.
+        /// Glusterfs represents a Glusterfs mount on the host that shares a pod&apos;s lifetime.
         /// More info: https://examples.k8s.io/volumes/glusterfs/README.md
         /// </summary>
         [JsonProperty(PropertyName = "glusterfs")]
@@ -363,7 +363,7 @@ namespace k8s.Models
         public V1HostPathVolumeSource HostPath { get; set; }
 
         /// <summary>
-        /// ISCSI represents an ISCSI Disk resource that is attached to a kubelet's host
+        /// ISCSI represents an ISCSI Disk resource that is attached to a kubelet&apos;s host
         /// machine and then exposed to the pod. More info:
         /// https://examples.k8s.io/volumes/iscsi/README.md
         /// </summary>
@@ -371,14 +371,14 @@ namespace k8s.Models
         public V1ISCSIVolumeSource Iscsi { get; set; }
 
         /// <summary>
-        /// Volume's name. Must be a DNS_LABEL and unique within the pod. More info:
+        /// Volume&apos;s name. Must be a DNS_LABEL and unique within the pod. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// NFS represents an NFS mount on the host that shares a pod's lifetime More info:
+        /// NFS represents an NFS mount on the host that shares a pod&apos;s lifetime More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#nfs
         /// </summary>
         [JsonProperty(PropertyName = "nfs")]
@@ -413,13 +413,13 @@ namespace k8s.Models
         public V1ProjectedVolumeSource Projected { get; set; }
 
         /// <summary>
-        /// Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+        /// Quobyte represents a Quobyte mount on the host that shares a pod&apos;s lifetime
         /// </summary>
         [JsonProperty(PropertyName = "quobyte")]
         public V1QuobyteVolumeSource Quobyte { get; set; }
 
         /// <summary>
-        /// RBD represents a Rados Block Device mount on the host that shares a pod's
+        /// RBD represents a Rados Block Device mount on the host that shares a pod&apos;s
         /// lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
         /// </summary>
         [JsonProperty(PropertyName = "rbd")]
@@ -461,10 +461,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
             AwsElasticBlockStore?.Validate();
             AzureDisk?.Validate();
             AzureFile?.Validate();

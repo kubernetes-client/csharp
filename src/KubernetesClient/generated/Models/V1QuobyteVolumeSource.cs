@@ -115,14 +115,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Registry == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Registry");    
-            }
-            if (Volume == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Volume");    
-            }
         }
     }
 }

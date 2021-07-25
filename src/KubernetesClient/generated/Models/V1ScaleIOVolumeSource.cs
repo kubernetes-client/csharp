@@ -40,7 +40,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="fsType">
         /// Filesystem type to mount. Must be a filesystem type supported by the host
-        /// operating system. Ex. "ext4", "xfs", "ntfs". Default is "xfs".
+        /// operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;. Default is &quot;xfs&quot;.
         /// </param>
         /// <param name="protectionDomain">
         /// The name of the ScaleIO Protection Domain for the configured storage.
@@ -85,7 +85,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Filesystem type to mount. Must be a filesystem type supported by the host
-        /// operating system. Ex. "ext4", "xfs", "ntfs". Default is "xfs".
+        /// operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;. Default is &quot;xfs&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "fsType")]
         public string FsType { get; set; }
@@ -156,17 +156,9 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Gateway == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Gateway");    
-            }
             if (SecretRef == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "SecretRef");    
-            }
-            if (System == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "System");    
             }
             SecretRef?.Validate();
         }

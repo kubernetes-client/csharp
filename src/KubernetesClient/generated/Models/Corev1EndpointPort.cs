@@ -40,7 +40,7 @@ namespace k8s.Models
         /// enabled by default.
         /// </param>
         /// <param name="name">
-        /// The name of this port.  This must match the 'name' field in the corresponding
+        /// The name of this port.  This must match the &apos;name&apos; field in the corresponding
         /// ServicePort. Must be a DNS_LABEL. Optional only if one port is defined.
         /// </param>
         /// <param name="protocol">
@@ -72,7 +72,7 @@ namespace k8s.Models
         public string AppProtocol { get; set; }
 
         /// <summary>
-        /// The name of this port.  This must match the 'name' field in the corresponding
+        /// The name of this port.  This must match the &apos;name&apos; field in the corresponding
         /// ServicePort. Must be a DNS_LABEL. Optional only if one port is defined.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
@@ -98,10 +98,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Port == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Port");    
-            }
         }
     }
 }

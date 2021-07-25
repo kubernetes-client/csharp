@@ -15,7 +15,7 @@ namespace k8s.Models
     /// <summary>
     /// SecretEnvSource selects a Secret to populate the environment variables with.
         /// 
-        /// The contents of the target Secret's Data field will represent the key-value
+        /// The contents of the target Secret&apos;s Data field will represent the key-value
         /// pairs as environment variables.
     /// </summary>
     public partial class V1SecretEnvSource

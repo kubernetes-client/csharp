@@ -32,7 +32,7 @@ namespace k8s.Models
         /// </summary>
         /// <param name="fsType">
         /// Filesystem type to mount. Must be a filesystem type supported by the host
-        /// operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if
+        /// operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;. Implicitly inferred to be &quot;ext4&quot; if
         /// unspecified.
         /// </param>
         /// <param name="lun">
@@ -66,7 +66,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Filesystem type to mount. Must be a filesystem type supported by the host
-        /// operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if
+        /// operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;. Implicitly inferred to be &quot;ext4&quot; if
         /// unspecified.
         /// </summary>
         [JsonProperty(PropertyName = "fsType")]

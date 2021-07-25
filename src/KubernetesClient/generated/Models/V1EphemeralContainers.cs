@@ -103,10 +103,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (EphemeralContainers == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "EphemeralContainers");    
-            }
             foreach(var obj in EphemeralContainers)
             {
                 obj.Validate();

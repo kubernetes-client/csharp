@@ -53,7 +53,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="fsType">
         /// Filesystem type to mount. Must be a filesystem type supported by the host
-        /// operating system. Ex. "ext4", "xfs", "ntfs".
+        /// operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;.
         /// </param>
         /// <param name="nodePublishSecretRef">
         /// NodePublishSecretRef is a reference to the secret object containing sensitive
@@ -124,7 +124,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Filesystem type to mount. Must be a filesystem type supported by the host
-        /// operating system. Ex. "ext4", "xfs", "ntfs".
+        /// operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "fsType")]
         public string FsType { get; set; }
@@ -177,14 +177,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Driver == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Driver");    
-            }
-            if (VolumeHandle == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "VolumeHandle");    
-            }
             ControllerExpandSecretRef?.Validate();
             ControllerPublishSecretRef?.Validate();
             NodePublishSecretRef?.Validate();

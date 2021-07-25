@@ -38,7 +38,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="conditions">
         /// Current Condition of persistent volume claim. If underlying persistent volume is
-        /// being resized then the Condition will be set to 'ResizeStarted'.
+        /// being resized then the Condition will be set to &apos;ResizeStarted&apos;.
         /// </param>
         /// <param name="phase">
         /// Phase represents the current phase of PersistentVolumeClaim.
@@ -73,7 +73,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Current Condition of persistent volume claim. If underlying persistent volume is
-        /// being resized then the Condition will be set to 'ResizeStarted'.
+        /// being resized then the Condition will be set to &apos;ResizeStarted&apos;.
         /// </summary>
         [JsonProperty(PropertyName = "conditions")]
         public IList<V1PersistentVolumeClaimCondition> Conditions { get; set; }

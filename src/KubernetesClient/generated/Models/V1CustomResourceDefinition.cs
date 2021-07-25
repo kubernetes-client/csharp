@@ -14,7 +14,7 @@ namespace k8s.Models
 
     /// <summary>
     /// CustomResourceDefinition represents a resource that should be exposed on the API
-        /// server.  Its name MUST be in the format <.spec.name>.<.spec.group>.
+        /// server.  Its name MUST be in the format &lt;.spec.name&gt;.&lt;.spec.group&gt;.
     /// </summary>
     public partial class V1CustomResourceDefinition
     {

@@ -98,10 +98,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Allowed == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Allowed");    
-            }
         }
     }
 }

@@ -35,7 +35,7 @@ namespace k8s.Models
         /// greatest sum of weights, i.e. for each node that meets all of the scheduling
         /// requirements (resource request, requiredDuringScheduling affinity expressions,
         /// etc.), compute a sum by iterating through the elements of this field and adding
-        /// "weight" to the sum if the node has pods which matches the corresponding
+        /// &quot;weight&quot; to the sum if the node has pods which matches the corresponding
         /// podAffinityTerm; the node(s) with the highest sum are the most preferred.
         /// </param>
         /// <param name="requiredDuringSchedulingIgnoredDuringExecution">
@@ -66,7 +66,7 @@ namespace k8s.Models
         /// greatest sum of weights, i.e. for each node that meets all of the scheduling
         /// requirements (resource request, requiredDuringScheduling affinity expressions,
         /// etc.), compute a sum by iterating through the elements of this field and adding
-        /// "weight" to the sum if the node has pods which matches the corresponding
+        /// &quot;weight&quot; to the sum if the node has pods which matches the corresponding
         /// podAffinityTerm; the node(s) with the highest sum are the most preferred.
         /// </summary>
         [JsonProperty(PropertyName = "preferredDuringSchedulingIgnoredDuringExecution")]

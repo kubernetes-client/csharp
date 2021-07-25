@@ -35,7 +35,7 @@ namespace k8s.Models
         /// Since that is input to the authorizer it needs a reflection here.
         /// </param>
         /// <param name="group">
-        /// Groups is the groups you're testing for.
+        /// Groups is the groups you&apos;re testing for.
         /// </param>
         /// <param name="nonResourceAttributes">
         /// NonResourceAttributes describes information for a non-resource access request
@@ -48,8 +48,8 @@ namespace k8s.Models
         /// UID information about the requesting user.
         /// </param>
         /// <param name="user">
-        /// User is the user you're testing for. If you specify "User" but not "Group", then
-        /// is it interpreted as "What if User were not a member of any groups
+        /// User is the user you&apos;re testing for. If you specify &quot;User&quot; but not &quot;Group&quot;, then
+        /// is it interpreted as &quot;What if User were not a member of any groups
         /// </param>
         public V1beta1SubjectAccessReviewSpec(IDictionary<string, IList<string>> extra = null, IList<string> group = null, V1beta1NonResourceAttributes nonResourceAttributes = null, V1beta1ResourceAttributes resourceAttributes = null, string uid = null, string user = null)
         {
@@ -75,7 +75,7 @@ namespace k8s.Models
         public IDictionary<string, IList<string>> Extra { get; set; }
 
         /// <summary>
-        /// Groups is the groups you're testing for.
+        /// Groups is the groups you&apos;re testing for.
         /// </summary>
         [JsonProperty(PropertyName = "group")]
         public IList<string> Group { get; set; }
@@ -100,8 +100,8 @@ namespace k8s.Models
         public string Uid { get; set; }
 
         /// <summary>
-        /// User is the user you're testing for. If you specify "User" but not "Group", then
-        /// is it interpreted as "What if User were not a member of any groups
+        /// User is the user you&apos;re testing for. If you specify &quot;User&quot; but not &quot;Group&quot;, then
+        /// is it interpreted as &quot;What if User were not a member of any groups
         /// </summary>
         [JsonProperty(PropertyName = "user")]
         public string User { get; set; }

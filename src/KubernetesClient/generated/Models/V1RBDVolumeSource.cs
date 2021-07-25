@@ -39,8 +39,8 @@ namespace k8s.Models
         /// </param>
         /// <param name="fsType">
         /// Filesystem type of the volume that you want to mount. Tip: Ensure that the
-        /// filesystem type is supported by the host operating system. Examples: "ext4",
-        /// "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info:
+        /// filesystem type is supported by the host operating system. Examples: &quot;ext4&quot;,
+        /// &quot;xfs&quot;, &quot;ntfs&quot;. Implicitly inferred to be &quot;ext4&quot; if unspecified. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#rbd
         /// </param>
         /// <param name="keyring">
@@ -84,8 +84,8 @@ namespace k8s.Models
 
         /// <summary>
         /// Filesystem type of the volume that you want to mount. Tip: Ensure that the
-        /// filesystem type is supported by the host operating system. Examples: "ext4",
-        /// "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info:
+        /// filesystem type is supported by the host operating system. Examples: &quot;ext4&quot;,
+        /// &quot;xfs&quot;, &quot;ntfs&quot;. Implicitly inferred to be &quot;ext4&quot; if unspecified. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#rbd
         /// </summary>
         [JsonProperty(PropertyName = "fsType")]
@@ -149,14 +149,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Image == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Image");    
-            }
-            if (Monitors == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Monitors");    
-            }
             SecretRef?.Validate();
         }
     }

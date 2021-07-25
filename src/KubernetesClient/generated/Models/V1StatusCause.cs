@@ -36,8 +36,8 @@ namespace k8s.Models
         /// due to fields having multiple errors. Optional.
         /// 
         /// Examples:
-        /// "name" - the field "name" on the current resource
-        /// "items[0].name" - the field "name" on the first array entry in "items"
+        /// &quot;name&quot; - the field &quot;name&quot; on the current resource
+        /// &quot;items[0].name&quot; - the field &quot;name&quot; on the first array entry in &quot;items&quot;
         /// </param>
         /// <param name="message">
         /// A human-readable description of the cause of the error.  This field may be
@@ -67,8 +67,8 @@ namespace k8s.Models
         /// due to fields having multiple errors. Optional.
         /// 
         /// Examples:
-        /// "name" - the field "name" on the current resource
-        /// "items[0].name" - the field "name" on the first array entry in "items"
+        /// &quot;name&quot; - the field &quot;name&quot; on the current resource
+        /// &quot;items[0].name&quot; - the field &quot;name&quot; on the first array entry in &quot;items&quot;
         /// </summary>
         [JsonProperty(PropertyName = "field")]
         public string Field { get; set; }

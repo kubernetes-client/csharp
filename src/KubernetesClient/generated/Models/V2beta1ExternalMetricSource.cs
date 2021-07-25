@@ -15,7 +15,7 @@ namespace k8s.Models
     /// <summary>
     /// ExternalMetricSource indicates how to scale on a metric not associated with any
         /// Kubernetes object (for example length of queue in cloud messaging service, or
-        /// QPS from loadbalancer running outside of cluster). Exactly one "target" type
+        /// QPS from loadbalancer running outside of cluster). Exactly one &quot;target&quot; type
         /// should be set.
     /// </summary>
     public partial class V2beta1ExternalMetricSource
@@ -93,10 +93,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (MetricName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "MetricName");    
-            }
             MetricSelector?.Validate();
             TargetAverageValue?.Validate();
             TargetValue?.Validate();

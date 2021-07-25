@@ -29,7 +29,7 @@ namespace k8s.Models
         /// Initializes a new instance of the V1beta1GroupSubject class.
         /// </summary>
         /// <param name="name">
-        /// name is the user group that matches, or "*" to match all user groups. See
+        /// name is the user group that matches, or &quot;*&quot; to match all user groups. See
         /// https://github.com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go
         /// for some well-known group names. Required.
         /// </param>
@@ -45,7 +45,7 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// name is the user group that matches, or "*" to match all user groups. See
+        /// name is the user group that matches, or &quot;*&quot; to match all user groups. See
         /// https://github.com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go
         /// for some well-known group names. Required.
         /// </summary>
@@ -60,10 +60,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
         }
     }
 }

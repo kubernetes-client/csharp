@@ -30,7 +30,7 @@ namespace k8s.Models
         /// </summary>
         /// <param name="selector">
         /// Label selector for pods. Existing ReplicaSets whose pods are selected by this
-        /// will be the ones affected by this deployment. It must match the pod template's
+        /// will be the ones affected by this deployment. It must match the pod template&apos;s
         /// labels.
         /// </param>
         /// <param name="template">
@@ -120,7 +120,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Label selector for pods. Existing ReplicaSets whose pods are selected by this
-        /// will be the ones affected by this deployment. It must match the pod template's
+        /// will be the ones affected by this deployment. It must match the pod template&apos;s
         /// labels.
         /// </summary>
         [JsonProperty(PropertyName = "selector")]

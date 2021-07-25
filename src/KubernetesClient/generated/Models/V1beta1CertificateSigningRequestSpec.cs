@@ -44,11 +44,11 @@ namespace k8s.Models
         /// <param name="signerName">
         /// Requested signer for the request. It is a qualified name in the form:
         /// `scope-hostname.io/name`. If empty, it will be defaulted:
-        /// 1. If it's a kubelet client certificate, it is assigned
-        /// "kubernetes.io/kube-apiserver-client-kubelet".
-        /// 2. If it's a kubelet serving certificate, it is assigned
-        /// "kubernetes.io/kubelet-serving".
-        /// 3. Otherwise, it is assigned "kubernetes.io/legacy-unknown".
+        /// 1. If it&apos;s a kubelet client certificate, it is assigned
+        /// &quot;kubernetes.io/kube-apiserver-client-kubelet&quot;.
+        /// 2. If it&apos;s a kubelet serving certificate, it is assigned
+        /// &quot;kubernetes.io/kubelet-serving&quot;.
+        /// 3. Otherwise, it is assigned &quot;kubernetes.io/legacy-unknown&quot;.
         /// Distribution of trust for signers happens out of band. You can select on this
         /// field using `spec.signerName`.
         /// </param>
@@ -60,29 +60,29 @@ namespace k8s.Models
         /// https://tools.ietf.org/html/rfc5280#section-4.2.1.3
         /// https://tools.ietf.org/html/rfc5280#section-4.2.1.12
         /// Valid values are:
-        /// "signing",
-        /// "digital signature",
-        /// "content commitment",
-        /// "key encipherment",
-        /// "key agreement",
-        /// "data encipherment",
-        /// "cert sign",
-        /// "crl sign",
-        /// "encipher only",
-        /// "decipher only",
-        /// "any",
-        /// "server auth",
-        /// "client auth",
-        /// "code signing",
-        /// "email protection",
-        /// "s/mime",
-        /// "ipsec end system",
-        /// "ipsec tunnel",
-        /// "ipsec user",
-        /// "timestamping",
-        /// "ocsp signing",
-        /// "microsoft sgc",
-        /// "netscape sgc"
+        /// &quot;signing&quot;,
+        /// &quot;digital signature&quot;,
+        /// &quot;content commitment&quot;,
+        /// &quot;key encipherment&quot;,
+        /// &quot;key agreement&quot;,
+        /// &quot;data encipherment&quot;,
+        /// &quot;cert sign&quot;,
+        /// &quot;crl sign&quot;,
+        /// &quot;encipher only&quot;,
+        /// &quot;decipher only&quot;,
+        /// &quot;any&quot;,
+        /// &quot;server auth&quot;,
+        /// &quot;client auth&quot;,
+        /// &quot;code signing&quot;,
+        /// &quot;email protection&quot;,
+        /// &quot;s/mime&quot;,
+        /// &quot;ipsec end system&quot;,
+        /// &quot;ipsec tunnel&quot;,
+        /// &quot;ipsec user&quot;,
+        /// &quot;timestamping&quot;,
+        /// &quot;ocsp signing&quot;,
+        /// &quot;microsoft sgc&quot;,
+        /// &quot;netscape sgc&quot;
         /// </param>
         /// <param name="username">
         /// Information about the requesting user. See user.Info interface for details.
@@ -127,11 +127,11 @@ namespace k8s.Models
         /// <summary>
         /// Requested signer for the request. It is a qualified name in the form:
         /// `scope-hostname.io/name`. If empty, it will be defaulted:
-        /// 1. If it's a kubelet client certificate, it is assigned
-        /// "kubernetes.io/kube-apiserver-client-kubelet".
-        /// 2. If it's a kubelet serving certificate, it is assigned
-        /// "kubernetes.io/kubelet-serving".
-        /// 3. Otherwise, it is assigned "kubernetes.io/legacy-unknown".
+        /// 1. If it&apos;s a kubelet client certificate, it is assigned
+        /// &quot;kubernetes.io/kube-apiserver-client-kubelet&quot;.
+        /// 2. If it&apos;s a kubelet serving certificate, it is assigned
+        /// &quot;kubernetes.io/kubelet-serving&quot;.
+        /// 3. Otherwise, it is assigned &quot;kubernetes.io/legacy-unknown&quot;.
         /// Distribution of trust for signers happens out of band. You can select on this
         /// field using `spec.signerName`.
         /// </summary>
@@ -149,29 +149,29 @@ namespace k8s.Models
         /// https://tools.ietf.org/html/rfc5280#section-4.2.1.3
         /// https://tools.ietf.org/html/rfc5280#section-4.2.1.12
         /// Valid values are:
-        /// "signing",
-        /// "digital signature",
-        /// "content commitment",
-        /// "key encipherment",
-        /// "key agreement",
-        /// "data encipherment",
-        /// "cert sign",
-        /// "crl sign",
-        /// "encipher only",
-        /// "decipher only",
-        /// "any",
-        /// "server auth",
-        /// "client auth",
-        /// "code signing",
-        /// "email protection",
-        /// "s/mime",
-        /// "ipsec end system",
-        /// "ipsec tunnel",
-        /// "ipsec user",
-        /// "timestamping",
-        /// "ocsp signing",
-        /// "microsoft sgc",
-        /// "netscape sgc"
+        /// &quot;signing&quot;,
+        /// &quot;digital signature&quot;,
+        /// &quot;content commitment&quot;,
+        /// &quot;key encipherment&quot;,
+        /// &quot;key agreement&quot;,
+        /// &quot;data encipherment&quot;,
+        /// &quot;cert sign&quot;,
+        /// &quot;crl sign&quot;,
+        /// &quot;encipher only&quot;,
+        /// &quot;decipher only&quot;,
+        /// &quot;any&quot;,
+        /// &quot;server auth&quot;,
+        /// &quot;client auth&quot;,
+        /// &quot;code signing&quot;,
+        /// &quot;email protection&quot;,
+        /// &quot;s/mime&quot;,
+        /// &quot;ipsec end system&quot;,
+        /// &quot;ipsec tunnel&quot;,
+        /// &quot;ipsec user&quot;,
+        /// &quot;timestamping&quot;,
+        /// &quot;ocsp signing&quot;,
+        /// &quot;microsoft sgc&quot;,
+        /// &quot;netscape sgc&quot;
         /// </summary>
         [JsonProperty(PropertyName = "usages")]
         public IList<string> Usages { get; set; }
@@ -190,10 +190,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Request == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Request");    
-            }
         }
     }
 }

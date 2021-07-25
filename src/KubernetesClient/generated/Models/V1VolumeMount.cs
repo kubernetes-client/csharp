@@ -30,7 +30,7 @@ namespace k8s.Models
         /// </summary>
         /// <param name="mountPath">
         /// Path within the container at which the volume should be mounted.  Must not
-        /// contain ':'.
+        /// contain &apos;:&apos;.
         /// </param>
         /// <param name="name">
         /// This must match the Name of a Volume.
@@ -45,14 +45,14 @@ namespace k8s.Models
         /// to false.
         /// </param>
         /// <param name="subPath">
-        /// Path within the volume from which the container's volume should be mounted.
-        /// Defaults to "" (volume's root).
+        /// Path within the volume from which the container&apos;s volume should be mounted.
+        /// Defaults to &quot;&quot; (volume&apos;s root).
         /// </param>
         /// <param name="subPathExpr">
-        /// Expanded path within the volume from which the container's volume should be
+        /// Expanded path within the volume from which the container&apos;s volume should be
         /// mounted. Behaves similarly to SubPath but environment variable references
-        /// $(VAR_NAME) are expanded using the container's environment. Defaults to ""
-        /// (volume's root). SubPathExpr and SubPath are mutually exclusive.
+        /// $(VAR_NAME) are expanded using the container&apos;s environment. Defaults to &quot;&quot;
+        /// (volume&apos;s root). SubPathExpr and SubPath are mutually exclusive.
         /// </param>
         public V1VolumeMount(string mountPath, string name, string mountPropagation = null, bool? readOnlyProperty = null, string subPath = null, string subPathExpr = null)
         {
@@ -72,7 +72,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Path within the container at which the volume should be mounted.  Must not
-        /// contain ':'.
+        /// contain &apos;:&apos;.
         /// </summary>
         [JsonProperty(PropertyName = "mountPath")]
         public string MountPath { get; set; }
@@ -99,17 +99,17 @@ namespace k8s.Models
         public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>
-        /// Path within the volume from which the container's volume should be mounted.
-        /// Defaults to "" (volume's root).
+        /// Path within the volume from which the container&apos;s volume should be mounted.
+        /// Defaults to &quot;&quot; (volume&apos;s root).
         /// </summary>
         [JsonProperty(PropertyName = "subPath")]
         public string SubPath { get; set; }
 
         /// <summary>
-        /// Expanded path within the volume from which the container's volume should be
+        /// Expanded path within the volume from which the container&apos;s volume should be
         /// mounted. Behaves similarly to SubPath but environment variable references
-        /// $(VAR_NAME) are expanded using the container's environment. Defaults to ""
-        /// (volume's root). SubPathExpr and SubPath are mutually exclusive.
+        /// $(VAR_NAME) are expanded using the container&apos;s environment. Defaults to &quot;&quot;
+        /// (volume&apos;s root). SubPathExpr and SubPath are mutually exclusive.
         /// </summary>
         [JsonProperty(PropertyName = "subPathExpr")]
         public string SubPathExpr { get; set; }
@@ -122,14 +122,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (MountPath == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "MountPath");    
-            }
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
         }
     }
 }

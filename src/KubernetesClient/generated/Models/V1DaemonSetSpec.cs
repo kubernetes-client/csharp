@@ -30,12 +30,12 @@ namespace k8s.Models
         /// </summary>
         /// <param name="selector">
         /// A label query over pods that are managed by the daemon set. Must match in order
-        /// to be controlled. It must match the pod template's labels. More info:
+        /// to be controlled. It must match the pod template&apos;s labels. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
         /// </param>
         /// <param name="template">
         /// An object that describes the pod that will be created. The DaemonSet will create
-        /// exactly one copy of this pod on every node that matches the template's node
+        /// exactly one copy of this pod on every node that matches the template&apos;s node
         /// selector (or on every node if no node selector is specified). More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template
         /// </param>
@@ -83,7 +83,7 @@ namespace k8s.Models
 
         /// <summary>
         /// A label query over pods that are managed by the daemon set. Must match in order
-        /// to be controlled. It must match the pod template's labels. More info:
+        /// to be controlled. It must match the pod template&apos;s labels. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
         /// </summary>
         [JsonProperty(PropertyName = "selector")]
@@ -91,7 +91,7 @@ namespace k8s.Models
 
         /// <summary>
         /// An object that describes the pod that will be created. The DaemonSet will create
-        /// exactly one copy of this pod on every node that matches the template's node
+        /// exactly one copy of this pod on every node that matches the template&apos;s node
         /// selector (or on every node if no node selector is specified). More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template
         /// </summary>

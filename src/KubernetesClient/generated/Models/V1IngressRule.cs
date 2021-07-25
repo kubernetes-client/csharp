@@ -32,7 +32,7 @@ namespace k8s.Models
         /// </summary>
         /// <param name="host">
         /// Host is the fully qualified domain name of a network host, as defined by RFC
-        /// 3986. Note the following deviations from the "host" part of the URI as defined
+        /// 3986. Note the following deviations from the &quot;host&quot; part of the URI as defined
         /// in RFC 3986: 1. IPs are not allowed. Currently an IngressRuleValue can only
         /// apply to
         /// the IP in the Spec of the parent Ingress.
@@ -43,11 +43,11 @@ namespace k8s.Models
         /// host before the IngressRuleValue. If the host is unspecified, the Ingress routes
         /// all traffic based on the specified IngressRuleValue.
         /// 
-        /// Host can be "precise" which is a domain name without the terminating dot of a
-        /// network host (e.g. "foo.bar.com") or "wildcard", which is a domain name prefixed
-        /// with a single wildcard label (e.g. "*.foo.com"). The wildcard character '*' must
+        /// Host can be &quot;precise&quot; which is a domain name without the terminating dot of a
+        /// network host (e.g. &quot;foo.bar.com&quot;) or &quot;wildcard&quot;, which is a domain name prefixed
+        /// with a single wildcard label (e.g. &quot;*.foo.com&quot;). The wildcard character &apos;*&apos; must
         /// appear by itself as the first DNS label and matches only a single label. You
-        /// cannot have a wildcard label by itself (e.g. Host == "*"). Requests will be
+        /// cannot have a wildcard label by itself (e.g. Host == &quot;*&quot;). Requests will be
         /// matched against the Host field in the following way: 1. If Host is precise, the
         /// request matches this rule if the http host header is equal to Host. 2. If Host
         /// is a wildcard, then the request matches this rule if the http host header is to
@@ -70,7 +70,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Host is the fully qualified domain name of a network host, as defined by RFC
-        /// 3986. Note the following deviations from the "host" part of the URI as defined
+        /// 3986. Note the following deviations from the &quot;host&quot; part of the URI as defined
         /// in RFC 3986: 1. IPs are not allowed. Currently an IngressRuleValue can only
         /// apply to
         /// the IP in the Spec of the parent Ingress.
@@ -81,11 +81,11 @@ namespace k8s.Models
         /// host before the IngressRuleValue. If the host is unspecified, the Ingress routes
         /// all traffic based on the specified IngressRuleValue.
         /// 
-        /// Host can be "precise" which is a domain name without the terminating dot of a
-        /// network host (e.g. "foo.bar.com") or "wildcard", which is a domain name prefixed
-        /// with a single wildcard label (e.g. "*.foo.com"). The wildcard character '*' must
+        /// Host can be &quot;precise&quot; which is a domain name without the terminating dot of a
+        /// network host (e.g. &quot;foo.bar.com&quot;) or &quot;wildcard&quot;, which is a domain name prefixed
+        /// with a single wildcard label (e.g. &quot;*.foo.com&quot;). The wildcard character &apos;*&apos; must
         /// appear by itself as the first DNS label and matches only a single label. You
-        /// cannot have a wildcard label by itself (e.g. Host == "*"). Requests will be
+        /// cannot have a wildcard label by itself (e.g. Host == &quot;*&quot;). Requests will be
         /// matched against the Host field in the following way: 1. If Host is precise, the
         /// request matches this rule if the http host header is equal to Host. 2. If Host
         /// is a wildcard, then the request matches this rule if the http host header is to

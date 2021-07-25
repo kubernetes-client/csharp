@@ -31,16 +31,16 @@ namespace k8s.Models
         /// </summary>
         /// <param name="apiVersion">
         /// APIVersion defines the version of this resource that this field set applies to.
-        /// The format is "group/version" just like the top-level APIVersion field. It is
+        /// The format is &quot;group/version&quot; just like the top-level APIVersion field. It is
         /// necessary to track the version of a field set because it cannot be automatically
         /// converted.
         /// </param>
         /// <param name="fieldsType">
         /// FieldsType is the discriminator for the different fields format and version.
-        /// There is currently only one possible value: "FieldsV1"
+        /// There is currently only one possible value: &quot;FieldsV1&quot;
         /// </param>
         /// <param name="fieldsV1">
-        /// FieldsV1 holds the first JSON version format as described in the "FieldsV1"
+        /// FieldsV1 holds the first JSON version format as described in the &quot;FieldsV1&quot;
         /// type.
         /// </param>
         /// <param name="manager">
@@ -48,11 +48,11 @@ namespace k8s.Models
         /// </param>
         /// <param name="operation">
         /// Operation is the type of operation which lead to this ManagedFieldsEntry being
-        /// created. The only valid values for this field are 'Apply' and 'Update'.
+        /// created. The only valid values for this field are &apos;Apply&apos; and &apos;Update&apos;.
         /// </param>
         /// <param name="time">
         /// Time is timestamp of when these fields were set. It should always be empty if
-        /// Operation is 'Apply'
+        /// Operation is &apos;Apply&apos;
         /// </param>
         public V1ManagedFieldsEntry(string apiVersion = null, string fieldsType = null, object fieldsV1 = null, string manager = null, string operation = null, System.DateTime? time = null)
         {
@@ -72,7 +72,7 @@ namespace k8s.Models
 
         /// <summary>
         /// APIVersion defines the version of this resource that this field set applies to.
-        /// The format is "group/version" just like the top-level APIVersion field. It is
+        /// The format is &quot;group/version&quot; just like the top-level APIVersion field. It is
         /// necessary to track the version of a field set because it cannot be automatically
         /// converted.
         /// </summary>
@@ -81,13 +81,13 @@ namespace k8s.Models
 
         /// <summary>
         /// FieldsType is the discriminator for the different fields format and version.
-        /// There is currently only one possible value: "FieldsV1"
+        /// There is currently only one possible value: &quot;FieldsV1&quot;
         /// </summary>
         [JsonProperty(PropertyName = "fieldsType")]
         public string FieldsType { get; set; }
 
         /// <summary>
-        /// FieldsV1 holds the first JSON version format as described in the "FieldsV1"
+        /// FieldsV1 holds the first JSON version format as described in the &quot;FieldsV1&quot;
         /// type.
         /// </summary>
         [JsonProperty(PropertyName = "fieldsV1")]
@@ -101,14 +101,14 @@ namespace k8s.Models
 
         /// <summary>
         /// Operation is the type of operation which lead to this ManagedFieldsEntry being
-        /// created. The only valid values for this field are 'Apply' and 'Update'.
+        /// created. The only valid values for this field are &apos;Apply&apos; and &apos;Update&apos;.
         /// </summary>
         [JsonProperty(PropertyName = "operation")]
         public string Operation { get; set; }
 
         /// <summary>
         /// Time is timestamp of when these fields were set. It should always be empty if
-        /// Operation is 'Apply'
+        /// Operation is &apos;Apply&apos;
         /// </summary>
         [JsonProperty(PropertyName = "time")]
         public System.DateTime? Time { get; set; }

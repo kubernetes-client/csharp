@@ -102,10 +102,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (MaxReplicas == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "MaxReplicas");    
-            }
             if (ScaleTargetRef == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "ScaleTargetRef");    

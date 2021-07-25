@@ -31,18 +31,18 @@ namespace k8s.Models
         /// </summary>
         /// <param name="status">
         /// status of the condition, one of True, False, Unknown. Approved, Denied, and
-        /// Failed conditions may not be "False" or "Unknown".
+        /// Failed conditions may not be &quot;False&quot; or &quot;Unknown&quot;.
         /// </param>
         /// <param name="type">
-        /// type of the condition. Known conditions are "Approved", "Denied", and "Failed".
+        /// type of the condition. Known conditions are &quot;Approved&quot;, &quot;Denied&quot;, and &quot;Failed&quot;.
         /// 
-        /// An "Approved" condition is added via the /approval subresource, indicating the
+        /// An &quot;Approved&quot; condition is added via the /approval subresource, indicating the
         /// request was approved and should be issued by the signer.
         /// 
-        /// A "Denied" condition is added via the /approval subresource, indicating the
+        /// A &quot;Denied&quot; condition is added via the /approval subresource, indicating the
         /// request was denied and should not be issued by the signer.
         /// 
-        /// A "Failed" condition is added via the /status subresource, indicating the signer
+        /// A &quot;Failed&quot; condition is added via the /status subresource, indicating the signer
         /// failed to issue the certificate.
         /// 
         /// Approved and Denied conditions are mutually exclusive. Approved, Denied, and
@@ -53,7 +53,7 @@ namespace k8s.Models
         /// <param name="lastTransitionTime">
         /// lastTransitionTime is the time the condition last transitioned from one status
         /// to another. If unset, when a new condition type is added or an existing
-        /// condition's status is changed, the server defaults this to the current time.
+        /// condition&apos;s status is changed, the server defaults this to the current time.
         /// </param>
         /// <param name="lastUpdateTime">
         /// lastUpdateTime is the time of the last update to this condition
@@ -83,7 +83,7 @@ namespace k8s.Models
         /// <summary>
         /// lastTransitionTime is the time the condition last transitioned from one status
         /// to another. If unset, when a new condition type is added or an existing
-        /// condition's status is changed, the server defaults this to the current time.
+        /// condition&apos;s status is changed, the server defaults this to the current time.
         /// </summary>
         [JsonProperty(PropertyName = "lastTransitionTime")]
         public System.DateTime? LastTransitionTime { get; set; }
@@ -108,21 +108,21 @@ namespace k8s.Models
 
         /// <summary>
         /// status of the condition, one of True, False, Unknown. Approved, Denied, and
-        /// Failed conditions may not be "False" or "Unknown".
+        /// Failed conditions may not be &quot;False&quot; or &quot;Unknown&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// type of the condition. Known conditions are "Approved", "Denied", and "Failed".
+        /// type of the condition. Known conditions are &quot;Approved&quot;, &quot;Denied&quot;, and &quot;Failed&quot;.
         /// 
-        /// An "Approved" condition is added via the /approval subresource, indicating the
+        /// An &quot;Approved&quot; condition is added via the /approval subresource, indicating the
         /// request was approved and should be issued by the signer.
         /// 
-        /// A "Denied" condition is added via the /approval subresource, indicating the
+        /// A &quot;Denied&quot; condition is added via the /approval subresource, indicating the
         /// request was denied and should not be issued by the signer.
         /// 
-        /// A "Failed" condition is added via the /status subresource, indicating the signer
+        /// A &quot;Failed&quot; condition is added via the /status subresource, indicating the signer
         /// failed to issue the certificate.
         /// 
         /// Approved and Denied conditions are mutually exclusive. Approved, Denied, and
@@ -141,14 +141,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Status == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Status");    
-            }
-            if (Type == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Type");    
-            }
         }
     }
 }

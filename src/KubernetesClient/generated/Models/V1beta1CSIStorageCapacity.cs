@@ -18,9 +18,9 @@ namespace k8s.Models
         /// segment.  This can be used when considering where to instantiate new
         /// PersistentVolumes.
         /// 
-        /// For example this can express things like: - StorageClass "standard" has "1234
-        /// GiB" available in "topology.kubernetes.io/zone=us-east1" - StorageClass
-        /// "localssd" has "10 GiB" available in "kubernetes.io/hostname=knode-abc123"
+        /// For example this can express things like: - StorageClass &quot;standard&quot; has &quot;1234
+        /// GiB&quot; available in &quot;topology.kubernetes.io/zone=us-east1&quot; - StorageClass
+        /// &quot;localssd&quot; has &quot;10 GiB&quot; available in &quot;kubernetes.io/hostname=knode-abc123&quot;
         /// 
         /// The following three cases all imply that no capacity is available for a certain
         /// combination: - no object exists with suitable topology and storage class name -
@@ -84,10 +84,10 @@ namespace k8s.Models
         /// the Kubernetes API is ResourceRequirements.Requests in a volume claim.
         /// </param>
         /// <param name="metadata">
-        /// Standard object's metadata. The name has no particular meaning. It must be be a
+        /// Standard object&apos;s metadata. The name has no particular meaning. It must be be a
         /// DNS subdomain (dots allowed, 253 characters). To ensure that there are no
         /// conflicts with other CSI drivers on the cluster, the recommendation is to use
-        /// csisc-<uuid>, a generated name, or a reverse-domain name which ends with the
+        /// csisc-&lt;uuid&gt;, a generated name, or a reverse-domain name which ends with the
         /// unique CSI driver name.
         /// 
         /// Objects are namespaced.
@@ -162,10 +162,10 @@ namespace k8s.Models
         public ResourceQuantity MaximumVolumeSize { get; set; }
 
         /// <summary>
-        /// Standard object's metadata. The name has no particular meaning. It must be be a
+        /// Standard object&apos;s metadata. The name has no particular meaning. It must be be a
         /// DNS subdomain (dots allowed, 253 characters). To ensure that there are no
         /// conflicts with other CSI drivers on the cluster, the recommendation is to use
-        /// csisc-<uuid>, a generated name, or a reverse-domain name which ends with the
+        /// csisc-&lt;uuid&gt;, a generated name, or a reverse-domain name which ends with the
         /// unique CSI driver name.
         /// 
         /// Objects are namespaced.
@@ -202,10 +202,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (StorageClassName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "StorageClassName");    
-            }
             Capacity?.Validate();
             MaximumVolumeSize?.Validate();
             Metadata?.Validate();

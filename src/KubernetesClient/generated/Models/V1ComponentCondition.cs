@@ -29,11 +29,11 @@ namespace k8s.Models
         /// Initializes a new instance of the V1ComponentCondition class.
         /// </summary>
         /// <param name="status">
-        /// Status of the condition for a component. Valid values for "Healthy": "True",
-        /// "False", or "Unknown".
+        /// Status of the condition for a component. Valid values for &quot;Healthy&quot;: &quot;True&quot;,
+        /// &quot;False&quot;, or &quot;Unknown&quot;.
         /// </param>
         /// <param name="type">
-        /// Type of condition for a component. Valid value: "Healthy"
+        /// Type of condition for a component. Valid value: &quot;Healthy&quot;
         /// </param>
         /// <param name="error">
         /// Condition error code for a component. For example, a health check error code.
@@ -70,14 +70,14 @@ namespace k8s.Models
         public string Message { get; set; }
 
         /// <summary>
-        /// Status of the condition for a component. Valid values for "Healthy": "True",
-        /// "False", or "Unknown".
+        /// Status of the condition for a component. Valid values for &quot;Healthy&quot;: &quot;True&quot;,
+        /// &quot;False&quot;, or &quot;Unknown&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// Type of condition for a component. Valid value: "Healthy"
+        /// Type of condition for a component. Valid value: &quot;Healthy&quot;
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
@@ -90,14 +90,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Status == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Status");    
-            }
-            if (Type == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Type");    
-            }
         }
     }
 }

@@ -29,9 +29,9 @@ namespace k8s.Models
         /// Initializes a new instance of the V2beta2MetricStatus class.
         /// </summary>
         /// <param name="type">
-        /// type is the type of metric source.  It will be one of "ContainerResource",
-        /// "External", "Object", "Pods" or "Resource", each corresponds to a matching field
-        /// in the object. Note: "ContainerResource" type is available on when the
+        /// type is the type of metric source.  It will be one of &quot;ContainerResource&quot;,
+        /// &quot;External&quot;, &quot;Object&quot;, &quot;Pods&quot; or &quot;Resource&quot;, each corresponds to a matching field
+        /// in the object. Note: &quot;ContainerResource&quot; type is available on when the
         /// feature-gate HPAContainerMetrics is enabled
         /// </param>
         /// <param name="containerResource">
@@ -39,7 +39,7 @@ namespace k8s.Models
         /// requests and limits) known to Kubernetes describing a single container in each
         /// pod in the current scale target (e.g. CPU or memory). Such metrics are built in
         /// to Kubernetes, and have special scaling options on top of those available to
-        /// normal per-pod metrics using the "pods" source.
+        /// normal per-pod metrics using the &quot;pods&quot; source.
         /// </param>
         /// <param name="external">
         /// external refers to a global metric that is not associated with any Kubernetes
@@ -61,7 +61,7 @@ namespace k8s.Models
         /// limits) known to Kubernetes describing each pod in the current scale target
         /// (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special
         /// scaling options on top of those available to normal per-pod metrics using the
-        /// "pods" source.
+        /// &quot;pods&quot; source.
         /// </param>
         public V2beta2MetricStatus(string type, V2beta2ContainerResourceMetricStatus containerResource = null, V2beta2ExternalMetricStatus external = null, V2beta2ObjectMetricStatus objectProperty = null, V2beta2PodsMetricStatus pods = null, V2beta2ResourceMetricStatus resource = null)
         {
@@ -84,7 +84,7 @@ namespace k8s.Models
         /// requests and limits) known to Kubernetes describing a single container in each
         /// pod in the current scale target (e.g. CPU or memory). Such metrics are built in
         /// to Kubernetes, and have special scaling options on top of those available to
-        /// normal per-pod metrics using the "pods" source.
+        /// normal per-pod metrics using the &quot;pods&quot; source.
         /// </summary>
         [JsonProperty(PropertyName = "containerResource")]
         public V2beta2ContainerResourceMetricStatus ContainerResource { get; set; }
@@ -118,15 +118,15 @@ namespace k8s.Models
         /// limits) known to Kubernetes describing each pod in the current scale target
         /// (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special
         /// scaling options on top of those available to normal per-pod metrics using the
-        /// "pods" source.
+        /// &quot;pods&quot; source.
         /// </summary>
         [JsonProperty(PropertyName = "resource")]
         public V2beta2ResourceMetricStatus Resource { get; set; }
 
         /// <summary>
-        /// type is the type of metric source.  It will be one of "ContainerResource",
-        /// "External", "Object", "Pods" or "Resource", each corresponds to a matching field
-        /// in the object. Note: "ContainerResource" type is available on when the
+        /// type is the type of metric source.  It will be one of &quot;ContainerResource&quot;,
+        /// &quot;External&quot;, &quot;Object&quot;, &quot;Pods&quot; or &quot;Resource&quot;, each corresponds to a matching field
+        /// in the object. Note: &quot;ContainerResource&quot; type is available on when the
         /// feature-gate HPAContainerMetrics is enabled
         /// </summary>
         [JsonProperty(PropertyName = "type")]
@@ -140,10 +140,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Type == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Type");    
-            }
             ContainerResource?.Validate();
             External?.Validate();
             ObjectProperty?.Validate();

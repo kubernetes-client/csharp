@@ -73,10 +73,6 @@ namespace k8s.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "PodAffinityTerm");    
             }
-            if (Weight == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Weight");    
-            }
             PodAffinityTerm?.Validate();
         }
     }

@@ -54,8 +54,8 @@ namespace k8s.Models
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="preconditions">
@@ -66,9 +66,9 @@ namespace k8s.Models
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         public V1DeleteOptions(string apiVersion = null, IList<string> dryRun = null, long? gracePeriodSeconds = null, string kind = null, bool? orphanDependents = null, V1Preconditions preconditions = null, string propagationPolicy = null)
@@ -126,8 +126,8 @@ namespace k8s.Models
 
         /// <summary>
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </summary>
         [JsonProperty(PropertyName = "orphanDependents")]
@@ -144,9 +144,9 @@ namespace k8s.Models
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </summary>
         [JsonProperty(PropertyName = "propagationPolicy")]

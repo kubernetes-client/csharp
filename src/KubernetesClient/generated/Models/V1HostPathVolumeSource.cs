@@ -35,7 +35,7 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/storage/volumes#hostpath
         /// </param>
         /// <param name="type">
-        /// Type for HostPath Volume Defaults to "" More info:
+        /// Type for HostPath Volume Defaults to &quot;&quot; More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#hostpath
         /// </param>
         public V1HostPathVolumeSource(string path, string type = null)
@@ -59,7 +59,7 @@ namespace k8s.Models
         public string Path { get; set; }
 
         /// <summary>
-        /// Type for HostPath Volume Defaults to "" More info:
+        /// Type for HostPath Volume Defaults to &quot;&quot; More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#hostpath
         /// </summary>
         [JsonProperty(PropertyName = "type")]
@@ -73,10 +73,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Path == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Path");    
-            }
         }
     }
 }

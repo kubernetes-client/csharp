@@ -41,16 +41,16 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </param>
         /// <param name="metadata">
-        /// `metadata` is the standard object's metadata. More info:
+        /// `metadata` is the standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </param>
         /// <param name="spec">
-        /// `spec` is the specification of the desired behavior of a "request-priority".
+        /// `spec` is the specification of the desired behavior of a &quot;request-priority&quot;.
         /// More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </param>
         /// <param name="status">
-        /// `status` is the current status of a "request-priority". More info:
+        /// `status` is the current status of a &quot;request-priority&quot;. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </param>
         public V1beta1PriorityLevelConfiguration(string apiVersion = null, string kind = null, V1ObjectMeta metadata = null, V1beta1PriorityLevelConfigurationSpec spec = null, V1beta1PriorityLevelConfigurationStatus status = null)
@@ -87,14 +87,14 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// `metadata` is the standard object's metadata. More info:
+        /// `metadata` is the standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
-        /// `spec` is the specification of the desired behavior of a "request-priority".
+        /// `spec` is the specification of the desired behavior of a &quot;request-priority&quot;.
         /// More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
@@ -102,7 +102,7 @@ namespace k8s.Models
         public V1beta1PriorityLevelConfigurationSpec Spec { get; set; }
 
         /// <summary>
-        /// `status` is the current status of a "request-priority". More info:
+        /// `status` is the current status of a &quot;request-priority&quot;. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [JsonProperty(PropertyName = "status")]

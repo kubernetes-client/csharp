@@ -15,7 +15,7 @@ namespace k8s.Models
     /// <summary>
     /// FlowSchema defines the schema of a group of flows. Note that a flow is made up
         /// of a set of inbound API requests with similar attributes and is identified by a
-        /// pair of strings: the name of the FlowSchema and a "flow distinguisher".
+        /// pair of strings: the name of the FlowSchema and a &quot;flow distinguisher&quot;.
     /// </summary>
     public partial class V1beta1FlowSchema
     {
@@ -43,7 +43,7 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </param>
         /// <param name="metadata">
-        /// `metadata` is the standard object's metadata. More info:
+        /// `metadata` is the standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </param>
         /// <param name="spec">
@@ -88,7 +88,7 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// `metadata` is the standard object's metadata. More info:
+        /// `metadata` is the standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]

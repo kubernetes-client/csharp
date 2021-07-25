@@ -44,7 +44,7 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </param>
         /// <param name="metadata">
-        /// `metadata` is the standard object's metadata. More info:
+        /// `metadata` is the standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </param>
         public V1beta1PriorityLevelConfigurationList(IList<V1beta1PriorityLevelConfiguration> items, string apiVersion = null, string kind = null, V1ListMeta metadata = null)
@@ -86,7 +86,7 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// `metadata` is the standard object's metadata. More info:
+        /// `metadata` is the standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
@@ -100,10 +100,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Items == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Items");    
-            }
             foreach(var obj in Items)
             {
                 obj.Validate();

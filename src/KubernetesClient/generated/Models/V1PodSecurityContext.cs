@@ -37,7 +37,7 @@ namespace k8s.Models
         /// owned by the pod:
         /// 
         /// 1. The owning GID will be the FSGroup 2. The setgid bit is set (new files
-        /// created in the volume will be owned by FSGroup) 3. The permission bits are OR'd
+        /// created in the volume will be owned by FSGroup) 3. The permission bits are OR&apos;d
         /// with rw-rw----
         /// 
         /// If unset, the Kubelet will not modify the ownership and permissions of any
@@ -48,7 +48,7 @@ namespace k8s.Models
         /// volume before being exposed inside Pod. This field will only apply to volume
         /// types which support fsGroup based ownership(and permissions). It will have no
         /// effect on ephemeral volume types such as: secret, configmaps and emptydir. Valid
-        /// values are "OnRootMismatch" and "Always". If not specified, "Always" is used.
+        /// values are &quot;OnRootMismatch&quot; and &quot;Always&quot;. If not specified, &quot;Always&quot; is used.
         /// </param>
         /// <param name="runAsGroup">
         /// The GID to run the entrypoint of the container process. Uses runtime default if
@@ -82,7 +82,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="supplementalGroups">
         /// A list of groups applied to the first process run in each container, in addition
-        /// to the container's primary GID.  If unspecified, no groups will be added to any
+        /// to the container&apos;s primary GID.  If unspecified, no groups will be added to any
         /// container.
         /// </param>
         /// <param name="sysctls">
@@ -91,7 +91,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="windowsOptions">
         /// The Windows specific settings applied to all containers. If unspecified, the
-        /// options within a container's SecurityContext will be used. If set in both
+        /// options within a container&apos;s SecurityContext will be used. If set in both
         /// SecurityContext and PodSecurityContext, the value specified in SecurityContext
         /// takes precedence.
         /// </param>
@@ -121,7 +121,7 @@ namespace k8s.Models
         /// owned by the pod:
         /// 
         /// 1. The owning GID will be the FSGroup 2. The setgid bit is set (new files
-        /// created in the volume will be owned by FSGroup) 3. The permission bits are OR'd
+        /// created in the volume will be owned by FSGroup) 3. The permission bits are OR&apos;d
         /// with rw-rw----
         /// 
         /// If unset, the Kubelet will not modify the ownership and permissions of any
@@ -135,7 +135,7 @@ namespace k8s.Models
         /// volume before being exposed inside Pod. This field will only apply to volume
         /// types which support fsGroup based ownership(and permissions). It will have no
         /// effect on ephemeral volume types such as: secret, configmaps and emptydir. Valid
-        /// values are "OnRootMismatch" and "Always". If not specified, "Always" is used.
+        /// values are &quot;OnRootMismatch&quot; and &quot;Always&quot;. If not specified, &quot;Always&quot; is used.
         /// </summary>
         [JsonProperty(PropertyName = "fsGroupChangePolicy")]
         public string FsGroupChangePolicy { get; set; }
@@ -187,7 +187,7 @@ namespace k8s.Models
 
         /// <summary>
         /// A list of groups applied to the first process run in each container, in addition
-        /// to the container's primary GID.  If unspecified, no groups will be added to any
+        /// to the container&apos;s primary GID.  If unspecified, no groups will be added to any
         /// container.
         /// </summary>
         [JsonProperty(PropertyName = "supplementalGroups")]
@@ -202,7 +202,7 @@ namespace k8s.Models
 
         /// <summary>
         /// The Windows specific settings applied to all containers. If unspecified, the
-        /// options within a container's SecurityContext will be used. If set in both
+        /// options within a container&apos;s SecurityContext will be used. If set in both
         /// SecurityContext and PodSecurityContext, the value specified in SecurityContext
         /// takes precedence.
         /// </summary>

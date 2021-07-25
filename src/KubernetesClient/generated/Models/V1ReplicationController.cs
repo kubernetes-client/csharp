@@ -42,7 +42,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="metadata">
         /// If the Labels of a ReplicationController are empty, they are defaulted to be the
-        /// same as the Pod(s) that the replication controller manages. Standard object's
+        /// same as the Pod(s) that the replication controller manages. Standard object&apos;s
         /// metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </param>
@@ -92,7 +92,7 @@ namespace k8s.Models
 
         /// <summary>
         /// If the Labels of a ReplicationController are empty, they are defaulted to be the
-        /// same as the Pod(s) that the replication controller manages. Standard object's
+        /// same as the Pod(s) that the replication controller manages. Standard object&apos;s
         /// metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>

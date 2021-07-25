@@ -29,8 +29,8 @@ namespace k8s.Models
         /// Initializes a new instance of the V1ContainerImage class.
         /// </summary>
         /// <param name="names">
-        /// Names by which this image is known. e.g. ["k8s.gcr.io/hyperkube:v1.0.7",
-        /// "dockerhub.io/google_containers/hyperkube:v1.0.7"]
+        /// Names by which this image is known. e.g. [&quot;k8s.gcr.io/hyperkube:v1.0.7&quot;,
+        /// &quot;dockerhub.io/google_containers/hyperkube:v1.0.7&quot;]
         /// </param>
         /// <param name="sizeBytes">
         /// The size of the image in bytes.
@@ -48,8 +48,8 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Names by which this image is known. e.g. ["k8s.gcr.io/hyperkube:v1.0.7",
-        /// "dockerhub.io/google_containers/hyperkube:v1.0.7"]
+        /// Names by which this image is known. e.g. [&quot;k8s.gcr.io/hyperkube:v1.0.7&quot;,
+        /// &quot;dockerhub.io/google_containers/hyperkube:v1.0.7&quot;]
         /// </summary>
         [JsonProperty(PropertyName = "names")]
         public IList<string> Names { get; set; }
@@ -68,10 +68,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Names == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Names");    
-            }
         }
     }
 }

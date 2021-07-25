@@ -30,10 +30,10 @@ namespace k8s.Models
         /// </summary>
         /// <param name="controller">
         /// Controller refers to the name of the controller that should handle this class.
-        /// This allows for different "flavors" that are controlled by the same controller.
+        /// This allows for different &quot;flavors&quot; that are controlled by the same controller.
         /// For example, you may have different Parameters for the same implementing
         /// controller. This should be specified as a domain-prefixed path no more than 250
-        /// characters in length, e.g. "acme.io/ingress-controller". This field is
+        /// characters in length, e.g. &quot;acme.io/ingress-controller&quot;. This field is
         /// immutable.
         /// </param>
         /// <param name="parameters">
@@ -55,10 +55,10 @@ namespace k8s.Models
 
         /// <summary>
         /// Controller refers to the name of the controller that should handle this class.
-        /// This allows for different "flavors" that are controlled by the same controller.
+        /// This allows for different &quot;flavors&quot; that are controlled by the same controller.
         /// For example, you may have different Parameters for the same implementing
         /// controller. This should be specified as a domain-prefixed path no more than 250
-        /// characters in length, e.g. "acme.io/ingress-controller". This field is
+        /// characters in length, e.g. &quot;acme.io/ingress-controller&quot;. This field is
         /// immutable.
         /// </summary>
         [JsonProperty(PropertyName = "controller")]

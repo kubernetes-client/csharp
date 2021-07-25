@@ -14,7 +14,7 @@ namespace k8s.Models
 
     /// <summary>
     /// ResourcePolicyRule is a predicate that matches some resource requests, testing
-        /// the request's verb and the target resource. A ResourcePolicyRule matches a
+        /// the request&apos;s verb and the target resource. A ResourcePolicyRule matches a
         /// resource request if and only if: (a) at least one member of verbs matches the
         /// request, (b) at least one member of apiGroups matches the request, (c) at least
         /// one member of resources matches the request, and (d) least one member of
@@ -34,17 +34,17 @@ namespace k8s.Models
         /// Initializes a new instance of the V1beta1ResourcePolicyRule class.
         /// </summary>
         /// <param name="apiGroups">
-        /// `apiGroups` is a list of matching API groups and may not be empty. "*" matches
+        /// `apiGroups` is a list of matching API groups and may not be empty. &quot;*&quot; matches
         /// all API groups and, if present, must be the only entry. Required.
         /// </param>
         /// <param name="resources">
         /// `resources` is a list of matching resources (i.e., lowercase and plural) with,
-        /// if desired, subresource.  For example, [ "services", "nodes/status" ].  This
-        /// list may not be empty. "*" matches all resources and, if present, must be the
+        /// if desired, subresource.  For example, [ &quot;services&quot;, &quot;nodes/status&quot; ].  This
+        /// list may not be empty. &quot;*&quot; matches all resources and, if present, must be the
         /// only entry. Required.
         /// </param>
         /// <param name="verbs">
-        /// `verbs` is a list of matching verbs and may not be empty. "*" matches all verbs
+        /// `verbs` is a list of matching verbs and may not be empty. &quot;*&quot; matches all verbs
         /// and, if present, must be the only entry. Required.
         /// </param>
         /// <param name="clusterScope">
@@ -56,7 +56,7 @@ namespace k8s.Models
         /// <param name="namespaces">
         /// `namespaces` is a list of target namespaces that restricts matches.  A request
         /// that specifies a target namespace matches only if either (a) this list contains
-        /// that target namespace or (b) this list contains "*".  Note that "*" matches any
+        /// that target namespace or (b) this list contains &quot;*&quot;.  Note that &quot;*&quot; matches any
         /// specified namespace but does not match a request that _does not specify_ a
         /// namespace (see the `clusterScope` field for that). This list may be empty, but
         /// only if `clusterScope` is true.
@@ -77,7 +77,7 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// `apiGroups` is a list of matching API groups and may not be empty. "*" matches
+        /// `apiGroups` is a list of matching API groups and may not be empty. &quot;*&quot; matches
         /// all API groups and, if present, must be the only entry. Required.
         /// </summary>
         [JsonProperty(PropertyName = "apiGroups")]
@@ -95,7 +95,7 @@ namespace k8s.Models
         /// <summary>
         /// `namespaces` is a list of target namespaces that restricts matches.  A request
         /// that specifies a target namespace matches only if either (a) this list contains
-        /// that target namespace or (b) this list contains "*".  Note that "*" matches any
+        /// that target namespace or (b) this list contains &quot;*&quot;.  Note that &quot;*&quot; matches any
         /// specified namespace but does not match a request that _does not specify_ a
         /// namespace (see the `clusterScope` field for that). This list may be empty, but
         /// only if `clusterScope` is true.
@@ -105,15 +105,15 @@ namespace k8s.Models
 
         /// <summary>
         /// `resources` is a list of matching resources (i.e., lowercase and plural) with,
-        /// if desired, subresource.  For example, [ "services", "nodes/status" ].  This
-        /// list may not be empty. "*" matches all resources and, if present, must be the
+        /// if desired, subresource.  For example, [ &quot;services&quot;, &quot;nodes/status&quot; ].  This
+        /// list may not be empty. &quot;*&quot; matches all resources and, if present, must be the
         /// only entry. Required.
         /// </summary>
         [JsonProperty(PropertyName = "resources")]
         public IList<string> Resources { get; set; }
 
         /// <summary>
-        /// `verbs` is a list of matching verbs and may not be empty. "*" matches all verbs
+        /// `verbs` is a list of matching verbs and may not be empty. &quot;*&quot; matches all verbs
         /// and, if present, must be the only entry. Required.
         /// </summary>
         [JsonProperty(PropertyName = "verbs")]
@@ -127,18 +127,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (ApiGroups == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ApiGroups");    
-            }
-            if (Resources == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Resources");    
-            }
-            if (Verbs == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Verbs");    
-            }
         }
     }
 }

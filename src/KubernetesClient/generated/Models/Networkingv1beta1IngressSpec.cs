@@ -29,8 +29,8 @@ namespace k8s.Models
         /// Initializes a new instance of the Networkingv1beta1IngressSpec class.
         /// </summary>
         /// <param name="backend">
-        /// A default backend capable of servicing requests that don't match any rule. At
-        /// least one of 'backend' or 'rules' must be specified. This field is optional to
+        /// A default backend capable of servicing requests that don&apos;t match any rule. At
+        /// least one of &apos;backend&apos; or &apos;rules&apos; must be specified. This field is optional to
         /// allow the loadbalancer controller or defaulting logic to specify a global
         /// default.
         /// </param>
@@ -70,8 +70,8 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// A default backend capable of servicing requests that don't match any rule. At
-        /// least one of 'backend' or 'rules' must be specified. This field is optional to
+        /// A default backend capable of servicing requests that don&apos;t match any rule. At
+        /// least one of &apos;backend&apos; or &apos;rules&apos; must be specified. This field is optional to
         /// allow the loadbalancer controller or defaulting logic to specify a global
         /// default.
         /// </summary>

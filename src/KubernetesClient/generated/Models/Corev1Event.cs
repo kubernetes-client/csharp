@@ -37,7 +37,7 @@ namespace k8s.Models
         /// The object that this event is about.
         /// </param>
         /// <param name="metadata">
-        /// Standard object's metadata. More info:
+        /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </param>
         /// <param name="action">
@@ -73,7 +73,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="reason">
         /// This should be a short, machine understandable string that gives the reason for
-        /// the transition into the object's current status.
+        /// the transition into the object&apos;s current status.
         /// </param>
         /// <param name="related">
         /// Optional secondary object for more complex actions.
@@ -85,7 +85,7 @@ namespace k8s.Models
         /// ID of the controller instance, e.g. `kubelet-xyzf`.
         /// </param>
         /// <param name="series">
-        /// Data about the Event series this event represents or nil if it's a singleton
+        /// Data about the Event series this event represents or nil if it&apos;s a singleton
         /// Event.
         /// </param>
         /// <param name="source">
@@ -184,7 +184,7 @@ namespace k8s.Models
         public string Message { get; set; }
 
         /// <summary>
-        /// Standard object's metadata. More info:
+        /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
@@ -192,7 +192,7 @@ namespace k8s.Models
 
         /// <summary>
         /// This should be a short, machine understandable string that gives the reason for
-        /// the transition into the object's current status.
+        /// the transition into the object&apos;s current status.
         /// </summary>
         [JsonProperty(PropertyName = "reason")]
         public string Reason { get; set; }
@@ -216,7 +216,7 @@ namespace k8s.Models
         public string ReportingInstance { get; set; }
 
         /// <summary>
-        /// Data about the Event series this event represents or nil if it's a singleton
+        /// Data about the Event series this event represents or nil if it&apos;s a singleton
         /// Event.
         /// </summary>
         [JsonProperty(PropertyName = "series")]

@@ -13,7 +13,7 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// Status is a return value for calls that don't return other objects.
+    /// Status is a return value for calls that don&apos;t return other objects.
     /// </summary>
     public partial class V1Status
     {
@@ -56,12 +56,12 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </param>
         /// <param name="reason">
-        /// A machine-readable description of why this operation is in the "Failure" status.
+        /// A machine-readable description of why this operation is in the &quot;Failure&quot; status.
         /// If this value is empty there is no information available. A Reason clarifies an
         /// HTTP status code but does not override it.
         /// </param>
         /// <param name="status">
-        /// Status of the operation. One of: "Success" or "Failure". More info:
+        /// Status of the operation. One of: &quot;Success&quot; or &quot;Failure&quot;. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </param>
         public V1Status(string apiVersion = null, int? code = null, V1StatusDetails details = null, string kind = null, string message = null, V1ListMeta metadata = null, string reason = null, string status = null)
@@ -128,7 +128,7 @@ namespace k8s.Models
         public V1ListMeta Metadata { get; set; }
 
         /// <summary>
-        /// A machine-readable description of why this operation is in the "Failure" status.
+        /// A machine-readable description of why this operation is in the &quot;Failure&quot; status.
         /// If this value is empty there is no information available. A Reason clarifies an
         /// HTTP status code but does not override it.
         /// </summary>
@@ -136,7 +136,7 @@ namespace k8s.Models
         public string Reason { get; set; }
 
         /// <summary>
-        /// Status of the operation. One of: "Success" or "Failure". More info:
+        /// Status of the operation. One of: &quot;Success&quot; or &quot;Failure&quot;. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [JsonProperty(PropertyName = "status")]

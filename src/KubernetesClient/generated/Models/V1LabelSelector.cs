@@ -37,7 +37,7 @@ namespace k8s.Models
         /// <param name="matchLabels">
         /// matchLabels is a map of {key,value} pairs. A single {key,value} in the
         /// matchLabels map is equivalent to an element of matchExpressions, whose key field
-        /// is "key", the operator is "In", and the values array contains only "value". The
+        /// is &quot;key&quot;, the operator is &quot;In&quot;, and the values array contains only &quot;value&quot;. The
         /// requirements are ANDed.
         /// </param>
         public V1LabelSelector(IList<V1LabelSelectorRequirement> matchExpressions = null, IDictionary<string, string> matchLabels = null)
@@ -62,7 +62,7 @@ namespace k8s.Models
         /// <summary>
         /// matchLabels is a map of {key,value} pairs. A single {key,value} in the
         /// matchLabels map is equivalent to an element of matchExpressions, whose key field
-        /// is "key", the operator is "In", and the values array contains only "value". The
+        /// is &quot;key&quot;, the operator is &quot;In&quot;, and the values array contains only &quot;value&quot;. The
         /// requirements are ANDed.
         /// </summary>
         [JsonProperty(PropertyName = "matchLabels")]

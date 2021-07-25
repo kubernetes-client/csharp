@@ -30,8 +30,8 @@ namespace k8s.Models
         /// </summary>
         /// <param name="group">
         /// group is the API group of the defined custom resource. The custom resources are
-        /// served under `/apis/<group>/...`. Must match the name of the
-        /// CustomResourceDefinition (in the form `<names.plural>.<group>`).
+        /// served under `/apis/&lt;group&gt;/...`. Must match the name of the
+        /// CustomResourceDefinition (in the form `&lt;names.plural&gt;.&lt;group&gt;`).
         /// </param>
         /// <param name="names">
         /// names specify the resource and kind names for the custom resource.
@@ -76,7 +76,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="version">
         /// version is the API version of the defined custom resource. The custom resources
-        /// are served under `/apis/<group>/<version>/...`. Must match the name of the first
+        /// are served under `/apis/&lt;group&gt;/&lt;version&gt;/...`. Must match the name of the first
         /// item in the `versions` list if `version` and `versions` are both specified.
         /// Optional if `versions` is specified. Deprecated: use `versions` instead.
         /// </param>
@@ -85,11 +85,11 @@ namespace k8s.Models
         /// Optional if `version` is specified. The name of the first item in the `versions`
         /// list must match the `version` field if `version` and `versions` are both
         /// specified. Version names are used to compute the order in which served versions
-        /// are listed in API discovery. If the version string is "kube-like", it will sort
-        /// above non "kube-like" version strings, which are ordered lexicographically.
-        /// "Kube-like" versions start with a "v", then are followed by a number (the major
-        /// version), then optionally the string "alpha" or "beta" and another number (the
-        /// minor version). These are sorted first by GA > beta > alpha (where GA is a
+        /// are listed in API discovery. If the version string is &quot;kube-like&quot;, it will sort
+        /// above non &quot;kube-like&quot; version strings, which are ordered lexicographically.
+        /// &quot;Kube-like&quot; versions start with a &quot;v&quot;, then are followed by a number (the major
+        /// version), then optionally the string &quot;alpha&quot; or &quot;beta&quot; and another number (the
+        /// minor version). These are sorted first by GA &gt; beta &gt; alpha (where GA is a
         /// version with no suffix such as beta or alpha), and then by comparing major
         /// version, then minor version. An example sorted list of versions: v10, v2, v1,
         /// v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.
@@ -134,8 +134,8 @@ namespace k8s.Models
 
         /// <summary>
         /// group is the API group of the defined custom resource. The custom resources are
-        /// served under `/apis/<group>/...`. Must match the name of the
-        /// CustomResourceDefinition (in the form `<names.plural>.<group>`).
+        /// served under `/apis/&lt;group&gt;/...`. Must match the name of the
+        /// CustomResourceDefinition (in the form `&lt;names.plural&gt;.&lt;group&gt;`).
         /// </summary>
         [JsonProperty(PropertyName = "group")]
         public string Group { get; set; }
@@ -186,7 +186,7 @@ namespace k8s.Models
 
         /// <summary>
         /// version is the API version of the defined custom resource. The custom resources
-        /// are served under `/apis/<group>/<version>/...`. Must match the name of the first
+        /// are served under `/apis/&lt;group&gt;/&lt;version&gt;/...`. Must match the name of the first
         /// item in the `versions` list if `version` and `versions` are both specified.
         /// Optional if `versions` is specified. Deprecated: use `versions` instead.
         /// </summary>
@@ -198,11 +198,11 @@ namespace k8s.Models
         /// Optional if `version` is specified. The name of the first item in the `versions`
         /// list must match the `version` field if `version` and `versions` are both
         /// specified. Version names are used to compute the order in which served versions
-        /// are listed in API discovery. If the version string is "kube-like", it will sort
-        /// above non "kube-like" version strings, which are ordered lexicographically.
-        /// "Kube-like" versions start with a "v", then are followed by a number (the major
-        /// version), then optionally the string "alpha" or "beta" and another number (the
-        /// minor version). These are sorted first by GA > beta > alpha (where GA is a
+        /// are listed in API discovery. If the version string is &quot;kube-like&quot;, it will sort
+        /// above non &quot;kube-like&quot; version strings, which are ordered lexicographically.
+        /// &quot;Kube-like&quot; versions start with a &quot;v&quot;, then are followed by a number (the major
+        /// version), then optionally the string &quot;alpha&quot; or &quot;beta&quot; and another number (the
+        /// minor version). These are sorted first by GA &gt; beta &gt; alpha (where GA is a
         /// version with no suffix such as beta or alpha), and then by comparing major
         /// version, then minor version. An example sorted list of versions: v10, v2, v1,
         /// v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.
@@ -218,17 +218,9 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Group == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Group");    
-            }
             if (Names == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Names");    
-            }
-            if (Scope == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Scope");    
             }
             foreach(var obj in AdditionalPrinterColumns)
             {

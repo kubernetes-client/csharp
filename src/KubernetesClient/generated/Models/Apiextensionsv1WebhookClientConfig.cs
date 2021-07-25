@@ -30,7 +30,7 @@ namespace k8s.Models
         /// Initializes a new instance of the Apiextensionsv1WebhookClientConfig class.
         /// </summary>
         /// <param name="caBundle">
-        /// caBundle is a PEM encoded CA bundle which will be used to validate the webhook's
+        /// caBundle is a PEM encoded CA bundle which will be used to validate the webhook&apos;s
         /// server certificate. If unspecified, system trust roots on the apiserver are
         /// used.
         /// </param>
@@ -55,14 +55,14 @@ namespace k8s.Models
         /// which might need to make calls to this webhook. Such installs are likely to be
         /// non-portable, i.e., not easy to turn up in a new cluster.
         /// 
-        /// The scheme must be "https"; the URL must begin with "https://".
+        /// The scheme must be &quot;https&quot;; the URL must begin with &quot;https://&quot;.
         /// 
         /// A path is optional, and if present may be any string permissible in a URL. You
         /// may use the path to pass an arbitrary string to the webhook, for example, a
         /// cluster identifier.
         /// 
-        /// Attempting to use a user or basic auth e.g. "user:password@" is not allowed.
-        /// Fragments ("#...") and query parameters ("?...") are not allowed, either.
+        /// Attempting to use a user or basic auth e.g. &quot;user:password@&quot; is not allowed.
+        /// Fragments (&quot;#...&quot;) and query parameters (&quot;?...&quot;) are not allowed, either.
         /// </param>
         public Apiextensionsv1WebhookClientConfig(byte[] caBundle = null, Apiextensionsv1ServiceReference service = null, string url = null)
         {
@@ -78,7 +78,7 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// caBundle is a PEM encoded CA bundle which will be used to validate the webhook's
+        /// caBundle is a PEM encoded CA bundle which will be used to validate the webhook&apos;s
         /// server certificate. If unspecified, system trust roots on the apiserver are
         /// used.
         /// </summary>
@@ -109,14 +109,14 @@ namespace k8s.Models
         /// which might need to make calls to this webhook. Such installs are likely to be
         /// non-portable, i.e., not easy to turn up in a new cluster.
         /// 
-        /// The scheme must be "https"; the URL must begin with "https://".
+        /// The scheme must be &quot;https&quot;; the URL must begin with &quot;https://&quot;.
         /// 
         /// A path is optional, and if present may be any string permissible in a URL. You
         /// may use the path to pass an arbitrary string to the webhook, for example, a
         /// cluster identifier.
         /// 
-        /// Attempting to use a user or basic auth e.g. "user:password@" is not allowed.
-        /// Fragments ("#...") and query parameters ("?...") are not allowed, either.
+        /// Attempting to use a user or basic auth e.g. &quot;user:password@&quot; is not allowed.
+        /// Fragments (&quot;#...&quot;) and query parameters (&quot;?...&quot;) are not allowed, either.
         /// </summary>
         [JsonProperty(PropertyName = "url")]
         public string Url { get; set; }

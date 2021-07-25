@@ -14,7 +14,7 @@ namespace k8s.Models
 
     /// <summary>
     /// APIService represents a server for a particular GroupVersion. Name must be
-        /// "version.group".
+        /// &quot;version.group&quot;.
     /// </summary>
     public partial class V1APIService
     {

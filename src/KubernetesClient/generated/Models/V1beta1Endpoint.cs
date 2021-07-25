@@ -13,7 +13,7 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// Endpoint represents a single logical "backend" implementing a service.
+    /// Endpoint represents a single logical &quot;backend&quot; implementing a service.
     /// </summary>
     public partial class V1beta1Endpoint
     {
@@ -156,10 +156,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Addresses == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Addresses");    
-            }
             Conditions?.Validate();
             Hints?.Validate();
             TargetRef?.Validate();

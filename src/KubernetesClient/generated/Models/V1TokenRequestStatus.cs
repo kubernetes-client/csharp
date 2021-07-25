@@ -66,14 +66,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (ExpirationTimestamp == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ExpirationTimestamp");    
-            }
-            if (Token == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Token");    
-            }
         }
     }
 }

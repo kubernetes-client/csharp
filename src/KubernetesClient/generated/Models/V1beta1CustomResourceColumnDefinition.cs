@@ -28,7 +28,7 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1beta1CustomResourceColumnDefinition class.
         /// </summary>
-        /// <param name="JSONPath">
+        /// <param name="jSONPath">
         /// JSONPath is a simple JSON path (i.e. with array notation) which is evaluated
         /// against each custom resource to produce the value for this column.
         /// </param>
@@ -44,7 +44,7 @@ namespace k8s.Models
         /// description is a human readable description of this column.
         /// </param>
         /// <param name="format">
-        /// format is an optional OpenAPI type definition for this column. The 'name' format
+        /// format is an optional OpenAPI type definition for this column. The &apos;name&apos; format
         /// is applied to the primary identifier column to assist in clients identifying
         /// column is the resource name. See
         /// https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types
@@ -55,9 +55,9 @@ namespace k8s.Models
         /// to others. Lower numbers are considered higher priority. Columns that may be
         /// omitted in limited space scenarios should be given a priority greater than 0.
         /// </param>
-        public V1beta1CustomResourceColumnDefinition(string JSONPath, string name, string type, string description = null, string format = null, int? priority = null)
+        public V1beta1CustomResourceColumnDefinition(string jSONPath, string name, string type, string description = null, string format = null, int? priority = null)
         {
-            JSONPath = JSONPath;
+            JSONPath = jSONPath;
             Description = description;
             Format = format;
             Name = name;
@@ -85,7 +85,7 @@ namespace k8s.Models
         public string Description { get; set; }
 
         /// <summary>
-        /// format is an optional OpenAPI type definition for this column. The 'name' format
+        /// format is an optional OpenAPI type definition for this column. The &apos;name&apos; format
         /// is applied to the primary identifier column to assist in clients identifying
         /// column is the resource name. See
         /// https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types
@@ -124,18 +124,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (JSONPath == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "JSONPath");    
-            }
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
-            if (Type == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Type");    
-            }
         }
     }
 }

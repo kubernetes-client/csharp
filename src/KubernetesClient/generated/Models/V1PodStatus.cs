@@ -70,7 +70,7 @@ namespace k8s.Models
         /// <param name="phase">
         /// The phase of a Pod is a simple, high-level summary of where the Pod is in its
         /// lifecycle. The conditions array, the reason and message fields, and the
-        /// individual container status arrays contain more detail about the pod's status.
+        /// individual container status arrays contain more detail about the pod&apos;s status.
         /// There are five possible phase values:
         /// 
         /// Pending: The pod has been accepted by the Kubernetes system, but one or more of
@@ -104,7 +104,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="reason">
         /// A brief CamelCase message indicating details about why the pod is in this state.
-        /// e.g. 'Evicted'
+        /// e.g. &apos;Evicted&apos;
         /// </param>
         /// <param name="startTime">
         /// RFC 3339 date and time at which the object was acknowledged by the Kubelet. This
@@ -194,7 +194,7 @@ namespace k8s.Models
         /// <summary>
         /// The phase of a Pod is a simple, high-level summary of where the Pod is in its
         /// lifecycle. The conditions array, the reason and message fields, and the
-        /// individual container status arrays contain more detail about the pod's status.
+        /// individual container status arrays contain more detail about the pod&apos;s status.
         /// There are five possible phase values:
         /// 
         /// Pending: The pod has been accepted by the Kubernetes system, but one or more of
@@ -240,7 +240,7 @@ namespace k8s.Models
 
         /// <summary>
         /// A brief CamelCase message indicating details about why the pod is in this state.
-        /// e.g. 'Evicted'
+        /// e.g. &apos;Evicted&apos;
         /// </summary>
         [JsonProperty(PropertyName = "reason")]
         public string Reason { get; set; }

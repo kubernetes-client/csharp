@@ -59,10 +59,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Drivers == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Drivers");    
-            }
             foreach(var obj in Drivers)
             {
                 obj.Validate();

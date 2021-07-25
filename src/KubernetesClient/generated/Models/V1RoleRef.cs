@@ -76,18 +76,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (ApiGroup == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ApiGroup");    
-            }
-            if (Kind == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Kind");    
-            }
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
         }
     }
 }

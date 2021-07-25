@@ -30,7 +30,7 @@ namespace k8s.Models
         /// </summary>
         /// <param name="fsType">
         /// Filesystem type to mount. Must be a filesystem type supported by the host
-        /// operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if
+        /// operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;. Implicitly inferred to be &quot;ext4&quot; if
         /// unspecified.
         /// </param>
         /// <param name="readOnlyProperty">
@@ -47,9 +47,9 @@ namespace k8s.Models
         /// </param>
         /// <param name="volumeNamespace">
         /// VolumeNamespace specifies the scope of the volume within StorageOS.  If no
-        /// namespace is specified then the Pod's namespace will be used.  This allows the
+        /// namespace is specified then the Pod&apos;s namespace will be used.  This allows the
         /// Kubernetes name scoping to be mirrored within StorageOS for tighter integration.
-        /// Set VolumeName to any name to override the default behaviour. Set to "default"
+        /// Set VolumeName to any name to override the default behaviour. Set to &quot;default&quot;
         /// if you are not using namespaces within StorageOS. Namespaces that do not
         /// pre-exist within StorageOS will be created.
         /// </param>
@@ -70,7 +70,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Filesystem type to mount. Must be a filesystem type supported by the host
-        /// operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if
+        /// operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;. Implicitly inferred to be &quot;ext4&quot; if
         /// unspecified.
         /// </summary>
         [JsonProperty(PropertyName = "fsType")]
@@ -99,9 +99,9 @@ namespace k8s.Models
 
         /// <summary>
         /// VolumeNamespace specifies the scope of the volume within StorageOS.  If no
-        /// namespace is specified then the Pod's namespace will be used.  This allows the
+        /// namespace is specified then the Pod&apos;s namespace will be used.  This allows the
         /// Kubernetes name scoping to be mirrored within StorageOS for tighter integration.
-        /// Set VolumeName to any name to override the default behaviour. Set to "default"
+        /// Set VolumeName to any name to override the default behaviour. Set to &quot;default&quot;
         /// if you are not using namespaces within StorageOS. Namespaces that do not
         /// pre-exist within StorageOS will be created.
         /// </summary>

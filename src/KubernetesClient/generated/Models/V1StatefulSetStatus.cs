@@ -37,7 +37,7 @@ namespace k8s.Models
         /// it needs to create the name for the newest ControllerRevision.
         /// </param>
         /// <param name="conditions">
-        /// Represents the latest available observations of a statefulset's current state.
+        /// Represents the latest available observations of a statefulset&apos;s current state.
         /// </param>
         /// <param name="currentReplicas">
         /// currentReplicas is the number of Pods created by the StatefulSet controller from
@@ -49,7 +49,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="observedGeneration">
         /// observedGeneration is the most recent generation observed for this StatefulSet.
-        /// It corresponds to the StatefulSet's generation, which is updated on mutation by
+        /// It corresponds to the StatefulSet&apos;s generation, which is updated on mutation by
         /// the API Server.
         /// </param>
         /// <param name="readyReplicas">
@@ -92,7 +92,7 @@ namespace k8s.Models
         public int? CollisionCount { get; set; }
 
         /// <summary>
-        /// Represents the latest available observations of a statefulset's current state.
+        /// Represents the latest available observations of a statefulset&apos;s current state.
         /// </summary>
         [JsonProperty(PropertyName = "conditions")]
         public IList<V1StatefulSetCondition> Conditions { get; set; }
@@ -113,7 +113,7 @@ namespace k8s.Models
 
         /// <summary>
         /// observedGeneration is the most recent generation observed for this StatefulSet.
-        /// It corresponds to the StatefulSet's generation, which is updated on mutation by
+        /// It corresponds to the StatefulSet&apos;s generation, which is updated on mutation by
         /// the API Server.
         /// </summary>
         [JsonProperty(PropertyName = "observedGeneration")]
@@ -154,10 +154,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Replicas == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Replicas");    
-            }
             foreach(var obj in Conditions)
             {
                 obj.Validate();

@@ -111,14 +111,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (SpecReplicasPath == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "SpecReplicasPath");    
-            }
-            if (StatusReplicasPath == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "StatusReplicasPath");    
-            }
         }
     }
 }

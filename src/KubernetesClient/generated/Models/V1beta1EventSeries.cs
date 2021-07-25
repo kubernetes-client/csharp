@@ -69,14 +69,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Count == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Count");    
-            }
-            if (LastObservedTime == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "LastObservedTime");    
-            }
         }
     }
 }

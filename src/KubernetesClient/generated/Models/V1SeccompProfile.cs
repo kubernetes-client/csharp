@@ -13,7 +13,7 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// SeccompProfile defines a pod/container's seccomp profile settings. Only one
+    /// SeccompProfile defines a pod/container&apos;s seccomp profile settings. Only one
         /// profile source may be set.
     /// </summary>
     public partial class V1SeccompProfile
@@ -39,8 +39,8 @@ namespace k8s.Models
         /// <param name="localhostProfile">
         /// localhostProfile indicates a profile defined in a file on the node should be
         /// used. The profile must be preconfigured on the node to work. Must be a
-        /// descending path, relative to the kubelet's configured seccomp profile location.
-        /// Must only be set if type is "Localhost".
+        /// descending path, relative to the kubelet&apos;s configured seccomp profile location.
+        /// Must only be set if type is &quot;Localhost&quot;.
         /// </param>
         public V1SeccompProfile(string type, string localhostProfile = null)
         {
@@ -57,8 +57,8 @@ namespace k8s.Models
         /// <summary>
         /// localhostProfile indicates a profile defined in a file on the node should be
         /// used. The profile must be preconfigured on the node to work. Must be a
-        /// descending path, relative to the kubelet's configured seccomp profile location.
-        /// Must only be set if type is "Localhost".
+        /// descending path, relative to the kubelet&apos;s configured seccomp profile location.
+        /// Must only be set if type is &quot;Localhost&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "localhostProfile")]
         public string LocalhostProfile { get; set; }
@@ -81,10 +81,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Type == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Type");    
-            }
         }
     }
 }

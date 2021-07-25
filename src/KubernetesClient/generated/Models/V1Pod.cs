@@ -42,7 +42,7 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </param>
         /// <param name="metadata">
-        /// Standard object's metadata. More info:
+        /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </param>
         /// <param name="spec">
@@ -88,7 +88,7 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// Standard object's metadata. More info:
+        /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]

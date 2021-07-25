@@ -17,7 +17,7 @@ namespace k8s.Models
         /// known to Kubernetes, as specified in requests and limits, describing a single
         /// container in each pod in the current scale target (e.g. CPU or memory).  Such
         /// metrics are built in to Kubernetes, and have special scaling options on top of
-        /// those available to normal per-pod metrics using the "pods" source.
+        /// those available to normal per-pod metrics using the &quot;pods&quot; source.
     /// </summary>
     public partial class V2beta2ContainerResourceMetricStatus
     {
@@ -80,17 +80,9 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Container == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Container");    
-            }
             if (Current == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Current");    
-            }
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
             }
             Current?.Validate();
         }

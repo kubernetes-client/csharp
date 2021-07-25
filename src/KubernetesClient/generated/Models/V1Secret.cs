@@ -37,7 +37,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="data">
         /// Data contains the secret data. Each key must consist of alphanumeric characters,
-        /// '-', '_' or '.'. The serialized form of the secret data is a base64 encoded
+        /// &apos;-&apos;, &apos;_&apos; or &apos;.&apos;. The serialized form of the secret data is a base64 encoded
         /// string, representing the arbitrary (possibly non-string) data value here.
         /// Described in https://tools.ietf.org/html/rfc4648#section-4
         /// </param>
@@ -53,7 +53,7 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </param>
         /// <param name="metadata">
-        /// Standard object's metadata. More info:
+        /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </param>
         /// <param name="stringData">
@@ -93,7 +93,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Data contains the secret data. Each key must consist of alphanumeric characters,
-        /// '-', '_' or '.'. The serialized form of the secret data is a base64 encoded
+        /// &apos;-&apos;, &apos;_&apos; or &apos;.&apos;. The serialized form of the secret data is a base64 encoded
         /// string, representing the arbitrary (possibly non-string) data value here.
         /// Described in https://tools.ietf.org/html/rfc4648#section-4
         /// </summary>
@@ -118,7 +118,7 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// Standard object's metadata. More info:
+        /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]

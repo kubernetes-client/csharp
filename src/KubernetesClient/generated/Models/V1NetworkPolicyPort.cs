@@ -33,7 +33,7 @@ namespace k8s.Models
         /// should be allowed by the policy. This field cannot be defined if the port field
         /// is not defined or if the port field is defined as a named (string) port. The
         /// endPort must be equal or greater than port. This feature is in Alpha state and
-        /// should be enabled using the Feature Gate "NetworkPolicyEndPort".
+        /// should be enabled using the Feature Gate &quot;NetworkPolicyEndPort&quot;.
         /// </param>
         /// <param name="port">
         /// The port on the given protocol. This can either be a numerical or named port on
@@ -62,7 +62,7 @@ namespace k8s.Models
         /// should be allowed by the policy. This field cannot be defined if the port field
         /// is not defined or if the port field is defined as a named (string) port. The
         /// endPort must be equal or greater than port. This feature is in Alpha state and
-        /// should be enabled using the Feature Gate "NetworkPolicyEndPort".
+        /// should be enabled using the Feature Gate &quot;NetworkPolicyEndPort&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "endPort")]
         public int? EndPort { get; set; }

@@ -39,7 +39,7 @@ namespace k8s.Models
         /// docker://1.5.0).
         /// </param>
         /// <param name="kernelVersion">
-        /// Kernel Version reported by the node from 'uname -r' (e.g. 3.16.0-0.bpo.4-amd64).
+        /// Kernel Version reported by the node from &apos;uname -r&apos; (e.g. 3.16.0-0.bpo.4-amd64).
         /// </param>
         /// <param name="kubeProxyVersion">
         /// KubeProxy Version reported by the node.
@@ -104,7 +104,7 @@ namespace k8s.Models
         public string ContainerRuntimeVersion { get; set; }
 
         /// <summary>
-        /// Kernel Version reported by the node from 'uname -r' (e.g. 3.16.0-0.bpo.4-amd64).
+        /// Kernel Version reported by the node from &apos;uname -r&apos; (e.g. 3.16.0-0.bpo.4-amd64).
         /// </summary>
         [JsonProperty(PropertyName = "kernelVersion")]
         public string KernelVersion { get; set; }
@@ -158,46 +158,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Architecture == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Architecture");    
-            }
-            if (BootID == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "BootID");    
-            }
-            if (ContainerRuntimeVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ContainerRuntimeVersion");    
-            }
-            if (KernelVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "KernelVersion");    
-            }
-            if (KubeProxyVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "KubeProxyVersion");    
-            }
-            if (KubeletVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "KubeletVersion");    
-            }
-            if (MachineID == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "MachineID");    
-            }
-            if (OperatingSystem == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "OperatingSystem");    
-            }
-            if (OsImage == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "OsImage");    
-            }
-            if (SystemUUID == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "SystemUUID");    
-            }
         }
     }
 }

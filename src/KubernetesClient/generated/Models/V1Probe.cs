@@ -62,7 +62,7 @@ namespace k8s.Models
         /// failure. The grace period is the duration in seconds after the processes running
         /// in the pod are sent a termination signal and the time when the processes are
         /// forcibly halted with a kill signal. Set this value longer than the expected
-        /// cleanup time for your process. If this value is nil, the pod's
+        /// cleanup time for your process. If this value is nil, the pod&apos;s
         /// terminationGracePeriodSeconds will be used. Otherwise, this value overrides the
         /// value provided by the pod spec. Value must be non-negative integer. The value
         /// zero indicates stop immediately via the kill signal (no opportunity to shut
@@ -147,7 +147,7 @@ namespace k8s.Models
         /// failure. The grace period is the duration in seconds after the processes running
         /// in the pod are sent a termination signal and the time when the processes are
         /// forcibly halted with a kill signal. Set this value longer than the expected
-        /// cleanup time for your process. If this value is nil, the pod's
+        /// cleanup time for your process. If this value is nil, the pod&apos;s
         /// terminationGracePeriodSeconds will be used. Otherwise, this value overrides the
         /// value provided by the pod spec. Value must be non-negative integer. The value
         /// zero indicates stop immediately via the kill signal (no opportunity to shut

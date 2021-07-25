@@ -36,7 +36,7 @@ namespace k8s.Models
         /// write operations, so that this field will be in sync with the reality.
         /// </param>
         /// <param name="conditions">
-        /// The latest available observations of the storageVersion's state.
+        /// The latest available observations of the storageVersion&apos;s state.
         /// </param>
         /// <param name="storageVersions">
         /// The reported versions per API server instance.
@@ -64,7 +64,7 @@ namespace k8s.Models
         public string CommonEncodingVersion { get; set; }
 
         /// <summary>
-        /// The latest available observations of the storageVersion's state.
+        /// The latest available observations of the storageVersion&apos;s state.
         /// </summary>
         [JsonProperty(PropertyName = "conditions")]
         public IList<V1alpha1StorageVersionCondition> Conditions { get; set; }

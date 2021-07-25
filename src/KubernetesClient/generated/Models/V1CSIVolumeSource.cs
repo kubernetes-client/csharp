@@ -34,7 +34,7 @@ namespace k8s.Models
         /// admin for the correct name as registered in the cluster.
         /// </param>
         /// <param name="fsType">
-        /// Filesystem type to mount. Ex. "ext4", "xfs", "ntfs". If not provided, the empty
+        /// Filesystem type to mount. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;. If not provided, the empty
         /// value is passed to the associated CSI driver which will determine the default
         /// filesystem to apply.
         /// </param>
@@ -51,7 +51,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="volumeAttributes">
         /// VolumeAttributes stores driver-specific properties that are passed to the CSI
-        /// driver. Consult your driver's documentation for supported values.
+        /// driver. Consult your driver&apos;s documentation for supported values.
         /// </param>
         public V1CSIVolumeSource(string driver, string fsType = null, V1LocalObjectReference nodePublishSecretRef = null, bool? readOnlyProperty = null, IDictionary<string, string> volumeAttributes = null)
         {
@@ -76,7 +76,7 @@ namespace k8s.Models
         public string Driver { get; set; }
 
         /// <summary>
-        /// Filesystem type to mount. Ex. "ext4", "xfs", "ntfs". If not provided, the empty
+        /// Filesystem type to mount. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;. If not provided, the empty
         /// value is passed to the associated CSI driver which will determine the default
         /// filesystem to apply.
         /// </summary>
@@ -102,7 +102,7 @@ namespace k8s.Models
 
         /// <summary>
         /// VolumeAttributes stores driver-specific properties that are passed to the CSI
-        /// driver. Consult your driver's documentation for supported values.
+        /// driver. Consult your driver&apos;s documentation for supported values.
         /// </summary>
         [JsonProperty(PropertyName = "volumeAttributes")]
         public IDictionary<string, string> VolumeAttributes { get; set; }
@@ -115,10 +115,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Driver == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Driver");    
-            }
             NodePublishSecretRef?.Validate();
         }
     }

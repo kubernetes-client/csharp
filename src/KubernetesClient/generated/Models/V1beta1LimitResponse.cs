@@ -29,14 +29,14 @@ namespace k8s.Models
         /// Initializes a new instance of the V1beta1LimitResponse class.
         /// </summary>
         /// <param name="type">
-        /// `type` is "Queue" or "Reject". "Queue" means that requests that can not be
+        /// `type` is &quot;Queue&quot; or &quot;Reject&quot;. &quot;Queue&quot; means that requests that can not be
         /// executed upon arrival are held in a queue until they can be executed or a
-        /// queuing limit is reached. "Reject" means that requests that can not be executed
+        /// queuing limit is reached. &quot;Reject&quot; means that requests that can not be executed
         /// upon arrival are rejected. Required.
         /// </param>
         /// <param name="queuing">
         /// `queuing` holds the configuration parameters for queuing. This field may be
-        /// non-empty only if `type` is `"Queue"`.
+        /// non-empty only if `type` is `&quot;Queue&quot;`.
         /// </param>
         public V1beta1LimitResponse(string type, V1beta1QueuingConfiguration queuing = null)
         {
@@ -52,15 +52,15 @@ namespace k8s.Models
 
         /// <summary>
         /// `queuing` holds the configuration parameters for queuing. This field may be
-        /// non-empty only if `type` is `"Queue"`.
+        /// non-empty only if `type` is `&quot;Queue&quot;`.
         /// </summary>
         [JsonProperty(PropertyName = "queuing")]
         public V1beta1QueuingConfiguration Queuing { get; set; }
 
         /// <summary>
-        /// `type` is "Queue" or "Reject". "Queue" means that requests that can not be
+        /// `type` is &quot;Queue&quot; or &quot;Reject&quot;. &quot;Queue&quot; means that requests that can not be
         /// executed upon arrival are held in a queue until they can be executed or a
-        /// queuing limit is reached. "Reject" means that requests that can not be executed
+        /// queuing limit is reached. &quot;Reject&quot; means that requests that can not be executed
         /// upon arrival are rejected. Required.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
@@ -74,10 +74,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Type == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Type");    
-            }
             Queuing?.Validate();
         }
     }

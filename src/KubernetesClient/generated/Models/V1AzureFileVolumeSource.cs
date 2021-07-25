@@ -79,14 +79,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (SecretName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "SecretName");    
-            }
-            if (ShareName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ShareName");    
-            }
         }
     }
 }

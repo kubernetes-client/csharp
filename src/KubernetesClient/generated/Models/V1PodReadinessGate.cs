@@ -29,7 +29,7 @@ namespace k8s.Models
         /// Initializes a new instance of the V1PodReadinessGate class.
         /// </summary>
         /// <param name="conditionType">
-        /// ConditionType refers to a condition in the pod's condition list with matching
+        /// ConditionType refers to a condition in the pod&apos;s condition list with matching
         /// type.
         /// </param>
         public V1PodReadinessGate(string conditionType)
@@ -44,7 +44,7 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// ConditionType refers to a condition in the pod's condition list with matching
+        /// ConditionType refers to a condition in the pod&apos;s condition list with matching
         /// type.
         /// </summary>
         [JsonProperty(PropertyName = "conditionType")]
@@ -58,10 +58,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (ConditionType == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ConditionType");    
-            }
         }
     }
 }

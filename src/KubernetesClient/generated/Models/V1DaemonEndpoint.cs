@@ -28,12 +28,12 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1DaemonEndpoint class.
         /// </summary>
-        /// <param name="Port">
+        /// <param name="port">
         /// Port number of the given endpoint.
         /// </param>
-        public V1DaemonEndpoint(int Port)
+        public V1DaemonEndpoint(int port)
         {
-            Port = Port;
+            Port = port;
             CustomInit();
         }
 
@@ -56,10 +56,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Port == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Port");    
-            }
         }
     }
 }

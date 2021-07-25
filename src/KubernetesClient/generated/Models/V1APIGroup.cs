@@ -135,14 +135,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
-            if (Versions == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Versions");    
-            }
             PreferredVersion?.Validate();
             foreach(var obj in ServerAddressByClientCIDRs)
             {

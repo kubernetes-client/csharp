@@ -34,8 +34,8 @@ namespace k8s.Models
         /// </param>
         /// <param name="fsType">
         /// Filesystem type to mount. It applies only when the Path is a block device. Must
-        /// be a filesystem type supported by the host operating system. Ex. "ext4", "xfs",
-        /// "ntfs". The default value is to auto-select a fileystem if unspecified.
+        /// be a filesystem type supported by the host operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;,
+        /// &quot;ntfs&quot;. The default value is to auto-select a fileystem if unspecified.
         /// </param>
         public V1LocalVolumeSource(string path, string fsType = null)
         {
@@ -51,8 +51,8 @@ namespace k8s.Models
 
         /// <summary>
         /// Filesystem type to mount. It applies only when the Path is a block device. Must
-        /// be a filesystem type supported by the host operating system. Ex. "ext4", "xfs",
-        /// "ntfs". The default value is to auto-select a fileystem if unspecified.
+        /// be a filesystem type supported by the host operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;,
+        /// &quot;ntfs&quot;. The default value is to auto-select a fileystem if unspecified.
         /// </summary>
         [JsonProperty(PropertyName = "fsType")]
         public string FsType { get; set; }
@@ -72,10 +72,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Path == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Path");    
-            }
         }
     }
 }

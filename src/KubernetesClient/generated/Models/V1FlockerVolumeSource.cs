@@ -31,7 +31,7 @@ namespace k8s.Models
         /// Initializes a new instance of the V1FlockerVolumeSource class.
         /// </summary>
         /// <param name="datasetName">
-        /// Name of the dataset stored as metadata -> name on the dataset for Flocker should
+        /// Name of the dataset stored as metadata -&gt; name on the dataset for Flocker should
         /// be considered as deprecated
         /// </param>
         /// <param name="datasetUUID">
@@ -50,7 +50,7 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Name of the dataset stored as metadata -> name on the dataset for Flocker should
+        /// Name of the dataset stored as metadata -&gt; name on the dataset for Flocker should
         /// be considered as deprecated
         /// </summary>
         [JsonProperty(PropertyName = "datasetName")]

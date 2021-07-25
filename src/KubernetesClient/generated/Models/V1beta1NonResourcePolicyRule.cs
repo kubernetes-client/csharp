@@ -34,16 +34,16 @@ namespace k8s.Models
         /// <param name="nonResourceURLs">
         /// `nonResourceURLs` is a set of url prefixes that a user should have access to and
         /// may not be empty. For example:
-        /// - "/healthz" is legal
-        /// - "/hea*" is illegal
-        /// - "/hea" is legal but matches nothing
-        /// - "/hea/*" also matches nothing
-        /// - "/healthz/*" matches all per-component health checks.
-        /// "*" matches all non-resource urls. if it is present, it must be the only entry.
+        /// - &quot;/healthz&quot; is legal
+        /// - &quot;/hea*&quot; is illegal
+        /// - &quot;/hea&quot; is legal but matches nothing
+        /// - &quot;/hea/*&quot; also matches nothing
+        /// - &quot;/healthz/*&quot; matches all per-component health checks.
+        /// &quot;*&quot; matches all non-resource urls. if it is present, it must be the only entry.
         /// Required.
         /// </param>
         /// <param name="verbs">
-        /// `verbs` is a list of matching verbs and may not be empty. "*" matches all verbs.
+        /// `verbs` is a list of matching verbs and may not be empty. &quot;*&quot; matches all verbs.
         /// If it is present, it must be the only entry. Required.
         /// </param>
         public V1beta1NonResourcePolicyRule(IList<string> nonResourceURLs, IList<string> verbs)
@@ -61,19 +61,19 @@ namespace k8s.Models
         /// <summary>
         /// `nonResourceURLs` is a set of url prefixes that a user should have access to and
         /// may not be empty. For example:
-        /// - "/healthz" is legal
-        /// - "/hea*" is illegal
-        /// - "/hea" is legal but matches nothing
-        /// - "/hea/*" also matches nothing
-        /// - "/healthz/*" matches all per-component health checks.
-        /// "*" matches all non-resource urls. if it is present, it must be the only entry.
+        /// - &quot;/healthz&quot; is legal
+        /// - &quot;/hea*&quot; is illegal
+        /// - &quot;/hea&quot; is legal but matches nothing
+        /// - &quot;/hea/*&quot; also matches nothing
+        /// - &quot;/healthz/*&quot; matches all per-component health checks.
+        /// &quot;*&quot; matches all non-resource urls. if it is present, it must be the only entry.
         /// Required.
         /// </summary>
         [JsonProperty(PropertyName = "nonResourceURLs")]
         public IList<string> NonResourceURLs { get; set; }
 
         /// <summary>
-        /// `verbs` is a list of matching verbs and may not be empty. "*" matches all verbs.
+        /// `verbs` is a list of matching verbs and may not be empty. &quot;*&quot; matches all verbs.
         /// If it is present, it must be the only entry. Required.
         /// </summary>
         [JsonProperty(PropertyName = "verbs")]
@@ -87,14 +87,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (NonResourceURLs == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "NonResourceURLs");    
-            }
-            if (Verbs == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Verbs");    
-            }
         }
     }
 }

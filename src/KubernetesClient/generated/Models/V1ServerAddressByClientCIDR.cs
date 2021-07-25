@@ -71,14 +71,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (ClientCIDR == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ClientCIDR");    
-            }
-            if (ServerAddress == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ServerAddress");    
-            }
         }
     }
 }

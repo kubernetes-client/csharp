@@ -102,14 +102,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (CurrentReplicas == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "CurrentReplicas");    
-            }
-            if (DesiredReplicas == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "DesiredReplicas");    
-            }
         }
     }
 }

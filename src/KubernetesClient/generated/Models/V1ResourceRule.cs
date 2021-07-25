@@ -14,7 +14,7 @@ namespace k8s.Models
 
     /// <summary>
     /// ResourceRule is the list of actions the subject is allowed to perform on
-        /// resources. The list ordering isn't significant, may contain duplicates, and
+        /// resources. The list ordering isn&apos;t significant, may contain duplicates, and
         /// possibly be incomplete.
     /// </summary>
     public partial class V1ResourceRule
@@ -32,21 +32,21 @@ namespace k8s.Models
         /// </summary>
         /// <param name="verbs">
         /// Verb is a list of kubernetes resource API verbs, like: get, list, watch, create,
-        /// update, delete, proxy.  "*" means all.
+        /// update, delete, proxy.  &quot;*&quot; means all.
         /// </param>
         /// <param name="apiGroups">
         /// APIGroups is the name of the APIGroup that contains the resources.  If multiple
         /// API groups are specified, any action requested against one of the enumerated
-        /// resources in any API group will be allowed.  "*" means all.
+        /// resources in any API group will be allowed.  &quot;*&quot; means all.
         /// </param>
         /// <param name="resourceNames">
         /// ResourceNames is an optional white list of names that the rule applies to.  An
-        /// empty set means that everything is allowed.  "*" means all.
+        /// empty set means that everything is allowed.  &quot;*&quot; means all.
         /// </param>
         /// <param name="resources">
-        /// Resources is a list of resources this rule applies to.  "*" means all in the
+        /// Resources is a list of resources this rule applies to.  &quot;*&quot; means all in the
         /// specified apiGroups.
-        /// "*/foo" represents the subresource 'foo' for all resources in the specified
+        /// &quot;*/foo&quot; represents the subresource &apos;foo&apos; for all resources in the specified
         /// apiGroups.
         /// </param>
         public V1ResourceRule(IList<string> verbs, IList<string> apiGroups = null, IList<string> resourceNames = null, IList<string> resources = null)
@@ -66,22 +66,22 @@ namespace k8s.Models
         /// <summary>
         /// APIGroups is the name of the APIGroup that contains the resources.  If multiple
         /// API groups are specified, any action requested against one of the enumerated
-        /// resources in any API group will be allowed.  "*" means all.
+        /// resources in any API group will be allowed.  &quot;*&quot; means all.
         /// </summary>
         [JsonProperty(PropertyName = "apiGroups")]
         public IList<string> ApiGroups { get; set; }
 
         /// <summary>
         /// ResourceNames is an optional white list of names that the rule applies to.  An
-        /// empty set means that everything is allowed.  "*" means all.
+        /// empty set means that everything is allowed.  &quot;*&quot; means all.
         /// </summary>
         [JsonProperty(PropertyName = "resourceNames")]
         public IList<string> ResourceNames { get; set; }
 
         /// <summary>
-        /// Resources is a list of resources this rule applies to.  "*" means all in the
+        /// Resources is a list of resources this rule applies to.  &quot;*&quot; means all in the
         /// specified apiGroups.
-        /// "*/foo" represents the subresource 'foo' for all resources in the specified
+        /// &quot;*/foo&quot; represents the subresource &apos;foo&apos; for all resources in the specified
         /// apiGroups.
         /// </summary>
         [JsonProperty(PropertyName = "resources")]
@@ -89,7 +89,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Verb is a list of kubernetes resource API verbs, like: get, list, watch, create,
-        /// update, delete, proxy.  "*" means all.
+        /// update, delete, proxy.  &quot;*&quot; means all.
         /// </summary>
         [JsonProperty(PropertyName = "verbs")]
         public IList<string> Verbs { get; set; }
@@ -102,10 +102,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Verbs == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Verbs");    
-            }
         }
     }
 }

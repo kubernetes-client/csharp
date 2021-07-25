@@ -29,7 +29,7 @@ namespace k8s.Models
         /// Initializes a new instance of the V1IngressSpec class.
         /// </summary>
         /// <param name="defaultBackend">
-        /// DefaultBackend is the backend that should handle requests that don't match any
+        /// DefaultBackend is the backend that should handle requests that don&apos;t match any
         /// rule. If Rules are not specified, DefaultBackend must be specified. If
         /// DefaultBackend is not set, the handling of requests that do not match any of the
         /// rules will be up to the Ingress controller.
@@ -70,7 +70,7 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// DefaultBackend is the backend that should handle requests that don't match any
+        /// DefaultBackend is the backend that should handle requests that don&apos;t match any
         /// rule. If Rules are not specified, DefaultBackend must be specified. If
         /// DefaultBackend is not set, the handling of requests that do not match any of the
         /// rules will be up to the Ingress controller.

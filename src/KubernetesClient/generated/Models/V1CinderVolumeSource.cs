@@ -36,8 +36,8 @@ namespace k8s.Models
         /// </param>
         /// <param name="fsType">
         /// Filesystem type to mount. Must be a filesystem type supported by the host
-        /// operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be
-        /// "ext4" if unspecified. More info:
+        /// operating system. Examples: &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;. Implicitly inferred to be
+        /// &quot;ext4&quot; if unspecified. More info:
         /// https://examples.k8s.io/mysql-cinder-pd/README.md
         /// </param>
         /// <param name="readOnlyProperty">
@@ -65,8 +65,8 @@ namespace k8s.Models
 
         /// <summary>
         /// Filesystem type to mount. Must be a filesystem type supported by the host
-        /// operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be
-        /// "ext4" if unspecified. More info:
+        /// operating system. Examples: &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;. Implicitly inferred to be
+        /// &quot;ext4&quot; if unspecified. More info:
         /// https://examples.k8s.io/mysql-cinder-pd/README.md
         /// </summary>
         [JsonProperty(PropertyName = "fsType")]
@@ -102,10 +102,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (VolumeID == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "VolumeID");    
-            }
             SecretRef?.Validate();
         }
     }

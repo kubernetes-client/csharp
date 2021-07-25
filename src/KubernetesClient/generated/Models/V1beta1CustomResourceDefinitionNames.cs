@@ -36,22 +36,22 @@ namespace k8s.Models
         /// </param>
         /// <param name="plural">
         /// plural is the plural name of the resource to serve. The custom resources are
-        /// served under `/apis/<group>/<version>/.../<plural>`. Must match the name of the
-        /// CustomResourceDefinition (in the form `<names.plural>.<group>`). Must be all
+        /// served under `/apis/&lt;group&gt;/&lt;version&gt;/.../&lt;plural&gt;`. Must match the name of the
+        /// CustomResourceDefinition (in the form `&lt;names.plural&gt;.&lt;group&gt;`). Must be all
         /// lowercase.
         /// </param>
         /// <param name="categories">
         /// categories is a list of grouped resources this custom resource belongs to (e.g.
-        /// 'all'). This is published in API discovery documents, and used by clients to
+        /// &apos;all&apos;). This is published in API discovery documents, and used by clients to
         /// support invocations like `kubectl get all`.
         /// </param>
         /// <param name="listKind">
         /// listKind is the serialized kind of the list for this resource. Defaults to
-        /// "`kind`List".
+        /// &quot;`kind`List&quot;.
         /// </param>
         /// <param name="shortNames">
         /// shortNames are short names for the resource, exposed in API discovery documents,
-        /// and used by clients to support invocations like `kubectl get <shortname>`. It
+        /// and used by clients to support invocations like `kubectl get &lt;shortname&gt;`. It
         /// must be all lowercase.
         /// </param>
         /// <param name="singular">
@@ -76,7 +76,7 @@ namespace k8s.Models
 
         /// <summary>
         /// categories is a list of grouped resources this custom resource belongs to (e.g.
-        /// 'all'). This is published in API discovery documents, and used by clients to
+        /// &apos;all&apos;). This is published in API discovery documents, and used by clients to
         /// support invocations like `kubectl get all`.
         /// </summary>
         [JsonProperty(PropertyName = "categories")]
@@ -92,15 +92,15 @@ namespace k8s.Models
 
         /// <summary>
         /// listKind is the serialized kind of the list for this resource. Defaults to
-        /// "`kind`List".
+        /// &quot;`kind`List&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "listKind")]
         public string ListKind { get; set; }
 
         /// <summary>
         /// plural is the plural name of the resource to serve. The custom resources are
-        /// served under `/apis/<group>/<version>/.../<plural>`. Must match the name of the
-        /// CustomResourceDefinition (in the form `<names.plural>.<group>`). Must be all
+        /// served under `/apis/&lt;group&gt;/&lt;version&gt;/.../&lt;plural&gt;`. Must match the name of the
+        /// CustomResourceDefinition (in the form `&lt;names.plural&gt;.&lt;group&gt;`). Must be all
         /// lowercase.
         /// </summary>
         [JsonProperty(PropertyName = "plural")]
@@ -108,7 +108,7 @@ namespace k8s.Models
 
         /// <summary>
         /// shortNames are short names for the resource, exposed in API discovery documents,
-        /// and used by clients to support invocations like `kubectl get <shortname>`. It
+        /// and used by clients to support invocations like `kubectl get &lt;shortname&gt;`. It
         /// must be all lowercase.
         /// </summary>
         [JsonProperty(PropertyName = "shortNames")]
@@ -129,14 +129,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Kind == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Kind");    
-            }
-            if (Plural == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Plural");    
-            }
         }
     }
 }

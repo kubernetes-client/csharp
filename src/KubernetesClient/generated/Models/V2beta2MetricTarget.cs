@@ -93,10 +93,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Type == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Type");    
-            }
             AverageValue?.Validate();
             Value?.Validate();
         }

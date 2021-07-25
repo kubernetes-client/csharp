@@ -13,7 +13,7 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// PersistentVolumeClaimVolumeSource references the user's PVC in the same
+    /// PersistentVolumeClaimVolumeSource references the user&apos;s PVC in the same
         /// namespace. This volume finds the bound PV and mounts that volume for the pod. A
         /// PersistentVolumeClaimVolumeSource is, essentially, a wrapper around another type
         /// of volume that is owned by someone else (the system).
@@ -73,10 +73,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (ClaimName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ClaimName");    
-            }
         }
     }
 }

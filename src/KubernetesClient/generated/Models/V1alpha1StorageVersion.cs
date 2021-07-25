@@ -49,7 +49,7 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </param>
         /// <param name="metadata">
-        /// The name is <group>.<resource>.
+        /// The name is &lt;group&gt;.&lt;resource&gt;.
         /// </param>
         public V1alpha1StorageVersion(object spec, V1alpha1StorageVersionStatus status, string apiVersion = null, string kind = null, V1ObjectMeta metadata = null)
         {
@@ -85,7 +85,7 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// The name is <group>.<resource>.
+        /// The name is &lt;group&gt;.&lt;resource&gt;.
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ObjectMeta Metadata { get; set; }
@@ -111,10 +111,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Spec == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Spec");    
-            }
             if (Status == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Status");    

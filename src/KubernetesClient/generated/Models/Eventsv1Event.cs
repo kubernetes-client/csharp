@@ -70,7 +70,7 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </param>
         /// <param name="metadata">
-        /// Standard object's metadata. More info:
+        /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </param>
         /// <param name="note">
@@ -83,7 +83,7 @@ namespace k8s.Models
         /// empty for new Events and it can have at most 128 characters.
         /// </param>
         /// <param name="regarding">
-        /// regarding contains the object this Event is about. In most cases it's an Object
+        /// regarding contains the object this Event is about. In most cases it&apos;s an Object
         /// reporting controller implements, e.g. ReplicaSetController implements
         /// ReplicaSets and this event is emitted because it acts on some changes in a
         /// ReplicaSet object.
@@ -102,7 +102,7 @@ namespace k8s.Models
         /// characters.
         /// </param>
         /// <param name="series">
-        /// series is data about the Event series this event represents or nil if it's a
+        /// series is data about the Event series this event represents or nil if it&apos;s a
         /// singleton Event.
         /// </param>
         /// <param name="type">
@@ -197,7 +197,7 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// Standard object's metadata. More info:
+        /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
@@ -219,7 +219,7 @@ namespace k8s.Models
         public string Reason { get; set; }
 
         /// <summary>
-        /// regarding contains the object this Event is about. In most cases it's an Object
+        /// regarding contains the object this Event is about. In most cases it&apos;s an Object
         /// reporting controller implements, e.g. ReplicaSetController implements
         /// ReplicaSets and this event is emitted because it acts on some changes in a
         /// ReplicaSet object.
@@ -250,7 +250,7 @@ namespace k8s.Models
         public string ReportingInstance { get; set; }
 
         /// <summary>
-        /// series is data about the Event series this event represents or nil if it's a
+        /// series is data about the Event series this event represents or nil if it&apos;s a
         /// singleton Event.
         /// </summary>
         [JsonProperty(PropertyName = "series")]
@@ -271,10 +271,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (EventTime == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "EventTime");    
-            }
             DeprecatedSource?.Validate();
             Metadata?.Validate();
             Regarding?.Validate();

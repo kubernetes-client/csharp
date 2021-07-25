@@ -30,8 +30,8 @@ namespace k8s.Models
         /// Initializes a new instance of the V1EmptyDirVolumeSource class.
         /// </summary>
         /// <param name="medium">
-        /// What type of storage medium should back this directory. The default is "" which
-        /// means to use the node's default medium. Must be an empty string (default) or
+        /// What type of storage medium should back this directory. The default is &quot;&quot; which
+        /// means to use the node&apos;s default medium. Must be an empty string (default) or
         /// Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
         /// </param>
         /// <param name="sizeLimit">
@@ -55,8 +55,8 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// What type of storage medium should back this directory. The default is "" which
-        /// means to use the node's default medium. Must be an empty string (default) or
+        /// What type of storage medium should back this directory. The default is &quot;&quot; which
+        /// means to use the node&apos;s default medium. Must be an empty string (default) or
         /// Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
         /// </summary>
         [JsonProperty(PropertyName = "medium")]

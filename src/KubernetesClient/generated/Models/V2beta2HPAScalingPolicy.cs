@@ -83,18 +83,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (PeriodSeconds == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "PeriodSeconds");    
-            }
-            if (Type == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Type");    
-            }
-            if (Value == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Value");    
-            }
         }
     }
 }

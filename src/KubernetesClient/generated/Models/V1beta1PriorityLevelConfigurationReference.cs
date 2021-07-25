@@ -14,7 +14,7 @@ namespace k8s.Models
 
     /// <summary>
     /// PriorityLevelConfigurationReference contains information that points to the
-        /// "request-priority" being used.
+        /// &quot;request-priority&quot; being used.
     /// </summary>
     public partial class V1beta1PriorityLevelConfigurationReference
     {
@@ -59,10 +59,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
         }
     }
 }

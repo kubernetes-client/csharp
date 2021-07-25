@@ -29,13 +29,13 @@ namespace k8s.Models
         /// Initializes a new instance of the V1beta1TokenRequest class.
         /// </summary>
         /// <param name="audience">
-        /// Audience is the intended audience of the token in "TokenRequestSpec". It will
+        /// Audience is the intended audience of the token in &quot;TokenRequestSpec&quot;. It will
         /// default to the audiences of kube apiserver.
         /// </param>
         /// <param name="expirationSeconds">
         /// ExpirationSeconds is the duration of validity of the token in
-        /// "TokenRequestSpec". It has the same default value of "ExpirationSeconds" in
-        /// "TokenRequestSpec"
+        /// &quot;TokenRequestSpec&quot;. It has the same default value of &quot;ExpirationSeconds&quot; in
+        /// &quot;TokenRequestSpec&quot;
         /// </param>
         public V1beta1TokenRequest(string audience, long? expirationSeconds = null)
         {
@@ -50,7 +50,7 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Audience is the intended audience of the token in "TokenRequestSpec". It will
+        /// Audience is the intended audience of the token in &quot;TokenRequestSpec&quot;. It will
         /// default to the audiences of kube apiserver.
         /// </summary>
         [JsonProperty(PropertyName = "audience")]
@@ -58,8 +58,8 @@ namespace k8s.Models
 
         /// <summary>
         /// ExpirationSeconds is the duration of validity of the token in
-        /// "TokenRequestSpec". It has the same default value of "ExpirationSeconds" in
-        /// "TokenRequestSpec"
+        /// &quot;TokenRequestSpec&quot;. It has the same default value of &quot;ExpirationSeconds&quot; in
+        /// &quot;TokenRequestSpec&quot;
         /// </summary>
         [JsonProperty(PropertyName = "expirationSeconds")]
         public long? ExpirationSeconds { get; set; }
@@ -72,10 +72,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Audience == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Audience");    
-            }
         }
     }
 }

@@ -38,7 +38,7 @@ namespace k8s.Models
         /// the newest ReplicaSet.
         /// </param>
         /// <param name="conditions">
-        /// Represents the latest available observations of a deployment's current state.
+        /// Represents the latest available observations of a deployment&apos;s current state.
         /// </param>
         /// <param name="observedGeneration">
         /// The generation observed by the deployment controller.
@@ -94,7 +94,7 @@ namespace k8s.Models
         public int? CollisionCount { get; set; }
 
         /// <summary>
-        /// Represents the latest available observations of a deployment's current state.
+        /// Represents the latest available observations of a deployment&apos;s current state.
         /// </summary>
         [JsonProperty(PropertyName = "conditions")]
         public IList<V1DeploymentCondition> Conditions { get; set; }

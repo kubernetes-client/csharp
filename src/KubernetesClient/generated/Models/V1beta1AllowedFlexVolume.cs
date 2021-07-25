@@ -56,10 +56,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Driver == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Driver");    
-            }
         }
     }
 }

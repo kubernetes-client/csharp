@@ -78,10 +78,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (ConversionReviewVersions == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ConversionReviewVersions");    
-            }
             ClientConfig?.Validate();
         }
     }

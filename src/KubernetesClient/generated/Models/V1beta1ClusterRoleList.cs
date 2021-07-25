@@ -46,7 +46,7 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </param>
         /// <param name="metadata">
-        /// Standard object's metadata.
+        /// Standard object&apos;s metadata.
         /// </param>
         public V1beta1ClusterRoleList(IList<V1beta1ClusterRole> items, string apiVersion = null, string kind = null, V1ListMeta metadata = null)
         {
@@ -87,7 +87,7 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// Standard object's metadata.
+        /// Standard object&apos;s metadata.
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ListMeta Metadata { get; set; }
@@ -100,10 +100,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Items == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Items");    
-            }
             foreach(var obj in Items)
             {
                 obj.Validate();

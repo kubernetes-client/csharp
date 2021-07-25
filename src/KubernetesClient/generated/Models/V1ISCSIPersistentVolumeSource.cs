@@ -48,17 +48,17 @@ namespace k8s.Models
         /// </param>
         /// <param name="fsType">
         /// Filesystem type of the volume that you want to mount. Tip: Ensure that the
-        /// filesystem type is supported by the host operating system. Examples: "ext4",
-        /// "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info:
+        /// filesystem type is supported by the host operating system. Examples: &quot;ext4&quot;,
+        /// &quot;xfs&quot;, &quot;ntfs&quot;. Implicitly inferred to be &quot;ext4&quot; if unspecified. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#iscsi
         /// </param>
         /// <param name="initiatorName">
         /// Custom iSCSI Initiator Name. If initiatorName is specified with iscsiInterface
-        /// simultaneously, new iSCSI interface <target portal>:<volume name> will be
+        /// simultaneously, new iSCSI interface &lt;target portal&gt;:&lt;volume name&gt; will be
         /// created for the connection.
         /// </param>
         /// <param name="iscsiInterface">
-        /// iSCSI Interface Name that uses an iSCSI transport. Defaults to 'default' (tcp).
+        /// iSCSI Interface Name that uses an iSCSI transport. Defaults to &apos;default&apos; (tcp).
         /// </param>
         /// <param name="portals">
         /// iSCSI Target Portal List. The Portal is either an IP or ip_addr:port if the port
@@ -106,8 +106,8 @@ namespace k8s.Models
 
         /// <summary>
         /// Filesystem type of the volume that you want to mount. Tip: Ensure that the
-        /// filesystem type is supported by the host operating system. Examples: "ext4",
-        /// "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info:
+        /// filesystem type is supported by the host operating system. Examples: &quot;ext4&quot;,
+        /// &quot;xfs&quot;, &quot;ntfs&quot;. Implicitly inferred to be &quot;ext4&quot; if unspecified. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#iscsi
         /// </summary>
         [JsonProperty(PropertyName = "fsType")]
@@ -115,7 +115,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Custom iSCSI Initiator Name. If initiatorName is specified with iscsiInterface
-        /// simultaneously, new iSCSI interface <target portal>:<volume name> will be
+        /// simultaneously, new iSCSI interface &lt;target portal&gt;:&lt;volume name&gt; will be
         /// created for the connection.
         /// </summary>
         [JsonProperty(PropertyName = "initiatorName")]
@@ -128,7 +128,7 @@ namespace k8s.Models
         public string Iqn { get; set; }
 
         /// <summary>
-        /// iSCSI Interface Name that uses an iSCSI transport. Defaults to 'default' (tcp).
+        /// iSCSI Interface Name that uses an iSCSI transport. Defaults to &apos;default&apos; (tcp).
         /// </summary>
         [JsonProperty(PropertyName = "iscsiInterface")]
         public string IscsiInterface { get; set; }
@@ -174,18 +174,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Iqn == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Iqn");    
-            }
-            if (Lun == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Lun");    
-            }
-            if (TargetPortal == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "TargetPortal");    
-            }
             SecretRef?.Validate();
         }
     }

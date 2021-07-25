@@ -31,11 +31,11 @@ namespace k8s.Models
         /// <param name="resource">
         /// Resource is an ObjectRef to another Kubernetes resource in the namespace of the
         /// Ingress object. If resource is specified, a service.Name and service.Port must
-        /// not be specified. This is a mutually exclusive setting with "Service".
+        /// not be specified. This is a mutually exclusive setting with &quot;Service&quot;.
         /// </param>
         /// <param name="service">
         /// Service references a Service as a Backend. This is a mutually exclusive setting
-        /// with "Resource".
+        /// with &quot;Resource&quot;.
         /// </param>
         public V1IngressBackend(V1TypedLocalObjectReference resource = null, V1IngressServiceBackend service = null)
         {
@@ -52,14 +52,14 @@ namespace k8s.Models
         /// <summary>
         /// Resource is an ObjectRef to another Kubernetes resource in the namespace of the
         /// Ingress object. If resource is specified, a service.Name and service.Port must
-        /// not be specified. This is a mutually exclusive setting with "Service".
+        /// not be specified. This is a mutually exclusive setting with &quot;Service&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "resource")]
         public V1TypedLocalObjectReference Resource { get; set; }
 
         /// <summary>
         /// Service references a Service as a Backend. This is a mutually exclusive setting
-        /// with "Resource".
+        /// with &quot;Resource&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "service")]
         public V1IngressServiceBackend Service { get; set; }

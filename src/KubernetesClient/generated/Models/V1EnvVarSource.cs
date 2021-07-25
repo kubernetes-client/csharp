@@ -33,7 +33,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="fieldRef">
         /// Selects a field of the pod: supports metadata.name, metadata.namespace,
-        /// `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`, spec.nodeName,
+        /// `metadata.labels[&apos;&lt;KEY&gt;&apos;]`, `metadata.annotations[&apos;&lt;KEY&gt;&apos;]`, spec.nodeName,
         /// spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
         /// </param>
         /// <param name="resourceFieldRef">
@@ -42,7 +42,7 @@ namespace k8s.Models
         /// requests.memory and requests.ephemeral-storage) are currently supported.
         /// </param>
         /// <param name="secretKeyRef">
-        /// Selects a key of a secret in the pod's namespace
+        /// Selects a key of a secret in the pod&apos;s namespace
         /// </param>
         public V1EnvVarSource(V1ConfigMapKeySelector configMapKeyRef = null, V1ObjectFieldSelector fieldRef = null, V1ResourceFieldSelector resourceFieldRef = null, V1SecretKeySelector secretKeyRef = null)
         {
@@ -66,7 +66,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Selects a field of the pod: supports metadata.name, metadata.namespace,
-        /// `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`, spec.nodeName,
+        /// `metadata.labels[&apos;&lt;KEY&gt;&apos;]`, `metadata.annotations[&apos;&lt;KEY&gt;&apos;]`, spec.nodeName,
         /// spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
         /// </summary>
         [JsonProperty(PropertyName = "fieldRef")]
@@ -81,7 +81,7 @@ namespace k8s.Models
         public V1ResourceFieldSelector ResourceFieldRef { get; set; }
 
         /// <summary>
-        /// Selects a key of a secret in the pod's namespace
+        /// Selects a key of a secret in the pod&apos;s namespace
         /// </summary>
         [JsonProperty(PropertyName = "secretKeyRef")]
         public V1SecretKeySelector SecretKeyRef { get; set; }

@@ -14,7 +14,7 @@ namespace k8s.Models
 
     /// <summary>
     /// PriorityLevelConfigurationStatus represents the current state of a
-        /// "request-priority".
+        /// &quot;request-priority&quot;.
     /// </summary>
     public partial class V1beta1PriorityLevelConfigurationStatus
     {
@@ -30,7 +30,7 @@ namespace k8s.Models
         /// Initializes a new instance of the V1beta1PriorityLevelConfigurationStatus class.
         /// </summary>
         /// <param name="conditions">
-        /// `conditions` is the current state of "request-priority".
+        /// `conditions` is the current state of &quot;request-priority&quot;.
         /// </param>
         public V1beta1PriorityLevelConfigurationStatus(IList<V1beta1PriorityLevelConfigurationCondition> conditions = null)
         {
@@ -44,7 +44,7 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// `conditions` is the current state of "request-priority".
+        /// `conditions` is the current state of &quot;request-priority&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "conditions")]
         public IList<V1beta1PriorityLevelConfigurationCondition> Conditions { get; set; }

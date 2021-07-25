@@ -30,31 +30,31 @@ namespace k8s.Models
         /// Initializes a new instance of the V1ResourceAttributes class.
         /// </summary>
         /// <param name="group">
-        /// Group is the API Group of the Resource.  "*" means all.
+        /// Group is the API Group of the Resource.  &quot;*&quot; means all.
         /// </param>
         /// <param name="name">
-        /// Name is the name of the resource being requested for a "get" or deleted for a
-        /// "delete". "" (empty) means all.
+        /// Name is the name of the resource being requested for a &quot;get&quot; or deleted for a
+        /// &quot;delete&quot;. &quot;&quot; (empty) means all.
         /// </param>
         /// <param name="namespaceProperty">
         /// Namespace is the namespace of the action being requested.  Currently, there is
-        /// no distinction between no namespace and all namespaces "" (empty) is defaulted
-        /// for LocalSubjectAccessReviews "" (empty) is empty for cluster-scoped resources
-        /// "" (empty) means "all" for namespace scoped resources from a SubjectAccessReview
+        /// no distinction between no namespace and all namespaces &quot;&quot; (empty) is defaulted
+        /// for LocalSubjectAccessReviews &quot;&quot; (empty) is empty for cluster-scoped resources
+        /// &quot;&quot; (empty) means &quot;all&quot; for namespace scoped resources from a SubjectAccessReview
         /// or SelfSubjectAccessReview
         /// </param>
         /// <param name="resource">
-        /// Resource is one of the existing resource types.  "*" means all.
+        /// Resource is one of the existing resource types.  &quot;*&quot; means all.
         /// </param>
         /// <param name="subresource">
-        /// Subresource is one of the existing resource types.  "" means none.
+        /// Subresource is one of the existing resource types.  &quot;&quot; means none.
         /// </param>
         /// <param name="verb">
         /// Verb is a kubernetes resource API verb, like: get, list, watch, create, update,
-        /// delete, proxy.  "*" means all.
+        /// delete, proxy.  &quot;*&quot; means all.
         /// </param>
         /// <param name="version">
-        /// Version is the API Version of the Resource.  "*" means all.
+        /// Version is the API Version of the Resource.  &quot;*&quot; means all.
         /// </param>
         public V1ResourceAttributes(string group = null, string name = null, string namespaceProperty = null, string resource = null, string subresource = null, string verb = null, string version = null)
         {
@@ -74,49 +74,49 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Group is the API Group of the Resource.  "*" means all.
+        /// Group is the API Group of the Resource.  &quot;*&quot; means all.
         /// </summary>
         [JsonProperty(PropertyName = "group")]
         public string Group { get; set; }
 
         /// <summary>
-        /// Name is the name of the resource being requested for a "get" or deleted for a
-        /// "delete". "" (empty) means all.
+        /// Name is the name of the resource being requested for a &quot;get&quot; or deleted for a
+        /// &quot;delete&quot;. &quot;&quot; (empty) means all.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Namespace is the namespace of the action being requested.  Currently, there is
-        /// no distinction between no namespace and all namespaces "" (empty) is defaulted
-        /// for LocalSubjectAccessReviews "" (empty) is empty for cluster-scoped resources
-        /// "" (empty) means "all" for namespace scoped resources from a SubjectAccessReview
+        /// no distinction between no namespace and all namespaces &quot;&quot; (empty) is defaulted
+        /// for LocalSubjectAccessReviews &quot;&quot; (empty) is empty for cluster-scoped resources
+        /// &quot;&quot; (empty) means &quot;all&quot; for namespace scoped resources from a SubjectAccessReview
         /// or SelfSubjectAccessReview
         /// </summary>
         [JsonProperty(PropertyName = "namespace")]
         public string NamespaceProperty { get; set; }
 
         /// <summary>
-        /// Resource is one of the existing resource types.  "*" means all.
+        /// Resource is one of the existing resource types.  &quot;*&quot; means all.
         /// </summary>
         [JsonProperty(PropertyName = "resource")]
         public string Resource { get; set; }
 
         /// <summary>
-        /// Subresource is one of the existing resource types.  "" means none.
+        /// Subresource is one of the existing resource types.  &quot;&quot; means none.
         /// </summary>
         [JsonProperty(PropertyName = "subresource")]
         public string Subresource { get; set; }
 
         /// <summary>
         /// Verb is a kubernetes resource API verb, like: get, list, watch, create, update,
-        /// delete, proxy.  "*" means all.
+        /// delete, proxy.  &quot;*&quot; means all.
         /// </summary>
         [JsonProperty(PropertyName = "verb")]
         public string Verb { get; set; }
 
         /// <summary>
-        /// Version is the API Version of the Resource.  "*" means all.
+        /// Version is the API Version of the Resource.  &quot;*&quot; means all.
         /// </summary>
         [JsonProperty(PropertyName = "version")]
         public string Version { get; set; }

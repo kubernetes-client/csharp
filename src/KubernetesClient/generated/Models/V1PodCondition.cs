@@ -46,7 +46,7 @@ namespace k8s.Models
         /// Human-readable message indicating details about last transition.
         /// </param>
         /// <param name="reason">
-        /// Unique, one-word, CamelCase reason for the condition's last transition.
+        /// Unique, one-word, CamelCase reason for the condition&apos;s last transition.
         /// </param>
         public V1PodCondition(string status, string type, System.DateTime? lastProbeTime = null, System.DateTime? lastTransitionTime = null, string message = null, string reason = null)
         {
@@ -83,7 +83,7 @@ namespace k8s.Models
         public string Message { get; set; }
 
         /// <summary>
-        /// Unique, one-word, CamelCase reason for the condition's last transition.
+        /// Unique, one-word, CamelCase reason for the condition&apos;s last transition.
         /// </summary>
         [JsonProperty(PropertyName = "reason")]
         public string Reason { get; set; }
@@ -110,14 +110,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Status == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Status");    
-            }
-            if (Type == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Type");    
-            }
         }
     }
 }

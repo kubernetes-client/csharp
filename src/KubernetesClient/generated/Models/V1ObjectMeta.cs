@@ -120,8 +120,8 @@ namespace k8s.Models
         /// <param name="managedFields">
         /// ManagedFields maps workflow-id and version to the set of fields that are managed
         /// by that workflow. This is mostly for internal housekeeping, and users typically
-        /// shouldn't need to set or understand this field. A workflow can be the user's
-        /// name, a controller's name, or the name of a specific apply path like "ci-cd".
+        /// shouldn&apos;t need to set or understand this field. A workflow can be the user&apos;s
+        /// name, a controller&apos;s name, or the name of a specific apply path like &quot;ci-cd&quot;.
         /// The set of fields is always in the version that the workflow used when modifying
         /// the object.
         /// </param>
@@ -134,7 +134,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="namespaceProperty">
         /// Namespace defines the space within which each name must be unique. An empty
-        /// namespace is equivalent to the "default" namespace, but "default" is the
+        /// namespace is equivalent to the &quot;default&quot; namespace, but &quot;default&quot; is the
         /// canonical representation. Not all objects are required to be scoped to a
         /// namespace - the value of this field for those objects will be empty.
         /// 
@@ -317,8 +317,8 @@ namespace k8s.Models
         /// <summary>
         /// ManagedFields maps workflow-id and version to the set of fields that are managed
         /// by that workflow. This is mostly for internal housekeeping, and users typically
-        /// shouldn't need to set or understand this field. A workflow can be the user's
-        /// name, a controller's name, or the name of a specific apply path like "ci-cd".
+        /// shouldn&apos;t need to set or understand this field. A workflow can be the user&apos;s
+        /// name, a controller&apos;s name, or the name of a specific apply path like &quot;ci-cd&quot;.
         /// The set of fields is always in the version that the workflow used when modifying
         /// the object.
         /// </summary>
@@ -337,7 +337,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Namespace defines the space within which each name must be unique. An empty
-        /// namespace is equivalent to the "default" namespace, but "default" is the
+        /// namespace is equivalent to the &quot;default&quot; namespace, but &quot;default&quot; is the
         /// canonical representation. Not all objects are required to be scoped to a
         /// namespace - the value of this field for those objects will be empty.
         /// 

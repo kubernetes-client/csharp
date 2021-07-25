@@ -36,7 +36,7 @@ namespace k8s.Models
         /// `message` is a human-readable message indicating details about last transition.
         /// </param>
         /// <param name="reason">
-        /// `reason` is a unique, one-word, CamelCase reason for the condition's last
+        /// `reason` is a unique, one-word, CamelCase reason for the condition&apos;s last
         /// transition.
         /// </param>
         /// <param name="status">
@@ -74,7 +74,7 @@ namespace k8s.Models
         public string Message { get; set; }
 
         /// <summary>
-        /// `reason` is a unique, one-word, CamelCase reason for the condition's last
+        /// `reason` is a unique, one-word, CamelCase reason for the condition&apos;s last
         /// transition.
         /// </summary>
         [JsonProperty(PropertyName = "reason")]

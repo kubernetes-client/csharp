@@ -34,7 +34,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="awsElasticBlockStore">
         /// AWSElasticBlockStore represents an AWS Disk resource that is attached to a
-        /// kubelet's host machine and then exposed to the pod. More info:
+        /// kubelet&apos;s host machine and then exposed to the pod. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
         /// </param>
         /// <param name="azureDisk">
@@ -46,11 +46,11 @@ namespace k8s.Models
         /// the pod.
         /// </param>
         /// <param name="capacity">
-        /// A description of the persistent volume's resources and capacity. More info:
+        /// A description of the persistent volume&apos;s resources and capacity. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity
         /// </param>
         /// <param name="cephfs">
-        /// CephFS represents a Ceph FS mount on the host that shares a pod's lifetime
+        /// CephFS represents a Ceph FS mount on the host that shares a pod&apos;s lifetime
         /// </param>
         /// <param name="cinder">
         /// Cinder represents a cinder volume attached and mounted on kubelets host machine.
@@ -66,7 +66,7 @@ namespace k8s.Models
         /// CSI represents storage that is handled by an external CSI driver (Beta feature).
         /// </param>
         /// <param name="fc">
-        /// FC represents a Fibre Channel resource that is attached to a kubelet's host
+        /// FC represents a Fibre Channel resource that is attached to a kubelet&apos;s host
         /// machine and then exposed to the pod.
         /// </param>
         /// <param name="flexVolume">
@@ -74,12 +74,12 @@ namespace k8s.Models
         /// using an exec based plugin.
         /// </param>
         /// <param name="flocker">
-        /// Flocker represents a Flocker volume attached to a kubelet's host machine and
+        /// Flocker represents a Flocker volume attached to a kubelet&apos;s host machine and
         /// exposed to the pod for its usage. This depends on the Flocker control service
         /// being running
         /// </param>
         /// <param name="gcePersistentDisk">
-        /// GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet's
+        /// GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet&apos;s
         /// host machine and then exposed to the pod. Provisioned by an admin. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
         /// </param>
@@ -95,14 +95,14 @@ namespace k8s.Models
         /// More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
         /// </param>
         /// <param name="iscsi">
-        /// ISCSI represents an ISCSI Disk resource that is attached to a kubelet's host
+        /// ISCSI represents an ISCSI Disk resource that is attached to a kubelet&apos;s host
         /// machine and then exposed to the pod. Provisioned by an admin.
         /// </param>
         /// <param name="local">
         /// Local represents directly-attached storage with node affinity
         /// </param>
         /// <param name="mountOptions">
-        /// A list of mount options, e.g. ["ro", "soft"]. Not validated - mount will simply
+        /// A list of mount options, e.g. [&quot;ro&quot;, &quot;soft&quot;]. Not validated - mount will simply
         /// fail if one is invalid. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options
         /// </param>
@@ -131,10 +131,10 @@ namespace k8s.Models
         /// host machine
         /// </param>
         /// <param name="quobyte">
-        /// Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+        /// Quobyte represents a Quobyte mount on the host that shares a pod&apos;s lifetime
         /// </param>
         /// <param name="rbd">
-        /// RBD represents a Rados Block Device mount on the host that shares a pod's
+        /// RBD represents a Rados Block Device mount on the host that shares a pod&apos;s
         /// lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
         /// </param>
         /// <param name="scaleIO">
@@ -146,7 +146,7 @@ namespace k8s.Models
         /// that this volume does not belong to any StorageClass.
         /// </param>
         /// <param name="storageos">
-        /// StorageOS represents a StorageOS volume that is attached to the kubelet's host
+        /// StorageOS represents a StorageOS volume that is attached to the kubelet&apos;s host
         /// machine and mounted into the pod More info:
         /// https://examples.k8s.io/volumes/storageos/README.md
         /// </param>
@@ -208,7 +208,7 @@ namespace k8s.Models
 
         /// <summary>
         /// AWSElasticBlockStore represents an AWS Disk resource that is attached to a
-        /// kubelet's host machine and then exposed to the pod. More info:
+        /// kubelet&apos;s host machine and then exposed to the pod. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
         /// </summary>
         [JsonProperty(PropertyName = "awsElasticBlockStore")]
@@ -229,14 +229,14 @@ namespace k8s.Models
         public V1AzureFilePersistentVolumeSource AzureFile { get; set; }
 
         /// <summary>
-        /// A description of the persistent volume's resources and capacity. More info:
+        /// A description of the persistent volume&apos;s resources and capacity. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity
         /// </summary>
         [JsonProperty(PropertyName = "capacity")]
         public IDictionary<string, ResourceQuantity> Capacity { get; set; }
 
         /// <summary>
-        /// CephFS represents a Ceph FS mount on the host that shares a pod's lifetime
+        /// CephFS represents a Ceph FS mount on the host that shares a pod&apos;s lifetime
         /// </summary>
         [JsonProperty(PropertyName = "cephfs")]
         public V1CephFSPersistentVolumeSource Cephfs { get; set; }
@@ -264,7 +264,7 @@ namespace k8s.Models
         public V1CSIPersistentVolumeSource Csi { get; set; }
 
         /// <summary>
-        /// FC represents a Fibre Channel resource that is attached to a kubelet's host
+        /// FC represents a Fibre Channel resource that is attached to a kubelet&apos;s host
         /// machine and then exposed to the pod.
         /// </summary>
         [JsonProperty(PropertyName = "fc")]
@@ -278,7 +278,7 @@ namespace k8s.Models
         public V1FlexPersistentVolumeSource FlexVolume { get; set; }
 
         /// <summary>
-        /// Flocker represents a Flocker volume attached to a kubelet's host machine and
+        /// Flocker represents a Flocker volume attached to a kubelet&apos;s host machine and
         /// exposed to the pod for its usage. This depends on the Flocker control service
         /// being running
         /// </summary>
@@ -286,7 +286,7 @@ namespace k8s.Models
         public V1FlockerVolumeSource Flocker { get; set; }
 
         /// <summary>
-        /// GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet's
+        /// GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet&apos;s
         /// host machine and then exposed to the pod. Provisioned by an admin. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
         /// </summary>
@@ -311,7 +311,7 @@ namespace k8s.Models
         public V1HostPathVolumeSource HostPath { get; set; }
 
         /// <summary>
-        /// ISCSI represents an ISCSI Disk resource that is attached to a kubelet's host
+        /// ISCSI represents an ISCSI Disk resource that is attached to a kubelet&apos;s host
         /// machine and then exposed to the pod. Provisioned by an admin.
         /// </summary>
         [JsonProperty(PropertyName = "iscsi")]
@@ -324,7 +324,7 @@ namespace k8s.Models
         public V1LocalVolumeSource Local { get; set; }
 
         /// <summary>
-        /// A list of mount options, e.g. ["ro", "soft"]. Not validated - mount will simply
+        /// A list of mount options, e.g. [&quot;ro&quot;, &quot;soft&quot;]. Not validated - mount will simply
         /// fail if one is invalid. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options
         /// </summary>
@@ -371,13 +371,13 @@ namespace k8s.Models
         public V1PortworxVolumeSource PortworxVolume { get; set; }
 
         /// <summary>
-        /// Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+        /// Quobyte represents a Quobyte mount on the host that shares a pod&apos;s lifetime
         /// </summary>
         [JsonProperty(PropertyName = "quobyte")]
         public V1QuobyteVolumeSource Quobyte { get; set; }
 
         /// <summary>
-        /// RBD represents a Rados Block Device mount on the host that shares a pod's
+        /// RBD represents a Rados Block Device mount on the host that shares a pod&apos;s
         /// lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
         /// </summary>
         [JsonProperty(PropertyName = "rbd")]
@@ -398,7 +398,7 @@ namespace k8s.Models
         public string StorageClassName { get; set; }
 
         /// <summary>
-        /// StorageOS represents a StorageOS volume that is attached to the kubelet's host
+        /// StorageOS represents a StorageOS volume that is attached to the kubelet&apos;s host
         /// machine and mounted into the pod More info:
         /// https://examples.k8s.io/volumes/storageos/README.md
         /// </summary>

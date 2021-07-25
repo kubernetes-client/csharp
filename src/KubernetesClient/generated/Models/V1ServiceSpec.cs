@@ -30,8 +30,8 @@ namespace k8s.Models
         /// </summary>
         /// <param name="allocateLoadBalancerNodePorts">
         /// allocateLoadBalancerNodePorts defines if NodePorts will be automatically
-        /// allocated for services with type LoadBalancer.  Default is "true". It may be set
-        /// to "false" if the cluster load-balancer does not rely on NodePorts.
+        /// allocated for services with type LoadBalancer.  Default is &quot;true&quot;. It may be set
+        /// to &quot;false&quot; if the cluster load-balancer does not rely on NodePorts.
         /// allocateLoadBalancerNodePorts may only be set for services with type
         /// LoadBalancer and will be cleared if the type is changed to any other type. This
         /// field is alpha-level and is only honored by servers that enable the
@@ -44,9 +44,9 @@ namespace k8s.Models
         /// service will fail. This field may not be changed through updates unless the type
         /// field is also being changed to ExternalName (which requires this field to be
         /// blank) or the type field is being changed from ExternalName (in which case this
-        /// field may optionally be specified, as describe above).  Valid values are "None",
-        /// empty string (""), or a valid IP address. Setting this to "None" makes a
-        /// "headless service" (no virtual IP), which is useful when direct endpoint
+        /// field may optionally be specified, as describe above).  Valid values are &quot;None&quot;,
+        /// empty string (&quot;&quot;), or a valid IP address. Setting this to &quot;None&quot; makes a
+        /// &quot;headless service&quot; (no virtual IP), which is useful when direct endpoint
         /// connections are preferred and proxying is not required.  Only applies to types
         /// ClusterIP, NodePort, and LoadBalancer. If this field is specified when creating
         /// a Service of type ExternalName, creation will fail. This field will be wiped
@@ -61,8 +61,8 @@ namespace k8s.Models
         /// through updates unless the type field is also being changed to ExternalName
         /// (which requires this field to be empty) or the type field is being changed from
         /// ExternalName (in which case this field may optionally be specified, as describe
-        /// above).  Valid values are "None", empty string (""), or a valid IP address. 
-        /// Setting this to "None" makes a "headless service" (no virtual IP), which is
+        /// above).  Valid values are &quot;None&quot;, empty string (&quot;&quot;), or a valid IP address. 
+        /// Setting this to &quot;None&quot; makes a &quot;headless service&quot; (no virtual IP), which is
         /// useful when direct endpoint connections are preferred and proxying is not
         /// required.  Only applies to types ClusterIP, NodePort, and LoadBalancer. If this
         /// field is specified when creating a Service of type ExternalName, creation will
@@ -71,7 +71,7 @@ namespace k8s.Models
         /// If this field is specified, clients must ensure that clusterIPs[0] and clusterIP
         /// have the same value.
         /// 
-        /// Unless the "IPv6DualStack" feature gate is enabled, this field is limited to one
+        /// Unless the &quot;IPv6DualStack&quot; feature gate is enabled, this field is limited to one
         /// value, which must be the same as the clusterIP field.  If the feature gate is
         /// enabled, this field may hold a maximum of two entries (dual-stack IPs, in either
         /// order).  These IPs must correspond to the values of the ipFamilies field. Both
@@ -89,13 +89,13 @@ namespace k8s.Models
         /// externalName is the external reference that discovery mechanisms will return as
         /// an alias for this service (e.g. a DNS CNAME record). No proxying will be
         /// involved.  Must be a lowercase RFC-1123 hostname
-        /// (https://tools.ietf.org/html/rfc1123) and requires `type` to be "ExternalName".
+        /// (https://tools.ietf.org/html/rfc1123) and requires `type` to be &quot;ExternalName&quot;.
         /// </param>
         /// <param name="externalTrafficPolicy">
         /// externalTrafficPolicy denotes if this Service desires to route external traffic
-        /// to node-local or cluster-wide endpoints. "Local" preserves the client source IP
+        /// to node-local or cluster-wide endpoints. &quot;Local&quot; preserves the client source IP
         /// and avoids a second hop for LoadBalancer and Nodeport type services, but risks
-        /// potentially imbalanced traffic spreading. "Cluster" obscures the client source
+        /// potentially imbalanced traffic spreading. &quot;Cluster&quot; obscures the client source
         /// IP and may cause a second hop to another node, but should have good overall
         /// load-spreading.
         /// </param>
@@ -111,22 +111,22 @@ namespace k8s.Models
         /// </param>
         /// <param name="internalTrafficPolicy">
         /// InternalTrafficPolicy specifies if the cluster internal traffic should be routed
-        /// to all endpoints or node-local endpoints only. "Cluster" routes internal traffic
-        /// to a Service to all endpoints. "Local" routes traffic to node-local endpoints
+        /// to all endpoints or node-local endpoints only. &quot;Cluster&quot; routes internal traffic
+        /// to a Service to all endpoints. &quot;Local&quot; routes traffic to node-local endpoints
         /// only, traffic is dropped if no node-local endpoints are ready. The default value
-        /// is "Cluster".
+        /// is &quot;Cluster&quot;.
         /// </param>
         /// <param name="ipFamilies">
         /// IPFamilies is a list of IP families (e.g. IPv4, IPv6) assigned to this service,
-        /// and is gated by the "IPv6DualStack" feature gate.  This field is usually
+        /// and is gated by the &quot;IPv6DualStack&quot; feature gate.  This field is usually
         /// assigned automatically based on cluster configuration and the ipFamilyPolicy
         /// field. If this field is specified manually, the requested family is available in
         /// the cluster, and ipFamilyPolicy allows it, it will be used; otherwise creation
         /// of the service will fail.  This field is conditionally mutable: it allows for
         /// adding or removing a secondary IP family, but it does not allow changing the
-        /// primary IP family of the Service.  Valid values are "IPv4" and "IPv6".  This
+        /// primary IP family of the Service.  Valid values are &quot;IPv4&quot; and &quot;IPv6&quot;.  This
         /// field only applies to Services of types ClusterIP, NodePort, and LoadBalancer,
-        /// and does apply to "headless" services.  This field will be wiped when updating a
+        /// and does apply to &quot;headless&quot; services.  This field will be wiped when updating a
         /// Service to type ExternalName.
         /// 
         /// This field may hold a maximum of two entries (dual-stack families, in either
@@ -136,11 +136,11 @@ namespace k8s.Models
         /// </param>
         /// <param name="ipFamilyPolicy">
         /// IPFamilyPolicy represents the dual-stack-ness requested or required by this
-        /// Service, and is gated by the "IPv6DualStack" feature gate.  If there is no value
+        /// Service, and is gated by the &quot;IPv6DualStack&quot; feature gate.  If there is no value
         /// provided, then this field will be set to SingleStack. Services can be
-        /// "SingleStack" (a single IP family), "PreferDualStack" (two IP families on
+        /// &quot;SingleStack&quot; (a single IP family), &quot;PreferDualStack&quot; (two IP families on
         /// dual-stack configured clusters or a single IP family on single-stack clusters),
-        /// or "RequireDualStack" (two IP families on dual-stack configured clusters,
+        /// or &quot;RequireDualStack&quot; (two IP families on dual-stack configured clusters,
         /// otherwise fail). The ipFamilies and clusterIPs fields depend on the value of
         /// this field.  This field will be wiped when updating a service to type
         /// ExternalName.
@@ -148,17 +148,17 @@ namespace k8s.Models
         /// <param name="loadBalancerClass">
         /// loadBalancerClass is the class of the load balancer implementation this Service
         /// belongs to. If specified, the value of this field must be a label-style
-        /// identifier, with an optional prefix, e.g. "internal-vip" or
-        /// "example.com/internal-vip". Unprefixed names are reserved for end-users. This
-        /// field can only be set when the Service type is 'LoadBalancer'. If not set, the
+        /// identifier, with an optional prefix, e.g. &quot;internal-vip&quot; or
+        /// &quot;example.com/internal-vip&quot;. Unprefixed names are reserved for end-users. This
+        /// field can only be set when the Service type is &apos;LoadBalancer&apos;. If not set, the
         /// default load balancer implementation is used, today this is typically done
         /// through the cloud provider integration, but should apply for any default
         /// implementation. If set, it is assumed that a load balancer implementation is
         /// watching for Services with a matching class. Any default load balancer
         /// implementation (e.g. cloud providers) should ignore Services that set this
         /// field. This field can only be set when creating or updating a Service to type
-        /// 'LoadBalancer'. Once set, it can not be changed. This field will be wiped when a
-        /// service is updated to a non 'LoadBalancer' type.
+        /// &apos;LoadBalancer&apos;. Once set, it can not be changed. This field will be wiped when a
+        /// service is updated to a non &apos;LoadBalancer&apos; type.
         /// </param>
         /// <param name="loadBalancerIP">
         /// Only applies to Service Type: LoadBalancer LoadBalancer will get created with
@@ -170,7 +170,7 @@ namespace k8s.Models
         /// <param name="loadBalancerSourceRanges">
         /// If specified and supported by the platform, this will restrict traffic through
         /// the cloud-provider load-balancer will be restricted to the specified client IPs.
-        /// This field will be ignored if the cloud-provider does not support the feature."
+        /// This field will be ignored if the cloud-provider does not support the feature.&quot;
         /// More info:
         /// https://kubernetes.io/docs/tasks/access-application-cluster/configure-cloud-provider-firewall/
         /// </param>
@@ -181,10 +181,10 @@ namespace k8s.Models
         /// <param name="publishNotReadyAddresses">
         /// publishNotReadyAddresses indicates that any agent which deals with endpoints for
         /// this Service should disregard any indications of ready/not-ready. The primary
-        /// use case for setting this field is for a StatefulSet's Headless Service to
+        /// use case for setting this field is for a StatefulSet&apos;s Headless Service to
         /// propagate SRV DNS records for its Pods for the purpose of peer discovery. The
         /// Kubernetes controllers that generate Endpoints and EndpointSlice resources for
-        /// Services interpret this to mean that all endpoints are considered "ready" even
+        /// Services interpret this to mean that all endpoints are considered &quot;ready&quot; even
         /// if the Pods themselves are not. Agents which consume only Kubernetes generated
         /// endpoints through the Endpoints or EndpointSlice resources can safely assume
         /// this behavior.
@@ -197,7 +197,7 @@ namespace k8s.Models
         /// info: https://kubernetes.io/docs/concepts/services-networking/service/
         /// </param>
         /// <param name="sessionAffinity">
-        /// Supports "ClientIP" and "None". Used to maintain session affinity. Enable client
+        /// Supports &quot;ClientIP&quot; and &quot;None&quot;. Used to maintain session affinity. Enable client
         /// IP based session affinity. Must be ClientIP or None. Defaults to None. More
         /// info:
         /// https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
@@ -213,7 +213,7 @@ namespace k8s.Models
         /// Endpoints are chosen based on the first topology key with available backends. If
         /// this field is specified and all entries have no backends that match the topology
         /// of the client, the service has no backends for that client and connections
-        /// should fail. The special value "*" may be used to mean "any topology". This
+        /// should fail. The special value &quot;*&quot; may be used to mean &quot;any topology&quot;. This
         /// catch-all value, if used, only makes sense as the last value in the list. If
         /// this is not specified or empty, no topology constraints will be applied. This
         /// field is alpha-level and is only honored by servers that enable the
@@ -222,16 +222,16 @@ namespace k8s.Models
         /// </param>
         /// <param name="type">
         /// type determines how the Service is exposed. Defaults to ClusterIP. Valid options
-        /// are ExternalName, ClusterIP, NodePort, and LoadBalancer. "ClusterIP" allocates a
+        /// are ExternalName, ClusterIP, NodePort, and LoadBalancer. &quot;ClusterIP&quot; allocates a
         /// cluster-internal IP address for load-balancing to endpoints. Endpoints are
         /// determined by the selector or if that is not specified, by manual construction
-        /// of an Endpoints object or EndpointSlice objects. If clusterIP is "None", no
+        /// of an Endpoints object or EndpointSlice objects. If clusterIP is &quot;None&quot;, no
         /// virtual IP is allocated and the endpoints are published as a set of endpoints
-        /// rather than a virtual IP. "NodePort" builds on ClusterIP and allocates a port on
-        /// every node which routes to the same endpoints as the clusterIP. "LoadBalancer"
+        /// rather than a virtual IP. &quot;NodePort&quot; builds on ClusterIP and allocates a port on
+        /// every node which routes to the same endpoints as the clusterIP. &quot;LoadBalancer&quot;
         /// builds on NodePort and creates an external load-balancer (if supported in the
         /// current cloud) which routes to the same endpoints as the clusterIP.
-        /// "ExternalName" aliases this service to the specified externalName. Several other
+        /// &quot;ExternalName&quot; aliases this service to the specified externalName. Several other
         /// fields do not apply to ExternalName services. More info:
         /// https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
         /// </param>
@@ -267,8 +267,8 @@ namespace k8s.Models
 
         /// <summary>
         /// allocateLoadBalancerNodePorts defines if NodePorts will be automatically
-        /// allocated for services with type LoadBalancer.  Default is "true". It may be set
-        /// to "false" if the cluster load-balancer does not rely on NodePorts.
+        /// allocated for services with type LoadBalancer.  Default is &quot;true&quot;. It may be set
+        /// to &quot;false&quot; if the cluster load-balancer does not rely on NodePorts.
         /// allocateLoadBalancerNodePorts may only be set for services with type
         /// LoadBalancer and will be cleared if the type is changed to any other type. This
         /// field is alpha-level and is only honored by servers that enable the
@@ -284,9 +284,9 @@ namespace k8s.Models
         /// service will fail. This field may not be changed through updates unless the type
         /// field is also being changed to ExternalName (which requires this field to be
         /// blank) or the type field is being changed from ExternalName (in which case this
-        /// field may optionally be specified, as describe above).  Valid values are "None",
-        /// empty string (""), or a valid IP address. Setting this to "None" makes a
-        /// "headless service" (no virtual IP), which is useful when direct endpoint
+        /// field may optionally be specified, as describe above).  Valid values are &quot;None&quot;,
+        /// empty string (&quot;&quot;), or a valid IP address. Setting this to &quot;None&quot; makes a
+        /// &quot;headless service&quot; (no virtual IP), which is useful when direct endpoint
         /// connections are preferred and proxying is not required.  Only applies to types
         /// ClusterIP, NodePort, and LoadBalancer. If this field is specified when creating
         /// a Service of type ExternalName, creation will fail. This field will be wiped
@@ -304,8 +304,8 @@ namespace k8s.Models
         /// through updates unless the type field is also being changed to ExternalName
         /// (which requires this field to be empty) or the type field is being changed from
         /// ExternalName (in which case this field may optionally be specified, as describe
-        /// above).  Valid values are "None", empty string (""), or a valid IP address. 
-        /// Setting this to "None" makes a "headless service" (no virtual IP), which is
+        /// above).  Valid values are &quot;None&quot;, empty string (&quot;&quot;), or a valid IP address. 
+        /// Setting this to &quot;None&quot; makes a &quot;headless service&quot; (no virtual IP), which is
         /// useful when direct endpoint connections are preferred and proxying is not
         /// required.  Only applies to types ClusterIP, NodePort, and LoadBalancer. If this
         /// field is specified when creating a Service of type ExternalName, creation will
@@ -314,7 +314,7 @@ namespace k8s.Models
         /// If this field is specified, clients must ensure that clusterIPs[0] and clusterIP
         /// have the same value.
         /// 
-        /// Unless the "IPv6DualStack" feature gate is enabled, this field is limited to one
+        /// Unless the &quot;IPv6DualStack&quot; feature gate is enabled, this field is limited to one
         /// value, which must be the same as the clusterIP field.  If the feature gate is
         /// enabled, this field may hold a maximum of two entries (dual-stack IPs, in either
         /// order).  These IPs must correspond to the values of the ipFamilies field. Both
@@ -338,16 +338,16 @@ namespace k8s.Models
         /// externalName is the external reference that discovery mechanisms will return as
         /// an alias for this service (e.g. a DNS CNAME record). No proxying will be
         /// involved.  Must be a lowercase RFC-1123 hostname
-        /// (https://tools.ietf.org/html/rfc1123) and requires `type` to be "ExternalName".
+        /// (https://tools.ietf.org/html/rfc1123) and requires `type` to be &quot;ExternalName&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "externalName")]
         public string ExternalName { get; set; }
 
         /// <summary>
         /// externalTrafficPolicy denotes if this Service desires to route external traffic
-        /// to node-local or cluster-wide endpoints. "Local" preserves the client source IP
+        /// to node-local or cluster-wide endpoints. &quot;Local&quot; preserves the client source IP
         /// and avoids a second hop for LoadBalancer and Nodeport type services, but risks
-        /// potentially imbalanced traffic spreading. "Cluster" obscures the client source
+        /// potentially imbalanced traffic spreading. &quot;Cluster&quot; obscures the client source
         /// IP and may cause a second hop to another node, but should have good overall
         /// load-spreading.
         /// </summary>
@@ -369,25 +369,25 @@ namespace k8s.Models
 
         /// <summary>
         /// InternalTrafficPolicy specifies if the cluster internal traffic should be routed
-        /// to all endpoints or node-local endpoints only. "Cluster" routes internal traffic
-        /// to a Service to all endpoints. "Local" routes traffic to node-local endpoints
+        /// to all endpoints or node-local endpoints only. &quot;Cluster&quot; routes internal traffic
+        /// to a Service to all endpoints. &quot;Local&quot; routes traffic to node-local endpoints
         /// only, traffic is dropped if no node-local endpoints are ready. The default value
-        /// is "Cluster".
+        /// is &quot;Cluster&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "internalTrafficPolicy")]
         public string InternalTrafficPolicy { get; set; }
 
         /// <summary>
         /// IPFamilies is a list of IP families (e.g. IPv4, IPv6) assigned to this service,
-        /// and is gated by the "IPv6DualStack" feature gate.  This field is usually
+        /// and is gated by the &quot;IPv6DualStack&quot; feature gate.  This field is usually
         /// assigned automatically based on cluster configuration and the ipFamilyPolicy
         /// field. If this field is specified manually, the requested family is available in
         /// the cluster, and ipFamilyPolicy allows it, it will be used; otherwise creation
         /// of the service will fail.  This field is conditionally mutable: it allows for
         /// adding or removing a secondary IP family, but it does not allow changing the
-        /// primary IP family of the Service.  Valid values are "IPv4" and "IPv6".  This
+        /// primary IP family of the Service.  Valid values are &quot;IPv4&quot; and &quot;IPv6&quot;.  This
         /// field only applies to Services of types ClusterIP, NodePort, and LoadBalancer,
-        /// and does apply to "headless" services.  This field will be wiped when updating a
+        /// and does apply to &quot;headless&quot; services.  This field will be wiped when updating a
         /// Service to type ExternalName.
         /// 
         /// This field may hold a maximum of two entries (dual-stack families, in either
@@ -400,11 +400,11 @@ namespace k8s.Models
 
         /// <summary>
         /// IPFamilyPolicy represents the dual-stack-ness requested or required by this
-        /// Service, and is gated by the "IPv6DualStack" feature gate.  If there is no value
+        /// Service, and is gated by the &quot;IPv6DualStack&quot; feature gate.  If there is no value
         /// provided, then this field will be set to SingleStack. Services can be
-        /// "SingleStack" (a single IP family), "PreferDualStack" (two IP families on
+        /// &quot;SingleStack&quot; (a single IP family), &quot;PreferDualStack&quot; (two IP families on
         /// dual-stack configured clusters or a single IP family on single-stack clusters),
-        /// or "RequireDualStack" (two IP families on dual-stack configured clusters,
+        /// or &quot;RequireDualStack&quot; (two IP families on dual-stack configured clusters,
         /// otherwise fail). The ipFamilies and clusterIPs fields depend on the value of
         /// this field.  This field will be wiped when updating a service to type
         /// ExternalName.
@@ -415,17 +415,17 @@ namespace k8s.Models
         /// <summary>
         /// loadBalancerClass is the class of the load balancer implementation this Service
         /// belongs to. If specified, the value of this field must be a label-style
-        /// identifier, with an optional prefix, e.g. "internal-vip" or
-        /// "example.com/internal-vip". Unprefixed names are reserved for end-users. This
-        /// field can only be set when the Service type is 'LoadBalancer'. If not set, the
+        /// identifier, with an optional prefix, e.g. &quot;internal-vip&quot; or
+        /// &quot;example.com/internal-vip&quot;. Unprefixed names are reserved for end-users. This
+        /// field can only be set when the Service type is &apos;LoadBalancer&apos;. If not set, the
         /// default load balancer implementation is used, today this is typically done
         /// through the cloud provider integration, but should apply for any default
         /// implementation. If set, it is assumed that a load balancer implementation is
         /// watching for Services with a matching class. Any default load balancer
         /// implementation (e.g. cloud providers) should ignore Services that set this
         /// field. This field can only be set when creating or updating a Service to type
-        /// 'LoadBalancer'. Once set, it can not be changed. This field will be wiped when a
-        /// service is updated to a non 'LoadBalancer' type.
+        /// &apos;LoadBalancer&apos;. Once set, it can not be changed. This field will be wiped when a
+        /// service is updated to a non &apos;LoadBalancer&apos; type.
         /// </summary>
         [JsonProperty(PropertyName = "loadBalancerClass")]
         public string LoadBalancerClass { get; set; }
@@ -443,7 +443,7 @@ namespace k8s.Models
         /// <summary>
         /// If specified and supported by the platform, this will restrict traffic through
         /// the cloud-provider load-balancer will be restricted to the specified client IPs.
-        /// This field will be ignored if the cloud-provider does not support the feature."
+        /// This field will be ignored if the cloud-provider does not support the feature.&quot;
         /// More info:
         /// https://kubernetes.io/docs/tasks/access-application-cluster/configure-cloud-provider-firewall/
         /// </summary>
@@ -460,10 +460,10 @@ namespace k8s.Models
         /// <summary>
         /// publishNotReadyAddresses indicates that any agent which deals with endpoints for
         /// this Service should disregard any indications of ready/not-ready. The primary
-        /// use case for setting this field is for a StatefulSet's Headless Service to
+        /// use case for setting this field is for a StatefulSet&apos;s Headless Service to
         /// propagate SRV DNS records for its Pods for the purpose of peer discovery. The
         /// Kubernetes controllers that generate Endpoints and EndpointSlice resources for
-        /// Services interpret this to mean that all endpoints are considered "ready" even
+        /// Services interpret this to mean that all endpoints are considered &quot;ready&quot; even
         /// if the Pods themselves are not. Agents which consume only Kubernetes generated
         /// endpoints through the Endpoints or EndpointSlice resources can safely assume
         /// this behavior.
@@ -482,7 +482,7 @@ namespace k8s.Models
         public IDictionary<string, string> Selector { get; set; }
 
         /// <summary>
-        /// Supports "ClientIP" and "None". Used to maintain session affinity. Enable client
+        /// Supports &quot;ClientIP&quot; and &quot;None&quot;. Used to maintain session affinity. Enable client
         /// IP based session affinity. Must be ClientIP or None. Defaults to None. More
         /// info:
         /// https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
@@ -504,7 +504,7 @@ namespace k8s.Models
         /// Endpoints are chosen based on the first topology key with available backends. If
         /// this field is specified and all entries have no backends that match the topology
         /// of the client, the service has no backends for that client and connections
-        /// should fail. The special value "*" may be used to mean "any topology". This
+        /// should fail. The special value &quot;*&quot; may be used to mean &quot;any topology&quot;. This
         /// catch-all value, if used, only makes sense as the last value in the list. If
         /// this is not specified or empty, no topology constraints will be applied. This
         /// field is alpha-level and is only honored by servers that enable the
@@ -516,16 +516,16 @@ namespace k8s.Models
 
         /// <summary>
         /// type determines how the Service is exposed. Defaults to ClusterIP. Valid options
-        /// are ExternalName, ClusterIP, NodePort, and LoadBalancer. "ClusterIP" allocates a
+        /// are ExternalName, ClusterIP, NodePort, and LoadBalancer. &quot;ClusterIP&quot; allocates a
         /// cluster-internal IP address for load-balancing to endpoints. Endpoints are
         /// determined by the selector or if that is not specified, by manual construction
-        /// of an Endpoints object or EndpointSlice objects. If clusterIP is "None", no
+        /// of an Endpoints object or EndpointSlice objects. If clusterIP is &quot;None&quot;, no
         /// virtual IP is allocated and the endpoints are published as a set of endpoints
-        /// rather than a virtual IP. "NodePort" builds on ClusterIP and allocates a port on
-        /// every node which routes to the same endpoints as the clusterIP. "LoadBalancer"
+        /// rather than a virtual IP. &quot;NodePort&quot; builds on ClusterIP and allocates a port on
+        /// every node which routes to the same endpoints as the clusterIP. &quot;LoadBalancer&quot;
         /// builds on NodePort and creates an external load-balancer (if supported in the
         /// current cloud) which routes to the same endpoints as the clusterIP.
-        /// "ExternalName" aliases this service to the specified externalName. Several other
+        /// &quot;ExternalName&quot; aliases this service to the specified externalName. Several other
         /// fields do not apply to ExternalName services. More info:
         /// https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
         /// </summary>

@@ -78,14 +78,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Attacher == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Attacher");    
-            }
-            if (NodeName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "NodeName");    
-            }
             if (Source == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Source");    

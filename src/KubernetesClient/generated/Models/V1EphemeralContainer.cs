@@ -19,7 +19,7 @@ namespace k8s.Models
         /// restarted when they exit or when a pod is removed or restarted. If an ephemeral
         /// container causes a pod to exceed its resource allocation, the pod may be
         /// evicted. Ephemeral containers may not be added by directly updating the pod
-        /// spec. They must be added via the pod's ephemeralcontainers subresource, and they
+        /// spec. They must be added via the pod&apos;s ephemeralcontainers subresource, and they
         /// will appear in the pod spec once added. This is an alpha feature enabled by the
         /// EphemeralContainers feature flag.
     /// </summary>
@@ -41,8 +41,8 @@ namespace k8s.Models
         /// unique among all containers, init containers and ephemeral containers.
         /// </param>
         /// <param name="args">
-        /// Arguments to the entrypoint. The docker image's CMD is used if this is not
-        /// provided. Variable references $(VAR_NAME) are expanded using the container's
+        /// Arguments to the entrypoint. The docker image&apos;s CMD is used if this is not
+        /// provided. Variable references $(VAR_NAME) are expanded using the container&apos;s
         /// environment. If a variable cannot be resolved, the reference in the input string
         /// will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
         /// $$(VAR_NAME). Escaped references will never be expanded, regardless of whether
@@ -50,9 +50,9 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         /// </param>
         /// <param name="command">
-        /// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is
+        /// Entrypoint array. Not executed within a shell. The docker image&apos;s ENTRYPOINT is
         /// used if this is not provided. Variable references $(VAR_NAME) are expanded using
-        /// the container's environment. If a variable cannot be resolved, the reference in
+        /// the container&apos;s environment. If a variable cannot be resolved, the reference in
         /// the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
         /// double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
         /// regardless of whether the variable exists or not. Cannot be updated. More info:
@@ -123,8 +123,8 @@ namespace k8s.Models
         /// this feature.
         /// </param>
         /// <param name="terminationMessagePath">
-        /// Optional: Path at which the file to which the container's termination message
-        /// will be written is mounted into the container's filesystem. Message written is
+        /// Optional: Path at which the file to which the container&apos;s termination message
+        /// will be written is mounted into the container&apos;s filesystem. Message written is
         /// intended to be brief final status, such as an assertion failure message. Will be
         /// truncated by the node if greater than 4096 bytes. The total message length
         /// across all containers will be limited to 12kb. Defaults to /dev/termination-log.
@@ -139,17 +139,17 @@ namespace k8s.Models
         /// whichever is smaller. Defaults to File. Cannot be updated.
         /// </param>
         /// <param name="tty">
-        /// Whether this container should allocate a TTY for itself, also requires 'stdin'
+        /// Whether this container should allocate a TTY for itself, also requires &apos;stdin&apos;
         /// to be true. Default is false.
         /// </param>
         /// <param name="volumeDevices">
         /// volumeDevices is the list of block devices to be used by the container.
         /// </param>
         /// <param name="volumeMounts">
-        /// Pod volumes to mount into the container's filesystem. Cannot be updated.
+        /// Pod volumes to mount into the container&apos;s filesystem. Cannot be updated.
         /// </param>
         /// <param name="workingDir">
-        /// Container's working directory. If not specified, the container runtime's default
+        /// Container&apos;s working directory. If not specified, the container runtime&apos;s default
         /// will be used, which might be configured in the container image. Cannot be
         /// updated.
         /// </param>
@@ -187,8 +187,8 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Arguments to the entrypoint. The docker image's CMD is used if this is not
-        /// provided. Variable references $(VAR_NAME) are expanded using the container's
+        /// Arguments to the entrypoint. The docker image&apos;s CMD is used if this is not
+        /// provided. Variable references $(VAR_NAME) are expanded using the container&apos;s
         /// environment. If a variable cannot be resolved, the reference in the input string
         /// will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
         /// $$(VAR_NAME). Escaped references will never be expanded, regardless of whether
@@ -199,9 +199,9 @@ namespace k8s.Models
         public IList<string> Args { get; set; }
 
         /// <summary>
-        /// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is
+        /// Entrypoint array. Not executed within a shell. The docker image&apos;s ENTRYPOINT is
         /// used if this is not provided. Variable references $(VAR_NAME) are expanded using
-        /// the container's environment. If a variable cannot be resolved, the reference in
+        /// the container&apos;s environment. If a variable cannot be resolved, the reference in
         /// the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
         /// double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
         /// regardless of whether the variable exists or not. Cannot be updated. More info:
@@ -324,8 +324,8 @@ namespace k8s.Models
         public string TargetContainerName { get; set; }
 
         /// <summary>
-        /// Optional: Path at which the file to which the container's termination message
-        /// will be written is mounted into the container's filesystem. Message written is
+        /// Optional: Path at which the file to which the container&apos;s termination message
+        /// will be written is mounted into the container&apos;s filesystem. Message written is
         /// intended to be brief final status, such as an assertion failure message. Will be
         /// truncated by the node if greater than 4096 bytes. The total message length
         /// across all containers will be limited to 12kb. Defaults to /dev/termination-log.
@@ -346,7 +346,7 @@ namespace k8s.Models
         public string TerminationMessagePolicy { get; set; }
 
         /// <summary>
-        /// Whether this container should allocate a TTY for itself, also requires 'stdin'
+        /// Whether this container should allocate a TTY for itself, also requires &apos;stdin&apos;
         /// to be true. Default is false.
         /// </summary>
         [JsonProperty(PropertyName = "tty")]
@@ -359,13 +359,13 @@ namespace k8s.Models
         public IList<V1VolumeDevice> VolumeDevices { get; set; }
 
         /// <summary>
-        /// Pod volumes to mount into the container's filesystem. Cannot be updated.
+        /// Pod volumes to mount into the container&apos;s filesystem. Cannot be updated.
         /// </summary>
         [JsonProperty(PropertyName = "volumeMounts")]
         public IList<V1VolumeMount> VolumeMounts { get; set; }
 
         /// <summary>
-        /// Container's working directory. If not specified, the container runtime's default
+        /// Container&apos;s working directory. If not specified, the container runtime&apos;s default
         /// will be used, which might be configured in the container image. Cannot be
         /// updated.
         /// </summary>
@@ -380,10 +380,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
             foreach(var obj in Env)
             {
                 obj.Validate();

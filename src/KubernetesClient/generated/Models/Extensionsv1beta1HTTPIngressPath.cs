@@ -35,16 +35,16 @@ namespace k8s.Models
         /// </param>
         /// <param name="path">
         /// Path is matched against the path of an incoming request. Currently it can
-        /// contain characters disallowed from the conventional "path" part of a URL as
-        /// defined by RFC 3986. Paths must begin with a '/'. When unspecified, all paths
+        /// contain characters disallowed from the conventional &quot;path&quot; part of a URL as
+        /// defined by RFC 3986. Paths must begin with a &apos;/&apos;. When unspecified, all paths
         /// from incoming requests are matched.
         /// </param>
         /// <param name="pathType">
         /// PathType determines the interpretation of the Path matching. PathType can be one
         /// of the following values: * Exact: Matches the URL path exactly. * Prefix:
-        /// Matches based on a URL path prefix split by '/'. Matching is
+        /// Matches based on a URL path prefix split by &apos;/&apos;. Matching is
         /// done on a path element by element basis. A path element refers is the
-        /// list of labels in the path split by the '/' separator. A request is a
+        /// list of labels in the path split by the &apos;/&apos; separator. A request is a
         /// match for path p if every p is an element-wise prefix of p of the
         /// request path. Note that if the last element of the path is a substring
         /// of the last element in request path, it is not a match (e.g. /foo/bar
@@ -77,8 +77,8 @@ namespace k8s.Models
 
         /// <summary>
         /// Path is matched against the path of an incoming request. Currently it can
-        /// contain characters disallowed from the conventional "path" part of a URL as
-        /// defined by RFC 3986. Paths must begin with a '/'. When unspecified, all paths
+        /// contain characters disallowed from the conventional &quot;path&quot; part of a URL as
+        /// defined by RFC 3986. Paths must begin with a &apos;/&apos;. When unspecified, all paths
         /// from incoming requests are matched.
         /// </summary>
         [JsonProperty(PropertyName = "path")]
@@ -87,9 +87,9 @@ namespace k8s.Models
         /// <summary>
         /// PathType determines the interpretation of the Path matching. PathType can be one
         /// of the following values: * Exact: Matches the URL path exactly. * Prefix:
-        /// Matches based on a URL path prefix split by '/'. Matching is
+        /// Matches based on a URL path prefix split by &apos;/&apos;. Matching is
         /// done on a path element by element basis. A path element refers is the
-        /// list of labels in the path split by the '/' separator. A request is a
+        /// list of labels in the path split by the &apos;/&apos; separator. A request is a
         /// match for path p if every p is an element-wise prefix of p of the
         /// request path. Note that if the last element of the path is a substring
         /// of the last element in request path, it is not a match (e.g. /foo/bar

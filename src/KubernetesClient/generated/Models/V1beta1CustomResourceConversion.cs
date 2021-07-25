@@ -43,7 +43,7 @@ namespace k8s.Models
         /// supported by API server, conversion will fail for the custom resource. If a
         /// persisted Webhook configuration specifies allowed versions and does not include
         /// any versions known to the API Server, calls to the webhook will fail. Defaults
-        /// to `["v1beta1"]`.
+        /// to `[&quot;v1beta1&quot;]`.
         /// </param>
         /// <param name="webhookClientConfig">
         /// webhookClientConfig is the instructions for how to call the webhook if strategy
@@ -69,7 +69,7 @@ namespace k8s.Models
         /// supported by API server, conversion will fail for the custom resource. If a
         /// persisted Webhook configuration specifies allowed versions and does not include
         /// any versions known to the API Server, calls to the webhook will fail. Defaults
-        /// to `["v1beta1"]`.
+        /// to `[&quot;v1beta1&quot;]`.
         /// </summary>
         [JsonProperty(PropertyName = "conversionReviewVersions")]
         public IList<string> ConversionReviewVersions { get; set; }
@@ -100,10 +100,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Strategy == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Strategy");    
-            }
             WebhookClientConfig?.Validate();
         }
     }

@@ -13,7 +13,7 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// GroupVersion contains the "group/version" and "version" string of a version. It
+    /// GroupVersion contains the &quot;group/version&quot; and &quot;version&quot; string of a version. It
         /// is made a struct to keep extensibility.
     /// </summary>
     public partial class V1GroupVersionForDiscovery
@@ -30,10 +30,10 @@ namespace k8s.Models
         /// Initializes a new instance of the V1GroupVersionForDiscovery class.
         /// </summary>
         /// <param name="groupVersion">
-        /// groupVersion specifies the API group and version in the form "group/version"
+        /// groupVersion specifies the API group and version in the form &quot;group/version&quot;
         /// </param>
         /// <param name="version">
-        /// version specifies the version in the form of "version". This is to save the
+        /// version specifies the version in the form of &quot;version&quot;. This is to save the
         /// clients the trouble of splitting the GroupVersion.
         /// </param>
         public V1GroupVersionForDiscovery(string groupVersion, string version)
@@ -49,13 +49,13 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// groupVersion specifies the API group and version in the form "group/version"
+        /// groupVersion specifies the API group and version in the form &quot;group/version&quot;
         /// </summary>
         [JsonProperty(PropertyName = "groupVersion")]
         public string GroupVersion { get; set; }
 
         /// <summary>
-        /// version specifies the version in the form of "version". This is to save the
+        /// version specifies the version in the form of &quot;version&quot;. This is to save the
         /// clients the trouble of splitting the GroupVersion.
         /// </summary>
         [JsonProperty(PropertyName = "version")]
@@ -69,14 +69,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (GroupVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "GroupVersion");    
-            }
-            if (Version == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Version");    
-            }
         }
     }
 }

@@ -30,7 +30,7 @@ namespace k8s.Models
         /// Initializes a new instance of the V1beta1ServiceAccountSubject class.
         /// </summary>
         /// <param name="name">
-        /// `name` is the name of matching ServiceAccount objects, or "*" to match
+        /// `name` is the name of matching ServiceAccount objects, or &quot;*&quot; to match
         /// regardless of name. Required.
         /// </param>
         /// <param name="namespaceProperty">
@@ -49,7 +49,7 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// `name` is the name of matching ServiceAccount objects, or "*" to match
+        /// `name` is the name of matching ServiceAccount objects, or &quot;*&quot; to match
         /// regardless of name. Required.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
@@ -69,14 +69,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
-            if (NamespaceProperty == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "NamespaceProperty");    
-            }
         }
     }
 }

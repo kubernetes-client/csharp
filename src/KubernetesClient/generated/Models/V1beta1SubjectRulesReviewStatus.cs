@@ -16,7 +16,7 @@ namespace k8s.Models
     /// SubjectRulesReviewStatus contains the result of a rules check. This check can be
         /// incomplete depending on the set of authorizers the server is configured with and
         /// any errors experienced during evaluation. Because authorization rules are
-        /// additive, if a rule appears in a list it's safe to assume the subject has that
+        /// additive, if a rule appears in a list it&apos;s safe to assume the subject has that
         /// permission, even if that list is incomplete.
     /// </summary>
     public partial class V1beta1SubjectRulesReviewStatus
@@ -35,21 +35,21 @@ namespace k8s.Models
         /// <param name="incomplete">
         /// Incomplete is true when the rules returned by this call are incomplete. This is
         /// most commonly encountered when an authorizer, such as an external authorizer,
-        /// doesn't support rules evaluation.
+        /// doesn&apos;t support rules evaluation.
         /// </param>
         /// <param name="nonResourceRules">
         /// NonResourceRules is the list of actions the subject is allowed to perform on
-        /// non-resources. The list ordering isn't significant, may contain duplicates, and
+        /// non-resources. The list ordering isn&apos;t significant, may contain duplicates, and
         /// possibly be incomplete.
         /// </param>
         /// <param name="resourceRules">
         /// ResourceRules is the list of actions the subject is allowed to perform on
-        /// resources. The list ordering isn't significant, may contain duplicates, and
+        /// resources. The list ordering isn&apos;t significant, may contain duplicates, and
         /// possibly be incomplete.
         /// </param>
         /// <param name="evaluationError">
         /// EvaluationError can appear in combination with Rules. It indicates an error
-        /// occurred during rule evaluation, such as an authorizer that doesn't support rule
+        /// occurred during rule evaluation, such as an authorizer that doesn&apos;t support rule
         /// evaluation, and that ResourceRules and/or NonResourceRules may be incomplete.
         /// </param>
         public V1beta1SubjectRulesReviewStatus(bool incomplete, IList<V1beta1NonResourceRule> nonResourceRules, IList<V1beta1ResourceRule> resourceRules, string evaluationError = null)
@@ -68,7 +68,7 @@ namespace k8s.Models
 
         /// <summary>
         /// EvaluationError can appear in combination with Rules. It indicates an error
-        /// occurred during rule evaluation, such as an authorizer that doesn't support rule
+        /// occurred during rule evaluation, such as an authorizer that doesn&apos;t support rule
         /// evaluation, and that ResourceRules and/or NonResourceRules may be incomplete.
         /// </summary>
         [JsonProperty(PropertyName = "evaluationError")]
@@ -77,14 +77,14 @@ namespace k8s.Models
         /// <summary>
         /// Incomplete is true when the rules returned by this call are incomplete. This is
         /// most commonly encountered when an authorizer, such as an external authorizer,
-        /// doesn't support rules evaluation.
+        /// doesn&apos;t support rules evaluation.
         /// </summary>
         [JsonProperty(PropertyName = "incomplete")]
         public bool Incomplete { get; set; }
 
         /// <summary>
         /// NonResourceRules is the list of actions the subject is allowed to perform on
-        /// non-resources. The list ordering isn't significant, may contain duplicates, and
+        /// non-resources. The list ordering isn&apos;t significant, may contain duplicates, and
         /// possibly be incomplete.
         /// </summary>
         [JsonProperty(PropertyName = "nonResourceRules")]
@@ -92,7 +92,7 @@ namespace k8s.Models
 
         /// <summary>
         /// ResourceRules is the list of actions the subject is allowed to perform on
-        /// resources. The list ordering isn't significant, may contain duplicates, and
+        /// resources. The list ordering isn&apos;t significant, may contain duplicates, and
         /// possibly be incomplete.
         /// </summary>
         [JsonProperty(PropertyName = "resourceRules")]
@@ -106,18 +106,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Incomplete == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Incomplete");    
-            }
-            if (NonResourceRules == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "NonResourceRules");    
-            }
-            if (ResourceRules == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ResourceRules");    
-            }
             foreach(var obj in NonResourceRules)
             {
                 obj.Validate();

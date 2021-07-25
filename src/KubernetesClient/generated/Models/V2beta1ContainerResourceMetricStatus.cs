@@ -17,7 +17,7 @@ namespace k8s.Models
         /// known to Kubernetes, as specified in requests and limits, describing a single
         /// container in each pod in the current scale target (e.g. CPU or memory).  Such
         /// metrics are built in to Kubernetes, and have special scaling options on top of
-        /// those available to normal per-pod metrics using the "pods" source.
+        /// those available to normal per-pod metrics using the &quot;pods&quot; source.
     /// </summary>
     public partial class V2beta1ContainerResourceMetricStatus
     {
@@ -38,7 +38,7 @@ namespace k8s.Models
         /// <param name="currentAverageValue">
         /// currentAverageValue is the current value of the average of the resource metric
         /// across all relevant pods, as a raw value (instead of as a percentage of the
-        /// request), similar to the "pods" metric source type. It will always be set,
+        /// request), similar to the &quot;pods&quot; metric source type. It will always be set,
         /// regardless of the corresponding metric specification.
         /// </param>
         /// <param name="name">
@@ -82,7 +82,7 @@ namespace k8s.Models
         /// <summary>
         /// currentAverageValue is the current value of the average of the resource metric
         /// across all relevant pods, as a raw value (instead of as a percentage of the
-        /// request), similar to the "pods" metric source type. It will always be set,
+        /// request), similar to the &quot;pods&quot; metric source type. It will always be set,
         /// regardless of the corresponding metric specification.
         /// </summary>
         [JsonProperty(PropertyName = "currentAverageValue")]
@@ -102,17 +102,9 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Container == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Container");    
-            }
             if (CurrentAverageValue == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "CurrentAverageValue");    
-            }
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
             }
             CurrentAverageValue?.Validate();
         }

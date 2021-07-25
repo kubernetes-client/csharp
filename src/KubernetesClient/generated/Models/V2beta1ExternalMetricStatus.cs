@@ -93,10 +93,6 @@ namespace k8s.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "CurrentValue");    
             }
-            if (MetricName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "MetricName");    
-            }
             CurrentAverageValue?.Validate();
             CurrentValue?.Validate();
             MetricSelector?.Validate();

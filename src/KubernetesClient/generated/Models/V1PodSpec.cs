@@ -38,7 +38,7 @@ namespace k8s.Models
         /// associated containers. Value must be a positive integer.
         /// </param>
         /// <param name="affinity">
-        /// If specified, the pod's scheduling constraints
+        /// If specified, the pod&apos;s scheduling constraints
         /// </param>
         /// <param name="automountServiceAccountToken">
         /// AutomountServiceAccountToken indicates whether a service account token should be
@@ -49,15 +49,15 @@ namespace k8s.Models
         /// to the generated DNS configuration based on DNSPolicy.
         /// </param>
         /// <param name="dnsPolicy">
-        /// Set DNS policy for the pod. Defaults to "ClusterFirst". Valid values are
-        /// 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters
+        /// Set DNS policy for the pod. Defaults to &quot;ClusterFirst&quot;. Valid values are
+        /// &apos;ClusterFirstWithHostNet&apos;, &apos;ClusterFirst&apos;, &apos;Default&apos; or &apos;None&apos;. DNS parameters
         /// given in DNSConfig will be merged with the policy selected with DNSPolicy. To
         /// have DNS options set along with hostNetwork, you have to specify DNS policy
-        /// explicitly to 'ClusterFirstWithHostNet'.
+        /// explicitly to &apos;ClusterFirstWithHostNet&apos;.
         /// </param>
         /// <param name="enableServiceLinks">
         /// EnableServiceLinks indicates whether information about services should be
-        /// injected into pod's environment variables, matching the syntax of Docker links.
+        /// injected into pod&apos;s environment variables, matching the syntax of Docker links.
         /// Optional: Defaults to true.
         /// </param>
         /// <param name="ephemeralContainers">
@@ -65,26 +65,26 @@ namespace k8s.Models
         /// an existing pod to perform user-initiated actions such as debugging. This list
         /// cannot be specified when creating a pod, and it cannot be modified by updating
         /// the pod spec. In order to add an ephemeral container to an existing pod, use the
-        /// pod's ephemeralcontainers subresource. This field is alpha-level and is only
+        /// pod&apos;s ephemeralcontainers subresource. This field is alpha-level and is only
         /// honored by servers that enable the EphemeralContainers feature.
         /// </param>
         /// <param name="hostAliases">
         /// HostAliases is an optional list of hosts and IPs that will be injected into the
-        /// pod's hosts file if specified. This is only valid for non-hostNetwork pods.
+        /// pod&apos;s hosts file if specified. This is only valid for non-hostNetwork pods.
         /// </param>
         /// <param name="hostIPC">
-        /// Use the host's ipc namespace. Optional: Default to false.
+        /// Use the host&apos;s ipc namespace. Optional: Default to false.
         /// </param>
         /// <param name="hostNetwork">
-        /// Host networking requested for this pod. Use the host's network namespace. If
+        /// Host networking requested for this pod. Use the host&apos;s network namespace. If
         /// this option is set, the ports that will be used must be specified. Default to
         /// false.
         /// </param>
         /// <param name="hostPID">
-        /// Use the host's pid namespace. Optional: Default to false.
+        /// Use the host&apos;s pid namespace. Optional: Default to false.
         /// </param>
         /// <param name="hostname">
-        /// Specifies the hostname of the Pod If not specified, the pod's hostname will be
+        /// Specifies the hostname of the Pod If not specified, the pod&apos;s hostname will be
         /// set to a system-defined value.
         /// </param>
         /// <param name="imagePullSecrets">
@@ -116,7 +116,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="nodeSelector">
         /// NodeSelector is a selector which must be true for the pod to fit on a node.
-        /// Selector which must match a node's labels for the pod to be scheduled on that
+        /// Selector which must match a node&apos;s labels for the pod to be scheduled on that
         /// node. More info:
         /// https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
         /// </param>
@@ -145,8 +145,8 @@ namespace k8s.Models
         /// from PriorityClassName. The higher the value, the higher the priority.
         /// </param>
         /// <param name="priorityClassName">
-        /// If specified, indicates the pod's priority. "system-node-critical" and
-        /// "system-cluster-critical" are two special keywords which indicate the highest
+        /// If specified, indicates the pod&apos;s priority. &quot;system-node-critical&quot; and
+        /// &quot;system-cluster-critical&quot; are two special keywords which indicate the highest
         /// priorities with the former being the highest priority. Any other name must be
         /// defined by creating a PriorityClass object with that name. If not specified, the
         /// pod priority will be default or zero if there is no default.
@@ -154,7 +154,7 @@ namespace k8s.Models
         /// <param name="readinessGates">
         /// If specified, all readiness gates will be evaluated for pod readiness. A pod is
         /// ready when all its containers are ready AND all conditions specified in the
-        /// readiness gates have status equal to "True" More info:
+        /// readiness gates have status equal to &quot;True&quot; More info:
         /// https://git.k8s.io/enhancements/keps/sig-network/0007-pod-ready%2B%2B.md
         /// </param>
         /// <param name="restartPolicy">
@@ -165,7 +165,7 @@ namespace k8s.Models
         /// <param name="runtimeClassName">
         /// RuntimeClassName refers to a RuntimeClass object in the node.k8s.io group, which
         /// should be used to run this pod.  If no RuntimeClass resource matches the named
-        /// class, the pod will not be run. If unset or empty, the "legacy" RuntimeClass
+        /// class, the pod will not be run. If unset or empty, the &quot;legacy&quot; RuntimeClass
         /// will be used, which is an implicit class with an empty definition that uses the
         /// default runtime handler. More info:
         /// https://git.k8s.io/enhancements/keps/sig-node/runtime-class.md This is a beta
@@ -190,7 +190,7 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
         /// </param>
         /// <param name="setHostnameAsFQDN">
-        /// If true the pod's hostname will be configured as the pod's FQDN, rather than the
+        /// If true the pod&apos;s hostname will be configured as the pod&apos;s FQDN, rather than the
         /// leaf name (the default). In Linux containers, this means setting the FQDN in the
         /// hostname field of the kernel (the nodename field of struct utsname). In Windows
         /// containers, this means setting the registry value of hostname for the registry
@@ -206,7 +206,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="subdomain">
         /// If specified, the fully qualified Pod hostname will be
-        /// "<hostname>.<subdomain>.<pod namespace>.svc.<cluster domain>". If not specified,
+        /// &quot;&lt;hostname&gt;.&lt;subdomain&gt;.&lt;pod namespace&gt;.svc.&lt;cluster domain&gt;&quot;. If not specified,
         /// the pod will not have a domainname at all.
         /// </param>
         /// <param name="terminationGracePeriodSeconds">
@@ -220,7 +220,7 @@ namespace k8s.Models
         /// your process. Defaults to 30 seconds.
         /// </param>
         /// <param name="tolerations">
-        /// If specified, the pod's tolerations.
+        /// If specified, the pod&apos;s tolerations.
         /// </param>
         /// <param name="topologySpreadConstraints">
         /// TopologySpreadConstraints describes how a group of pods ought to spread across
@@ -285,7 +285,7 @@ namespace k8s.Models
         public long? ActiveDeadlineSeconds { get; set; }
 
         /// <summary>
-        /// If specified, the pod's scheduling constraints
+        /// If specified, the pod&apos;s scheduling constraints
         /// </summary>
         [JsonProperty(PropertyName = "affinity")]
         public V1Affinity Affinity { get; set; }
@@ -312,18 +312,18 @@ namespace k8s.Models
         public V1PodDNSConfig DnsConfig { get; set; }
 
         /// <summary>
-        /// Set DNS policy for the pod. Defaults to "ClusterFirst". Valid values are
-        /// 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters
+        /// Set DNS policy for the pod. Defaults to &quot;ClusterFirst&quot;. Valid values are
+        /// &apos;ClusterFirstWithHostNet&apos;, &apos;ClusterFirst&apos;, &apos;Default&apos; or &apos;None&apos;. DNS parameters
         /// given in DNSConfig will be merged with the policy selected with DNSPolicy. To
         /// have DNS options set along with hostNetwork, you have to specify DNS policy
-        /// explicitly to 'ClusterFirstWithHostNet'.
+        /// explicitly to &apos;ClusterFirstWithHostNet&apos;.
         /// </summary>
         [JsonProperty(PropertyName = "dnsPolicy")]
         public string DnsPolicy { get; set; }
 
         /// <summary>
         /// EnableServiceLinks indicates whether information about services should be
-        /// injected into pod's environment variables, matching the syntax of Docker links.
+        /// injected into pod&apos;s environment variables, matching the syntax of Docker links.
         /// Optional: Defaults to true.
         /// </summary>
         [JsonProperty(PropertyName = "enableServiceLinks")]
@@ -334,7 +334,7 @@ namespace k8s.Models
         /// an existing pod to perform user-initiated actions such as debugging. This list
         /// cannot be specified when creating a pod, and it cannot be modified by updating
         /// the pod spec. In order to add an ephemeral container to an existing pod, use the
-        /// pod's ephemeralcontainers subresource. This field is alpha-level and is only
+        /// pod&apos;s ephemeralcontainers subresource. This field is alpha-level and is only
         /// honored by servers that enable the EphemeralContainers feature.
         /// </summary>
         [JsonProperty(PropertyName = "ephemeralContainers")]
@@ -342,19 +342,19 @@ namespace k8s.Models
 
         /// <summary>
         /// HostAliases is an optional list of hosts and IPs that will be injected into the
-        /// pod's hosts file if specified. This is only valid for non-hostNetwork pods.
+        /// pod&apos;s hosts file if specified. This is only valid for non-hostNetwork pods.
         /// </summary>
         [JsonProperty(PropertyName = "hostAliases")]
         public IList<V1HostAlias> HostAliases { get; set; }
 
         /// <summary>
-        /// Use the host's ipc namespace. Optional: Default to false.
+        /// Use the host&apos;s ipc namespace. Optional: Default to false.
         /// </summary>
         [JsonProperty(PropertyName = "hostIPC")]
         public bool? HostIPC { get; set; }
 
         /// <summary>
-        /// Host networking requested for this pod. Use the host's network namespace. If
+        /// Host networking requested for this pod. Use the host&apos;s network namespace. If
         /// this option is set, the ports that will be used must be specified. Default to
         /// false.
         /// </summary>
@@ -362,13 +362,13 @@ namespace k8s.Models
         public bool? HostNetwork { get; set; }
 
         /// <summary>
-        /// Use the host's pid namespace. Optional: Default to false.
+        /// Use the host&apos;s pid namespace. Optional: Default to false.
         /// </summary>
         [JsonProperty(PropertyName = "hostPID")]
         public bool? HostPID { get; set; }
 
         /// <summary>
-        /// Specifies the hostname of the Pod If not specified, the pod's hostname will be
+        /// Specifies the hostname of the Pod If not specified, the pod&apos;s hostname will be
         /// set to a system-defined value.
         /// </summary>
         [JsonProperty(PropertyName = "hostname")]
@@ -412,7 +412,7 @@ namespace k8s.Models
 
         /// <summary>
         /// NodeSelector is a selector which must be true for the pod to fit on a node.
-        /// Selector which must match a node's labels for the pod to be scheduled on that
+        /// Selector which must match a node&apos;s labels for the pod to be scheduled on that
         /// node. More info:
         /// https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
         /// </summary>
@@ -453,8 +453,8 @@ namespace k8s.Models
         public int? Priority { get; set; }
 
         /// <summary>
-        /// If specified, indicates the pod's priority. "system-node-critical" and
-        /// "system-cluster-critical" are two special keywords which indicate the highest
+        /// If specified, indicates the pod&apos;s priority. &quot;system-node-critical&quot; and
+        /// &quot;system-cluster-critical&quot; are two special keywords which indicate the highest
         /// priorities with the former being the highest priority. Any other name must be
         /// defined by creating a PriorityClass object with that name. If not specified, the
         /// pod priority will be default or zero if there is no default.
@@ -465,7 +465,7 @@ namespace k8s.Models
         /// <summary>
         /// If specified, all readiness gates will be evaluated for pod readiness. A pod is
         /// ready when all its containers are ready AND all conditions specified in the
-        /// readiness gates have status equal to "True" More info:
+        /// readiness gates have status equal to &quot;True&quot; More info:
         /// https://git.k8s.io/enhancements/keps/sig-network/0007-pod-ready%2B%2B.md
         /// </summary>
         [JsonProperty(PropertyName = "readinessGates")]
@@ -482,7 +482,7 @@ namespace k8s.Models
         /// <summary>
         /// RuntimeClassName refers to a RuntimeClass object in the node.k8s.io group, which
         /// should be used to run this pod.  If no RuntimeClass resource matches the named
-        /// class, the pod will not be run. If unset or empty, the "legacy" RuntimeClass
+        /// class, the pod will not be run. If unset or empty, the &quot;legacy&quot; RuntimeClass
         /// will be used, which is an implicit class with an empty definition that uses the
         /// default runtime handler. More info:
         /// https://git.k8s.io/enhancements/keps/sig-node/runtime-class.md This is a beta
@@ -522,7 +522,7 @@ namespace k8s.Models
         public string ServiceAccountName { get; set; }
 
         /// <summary>
-        /// If true the pod's hostname will be configured as the pod's FQDN, rather than the
+        /// If true the pod&apos;s hostname will be configured as the pod&apos;s FQDN, rather than the
         /// leaf name (the default). In Linux containers, this means setting the FQDN in the
         /// hostname field of the kernel (the nodename field of struct utsname). In Windows
         /// containers, this means setting the registry value of hostname for the registry
@@ -544,7 +544,7 @@ namespace k8s.Models
 
         /// <summary>
         /// If specified, the fully qualified Pod hostname will be
-        /// "<hostname>.<subdomain>.<pod namespace>.svc.<cluster domain>". If not specified,
+        /// &quot;&lt;hostname&gt;.&lt;subdomain&gt;.&lt;pod namespace&gt;.svc.&lt;cluster domain&gt;&quot;. If not specified,
         /// the pod will not have a domainname at all.
         /// </summary>
         [JsonProperty(PropertyName = "subdomain")]
@@ -564,7 +564,7 @@ namespace k8s.Models
         public long? TerminationGracePeriodSeconds { get; set; }
 
         /// <summary>
-        /// If specified, the pod's tolerations.
+        /// If specified, the pod&apos;s tolerations.
         /// </summary>
         [JsonProperty(PropertyName = "tolerations")]
         public IList<V1Toleration> Tolerations { get; set; }
@@ -592,10 +592,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Containers == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Containers");    
-            }
             Affinity?.Validate();
             foreach(var obj in Containers)
             {

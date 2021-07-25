@@ -13,7 +13,7 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// FlowSchemaSpec describes how the FlowSchema's specification looks like.
+    /// FlowSchemaSpec describes how the FlowSchema&apos;s specification looks like.
     /// </summary>
     public partial class V1beta1FlowSchemaSpec
     {

@@ -14,7 +14,7 @@ namespace k8s.Models
 
     /// <summary>
     /// The pod this Toleration is attached to tolerates any taint that matches the
-        /// triple <key,value,effect> using the matching operator <operator>.
+        /// triple &lt;key,value,effect&gt; using the matching operator &lt;operator&gt;.
     /// </summary>
     public partial class V1Toleration
     {
@@ -39,7 +39,7 @@ namespace k8s.Models
         /// match all values and all keys.
         /// </param>
         /// <param name="operatorProperty">
-        /// Operator represents a key's relationship to the value. Valid operators are
+        /// Operator represents a key&apos;s relationship to the value. Valid operators are
         /// Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value,
         /// so that a pod can tolerate all taints of a particular category.
         /// </param>
@@ -84,7 +84,7 @@ namespace k8s.Models
         public string Key { get; set; }
 
         /// <summary>
-        /// Operator represents a key's relationship to the value. Valid operators are
+        /// Operator represents a key&apos;s relationship to the value. Valid operators are
         /// Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value,
         /// so that a pod can tolerate all taints of a particular category.
         /// </summary>

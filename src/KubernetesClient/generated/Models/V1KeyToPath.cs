@@ -33,7 +33,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="path">
         /// The relative path of the file to map the key to. May not be an absolute path.
-        /// May not contain the path element '..'. May not start with the string '..'.
+        /// May not contain the path element &apos;..&apos;. May not start with the string &apos;..&apos;.
         /// </param>
         /// <param name="mode">
         /// Optional: mode bits used to set permissions on this file. Must be an octal value
@@ -75,7 +75,7 @@ namespace k8s.Models
 
         /// <summary>
         /// The relative path of the file to map the key to. May not be an absolute path.
-        /// May not contain the path element '..'. May not start with the string '..'.
+        /// May not contain the path element &apos;..&apos;. May not start with the string &apos;..&apos;.
         /// </summary>
         [JsonProperty(PropertyName = "path")]
         public string Path { get; set; }
@@ -88,14 +88,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Key == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Key");    
-            }
-            if (Path == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Path");    
-            }
         }
     }
 }

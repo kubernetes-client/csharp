@@ -30,11 +30,11 @@ namespace k8s.Models
         /// </summary>
         /// <param name="verbs">
         /// Verb is a list of kubernetes non-resource API verbs, like: get, post, put,
-        /// delete, patch, head, options.  "*" means all.
+        /// delete, patch, head, options.  &quot;*&quot; means all.
         /// </param>
         /// <param name="nonResourceURLs">
         /// NonResourceURLs is a set of partial urls that a user should have access to.  *s
-        /// are allowed, but only as the full, final step in the path.  "*" means all.
+        /// are allowed, but only as the full, final step in the path.  &quot;*&quot; means all.
         /// </param>
         public V1NonResourceRule(IList<string> verbs, IList<string> nonResourceURLs = null)
         {
@@ -50,14 +50,14 @@ namespace k8s.Models
 
         /// <summary>
         /// NonResourceURLs is a set of partial urls that a user should have access to.  *s
-        /// are allowed, but only as the full, final step in the path.  "*" means all.
+        /// are allowed, but only as the full, final step in the path.  &quot;*&quot; means all.
         /// </summary>
         [JsonProperty(PropertyName = "nonResourceURLs")]
         public IList<string> NonResourceURLs { get; set; }
 
         /// <summary>
         /// Verb is a list of kubernetes non-resource API verbs, like: get, post, put,
-        /// delete, patch, head, options.  "*" means all.
+        /// delete, patch, head, options.  &quot;*&quot; means all.
         /// </summary>
         [JsonProperty(PropertyName = "verbs")]
         public IList<string> Verbs { get; set; }
@@ -70,10 +70,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Verbs == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Verbs");    
-            }
         }
     }
 }

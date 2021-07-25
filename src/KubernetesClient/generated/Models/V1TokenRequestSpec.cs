@@ -38,13 +38,13 @@ namespace k8s.Models
         /// <param name="boundObjectRef">
         /// BoundObjectRef is a reference to an object that the token will be bound to. The
         /// token will only be valid for as long as the bound object exists. NOTE: The API
-        /// server's TokenReview endpoint will validate the BoundObjectRef, but other
+        /// server&apos;s TokenReview endpoint will validate the BoundObjectRef, but other
         /// audiences may not. Keep ExpirationSeconds small if you want prompt revocation.
         /// </param>
         /// <param name="expirationSeconds">
         /// ExpirationSeconds is the requested duration of validity of the request. The
         /// token issuer may return a token with a different validity duration so a client
-        /// needs to check the 'expiration' field in a response.
+        /// needs to check the &apos;expiration&apos; field in a response.
         /// </param>
         public V1TokenRequestSpec(IList<string> audiences, V1BoundObjectReference boundObjectRef = null, long? expirationSeconds = null)
         {
@@ -72,7 +72,7 @@ namespace k8s.Models
         /// <summary>
         /// BoundObjectRef is a reference to an object that the token will be bound to. The
         /// token will only be valid for as long as the bound object exists. NOTE: The API
-        /// server's TokenReview endpoint will validate the BoundObjectRef, but other
+        /// server&apos;s TokenReview endpoint will validate the BoundObjectRef, but other
         /// audiences may not. Keep ExpirationSeconds small if you want prompt revocation.
         /// </summary>
         [JsonProperty(PropertyName = "boundObjectRef")]
@@ -81,7 +81,7 @@ namespace k8s.Models
         /// <summary>
         /// ExpirationSeconds is the requested duration of validity of the request. The
         /// token issuer may return a token with a different validity duration so a client
-        /// needs to check the 'expiration' field in a response.
+        /// needs to check the &apos;expiration&apos; field in a response.
         /// </summary>
         [JsonProperty(PropertyName = "expirationSeconds")]
         public long? ExpirationSeconds { get; set; }
@@ -94,10 +94,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Audiences == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Audiences");    
-            }
             BoundObjectRef?.Validate();
         }
     }

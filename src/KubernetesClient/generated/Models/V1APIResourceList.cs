@@ -100,14 +100,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (GroupVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "GroupVersion");    
-            }
-            if (Resources == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Resources");    
-            }
             foreach(var obj in Resources)
             {
                 obj.Validate();

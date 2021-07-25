@@ -29,7 +29,7 @@ namespace k8s.Models
         /// Initializes a new instance of the V1beta1UserSubject class.
         /// </summary>
         /// <param name="name">
-        /// `name` is the username that matches, or "*" to match all usernames. Required.
+        /// `name` is the username that matches, or &quot;*&quot; to match all usernames. Required.
         /// </param>
         public V1beta1UserSubject(string name)
         {
@@ -43,7 +43,7 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// `name` is the username that matches, or "*" to match all usernames. Required.
+        /// `name` is the username that matches, or &quot;*&quot; to match all usernames. Required.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
@@ -56,10 +56,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
         }
     }
 }

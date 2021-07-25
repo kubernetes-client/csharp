@@ -56,10 +56,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Limits == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Limits");    
-            }
             foreach(var obj in Limits)
             {
                 obj.Validate();

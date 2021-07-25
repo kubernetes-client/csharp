@@ -66,14 +66,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (DevicePath == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "DevicePath");    
-            }
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
         }
     }
 }

@@ -44,7 +44,7 @@ namespace k8s.Models
         /// are allowed, but only as the full, final step in the path Since non-resource
         /// URLs are not namespaced, this field is only applicable for ClusterRoles
         /// referenced from a ClusterRoleBinding. Rules can either apply to API resources
-        /// (such as "pods" or "secrets") or non-resource URL paths (such as "/api"),  but
+        /// (such as &quot;pods&quot; or &quot;secrets&quot;) or non-resource URL paths (such as &quot;/api&quot;),  but
         /// not both.
         /// </param>
         /// <param name="resourceNames">
@@ -83,7 +83,7 @@ namespace k8s.Models
         /// are allowed, but only as the full, final step in the path Since non-resource
         /// URLs are not namespaced, this field is only applicable for ClusterRoles
         /// referenced from a ClusterRoleBinding. Rules can either apply to API resources
-        /// (such as "pods" or "secrets") or non-resource URL paths (such as "/api"),  but
+        /// (such as &quot;pods&quot; or &quot;secrets&quot;) or non-resource URL paths (such as &quot;/api&quot;),  but
         /// not both.
         /// </summary>
         [JsonProperty(PropertyName = "nonResourceURLs")]
@@ -118,10 +118,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Verbs == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Verbs");    
-            }
         }
     }
 }

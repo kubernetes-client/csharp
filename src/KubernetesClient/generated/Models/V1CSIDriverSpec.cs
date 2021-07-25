@@ -58,16 +58,16 @@ namespace k8s.Models
         /// NodePublishVolume() calls. The CSI driver is responsible for parsing and
         /// validating the information passed in as VolumeContext. The following
         /// VolumeConext will be passed if podInfoOnMount is set to true. This list might
-        /// grow, but the prefix will be used. "csi.storage.k8s.io/pod.name": pod.Name
-        /// "csi.storage.k8s.io/pod.namespace": pod.Namespace "csi.storage.k8s.io/pod.uid":
-        /// string(pod.UID) "csi.storage.k8s.io/ephemeral": "true" if the volume is an
+        /// grow, but the prefix will be used. &quot;csi.storage.k8s.io/pod.name&quot;: pod.Name
+        /// &quot;csi.storage.k8s.io/pod.namespace&quot;: pod.Namespace &quot;csi.storage.k8s.io/pod.uid&quot;:
+        /// string(pod.UID) &quot;csi.storage.k8s.io/ephemeral&quot;: &quot;true&quot; if the volume is an
         /// ephemeral inline volume
-        /// defined by a CSIVolumeSource, otherwise "false"
+        /// defined by a CSIVolumeSource, otherwise &quot;false&quot;
         /// 
-        /// "csi.storage.k8s.io/ephemeral" is a new feature in Kubernetes 1.16. It is only
-        /// required for drivers which support both the "Persistent" and "Ephemeral"
+        /// &quot;csi.storage.k8s.io/ephemeral&quot; is a new feature in Kubernetes 1.16. It is only
+        /// required for drivers which support both the &quot;Persistent&quot; and &quot;Ephemeral&quot;
         /// VolumeLifecycleMode. Other drivers can leave pod info disabled and/or ignore
-        /// this field. As Kubernetes 1.15 doesn't support this field, drivers can only
+        /// this field. As Kubernetes 1.15 doesn&apos;t support this field, drivers can only
         /// support one mode when deployed on such a cluster and the deployment determines
         /// which mode that is, for example via a command line parameter of the driver.
         /// 
@@ -103,14 +103,14 @@ namespace k8s.Models
         /// enabled. The default is false.
         /// </param>
         /// <param name="tokenRequests">
-        /// TokenRequests indicates the CSI driver needs pods' service account tokens it is
+        /// TokenRequests indicates the CSI driver needs pods&apos; service account tokens it is
         /// mounting volume for to do necessary authentication. Kubelet will pass the tokens
         /// in VolumeContext in the CSI NodePublishVolume calls. The CSI driver should parse
         /// and validate the following VolumeContext:
-        /// "csi.storage.k8s.io/serviceAccount.tokens": {
-        /// "<audience>": {
-        /// "token": <token>,
-        /// "expirationTimestamp": <expiration timestamp in RFC3339>,
+        /// &quot;csi.storage.k8s.io/serviceAccount.tokens&quot;: {
+        /// &quot;&lt;audience&gt;&quot;: {
+        /// &quot;token&quot;: &lt;token&gt;,
+        /// &quot;expirationTimestamp&quot;: &lt;expiration timestamp in RFC3339&gt;,
         /// },
         /// ...
         /// }
@@ -124,9 +124,9 @@ namespace k8s.Models
         /// </param>
         /// <param name="volumeLifecycleModes">
         /// volumeLifecycleModes defines what kind of volumes this CSI volume driver
-        /// supports. The default if the list is empty is "Persistent", which is the usage
+        /// supports. The default if the list is empty is &quot;Persistent&quot;, which is the usage
         /// defined by the CSI specification and implemented in Kubernetes via the usual
-        /// PV/PVC mechanism. The other mode is "Ephemeral". In this mode, volumes are
+        /// PV/PVC mechanism. The other mode is &quot;Ephemeral&quot;. In this mode, volumes are
         /// defined inline inside the pod spec with CSIVolumeSource and their lifecycle is
         /// tied to the lifecycle of that pod. A driver has to be aware of this because it
         /// is only going to get a NodePublishVolume call for such a volume. For more
@@ -190,16 +190,16 @@ namespace k8s.Models
         /// NodePublishVolume() calls. The CSI driver is responsible for parsing and
         /// validating the information passed in as VolumeContext. The following
         /// VolumeConext will be passed if podInfoOnMount is set to true. This list might
-        /// grow, but the prefix will be used. "csi.storage.k8s.io/pod.name": pod.Name
-        /// "csi.storage.k8s.io/pod.namespace": pod.Namespace "csi.storage.k8s.io/pod.uid":
-        /// string(pod.UID) "csi.storage.k8s.io/ephemeral": "true" if the volume is an
+        /// grow, but the prefix will be used. &quot;csi.storage.k8s.io/pod.name&quot;: pod.Name
+        /// &quot;csi.storage.k8s.io/pod.namespace&quot;: pod.Namespace &quot;csi.storage.k8s.io/pod.uid&quot;:
+        /// string(pod.UID) &quot;csi.storage.k8s.io/ephemeral&quot;: &quot;true&quot; if the volume is an
         /// ephemeral inline volume
-        /// defined by a CSIVolumeSource, otherwise "false"
+        /// defined by a CSIVolumeSource, otherwise &quot;false&quot;
         /// 
-        /// "csi.storage.k8s.io/ephemeral" is a new feature in Kubernetes 1.16. It is only
-        /// required for drivers which support both the "Persistent" and "Ephemeral"
+        /// &quot;csi.storage.k8s.io/ephemeral&quot; is a new feature in Kubernetes 1.16. It is only
+        /// required for drivers which support both the &quot;Persistent&quot; and &quot;Ephemeral&quot;
         /// VolumeLifecycleMode. Other drivers can leave pod info disabled and/or ignore
-        /// this field. As Kubernetes 1.15 doesn't support this field, drivers can only
+        /// this field. As Kubernetes 1.15 doesn&apos;t support this field, drivers can only
         /// support one mode when deployed on such a cluster and the deployment determines
         /// which mode that is, for example via a command line parameter of the driver.
         /// 
@@ -244,14 +244,14 @@ namespace k8s.Models
         public bool? StorageCapacity { get; set; }
 
         /// <summary>
-        /// TokenRequests indicates the CSI driver needs pods' service account tokens it is
+        /// TokenRequests indicates the CSI driver needs pods&apos; service account tokens it is
         /// mounting volume for to do necessary authentication. Kubelet will pass the tokens
         /// in VolumeContext in the CSI NodePublishVolume calls. The CSI driver should parse
         /// and validate the following VolumeContext:
-        /// "csi.storage.k8s.io/serviceAccount.tokens": {
-        /// "<audience>": {
-        /// "token": <token>,
-        /// "expirationTimestamp": <expiration timestamp in RFC3339>,
+        /// &quot;csi.storage.k8s.io/serviceAccount.tokens&quot;: {
+        /// &quot;&lt;audience&gt;&quot;: {
+        /// &quot;token&quot;: &lt;token&gt;,
+        /// &quot;expirationTimestamp&quot;: &lt;expiration timestamp in RFC3339&gt;,
         /// },
         /// ...
         /// }
@@ -268,9 +268,9 @@ namespace k8s.Models
 
         /// <summary>
         /// volumeLifecycleModes defines what kind of volumes this CSI volume driver
-        /// supports. The default if the list is empty is "Persistent", which is the usage
+        /// supports. The default if the list is empty is &quot;Persistent&quot;, which is the usage
         /// defined by the CSI specification and implemented in Kubernetes via the usual
-        /// PV/PVC mechanism. The other mode is "Ephemeral". In this mode, volumes are
+        /// PV/PVC mechanism. The other mode is &quot;Ephemeral&quot;. In this mode, volumes are
         /// defined inline inside the pod spec with CSIVolumeSource and their lifecycle is
         /// tied to the lifecycle of that pod. A driver has to be aware of this because it
         /// is only going to get a NodePublishVolume call for such a volume. For more

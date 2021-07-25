@@ -94,10 +94,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Ip == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Ip");    
-            }
             TargetRef?.Validate();
         }
     }

@@ -46,10 +46,10 @@ namespace k8s.Models
         /// </param>
         /// <param name="providerID">
         /// ID of the node assigned by the cloud provider in the format:
-        /// <ProviderName>://<ProviderSpecificNodeID>
+        /// &lt;ProviderName&gt;://&lt;ProviderSpecificNodeID&gt;
         /// </param>
         /// <param name="taints">
-        /// If specified, the node's taints.
+        /// If specified, the node&apos;s taints.
         /// </param>
         /// <param name="unschedulable">
         /// Unschedulable controls node schedulability of new pods. By default, node is
@@ -103,13 +103,13 @@ namespace k8s.Models
 
         /// <summary>
         /// ID of the node assigned by the cloud provider in the format:
-        /// <ProviderName>://<ProviderSpecificNodeID>
+        /// &lt;ProviderName&gt;://&lt;ProviderSpecificNodeID&gt;
         /// </summary>
         [JsonProperty(PropertyName = "providerID")]
         public string ProviderID { get; set; }
 
         /// <summary>
-        /// If specified, the node's taints.
+        /// If specified, the node&apos;s taints.
         /// </summary>
         [JsonProperty(PropertyName = "taints")]
         public IList<V1Taint> Taints { get; set; }

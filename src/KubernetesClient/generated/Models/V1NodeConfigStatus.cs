@@ -71,7 +71,7 @@ namespace k8s.Models
         /// LastKnownGood. Note that if Spec.ConfigSource is reset to nil (use local
         /// defaults), the LastKnownGood is also immediately reset to nil, because the local
         /// default config is always assumed good. You should not make assumptions about the
-        /// node's method of determining config stability and correctness, as this may
+        /// node&apos;s method of determining config stability and correctness, as this may
         /// change or become configurable in the future.
         /// </param>
         public V1NodeConfigStatus(V1NodeConfigSource active = null, V1NodeConfigSource assigned = null, string error = null, V1NodeConfigSource lastKnownGood = null)
@@ -139,7 +139,7 @@ namespace k8s.Models
         /// LastKnownGood. Note that if Spec.ConfigSource is reset to nil (use local
         /// defaults), the LastKnownGood is also immediately reset to nil, because the local
         /// default config is always assumed good. You should not make assumptions about the
-        /// node's method of determining config stability and correctness, as this may
+        /// node&apos;s method of determining config stability and correctness, as this may
         /// change or become configurable in the future.
         /// </summary>
         [JsonProperty(PropertyName = "lastKnownGood")]

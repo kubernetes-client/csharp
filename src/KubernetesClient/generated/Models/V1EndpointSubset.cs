@@ -17,8 +17,8 @@ namespace k8s.Models
         /// set of endpoints is the Cartesian product of Addresses x Ports. For example,
         /// given:
         /// {
-        /// Addresses: [{"ip": "10.10.1.1"}, {"ip": "10.10.2.2"}],
-        /// Ports:     [{"name": "a", "port": 8675}, {"name": "b", "port": 309}]
+        /// Addresses: [{&quot;ip&quot;: &quot;10.10.1.1&quot;}, {&quot;ip&quot;: &quot;10.10.2.2&quot;}],
+        /// Ports:     [{&quot;name&quot;: &quot;a&quot;, &quot;port&quot;: 8675}, {&quot;name&quot;: &quot;b&quot;, &quot;port&quot;: 309}]
         /// }
         /// The resulting set of endpoints can be viewed as:
         /// a: [ 10.10.1.1:8675, 10.10.2.2:8675 ],

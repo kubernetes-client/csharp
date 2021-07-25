@@ -42,7 +42,7 @@ namespace k8s.Models
         /// A human readable message indicating details about the transition.
         /// </param>
         /// <param name="reason">
-        /// The reason for the condition's last transition.
+        /// The reason for the condition&apos;s last transition.
         /// </param>
         public V1ReplicationControllerCondition(string status, string type, System.DateTime? lastTransitionTime = null, string message = null, string reason = null)
         {
@@ -72,7 +72,7 @@ namespace k8s.Models
         public string Message { get; set; }
 
         /// <summary>
-        /// The reason for the condition's last transition.
+        /// The reason for the condition&apos;s last transition.
         /// </summary>
         [JsonProperty(PropertyName = "reason")]
         public string Reason { get; set; }
@@ -97,14 +97,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Status == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Status");    
-            }
-            if (Type == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Type");    
-            }
         }
     }
 }

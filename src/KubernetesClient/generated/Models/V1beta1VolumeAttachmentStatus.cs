@@ -102,10 +102,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Attached == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Attached");    
-            }
             AttachError?.Validate();
             DetachError?.Validate();
         }

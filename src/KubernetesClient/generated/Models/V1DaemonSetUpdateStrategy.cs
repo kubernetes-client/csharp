@@ -30,10 +30,10 @@ namespace k8s.Models
         /// Initializes a new instance of the V1DaemonSetUpdateStrategy class.
         /// </summary>
         /// <param name="rollingUpdate">
-        /// Rolling update config params. Present only if type = "RollingUpdate".
+        /// Rolling update config params. Present only if type = &quot;RollingUpdate&quot;.
         /// </param>
         /// <param name="type">
-        /// Type of daemon set update. Can be "RollingUpdate" or "OnDelete". Default is
+        /// Type of daemon set update. Can be &quot;RollingUpdate&quot; or &quot;OnDelete&quot;. Default is
         /// RollingUpdate.
         /// </param>
         public V1DaemonSetUpdateStrategy(V1RollingUpdateDaemonSet rollingUpdate = null, string type = null)
@@ -49,13 +49,13 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Rolling update config params. Present only if type = "RollingUpdate".
+        /// Rolling update config params. Present only if type = &quot;RollingUpdate&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "rollingUpdate")]
         public V1RollingUpdateDaemonSet RollingUpdate { get; set; }
 
         /// <summary>
-        /// Type of daemon set update. Can be "RollingUpdate" or "OnDelete". Default is
+        /// Type of daemon set update. Can be &quot;RollingUpdate&quot; or &quot;OnDelete&quot;. Default is
         /// RollingUpdate.
         /// </summary>
         [JsonProperty(PropertyName = "type")]

@@ -13,7 +13,7 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// ServicePort contains information on service's port.
+    /// ServicePort contains information on service&apos;s port.
     /// </summary>
     public partial class V1ServicePort
     {
@@ -42,7 +42,7 @@ namespace k8s.Models
         /// <param name="name">
         /// The name of this port within the service. This must be a DNS_LABEL. All ports
         /// within a ServiceSpec must have unique names. When considering the endpoints for
-        /// a Service, this must match the 'name' field in the EndpointPort. Optional if
+        /// a Service, this must match the &apos;name&apos; field in the EndpointPort. Optional if
         /// only one ServicePort is defined on this service.
         /// </param>
         /// <param name="nodePort">
@@ -56,16 +56,16 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
         /// </param>
         /// <param name="protocol">
-        /// The IP protocol for this port. Supports "TCP", "UDP", and "SCTP". Default is
+        /// The IP protocol for this port. Supports &quot;TCP&quot;, &quot;UDP&quot;, and &quot;SCTP&quot;. Default is
         /// TCP.
         /// </param>
         /// <param name="targetPort">
         /// Number or name of the port to access on the pods targeted by the service. Number
         /// must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. If this is a
-        /// string, it will be looked up as a named port in the target Pod's container
-        /// ports. If this is not specified, the value of the 'port' field is used (an
+        /// string, it will be looked up as a named port in the target Pod&apos;s container
+        /// ports. If this is not specified, the value of the &apos;port&apos; field is used (an
         /// identity map). This field is ignored for services with clusterIP=None, and
-        /// should be omitted or set equal to the 'port' field. More info:
+        /// should be omitted or set equal to the &apos;port&apos; field. More info:
         /// https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service
         /// </param>
         public V1ServicePort(int port, string appProtocol = null, string name = null, int? nodePort = null, string protocol = null, IntstrIntOrString targetPort = null)
@@ -98,7 +98,7 @@ namespace k8s.Models
         /// <summary>
         /// The name of this port within the service. This must be a DNS_LABEL. All ports
         /// within a ServiceSpec must have unique names. When considering the endpoints for
-        /// a Service, this must match the 'name' field in the EndpointPort. Optional if
+        /// a Service, this must match the &apos;name&apos; field in the EndpointPort. Optional if
         /// only one ServicePort is defined on this service.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
@@ -124,7 +124,7 @@ namespace k8s.Models
         public int Port { get; set; }
 
         /// <summary>
-        /// The IP protocol for this port. Supports "TCP", "UDP", and "SCTP". Default is
+        /// The IP protocol for this port. Supports &quot;TCP&quot;, &quot;UDP&quot;, and &quot;SCTP&quot;. Default is
         /// TCP.
         /// </summary>
         [JsonProperty(PropertyName = "protocol")]
@@ -133,10 +133,10 @@ namespace k8s.Models
         /// <summary>
         /// Number or name of the port to access on the pods targeted by the service. Number
         /// must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. If this is a
-        /// string, it will be looked up as a named port in the target Pod's container
-        /// ports. If this is not specified, the value of the 'port' field is used (an
+        /// string, it will be looked up as a named port in the target Pod&apos;s container
+        /// ports. If this is not specified, the value of the &apos;port&apos; field is used (an
         /// identity map). This field is ignored for services with clusterIP=None, and
-        /// should be omitted or set equal to the 'port' field. More info:
+        /// should be omitted or set equal to the &apos;port&apos; field. More info:
         /// https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service
         /// </summary>
         [JsonProperty(PropertyName = "targetPort")]
@@ -150,10 +150,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Port == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Port");    
-            }
             TargetPort?.Validate();
         }
     }

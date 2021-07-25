@@ -31,10 +31,10 @@ namespace k8s.Models
         /// Initializes a new instance of the V1NodeSelectorTerm class.
         /// </summary>
         /// <param name="matchExpressions">
-        /// A list of node selector requirements by node's labels.
+        /// A list of node selector requirements by node&apos;s labels.
         /// </param>
         /// <param name="matchFields">
-        /// A list of node selector requirements by node's fields.
+        /// A list of node selector requirements by node&apos;s fields.
         /// </param>
         public V1NodeSelectorTerm(IList<V1NodeSelectorRequirement> matchExpressions = null, IList<V1NodeSelectorRequirement> matchFields = null)
         {
@@ -49,13 +49,13 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// A list of node selector requirements by node's labels.
+        /// A list of node selector requirements by node&apos;s labels.
         /// </summary>
         [JsonProperty(PropertyName = "matchExpressions")]
         public IList<V1NodeSelectorRequirement> MatchExpressions { get; set; }
 
         /// <summary>
-        /// A list of node selector requirements by node's fields.
+        /// A list of node selector requirements by node&apos;s fields.
         /// </summary>
         [JsonProperty(PropertyName = "matchFields")]
         public IList<V1NodeSelectorRequirement> MatchFields { get; set; }

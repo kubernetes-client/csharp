@@ -73,10 +73,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Rule == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Rule");    
-            }
             foreach(var obj in Ranges)
             {
                 obj.Validate();

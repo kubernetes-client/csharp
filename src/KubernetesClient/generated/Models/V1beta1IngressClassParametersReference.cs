@@ -42,12 +42,12 @@ namespace k8s.Models
         /// </param>
         /// <param name="namespaceProperty">
         /// Namespace is the namespace of the resource being referenced. This field is
-        /// required when scope is set to "Namespace" and must be unset when scope is set to
-        /// "Cluster".
+        /// required when scope is set to &quot;Namespace&quot; and must be unset when scope is set to
+        /// &quot;Cluster&quot;.
         /// </param>
         /// <param name="scope">
         /// Scope represents if this refers to a cluster or namespace scoped resource. This
-        /// may be set to "Cluster" (default) or "Namespace". Field can be enabled with
+        /// may be set to &quot;Cluster&quot; (default) or &quot;Namespace&quot;. Field can be enabled with
         /// IngressClassNamespacedParams feature gate.
         /// </param>
         public V1beta1IngressClassParametersReference(string kind, string name, string apiGroup = null, string namespaceProperty = null, string scope = null)
@@ -87,15 +87,15 @@ namespace k8s.Models
 
         /// <summary>
         /// Namespace is the namespace of the resource being referenced. This field is
-        /// required when scope is set to "Namespace" and must be unset when scope is set to
-        /// "Cluster".
+        /// required when scope is set to &quot;Namespace&quot; and must be unset when scope is set to
+        /// &quot;Cluster&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "namespace")]
         public string NamespaceProperty { get; set; }
 
         /// <summary>
         /// Scope represents if this refers to a cluster or namespace scoped resource. This
-        /// may be set to "Cluster" (default) or "Namespace". Field can be enabled with
+        /// may be set to &quot;Cluster&quot; (default) or &quot;Namespace&quot;. Field can be enabled with
         /// IngressClassNamespacedParams feature gate.
         /// </summary>
         [JsonProperty(PropertyName = "scope")]
@@ -109,14 +109,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Kind == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Kind");    
-            }
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
         }
     }
 }

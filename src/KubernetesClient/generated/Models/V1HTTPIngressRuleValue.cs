@@ -14,9 +14,9 @@ namespace k8s.Models
 
     /// <summary>
     /// HTTPIngressRuleValue is a list of http selectors pointing to backends. In the
-        /// example: http://<host>/<path>?<searchpart> -> backend where where parts of the
+        /// example: http://&lt;host&gt;/&lt;path&gt;?&lt;searchpart&gt; -&gt; backend where where parts of the
         /// url correspond to RFC 3986, this resource will be used to match against
-        /// everything after the last '/' and before the first '?' or '#'.
+        /// everything after the last &apos;/&apos; and before the first &apos;?&apos; or &apos;#&apos;.
     /// </summary>
     public partial class V1HTTPIngressRuleValue
     {
@@ -59,10 +59,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Paths == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Paths");    
-            }
             foreach(var obj in Paths)
             {
                 obj.Validate();

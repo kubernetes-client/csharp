@@ -29,7 +29,7 @@ namespace k8s.Models
         /// Initializes a new instance of the V1APIResource class.
         /// </summary>
         /// <param name="kind">
-        /// kind is the kind for the resource (e.g. 'Foo' is the kind for a resource 'foo')
+        /// kind is the kind for the resource (e.g. &apos;Foo&apos; is the kind for a resource &apos;foo&apos;)
         /// </param>
         /// <param name="name">
         /// name is the plural name of the resource.
@@ -49,12 +49,12 @@ namespace k8s.Models
         /// </param>
         /// <param name="categories">
         /// categories is a list of the grouped resources this resource belongs to (e.g.
-        /// 'all')
+        /// &apos;all&apos;)
         /// </param>
         /// <param name="group">
         /// group is the preferred group of the resource.  Empty implies the group of the
         /// containing resource list. For subresources, this may have a different value, for
-        /// example: Scale".
+        /// example: Scale&quot;.
         /// </param>
         /// <param name="shortNames">
         /// shortNames is a list of suggested short names of the resource.
@@ -70,7 +70,7 @@ namespace k8s.Models
         /// <param name="version">
         /// version is the preferred version of the resource.  Empty implies the version of
         /// the containing resource list For subresources, this may have a different value,
-        /// for example: v1 (while inside a v1beta1 version of the core resource's group)".
+        /// for example: v1 (while inside a v1beta1 version of the core resource&apos;s group)&quot;.
         /// </param>
         public V1APIResource(string kind, string name, bool namespaced, string singularName, IList<string> verbs, IList<string> categories = null, string group = null, IList<string> shortNames = null, string storageVersionHash = null, string version = null)
         {
@@ -94,7 +94,7 @@ namespace k8s.Models
 
         /// <summary>
         /// categories is a list of the grouped resources this resource belongs to (e.g.
-        /// 'all')
+        /// &apos;all&apos;)
         /// </summary>
         [JsonProperty(PropertyName = "categories")]
         public IList<string> Categories { get; set; }
@@ -102,13 +102,13 @@ namespace k8s.Models
         /// <summary>
         /// group is the preferred group of the resource.  Empty implies the group of the
         /// containing resource list. For subresources, this may have a different value, for
-        /// example: Scale".
+        /// example: Scale&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "group")]
         public string Group { get; set; }
 
         /// <summary>
-        /// kind is the kind for the resource (e.g. 'Foo' is the kind for a resource 'foo')
+        /// kind is the kind for the resource (e.g. &apos;Foo&apos; is the kind for a resource &apos;foo&apos;)
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
         public string Kind { get; set; }
@@ -161,7 +161,7 @@ namespace k8s.Models
         /// <summary>
         /// version is the preferred version of the resource.  Empty implies the version of
         /// the containing resource list For subresources, this may have a different value,
-        /// for example: v1 (while inside a v1beta1 version of the core resource's group)".
+        /// for example: v1 (while inside a v1beta1 version of the core resource&apos;s group)&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "version")]
         public string Version { get; set; }
@@ -174,26 +174,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Kind == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Kind");    
-            }
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
-            if (Namespaced == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Namespaced");    
-            }
-            if (SingularName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "SingularName");    
-            }
-            if (Verbs == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Verbs");    
-            }
         }
     }
 }

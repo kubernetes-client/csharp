@@ -13,7 +13,7 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// ExecAction describes a "run in container" action.
+    /// ExecAction describes a &quot;run in container&quot; action.
     /// </summary>
     public partial class V1ExecAction
     {
@@ -30,9 +30,9 @@ namespace k8s.Models
         /// </summary>
         /// <param name="command">
         /// Command is the command line to execute inside the container, the working
-        /// directory for the command  is root ('/') in the container's filesystem. The
-        /// command is simply exec'd, it is not run inside a shell, so traditional shell
-        /// instructions ('|', etc) won't work. To use a shell, you need to explicitly call
+        /// directory for the command  is root (&apos;/&apos;) in the container&apos;s filesystem. The
+        /// command is simply exec&apos;d, it is not run inside a shell, so traditional shell
+        /// instructions (&apos;|&apos;, etc) won&apos;t work. To use a shell, you need to explicitly call
         /// out to that shell. Exit status of 0 is treated as live/healthy and non-zero is
         /// unhealthy.
         /// </param>
@@ -49,9 +49,9 @@ namespace k8s.Models
 
         /// <summary>
         /// Command is the command line to execute inside the container, the working
-        /// directory for the command  is root ('/') in the container's filesystem. The
-        /// command is simply exec'd, it is not run inside a shell, so traditional shell
-        /// instructions ('|', etc) won't work. To use a shell, you need to explicitly call
+        /// directory for the command  is root (&apos;/&apos;) in the container&apos;s filesystem. The
+        /// command is simply exec&apos;d, it is not run inside a shell, so traditional shell
+        /// instructions (&apos;|&apos;, etc) won&apos;t work. To use a shell, you need to explicitly call
         /// out to that shell. Exit status of 0 is treated as live/healthy and non-zero is
         /// unhealthy.
         /// </summary>

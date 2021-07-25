@@ -32,7 +32,7 @@ namespace k8s.Models
         /// Exit status from the last termination of the container
         /// </param>
         /// <param name="containerID">
-        /// Container's ID in the format 'docker://<container_id>'
+        /// Container&apos;s ID in the format &apos;docker://&lt;container_id&gt;&apos;
         /// </param>
         /// <param name="finishedAt">
         /// Time at which the container last terminated
@@ -67,7 +67,7 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Container's ID in the format 'docker://<container_id>'
+        /// Container&apos;s ID in the format &apos;docker://&lt;container_id&gt;&apos;
         /// </summary>
         [JsonProperty(PropertyName = "containerID")]
         public string ContainerID { get; set; }
@@ -116,10 +116,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (ExitCode == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ExitCode");    
-            }
         }
     }
 }

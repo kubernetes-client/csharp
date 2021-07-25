@@ -41,8 +41,8 @@ namespace k8s
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
-        /// get service account issuer OpenID configuration, also known as the 'OIDC
-        /// discovery doc'
+        /// get service account issuer OpenID configuration, also known as the &apos;OIDC
+        /// discovery doc&apos;
         /// </summary>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -656,9 +656,9 @@ namespace k8s
         /// list objects of kind ComponentStatus
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -677,7 +677,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -713,7 +713,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -767,7 +767,7 @@ namespace k8s
         /// name of the ComponentStatus
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -785,9 +785,9 @@ namespace k8s
         /// list or watch objects of kind ConfigMap
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -806,7 +806,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -842,7 +842,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -893,9 +893,9 @@ namespace k8s
         /// list or watch objects of kind Endpoints
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -914,7 +914,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -950,7 +950,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -1001,9 +1001,9 @@ namespace k8s
         /// list or watch objects of kind Event
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -1022,7 +1022,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -1058,7 +1058,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -1109,9 +1109,9 @@ namespace k8s
         /// list or watch objects of kind Event
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -1130,7 +1130,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -1166,7 +1166,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -1217,9 +1217,9 @@ namespace k8s
         /// list or watch objects of kind Event
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -1238,7 +1238,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -1274,7 +1274,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -1325,9 +1325,9 @@ namespace k8s
         /// list or watch objects of kind LimitRange
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -1346,7 +1346,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -1382,7 +1382,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -1433,9 +1433,9 @@ namespace k8s
         /// list or watch objects of kind Namespace
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -1454,7 +1454,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -1515,7 +1515,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -1555,7 +1555,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -1592,7 +1592,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -1632,7 +1632,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -1681,17 +1681,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -1716,7 +1716,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -1749,9 +1749,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -1770,7 +1770,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -1831,7 +1831,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -1875,7 +1875,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -1918,21 +1918,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -1962,7 +1962,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -2003,12 +2003,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -2051,7 +2051,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -2092,7 +2092,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -2141,17 +2141,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -2176,7 +2176,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -2209,9 +2209,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -2230,7 +2230,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -2291,7 +2291,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -2335,7 +2335,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -2378,21 +2378,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -2422,7 +2422,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -2463,12 +2463,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -2511,7 +2511,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -2552,7 +2552,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -2601,17 +2601,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -2636,7 +2636,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -2685,7 +2685,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -2734,17 +2734,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -2769,7 +2769,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -2818,7 +2818,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -2867,17 +2867,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -2902,7 +2902,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -2935,9 +2935,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -2956,7 +2956,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -3017,7 +3017,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -3047,9 +3047,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -3068,7 +3068,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -3129,7 +3129,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -3159,9 +3159,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -3180,7 +3180,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -3241,7 +3241,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -3285,7 +3285,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -3323,7 +3323,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -3361,7 +3361,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -3404,21 +3404,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -3464,21 +3464,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -3524,21 +3524,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -3568,7 +3568,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -3593,7 +3593,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -3618,7 +3618,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -3659,12 +3659,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -3709,12 +3709,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -3759,12 +3759,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -3807,7 +3807,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -3849,7 +3849,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -3891,7 +3891,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -3932,7 +3932,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -3981,17 +3981,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -4016,7 +4016,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -4049,9 +4049,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -4070,7 +4070,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -4131,7 +4131,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -4175,7 +4175,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -4218,21 +4218,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -4262,7 +4262,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -4303,12 +4303,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -4351,7 +4351,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -4392,7 +4392,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -4441,17 +4441,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -4476,7 +4476,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -4509,9 +4509,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -4530,7 +4530,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -4591,7 +4591,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -4635,7 +4635,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -4678,21 +4678,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -4722,7 +4722,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -4763,12 +4763,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -4811,7 +4811,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -4839,7 +4839,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -4880,12 +4880,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -4928,7 +4928,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -4969,7 +4969,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -5018,17 +5018,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -5053,7 +5053,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -5086,9 +5086,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -5107,7 +5107,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -5168,7 +5168,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -5212,7 +5212,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -5255,21 +5255,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -5299,7 +5299,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -5340,12 +5340,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -5388,7 +5388,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -5524,7 +5524,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -5552,7 +5552,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -5593,12 +5593,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -5641,7 +5641,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -5683,7 +5683,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -5818,7 +5818,7 @@ namespace k8s
         /// validity of the serving certificate of the backend it is connecting to.  This
         /// will make the HTTPS connection between the apiserver and the backend insecure.
         /// This means the apiserver cannot verify the log data it is receiving came from
-        /// the real kubelet.  If the kubelet is configured to verify the apiserver's TLS
+        /// the real kubelet.  If the kubelet is configured to verify the apiserver&apos;s TLS
         /// credentials, it does not mean the connection to the real kubelet is vulnerable
         /// to a man in the middle attack (e.g. an attacker could not intercept the actual
         /// log data coming from the real kubelet).
@@ -5829,7 +5829,7 @@ namespace k8s
         /// slightly more or slightly less than the specified limit.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="previous">
         /// Return previous terminated container logs. Defaults to false.
@@ -6253,7 +6253,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -6294,12 +6294,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -6342,7 +6342,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -6383,7 +6383,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -6432,17 +6432,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -6467,7 +6467,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -6500,9 +6500,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -6521,7 +6521,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -6582,7 +6582,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -6626,7 +6626,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -6669,21 +6669,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -6713,7 +6713,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -6754,12 +6754,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -6802,7 +6802,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -6843,7 +6843,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -6892,17 +6892,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -6927,7 +6927,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -6960,9 +6960,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -6981,7 +6981,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -7042,7 +7042,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -7086,7 +7086,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -7129,21 +7129,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -7173,7 +7173,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -7214,12 +7214,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -7262,7 +7262,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -7290,7 +7290,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -7331,12 +7331,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -7379,7 +7379,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -7407,7 +7407,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -7448,12 +7448,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -7496,7 +7496,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -7537,7 +7537,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -7586,17 +7586,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -7621,7 +7621,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -7654,9 +7654,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -7675,7 +7675,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -7736,7 +7736,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -7780,7 +7780,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -7823,21 +7823,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -7867,7 +7867,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -7908,12 +7908,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -7956,7 +7956,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -7984,7 +7984,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -8025,12 +8025,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -8073,7 +8073,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -8114,7 +8114,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -8163,17 +8163,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -8198,7 +8198,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -8231,9 +8231,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -8252,7 +8252,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -8313,7 +8313,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -8357,7 +8357,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -8400,21 +8400,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -8444,7 +8444,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -8485,12 +8485,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -8533,7 +8533,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -8574,7 +8574,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -8623,17 +8623,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -8658,7 +8658,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -8691,9 +8691,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -8712,7 +8712,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -8773,7 +8773,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -8817,7 +8817,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -8860,21 +8860,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -8904,7 +8904,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -8945,12 +8945,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -8993,7 +8993,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -9035,7 +9035,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -9060,9 +9060,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -9081,7 +9081,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -9142,7 +9142,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -9186,7 +9186,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -9229,21 +9229,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -9273,7 +9273,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -9314,12 +9314,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -9362,7 +9362,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -9762,7 +9762,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -9803,12 +9803,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -9851,7 +9851,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -9892,21 +9892,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -9932,7 +9932,7 @@ namespace k8s
         /// name of the Namespace
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -9969,12 +9969,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -10013,7 +10013,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -10051,7 +10051,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -10075,7 +10075,7 @@ namespace k8s
         /// name of the Namespace
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -10112,12 +10112,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -10156,7 +10156,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -10193,7 +10193,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -10242,17 +10242,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -10277,7 +10277,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -10306,9 +10306,9 @@ namespace k8s
         /// list or watch objects of kind Node
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -10327,7 +10327,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -10388,7 +10388,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -10428,7 +10428,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -10467,21 +10467,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -10507,7 +10507,7 @@ namespace k8s
         /// name of the Node
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -10544,12 +10544,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -10588,7 +10588,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -10888,7 +10888,7 @@ namespace k8s
         /// name of the Node
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -10925,12 +10925,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -10969,7 +10969,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -10990,9 +10990,9 @@ namespace k8s
         /// list or watch objects of kind PersistentVolumeClaim
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -11011,7 +11011,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -11047,7 +11047,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -11114,7 +11114,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -11163,17 +11163,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -11198,7 +11198,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -11227,9 +11227,9 @@ namespace k8s
         /// list or watch objects of kind PersistentVolume
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -11248,7 +11248,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -11309,7 +11309,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -11349,7 +11349,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -11388,21 +11388,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -11428,7 +11428,7 @@ namespace k8s
         /// name of the PersistentVolume
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -11465,12 +11465,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -11509,7 +11509,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -11533,7 +11533,7 @@ namespace k8s
         /// name of the PersistentVolume
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -11570,12 +11570,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -11614,7 +11614,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -11635,9 +11635,9 @@ namespace k8s
         /// list or watch objects of kind Pod
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -11656,7 +11656,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -11692,7 +11692,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -11743,9 +11743,9 @@ namespace k8s
         /// list or watch objects of kind PodTemplate
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -11764,7 +11764,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -11800,7 +11800,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -11851,9 +11851,9 @@ namespace k8s
         /// list or watch objects of kind ReplicationController
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -11872,7 +11872,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -11908,7 +11908,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -11959,9 +11959,9 @@ namespace k8s
         /// list or watch objects of kind ResourceQuota
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -11980,7 +11980,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -12016,7 +12016,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -12067,9 +12067,9 @@ namespace k8s
         /// list or watch objects of kind Secret
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -12088,7 +12088,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -12124,7 +12124,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -12175,9 +12175,9 @@ namespace k8s
         /// list or watch objects of kind ServiceAccount
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -12196,7 +12196,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -12232,7 +12232,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -12283,9 +12283,9 @@ namespace k8s
         /// list or watch objects of kind Service
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -12304,7 +12304,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -12340,7 +12340,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -12680,7 +12680,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -12729,17 +12729,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -12764,7 +12764,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -12809,7 +12809,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -12858,17 +12858,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -12893,7 +12893,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -12922,9 +12922,9 @@ namespace k8s
         /// list or watch objects of kind MutatingWebhookConfiguration
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -12943,7 +12943,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -13004,7 +13004,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -13030,9 +13030,9 @@ namespace k8s
         /// list or watch objects of kind MutatingWebhookConfiguration
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -13051,7 +13051,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -13112,7 +13112,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -13152,7 +13152,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -13186,7 +13186,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -13225,21 +13225,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -13281,21 +13281,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -13321,7 +13321,7 @@ namespace k8s
         /// name of the MutatingWebhookConfiguration
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -13342,7 +13342,7 @@ namespace k8s
         /// name of the MutatingWebhookConfiguration
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -13379,12 +13379,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -13425,12 +13425,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -13469,7 +13469,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -13507,7 +13507,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -13544,7 +13544,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -13593,17 +13593,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -13628,7 +13628,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -13673,7 +13673,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -13722,17 +13722,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -13757,7 +13757,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -13786,9 +13786,9 @@ namespace k8s
         /// list or watch objects of kind ValidatingWebhookConfiguration
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -13807,7 +13807,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -13868,7 +13868,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -13894,9 +13894,9 @@ namespace k8s
         /// list or watch objects of kind ValidatingWebhookConfiguration
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -13915,7 +13915,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -13976,7 +13976,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -14016,7 +14016,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -14050,7 +14050,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -14089,21 +14089,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -14145,21 +14145,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -14185,7 +14185,7 @@ namespace k8s
         /// name of the ValidatingWebhookConfiguration
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -14206,7 +14206,7 @@ namespace k8s
         /// name of the ValidatingWebhookConfiguration
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -14243,12 +14243,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -14289,12 +14289,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -14333,7 +14333,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -14371,7 +14371,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -14408,7 +14408,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -14457,17 +14457,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -14492,7 +14492,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -14537,7 +14537,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -14586,17 +14586,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -14621,7 +14621,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -14650,9 +14650,9 @@ namespace k8s
         /// list or watch objects of kind CustomResourceDefinition
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -14671,7 +14671,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -14732,7 +14732,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -14758,9 +14758,9 @@ namespace k8s
         /// list or watch objects of kind CustomResourceDefinition
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -14779,7 +14779,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -14840,7 +14840,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -14880,7 +14880,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -14914,7 +14914,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -14953,21 +14953,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -15009,21 +15009,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -15049,7 +15049,7 @@ namespace k8s
         /// name of the CustomResourceDefinition
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -15070,7 +15070,7 @@ namespace k8s
         /// name of the CustomResourceDefinition
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -15107,12 +15107,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -15153,12 +15153,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -15197,7 +15197,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -15235,7 +15235,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -15259,7 +15259,7 @@ namespace k8s
         /// name of the CustomResourceDefinition
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -15280,7 +15280,7 @@ namespace k8s
         /// name of the CustomResourceDefinition
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -15317,12 +15317,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -15363,12 +15363,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -15407,7 +15407,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -15445,7 +15445,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -15482,7 +15482,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -15531,17 +15531,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -15566,7 +15566,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -15611,7 +15611,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -15660,17 +15660,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -15695,7 +15695,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -15724,9 +15724,9 @@ namespace k8s
         /// list or watch objects of kind APIService
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -15745,7 +15745,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -15806,7 +15806,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -15832,9 +15832,9 @@ namespace k8s
         /// list or watch objects of kind APIService
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -15853,7 +15853,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -15914,7 +15914,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -15954,7 +15954,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -15988,7 +15988,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -16027,21 +16027,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -16083,21 +16083,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -16123,7 +16123,7 @@ namespace k8s
         /// name of the APIService
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -16144,7 +16144,7 @@ namespace k8s
         /// name of the APIService
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -16181,12 +16181,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -16227,12 +16227,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -16271,7 +16271,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -16309,7 +16309,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -16333,7 +16333,7 @@ namespace k8s
         /// name of the APIService
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -16354,7 +16354,7 @@ namespace k8s
         /// name of the APIService
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -16391,12 +16391,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -16437,12 +16437,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -16481,7 +16481,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -16519,7 +16519,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -16540,9 +16540,9 @@ namespace k8s
         /// list or watch objects of kind ControllerRevision
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -16561,7 +16561,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -16597,7 +16597,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -16648,9 +16648,9 @@ namespace k8s
         /// list or watch objects of kind DaemonSet
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -16669,7 +16669,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -16705,7 +16705,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -16756,9 +16756,9 @@ namespace k8s
         /// list or watch objects of kind Deployment
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -16777,7 +16777,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -16813,7 +16813,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -16883,7 +16883,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -16932,17 +16932,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -16967,7 +16967,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -17000,9 +17000,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -17021,7 +17021,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -17082,7 +17082,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -17126,7 +17126,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -17169,21 +17169,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -17213,7 +17213,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -17254,12 +17254,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -17302,7 +17302,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -17343,7 +17343,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -17392,17 +17392,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -17427,7 +17427,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -17460,9 +17460,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -17481,7 +17481,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -17542,7 +17542,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -17586,7 +17586,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -17629,21 +17629,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -17673,7 +17673,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -17714,12 +17714,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -17762,7 +17762,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -17790,7 +17790,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -17831,12 +17831,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -17879,7 +17879,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -17920,7 +17920,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -17969,17 +17969,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -18004,7 +18004,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -18037,9 +18037,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -18058,7 +18058,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -18119,7 +18119,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -18163,7 +18163,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -18206,21 +18206,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -18250,7 +18250,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -18291,12 +18291,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -18339,7 +18339,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -18367,7 +18367,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -18408,12 +18408,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -18456,7 +18456,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -18484,7 +18484,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -18525,12 +18525,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -18573,7 +18573,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -18614,7 +18614,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -18663,17 +18663,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -18698,7 +18698,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -18731,9 +18731,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -18752,7 +18752,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -18813,7 +18813,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -18857,7 +18857,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -18900,21 +18900,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -18944,7 +18944,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -18985,12 +18985,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -19033,7 +19033,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -19061,7 +19061,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -19102,12 +19102,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -19150,7 +19150,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -19178,7 +19178,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -19219,12 +19219,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -19267,7 +19267,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -19308,7 +19308,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -19357,17 +19357,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -19392,7 +19392,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -19425,9 +19425,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -19446,7 +19446,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -19507,7 +19507,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -19551,7 +19551,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -19594,21 +19594,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -19638,7 +19638,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -19679,12 +19679,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -19727,7 +19727,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -19755,7 +19755,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -19796,12 +19796,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -19844,7 +19844,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -19872,7 +19872,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -19913,12 +19913,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -19961,7 +19961,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -19983,9 +19983,9 @@ namespace k8s
         /// list or watch objects of kind ReplicaSet
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -20004,7 +20004,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -20040,7 +20040,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -20091,9 +20091,9 @@ namespace k8s
         /// list or watch objects of kind StatefulSet
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -20112,7 +20112,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -20148,7 +20148,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -20213,7 +20213,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -20247,7 +20247,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -20284,7 +20284,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -20322,7 +20322,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -20357,7 +20357,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -20391,7 +20391,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -20425,7 +20425,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -20459,7 +20459,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -20493,7 +20493,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -20527,7 +20527,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -20547,9 +20547,9 @@ namespace k8s
         /// list or watch objects of kind HorizontalPodAutoscaler
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -20568,7 +20568,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -20604,7 +20604,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -20655,9 +20655,9 @@ namespace k8s
         /// list or watch objects of kind HorizontalPodAutoscaler
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -20676,7 +20676,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -20712,7 +20712,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -20763,9 +20763,9 @@ namespace k8s
         /// list or watch objects of kind HorizontalPodAutoscaler
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -20784,7 +20784,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -20820,7 +20820,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -20890,7 +20890,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -20939,17 +20939,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -20974,7 +20974,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -21023,7 +21023,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -21072,17 +21072,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -21107,7 +21107,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -21156,7 +21156,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -21205,17 +21205,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -21240,7 +21240,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -21273,9 +21273,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -21294,7 +21294,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -21355,7 +21355,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -21385,9 +21385,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -21406,7 +21406,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -21467,7 +21467,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -21497,9 +21497,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -21518,7 +21518,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -21579,7 +21579,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -21623,7 +21623,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -21661,7 +21661,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -21699,7 +21699,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -21742,21 +21742,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -21802,21 +21802,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -21862,21 +21862,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -21906,7 +21906,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -21931,7 +21931,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -21956,7 +21956,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -21997,12 +21997,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -22047,12 +22047,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -22097,12 +22097,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -22145,7 +22145,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -22187,7 +22187,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -22229,7 +22229,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -22257,7 +22257,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -22282,7 +22282,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -22307,7 +22307,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -22348,12 +22348,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -22398,12 +22398,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -22448,12 +22448,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -22496,7 +22496,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -22538,7 +22538,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -22580,7 +22580,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -22602,9 +22602,9 @@ namespace k8s
         /// list or watch objects of kind CronJob
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -22623,7 +22623,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -22659,7 +22659,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -22710,9 +22710,9 @@ namespace k8s
         /// list or watch objects of kind CronJob
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -22731,7 +22731,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -22767,7 +22767,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -22818,9 +22818,9 @@ namespace k8s
         /// list or watch objects of kind Job
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -22839,7 +22839,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -22875,7 +22875,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -22945,7 +22945,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -22994,17 +22994,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -23029,7 +23029,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -23078,7 +23078,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -23127,17 +23127,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -23162,7 +23162,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -23195,9 +23195,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -23216,7 +23216,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -23277,7 +23277,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -23307,9 +23307,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -23328,7 +23328,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -23389,7 +23389,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -23433,7 +23433,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -23471,7 +23471,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -23514,21 +23514,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -23574,21 +23574,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -23618,7 +23618,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -23643,7 +23643,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -23684,12 +23684,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -23734,12 +23734,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -23782,7 +23782,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -23824,7 +23824,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -23852,7 +23852,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -23877,7 +23877,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -23918,12 +23918,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -23968,12 +23968,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -24016,7 +24016,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -24058,7 +24058,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -24099,7 +24099,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -24148,17 +24148,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -24183,7 +24183,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -24216,9 +24216,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -24237,7 +24237,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -24298,7 +24298,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -24342,7 +24342,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -24385,21 +24385,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -24429,7 +24429,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -24470,12 +24470,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -24518,7 +24518,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -24546,7 +24546,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -24587,12 +24587,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -24635,7 +24635,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -24673,7 +24673,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -24722,17 +24722,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -24757,7 +24757,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -24802,7 +24802,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -24851,17 +24851,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -24886,7 +24886,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -24915,9 +24915,9 @@ namespace k8s
         /// list or watch objects of kind CertificateSigningRequest
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -24936,7 +24936,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -24997,7 +24997,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25023,9 +25023,9 @@ namespace k8s
         /// list or watch objects of kind CertificateSigningRequest
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -25044,7 +25044,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -25105,7 +25105,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25145,7 +25145,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25179,7 +25179,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25218,21 +25218,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25274,21 +25274,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25314,7 +25314,7 @@ namespace k8s
         /// name of the CertificateSigningRequest
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25335,7 +25335,7 @@ namespace k8s
         /// name of the CertificateSigningRequest
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25372,12 +25372,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25418,12 +25418,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25462,7 +25462,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25500,7 +25500,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25524,7 +25524,7 @@ namespace k8s
         /// name of the CertificateSigningRequest
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25545,7 +25545,7 @@ namespace k8s
         /// name of the CertificateSigningRequest
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25582,12 +25582,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25628,12 +25628,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25672,7 +25672,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25710,7 +25710,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25734,7 +25734,7 @@ namespace k8s
         /// name of the CertificateSigningRequest
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25755,7 +25755,7 @@ namespace k8s
         /// name of the CertificateSigningRequest
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25792,12 +25792,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25838,12 +25838,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25882,7 +25882,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25920,7 +25920,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -25941,9 +25941,9 @@ namespace k8s
         /// list or watch objects of kind Lease
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -25962,7 +25962,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -25998,7 +25998,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -26049,9 +26049,9 @@ namespace k8s
         /// list or watch objects of kind Lease
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -26070,7 +26070,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -26106,7 +26106,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -26176,7 +26176,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -26225,17 +26225,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -26260,7 +26260,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -26309,7 +26309,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -26358,17 +26358,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -26393,7 +26393,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -26426,9 +26426,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -26447,7 +26447,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -26508,7 +26508,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -26538,9 +26538,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -26559,7 +26559,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -26620,7 +26620,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -26664,7 +26664,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -26702,7 +26702,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -26745,21 +26745,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -26805,21 +26805,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -26849,7 +26849,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -26874,7 +26874,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -26915,12 +26915,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -26965,12 +26965,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -27013,7 +27013,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -27055,7 +27055,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -27077,9 +27077,9 @@ namespace k8s
         /// list or watch objects of kind EndpointSlice
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -27098,7 +27098,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -27134,7 +27134,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -27185,9 +27185,9 @@ namespace k8s
         /// list or watch objects of kind EndpointSlice
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -27206,7 +27206,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -27242,7 +27242,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -27312,7 +27312,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -27361,17 +27361,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -27396,7 +27396,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -27445,7 +27445,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -27494,17 +27494,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -27529,7 +27529,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -27562,9 +27562,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -27583,7 +27583,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -27644,7 +27644,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -27674,9 +27674,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -27695,7 +27695,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -27756,7 +27756,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -27800,7 +27800,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -27838,7 +27838,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -27881,21 +27881,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -27941,21 +27941,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -27985,7 +27985,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -28010,7 +28010,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -28051,12 +28051,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -28101,12 +28101,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -28149,7 +28149,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -28191,7 +28191,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -28213,9 +28213,9 @@ namespace k8s
         /// list or watch objects of kind Ingress
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -28234,7 +28234,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -28270,7 +28270,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -28321,9 +28321,9 @@ namespace k8s
         /// list or watch objects of kind Ingress
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -28342,7 +28342,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -28378,7 +28378,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -28429,9 +28429,9 @@ namespace k8s
         /// list or watch objects of kind Ingress
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -28450,7 +28450,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -28486,7 +28486,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -28556,7 +28556,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -28605,17 +28605,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -28640,7 +28640,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -28689,7 +28689,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -28738,17 +28738,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -28773,7 +28773,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -28822,7 +28822,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -28871,17 +28871,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -28906,7 +28906,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -28939,9 +28939,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -28960,7 +28960,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -29021,7 +29021,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -29051,9 +29051,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -29072,7 +29072,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -29133,7 +29133,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -29163,9 +29163,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -29184,7 +29184,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -29245,7 +29245,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -29289,7 +29289,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -29327,7 +29327,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -29365,7 +29365,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -29408,21 +29408,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -29468,21 +29468,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -29528,21 +29528,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -29572,7 +29572,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -29597,7 +29597,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -29622,7 +29622,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -29663,12 +29663,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -29713,12 +29713,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -29763,12 +29763,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -29811,7 +29811,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -29853,7 +29853,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -29895,7 +29895,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -29923,7 +29923,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -29948,7 +29948,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -29973,7 +29973,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -30014,12 +30014,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -30064,12 +30064,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -30114,12 +30114,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -30162,7 +30162,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -30204,7 +30204,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -30246,7 +30246,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -30284,7 +30284,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -30333,17 +30333,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -30368,7 +30368,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -30397,9 +30397,9 @@ namespace k8s
         /// list or watch objects of kind FlowSchema
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -30418,7 +30418,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -30479,7 +30479,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -30519,7 +30519,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -30558,21 +30558,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -30598,7 +30598,7 @@ namespace k8s
         /// name of the FlowSchema
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -30635,12 +30635,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -30679,7 +30679,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -30703,7 +30703,7 @@ namespace k8s
         /// name of the FlowSchema
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -30740,12 +30740,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -30784,7 +30784,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -30821,7 +30821,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -30870,17 +30870,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -30905,7 +30905,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -30934,9 +30934,9 @@ namespace k8s
         /// list or watch objects of kind PriorityLevelConfiguration
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -30955,7 +30955,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -31016,7 +31016,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -31056,7 +31056,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -31095,21 +31095,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -31135,7 +31135,7 @@ namespace k8s
         /// name of the PriorityLevelConfiguration
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -31172,12 +31172,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -31216,7 +31216,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -31240,7 +31240,7 @@ namespace k8s
         /// name of the PriorityLevelConfiguration
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -31277,12 +31277,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -31321,7 +31321,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -31358,7 +31358,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -31407,17 +31407,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -31442,7 +31442,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -31471,9 +31471,9 @@ namespace k8s
         /// list or watch objects of kind StorageVersion
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -31492,7 +31492,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -31553,7 +31553,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -31593,7 +31593,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -31632,21 +31632,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -31672,7 +31672,7 @@ namespace k8s
         /// name of the StorageVersion
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -31709,12 +31709,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -31753,7 +31753,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -31777,7 +31777,7 @@ namespace k8s
         /// name of the StorageVersion
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -31814,12 +31814,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -31858,7 +31858,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -31895,7 +31895,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -31944,17 +31944,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -31979,7 +31979,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -32024,7 +32024,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -32073,17 +32073,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -32108,7 +32108,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -32137,9 +32137,9 @@ namespace k8s
         /// list or watch objects of kind IngressClass
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -32158,7 +32158,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -32219,7 +32219,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -32245,9 +32245,9 @@ namespace k8s
         /// list or watch objects of kind IngressClass
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -32266,7 +32266,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -32327,7 +32327,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -32367,7 +32367,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -32401,7 +32401,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -32440,21 +32440,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -32496,21 +32496,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -32536,7 +32536,7 @@ namespace k8s
         /// name of the IngressClass
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -32557,7 +32557,7 @@ namespace k8s
         /// name of the IngressClass
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -32594,12 +32594,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -32640,12 +32640,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -32684,7 +32684,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -32722,7 +32722,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -32762,7 +32762,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -32811,17 +32811,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -32846,7 +32846,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -32879,9 +32879,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -32900,7 +32900,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -32961,7 +32961,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -33005,7 +33005,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -33048,21 +33048,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -33092,7 +33092,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -33133,12 +33133,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -33181,7 +33181,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -33203,9 +33203,9 @@ namespace k8s
         /// list or watch objects of kind NetworkPolicy
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -33224,7 +33224,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -33260,7 +33260,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -33327,7 +33327,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -33376,17 +33376,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -33411,7 +33411,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -33456,7 +33456,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -33505,17 +33505,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -33540,7 +33540,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -33585,7 +33585,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -33634,17 +33634,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -33669,7 +33669,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -33698,9 +33698,9 @@ namespace k8s
         /// list or watch objects of kind RuntimeClass
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -33719,7 +33719,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -33780,7 +33780,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -33806,9 +33806,9 @@ namespace k8s
         /// list or watch objects of kind RuntimeClass
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -33827,7 +33827,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -33888,7 +33888,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -33914,9 +33914,9 @@ namespace k8s
         /// list or watch objects of kind RuntimeClass
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -33935,7 +33935,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -33996,7 +33996,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -34036,7 +34036,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -34070,7 +34070,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -34104,7 +34104,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -34143,21 +34143,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -34199,21 +34199,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -34255,21 +34255,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -34295,7 +34295,7 @@ namespace k8s
         /// name of the RuntimeClass
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -34316,7 +34316,7 @@ namespace k8s
         /// name of the RuntimeClass
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -34337,7 +34337,7 @@ namespace k8s
         /// name of the RuntimeClass
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -34374,12 +34374,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -34420,12 +34420,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -34466,12 +34466,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -34510,7 +34510,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -34548,7 +34548,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -34586,7 +34586,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -34626,7 +34626,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -34675,17 +34675,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -34710,7 +34710,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -34759,7 +34759,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -34808,17 +34808,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -34843,7 +34843,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -34876,9 +34876,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -34897,7 +34897,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -34958,7 +34958,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -34988,9 +34988,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -35009,7 +35009,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -35070,7 +35070,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -35114,7 +35114,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -35152,7 +35152,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -35195,21 +35195,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -35255,21 +35255,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -35299,7 +35299,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -35324,7 +35324,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -35365,12 +35365,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -35415,12 +35415,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -35463,7 +35463,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -35505,7 +35505,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -35533,7 +35533,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -35558,7 +35558,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -35599,12 +35599,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -35649,12 +35649,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -35697,7 +35697,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -35739,7 +35739,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -35761,9 +35761,9 @@ namespace k8s
         /// list or watch objects of kind PodDisruptionBudget
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -35782,7 +35782,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -35818,7 +35818,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -35869,9 +35869,9 @@ namespace k8s
         /// list or watch objects of kind PodDisruptionBudget
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -35890,7 +35890,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -35926,7 +35926,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -35993,7 +35993,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -36042,17 +36042,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -36077,7 +36077,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -36106,9 +36106,9 @@ namespace k8s
         /// list or watch objects of kind PodSecurityPolicy
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -36127,7 +36127,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -36188,7 +36188,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -36228,7 +36228,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -36267,21 +36267,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -36307,7 +36307,7 @@ namespace k8s
         /// name of the PodSecurityPolicy
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -36344,12 +36344,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -36388,7 +36388,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -36425,7 +36425,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -36474,17 +36474,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -36509,7 +36509,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -36554,7 +36554,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -36603,17 +36603,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -36638,7 +36638,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -36683,7 +36683,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -36732,17 +36732,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -36767,7 +36767,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -36796,9 +36796,9 @@ namespace k8s
         /// list or watch objects of kind ClusterRoleBinding
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -36817,7 +36817,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -36878,7 +36878,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -36904,9 +36904,9 @@ namespace k8s
         /// list or watch objects of kind ClusterRoleBinding
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -36925,7 +36925,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -36986,7 +36986,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -37012,9 +37012,9 @@ namespace k8s
         /// list or watch objects of kind ClusterRoleBinding
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -37033,7 +37033,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -37094,7 +37094,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -37134,7 +37134,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -37168,7 +37168,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -37202,7 +37202,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -37241,21 +37241,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -37297,21 +37297,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -37353,21 +37353,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -37393,7 +37393,7 @@ namespace k8s
         /// name of the ClusterRoleBinding
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -37414,7 +37414,7 @@ namespace k8s
         /// name of the ClusterRoleBinding
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -37435,7 +37435,7 @@ namespace k8s
         /// name of the ClusterRoleBinding
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -37472,12 +37472,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -37518,12 +37518,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -37564,12 +37564,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -37608,7 +37608,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -37646,7 +37646,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -37684,7 +37684,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -37721,7 +37721,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -37770,17 +37770,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -37805,7 +37805,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -37850,7 +37850,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -37899,17 +37899,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -37934,7 +37934,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -37979,7 +37979,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -38028,17 +38028,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -38063,7 +38063,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -38092,9 +38092,9 @@ namespace k8s
         /// list or watch objects of kind ClusterRole
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -38113,7 +38113,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -38174,7 +38174,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -38200,9 +38200,9 @@ namespace k8s
         /// list or watch objects of kind ClusterRole
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -38221,7 +38221,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -38282,7 +38282,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -38308,9 +38308,9 @@ namespace k8s
         /// list or watch objects of kind ClusterRole
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -38329,7 +38329,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -38390,7 +38390,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -38430,7 +38430,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -38464,7 +38464,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -38498,7 +38498,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -38537,21 +38537,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -38593,21 +38593,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -38649,21 +38649,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -38689,7 +38689,7 @@ namespace k8s
         /// name of the ClusterRole
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -38710,7 +38710,7 @@ namespace k8s
         /// name of the ClusterRole
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -38731,7 +38731,7 @@ namespace k8s
         /// name of the ClusterRole
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -38768,12 +38768,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -38814,12 +38814,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -38860,12 +38860,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -38904,7 +38904,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -38942,7 +38942,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -38980,7 +38980,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -39020,7 +39020,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -39069,17 +39069,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -39104,7 +39104,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -39153,7 +39153,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -39202,17 +39202,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -39237,7 +39237,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -39286,7 +39286,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -39335,17 +39335,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -39370,7 +39370,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -39403,9 +39403,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -39424,7 +39424,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -39485,7 +39485,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -39515,9 +39515,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -39536,7 +39536,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -39597,7 +39597,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -39627,9 +39627,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -39648,7 +39648,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -39709,7 +39709,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -39753,7 +39753,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -39791,7 +39791,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -39829,7 +39829,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -39872,21 +39872,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -39932,21 +39932,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -39992,21 +39992,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -40036,7 +40036,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -40061,7 +40061,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -40086,7 +40086,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -40127,12 +40127,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -40177,12 +40177,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -40227,12 +40227,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -40275,7 +40275,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -40317,7 +40317,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -40359,7 +40359,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -40400,7 +40400,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -40449,17 +40449,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -40484,7 +40484,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -40533,7 +40533,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -40582,17 +40582,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -40617,7 +40617,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -40666,7 +40666,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -40715,17 +40715,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -40750,7 +40750,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -40783,9 +40783,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -40804,7 +40804,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -40865,7 +40865,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -40895,9 +40895,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -40916,7 +40916,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -40977,7 +40977,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -41007,9 +41007,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -41028,7 +41028,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -41089,7 +41089,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -41133,7 +41133,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -41171,7 +41171,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -41209,7 +41209,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -41252,21 +41252,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -41312,21 +41312,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -41372,21 +41372,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -41416,7 +41416,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -41441,7 +41441,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -41466,7 +41466,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -41507,12 +41507,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -41557,12 +41557,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -41607,12 +41607,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -41655,7 +41655,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -41697,7 +41697,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -41739,7 +41739,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -41761,9 +41761,9 @@ namespace k8s
         /// list or watch objects of kind RoleBinding
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -41782,7 +41782,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -41818,7 +41818,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -41869,9 +41869,9 @@ namespace k8s
         /// list or watch objects of kind RoleBinding
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -41890,7 +41890,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -41926,7 +41926,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -41977,9 +41977,9 @@ namespace k8s
         /// list or watch objects of kind RoleBinding
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -41998,7 +41998,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -42034,7 +42034,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -42085,9 +42085,9 @@ namespace k8s
         /// list or watch objects of kind Role
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -42106,7 +42106,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -42142,7 +42142,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -42193,9 +42193,9 @@ namespace k8s
         /// list or watch objects of kind Role
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -42214,7 +42214,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -42250,7 +42250,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -42301,9 +42301,9 @@ namespace k8s
         /// list or watch objects of kind Role
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -42322,7 +42322,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -42358,7 +42358,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -42425,7 +42425,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -42474,17 +42474,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -42509,7 +42509,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -42554,7 +42554,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -42603,17 +42603,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -42638,7 +42638,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -42683,7 +42683,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -42732,17 +42732,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -42767,7 +42767,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -42796,9 +42796,9 @@ namespace k8s
         /// list or watch objects of kind PriorityClass
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -42817,7 +42817,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -42878,7 +42878,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -42904,9 +42904,9 @@ namespace k8s
         /// list or watch objects of kind PriorityClass
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -42925,7 +42925,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -42986,7 +42986,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -43012,9 +43012,9 @@ namespace k8s
         /// list or watch objects of kind PriorityClass
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -43033,7 +43033,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -43094,7 +43094,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -43134,7 +43134,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -43168,7 +43168,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -43202,7 +43202,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -43241,21 +43241,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -43297,21 +43297,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -43353,21 +43353,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -43393,7 +43393,7 @@ namespace k8s
         /// name of the PriorityClass
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -43414,7 +43414,7 @@ namespace k8s
         /// name of the PriorityClass
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -43435,7 +43435,7 @@ namespace k8s
         /// name of the PriorityClass
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -43472,12 +43472,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -43518,12 +43518,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -43564,12 +43564,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -43608,7 +43608,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -43646,7 +43646,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -43684,7 +43684,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -43721,7 +43721,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -43770,17 +43770,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -43805,7 +43805,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -43850,7 +43850,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -43899,17 +43899,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -43934,7 +43934,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -43963,9 +43963,9 @@ namespace k8s
         /// list or watch objects of kind CSIDriver
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -43984,7 +43984,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -44045,7 +44045,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -44071,9 +44071,9 @@ namespace k8s
         /// list or watch objects of kind CSIDriver
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -44092,7 +44092,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -44153,7 +44153,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -44193,7 +44193,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -44227,7 +44227,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -44266,21 +44266,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -44322,21 +44322,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -44362,7 +44362,7 @@ namespace k8s
         /// name of the CSIDriver
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -44383,7 +44383,7 @@ namespace k8s
         /// name of the CSIDriver
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -44420,12 +44420,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -44466,12 +44466,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -44510,7 +44510,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -44548,7 +44548,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -44585,7 +44585,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -44634,17 +44634,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -44669,7 +44669,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -44714,7 +44714,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -44763,17 +44763,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -44798,7 +44798,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -44827,9 +44827,9 @@ namespace k8s
         /// list or watch objects of kind CSINode
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -44848,7 +44848,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -44909,7 +44909,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -44935,9 +44935,9 @@ namespace k8s
         /// list or watch objects of kind CSINode
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -44956,7 +44956,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -45017,7 +45017,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -45057,7 +45057,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -45091,7 +45091,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -45130,21 +45130,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -45186,21 +45186,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -45226,7 +45226,7 @@ namespace k8s
         /// name of the CSINode
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -45247,7 +45247,7 @@ namespace k8s
         /// name of the CSINode
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -45284,12 +45284,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -45330,12 +45330,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -45374,7 +45374,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -45412,7 +45412,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -45449,7 +45449,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -45498,17 +45498,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -45533,7 +45533,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -45578,7 +45578,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -45627,17 +45627,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -45662,7 +45662,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -45691,9 +45691,9 @@ namespace k8s
         /// list or watch objects of kind StorageClass
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -45712,7 +45712,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -45773,7 +45773,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -45799,9 +45799,9 @@ namespace k8s
         /// list or watch objects of kind StorageClass
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -45820,7 +45820,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -45881,7 +45881,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -45921,7 +45921,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -45955,7 +45955,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -45994,21 +45994,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -46050,21 +46050,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -46090,7 +46090,7 @@ namespace k8s
         /// name of the StorageClass
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -46111,7 +46111,7 @@ namespace k8s
         /// name of the StorageClass
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -46148,12 +46148,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -46194,12 +46194,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -46238,7 +46238,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -46276,7 +46276,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -46313,7 +46313,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -46362,17 +46362,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -46397,7 +46397,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -46442,7 +46442,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -46491,17 +46491,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -46526,7 +46526,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -46571,7 +46571,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -46620,17 +46620,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -46655,7 +46655,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -46684,9 +46684,9 @@ namespace k8s
         /// list or watch objects of kind VolumeAttachment
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -46705,7 +46705,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -46766,7 +46766,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -46792,9 +46792,9 @@ namespace k8s
         /// list or watch objects of kind VolumeAttachment
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -46813,7 +46813,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -46874,7 +46874,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -46900,9 +46900,9 @@ namespace k8s
         /// list or watch objects of kind VolumeAttachment
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -46921,7 +46921,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -46982,7 +46982,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -47022,7 +47022,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -47056,7 +47056,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -47090,7 +47090,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -47129,21 +47129,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -47185,21 +47185,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -47241,21 +47241,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -47281,7 +47281,7 @@ namespace k8s
         /// name of the VolumeAttachment
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -47302,7 +47302,7 @@ namespace k8s
         /// name of the VolumeAttachment
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -47323,7 +47323,7 @@ namespace k8s
         /// name of the VolumeAttachment
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -47360,12 +47360,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -47406,12 +47406,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -47452,12 +47452,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -47496,7 +47496,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -47534,7 +47534,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -47572,7 +47572,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -47596,7 +47596,7 @@ namespace k8s
         /// name of the VolumeAttachment
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -47633,12 +47633,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -47677,7 +47677,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -47698,9 +47698,9 @@ namespace k8s
         /// list or watch objects of kind CSIStorageCapacity
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -47719,7 +47719,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -47755,7 +47755,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -47806,9 +47806,9 @@ namespace k8s
         /// list or watch objects of kind CSIStorageCapacity
         /// </summary>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -47827,7 +47827,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -47863,7 +47863,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -47933,7 +47933,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -47982,17 +47982,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -48017,7 +48017,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -48066,7 +48066,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -48115,17 +48115,17 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="resourceVersion">
@@ -48150,7 +48150,7 @@ namespace k8s
         /// regardless of any activity or inactivity.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -48183,9 +48183,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -48204,7 +48204,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -48265,7 +48265,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -48295,9 +48295,9 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -48316,7 +48316,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -48377,7 +48377,7 @@ namespace k8s
         /// update, and remove notifications. Specify resourceVersion.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -48421,7 +48421,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -48459,7 +48459,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -48502,21 +48502,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -48562,21 +48562,21 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
         /// Whether and how garbage collection will be performed. Either this field or
         /// OrphanDependents may be set, but not both. The default policy is decided by the
         /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: 'Orphan' - orphan the dependents;
-        /// 'Background' - allow the garbage collector to delete the dependents in the
-        /// background; 'Foreground' - a cascading policy that deletes all dependents in the
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -48606,7 +48606,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -48631,7 +48631,7 @@ namespace k8s
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -48672,12 +48672,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -48722,12 +48722,12 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -48770,7 +48770,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -48812,7 +48812,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -48894,16 +48894,16 @@ namespace k8s
         /// The JSON schema of the Resource to create.
         /// </param>
         /// <param name="group">
-        /// The custom resource's group name
+        /// The custom resource&apos;s group name
         /// </param>
         /// <param name="version">
-        /// The custom resource's version
+        /// The custom resource&apos;s version
         /// </param>
         /// <param name="namespaceParameter">
-        /// The custom resource's namespace
+        /// The custom resource&apos;s namespace
         /// </param>
         /// <param name="plural">
-        /// The custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// The custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="dryRun">
         /// When present, indicates that modifications should not be persisted. An invalid
@@ -48917,7 +48917,7 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -48941,16 +48941,16 @@ namespace k8s
         /// Delete collection of namespace scoped custom objects
         /// </summary>
         /// <param name="group">
-        /// The custom resource's group name
+        /// The custom resource&apos;s group name
         /// </param>
         /// <param name="version">
-        /// The custom resource's version
+        /// The custom resource&apos;s version
         /// </param>
         /// <param name="namespaceParameter">
-        /// The custom resource's namespace
+        /// The custom resource&apos;s namespace
         /// </param>
         /// <param name="plural">
-        /// The custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// The custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="body">
         /// 
@@ -48963,8 +48963,8 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
@@ -48980,7 +48980,7 @@ namespace k8s
         /// processed
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -49006,21 +49006,21 @@ namespace k8s
         /// list or watch namespace scoped custom objects
         /// </summary>
         /// <param name="group">
-        /// The custom resource's group name
+        /// The custom resource&apos;s group name
         /// </param>
         /// <param name="version">
-        /// The custom resource's version
+        /// The custom resource&apos;s version
         /// </param>
         /// <param name="namespaceParameter">
-        /// The custom resource's namespace
+        /// The custom resource&apos;s namespace
         /// </param>
         /// <param name="plural">
-        /// The custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// The custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -49039,7 +49039,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -49078,7 +49078,7 @@ namespace k8s
         /// When specified with a watch call, shows changes that occur after that particular
         /// version of a resource. Defaults to changes from the beginning of history. When
         /// specified for list: - if unset, then the result is returned from remote storage
-        /// based on quorum-read flag; - if it's 0, then we simply return what we currently
+        /// based on quorum-read flag; - if it&apos;s 0, then we simply return what we currently
         /// have in cache, no guarantee; - if set to non zero, then the result is at least
         /// as fresh as given rv.
         /// </param>
@@ -49100,7 +49100,7 @@ namespace k8s
         /// update, and remove notifications.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -49133,13 +49133,13 @@ namespace k8s
         /// The JSON schema of the Resource to create.
         /// </param>
         /// <param name="group">
-        /// The custom resource's group name
+        /// The custom resource&apos;s group name
         /// </param>
         /// <param name="version">
-        /// The custom resource's version
+        /// The custom resource&apos;s version
         /// </param>
         /// <param name="plural">
-        /// The custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// The custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="dryRun">
         /// When present, indicates that modifications should not be persisted. An invalid
@@ -49155,7 +49155,7 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -49178,13 +49178,13 @@ namespace k8s
         /// Delete collection of cluster scoped custom objects
         /// </summary>
         /// <param name="group">
-        /// The custom resource's group name
+        /// The custom resource&apos;s group name
         /// </param>
         /// <param name="version">
-        /// The custom resource's version
+        /// The custom resource&apos;s version
         /// </param>
         /// <param name="plural">
-        /// The custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// The custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="body">
         /// 
@@ -49197,8 +49197,8 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
@@ -49214,7 +49214,7 @@ namespace k8s
         /// processed
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -49239,18 +49239,18 @@ namespace k8s
         /// list or watch cluster scoped custom objects
         /// </summary>
         /// <param name="group">
-        /// The custom resource's group name
+        /// The custom resource&apos;s group name
         /// </param>
         /// <param name="version">
-        /// The custom resource's version
+        /// The custom resource&apos;s version
         /// </param>
         /// <param name="plural">
-        /// The custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// The custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
@@ -49269,7 +49269,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -49308,7 +49308,7 @@ namespace k8s
         /// When specified with a watch call, shows changes that occur after that particular
         /// version of a resource. Defaults to changes from the beginning of history. When
         /// specified for list: - if unset, then the result is returned from remote storage
-        /// based on quorum-read flag; - if it's 0, then we simply return what we currently
+        /// based on quorum-read flag; - if it&apos;s 0, then we simply return what we currently
         /// have in cache, no guarantee; - if set to non zero, then the result is at least
         /// as fresh as given rv.
         /// </param>
@@ -49330,7 +49330,7 @@ namespace k8s
         /// update, and remove notifications.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -49362,16 +49362,16 @@ namespace k8s
         /// 
         /// </param>
         /// <param name="group">
-        /// the custom resource's group
+        /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
-        /// the custom resource's version
+        /// the custom resource&apos;s version
         /// </param>
         /// <param name="plural">
-        /// the custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
-        /// the custom object's name
+        /// the custom object&apos;s name
         /// </param>
         /// <param name="dryRun">
         /// When present, indicates that modifications should not be persisted. An invalid
@@ -49408,16 +49408,16 @@ namespace k8s
         /// 
         /// </param>
         /// <param name="group">
-        /// the custom resource's group
+        /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
-        /// the custom resource's version
+        /// the custom resource&apos;s version
         /// </param>
         /// <param name="plural">
-        /// the custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
-        /// the custom object's name
+        /// the custom object&apos;s name
         /// </param>
         /// <param name="dryRun">
         /// When present, indicates that modifications should not be persisted. An invalid
@@ -49433,7 +49433,7 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
@@ -49459,16 +49459,16 @@ namespace k8s
         /// read status of the specified cluster scoped custom object
         /// </summary>
         /// <param name="group">
-        /// the custom resource's group
+        /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
-        /// the custom resource's version
+        /// the custom resource&apos;s version
         /// </param>
         /// <param name="plural">
-        /// the custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
-        /// the custom object's name
+        /// the custom object&apos;s name
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -49491,19 +49491,19 @@ namespace k8s
         /// The JSON schema of the Resource to replace.
         /// </param>
         /// <param name="group">
-        /// the custom resource's group
+        /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
-        /// the custom resource's version
+        /// the custom resource&apos;s version
         /// </param>
         /// <param name="namespaceParameter">
-        /// The custom resource's namespace
+        /// The custom resource&apos;s namespace
         /// </param>
         /// <param name="plural">
-        /// the custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
-        /// the custom object's name
+        /// the custom object&apos;s name
         /// </param>
         /// <param name="dryRun">
         /// When present, indicates that modifications should not be persisted. An invalid
@@ -49541,19 +49541,19 @@ namespace k8s
         /// The JSON schema of the Resource to patch.
         /// </param>
         /// <param name="group">
-        /// the custom resource's group
+        /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
-        /// the custom resource's version
+        /// the custom resource&apos;s version
         /// </param>
         /// <param name="namespaceParameter">
-        /// The custom resource's namespace
+        /// The custom resource&apos;s namespace
         /// </param>
         /// <param name="plural">
-        /// the custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
-        /// the custom object's name
+        /// the custom object&apos;s name
         /// </param>
         /// <param name="dryRun">
         /// When present, indicates that modifications should not be persisted. An invalid
@@ -49569,7 +49569,7 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
@@ -49596,19 +49596,19 @@ namespace k8s
         /// Deletes the specified namespace scoped custom object
         /// </summary>
         /// <param name="group">
-        /// the custom resource's group
+        /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
-        /// the custom resource's version
+        /// the custom resource&apos;s version
         /// </param>
         /// <param name="namespaceParameter">
-        /// The custom resource's namespace
+        /// The custom resource&apos;s namespace
         /// </param>
         /// <param name="plural">
-        /// the custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
-        /// the custom object's name
+        /// the custom object&apos;s name
         /// </param>
         /// <param name="body">
         /// 
@@ -49621,8 +49621,8 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
@@ -49661,19 +49661,19 @@ namespace k8s
         /// Returns a namespace scoped custom object
         /// </summary>
         /// <param name="group">
-        /// the custom resource's group
+        /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
-        /// the custom resource's version
+        /// the custom resource&apos;s version
         /// </param>
         /// <param name="namespaceParameter">
-        /// The custom resource's namespace
+        /// The custom resource&apos;s namespace
         /// </param>
         /// <param name="plural">
-        /// the custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
-        /// the custom object's name
+        /// the custom object&apos;s name
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -49697,19 +49697,19 @@ namespace k8s
         /// 
         /// </param>
         /// <param name="group">
-        /// the custom resource's group
+        /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
-        /// the custom resource's version
+        /// the custom resource&apos;s version
         /// </param>
         /// <param name="namespaceParameter">
-        /// The custom resource's namespace
+        /// The custom resource&apos;s namespace
         /// </param>
         /// <param name="plural">
-        /// the custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
-        /// the custom object's name
+        /// the custom object&apos;s name
         /// </param>
         /// <param name="dryRun">
         /// When present, indicates that modifications should not be persisted. An invalid
@@ -49747,19 +49747,19 @@ namespace k8s
         /// 
         /// </param>
         /// <param name="group">
-        /// the custom resource's group
+        /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
-        /// the custom resource's version
+        /// the custom resource&apos;s version
         /// </param>
         /// <param name="namespaceParameter">
-        /// The custom resource's namespace
+        /// The custom resource&apos;s namespace
         /// </param>
         /// <param name="plural">
-        /// the custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
-        /// the custom object's name
+        /// the custom object&apos;s name
         /// </param>
         /// <param name="dryRun">
         /// When present, indicates that modifications should not be persisted. An invalid
@@ -49775,7 +49775,7 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
@@ -49802,19 +49802,19 @@ namespace k8s
         /// read scale of the specified namespace scoped custom object
         /// </summary>
         /// <param name="group">
-        /// the custom resource's group
+        /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
-        /// the custom resource's version
+        /// the custom resource&apos;s version
         /// </param>
         /// <param name="namespaceParameter">
-        /// The custom resource's namespace
+        /// The custom resource&apos;s namespace
         /// </param>
         /// <param name="plural">
-        /// the custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
-        /// the custom object's name
+        /// the custom object&apos;s name
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -49838,16 +49838,16 @@ namespace k8s
         /// 
         /// </param>
         /// <param name="group">
-        /// the custom resource's group
+        /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
-        /// the custom resource's version
+        /// the custom resource&apos;s version
         /// </param>
         /// <param name="plural">
-        /// the custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
-        /// the custom object's name
+        /// the custom object&apos;s name
         /// </param>
         /// <param name="dryRun">
         /// When present, indicates that modifications should not be persisted. An invalid
@@ -49884,16 +49884,16 @@ namespace k8s
         /// 
         /// </param>
         /// <param name="group">
-        /// the custom resource's group
+        /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
-        /// the custom resource's version
+        /// the custom resource&apos;s version
         /// </param>
         /// <param name="plural">
-        /// the custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
-        /// the custom object's name
+        /// the custom object&apos;s name
         /// </param>
         /// <param name="dryRun">
         /// When present, indicates that modifications should not be persisted. An invalid
@@ -49909,7 +49909,7 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
@@ -49935,16 +49935,16 @@ namespace k8s
         /// read scale of the specified custom object
         /// </summary>
         /// <param name="group">
-        /// the custom resource's group
+        /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
-        /// the custom resource's version
+        /// the custom resource&apos;s version
         /// </param>
         /// <param name="plural">
-        /// the custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
-        /// the custom object's name
+        /// the custom object&apos;s name
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -49967,16 +49967,16 @@ namespace k8s
         /// The JSON schema of the Resource to replace.
         /// </param>
         /// <param name="group">
-        /// the custom resource's group
+        /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
-        /// the custom resource's version
+        /// the custom resource&apos;s version
         /// </param>
         /// <param name="plural">
-        /// the custom object's plural name. For TPRs this would be lowercase plural kind.
+        /// the custom object&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
-        /// the custom object's name
+        /// the custom object&apos;s name
         /// </param>
         /// <param name="dryRun">
         /// When present, indicates that modifications should not be persisted. An invalid
@@ -50013,16 +50013,16 @@ namespace k8s
         /// The JSON schema of the Resource to patch.
         /// </param>
         /// <param name="group">
-        /// the custom resource's group
+        /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
-        /// the custom resource's version
+        /// the custom resource&apos;s version
         /// </param>
         /// <param name="plural">
-        /// the custom object's plural name. For TPRs this would be lowercase plural kind.
+        /// the custom object&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
-        /// the custom object's name
+        /// the custom object&apos;s name
         /// </param>
         /// <param name="dryRun">
         /// When present, indicates that modifications should not be persisted. An invalid
@@ -50038,7 +50038,7 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
@@ -50064,16 +50064,16 @@ namespace k8s
         /// Deletes the specified cluster scoped custom object
         /// </summary>
         /// <param name="group">
-        /// the custom resource's group
+        /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
-        /// the custom resource's version
+        /// the custom resource&apos;s version
         /// </param>
         /// <param name="plural">
-        /// the custom object's plural name. For TPRs this would be lowercase plural kind.
+        /// the custom object&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
-        /// the custom object's name
+        /// the custom object&apos;s name
         /// </param>
         /// <param name="body">
         /// 
@@ -50086,8 +50086,8 @@ namespace k8s
         /// </param>
         /// <param name="orphanDependents">
         /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the "orphan"
-        /// finalizer will be added to/removed from the object's finalizers list. Either
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </param>
         /// <param name="propagationPolicy">
@@ -50125,16 +50125,16 @@ namespace k8s
         /// Returns a cluster scoped custom object
         /// </summary>
         /// <param name="group">
-        /// the custom resource's group
+        /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
-        /// the custom resource's version
+        /// the custom resource&apos;s version
         /// </param>
         /// <param name="plural">
-        /// the custom object's plural name. For TPRs this would be lowercase plural kind.
+        /// the custom object&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
-        /// the custom object's name
+        /// the custom object&apos;s name
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -50157,19 +50157,19 @@ namespace k8s
         /// 
         /// </param>
         /// <param name="group">
-        /// the custom resource's group
+        /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
-        /// the custom resource's version
+        /// the custom resource&apos;s version
         /// </param>
         /// <param name="namespaceParameter">
-        /// The custom resource's namespace
+        /// The custom resource&apos;s namespace
         /// </param>
         /// <param name="plural">
-        /// the custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
-        /// the custom object's name
+        /// the custom object&apos;s name
         /// </param>
         /// <param name="dryRun">
         /// When present, indicates that modifications should not be persisted. An invalid
@@ -50207,19 +50207,19 @@ namespace k8s
         /// 
         /// </param>
         /// <param name="group">
-        /// the custom resource's group
+        /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
-        /// the custom resource's version
+        /// the custom resource&apos;s version
         /// </param>
         /// <param name="namespaceParameter">
-        /// The custom resource's namespace
+        /// The custom resource&apos;s namespace
         /// </param>
         /// <param name="plural">
-        /// the custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
-        /// the custom object's name
+        /// the custom object&apos;s name
         /// </param>
         /// <param name="dryRun">
         /// When present, indicates that modifications should not be persisted. An invalid
@@ -50235,7 +50235,7 @@ namespace k8s
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="force">
-        /// Force is going to "force" Apply requests. It means user will re-acquire
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
         /// patch requests.
         /// </param>
@@ -50262,19 +50262,19 @@ namespace k8s
         /// read status of the specified namespace scoped custom object
         /// </summary>
         /// <param name="group">
-        /// the custom resource's group
+        /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
-        /// the custom resource's version
+        /// the custom resource&apos;s version
         /// </param>
         /// <param name="namespaceParameter">
-        /// The custom resource's namespace
+        /// The custom resource&apos;s namespace
         /// </param>
         /// <param name="plural">
-        /// the custom resource's plural name. For TPRs this would be lowercase plural kind.
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
-        /// the custom object's name
+        /// the custom object&apos;s name
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.

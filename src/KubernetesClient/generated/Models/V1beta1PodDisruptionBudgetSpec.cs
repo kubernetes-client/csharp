@@ -29,16 +29,16 @@ namespace k8s.Models
         /// Initializes a new instance of the V1beta1PodDisruptionBudgetSpec class.
         /// </summary>
         /// <param name="maxUnavailable">
-        /// An eviction is allowed if at most "maxUnavailable" pods selected by "selector"
+        /// An eviction is allowed if at most &quot;maxUnavailable&quot; pods selected by &quot;selector&quot;
         /// are unavailable after the eviction, i.e. even in absence of the evicted pod. For
         /// example, one can prevent all voluntary evictions by specifying 0. This is a
-        /// mutually exclusive setting with "minAvailable".
+        /// mutually exclusive setting with &quot;minAvailable&quot;.
         /// </param>
         /// <param name="minAvailable">
-        /// An eviction is allowed if at least "minAvailable" pods selected by "selector"
+        /// An eviction is allowed if at least &quot;minAvailable&quot; pods selected by &quot;selector&quot;
         /// will still be available after the eviction, i.e. even in the absence of the
         /// evicted pod.  So for example you can prevent all voluntary evictions by
-        /// specifying "100%".
+        /// specifying &quot;100%&quot;.
         /// </param>
         /// <param name="selector">
         /// Label query over pods whose evictions are managed by the disruption budget. A
@@ -60,19 +60,19 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// An eviction is allowed if at most "maxUnavailable" pods selected by "selector"
+        /// An eviction is allowed if at most &quot;maxUnavailable&quot; pods selected by &quot;selector&quot;
         /// are unavailable after the eviction, i.e. even in absence of the evicted pod. For
         /// example, one can prevent all voluntary evictions by specifying 0. This is a
-        /// mutually exclusive setting with "minAvailable".
+        /// mutually exclusive setting with &quot;minAvailable&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "maxUnavailable")]
         public IntstrIntOrString MaxUnavailable { get; set; }
 
         /// <summary>
-        /// An eviction is allowed if at least "minAvailable" pods selected by "selector"
+        /// An eviction is allowed if at least &quot;minAvailable&quot; pods selected by &quot;selector&quot;
         /// will still be available after the eviction, i.e. even in the absence of the
         /// evicted pod.  So for example you can prevent all voluntary evictions by
-        /// specifying "100%".
+        /// specifying &quot;100%&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "minAvailable")]
         public IntstrIntOrString MinAvailable { get; set; }

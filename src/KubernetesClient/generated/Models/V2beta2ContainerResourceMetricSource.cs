@@ -18,7 +18,7 @@ namespace k8s.Models
         /// current scale target (e.g. CPU or memory).  The values will be averaged together
         /// before being compared to the target.  Such metrics are built in to Kubernetes,
         /// and have special scaling options on top of those available to normal per-pod
-        /// metrics using the "pods" source.  Only one "target" type should be set.
+        /// metrics using the &quot;pods&quot; source.  Only one &quot;target&quot; type should be set.
     /// </summary>
     public partial class V2beta2ContainerResourceMetricSource
     {
@@ -81,14 +81,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Container == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Container");    
-            }
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
             if (Target == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Target");    

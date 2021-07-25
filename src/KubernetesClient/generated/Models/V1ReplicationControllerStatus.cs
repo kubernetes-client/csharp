@@ -38,7 +38,7 @@ namespace k8s.Models
         /// replication controller.
         /// </param>
         /// <param name="conditions">
-        /// Represents the latest available observations of a replication controller's
+        /// Represents the latest available observations of a replication controller&apos;s
         /// current state.
         /// </param>
         /// <param name="fullyLabeledReplicas">
@@ -76,7 +76,7 @@ namespace k8s.Models
         public int? AvailableReplicas { get; set; }
 
         /// <summary>
-        /// Represents the latest available observations of a replication controller's
+        /// Represents the latest available observations of a replication controller&apos;s
         /// current state.
         /// </summary>
         [JsonProperty(PropertyName = "conditions")]
@@ -117,10 +117,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Replicas == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Replicas");    
-            }
             foreach(var obj in Conditions)
             {
                 obj.Validate();

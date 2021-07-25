@@ -55,7 +55,7 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </param>
         /// <param name="metadata">
-        /// Standard object's metadata. More info:
+        /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </param>
         public V1ControllerRevision(long revision, string apiVersion = null, object data = null, string kind = null, V1ObjectMeta metadata = null)
@@ -98,7 +98,7 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// Standard object's metadata. More info:
+        /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
@@ -118,10 +118,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Revision == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Revision");    
-            }
             Metadata?.Validate();
         }
     }

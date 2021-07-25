@@ -39,7 +39,7 @@ namespace k8s.Models
         /// the EndpointSlice is dervied from a Kubernetes service, this corresponds to the
         /// Service.ports[].name. Name must either be an empty string or pass DNS_LABEL
         /// validation: * must be no more than 63 characters long. * must consist of lower
-        /// case alphanumeric characters or '-'. * must start and end with an alphanumeric
+        /// case alphanumeric characters or &apos;-&apos;. * must start and end with an alphanumeric
         /// character. Default is empty string.
         /// </param>
         /// <param name="port">
@@ -77,7 +77,7 @@ namespace k8s.Models
         /// the EndpointSlice is dervied from a Kubernetes service, this corresponds to the
         /// Service.ports[].name. Name must either be an empty string or pass DNS_LABEL
         /// validation: * must be no more than 63 characters long. * must consist of lower
-        /// case alphanumeric characters or '-'. * must start and end with an alphanumeric
+        /// case alphanumeric characters or &apos;-&apos;. * must start and end with an alphanumeric
         /// character. Default is empty string.
         /// </summary>
         [JsonProperty(PropertyName = "name")]

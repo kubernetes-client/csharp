@@ -67,14 +67,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Max == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Max");    
-            }
-            if (Min == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Min");    
-            }
         }
     }
 }

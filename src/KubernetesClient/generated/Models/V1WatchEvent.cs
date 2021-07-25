@@ -74,14 +74,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (ObjectProperty == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ObjectProperty");    
-            }
-            if (Type == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Type");    
-            }
         }
     }
 }

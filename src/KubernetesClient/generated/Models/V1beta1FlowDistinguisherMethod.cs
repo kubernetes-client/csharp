@@ -29,8 +29,8 @@ namespace k8s.Models
         /// Initializes a new instance of the V1beta1FlowDistinguisherMethod class.
         /// </summary>
         /// <param name="type">
-        /// `type` is the type of flow distinguisher method The supported types are "ByUser"
-        /// and "ByNamespace". Required.
+        /// `type` is the type of flow distinguisher method The supported types are &quot;ByUser&quot;
+        /// and &quot;ByNamespace&quot;. Required.
         /// </param>
         public V1beta1FlowDistinguisherMethod(string type)
         {
@@ -44,8 +44,8 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// `type` is the type of flow distinguisher method The supported types are "ByUser"
-        /// and "ByNamespace". Required.
+        /// `type` is the type of flow distinguisher method The supported types are &quot;ByUser&quot;
+        /// and &quot;ByNamespace&quot;. Required.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
@@ -58,10 +58,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Type == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Type");    
-            }
         }
     }
 }

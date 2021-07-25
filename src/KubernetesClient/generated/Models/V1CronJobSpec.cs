@@ -37,9 +37,9 @@ namespace k8s.Models
         /// </param>
         /// <param name="concurrencyPolicy">
         /// Specifies how to treat concurrent executions of a Job. Valid values are: -
-        /// "Allow" (default): allows CronJobs to run concurrently; - "Forbid": forbids
-        /// concurrent runs, skipping next run if previous run hasn't finished yet; -
-        /// "Replace": cancels currently running job and replaces it with a new one
+        /// &quot;Allow&quot; (default): allows CronJobs to run concurrently; - &quot;Forbid&quot;: forbids
+        /// concurrent runs, skipping next run if previous run hasn&apos;t finished yet; -
+        /// &quot;Replace&quot;: cancels currently running job and replaces it with a new one
         /// </param>
         /// <param name="failedJobsHistoryLimit">
         /// The number of failed finished jobs to retain. Value must be non-negative
@@ -76,9 +76,9 @@ namespace k8s.Models
 
         /// <summary>
         /// Specifies how to treat concurrent executions of a Job. Valid values are: -
-        /// "Allow" (default): allows CronJobs to run concurrently; - "Forbid": forbids
-        /// concurrent runs, skipping next run if previous run hasn't finished yet; -
-        /// "Replace": cancels currently running job and replaces it with a new one
+        /// &quot;Allow&quot; (default): allows CronJobs to run concurrently; - &quot;Forbid&quot;: forbids
+        /// concurrent runs, skipping next run if previous run hasn&apos;t finished yet; -
+        /// &quot;Replace&quot;: cancels currently running job and replaces it with a new one
         /// </summary>
         [JsonProperty(PropertyName = "concurrencyPolicy")]
         public string ConcurrencyPolicy { get; set; }
@@ -134,10 +134,6 @@ namespace k8s.Models
             if (JobTemplate == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "JobTemplate");    
-            }
-            if (Schedule == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Schedule");    
             }
             JobTemplate?.Validate();
         }

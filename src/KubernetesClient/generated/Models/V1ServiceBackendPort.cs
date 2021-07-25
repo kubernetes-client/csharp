@@ -30,11 +30,11 @@ namespace k8s.Models
         /// </summary>
         /// <param name="name">
         /// Name is the name of the port on the Service. This is a mutually exclusive
-        /// setting with "Number".
+        /// setting with &quot;Number&quot;.
         /// </param>
         /// <param name="number">
         /// Number is the numerical port number (e.g. 80) on the Service. This is a mutually
-        /// exclusive setting with "Name".
+        /// exclusive setting with &quot;Name&quot;.
         /// </param>
         public V1ServiceBackendPort(string name = null, int? number = null)
         {
@@ -50,14 +50,14 @@ namespace k8s.Models
 
         /// <summary>
         /// Name is the name of the port on the Service. This is a mutually exclusive
-        /// setting with "Number".
+        /// setting with &quot;Number&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Number is the numerical port number (e.g. 80) on the Service. This is a mutually
-        /// exclusive setting with "Name".
+        /// exclusive setting with &quot;Name&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "number")]
         public int? Number { get; set; }

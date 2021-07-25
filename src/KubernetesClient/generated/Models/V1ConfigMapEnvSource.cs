@@ -16,7 +16,7 @@ namespace k8s.Models
     /// ConfigMapEnvSource selects a ConfigMap to populate the environment variables
         /// with.
         /// 
-        /// The contents of the target ConfigMap's Data field will represent the key-value
+        /// The contents of the target ConfigMap&apos;s Data field will represent the key-value
         /// pairs as environment variables.
     /// </summary>
     public partial class V1ConfigMapEnvSource

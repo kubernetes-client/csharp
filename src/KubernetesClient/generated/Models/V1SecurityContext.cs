@@ -80,7 +80,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="seccompProfile">
         /// The seccomp options to use by this container. If seccomp options are provided at
-        /// both the pod & container level, the container options override the pod options.
+        /// both the pod &amp; container level, the container options override the pod options.
         /// </param>
         /// <param name="windowsOptions">
         /// The Windows specific settings applied to all containers. If unspecified, the
@@ -184,7 +184,7 @@ namespace k8s.Models
 
         /// <summary>
         /// The seccomp options to use by this container. If seccomp options are provided at
-        /// both the pod & container level, the container options override the pod options.
+        /// both the pod &amp; container level, the container options override the pod options.
         /// </summary>
         [JsonProperty(PropertyName = "seccompProfile")]
         public V1SeccompProfile SeccompProfile { get; set; }

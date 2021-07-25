@@ -54,13 +54,13 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </param>
         /// <param name="metadata">
-        /// Standard object's metadata.
+        /// Standard object&apos;s metadata.
         /// </param>
         /// <param name="ports">
         /// ports specifies the list of network ports exposed by each endpoint in this
         /// slice. Each port must have a unique name. When ports is empty, it indicates that
         /// there are no defined ports. When a port is defined with a nil port value, it
-        /// indicates "all ports". Each slice may include a maximum of 100 ports.
+        /// indicates &quot;all ports&quot;. Each slice may include a maximum of 100 ports.
         /// </param>
         public V1beta1EndpointSlice(string addressType, IList<V1beta1Endpoint> endpoints, string apiVersion = null, string kind = null, V1ObjectMeta metadata = null, IList<V1beta1EndpointPort> ports = null)
         {
@@ -114,7 +114,7 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// Standard object's metadata.
+        /// Standard object&apos;s metadata.
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ObjectMeta Metadata { get; set; }
@@ -123,7 +123,7 @@ namespace k8s.Models
         /// ports specifies the list of network ports exposed by each endpoint in this
         /// slice. Each port must have a unique name. When ports is empty, it indicates that
         /// there are no defined ports. When a port is defined with a nil port value, it
-        /// indicates "all ports". Each slice may include a maximum of 100 ports.
+        /// indicates &quot;all ports&quot;. Each slice may include a maximum of 100 ports.
         /// </summary>
         [JsonProperty(PropertyName = "ports")]
         public IList<V1beta1EndpointPort> Ports { get; set; }
@@ -136,14 +136,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (AddressType == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "AddressType");    
-            }
-            if (Endpoints == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Endpoints");    
-            }
             foreach(var obj in Endpoints)
             {
                 obj.Validate();

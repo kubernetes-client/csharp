@@ -30,25 +30,25 @@ namespace k8s.Models
         /// Initializes a new instance of the V1beta1RuleWithOperations class.
         /// </summary>
         /// <param name="apiGroups">
-        /// APIGroups is the API groups the resources belong to. '*' is all groups. If '*'
+        /// APIGroups is the API groups the resources belong to. &apos;*&apos; is all groups. If &apos;*&apos;
         /// is present, the length of the slice must be one. Required.
         /// </param>
         /// <param name="apiVersions">
-        /// APIVersions is the API versions the resources belong to. '*' is all versions. If
-        /// '*' is present, the length of the slice must be one. Required.
+        /// APIVersions is the API versions the resources belong to. &apos;*&apos; is all versions. If
+        /// &apos;*&apos; is present, the length of the slice must be one. Required.
         /// </param>
         /// <param name="operations">
         /// Operations is the operations the admission hook cares about - CREATE, UPDATE,
         /// DELETE, CONNECT or * for all of those operations and any future admission
-        /// operations that are added. If '*' is present, the length of the slice must be
+        /// operations that are added. If &apos;*&apos; is present, the length of the slice must be
         /// one. Required.
         /// </param>
         /// <param name="resources">
         /// Resources is a list of resources this rule applies to.
         /// 
-        /// For example: 'pods' means pods. 'pods/log' means the log subresource of pods.
-        /// '*' means all resources, but not subresources. 'pods/*' means all subresources
-        /// of pods. '*/scale' means all scale subresources. '*/*' means all resources and
+        /// For example: &apos;pods&apos; means pods. &apos;pods/log&apos; means the log subresource of pods.
+        /// &apos;*&apos; means all resources, but not subresources. &apos;pods/*&apos; means all subresources
+        /// of pods. &apos;*/scale&apos; means all scale subresources. &apos;*/*&apos; means all resources and
         /// their subresources.
         /// 
         /// If wildcard is present, the validation rule will ensure resources do not overlap
@@ -57,12 +57,12 @@ namespace k8s.Models
         /// Depending on the enclosing object, subresources might not be allowed. Required.
         /// </param>
         /// <param name="scope">
-        /// scope specifies the scope of this rule. Valid values are "Cluster",
-        /// "Namespaced", and "*" "Cluster" means that only cluster-scoped resources will
-        /// match this rule. Namespace API objects are cluster-scoped. "Namespaced" means
-        /// that only namespaced resources will match this rule. "*" means that there are no
+        /// scope specifies the scope of this rule. Valid values are &quot;Cluster&quot;,
+        /// &quot;Namespaced&quot;, and &quot;*&quot; &quot;Cluster&quot; means that only cluster-scoped resources will
+        /// match this rule. Namespace API objects are cluster-scoped. &quot;Namespaced&quot; means
+        /// that only namespaced resources will match this rule. &quot;*&quot; means that there are no
         /// scope restrictions. Subresources match the scope of their parent resource.
-        /// Default is "*".
+        /// Default is &quot;*&quot;.
         /// </param>
         public V1beta1RuleWithOperations(IList<string> apiGroups = null, IList<string> apiVersions = null, IList<string> operations = null, IList<string> resources = null, string scope = null)
         {
@@ -80,15 +80,15 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// APIGroups is the API groups the resources belong to. '*' is all groups. If '*'
+        /// APIGroups is the API groups the resources belong to. &apos;*&apos; is all groups. If &apos;*&apos;
         /// is present, the length of the slice must be one. Required.
         /// </summary>
         [JsonProperty(PropertyName = "apiGroups")]
         public IList<string> ApiGroups { get; set; }
 
         /// <summary>
-        /// APIVersions is the API versions the resources belong to. '*' is all versions. If
-        /// '*' is present, the length of the slice must be one. Required.
+        /// APIVersions is the API versions the resources belong to. &apos;*&apos; is all versions. If
+        /// &apos;*&apos; is present, the length of the slice must be one. Required.
         /// </summary>
         [JsonProperty(PropertyName = "apiVersions")]
         public IList<string> ApiVersions { get; set; }
@@ -96,7 +96,7 @@ namespace k8s.Models
         /// <summary>
         /// Operations is the operations the admission hook cares about - CREATE, UPDATE,
         /// DELETE, CONNECT or * for all of those operations and any future admission
-        /// operations that are added. If '*' is present, the length of the slice must be
+        /// operations that are added. If &apos;*&apos; is present, the length of the slice must be
         /// one. Required.
         /// </summary>
         [JsonProperty(PropertyName = "operations")]
@@ -105,9 +105,9 @@ namespace k8s.Models
         /// <summary>
         /// Resources is a list of resources this rule applies to.
         /// 
-        /// For example: 'pods' means pods. 'pods/log' means the log subresource of pods.
-        /// '*' means all resources, but not subresources. 'pods/*' means all subresources
-        /// of pods. '*/scale' means all scale subresources. '*/*' means all resources and
+        /// For example: &apos;pods&apos; means pods. &apos;pods/log&apos; means the log subresource of pods.
+        /// &apos;*&apos; means all resources, but not subresources. &apos;pods/*&apos; means all subresources
+        /// of pods. &apos;*/scale&apos; means all scale subresources. &apos;*/*&apos; means all resources and
         /// their subresources.
         /// 
         /// If wildcard is present, the validation rule will ensure resources do not overlap
@@ -119,12 +119,12 @@ namespace k8s.Models
         public IList<string> Resources { get; set; }
 
         /// <summary>
-        /// scope specifies the scope of this rule. Valid values are "Cluster",
-        /// "Namespaced", and "*" "Cluster" means that only cluster-scoped resources will
-        /// match this rule. Namespace API objects are cluster-scoped. "Namespaced" means
-        /// that only namespaced resources will match this rule. "*" means that there are no
+        /// scope specifies the scope of this rule. Valid values are &quot;Cluster&quot;,
+        /// &quot;Namespaced&quot;, and &quot;*&quot; &quot;Cluster&quot; means that only cluster-scoped resources will
+        /// match this rule. Namespace API objects are cluster-scoped. &quot;Namespaced&quot; means
+        /// that only namespaced resources will match this rule. &quot;*&quot; means that there are no
         /// scope restrictions. Subresources match the scope of their parent resource.
-        /// Default is "*".
+        /// Default is &quot;*&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "scope")]
         public string Scope { get; set; }

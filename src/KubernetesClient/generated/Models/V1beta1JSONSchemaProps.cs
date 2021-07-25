@@ -99,19 +99,19 @@ namespace k8s.Models
         /// (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?4[0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$ -
         /// uuid5: an UUID5 that allows uppercase defined by the regex
         /// (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?5[0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$ -
-        /// isbn: an ISBN10 or ISBN13 number string like "0321751043" or "978-0321751041" -
-        /// isbn10: an ISBN10 number string like "0321751043" - isbn13: an ISBN13 number
-        /// string like "978-0321751041" - creditcard: a credit card number defined by the
+        /// isbn: an ISBN10 or ISBN13 number string like &quot;0321751043&quot; or &quot;978-0321751041&quot; -
+        /// isbn10: an ISBN10 number string like &quot;0321751043&quot; - isbn13: an ISBN13 number
+        /// string like &quot;978-0321751041&quot; - creditcard: a credit card number defined by the
         /// regex
         /// ^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$
         /// with any non digit characters mixed in - ssn: a U.S. social security number
         /// following the regex ^\d{3}[- ]?\d{2}[- ]?\d{4}$ - hexcolor: an hexadecimal color
-        /// code like "#FFFFFF: following the regex ^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$ -
-        /// rgbcolor: an RGB color code like rgb like "rgb(255,255,2559" - byte: base64
+        /// code like &quot;#FFFFFF: following the regex ^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$ -
+        /// rgbcolor: an RGB color code like rgb like &quot;rgb(255,255,2559&quot; - byte: base64
         /// encoded binary data - password: any kind of string - date: a date string like
-        /// "2006-01-02" as defined by full-date in RFC3339 - duration: a duration string
-        /// like "22 ns" as parsed by Golang time.ParseDuration or compatible with Scala
-        /// duration format - datetime: a date time string like "2014-12-15T19:30:20.000Z"
+        /// &quot;2006-01-02&quot; as defined by full-date in RFC3339 - duration: a duration string
+        /// like &quot;22 ns&quot; as parsed by Golang time.ParseDuration or compatible with Scala
+        /// duration format - datetime: a date time string like &quot;2014-12-15T19:30:20.000Z&quot;
         /// as defined by date-time in RFC3339.
         /// </param>
         /// <param name="id">
@@ -204,8 +204,8 @@ namespace k8s.Models
         /// x-kubernetes-list-map-keys annotates an array with the x-kubernetes-list-type
         /// `map` by specifying the keys used as the index of the map.
         /// 
-        /// This tag MUST only be used on lists that have the "x-kubernetes-list-type"
-        /// extension set to "map". Also, the values specified for this attribute must be a
+        /// This tag MUST only be used on lists that have the &quot;x-kubernetes-list-type&quot;
+        /// extension set to &quot;map&quot;. Also, the values specified for this attribute must be a
         /// scalar typed field of the child structure (no nesting is supported).
         /// 
         /// The properties specified must either be required or have a default value, to
@@ -414,19 +414,19 @@ namespace k8s.Models
         /// (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?4[0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$ -
         /// uuid5: an UUID5 that allows uppercase defined by the regex
         /// (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?5[0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$ -
-        /// isbn: an ISBN10 or ISBN13 number string like "0321751043" or "978-0321751041" -
-        /// isbn10: an ISBN10 number string like "0321751043" - isbn13: an ISBN13 number
-        /// string like "978-0321751041" - creditcard: a credit card number defined by the
+        /// isbn: an ISBN10 or ISBN13 number string like &quot;0321751043&quot; or &quot;978-0321751041&quot; -
+        /// isbn10: an ISBN10 number string like &quot;0321751043&quot; - isbn13: an ISBN13 number
+        /// string like &quot;978-0321751041&quot; - creditcard: a credit card number defined by the
         /// regex
         /// ^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$
         /// with any non digit characters mixed in - ssn: a U.S. social security number
         /// following the regex ^\d{3}[- ]?\d{2}[- ]?\d{4}$ - hexcolor: an hexadecimal color
-        /// code like "#FFFFFF: following the regex ^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$ -
-        /// rgbcolor: an RGB color code like rgb like "rgb(255,255,2559" - byte: base64
+        /// code like &quot;#FFFFFF: following the regex ^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$ -
+        /// rgbcolor: an RGB color code like rgb like &quot;rgb(255,255,2559&quot; - byte: base64
         /// encoded binary data - password: any kind of string - date: a date string like
-        /// "2006-01-02" as defined by full-date in RFC3339 - duration: a duration string
-        /// like "22 ns" as parsed by Golang time.ParseDuration or compatible with Scala
-        /// duration format - datetime: a date time string like "2014-12-15T19:30:20.000Z"
+        /// &quot;2006-01-02&quot; as defined by full-date in RFC3339 - duration: a duration string
+        /// like &quot;22 ns&quot; as parsed by Golang time.ParseDuration or compatible with Scala
+        /// duration format - datetime: a date time string like &quot;2014-12-15T19:30:20.000Z&quot;
         /// as defined by date-time in RFC3339.
         /// </summary>
         [JsonProperty(PropertyName = "format")]
@@ -591,8 +591,8 @@ namespace k8s.Models
         /// x-kubernetes-list-map-keys annotates an array with the x-kubernetes-list-type
         /// `map` by specifying the keys used as the index of the map.
         /// 
-        /// This tag MUST only be used on lists that have the "x-kubernetes-list-type"
-        /// extension set to "map". Also, the values specified for this attribute must be a
+        /// This tag MUST only be used on lists that have the &quot;x-kubernetes-list-type&quot;
+        /// extension set to &quot;map&quot;. Also, the values specified for this attribute must be a
         /// scalar typed field of the child structure (no nesting is supported).
         /// 
         /// The properties specified must either be required or have a default value, to

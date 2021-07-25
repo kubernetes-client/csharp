@@ -29,13 +29,13 @@ namespace k8s.Models
         /// Initializes a new instance of the V1beta1CertificateSigningRequestCondition class.
         /// </summary>
         /// <param name="type">
-        /// type of the condition. Known conditions include "Approved", "Denied", and
-        /// "Failed".
+        /// type of the condition. Known conditions include &quot;Approved&quot;, &quot;Denied&quot;, and
+        /// &quot;Failed&quot;.
         /// </param>
         /// <param name="lastTransitionTime">
         /// lastTransitionTime is the time the condition last transitioned from one status
         /// to another. If unset, when a new condition type is added or an existing
-        /// condition's status is changed, the server defaults this to the current time.
+        /// condition&apos;s status is changed, the server defaults this to the current time.
         /// </param>
         /// <param name="lastUpdateTime">
         /// timestamp for the last update to this condition
@@ -48,8 +48,8 @@ namespace k8s.Models
         /// </param>
         /// <param name="status">
         /// Status of the condition, one of True, False, Unknown. Approved, Denied, and
-        /// Failed conditions may not be "False" or "Unknown". Defaults to "True". If unset,
-        /// should be treated as "True".
+        /// Failed conditions may not be &quot;False&quot; or &quot;Unknown&quot;. Defaults to &quot;True&quot;. If unset,
+        /// should be treated as &quot;True&quot;.
         /// </param>
         public V1beta1CertificateSigningRequestCondition(string type, System.DateTime? lastTransitionTime = null, System.DateTime? lastUpdateTime = null, string message = null, string reason = null, string status = null)
         {
@@ -70,7 +70,7 @@ namespace k8s.Models
         /// <summary>
         /// lastTransitionTime is the time the condition last transitioned from one status
         /// to another. If unset, when a new condition type is added or an existing
-        /// condition's status is changed, the server defaults this to the current time.
+        /// condition&apos;s status is changed, the server defaults this to the current time.
         /// </summary>
         [JsonProperty(PropertyName = "lastTransitionTime")]
         public System.DateTime? LastTransitionTime { get; set; }
@@ -95,15 +95,15 @@ namespace k8s.Models
 
         /// <summary>
         /// Status of the condition, one of True, False, Unknown. Approved, Denied, and
-        /// Failed conditions may not be "False" or "Unknown". Defaults to "True". If unset,
-        /// should be treated as "True".
+        /// Failed conditions may not be &quot;False&quot; or &quot;Unknown&quot;. Defaults to &quot;True&quot;. If unset,
+        /// should be treated as &quot;True&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// type of the condition. Known conditions include "Approved", "Denied", and
-        /// "Failed".
+        /// type of the condition. Known conditions include &quot;Approved&quot;, &quot;Denied&quot;, and
+        /// &quot;Failed&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
@@ -116,10 +116,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Type == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Type");    
-            }
         }
     }
 }

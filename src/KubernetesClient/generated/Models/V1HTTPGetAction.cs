@@ -33,7 +33,7 @@ namespace k8s.Models
         /// range 1 to 65535. Name must be an IANA_SVC_NAME.
         /// </param>
         /// <param name="host">
-        /// Host name to connect to, defaults to the pod IP. You probably want to set "Host"
+        /// Host name to connect to, defaults to the pod IP. You probably want to set &quot;Host&quot;
         /// in httpHeaders instead.
         /// </param>
         /// <param name="httpHeaders">
@@ -61,7 +61,7 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Host name to connect to, defaults to the pod IP. You probably want to set "Host"
+        /// Host name to connect to, defaults to the pod IP. You probably want to set &quot;Host&quot;
         /// in httpHeaders instead.
         /// </summary>
         [JsonProperty(PropertyName = "host")]

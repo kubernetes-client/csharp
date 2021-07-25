@@ -30,7 +30,7 @@ namespace k8s.Models
         /// </summary>
         /// <param name="selector">
         /// selector is a label query over pods that should match the replica count. It must
-        /// match the pod template's labels. More info:
+        /// match the pod template&apos;s labels. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
         /// </param>
         /// <param name="serviceName">
@@ -38,7 +38,7 @@ namespace k8s.Models
         /// service must exist before the StatefulSet, and is responsible for the network
         /// identity of the set. Pods get DNS/hostnames that follow the pattern:
         /// pod-specific-string.serviceName.default.svc.cluster.local where
-        /// "pod-specific-string" is managed by the StatefulSet controller.
+        /// &quot;pod-specific-string&quot; is managed by the StatefulSet controller.
         /// </param>
         /// <param name="template">
         /// template is the object that describes the pod that will be created if
@@ -63,7 +63,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="revisionHistoryLimit">
         /// revisionHistoryLimit is the maximum number of revisions that will be maintained
-        /// in the StatefulSet's revision history. The revision history consists of all
+        /// in the StatefulSet&apos;s revision history. The revision history consists of all
         /// revisions not represented by a currently applied StatefulSetSpec version. The
         /// default value is 10.
         /// </param>
@@ -120,7 +120,7 @@ namespace k8s.Models
 
         /// <summary>
         /// revisionHistoryLimit is the maximum number of revisions that will be maintained
-        /// in the StatefulSet's revision history. The revision history consists of all
+        /// in the StatefulSet&apos;s revision history. The revision history consists of all
         /// revisions not represented by a currently applied StatefulSetSpec version. The
         /// default value is 10.
         /// </summary>
@@ -129,7 +129,7 @@ namespace k8s.Models
 
         /// <summary>
         /// selector is a label query over pods that should match the replica count. It must
-        /// match the pod template's labels. More info:
+        /// match the pod template&apos;s labels. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
         /// </summary>
         [JsonProperty(PropertyName = "selector")]
@@ -140,7 +140,7 @@ namespace k8s.Models
         /// service must exist before the StatefulSet, and is responsible for the network
         /// identity of the set. Pods get DNS/hostnames that follow the pattern:
         /// pod-specific-string.serviceName.default.svc.cluster.local where
-        /// "pod-specific-string" is managed by the StatefulSet controller.
+        /// &quot;pod-specific-string&quot; is managed by the StatefulSet controller.
         /// </summary>
         [JsonProperty(PropertyName = "serviceName")]
         public string ServiceName { get; set; }
@@ -183,10 +183,6 @@ namespace k8s.Models
             if (Selector == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Selector");    
-            }
-            if (ServiceName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ServiceName");    
             }
             if (Template == null)
             {

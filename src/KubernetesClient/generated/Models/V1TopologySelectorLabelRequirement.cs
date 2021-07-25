@@ -69,14 +69,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Key == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Key");    
-            }
-            if (Values == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Values");    
-            }
         }
     }
 }

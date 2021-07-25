@@ -78,10 +78,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Strategy == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Strategy");    
-            }
             Webhook?.Validate();
         }
     }

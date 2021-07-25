@@ -44,7 +44,7 @@ namespace k8s.Models
         /// description is a human readable description of this column.
         /// </param>
         /// <param name="format">
-        /// format is an optional OpenAPI type definition for this column. The 'name' format
+        /// format is an optional OpenAPI type definition for this column. The &apos;name&apos; format
         /// is applied to the primary identifier column to assist in clients identifying
         /// column is the resource name. See
         /// https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types
@@ -78,7 +78,7 @@ namespace k8s.Models
         public string Description { get; set; }
 
         /// <summary>
-        /// format is an optional OpenAPI type definition for this column. The 'name' format
+        /// format is an optional OpenAPI type definition for this column. The &apos;name&apos; format
         /// is applied to the primary identifier column to assist in clients identifying
         /// column is the resource name. See
         /// https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types
@@ -124,18 +124,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (JsonPath == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "JsonPath");    
-            }
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
-            if (Type == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Type");    
-            }
         }
     }
 }

@@ -14,7 +14,7 @@ namespace k8s.Models
 
     /// <summary>
     /// NetworkPolicyIngressRule describes a particular set of traffic that is allowed
-        /// to the pods matched by a NetworkPolicySpec's podSelector. The traffic must match
+        /// to the pods matched by a NetworkPolicySpec&apos;s podSelector. The traffic must match
         /// both ports and from.
     /// </summary>
     public partial class V1NetworkPolicyIngressRule

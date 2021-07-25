@@ -33,7 +33,7 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/containers/images
         /// </param>
         /// <param name="imageID">
-        /// ImageID of the container's image.
+        /// ImageID of the container&apos;s image.
         /// </param>
         /// <param name="name">
         /// This must be a DNS_LABEL. Each container in a pod must have a unique name.
@@ -49,10 +49,10 @@ namespace k8s.Models
         /// collection. This value will get capped at 5 by GC.
         /// </param>
         /// <param name="containerID">
-        /// Container's ID in the format 'docker://<container_id>'.
+        /// Container&apos;s ID in the format &apos;docker://&lt;container_id&gt;&apos;.
         /// </param>
         /// <param name="lastState">
-        /// Details about the container's last termination condition.
+        /// Details about the container&apos;s last termination condition.
         /// </param>
         /// <param name="started">
         /// Specifies whether the container has passed its startup probe. Initialized as
@@ -61,7 +61,7 @@ namespace k8s.Models
         /// always true when no startupProbe is defined.
         /// </param>
         /// <param name="state">
-        /// Details about the container's current condition.
+        /// Details about the container&apos;s current condition.
         /// </param>
         public V1ContainerStatus(string image, string imageID, string name, bool ready, int restartCount, string containerID = null, V1ContainerState lastState = null, bool? started = null, V1ContainerState state = null)
         {
@@ -83,7 +83,7 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Container's ID in the format 'docker://<container_id>'.
+        /// Container&apos;s ID in the format &apos;docker://&lt;container_id&gt;&apos;.
         /// </summary>
         [JsonProperty(PropertyName = "containerID")]
         public string ContainerID { get; set; }
@@ -96,13 +96,13 @@ namespace k8s.Models
         public string Image { get; set; }
 
         /// <summary>
-        /// ImageID of the container's image.
+        /// ImageID of the container&apos;s image.
         /// </summary>
         [JsonProperty(PropertyName = "imageID")]
         public string ImageID { get; set; }
 
         /// <summary>
-        /// Details about the container's last termination condition.
+        /// Details about the container&apos;s last termination condition.
         /// </summary>
         [JsonProperty(PropertyName = "lastState")]
         public V1ContainerState LastState { get; set; }
@@ -139,7 +139,7 @@ namespace k8s.Models
         public bool? Started { get; set; }
 
         /// <summary>
-        /// Details about the container's current condition.
+        /// Details about the container&apos;s current condition.
         /// </summary>
         [JsonProperty(PropertyName = "state")]
         public V1ContainerState State { get; set; }
@@ -152,26 +152,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Image == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Image");    
-            }
-            if (ImageID == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ImageID");    
-            }
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
-            if (Ready == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Ready");    
-            }
-            if (RestartCount == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "RestartCount");    
-            }
             LastState?.Validate();
             State?.Validate();
         }

@@ -53,7 +53,7 @@ namespace k8s.Models
         /// the newest ControllerRevision.
         /// </param>
         /// <param name="conditions">
-        /// Represents the latest available observations of a DaemonSet's current state.
+        /// Represents the latest available observations of a DaemonSet&apos;s current state.
         /// </param>
         /// <param name="numberAvailable">
         /// The number of nodes that should be running the daemon pod and have one or more
@@ -99,7 +99,7 @@ namespace k8s.Models
         public int? CollisionCount { get; set; }
 
         /// <summary>
-        /// Represents the latest available observations of a DaemonSet's current state.
+        /// Represents the latest available observations of a DaemonSet&apos;s current state.
         /// </summary>
         [JsonProperty(PropertyName = "conditions")]
         public IList<V1DaemonSetCondition> Conditions { get; set; }
@@ -170,22 +170,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (CurrentNumberScheduled == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "CurrentNumberScheduled");    
-            }
-            if (DesiredNumberScheduled == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "DesiredNumberScheduled");    
-            }
-            if (NumberMisscheduled == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "NumberMisscheduled");    
-            }
-            if (NumberReady == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "NumberReady");    
-            }
             foreach(var obj in Conditions)
             {
                 obj.Validate();

@@ -57,12 +57,12 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </param>
         /// <param name="metadata">
-        /// Standard object's metadata. More info:
+        /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </param>
         /// <param name="mountOptions">
         /// Dynamically provisioned PersistentVolumes of this storage class are created with
-        /// these mountOptions, e.g. ["ro", "soft"]. Not validated - mount of the PVs will
+        /// these mountOptions, e.g. [&quot;ro&quot;, &quot;soft&quot;]. Not validated - mount of the PVs will
         /// simply fail if one is invalid.
         /// </param>
         /// <param name="parameters">
@@ -132,7 +132,7 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// Standard object's metadata. More info:
+        /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
@@ -140,7 +140,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Dynamically provisioned PersistentVolumes of this storage class are created with
-        /// these mountOptions, e.g. ["ro", "soft"]. Not validated - mount of the PVs will
+        /// these mountOptions, e.g. [&quot;ro&quot;, &quot;soft&quot;]. Not validated - mount of the PVs will
         /// simply fail if one is invalid.
         /// </summary>
         [JsonProperty(PropertyName = "mountOptions")]
@@ -182,10 +182,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Provisioner == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Provisioner");    
-            }
             foreach(var obj in AllowedTopologies)
             {
                 obj.Validate();

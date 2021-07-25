@@ -30,7 +30,7 @@ namespace k8s.Models
         /// Initializes a new instance of the V1ScopedResourceSelectorRequirement class.
         /// </summary>
         /// <param name="operatorProperty">
-        /// Represents a scope's relationship to a set of values. Valid operators are In,
+        /// Represents a scope&apos;s relationship to a set of values. Valid operators are In,
         /// NotIn, Exists, DoesNotExist.
         /// </param>
         /// <param name="scopeName">
@@ -55,7 +55,7 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Represents a scope's relationship to a set of values. Valid operators are In,
+        /// Represents a scope&apos;s relationship to a set of values. Valid operators are In,
         /// NotIn, Exists, DoesNotExist.
         /// </summary>
         [JsonProperty(PropertyName = "operator")]
@@ -83,14 +83,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (OperatorProperty == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "OperatorProperty");    
-            }
-            if (ScopeName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ScopeName");    
-            }
         }
     }
 }

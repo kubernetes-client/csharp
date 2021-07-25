@@ -36,7 +36,7 @@ namespace k8s.Models
         /// Container name: required for volumes, optional for env vars
         /// </param>
         /// <param name="divisor">
-        /// Specifies the output format of the exposed resources, defaults to "1"
+        /// Specifies the output format of the exposed resources, defaults to &quot;1&quot;
         /// </param>
         public V1ResourceFieldSelector(string resource, string containerName = null, ResourceQuantity divisor = null)
         {
@@ -58,7 +58,7 @@ namespace k8s.Models
         public string ContainerName { get; set; }
 
         /// <summary>
-        /// Specifies the output format of the exposed resources, defaults to "1"
+        /// Specifies the output format of the exposed resources, defaults to &quot;1&quot;
         /// </summary>
         [JsonProperty(PropertyName = "divisor")]
         public ResourceQuantity Divisor { get; set; }
@@ -77,10 +77,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Resource == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Resource");    
-            }
             Divisor?.Validate();
         }
     }

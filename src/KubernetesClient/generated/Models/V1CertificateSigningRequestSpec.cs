@@ -29,30 +29,30 @@ namespace k8s.Models
         /// Initializes a new instance of the V1CertificateSigningRequestSpec class.
         /// </summary>
         /// <param name="request">
-        /// request contains an x509 certificate signing request encoded in a "CERTIFICATE
-        /// REQUEST" PEM block. When serialized as JSON or YAML, the data is additionally
+        /// request contains an x509 certificate signing request encoded in a &quot;CERTIFICATE
+        /// REQUEST&quot; PEM block. When serialized as JSON or YAML, the data is additionally
         /// base64-encoded.
         /// </param>
         /// <param name="signerName">
         /// signerName indicates the requested signer, and is a qualified name.
         /// 
         /// List/watch requests for CertificateSigningRequests can filter on this field
-        /// using a "spec.signerName=NAME" fieldSelector.
+        /// using a &quot;spec.signerName=NAME&quot; fieldSelector.
         /// 
         /// Well-known Kubernetes signers are:
-        /// 1. "kubernetes.io/kube-apiserver-client": issues client certificates that can be
+        /// 1. &quot;kubernetes.io/kube-apiserver-client&quot;: issues client certificates that can be
         /// used to authenticate to kube-apiserver.
         /// Requests for this signer are never auto-approved by kube-controller-manager, can
-        /// be issued by the "csrsigning" controller in kube-controller-manager.
-        /// 2. "kubernetes.io/kube-apiserver-client-kubelet": issues client certificates
+        /// be issued by the &quot;csrsigning&quot; controller in kube-controller-manager.
+        /// 2. &quot;kubernetes.io/kube-apiserver-client-kubelet&quot;: issues client certificates
         /// that kubelets use to authenticate to kube-apiserver.
-        /// Requests for this signer can be auto-approved by the "csrapproving" controller
-        /// in kube-controller-manager, and can be issued by the "csrsigning" controller in
+        /// Requests for this signer can be auto-approved by the &quot;csrapproving&quot; controller
+        /// in kube-controller-manager, and can be issued by the &quot;csrsigning&quot; controller in
         /// kube-controller-manager.
-        /// 3. "kubernetes.io/kubelet-serving" issues serving certificates that kubelets use
+        /// 3. &quot;kubernetes.io/kubelet-serving&quot; issues serving certificates that kubelets use
         /// to serve TLS endpoints, which kube-apiserver can connect to securely.
         /// Requests for this signer are never auto-approved by kube-controller-manager, and
-        /// can be issued by the "csrsigning" controller in kube-controller-manager.
+        /// can be issued by the &quot;csrsigning&quot; controller in kube-controller-manager.
         /// 
         /// More details are available at
         /// https://k8s.io/docs/reference/access-authn-authz/certificate-signing-requests/#kubernetes-signers
@@ -85,20 +85,20 @@ namespace k8s.Models
         /// <param name="usages">
         /// usages specifies a set of key usages requested in the issued certificate.
         /// 
-        /// Requests for TLS client certificates typically request: "digital signature",
-        /// "key encipherment", "client auth".
+        /// Requests for TLS client certificates typically request: &quot;digital signature&quot;,
+        /// &quot;key encipherment&quot;, &quot;client auth&quot;.
         /// 
-        /// Requests for TLS serving certificates typically request: "key encipherment",
-        /// "digital signature", "server auth".
+        /// Requests for TLS serving certificates typically request: &quot;key encipherment&quot;,
+        /// &quot;digital signature&quot;, &quot;server auth&quot;.
         /// 
         /// Valid values are:
-        /// "signing", "digital signature", "content commitment",
-        /// "key encipherment", "key agreement", "data encipherment",
-        /// "cert sign", "crl sign", "encipher only", "decipher only", "any",
-        /// "server auth", "client auth",
-        /// "code signing", "email protection", "s/mime",
-        /// "ipsec end system", "ipsec tunnel", "ipsec user",
-        /// "timestamping", "ocsp signing", "microsoft sgc", "netscape sgc"
+        /// &quot;signing&quot;, &quot;digital signature&quot;, &quot;content commitment&quot;,
+        /// &quot;key encipherment&quot;, &quot;key agreement&quot;, &quot;data encipherment&quot;,
+        /// &quot;cert sign&quot;, &quot;crl sign&quot;, &quot;encipher only&quot;, &quot;decipher only&quot;, &quot;any&quot;,
+        /// &quot;server auth&quot;, &quot;client auth&quot;,
+        /// &quot;code signing&quot;, &quot;email protection&quot;, &quot;s/mime&quot;,
+        /// &quot;ipsec end system&quot;, &quot;ipsec tunnel&quot;, &quot;ipsec user&quot;,
+        /// &quot;timestamping&quot;, &quot;ocsp signing&quot;, &quot;microsoft sgc&quot;, &quot;netscape sgc&quot;
         /// </param>
         /// <param name="username">
         /// username contains the name of the user that created the
@@ -139,8 +139,8 @@ namespace k8s.Models
         public IList<string> Groups { get; set; }
 
         /// <summary>
-        /// request contains an x509 certificate signing request encoded in a "CERTIFICATE
-        /// REQUEST" PEM block. When serialized as JSON or YAML, the data is additionally
+        /// request contains an x509 certificate signing request encoded in a &quot;CERTIFICATE
+        /// REQUEST&quot; PEM block. When serialized as JSON or YAML, the data is additionally
         /// base64-encoded.
         /// </summary>
         [JsonProperty(PropertyName = "request")]
@@ -150,22 +150,22 @@ namespace k8s.Models
         /// signerName indicates the requested signer, and is a qualified name.
         /// 
         /// List/watch requests for CertificateSigningRequests can filter on this field
-        /// using a "spec.signerName=NAME" fieldSelector.
+        /// using a &quot;spec.signerName=NAME&quot; fieldSelector.
         /// 
         /// Well-known Kubernetes signers are:
-        /// 1. "kubernetes.io/kube-apiserver-client": issues client certificates that can be
+        /// 1. &quot;kubernetes.io/kube-apiserver-client&quot;: issues client certificates that can be
         /// used to authenticate to kube-apiserver.
         /// Requests for this signer are never auto-approved by kube-controller-manager, can
-        /// be issued by the "csrsigning" controller in kube-controller-manager.
-        /// 2. "kubernetes.io/kube-apiserver-client-kubelet": issues client certificates
+        /// be issued by the &quot;csrsigning&quot; controller in kube-controller-manager.
+        /// 2. &quot;kubernetes.io/kube-apiserver-client-kubelet&quot;: issues client certificates
         /// that kubelets use to authenticate to kube-apiserver.
-        /// Requests for this signer can be auto-approved by the "csrapproving" controller
-        /// in kube-controller-manager, and can be issued by the "csrsigning" controller in
+        /// Requests for this signer can be auto-approved by the &quot;csrapproving&quot; controller
+        /// in kube-controller-manager, and can be issued by the &quot;csrsigning&quot; controller in
         /// kube-controller-manager.
-        /// 3. "kubernetes.io/kubelet-serving" issues serving certificates that kubelets use
+        /// 3. &quot;kubernetes.io/kubelet-serving&quot; issues serving certificates that kubelets use
         /// to serve TLS endpoints, which kube-apiserver can connect to securely.
         /// Requests for this signer are never auto-approved by kube-controller-manager, and
-        /// can be issued by the "csrsigning" controller in kube-controller-manager.
+        /// can be issued by the &quot;csrsigning&quot; controller in kube-controller-manager.
         /// 
         /// More details are available at
         /// https://k8s.io/docs/reference/access-authn-authz/certificate-signing-requests/#kubernetes-signers
@@ -194,20 +194,20 @@ namespace k8s.Models
         /// <summary>
         /// usages specifies a set of key usages requested in the issued certificate.
         /// 
-        /// Requests for TLS client certificates typically request: "digital signature",
-        /// "key encipherment", "client auth".
+        /// Requests for TLS client certificates typically request: &quot;digital signature&quot;,
+        /// &quot;key encipherment&quot;, &quot;client auth&quot;.
         /// 
-        /// Requests for TLS serving certificates typically request: "key encipherment",
-        /// "digital signature", "server auth".
+        /// Requests for TLS serving certificates typically request: &quot;key encipherment&quot;,
+        /// &quot;digital signature&quot;, &quot;server auth&quot;.
         /// 
         /// Valid values are:
-        /// "signing", "digital signature", "content commitment",
-        /// "key encipherment", "key agreement", "data encipherment",
-        /// "cert sign", "crl sign", "encipher only", "decipher only", "any",
-        /// "server auth", "client auth",
-        /// "code signing", "email protection", "s/mime",
-        /// "ipsec end system", "ipsec tunnel", "ipsec user",
-        /// "timestamping", "ocsp signing", "microsoft sgc", "netscape sgc"
+        /// &quot;signing&quot;, &quot;digital signature&quot;, &quot;content commitment&quot;,
+        /// &quot;key encipherment&quot;, &quot;key agreement&quot;, &quot;data encipherment&quot;,
+        /// &quot;cert sign&quot;, &quot;crl sign&quot;, &quot;encipher only&quot;, &quot;decipher only&quot;, &quot;any&quot;,
+        /// &quot;server auth&quot;, &quot;client auth&quot;,
+        /// &quot;code signing&quot;, &quot;email protection&quot;, &quot;s/mime&quot;,
+        /// &quot;ipsec end system&quot;, &quot;ipsec tunnel&quot;, &quot;ipsec user&quot;,
+        /// &quot;timestamping&quot;, &quot;ocsp signing&quot;, &quot;microsoft sgc&quot;, &quot;netscape sgc&quot;
         /// </summary>
         [JsonProperty(PropertyName = "usages")]
         public IList<string> Usages { get; set; }
@@ -228,14 +228,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Request == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Request");    
-            }
-            if (SignerName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "SignerName");    
-            }
         }
     }
 }

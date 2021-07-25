@@ -31,7 +31,7 @@ namespace k8s.Models
         /// </summary>
         /// <param name="kind">
         /// Kind of the referent; More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds&quot;
         /// </param>
         /// <param name="name">
         /// Name of the referent; More info:
@@ -61,7 +61,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Kind of the referent; More info:
-        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds&quot;
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
         public string Kind { get; set; }
@@ -81,14 +81,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Kind == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Kind");    
-            }
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
         }
     }
 }

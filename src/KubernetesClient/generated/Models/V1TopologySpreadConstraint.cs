@@ -39,29 +39,29 @@ namespace k8s.Models
         /// become 1/1/1; scheduling it onto zone1(zone2) would make the ActualSkew(2-0) on
         /// zone1(zone2) violate MaxSkew(1). - if MaxSkew is 2, incoming pod can be
         /// scheduled onto any zone. When `whenUnsatisfiable=ScheduleAnyway`, it is used to
-        /// give higher precedence to topologies that satisfy it. It's a required field.
+        /// give higher precedence to topologies that satisfy it. It&apos;s a required field.
         /// Default value is 1 and 0 is not allowed.
         /// </param>
         /// <param name="topologyKey">
         /// TopologyKey is the key of node labels. Nodes that have a label with this key and
         /// identical values are considered to be in the same topology. We consider each
-        /// <key, value> as a "bucket", and try to put balanced number of pods into each
-        /// bucket. It's a required field.
+        /// &lt;key, value&gt; as a &quot;bucket&quot;, and try to put balanced number of pods into each
+        /// bucket. It&apos;s a required field.
         /// </param>
         /// <param name="whenUnsatisfiable">
-        /// WhenUnsatisfiable indicates how to deal with a pod if it doesn't satisfy the
+        /// WhenUnsatisfiable indicates how to deal with a pod if it doesn&apos;t satisfy the
         /// spread constraint. - DoNotSchedule (default) tells the scheduler not to schedule
         /// it. - ScheduleAnyway tells the scheduler to schedule the pod in any location,
         /// but giving higher precedence to topologies that would help reduce the
         /// skew.
-        /// A constraint is considered "Unsatisfiable" for an incoming pod if and only if
-        /// every possible node assigment for that pod would violate "MaxSkew" on some
+        /// A constraint is considered &quot;Unsatisfiable&quot; for an incoming pod if and only if
+        /// every possible node assigment for that pod would violate &quot;MaxSkew&quot; on some
         /// topology. For example, in a 3-zone cluster, MaxSkew is set to 1, and pods with
         /// the same labelSelector spread as 3/1/1: | zone1 | zone2 | zone3 | | P P P |   P 
         /// |   P   | If WhenUnsatisfiable is set to DoNotSchedule, incoming pod can only be
         /// scheduled to zone2(zone3) to become 3/2/1(3/1/2) as ActualSkew(2-1) on
         /// zone2(zone3) satisfies MaxSkew(1). In other words, the cluster can still be
-        /// imbalanced, but scheduler won't make it *more* imbalanced. It's a required
+        /// imbalanced, but scheduler won&apos;t make it *more* imbalanced. It&apos;s a required
         /// field.
         /// </param>
         /// <param name="labelSelector">
@@ -101,7 +101,7 @@ namespace k8s.Models
         /// become 1/1/1; scheduling it onto zone1(zone2) would make the ActualSkew(2-0) on
         /// zone1(zone2) violate MaxSkew(1). - if MaxSkew is 2, incoming pod can be
         /// scheduled onto any zone. When `whenUnsatisfiable=ScheduleAnyway`, it is used to
-        /// give higher precedence to topologies that satisfy it. It's a required field.
+        /// give higher precedence to topologies that satisfy it. It&apos;s a required field.
         /// Default value is 1 and 0 is not allowed.
         /// </summary>
         [JsonProperty(PropertyName = "maxSkew")]
@@ -110,26 +110,26 @@ namespace k8s.Models
         /// <summary>
         /// TopologyKey is the key of node labels. Nodes that have a label with this key and
         /// identical values are considered to be in the same topology. We consider each
-        /// <key, value> as a "bucket", and try to put balanced number of pods into each
-        /// bucket. It's a required field.
+        /// &lt;key, value&gt; as a &quot;bucket&quot;, and try to put balanced number of pods into each
+        /// bucket. It&apos;s a required field.
         /// </summary>
         [JsonProperty(PropertyName = "topologyKey")]
         public string TopologyKey { get; set; }
 
         /// <summary>
-        /// WhenUnsatisfiable indicates how to deal with a pod if it doesn't satisfy the
+        /// WhenUnsatisfiable indicates how to deal with a pod if it doesn&apos;t satisfy the
         /// spread constraint. - DoNotSchedule (default) tells the scheduler not to schedule
         /// it. - ScheduleAnyway tells the scheduler to schedule the pod in any location,
         /// but giving higher precedence to topologies that would help reduce the
         /// skew.
-        /// A constraint is considered "Unsatisfiable" for an incoming pod if and only if
-        /// every possible node assigment for that pod would violate "MaxSkew" on some
+        /// A constraint is considered &quot;Unsatisfiable&quot; for an incoming pod if and only if
+        /// every possible node assigment for that pod would violate &quot;MaxSkew&quot; on some
         /// topology. For example, in a 3-zone cluster, MaxSkew is set to 1, and pods with
         /// the same labelSelector spread as 3/1/1: | zone1 | zone2 | zone3 | | P P P |   P 
         /// |   P   | If WhenUnsatisfiable is set to DoNotSchedule, incoming pod can only be
         /// scheduled to zone2(zone3) to become 3/2/1(3/1/2) as ActualSkew(2-1) on
         /// zone2(zone3) satisfies MaxSkew(1). In other words, the cluster can still be
-        /// imbalanced, but scheduler won't make it *more* imbalanced. It's a required
+        /// imbalanced, but scheduler won&apos;t make it *more* imbalanced. It&apos;s a required
         /// field.
         /// </summary>
         [JsonProperty(PropertyName = "whenUnsatisfiable")]
@@ -143,18 +143,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (MaxSkew == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "MaxSkew");    
-            }
-            if (TopologyKey == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "TopologyKey");    
-            }
-            if (WhenUnsatisfiable == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "WhenUnsatisfiable");    
-            }
             LabelSelector?.Validate();
         }
     }

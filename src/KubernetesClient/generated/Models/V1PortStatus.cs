@@ -33,7 +33,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="protocol">
         /// Protocol is the protocol of the service port of which status is recorded here
-        /// The supported values are: "TCP", "UDP", "SCTP"
+        /// The supported values are: &quot;TCP&quot;, &quot;UDP&quot;, &quot;SCTP&quot;
         /// </param>
         /// <param name="error">
         /// Error is to record the problem with the service port The format of the error
@@ -75,7 +75,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Protocol is the protocol of the service port of which status is recorded here
-        /// The supported values are: "TCP", "UDP", "SCTP"
+        /// The supported values are: &quot;TCP&quot;, &quot;UDP&quot;, &quot;SCTP&quot;
         /// </summary>
         [JsonProperty(PropertyName = "protocol")]
         public string Protocol { get; set; }
@@ -88,14 +88,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Port == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Port");    
-            }
-            if (Protocol == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Protocol");    
-            }
         }
     }
 }

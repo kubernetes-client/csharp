@@ -34,7 +34,7 @@ namespace k8s.Models
         /// <param name="assuredConcurrencyShares">
         /// `assuredConcurrencyShares` (ACS) configures the execution limit, which is a
         /// limit on the number of requests of this priority level that may be exeucting at
-        /// a given time.  ACS must be a positive number. The server's concurrency limit
+        /// a given time.  ACS must be a positive number. The server&apos;s concurrency limit
         /// (SCL) is divided among the concurrency-controlled priority levels in proportion
         /// to their assured concurrency shares. This produces the assured concurrency value
         /// (ACV) --- the number of requests that may be executing at a time --- for each
@@ -64,7 +64,7 @@ namespace k8s.Models
         /// <summary>
         /// `assuredConcurrencyShares` (ACS) configures the execution limit, which is a
         /// limit on the number of requests of this priority level that may be exeucting at
-        /// a given time.  ACS must be a positive number. The server's concurrency limit
+        /// a given time.  ACS must be a positive number. The server&apos;s concurrency limit
         /// (SCL) is divided among the concurrency-controlled priority levels in proportion
         /// to their assured concurrency shares. This produces the assured concurrency value
         /// (ACV) --- the number of requests that may be executing at a time --- for each

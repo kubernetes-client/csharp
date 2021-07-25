@@ -32,7 +32,7 @@ namespace k8s.Models
         /// API version of the referent.
         /// </param>
         /// <param name="kind">
-        /// Kind of the referent. Valid kinds are 'Pod' and 'Secret'.
+        /// Kind of the referent. Valid kinds are &apos;Pod&apos; and &apos;Secret&apos;.
         /// </param>
         /// <param name="name">
         /// Name of the referent.
@@ -61,7 +61,7 @@ namespace k8s.Models
         public string ApiVersion { get; set; }
 
         /// <summary>
-        /// Kind of the referent. Valid kinds are 'Pod' and 'Secret'.
+        /// Kind of the referent. Valid kinds are &apos;Pod&apos; and &apos;Secret&apos;.
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
         public string Kind { get; set; }

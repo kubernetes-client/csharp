@@ -29,7 +29,7 @@ namespace k8s.Models
         /// Initializes a new instance of the V1NamespaceStatus class.
         /// </summary>
         /// <param name="conditions">
-        /// Represents the latest available observations of a namespace's current state.
+        /// Represents the latest available observations of a namespace&apos;s current state.
         /// </param>
         /// <param name="phase">
         /// Phase is the current lifecycle phase of the namespace. More info:
@@ -48,7 +48,7 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Represents the latest available observations of a namespace's current state.
+        /// Represents the latest available observations of a namespace&apos;s current state.
         /// </summary>
         [JsonProperty(PropertyName = "conditions")]
         public IList<V1NamespaceCondition> Conditions { get; set; }

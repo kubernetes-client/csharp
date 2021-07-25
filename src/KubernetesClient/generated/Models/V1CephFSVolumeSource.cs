@@ -123,10 +123,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Monitors == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Monitors");    
-            }
             SecretRef?.Validate();
         }
     }

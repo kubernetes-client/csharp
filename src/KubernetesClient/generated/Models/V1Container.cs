@@ -33,8 +33,8 @@ namespace k8s.Models
         /// have a unique name (DNS_LABEL). Cannot be updated.
         /// </param>
         /// <param name="args">
-        /// Arguments to the entrypoint. The docker image's CMD is used if this is not
-        /// provided. Variable references $(VAR_NAME) are expanded using the container's
+        /// Arguments to the entrypoint. The docker image&apos;s CMD is used if this is not
+        /// provided. Variable references $(VAR_NAME) are expanded using the container&apos;s
         /// environment. If a variable cannot be resolved, the reference in the input string
         /// will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
         /// $$(VAR_NAME). Escaped references will never be expanded, regardless of whether
@@ -42,9 +42,9 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         /// </param>
         /// <param name="command">
-        /// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is
+        /// Entrypoint array. Not executed within a shell. The docker image&apos;s ENTRYPOINT is
         /// used if this is not provided. Variable references $(VAR_NAME) are expanded using
-        /// the container's environment. If a variable cannot be resolved, the reference in
+        /// the container&apos;s environment. If a variable cannot be resolved, the reference in
         /// the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
         /// double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
         /// regardless of whether the variable exists or not. Cannot be updated. More info:
@@ -85,7 +85,7 @@ namespace k8s.Models
         /// List of ports to expose from the container. Exposing a port here gives the
         /// system additional information about the network connections a container uses,
         /// but is primarily informational. Not specifying a port here DOES NOT prevent that
-        /// port from being exposed. Any port which is listening on the default "0.0.0.0"
+        /// port from being exposed. Any port which is listening on the default &quot;0.0.0.0&quot;
         /// address inside a container will be accessible from the network. Cannot be
         /// updated.
         /// </param>
@@ -107,7 +107,7 @@ namespace k8s.Models
         /// StartupProbe indicates that the Pod has successfully initialized. If specified,
         /// no other probes are executed until this completes successfully. If this probe
         /// fails, the Pod will be restarted, just as if the livenessProbe failed. This can
-        /// be used to provide different probe parameters at the beginning of a Pod's
+        /// be used to provide different probe parameters at the beginning of a Pod&apos;s
         /// lifecycle, when it might take a long time to load data or warm a cache, than
         /// during steady-state operation. This cannot be updated. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
@@ -128,8 +128,8 @@ namespace k8s.Models
         /// Default is false
         /// </param>
         /// <param name="terminationMessagePath">
-        /// Optional: Path at which the file to which the container's termination message
-        /// will be written is mounted into the container's filesystem. Message written is
+        /// Optional: Path at which the file to which the container&apos;s termination message
+        /// will be written is mounted into the container&apos;s filesystem. Message written is
         /// intended to be brief final status, such as an assertion failure message. Will be
         /// truncated by the node if greater than 4096 bytes. The total message length
         /// across all containers will be limited to 12kb. Defaults to /dev/termination-log.
@@ -144,17 +144,17 @@ namespace k8s.Models
         /// whichever is smaller. Defaults to File. Cannot be updated.
         /// </param>
         /// <param name="tty">
-        /// Whether this container should allocate a TTY for itself, also requires 'stdin'
+        /// Whether this container should allocate a TTY for itself, also requires &apos;stdin&apos;
         /// to be true. Default is false.
         /// </param>
         /// <param name="volumeDevices">
         /// volumeDevices is the list of block devices to be used by the container.
         /// </param>
         /// <param name="volumeMounts">
-        /// Pod volumes to mount into the container's filesystem. Cannot be updated.
+        /// Pod volumes to mount into the container&apos;s filesystem. Cannot be updated.
         /// </param>
         /// <param name="workingDir">
-        /// Container's working directory. If not specified, the container runtime's default
+        /// Container&apos;s working directory. If not specified, the container runtime&apos;s default
         /// will be used, which might be configured in the container image. Cannot be
         /// updated.
         /// </param>
@@ -191,8 +191,8 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Arguments to the entrypoint. The docker image's CMD is used if this is not
-        /// provided. Variable references $(VAR_NAME) are expanded using the container's
+        /// Arguments to the entrypoint. The docker image&apos;s CMD is used if this is not
+        /// provided. Variable references $(VAR_NAME) are expanded using the container&apos;s
         /// environment. If a variable cannot be resolved, the reference in the input string
         /// will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
         /// $$(VAR_NAME). Escaped references will never be expanded, regardless of whether
@@ -203,9 +203,9 @@ namespace k8s.Models
         public IList<string> Args { get; set; }
 
         /// <summary>
-        /// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is
+        /// Entrypoint array. Not executed within a shell. The docker image&apos;s ENTRYPOINT is
         /// used if this is not provided. Variable references $(VAR_NAME) are expanded using
-        /// the container's environment. If a variable cannot be resolved, the reference in
+        /// the container&apos;s environment. If a variable cannot be resolved, the reference in
         /// the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
         /// double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
         /// regardless of whether the variable exists or not. Cannot be updated. More info:
@@ -274,7 +274,7 @@ namespace k8s.Models
         /// List of ports to expose from the container. Exposing a port here gives the
         /// system additional information about the network connections a container uses,
         /// but is primarily informational. Not specifying a port here DOES NOT prevent that
-        /// port from being exposed. Any port which is listening on the default "0.0.0.0"
+        /// port from being exposed. Any port which is listening on the default &quot;0.0.0.0&quot;
         /// address inside a container will be accessible from the network. Cannot be
         /// updated.
         /// </summary>
@@ -308,7 +308,7 @@ namespace k8s.Models
         /// StartupProbe indicates that the Pod has successfully initialized. If specified,
         /// no other probes are executed until this completes successfully. If this probe
         /// fails, the Pod will be restarted, just as if the livenessProbe failed. This can
-        /// be used to provide different probe parameters at the beginning of a Pod's
+        /// be used to provide different probe parameters at the beginning of a Pod&apos;s
         /// lifecycle, when it might take a long time to load data or warm a cache, than
         /// during steady-state operation. This cannot be updated. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
@@ -338,8 +338,8 @@ namespace k8s.Models
         public bool? StdinOnce { get; set; }
 
         /// <summary>
-        /// Optional: Path at which the file to which the container's termination message
-        /// will be written is mounted into the container's filesystem. Message written is
+        /// Optional: Path at which the file to which the container&apos;s termination message
+        /// will be written is mounted into the container&apos;s filesystem. Message written is
         /// intended to be brief final status, such as an assertion failure message. Will be
         /// truncated by the node if greater than 4096 bytes. The total message length
         /// across all containers will be limited to 12kb. Defaults to /dev/termination-log.
@@ -360,7 +360,7 @@ namespace k8s.Models
         public string TerminationMessagePolicy { get; set; }
 
         /// <summary>
-        /// Whether this container should allocate a TTY for itself, also requires 'stdin'
+        /// Whether this container should allocate a TTY for itself, also requires &apos;stdin&apos;
         /// to be true. Default is false.
         /// </summary>
         [JsonProperty(PropertyName = "tty")]
@@ -373,13 +373,13 @@ namespace k8s.Models
         public IList<V1VolumeDevice> VolumeDevices { get; set; }
 
         /// <summary>
-        /// Pod volumes to mount into the container's filesystem. Cannot be updated.
+        /// Pod volumes to mount into the container&apos;s filesystem. Cannot be updated.
         /// </summary>
         [JsonProperty(PropertyName = "volumeMounts")]
         public IList<V1VolumeMount> VolumeMounts { get; set; }
 
         /// <summary>
-        /// Container's working directory. If not specified, the container runtime's default
+        /// Container&apos;s working directory. If not specified, the container runtime&apos;s default
         /// will be used, which might be configured in the container image. Cannot be
         /// updated.
         /// </summary>
@@ -394,10 +394,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
             foreach(var obj in Env)
             {
                 obj.Validate();

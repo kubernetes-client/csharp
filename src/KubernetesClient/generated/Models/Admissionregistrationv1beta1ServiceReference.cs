@@ -92,14 +92,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
-            if (NamespaceProperty == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "NamespaceProperty");    
-            }
         }
     }
 }

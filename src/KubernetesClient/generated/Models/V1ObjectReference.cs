@@ -37,8 +37,8 @@ namespace k8s.Models
         /// should contain a valid JSON/Go field access statement, such as
         /// desiredState.manifest.containers[2]. For example, if the object reference is to
         /// a container within a pod, this would take on a value like:
-        /// "spec.containers{name}" (where "name" refers to the name of the container that
-        /// triggered the event) or if no container name is specified "spec.containers[2]"
+        /// &quot;spec.containers{name}&quot; (where &quot;name&quot; refers to the name of the container that
+        /// triggered the event) or if no container name is specified &quot;spec.containers[2]&quot;
         /// (container with index 2 in this pod). This syntax is chosen only to have some
         /// well-defined way of referencing a part of an object.
         /// </param>
@@ -90,8 +90,8 @@ namespace k8s.Models
         /// should contain a valid JSON/Go field access statement, such as
         /// desiredState.manifest.containers[2]. For example, if the object reference is to
         /// a container within a pod, this would take on a value like:
-        /// "spec.containers{name}" (where "name" refers to the name of the container that
-        /// triggered the event) or if no container name is specified "spec.containers[2]"
+        /// &quot;spec.containers{name}&quot; (where &quot;name&quot; refers to the name of the container that
+        /// triggered the event) or if no container name is specified &quot;spec.containers[2]&quot;
         /// (container with index 2 in this pod). This syntax is chosen only to have some
         /// well-defined way of referencing a part of an object.
         /// </summary>

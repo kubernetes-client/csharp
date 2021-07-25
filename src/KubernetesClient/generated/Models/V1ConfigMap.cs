@@ -36,14 +36,14 @@ namespace k8s.Models
         /// </param>
         /// <param name="binaryData">
         /// BinaryData contains the binary data. Each key must consist of alphanumeric
-        /// characters, '-', '_' or '.'. BinaryData can contain byte sequences that are not
+        /// characters, &apos;-&apos;, &apos;_&apos; or &apos;.&apos;. BinaryData can contain byte sequences that are not
         /// in the UTF-8 range. The keys stored in BinaryData must not overlap with the ones
         /// in the Data field, this is enforced during validation process. Using this field
         /// will require 1.10+ apiserver and kubelet.
         /// </param>
         /// <param name="data">
         /// Data contains the configuration data. Each key must consist of alphanumeric
-        /// characters, '-', '_' or '.'. Values with non-UTF-8 byte sequences must use the
+        /// characters, &apos;-&apos;, &apos;_&apos; or &apos;.&apos;. Values with non-UTF-8 byte sequences must use the
         /// BinaryData field. The keys stored in Data must not overlap with the keys in the
         /// BinaryData field, this is enforced during validation process.
         /// </param>
@@ -59,7 +59,7 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </param>
         /// <param name="metadata">
-        /// Standard object's metadata. More info:
+        /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </param>
         public V1ConfigMap(string apiVersion = null, IDictionary<string, byte[]> binaryData = null, IDictionary<string, string> data = null, bool? immutable = null, string kind = null, V1ObjectMeta metadata = null)
@@ -89,7 +89,7 @@ namespace k8s.Models
 
         /// <summary>
         /// BinaryData contains the binary data. Each key must consist of alphanumeric
-        /// characters, '-', '_' or '.'. BinaryData can contain byte sequences that are not
+        /// characters, &apos;-&apos;, &apos;_&apos; or &apos;.&apos;. BinaryData can contain byte sequences that are not
         /// in the UTF-8 range. The keys stored in BinaryData must not overlap with the ones
         /// in the Data field, this is enforced during validation process. Using this field
         /// will require 1.10+ apiserver and kubelet.
@@ -99,7 +99,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Data contains the configuration data. Each key must consist of alphanumeric
-        /// characters, '-', '_' or '.'. Values with non-UTF-8 byte sequences must use the
+        /// characters, &apos;-&apos;, &apos;_&apos; or &apos;.&apos;. Values with non-UTF-8 byte sequences must use the
         /// BinaryData field. The keys stored in Data must not overlap with the keys in the
         /// BinaryData field, this is enforced during validation process.
         /// </summary>
@@ -124,7 +124,7 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// Standard object's metadata. More info:
+        /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]

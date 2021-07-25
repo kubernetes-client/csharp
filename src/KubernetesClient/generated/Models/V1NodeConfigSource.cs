@@ -30,7 +30,7 @@ namespace k8s.Models
         /// Initializes a new instance of the V1NodeConfigSource class.
         /// </summary>
         /// <param name="configMap">
-        /// ConfigMap is a reference to a Node's ConfigMap
+        /// ConfigMap is a reference to a Node&apos;s ConfigMap
         /// </param>
         public V1NodeConfigSource(V1ConfigMapNodeConfigSource configMap = null)
         {
@@ -44,7 +44,7 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// ConfigMap is a reference to a Node's ConfigMap
+        /// ConfigMap is a reference to a Node&apos;s ConfigMap
         /// </summary>
         [JsonProperty(PropertyName = "configMap")]
         public V1ConfigMapNodeConfigSource ConfigMap { get; set; }

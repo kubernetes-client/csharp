@@ -42,7 +42,7 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </param>
         /// <param name="metadata">
-        /// Standard object's metadata.
+        /// Standard object&apos;s metadata.
         /// </param>
         /// <param name="rules">
         /// Rules holds all the PolicyRules for this Role
@@ -80,7 +80,7 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// Standard object's metadata.
+        /// Standard object&apos;s metadata.
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ObjectMeta Metadata { get; set; }

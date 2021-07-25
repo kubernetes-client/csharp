@@ -31,21 +31,21 @@ namespace k8s.Models
         /// Initializes a new instance of the V1Subject class.
         /// </summary>
         /// <param name="kind">
-        /// Kind of object being referenced. Values defined by this API group are "User",
-        /// "Group", and "ServiceAccount". If the Authorizer does not recognized the kind
+        /// Kind of object being referenced. Values defined by this API group are &quot;User&quot;,
+        /// &quot;Group&quot;, and &quot;ServiceAccount&quot;. If the Authorizer does not recognized the kind
         /// value, the Authorizer should report an error.
         /// </param>
         /// <param name="name">
         /// Name of the object being referenced.
         /// </param>
         /// <param name="apiGroup">
-        /// APIGroup holds the API group of the referenced subject. Defaults to "" for
-        /// ServiceAccount subjects. Defaults to "rbac.authorization.k8s.io" for User and
+        /// APIGroup holds the API group of the referenced subject. Defaults to &quot;&quot; for
+        /// ServiceAccount subjects. Defaults to &quot;rbac.authorization.k8s.io&quot; for User and
         /// Group subjects.
         /// </param>
         /// <param name="namespaceProperty">
         /// Namespace of the referenced object.  If the object kind is non-namespace, such
-        /// as "User" or "Group", and this value is not empty the Authorizer should report
+        /// as &quot;User&quot; or &quot;Group&quot;, and this value is not empty the Authorizer should report
         /// an error.
         /// </param>
         public V1Subject(string kind, string name, string apiGroup = null, string namespaceProperty = null)
@@ -63,16 +63,16 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// APIGroup holds the API group of the referenced subject. Defaults to "" for
-        /// ServiceAccount subjects. Defaults to "rbac.authorization.k8s.io" for User and
+        /// APIGroup holds the API group of the referenced subject. Defaults to &quot;&quot; for
+        /// ServiceAccount subjects. Defaults to &quot;rbac.authorization.k8s.io&quot; for User and
         /// Group subjects.
         /// </summary>
         [JsonProperty(PropertyName = "apiGroup")]
         public string ApiGroup { get; set; }
 
         /// <summary>
-        /// Kind of object being referenced. Values defined by this API group are "User",
-        /// "Group", and "ServiceAccount". If the Authorizer does not recognized the kind
+        /// Kind of object being referenced. Values defined by this API group are &quot;User&quot;,
+        /// &quot;Group&quot;, and &quot;ServiceAccount&quot;. If the Authorizer does not recognized the kind
         /// value, the Authorizer should report an error.
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
@@ -86,7 +86,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Namespace of the referenced object.  If the object kind is non-namespace, such
-        /// as "User" or "Group", and this value is not empty the Authorizer should report
+        /// as &quot;User&quot; or &quot;Group&quot;, and this value is not empty the Authorizer should report
         /// an error.
         /// </summary>
         [JsonProperty(PropertyName = "namespace")]
@@ -100,14 +100,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Kind == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Kind");    
-            }
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
         }
     }
 }

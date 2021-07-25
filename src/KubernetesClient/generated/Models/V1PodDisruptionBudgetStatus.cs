@@ -45,7 +45,7 @@ namespace k8s.Models
         /// Conditions contain conditions for PDB. The disruption controller sets the
         /// DisruptionAllowed condition. The following are known values for the reason field
         /// (additional reasons could be added in the future): - SyncFailed: The controller
-        /// encountered an error and wasn't able to compute
+        /// encountered an error and wasn&apos;t able to compute
         /// the number of allowed disruptions. Therefore no disruptions are
         /// allowed and the status of the condition will be False.
         /// - InsufficientPods: The number of pods are either at or below the number
@@ -62,7 +62,7 @@ namespace k8s.Models
         /// API server processed the eviction request to the time when the pod is seen by
         /// PDB controller as having been marked for deletion (or after a timeout). The key
         /// in the map is the name of the pod and the value is the time when the API server
-        /// processed the eviction request. If the deletion didn't occur and a pod is still
+        /// processed the eviction request. If the deletion didn&apos;t occur and a pod is still
         /// there it will be removed from the list automatically by PodDisruptionBudget
         /// controller after some time. If everything goes smooth this map should be empty
         /// for the most of the time. Large number of entries in the map may indicate
@@ -71,7 +71,7 @@ namespace k8s.Models
         /// <param name="observedGeneration">
         /// Most recent generation observed when updating this PDB status.
         /// DisruptionsAllowed and other status information is valid only if
-        /// observedGeneration equals to PDB's object generation.
+        /// observedGeneration equals to PDB&apos;s object generation.
         /// </param>
         public V1PodDisruptionBudgetStatus(int currentHealthy, int desiredHealthy, int disruptionsAllowed, int expectedPods, IList<V1Condition> conditions = null, IDictionary<string, System.DateTime?> disruptedPods = null, long? observedGeneration = null)
         {
@@ -94,7 +94,7 @@ namespace k8s.Models
         /// Conditions contain conditions for PDB. The disruption controller sets the
         /// DisruptionAllowed condition. The following are known values for the reason field
         /// (additional reasons could be added in the future): - SyncFailed: The controller
-        /// encountered an error and wasn't able to compute
+        /// encountered an error and wasn&apos;t able to compute
         /// the number of allowed disruptions. Therefore no disruptions are
         /// allowed and the status of the condition will be False.
         /// - InsufficientPods: The number of pods are either at or below the number
@@ -126,7 +126,7 @@ namespace k8s.Models
         /// API server processed the eviction request to the time when the pod is seen by
         /// PDB controller as having been marked for deletion (or after a timeout). The key
         /// in the map is the name of the pod and the value is the time when the API server
-        /// processed the eviction request. If the deletion didn't occur and a pod is still
+        /// processed the eviction request. If the deletion didn&apos;t occur and a pod is still
         /// there it will be removed from the list automatically by PodDisruptionBudget
         /// controller after some time. If everything goes smooth this map should be empty
         /// for the most of the time. Large number of entries in the map may indicate
@@ -150,7 +150,7 @@ namespace k8s.Models
         /// <summary>
         /// Most recent generation observed when updating this PDB status.
         /// DisruptionsAllowed and other status information is valid only if
-        /// observedGeneration equals to PDB's object generation.
+        /// observedGeneration equals to PDB&apos;s object generation.
         /// </summary>
         [JsonProperty(PropertyName = "observedGeneration")]
         public long? ObservedGeneration { get; set; }
@@ -163,22 +163,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (CurrentHealthy == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "CurrentHealthy");    
-            }
-            if (DesiredHealthy == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "DesiredHealthy");    
-            }
-            if (DisruptionsAllowed == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "DisruptionsAllowed");    
-            }
-            if (ExpectedPods == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ExpectedPods");    
-            }
             foreach(var obj in Conditions)
             {
                 obj.Validate();

@@ -107,18 +107,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (KubeletConfigKey == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "KubeletConfigKey");    
-            }
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
-            if (NamespaceProperty == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "NamespaceProperty");    
-            }
         }
     }
 }

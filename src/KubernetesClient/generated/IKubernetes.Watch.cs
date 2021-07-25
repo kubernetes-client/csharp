@@ -14,25 +14,25 @@ namespace k8s
     public partial interface IKubernetes
     {
         /// <summary>
-        /// watch changes to an object of kind ConfigMap. deprecated: use the 'watch'
+        /// watch changes to an object of kind ConfigMap. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the ConfigMap
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -46,7 +46,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -82,7 +82,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -147,25 +147,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind Endpoints. deprecated: use the 'watch'
+        /// watch changes to an object of kind Endpoints. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the Endpoints
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -179,7 +179,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -215,7 +215,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -280,25 +280,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind Event. deprecated: use the 'watch' parameter
+        /// watch changes to an object of kind Event. deprecated: use the &apos;watch&apos; parameter
         /// with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the Event
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -312,7 +312,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -348,7 +348,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -413,25 +413,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind LimitRange. deprecated: use the 'watch'
+        /// watch changes to an object of kind LimitRange. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the LimitRange
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -445,7 +445,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -481,7 +481,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -547,24 +547,24 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind PersistentVolumeClaim. deprecated: use the
-        /// 'watch' parameter with a list operation instead, filtered to a single item with
-        /// the 'fieldSelector' parameter.
+        /// &apos;watch&apos; parameter with a list operation instead, filtered to a single item with
+        /// the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the PersistentVolumeClaim
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -578,7 +578,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -614,7 +614,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -679,25 +679,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind Pod. deprecated: use the 'watch' parameter
+        /// watch changes to an object of kind Pod. deprecated: use the &apos;watch&apos; parameter
         /// with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the Pod
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -711,7 +711,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -747,7 +747,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -812,25 +812,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind PodTemplate. deprecated: use the 'watch'
+        /// watch changes to an object of kind PodTemplate. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the PodTemplate
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -844,7 +844,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -880,7 +880,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -946,24 +946,24 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind ReplicationController. deprecated: use the
-        /// 'watch' parameter with a list operation instead, filtered to a single item with
-        /// the 'fieldSelector' parameter.
+        /// &apos;watch&apos; parameter with a list operation instead, filtered to a single item with
+        /// the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the ReplicationController
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -977,7 +977,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -1013,7 +1013,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -1078,25 +1078,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind ResourceQuota. deprecated: use the 'watch'
+        /// watch changes to an object of kind ResourceQuota. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the ResourceQuota
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -1110,7 +1110,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -1146,7 +1146,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -1211,25 +1211,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind Secret. deprecated: use the 'watch' parameter
+        /// watch changes to an object of kind Secret. deprecated: use the &apos;watch&apos; parameter
         /// with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the Secret
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -1243,7 +1243,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -1279,7 +1279,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -1344,25 +1344,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind ServiceAccount. deprecated: use the 'watch'
+        /// watch changes to an object of kind ServiceAccount. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the ServiceAccount
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -1376,7 +1376,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -1412,7 +1412,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -1477,25 +1477,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind Service. deprecated: use the 'watch'
+        /// watch changes to an object of kind Service. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the Service
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -1509,7 +1509,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -1545,7 +1545,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -1610,22 +1610,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind Namespace. deprecated: use the 'watch'
+        /// watch changes to an object of kind Namespace. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the Namespace
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -1639,7 +1639,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -1675,7 +1675,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -1739,22 +1739,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind Node. deprecated: use the 'watch' parameter
+        /// watch changes to an object of kind Node. deprecated: use the &apos;watch&apos; parameter
         /// with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the Node
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -1768,7 +1768,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -1804,7 +1804,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -1868,22 +1868,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind PersistentVolume. deprecated: use the 'watch'
+        /// watch changes to an object of kind PersistentVolume. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the PersistentVolume
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -1897,7 +1897,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -1933,7 +1933,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -1998,21 +1998,21 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind MutatingWebhookConfiguration. deprecated: use
-        /// the 'watch' parameter with a list operation instead, filtered to a single item
-        /// with the 'fieldSelector' parameter.
+        /// the &apos;watch&apos; parameter with a list operation instead, filtered to a single item
+        /// with the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the MutatingWebhookConfiguration
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -2026,7 +2026,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -2062,7 +2062,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -2127,21 +2127,21 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind ValidatingWebhookConfiguration. deprecated:
-        /// use the 'watch' parameter with a list operation instead, filtered to a single
-        /// item with the 'fieldSelector' parameter.
+        /// use the &apos;watch&apos; parameter with a list operation instead, filtered to a single
+        /// item with the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the ValidatingWebhookConfiguration
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -2155,7 +2155,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -2191,7 +2191,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -2256,21 +2256,21 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind MutatingWebhookConfiguration. deprecated: use
-        /// the 'watch' parameter with a list operation instead, filtered to a single item
-        /// with the 'fieldSelector' parameter.
+        /// the &apos;watch&apos; parameter with a list operation instead, filtered to a single item
+        /// with the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the MutatingWebhookConfiguration
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -2284,7 +2284,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -2320,7 +2320,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -2385,21 +2385,21 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind ValidatingWebhookConfiguration. deprecated:
-        /// use the 'watch' parameter with a list operation instead, filtered to a single
-        /// item with the 'fieldSelector' parameter.
+        /// use the &apos;watch&apos; parameter with a list operation instead, filtered to a single
+        /// item with the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the ValidatingWebhookConfiguration
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -2413,7 +2413,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -2449,7 +2449,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -2514,21 +2514,21 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind CustomResourceDefinition. deprecated: use the
-        /// 'watch' parameter with a list operation instead, filtered to a single item with
-        /// the 'fieldSelector' parameter.
+        /// &apos;watch&apos; parameter with a list operation instead, filtered to a single item with
+        /// the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the CustomResourceDefinition
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -2542,7 +2542,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -2578,7 +2578,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -2643,21 +2643,21 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind CustomResourceDefinition. deprecated: use the
-        /// 'watch' parameter with a list operation instead, filtered to a single item with
-        /// the 'fieldSelector' parameter.
+        /// &apos;watch&apos; parameter with a list operation instead, filtered to a single item with
+        /// the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the CustomResourceDefinition
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -2671,7 +2671,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -2707,7 +2707,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -2771,22 +2771,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind APIService. deprecated: use the 'watch'
+        /// watch changes to an object of kind APIService. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the APIService
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -2800,7 +2800,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -2836,7 +2836,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -2900,22 +2900,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind APIService. deprecated: use the 'watch'
+        /// watch changes to an object of kind APIService. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the APIService
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -2929,7 +2929,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -2965,7 +2965,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -3030,24 +3030,24 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind ControllerRevision. deprecated: use the
-        /// 'watch' parameter with a list operation instead, filtered to a single item with
-        /// the 'fieldSelector' parameter.
+        /// &apos;watch&apos; parameter with a list operation instead, filtered to a single item with
+        /// the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the ControllerRevision
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -3061,7 +3061,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -3097,7 +3097,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -3162,25 +3162,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind DaemonSet. deprecated: use the 'watch'
+        /// watch changes to an object of kind DaemonSet. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the DaemonSet
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -3194,7 +3194,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -3230,7 +3230,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -3295,25 +3295,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind Deployment. deprecated: use the 'watch'
+        /// watch changes to an object of kind Deployment. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the Deployment
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -3327,7 +3327,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -3363,7 +3363,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -3428,25 +3428,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind ReplicaSet. deprecated: use the 'watch'
+        /// watch changes to an object of kind ReplicaSet. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the ReplicaSet
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -3460,7 +3460,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -3496,7 +3496,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -3561,25 +3561,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind StatefulSet. deprecated: use the 'watch'
+        /// watch changes to an object of kind StatefulSet. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the StatefulSet
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -3593,7 +3593,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -3629,7 +3629,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -3695,24 +3695,24 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind HorizontalPodAutoscaler. deprecated: use the
-        /// 'watch' parameter with a list operation instead, filtered to a single item with
-        /// the 'fieldSelector' parameter.
+        /// &apos;watch&apos; parameter with a list operation instead, filtered to a single item with
+        /// the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the HorizontalPodAutoscaler
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -3726,7 +3726,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -3762,7 +3762,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -3828,24 +3828,24 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind HorizontalPodAutoscaler. deprecated: use the
-        /// 'watch' parameter with a list operation instead, filtered to a single item with
-        /// the 'fieldSelector' parameter.
+        /// &apos;watch&apos; parameter with a list operation instead, filtered to a single item with
+        /// the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the HorizontalPodAutoscaler
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -3859,7 +3859,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -3895,7 +3895,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -3961,24 +3961,24 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind HorizontalPodAutoscaler. deprecated: use the
-        /// 'watch' parameter with a list operation instead, filtered to a single item with
-        /// the 'fieldSelector' parameter.
+        /// &apos;watch&apos; parameter with a list operation instead, filtered to a single item with
+        /// the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the HorizontalPodAutoscaler
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -3992,7 +3992,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -4028,7 +4028,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -4093,25 +4093,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind CronJob. deprecated: use the 'watch'
+        /// watch changes to an object of kind CronJob. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the CronJob
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -4125,7 +4125,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -4161,7 +4161,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -4226,25 +4226,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind Job. deprecated: use the 'watch' parameter
+        /// watch changes to an object of kind Job. deprecated: use the &apos;watch&apos; parameter
         /// with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the Job
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -4258,7 +4258,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -4294,7 +4294,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -4359,25 +4359,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind CronJob. deprecated: use the 'watch'
+        /// watch changes to an object of kind CronJob. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the CronJob
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -4391,7 +4391,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -4427,7 +4427,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -4493,21 +4493,21 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind CertificateSigningRequest. deprecated: use
-        /// the 'watch' parameter with a list operation instead, filtered to a single item
-        /// with the 'fieldSelector' parameter.
+        /// the &apos;watch&apos; parameter with a list operation instead, filtered to a single item
+        /// with the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the CertificateSigningRequest
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -4521,7 +4521,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -4557,7 +4557,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -4622,21 +4622,21 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind CertificateSigningRequest. deprecated: use
-        /// the 'watch' parameter with a list operation instead, filtered to a single item
-        /// with the 'fieldSelector' parameter.
+        /// the &apos;watch&apos; parameter with a list operation instead, filtered to a single item
+        /// with the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the CertificateSigningRequest
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -4650,7 +4650,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -4686,7 +4686,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -4750,25 +4750,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind Lease. deprecated: use the 'watch' parameter
+        /// watch changes to an object of kind Lease. deprecated: use the &apos;watch&apos; parameter
         /// with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the Lease
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -4782,7 +4782,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -4818,7 +4818,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -4883,25 +4883,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind Lease. deprecated: use the 'watch' parameter
+        /// watch changes to an object of kind Lease. deprecated: use the &apos;watch&apos; parameter
         /// with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the Lease
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -4915,7 +4915,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -4951,7 +4951,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -5016,25 +5016,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind EndpointSlice. deprecated: use the 'watch'
+        /// watch changes to an object of kind EndpointSlice. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the EndpointSlice
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -5048,7 +5048,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -5084,7 +5084,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -5149,25 +5149,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind EndpointSlice. deprecated: use the 'watch'
+        /// watch changes to an object of kind EndpointSlice. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the EndpointSlice
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -5181,7 +5181,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -5217,7 +5217,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -5282,25 +5282,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind Event. deprecated: use the 'watch' parameter
+        /// watch changes to an object of kind Event. deprecated: use the &apos;watch&apos; parameter
         /// with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the Event
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -5314,7 +5314,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -5350,7 +5350,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -5415,25 +5415,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind Event. deprecated: use the 'watch' parameter
+        /// watch changes to an object of kind Event. deprecated: use the &apos;watch&apos; parameter
         /// with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the Event
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -5447,7 +5447,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -5483,7 +5483,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -5548,25 +5548,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind Ingress. deprecated: use the 'watch'
+        /// watch changes to an object of kind Ingress. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the Ingress
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -5580,7 +5580,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -5616,7 +5616,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -5681,22 +5681,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind FlowSchema. deprecated: use the 'watch'
+        /// watch changes to an object of kind FlowSchema. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the FlowSchema
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -5710,7 +5710,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -5746,7 +5746,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -5811,21 +5811,21 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind PriorityLevelConfiguration. deprecated: use
-        /// the 'watch' parameter with a list operation instead, filtered to a single item
-        /// with the 'fieldSelector' parameter.
+        /// the &apos;watch&apos; parameter with a list operation instead, filtered to a single item
+        /// with the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the PriorityLevelConfiguration
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -5839,7 +5839,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -5875,7 +5875,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -5939,22 +5939,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind StorageVersion. deprecated: use the 'watch'
+        /// watch changes to an object of kind StorageVersion. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the StorageVersion
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -5968,7 +5968,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -6004,7 +6004,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -6068,22 +6068,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind IngressClass. deprecated: use the 'watch'
+        /// watch changes to an object of kind IngressClass. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the IngressClass
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -6097,7 +6097,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -6133,7 +6133,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -6197,25 +6197,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind Ingress. deprecated: use the 'watch'
+        /// watch changes to an object of kind Ingress. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the Ingress
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -6229,7 +6229,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -6265,7 +6265,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -6330,25 +6330,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind NetworkPolicy. deprecated: use the 'watch'
+        /// watch changes to an object of kind NetworkPolicy. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the NetworkPolicy
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -6362,7 +6362,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -6398,7 +6398,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -6463,22 +6463,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind IngressClass. deprecated: use the 'watch'
+        /// watch changes to an object of kind IngressClass. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the IngressClass
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -6492,7 +6492,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -6528,7 +6528,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -6592,25 +6592,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind Ingress. deprecated: use the 'watch'
+        /// watch changes to an object of kind Ingress. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the Ingress
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -6624,7 +6624,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -6660,7 +6660,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -6725,22 +6725,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind RuntimeClass. deprecated: use the 'watch'
+        /// watch changes to an object of kind RuntimeClass. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the RuntimeClass
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -6754,7 +6754,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -6790,7 +6790,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -6854,22 +6854,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind RuntimeClass. deprecated: use the 'watch'
+        /// watch changes to an object of kind RuntimeClass. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the RuntimeClass
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -6883,7 +6883,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -6919,7 +6919,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -6983,22 +6983,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind RuntimeClass. deprecated: use the 'watch'
+        /// watch changes to an object of kind RuntimeClass. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the RuntimeClass
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -7012,7 +7012,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -7048,7 +7048,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -7113,24 +7113,24 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind PodDisruptionBudget. deprecated: use the
-        /// 'watch' parameter with a list operation instead, filtered to a single item with
-        /// the 'fieldSelector' parameter.
+        /// &apos;watch&apos; parameter with a list operation instead, filtered to a single item with
+        /// the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the PodDisruptionBudget
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -7144,7 +7144,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -7180,7 +7180,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -7246,24 +7246,24 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind PodDisruptionBudget. deprecated: use the
-        /// 'watch' parameter with a list operation instead, filtered to a single item with
-        /// the 'fieldSelector' parameter.
+        /// &apos;watch&apos; parameter with a list operation instead, filtered to a single item with
+        /// the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the PodDisruptionBudget
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -7277,7 +7277,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -7313,7 +7313,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -7379,21 +7379,21 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind PodSecurityPolicy. deprecated: use the
-        /// 'watch' parameter with a list operation instead, filtered to a single item with
-        /// the 'fieldSelector' parameter.
+        /// &apos;watch&apos; parameter with a list operation instead, filtered to a single item with
+        /// the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the PodSecurityPolicy
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -7407,7 +7407,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -7443,7 +7443,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -7508,21 +7508,21 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind ClusterRoleBinding. deprecated: use the
-        /// 'watch' parameter with a list operation instead, filtered to a single item with
-        /// the 'fieldSelector' parameter.
+        /// &apos;watch&apos; parameter with a list operation instead, filtered to a single item with
+        /// the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the ClusterRoleBinding
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -7536,7 +7536,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -7572,7 +7572,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -7636,22 +7636,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind ClusterRole. deprecated: use the 'watch'
+        /// watch changes to an object of kind ClusterRole. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the ClusterRole
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -7665,7 +7665,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -7701,7 +7701,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -7765,25 +7765,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind RoleBinding. deprecated: use the 'watch'
+        /// watch changes to an object of kind RoleBinding. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the RoleBinding
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -7797,7 +7797,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -7833,7 +7833,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -7898,25 +7898,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind Role. deprecated: use the 'watch' parameter
+        /// watch changes to an object of kind Role. deprecated: use the &apos;watch&apos; parameter
         /// with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the Role
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -7930,7 +7930,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -7966,7 +7966,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -8032,21 +8032,21 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind ClusterRoleBinding. deprecated: use the
-        /// 'watch' parameter with a list operation instead, filtered to a single item with
-        /// the 'fieldSelector' parameter.
+        /// &apos;watch&apos; parameter with a list operation instead, filtered to a single item with
+        /// the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the ClusterRoleBinding
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -8060,7 +8060,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -8096,7 +8096,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -8160,22 +8160,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind ClusterRole. deprecated: use the 'watch'
+        /// watch changes to an object of kind ClusterRole. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the ClusterRole
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -8189,7 +8189,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -8225,7 +8225,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -8289,25 +8289,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind RoleBinding. deprecated: use the 'watch'
+        /// watch changes to an object of kind RoleBinding. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the RoleBinding
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -8321,7 +8321,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -8357,7 +8357,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -8422,25 +8422,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind Role. deprecated: use the 'watch' parameter
+        /// watch changes to an object of kind Role. deprecated: use the &apos;watch&apos; parameter
         /// with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the Role
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -8454,7 +8454,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -8490,7 +8490,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -8556,21 +8556,21 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind ClusterRoleBinding. deprecated: use the
-        /// 'watch' parameter with a list operation instead, filtered to a single item with
-        /// the 'fieldSelector' parameter.
+        /// &apos;watch&apos; parameter with a list operation instead, filtered to a single item with
+        /// the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the ClusterRoleBinding
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -8584,7 +8584,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -8620,7 +8620,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -8684,22 +8684,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind ClusterRole. deprecated: use the 'watch'
+        /// watch changes to an object of kind ClusterRole. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the ClusterRole
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -8713,7 +8713,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -8749,7 +8749,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -8813,25 +8813,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind RoleBinding. deprecated: use the 'watch'
+        /// watch changes to an object of kind RoleBinding. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the RoleBinding
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -8845,7 +8845,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -8881,7 +8881,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -8946,25 +8946,25 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind Role. deprecated: use the 'watch' parameter
+        /// watch changes to an object of kind Role. deprecated: use the &apos;watch&apos; parameter
         /// with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the Role
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -8978,7 +8978,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -9014,7 +9014,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -9079,22 +9079,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind PriorityClass. deprecated: use the 'watch'
+        /// watch changes to an object of kind PriorityClass. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the PriorityClass
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -9108,7 +9108,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -9144,7 +9144,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -9208,22 +9208,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind PriorityClass. deprecated: use the 'watch'
+        /// watch changes to an object of kind PriorityClass. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the PriorityClass
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -9237,7 +9237,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -9273,7 +9273,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -9337,22 +9337,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind PriorityClass. deprecated: use the 'watch'
+        /// watch changes to an object of kind PriorityClass. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the PriorityClass
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -9366,7 +9366,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -9402,7 +9402,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -9466,22 +9466,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind CSIDriver. deprecated: use the 'watch'
+        /// watch changes to an object of kind CSIDriver. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the CSIDriver
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -9495,7 +9495,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -9531,7 +9531,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -9595,22 +9595,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind CSINode. deprecated: use the 'watch'
+        /// watch changes to an object of kind CSINode. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the CSINode
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -9624,7 +9624,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -9660,7 +9660,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -9724,22 +9724,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind StorageClass. deprecated: use the 'watch'
+        /// watch changes to an object of kind StorageClass. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the StorageClass
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -9753,7 +9753,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -9789,7 +9789,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -9853,22 +9853,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind VolumeAttachment. deprecated: use the 'watch'
+        /// watch changes to an object of kind VolumeAttachment. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the VolumeAttachment
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -9882,7 +9882,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -9918,7 +9918,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -9983,24 +9983,24 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind CSIStorageCapacity. deprecated: use the
-        /// 'watch' parameter with a list operation instead, filtered to a single item with
-        /// the 'fieldSelector' parameter.
+        /// &apos;watch&apos; parameter with a list operation instead, filtered to a single item with
+        /// the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the CSIStorageCapacity
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -10014,7 +10014,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -10050,7 +10050,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -10115,22 +10115,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind VolumeAttachment. deprecated: use the 'watch'
+        /// watch changes to an object of kind VolumeAttachment. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the VolumeAttachment
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -10144,7 +10144,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -10180,7 +10180,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -10244,22 +10244,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind CSIDriver. deprecated: use the 'watch'
+        /// watch changes to an object of kind CSIDriver. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the CSIDriver
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -10273,7 +10273,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -10309,7 +10309,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -10373,22 +10373,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind CSINode. deprecated: use the 'watch'
+        /// watch changes to an object of kind CSINode. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the CSINode
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -10402,7 +10402,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -10438,7 +10438,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -10503,24 +10503,24 @@ namespace k8s
 
         /// <summary>
         /// watch changes to an object of kind CSIStorageCapacity. deprecated: use the
-        /// 'watch' parameter with a list operation instead, filtered to a single item with
-        /// the 'fieldSelector' parameter.
+        /// &apos;watch&apos; parameter with a list operation instead, filtered to a single item with
+        /// the &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the CSIStorageCapacity
         /// </param>
-        /// <param name="namespace">
+        /// <param name="namespaceParameter">
         /// object name and auth scope, such as for teams and projects
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -10534,7 +10534,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -10570,7 +10570,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -10635,22 +10635,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind StorageClass. deprecated: use the 'watch'
+        /// watch changes to an object of kind StorageClass. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the StorageClass
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -10664,7 +10664,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -10700,7 +10700,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be
@@ -10764,22 +10764,22 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// watch changes to an object of kind VolumeAttachment. deprecated: use the 'watch'
+        /// watch changes to an object of kind VolumeAttachment. deprecated: use the &apos;watch&apos;
         /// parameter with a list operation instead, filtered to a single item with the
-        /// 'fieldSelector' parameter.
+        /// &apos;fieldSelector&apos; parameter.
         /// </summary>
         /// <param name="name">
         /// name of the VolumeAttachment
         /// </param>
         /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
         /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server's discretion. Clients should not assume bookmarks are returned at any
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
         /// specific interval, nor may they assume the server will send any BOOKMARK event
         /// during a session. If this is not a watch, this field is ignored. If the feature
         /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
         /// </param>
-        /// <param name="continue">
+        /// <param name="continueParameter">
         /// The continue option should be set when retrieving more results from the server.
         /// Since this value is server defined, clients may only use the continue value from
         /// a previous query result with identical query parameters (except for the value of
@@ -10793,7 +10793,7 @@ namespace k8s
         /// from the next key, but from the latest snapshot, which is inconsistent from the
         /// previous list results - objects that are created, modified, or deleted after the
         /// first list request will be included in the response, as long as their keys are
-        /// after the "next key".
+        /// after the &quot;next key&quot;.
         /// 
         /// This field is not supported when watch is true. Clients may start a watch from
         /// the last resourceVersion value returned by the server and not miss any
@@ -10829,7 +10829,7 @@ namespace k8s
         /// present at the time the first list result was calculated is returned.
         /// </param>
         /// <param name="pretty">
-        /// If 'true', then the output is pretty printed.
+        /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
         /// <param name="resourceVersion">
         /// resourceVersion sets a constraint on what resource versions a request may be

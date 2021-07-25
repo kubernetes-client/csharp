@@ -32,7 +32,7 @@ namespace k8s.Models
         /// Path of the field to select in the specified API version.
         /// </param>
         /// <param name="apiVersion">
-        /// Version of the schema the FieldPath is written in terms of, defaults to "v1".
+        /// Version of the schema the FieldPath is written in terms of, defaults to &quot;v1&quot;.
         /// </param>
         public V1ObjectFieldSelector(string fieldPath, string apiVersion = null)
         {
@@ -47,7 +47,7 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Version of the schema the FieldPath is written in terms of, defaults to "v1".
+        /// Version of the schema the FieldPath is written in terms of, defaults to &quot;v1&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "apiVersion")]
         public string ApiVersion { get; set; }
@@ -66,10 +66,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (FieldPath == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "FieldPath");    
-            }
         }
     }
 }

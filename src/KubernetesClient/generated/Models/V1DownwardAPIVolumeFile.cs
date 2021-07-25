@@ -31,8 +31,8 @@ namespace k8s.Models
         /// </summary>
         /// <param name="path">
         /// Required: Path is  the relative path name of the file to be created. Must not be
-        /// absolute or contain the '..' path. Must be utf-8 encoded. The first item of the
-        /// relative path must not start with '..'
+        /// absolute or contain the &apos;..&apos; path. Must be utf-8 encoded. The first item of the
+        /// relative path must not start with &apos;..&apos;
         /// </param>
         /// <param name="fieldRef">
         /// Required: Selects a field of the pod: only annotations, labels, name and
@@ -85,8 +85,8 @@ namespace k8s.Models
 
         /// <summary>
         /// Required: Path is  the relative path name of the file to be created. Must not be
-        /// absolute or contain the '..' path. Must be utf-8 encoded. The first item of the
-        /// relative path must not start with '..'
+        /// absolute or contain the &apos;..&apos; path. Must be utf-8 encoded. The first item of the
+        /// relative path must not start with &apos;..&apos;
         /// </summary>
         [JsonProperty(PropertyName = "path")]
         public string Path { get; set; }
@@ -107,10 +107,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Path == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Path");    
-            }
             FieldRef?.Validate();
             ResourceFieldRef?.Validate();
         }

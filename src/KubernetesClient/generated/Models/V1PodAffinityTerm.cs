@@ -16,7 +16,7 @@ namespace k8s.Models
     /// Defines a set of pods (namely those matching the labelSelector relative to the
         /// given namespace(s)) that this pod should be co-located (affinity) or not
         /// co-located (anti-affinity) with, where co-located is defined as running on a
-        /// node whose value of the label with key <topologyKey> matches that of any node on
+        /// node whose value of the label with key &lt;topologyKey&gt; matches that of any node on
         /// which a pod of the set of pods is running
     /// </summary>
     public partial class V1PodAffinityTerm
@@ -46,7 +46,7 @@ namespace k8s.Models
         /// A label query over the set of namespaces that the term applies to. The term is
         /// applied to the union of the namespaces selected by this field and the ones
         /// listed in the namespaces field. null selector and null or empty namespaces list
-        /// means "this pod's namespace". An empty selector ({}) matches all namespaces.
+        /// means &quot;this pod&apos;s namespace&quot;. An empty selector ({}) matches all namespaces.
         /// This field is alpha-level and is only honored when PodAffinityNamespaceSelector
         /// feature is enabled.
         /// </param>
@@ -54,7 +54,7 @@ namespace k8s.Models
         /// namespaces specifies a static list of namespace names that the term applies to.
         /// The term is applied to the union of the namespaces listed in this field and the
         /// ones selected by namespaceSelector. null or empty namespaces list and null
-        /// namespaceSelector means "this pod's namespace"
+        /// namespaceSelector means &quot;this pod&apos;s namespace&quot;
         /// </param>
         public V1PodAffinityTerm(string topologyKey, V1LabelSelector labelSelector = null, V1LabelSelector namespaceSelector = null, IList<string> namespaces = null)
         {
@@ -80,7 +80,7 @@ namespace k8s.Models
         /// A label query over the set of namespaces that the term applies to. The term is
         /// applied to the union of the namespaces selected by this field and the ones
         /// listed in the namespaces field. null selector and null or empty namespaces list
-        /// means "this pod's namespace". An empty selector ({}) matches all namespaces.
+        /// means &quot;this pod&apos;s namespace&quot;. An empty selector ({}) matches all namespaces.
         /// This field is alpha-level and is only honored when PodAffinityNamespaceSelector
         /// feature is enabled.
         /// </summary>
@@ -91,7 +91,7 @@ namespace k8s.Models
         /// namespaces specifies a static list of namespace names that the term applies to.
         /// The term is applied to the union of the namespaces listed in this field and the
         /// ones selected by namespaceSelector. null or empty namespaces list and null
-        /// namespaceSelector means "this pod's namespace"
+        /// namespaceSelector means &quot;this pod&apos;s namespace&quot;
         /// </summary>
         [JsonProperty(PropertyName = "namespaces")]
         public IList<string> Namespaces { get; set; }
@@ -114,10 +114,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (TopologyKey == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "TopologyKey");    
-            }
             LabelSelector?.Validate();
             NamespaceSelector?.Validate();
         }

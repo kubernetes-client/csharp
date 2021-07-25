@@ -55,14 +55,14 @@ namespace k8s.Models
         /// </param>
         /// <param name="allowedCapabilities">
         /// allowedCapabilities is a list of capabilities that can be requested to add to
-        /// the container. Capabilities in this field may be added at the pod author's
+        /// the container. Capabilities in this field may be added at the pod author&apos;s
         /// discretion. You must not list a capability in both allowedCapabilities and
         /// requiredDropCapabilities.
         /// </param>
         /// <param name="allowedFlexVolumes">
         /// allowedFlexVolumes is an allowlist of Flexvolumes.  Empty or nil indicates that
         /// all Flexvolumes may be used.  This parameter is effective only when the usage of
-        /// the Flexvolumes is allowed in the "volumes" field.
+        /// the Flexvolumes is allowed in the &quot;volumes&quot; field.
         /// </param>
         /// <param name="allowedHostPaths">
         /// allowedHostPaths is an allowlist of host paths. Empty indicates that all host
@@ -75,13 +75,13 @@ namespace k8s.Models
         /// </param>
         /// <param name="allowedUnsafeSysctls">
         /// allowedUnsafeSysctls is a list of explicitly allowed unsafe sysctls, defaults to
-        /// none. Each entry is either a plain sysctl name or ends in "*" in which case it
+        /// none. Each entry is either a plain sysctl name or ends in &quot;*&quot; in which case it
         /// is considered as a prefix of allowed sysctls. Single * means all unsafe sysctls
         /// are allowed. Kubelet has to allowlist all allowed unsafe sysctls explicitly to
         /// avoid rejection.
         /// 
-        /// Examples: e.g. "foo/*" allows "foo/bar", "foo/baz", etc. e.g. "foo.*" allows
-        /// "foo.bar", "foo.baz", etc.
+        /// Examples: e.g. &quot;foo/*&quot; allows &quot;foo/bar&quot;, &quot;foo/baz&quot;, etc. e.g. &quot;foo.*&quot; allows
+        /// &quot;foo.bar&quot;, &quot;foo.baz&quot;, etc.
         /// </param>
         /// <param name="defaultAddCapabilities">
         /// defaultAddCapabilities is the default set of capabilities that will be added to
@@ -96,12 +96,12 @@ namespace k8s.Models
         /// </param>
         /// <param name="forbiddenSysctls">
         /// forbiddenSysctls is a list of explicitly forbidden sysctls, defaults to none.
-        /// Each entry is either a plain sysctl name or ends in "*" in which case it is
+        /// Each entry is either a plain sysctl name or ends in &quot;*&quot; in which case it is
         /// considered as a prefix of forbidden sysctls. Single * means all sysctls are
         /// forbidden.
         /// 
-        /// Examples: e.g. "foo/*" forbids "foo/bar", "foo/baz", etc. e.g. "foo.*" forbids
-        /// "foo.bar", "foo.baz", etc.
+        /// Examples: e.g. &quot;foo/*&quot; forbids &quot;foo/bar&quot;, &quot;foo/baz&quot;, etc. e.g. &quot;foo.*&quot; forbids
+        /// &quot;foo.bar&quot;, &quot;foo.baz&quot;, etc.
         /// </param>
         /// <param name="hostIPC">
         /// hostIPC determines if the policy allows the use of HostIPC in the pod spec.
@@ -132,18 +132,18 @@ namespace k8s.Models
         /// </param>
         /// <param name="runAsGroup">
         /// RunAsGroup is the strategy that will dictate the allowable RunAsGroup values
-        /// that may be set. If this field is omitted, the pod's RunAsGroup can take any
+        /// that may be set. If this field is omitted, the pod&apos;s RunAsGroup can take any
         /// value. This field requires the RunAsGroup feature gate to be enabled.
         /// </param>
         /// <param name="runtimeClass">
         /// runtimeClass is the strategy that will dictate the allowable RuntimeClasses for
-        /// a pod. If this field is omitted, the pod's runtimeClassName field is
+        /// a pod. If this field is omitted, the pod&apos;s runtimeClassName field is
         /// unrestricted. Enforcement of this field depends on the RuntimeClass feature gate
         /// being enabled.
         /// </param>
         /// <param name="volumes">
         /// volumes is an allowlist of volume plugins. Empty indicates that no volumes may
-        /// be used. To allow all volumes you may use '*'.
+        /// be used. To allow all volumes you may use &apos;*&apos;.
         /// </param>
         public V1beta1PodSecurityPolicySpec(V1beta1FSGroupStrategyOptions fsGroup, V1beta1RunAsUserStrategyOptions runAsUser, V1beta1SELinuxStrategyOptions seLinux, V1beta1SupplementalGroupsStrategyOptions supplementalGroups, bool? allowPrivilegeEscalation = null, IList<V1beta1AllowedCSIDriver> allowedCSIDrivers = null, IList<string> allowedCapabilities = null, IList<V1beta1AllowedFlexVolume> allowedFlexVolumes = null, IList<V1beta1AllowedHostPath> allowedHostPaths = null, IList<string> allowedProcMountTypes = null, IList<string> allowedUnsafeSysctls = null, IList<string> defaultAddCapabilities = null, bool? defaultAllowPrivilegeEscalation = null, IList<string> forbiddenSysctls = null, bool? hostIPC = null, bool? hostNetwork = null, bool? hostPID = null, IList<V1beta1HostPortRange> hostPorts = null, bool? privileged = null, bool? readOnlyRootFilesystem = null, IList<string> requiredDropCapabilities = null, V1beta1RunAsGroupStrategyOptions runAsGroup = null, V1beta1RuntimeClassStrategyOptions runtimeClass = null, IList<string> volumes = null)
         {
@@ -197,7 +197,7 @@ namespace k8s.Models
 
         /// <summary>
         /// allowedCapabilities is a list of capabilities that can be requested to add to
-        /// the container. Capabilities in this field may be added at the pod author's
+        /// the container. Capabilities in this field may be added at the pod author&apos;s
         /// discretion. You must not list a capability in both allowedCapabilities and
         /// requiredDropCapabilities.
         /// </summary>
@@ -207,7 +207,7 @@ namespace k8s.Models
         /// <summary>
         /// allowedFlexVolumes is an allowlist of Flexvolumes.  Empty or nil indicates that
         /// all Flexvolumes may be used.  This parameter is effective only when the usage of
-        /// the Flexvolumes is allowed in the "volumes" field.
+        /// the Flexvolumes is allowed in the &quot;volumes&quot; field.
         /// </summary>
         [JsonProperty(PropertyName = "allowedFlexVolumes")]
         public IList<V1beta1AllowedFlexVolume> AllowedFlexVolumes { get; set; }
@@ -229,13 +229,13 @@ namespace k8s.Models
 
         /// <summary>
         /// allowedUnsafeSysctls is a list of explicitly allowed unsafe sysctls, defaults to
-        /// none. Each entry is either a plain sysctl name or ends in "*" in which case it
+        /// none. Each entry is either a plain sysctl name or ends in &quot;*&quot; in which case it
         /// is considered as a prefix of allowed sysctls. Single * means all unsafe sysctls
         /// are allowed. Kubelet has to allowlist all allowed unsafe sysctls explicitly to
         /// avoid rejection.
         /// 
-        /// Examples: e.g. "foo/*" allows "foo/bar", "foo/baz", etc. e.g. "foo.*" allows
-        /// "foo.bar", "foo.baz", etc.
+        /// Examples: e.g. &quot;foo/*&quot; allows &quot;foo/bar&quot;, &quot;foo/baz&quot;, etc. e.g. &quot;foo.*&quot; allows
+        /// &quot;foo.bar&quot;, &quot;foo.baz&quot;, etc.
         /// </summary>
         [JsonProperty(PropertyName = "allowedUnsafeSysctls")]
         public IList<string> AllowedUnsafeSysctls { get; set; }
@@ -259,12 +259,12 @@ namespace k8s.Models
 
         /// <summary>
         /// forbiddenSysctls is a list of explicitly forbidden sysctls, defaults to none.
-        /// Each entry is either a plain sysctl name or ends in "*" in which case it is
+        /// Each entry is either a plain sysctl name or ends in &quot;*&quot; in which case it is
         /// considered as a prefix of forbidden sysctls. Single * means all sysctls are
         /// forbidden.
         /// 
-        /// Examples: e.g. "foo/*" forbids "foo/bar", "foo/baz", etc. e.g. "foo.*" forbids
-        /// "foo.bar", "foo.baz", etc.
+        /// Examples: e.g. &quot;foo/*&quot; forbids &quot;foo/bar&quot;, &quot;foo/baz&quot;, etc. e.g. &quot;foo.*&quot; forbids
+        /// &quot;foo.bar&quot;, &quot;foo.baz&quot;, etc.
         /// </summary>
         [JsonProperty(PropertyName = "forbiddenSysctls")]
         public IList<string> ForbiddenSysctls { get; set; }
@@ -326,7 +326,7 @@ namespace k8s.Models
 
         /// <summary>
         /// RunAsGroup is the strategy that will dictate the allowable RunAsGroup values
-        /// that may be set. If this field is omitted, the pod's RunAsGroup can take any
+        /// that may be set. If this field is omitted, the pod&apos;s RunAsGroup can take any
         /// value. This field requires the RunAsGroup feature gate to be enabled.
         /// </summary>
         [JsonProperty(PropertyName = "runAsGroup")]
@@ -341,7 +341,7 @@ namespace k8s.Models
 
         /// <summary>
         /// runtimeClass is the strategy that will dictate the allowable RuntimeClasses for
-        /// a pod. If this field is omitted, the pod's runtimeClassName field is
+        /// a pod. If this field is omitted, the pod&apos;s runtimeClassName field is
         /// unrestricted. Enforcement of this field depends on the RuntimeClass feature gate
         /// being enabled.
         /// </summary>
@@ -363,7 +363,7 @@ namespace k8s.Models
 
         /// <summary>
         /// volumes is an allowlist of volume plugins. Empty indicates that no volumes may
-        /// be used. To allow all volumes you may use '*'.
+        /// be used. To allow all volumes you may use &apos;*&apos;.
         /// </summary>
         [JsonProperty(PropertyName = "volumes")]
         public IList<string> Volumes { get; set; }

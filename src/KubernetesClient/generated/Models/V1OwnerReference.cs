@@ -46,9 +46,9 @@ namespace k8s.Models
         /// http://kubernetes.io/docs/user-guide/identifiers#uids
         /// </param>
         /// <param name="blockOwnerDeletion">
-        /// If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner
+        /// If true, AND if the owner has the &quot;foregroundDeletion&quot; finalizer, then the owner
         /// cannot be deleted from the key-value store until this reference is removed.
-        /// Defaults to false. To set this field, a user needs "delete" permission of the
+        /// Defaults to false. To set this field, a user needs &quot;delete&quot; permission of the
         /// owner, otherwise 422 (Unprocessable Entity) will be returned.
         /// </param>
         /// <param name="controller">
@@ -77,9 +77,9 @@ namespace k8s.Models
         public string ApiVersion { get; set; }
 
         /// <summary>
-        /// If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner
+        /// If true, AND if the owner has the &quot;foregroundDeletion&quot; finalizer, then the owner
         /// cannot be deleted from the key-value store until this reference is removed.
-        /// Defaults to false. To set this field, a user needs "delete" permission of the
+        /// Defaults to false. To set this field, a user needs &quot;delete&quot; permission of the
         /// owner, otherwise 422 (Unprocessable Entity) will be returned.
         /// </summary>
         [JsonProperty(PropertyName = "blockOwnerDeletion")]
@@ -120,22 +120,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ApiVersion");    
-            }
-            if (Kind == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Kind");    
-            }
-            if (Name == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Name");    
-            }
-            if (Uid == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Uid");    
-            }
         }
     }
 }

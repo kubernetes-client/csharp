@@ -14,7 +14,7 @@ namespace k8s.Models
 
     /// <summary>
     /// NetworkPolicyEgressRule describes a particular set of traffic that is allowed
-        /// out of pods matched by a NetworkPolicySpec's podSelector. The traffic must match
+        /// out of pods matched by a NetworkPolicySpec&apos;s podSelector. The traffic must match
         /// both ports and to. This type is beta-level in 1.8
     /// </summary>
     public partial class V1NetworkPolicyEgressRule

@@ -14,7 +14,7 @@ namespace k8s.Models
 
     /// <summary>
     /// HostAlias holds the mapping between IP and hostnames that will be injected as an
-        /// entry in the pod's hosts file.
+        /// entry in the pod&apos;s hosts file.
     /// </summary>
     public partial class V1HostAlias
     {

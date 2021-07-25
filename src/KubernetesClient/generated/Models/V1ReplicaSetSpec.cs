@@ -31,7 +31,7 @@ namespace k8s.Models
         /// <param name="selector">
         /// Selector is a label query over pods that should match the replica count. Label
         /// keys and values that must match in order to be controlled by this replica set.
-        /// It must match the pod template's labels. More info:
+        /// It must match the pod template&apos;s labels. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
         /// </param>
         /// <param name="minReadySeconds">
@@ -82,7 +82,7 @@ namespace k8s.Models
         /// <summary>
         /// Selector is a label query over pods that should match the replica count. Label
         /// keys and values that must match in order to be controlled by this replica set.
-        /// It must match the pod template's labels. More info:
+        /// It must match the pod template&apos;s labels. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
         /// </summary>
         [JsonProperty(PropertyName = "selector")]

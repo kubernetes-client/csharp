@@ -40,7 +40,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="fsType">
         /// Filesystem type to mount. Must be a filesystem type supported by the host
-        /// operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if
+        /// operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;. Implicitly inferred to be &quot;ext4&quot; if
         /// unspecified.
         /// </param>
         /// <param name="kind">
@@ -88,7 +88,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Filesystem type to mount. Must be a filesystem type supported by the host
-        /// operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if
+        /// operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;. Implicitly inferred to be &quot;ext4&quot; if
         /// unspecified.
         /// </summary>
         [JsonProperty(PropertyName = "fsType")]
@@ -117,14 +117,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (DiskName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "DiskName");    
-            }
-            if (DiskURI == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "DiskURI");    
-            }
         }
     }
 }

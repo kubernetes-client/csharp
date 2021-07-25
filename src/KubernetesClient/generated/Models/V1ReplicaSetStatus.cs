@@ -37,7 +37,7 @@ namespace k8s.Models
         /// replica set.
         /// </param>
         /// <param name="conditions">
-        /// Represents the latest available observations of a replica set's current state.
+        /// Represents the latest available observations of a replica set&apos;s current state.
         /// </param>
         /// <param name="fullyLabeledReplicas">
         /// The number of pods that have labels matching the labels of the pod template of
@@ -74,7 +74,7 @@ namespace k8s.Models
         public int? AvailableReplicas { get; set; }
 
         /// <summary>
-        /// Represents the latest available observations of a replica set's current state.
+        /// Represents the latest available observations of a replica set&apos;s current state.
         /// </summary>
         [JsonProperty(PropertyName = "conditions")]
         public IList<V1ReplicaSetCondition> Conditions { get; set; }
@@ -114,10 +114,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Replicas == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Replicas");    
-            }
             foreach(var obj in Conditions)
             {
                 obj.Validate();

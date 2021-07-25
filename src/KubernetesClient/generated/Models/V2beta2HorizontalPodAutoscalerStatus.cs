@@ -115,18 +115,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Conditions == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Conditions");    
-            }
-            if (CurrentReplicas == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "CurrentReplicas");    
-            }
-            if (DesiredReplicas == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "DesiredReplicas");    
-            }
             foreach(var obj in Conditions)
             {
                 obj.Validate();

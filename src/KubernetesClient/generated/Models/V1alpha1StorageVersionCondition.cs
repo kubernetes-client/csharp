@@ -29,7 +29,7 @@ namespace k8s.Models
         /// Initializes a new instance of the V1alpha1StorageVersionCondition class.
         /// </summary>
         /// <param name="reason">
-        /// The reason for the condition's last transition.
+        /// The reason for the condition&apos;s last transition.
         /// </param>
         /// <param name="status">
         /// Status of the condition, one of True, False, Unknown.
@@ -83,7 +83,7 @@ namespace k8s.Models
         public long? ObservedGeneration { get; set; }
 
         /// <summary>
-        /// The reason for the condition's last transition.
+        /// The reason for the condition&apos;s last transition.
         /// </summary>
         [JsonProperty(PropertyName = "reason")]
         public string Reason { get; set; }
@@ -108,18 +108,6 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Reason == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Reason");    
-            }
-            if (Status == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Status");    
-            }
-            if (Type == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Type");    
-            }
         }
     }
 }

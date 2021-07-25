@@ -48,7 +48,7 @@ namespace k8s.Models
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </param>
         /// <param name="metadata">
-        /// Standard object's metadata.
+        /// Standard object&apos;s metadata.
         /// </param>
         /// <param name="subjects">
         /// Subjects holds references to the objects the role applies to.
@@ -87,7 +87,7 @@ namespace k8s.Models
         public string Kind { get; set; }
 
         /// <summary>
-        /// Standard object's metadata.
+        /// Standard object&apos;s metadata.
         /// </summary>
         [JsonProperty(PropertyName = "metadata")]
         public V1ObjectMeta Metadata { get; set; }
