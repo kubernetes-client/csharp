@@ -97,6 +97,8 @@ namespace k8s
             // All other parameters are being validated by MuxedStreamNamespacedPodExecAsync called by NamespacedPodExecAsync
             ValidatePathParameters(sourceFilePath, destinationFilePath);
 
+            string destinationFolder = GetFolderName(destinationFilePath);
+
             // The callback which processes the standard input, standard output and standard error of exec method
             var handler = new ExecAsyncCallback(async (stdIn, stdOut, stdError) =>
             {
@@ -104,67 +106,21 @@ namespace k8s
 
                 try
                 {
-                    using (var outputStream = new MemoryStream())
-                    {
-                        using (var inputFileStream = File.OpenRead(sourceFilePath))
-                        using (var gZipOutputStream = new GZipOutputStream(outputStream))
-                        using (var tarOutputStream = new TarOutputStream(gZipOutputStream))
-                        {
-                            // To avoid gZipOutputStream to close the memoryStream
-                            gZipOutputStream.IsStreamOwner = false;
-
-                            var fileSize = inputFileStream.Length;
-                            var entry = TarEntry.CreateTarEntry(fileInfo.Name);
-                            entry.Size = fileSize;
-
-                            tarOutputStream.PutNextEntry(entry);
-
-                            // this is copied from TarArchive.WriteEntryCore
-                            byte[] localBuffer = new byte[32 * 1024];
-                            while (true)
-                            {
-                                int numRead = inputFileStream.Read(localBuffer, 0, localBuffer.Length);
-                                if (numRead <= 0)
-                                {
-                                    break;
-                                }
-
-                                tarOutputStream.Write(localBuffer, 0, numRead);
-                            }
-
-                            tarOutputStream.CloseEntry();
-                        }
-
-                        outputStream.Position = 0;
-                        using (var cryptoStream = new CryptoStream(stdIn, new ToBase64Transform(), CryptoStreamMode.Write))
-                        {
-                            await outputStream.CopyToAsync(cryptoStream).ConfigureAwait(false);
-                        }
-                    }
+                    await CompressTo(sourceFilePath, stdIn);
+                    stdIn.Close();
                 }
                 catch (Exception ex)
                 {
                     throw new IOException($"Copy command failed: {ex.Message}");
                 }
-
-                using (var errorReader = new StreamReader(stdError))
-                {
-                    if (errorReader.Peek() != -1)
-                    {
-                        var error = await errorReader.ReadToEndAsync().ConfigureAwait(false);
-                        throw new IOException($"Copy command failed: {error}");
-                    }
-                }
             });
-
-            var destinationFolder = GetFolderName(destinationFilePath);
 
             return await NamespacedPodExecAsync(
                 name,
                 @namespace,
                 container,
-                new string[] { "sh", "-c", $"base64 -d | tar xzmf - -C {destinationFolder}" },
-                false,
+                new string[] { "tar", "xzmf", "-", "-C", destinationFolder },
+                true,
                 handler,
                 cancellationToken).ConfigureAwait(false);
         }
@@ -290,6 +246,25 @@ namespace k8s
                 false,
                 handler,
                 cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Compress a file to the stream (use .tgz format).
+        /// </summary>
+        /// <param name="source">Source file to be compressed.</param>
+        /// <param name="dest">Destination stream.</param>
+        private static async Task CompressTo(string source, Stream dest)
+        {
+            using (Stream gzStream = new GZipOutputStream(dest))
+            using (TarOutputStream tarStream = new TarOutputStream(gzStream, Encoding.UTF8))
+            using (FileStream inStream = File.OpenRead(source))
+            {
+                TarEntry entry = TarEntry.CreateTarEntry(Path.GetFileName(source));
+                entry.Size = inStream.Length;
+                tarStream.PutNextEntry(entry);
+                await inStream.CopyToAsync(tarStream);
+                tarStream.CloseEntry();
+            }
         }
 
         private void AddDirectoryFilesToTar(TarArchive tarArchive, string sourceDirectoryPath)
