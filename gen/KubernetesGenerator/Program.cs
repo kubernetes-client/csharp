@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
+using System.Security;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -260,7 +261,7 @@ namespace KubernetesWatchGenerator
                                 first = false;
                             }
 
-                            context.Write(wline);
+                            context.Write(SecurityElement.Escape(wline));
                         }
                     }
                 }
@@ -759,7 +760,7 @@ namespace KubernetesWatchGenerator
 
             }
 
-            return jsonName;
+            return jsonName.ToCamelCase();
         }
 
         private static void GetPathExpression(RenderContext context, IList<object> arguments,

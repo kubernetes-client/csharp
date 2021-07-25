@@ -311,20 +311,7 @@ namespace k8s
         }
 
         {{#.}}
-        /// <summary>
-        /// {{ToXmlDoc operation.description}}
-        /// </summary>
-        {{#operation.parameters}}
-        /// <param name="{{GetDotNetName .}}">
-        /// {{ToXmlDoc description}}
-        /// </param>
-        {{/operation.parameters}}
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
+        /// <inheritdoc/>
         public async Task<HttpOperationResponse{{GetReturnType operation "<>"}}> {{GetMethodName operation "WithHttpMessagesAsync"}}(
 {{#operation.parameters}}
             {{GetDotNetType .}} {{GetDotNetName . "true"}},

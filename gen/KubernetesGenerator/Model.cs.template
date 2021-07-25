@@ -72,12 +72,14 @@ namespace k8s.Models
         public virtual void Validate()
         {
             {{#properties}}
+            {{#IfType . "object"}}
             {{#isRequired}}
             if ({{GetDotNetName name "field"}} == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "{{GetDotNetName name "field"}}");    
             }
             {{/isRequired}}
+            {{/IfType . "object"}}
             {{/properties}}
             {{#properties}}
             {{#IfType . "object"}}
