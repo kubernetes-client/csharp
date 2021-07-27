@@ -364,7 +364,7 @@ namespace k8s
             // Create HTTP transport
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("{{Method}}");
+            _httpRequest.Method = HttpMethod.{{Method}};
             _httpRequest.RequestUri = new System.Uri(_url);
             // Set Headers
 
