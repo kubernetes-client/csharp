@@ -11,17 +11,17 @@ dotnet add package KubernetesClient
 ```
 
 ## Authentication/Configuration
-You should be able to use an standard KubeConfig file with this library,
+You should be able to use a standard KubeConfig file with this library,
 see the `BuildConfigFromConfigFile` function below. Most authentication
 methods are currently supported, but a few are not, see the 
-[known-issues](https://github.com/kubernetes-client/csharp#known-issues)
+[known-issues](https://github.com/kubernetes-client/csharp#known-issues).
 
-You should also be able to authenticate using the in-cluster service
+You should also be able to authenticate with the in-cluster service
 account using the `InClusterConfig` function shown below.
 
 ## Monitoring
 There is optional built-in metric generation for prometheus client metrics.
-The metrics exported are:
+The exported metrics are:
 
 * `k8s_dotnet_request_total` - Counter of request, broken down by HTTP Method
 * `k8s_dotnet_response_code_total` - Counter of responses, broken down by HTTP Method and response code
@@ -79,7 +79,7 @@ var status = client.DeleteNamespace(ns.Metadata.Name, new V1DeleteOptions());
 
 There is extensive example code in the [examples directory](https://github.com/kubernetes-client/csharp/tree/master/examples).
 
-### Running the Examples
+### Running the examples
 
 ```bash
 git clone git@github.com:kubernetes-client/csharp.git
@@ -89,14 +89,14 @@ dotnet run
 
 ## Known issues
 
-While preferred way of connecting to a remote cluster from local machine is:
+While the preferred way of connecting to a remote cluster from local machine is:
 
-```
+```c#
 var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
 var client = new Kubernetes(config);
 ```
 
-Not all auth providers are supported at moment [#91](https://github.com/kubernetes-client/csharp/issues/91#issuecomment-362920478), but you still can connect to cluster by starting proxy:
+Not all auth providers are supported at moment [#91](https://github.com/kubernetes-client/csharp/issues/91#issuecomment-362920478). You can still connect to a cluster by starting the proxy command:
 
 ```bash
 $ kubectl proxy
@@ -105,17 +105,17 @@ Starting to serve on 127.0.0.1:8001
 
 and changing config:
 
-```csharp
+```c#
 var config = new KubernetesClientConfiguration {  Host = "http://127.0.0.1:8001" };
 ```
 
-Notice that this is a workaround and is not recommended for production use
+Notice that this is a workaround and is not recommended for production use.
 
 ## Testing
 
 The project uses [XUnit](https://xunit.github.io) as unit testing framework.
 
-To run the tests
+To run the tests:
 
 ```bash
 cd csharp\tests
@@ -132,7 +132,7 @@ You'll need a Linux machine with Docker.
 The generated code works on all platforms supported by .NET or .NET Core.
 
 Check out the generator project into some other directory
-(henceforth `$GEN_DIR`)
+(henceforth `$GEN_DIR`).
 
 ```bash
 cd $GEN_DIR/..
