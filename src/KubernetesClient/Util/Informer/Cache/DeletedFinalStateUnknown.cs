@@ -1,6 +1,6 @@
 using k8s.Models;
 
-namespace k8s.Util.Cache
+namespace k8s.Util.Informer.Cache
 {
     // DeletedFinalStateUnknown is placed into a DeltaFIFO in the case where
     // an object was deleted but the watch deletion event was missed. In this

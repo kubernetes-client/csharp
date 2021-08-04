@@ -1,12 +1,12 @@
 using FluentAssertions;
 using k8s.Models;
-using k8s.Util.Cache;
+using k8s.Util.Informer.Cache;
 using Microsoft.Extensions.Logging;
 using Xunit;
 using Xunit.Abstractions;
 using Xunit.Sdk;
 
-namespace k8s.Util.Tests.Cache
+namespace k8s.Tests.Util.Informer.Cache
 {
     public class ReflectorTest
     {

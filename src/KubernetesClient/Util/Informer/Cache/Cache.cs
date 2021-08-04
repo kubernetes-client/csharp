@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using k8s.Models;
+using k8s.Util.Common;
 
-namespace k8s.Util.Cache
+namespace k8s.Util.Informer.Cache
 {
     /// <summary>
     /// Cache is a C# port of Java's Cache which is a port of k/client-go's ThreadSafeStore. It basically saves and indexes all the entries.
@@ -24,7 +25,7 @@ namespace k8s.Util.Cache
         /// The default label is "namespace". The default func is to look in the object's metadata and combine the
         /// namespace and name values, as namespace/name.
         /// </remarks>
-        private readonly Dictionary<string, Func<TApiType, List<string>>> _indexers = new();
+        private readonly Dictionary<string, Func<TApiType, List<string>>> _indexers = new Dictionary<string, Func<TApiType, List<string>>>();
 
         /// <summary>
         /// indices stores objects' keys by their indices
@@ -34,21 +35,21 @@ namespace k8s.Util.Cache
         /// if the indexer func is to calculate the namespace and name values as namespace/name, then the indice HashSet
         /// holds those values.
         /// </remarks>
-        private Dictionary<string, Dictionary<string, HashSet<string>>> _indices = new();
+        private Dictionary<string, Dictionary<string, HashSet<string>>> _indices = new Dictionary<string, Dictionary<string, HashSet<string>>>();
 
         /// <summary>
         /// items stores object instances
         /// </summary>
         /// <remarks>Indices hold the HashSet of calculated keys (namespace/name) for a given resource and items map each of
         /// those keys to actual K8s object that was originally returned.</remarks>
-        private Dictionary<string, TApiType> _items = new();
+        private Dictionary<string, TApiType> _items = new Dictionary<string, TApiType>();
 
         /// <summary>
         /// object used to track locking
         /// </summary>
         /// <remarks>methods interacting with the store need to lock to secure the thread for race conditions,
         /// learn more: https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/lock-statement</remarks>
-        private readonly object _lock = new();
+        private readonly object _lock = new object();
 
         public Cache()
           : this(Caches.NamespaceIndex, Caches.MetaNamespaceIndexFunc, Caches.DeletionHandlingMetaNamespaceKeyFunc)
@@ -237,7 +238,7 @@ namespace k8s.Util.Cache
                 }
 
                 var returnKeySet = new HashSet<string>();
-                foreach (var set in indexKeys.Select(indexKey => index.GetValueOrDefault(indexKey)).Where(set => set is not null && set.Count != 0))
+                foreach (var set in indexKeys.Select(indexKey => index.GetValueOrDefault(indexKey)).Where(set => set != null && set.Count != 0))
                 {
                     returnKeySet.AddRange(set);
                 }

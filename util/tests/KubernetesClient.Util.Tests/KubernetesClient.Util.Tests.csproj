@@ -27,4 +27,8 @@
       <ProjectReference Include="..\..\src\KubernetesClient.Util\KubernetesClient.Util.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Cache" />
+    </ItemGroup>
+
 </Project>

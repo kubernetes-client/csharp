@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using k8s.Models;
 
-namespace k8s.Util.Cache
+namespace k8s.Util.Informer.Cache
 {
     /// <summary>
     /// Lister interface is used to list cached items from a running informer.

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using k8s.Models;
 
-namespace k8s.Util.Cache
+namespace k8s.Util.Informer.Cache
 {
     public interface IStore<TApiType>
       where TApiType : class, IKubernetesObject<V1ObjectMeta>

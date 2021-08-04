@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using k8s.Models;
 
-namespace k8s.Util.Cache
+namespace k8s.Util.Informer.Cache
 {
     /// <summary>
     /// A set of helper utilities for constructing a cache.

@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using k8s.Util.Cache;
+using k8s.Util.Informer.Cache;
 using k8s.Models;
 using Xunit;
 
-namespace k8s.Util.Tests.Cache
+namespace k8s.Tests.Util.Informer.Cache
 {
     public class CacheTest
     {
@@ -243,12 +243,12 @@ namespace k8s.Util.Tests.Cache
         public void AddIndexersConflict()
         {
             var cache = new Cache<V1Pod>();
-            Dictionary<string, Func<V1Pod, List<string>>> initialIndexers = new()
+            Dictionary<string, Func<V1Pod, List<string>>> initialIndexers = new Dictionary<string, Func<V1Pod, List<string>>>()
             {
                 { "1", pod => new List<string>() },
                 { "2", pod => new List<string>() },
             };
-            Dictionary<string, Func<V1Pod, List<string>>> conflictIndexers = new()
+            Dictionary<string, Func<V1Pod, List<string>>> conflictIndexers = new Dictionary<string, Func<V1Pod, List<string>>>()
             {
                 { "1", pod => new List<string>() },
             };
@@ -261,7 +261,7 @@ namespace k8s.Util.Tests.Cache
         public void AddIndexersSuccess()
         {
             var cache = new Cache<V1Pod>();
-            Dictionary<string, Func<V1Pod, List<string>>> indexers = new()
+            Dictionary<string, Func<V1Pod, List<string>>> indexers = new Dictionary<string, Func<V1Pod, List<string>>>()
             {
                 { "2", pod => new List<string>() { pod.Name() } },
                 { "3", pod => new List<string>() { pod.Name() } },

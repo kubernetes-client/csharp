@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using k8s.Models;
 
-namespace k8s.Util.Tests.Cache
+namespace k8s.Tests.Util.Informer.Cache
 {
     internal static class Util
     {
@@ -30,7 +30,7 @@ namespace k8s.Util.Tests.Cache
 
         internal static V1PodList CreatePostList(int cnt)
         {
-            return new()
+            return new V1PodList()
             {
                 ApiVersion = "Pod/V1",
                 Kind = "Pod",

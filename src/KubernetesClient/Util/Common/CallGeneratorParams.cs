@@ -1,8 +1,4 @@
-// ReSharper disable once CheckNamespace
-
-using System;
-
-namespace k8s.Util.Utils
+namespace k8s.Util.Common
 {
     public class CallGeneratorParams
     {
