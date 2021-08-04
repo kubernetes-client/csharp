@@ -45,4 +45,8 @@
     <PackageReference Include="IdentityModel.OidcClient" Version="3.1.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Util\Informer" />
+  </ItemGroup>
+
 </Project>

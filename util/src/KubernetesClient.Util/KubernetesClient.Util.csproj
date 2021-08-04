@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <LangVersion>9.0</LangVersion>
+        <Authors>The Kubernetes Project Authors</Authors>
+        <Copyright>2017 The Kubernetes Project Authors</Copyright>
+        <Description>Supprting utilities for the kubernetes open source container orchestrator client library.</Description>
+
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/kubernetes-client/csharp</PackageProjectUrl>
+        <PackageIconUrl>https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.png</PackageIconUrl>
+        <PackageTags>kubernetes;docker;containers;</PackageTags>
+
+        <TargetFrameworks>netstandard2.1;net5.0</TargetFrameworks>
+        <RootNamespace>k8s.Util</RootNamespace>
+        <SignAssembly>true</SignAssembly>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+        <!-- Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+
+        <!-- Build symbol package (.snupkg) to distribute the PDB containing Source Link -->
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\src\KubernetesClient\KubernetesClient.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="System.Text.Json" Version="5.0.2" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Utils" />
+    </ItemGroup>
+
+</Project>
