@@ -7,16 +7,25 @@ using System.Threading.Tasks;
 using k8s.LeaderElection;
 using Moq;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace k8s.Tests.LeaderElection
 {
     public class LeaderElectionTests
     {
-        public LeaderElectionTests()
+        private static ITestOutputHelper xoutput;
+
+        public LeaderElectionTests(ITestOutputHelper output)
+            : base()
         {
-            ThreadPool.SetMaxThreads(32, 32);
+            xoutput = output;
             MockResourceLock.ResetGloablRecord();
         }
+
+        //public LeaderElectionTests()
+        //{
+        //    MockResourceLock.ResetGloablRecord();
+        //}
 
         [Fact]
         public void SimpleLeaderElection()
@@ -442,6 +451,7 @@ namespace k8s.Tests.LeaderElection
 
             public Task<bool> UpdateAsync(LeaderElectionRecord record, CancellationToken cancellationToken = default)
             {
+                xoutput.WriteLine(DateTime.Now.ToString("hh:mm:ss.fff") + " call update");
                 lock (Lockobj)
                 {
                     OnTryUpdate?.Invoke(record);
