@@ -14,6 +14,7 @@ namespace k8s.Tests.LeaderElection
     {
         public LeaderElectionTests()
         {
+            ThreadPool.SetMaxThreads(32, 32);
             MockResourceLock.ResetGloablRecord();
         }
 
@@ -256,13 +257,13 @@ namespace k8s.Tests.LeaderElection
             countdown.Wait(TimeSpan.FromSeconds(10));
 
             // TODO flasky
-            // Assert.Equal(9, electionHistory.Count);
+            Assert.Equal(9, electionHistory.Count);
 
-            // Assert.True(electionHistory.SequenceEqual(new[]
-            // {
-            //     "create record", "try update record", "update record", "try update record", "update record",
-            //     "try update record", "try update record", "try update record", "try update record",
-            // }));
+            Assert.True(electionHistory.SequenceEqual(new[]
+            {
+                 "create record", "try update record", "update record", "try update record", "update record",
+                 "try update record", "try update record", "try update record", "try update record",
+            }));
 
             Assert.True(electionHistory.Take(7).SequenceEqual(new[]
             {
