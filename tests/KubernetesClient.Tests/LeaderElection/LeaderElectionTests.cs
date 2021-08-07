@@ -17,6 +17,8 @@ namespace k8s.Tests.LeaderElection
 
         public LeaderElectionTests(ITestOutputHelper output)
         {
+            ThreadPool.SetMaxThreads(32, 32);
+            ThreadPool.SetMinThreads(32, 32);
             this.output = output;
             MockResourceLock.ResetGloablRecord();
         }
