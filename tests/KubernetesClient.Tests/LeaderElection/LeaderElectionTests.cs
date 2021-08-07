@@ -13,8 +13,11 @@ namespace k8s.Tests.LeaderElection
 {
     public class LeaderElectionTests
     {
-        public LeaderElectionTests()
+        private readonly ITestOutputHelper output;
+
+        public LeaderElectionTests(ITestOutputHelper output)
         {
+            this.output = output;
             MockResourceLock.ResetGloablRecord();
         }
 
@@ -273,6 +276,8 @@ namespace k8s.Tests.LeaderElection
 
             countdown.Wait(TimeSpan.FromSeconds(15));
             electionHistoryCountdown.Wait(TimeSpan.FromSeconds(15));
+
+            output.WriteLine(string.Join(",", electionHistory));
 
             Assert.True(electionHistory.Take(9).SequenceEqual(new[]
             {
