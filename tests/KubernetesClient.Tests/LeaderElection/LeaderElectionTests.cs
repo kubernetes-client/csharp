@@ -13,19 +13,10 @@ namespace k8s.Tests.LeaderElection
 {
     public class LeaderElectionTests
     {
-        private static ITestOutputHelper xoutput;
-
-        public LeaderElectionTests(ITestOutputHelper output)
-            : base()
+        public LeaderElectionTests()
         {
-            xoutput = output;
             MockResourceLock.ResetGloablRecord();
         }
-
-        //public LeaderElectionTests()
-        //{
-        //    MockResourceLock.ResetGloablRecord();
-        //}
 
         [Fact]
         public void SimpleLeaderElection()
@@ -91,6 +82,7 @@ namespace k8s.Tests.LeaderElection
         {
             var electionHistory = new List<string>();
             var leadershipHistory = new List<string>();
+            var electionHistoryCountdown = new CountdownEvent(7);
 
             var renewCountA = 3;
             var mockLockA = new MockResourceLock("mockA") { UpdateWillFail = () => renewCountA <= 0 };
@@ -101,12 +93,14 @@ namespace k8s.Tests.LeaderElection
 
                 electionHistory.Add("A creates record");
                 leadershipHistory.Add("A gets leadership");
+                electionHistoryCountdown.Signal();
             };
 
             mockLockA.OnUpdate += (_) =>
             {
                 renewCountA--;
                 electionHistory.Add("A updates record");
+                electionHistoryCountdown.Signal();
             };
 
             mockLockA.OnChange += (_) => { leadershipHistory.Add("A gets leadership"); };
@@ -126,6 +120,7 @@ namespace k8s.Tests.LeaderElection
                 renewCountB--;
 
                 electionHistory.Add("B creates record");
+                electionHistoryCountdown.Signal();
                 leadershipHistory.Add("B gets leadership");
             };
 
@@ -133,6 +128,7 @@ namespace k8s.Tests.LeaderElection
             {
                 renewCountB--;
                 electionHistory.Add("B updates record");
+                electionHistoryCountdown.Signal();
             };
 
             mockLockB.OnChange += (_) => { leadershipHistory.Add("B gets leadership"); };
@@ -189,7 +185,8 @@ namespace k8s.Tests.LeaderElection
                 leaderElector.RunAsync().Wait();
             });
 
-            testLeaderElectionLatch.Wait(TimeSpan.FromSeconds(10));
+            testLeaderElectionLatch.Wait(TimeSpan.FromSeconds(15));
+            electionHistoryCountdown.Wait(TimeSpan.FromSeconds(15));
 
             Assert.Equal(7, electionHistory.Count);
 
@@ -214,6 +211,7 @@ namespace k8s.Tests.LeaderElection
         {
             var electionHistory = new List<string>();
             var leadershipHistory = new List<string>();
+            var electionHistoryCountdown = new CountdownEvent(9);
 
             var renewCount = 3;
             var mockLock = new MockResourceLock("mock") { UpdateWillFail = () => renewCount <= 0, };
@@ -223,17 +221,27 @@ namespace k8s.Tests.LeaderElection
                 renewCount--;
                 electionHistory.Add("create record");
                 leadershipHistory.Add("get leadership");
+                electionHistoryCountdown.Signal();
             };
 
             mockLock.OnUpdate += _ =>
             {
                 renewCount--;
                 electionHistory.Add("update record");
+                electionHistoryCountdown.Signal();
             };
 
-            mockLock.OnChange += _ => { electionHistory.Add("change record"); };
+            mockLock.OnChange += _ =>
+            {
+                electionHistory.Add("change record");
+                electionHistoryCountdown.Signal();
+            };
 
-            mockLock.OnTryUpdate += _ => { electionHistory.Add("try update record"); };
+            mockLock.OnTryUpdate += _ =>
+            {
+                electionHistory.Add("try update record");
+                electionHistoryCountdown.Signal();
+            };
 
 
             var leaderElectionConfig = new LeaderElectionConfig(mockLock)
@@ -263,21 +271,13 @@ namespace k8s.Tests.LeaderElection
                 leaderElector.RunAsync().Wait();
             });
 
-            countdown.Wait(TimeSpan.FromSeconds(10));
+            countdown.Wait(TimeSpan.FromSeconds(15));
+            electionHistoryCountdown.Wait(TimeSpan.FromSeconds(15));
 
-            // TODO flasky
-            Assert.Equal(9, electionHistory.Count);
-
-            Assert.True(electionHistory.SequenceEqual(new[]
+            Assert.True(electionHistory.Take(9).SequenceEqual(new[]
             {
                  "create record", "try update record", "update record", "try update record", "update record",
                  "try update record", "try update record", "try update record", "try update record",
-            }));
-
-            Assert.True(electionHistory.Take(7).SequenceEqual(new[]
-            {
-                "create record", "try update record", "update record", "try update record", "update record",
-                "try update record", "try update record",
             }));
 
             Assert.True(leadershipHistory.SequenceEqual(new[] { "get leadership", "start leading", "stop leading" }));
@@ -451,7 +451,6 @@ namespace k8s.Tests.LeaderElection
 
             public Task<bool> UpdateAsync(LeaderElectionRecord record, CancellationToken cancellationToken = default)
             {
-                xoutput.WriteLine(DateTime.Now.ToString("hh:mm:ss.fff") + " call update");
                 lock (Lockobj)
                 {
                     OnTryUpdate?.Invoke(record);
