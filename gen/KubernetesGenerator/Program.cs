@@ -1,12 +1,18 @@
+using CaseExtensions;
 using NJsonSchema;
 using NSwag;
 using Nustache.Core;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
+using System.Security;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KubernetesWatchGenerator
@@ -16,6 +22,7 @@ namespace KubernetesWatchGenerator
         private static HashSet<string> _classesWithValidation;
         private static readonly Dictionary<string, string> ClassNameMap = new Dictionary<string, string>();
         private static Dictionary<JsonSchema4, string> _schemaToNameMap;
+        private static Dictionary<JsonSchema4, string> _schemaToNameMapCooked;
         private static HashSet<string> _schemaDefinitionsInMultipleGroups;
         private static Dictionary<string, string> _classNameToPluralMap;
 
@@ -31,8 +38,8 @@ namespace KubernetesWatchGenerator
 
             // Read the spec trimmed
             // here we cache all name in gen project for later use
-            var swagger = await SwaggerDocument.FromFileAsync(Path.Combine(args[1], "swagger.json")).ConfigureAwait(false);
-            foreach (var (k, v) in swagger.Definitions)
+            var swaggercooked = await SwaggerDocument.FromFileAsync(Path.Combine(args[1], "swagger.json")).ConfigureAwait(false);
+            foreach (var (k, v) in swaggercooked.Definitions)
             {
                 if (v.ExtensionData?.TryGetValue("x-kubernetes-group-version-kind", out var _) == true)
                 {
@@ -46,8 +53,10 @@ namespace KubernetesWatchGenerator
                 }
             }
 
+            _schemaToNameMapCooked = swaggercooked.Definitions.ToDictionary(x => x.Value, x => ToPascalCase(x.Key.Replace(".", "")));
+
             // gen project removed all watch operations, so here we switch back to unprocessed version
-            swagger = await SwaggerDocument.FromFileAsync(Path.Combine(args[1], "swagger.json.unprocessed")).ConfigureAwait(false);
+            var swagger = await SwaggerDocument.FromFileAsync(Path.Combine(args[1], "swagger.json.unprocessed")).ConfigureAwait(false);
             _schemaToNameMap = swagger.Definitions.ToDictionary(x => x.Value, x => x.Key);
             _schemaDefinitionsInMultipleGroups = _schemaToNameMap.Values.Select(x =>
                 {
@@ -102,6 +111,14 @@ namespace KubernetesWatchGenerator
             Helpers.Register(nameof(GetKind), GetKind);
             Helpers.Register(nameof(GetPlural), GetPlural);
             Helpers.Register(nameof(GetTuple), GetTuple);
+            Helpers.Register(nameof(GetReturnType), GetReturnType);
+            Helpers.Register(nameof(IfKindIs), IfKindIs);
+            Helpers.Register(nameof(AddCurly), AddCurly);
+            Helpers.Register(nameof(GetRequestMethod), GetRequestMethod);
+            Helpers.Register(nameof(EscapeDataString), EscapeDataString);
+            Helpers.Register(nameof(IfReturnType), IfReturnType);
+            Helpers.Register(nameof(GetModelCtorParam), GetModelCtorParam);
+            Helpers.Register(nameof(IfType), IfType);
 
             // Generate the Watcher operations
             // We skip operations where the name of the class in the C# client could not be determined correctly.
@@ -118,6 +135,60 @@ namespace KubernetesWatchGenerator
                 Path.Combine(outputDirectory, "IKubernetes.Watch.cs"));
             Render.FileToFile("Kubernetes.Watch.cs.template", watchOperations,
                 Path.Combine(outputDirectory, "Kubernetes.Watch.cs"));
+
+            var data = swaggercooked.Operations
+                            .Where(o => o.Method != SwaggerOperationMethod.Options)
+                            .GroupBy(o => o.Operation.OperationId)
+                            .Select(g =>
+                            {
+                                var gs = g.ToArray();
+
+                                for (int i = 1; i < g.Count(); i++)
+                                {
+                                    gs[i].Operation.OperationId += i;
+                                }
+
+                                return gs;
+                            })
+                            .SelectMany(g => g)
+                            .Select(o =>
+                            {
+                                var ps = o.Operation.ActualParameters.OrderBy(p => !p.IsRequired).ToArray();
+
+                                o.Operation.Parameters.Clear();
+
+                                var name = new HashSet<string>();
+
+                                var i = 1;
+                                foreach (var p in ps)
+                                {
+                                    if (name.Contains(p.Name))
+                                    {
+                                        p.Name = p.Name + i++;
+                                    }
+
+                                    o.Operation.Parameters.Add(p);
+                                    name.Add(p.Name);
+                                }
+
+                                return o;
+                            })
+                            .ToArray();
+
+            Render.FileToFile("IKubernetes.cs.template", data, Path.Combine(outputDirectory, "IKubernetes.cs"));
+            Render.FileToFile("KubernetesExtensions.cs.template", data, Path.Combine(outputDirectory, "KubernetesExtensions.cs"));
+            Render.FileToFile("Kubernetes.cs.template", data, Path.Combine(outputDirectory, "Kubernetes.cs"));
+
+            foreach (var (_, def) in swaggercooked.Definitions)
+            {
+                var clz = GetClassNameForSchemaDefinition(def);
+                Render.FileToFile("Model.cs.template", new
+                {
+                    clz,
+                    def,
+                    properties = def.Properties.Values,
+                }, Path.Combine(outputDirectory, "Models", $"{clz}.cs"));
+            }
 
             // Generate the interface declarations
             var skippedTypes = new HashSet<string>() { "V1WatchEvent", };
@@ -178,17 +249,20 @@ namespace KubernetesWatchGenerator
                     string line = null;
                     while ((line = reader.ReadLine()) != null)
                     {
-                        if (!first)
+                        foreach (var wline in WordWrap(line, 80))
                         {
-                            context.Write("\n");
-                            context.Write("        /// ");
-                        }
-                        else
-                        {
-                            first = false;
-                        }
+                            if (!first)
+                            {
+                                context.Write("\n");
+                                context.Write("        /// ");
+                            }
+                            else
+                            {
+                                first = false;
+                            }
 
-                        context.Write(line);
+                            context.Write(SecurityElement.Escape(wline));
+                        }
                     }
                 }
             }
@@ -213,7 +287,7 @@ namespace KubernetesWatchGenerator
             }
             else if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema4)
             {
-                context.Write(GetClassName(arguments[0] as JsonSchema4));
+                context.Write(GetClassNameForSchemaDefinition(arguments[0] as JsonSchema4));
             }
         }
 
@@ -256,6 +330,11 @@ namespace KubernetesWatchGenerator
                 definition.ExtensionData.ContainsKey("x-kubernetes-group-version-kind"))
             {
                 return GetClassName(definition);
+            }
+
+            if (_schemaToNameMapCooked.TryGetValue(definition, out var name))
+            {
+                return name;
             }
 
             var schemaName = _schemaToNameMap[definition];
@@ -380,20 +459,38 @@ namespace KubernetesWatchGenerator
         {
             if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is SwaggerOperation)
             {
-                context.Write(GetMethodName(arguments[0] as SwaggerOperation));
+                string suffix = null;
+                if (arguments.Count > 1)
+                {
+                    suffix = arguments[1] as string;
+                }
+
+                context.Write(GetMethodName(arguments[0] as SwaggerOperation, suffix));
             }
         }
 
-        private static string GetMethodName(SwaggerOperation watchOperation)
+        private static string GetMethodName(SwaggerOperation watchOperation, string suffix)
         {
             var tag = watchOperation.Tags[0];
             tag = tag.Replace("_", string.Empty);
 
             var methodName = ToPascalCase(watchOperation.OperationId);
 
-            // This tries to remove the version from the method name, e.g. watchCoreV1NamespacedPod => WatchNamespacedPod
-            methodName = methodName.Replace(tag, string.Empty, StringComparison.OrdinalIgnoreCase);
-            methodName += "Async";
+            switch (suffix)
+            {
+                case "":
+                case "Async":
+                case "WithHttpMessagesAsync":
+                    methodName += suffix;
+                    break;
+
+                default:
+                    // This tries to remove the version from the method name, e.g. watchCoreV1NamespacedPod => WatchNamespacedPod
+                    methodName = methodName.Replace(tag, string.Empty, StringComparison.OrdinalIgnoreCase);
+                    methodName += "Async";
+                    break;
+            }
+
             return methodName;
         }
 
@@ -403,13 +500,30 @@ namespace KubernetesWatchGenerator
             if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is SwaggerParameter)
             {
                 var parameter = arguments[0] as SwaggerParameter;
-                context.Write(GetDotNetType(parameter.Type, parameter.Name, parameter.IsRequired));
+
+                if (parameter.Schema?.Reference != null)
+                {
+                    context.Write(GetClassNameForSchemaDefinition(parameter.Schema.Reference));
+                }
+                else if (parameter.Schema != null)
+                {
+                    context.Write(GetDotNetType(parameter.Schema.Type, parameter.Name, parameter.IsRequired, parameter.Schema.Format));
+                }
+                else
+                {
+                    context.Write(GetDotNetType(parameter.Type, parameter.Name, parameter.IsRequired, parameter.Format));
+                }
+            }
+            else if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonProperty)
+            {
+                var property = arguments[0] as JsonProperty;
+                context.Write(GetDotNetType(property));
             }
             else if (arguments != null && arguments.Count > 2 && arguments[0] != null && arguments[1] != null &&
                      arguments[2] != null && arguments[0] is JsonObjectType && arguments[1] is string &&
                      arguments[2] is bool)
             {
-                context.Write(GetDotNetType((JsonObjectType)arguments[0], (string)arguments[1], (bool)arguments[2]));
+                context.Write(GetDotNetType((JsonObjectType)arguments[0], (string)arguments[1], (bool)arguments[2], (string)arguments[3]));
             }
             else if (arguments != null && arguments.Count > 0 && arguments[0] != null)
             {
@@ -421,11 +535,11 @@ namespace KubernetesWatchGenerator
             }
         }
 
-        private static string GetDotNetType(JsonObjectType jsonType, string name, bool required)
+        private static string GetDotNetType(JsonObjectType jsonType, string name, bool required, string format)
         {
             if (name == "pretty" && !required)
             {
-                return "bool?";
+                return "string";
             }
 
             switch (jsonType)
@@ -441,20 +555,117 @@ namespace KubernetesWatchGenerator
                     }
 
                 case JsonObjectType.Integer:
+                    switch (format)
+                    {
+                        case "int64":
+                            if (required)
+                            {
+                                return "long";
+                            }
+                            else
+                            {
+                                return "long?";
+                            }
+
+                            break;
+                        case "int32":
+                        default:
+                            if (required)
+                            {
+                                return "int";
+                            }
+                            else
+                            {
+                                return "int?";
+                            }
+
+                            break;
+                    }
+
+                case JsonObjectType.Number:
                     if (required)
                     {
-                        return "int";
+                        return "double";
                     }
                     else
                     {
-                        return "int?";
+                        return "double?";
                     }
 
                 case JsonObjectType.String:
-                    return "string";
 
+                    switch (format)
+                    {
+                        case "byte":
+                            return "byte[]";
+                        case "date-time":
+                            if (required)
+                            {
+                                return "System.DateTime";
+                            }
+                            else
+                            {
+                                return "System.DateTime?";
+                            }
+                    }
+
+                    return "string";
+                case JsonObjectType.Object:
+                    return "object";
                 default:
                     throw new NotSupportedException();
+            }
+        }
+
+        private static string GetDotNetType(JsonSchema4 schema, JsonProperty parent)
+        {
+            if (schema != null)
+            {
+                if (schema.IsArray)
+                {
+                    return $"IList<{GetDotNetType(schema.Item, parent)}>";
+                }
+
+                if (schema.IsDictionary && schema.AdditionalPropertiesSchema != null)
+                {
+                    return $"IDictionary<string, {GetDotNetType(schema.AdditionalPropertiesSchema, parent)}>";
+                }
+
+
+                if (schema?.Reference != null)
+                {
+                    return GetClassNameForSchemaDefinition(schema.Reference);
+                }
+                else if (schema != null)
+                {
+                    return GetDotNetType(schema.Type, parent.Name, parent.IsRequired, schema.Format);
+                }
+
+            }
+
+            return GetDotNetType(parent.Type, parent.Name, parent.IsRequired, parent.Format);
+        }
+
+        private static string GetDotNetType(JsonProperty p)
+        {
+            if (p.SchemaReference != null)
+            {
+                return GetClassNameForSchemaDefinition(p.SchemaReference);
+            }
+            else
+            {
+                if (p.IsArray)
+                {
+                    // getType
+                    return $"IList<{GetDotNetType(p.Item, p)}>";
+                }
+
+                if (p.IsDictionary && p.AdditionalPropertiesSchema != null)
+                {
+                    return $"IDictionary<string, {GetDotNetType(p.AdditionalPropertiesSchema, p)}>";
+                }
+
+                return GetDotNetType(p.Type, p.Name, p.IsRequired, p.Format);
             }
         }
 
@@ -465,26 +676,95 @@ namespace KubernetesWatchGenerator
             {
                 var parameter = arguments[0] as SwaggerParameter;
                 context.Write(GetDotNetName(parameter.Name));
+
+                if (arguments.Count > 1 && arguments[1] as string == "true" && !parameter.IsRequired)
+                {
+                    context.Write($" = null");
+                }
+
             }
             else if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is string)
             {
-                var parameter = arguments[0] as SwaggerParameter;
-                context.Write(GetDotNetName((string)arguments[0]));
+                var style = "parameter";
+                if (arguments.Count > 1)
+                {
+                    style = arguments[1] as string;
+                }
+
+                context.Write(GetDotNetName((string)arguments[0], style));
             }
         }
 
-        private static string GetDotNetName(string jsonName)
+        private static string GetDotNetName(string jsonName, string style = "parameter")
         {
-            if (jsonName == "namespace")
+            switch (style)
             {
-                return "@namespace";
-            }
-            else if (jsonName == "continue")
-            {
-                return "@continue";
+                case "parameter":
+                    if (jsonName == "namespace")
+                    {
+                        return "namespaceParameter";
+                    }
+                    else if (jsonName == "continue")
+                    {
+                        return "continueParameter";
+                    }
+
+                    break;
+
+                case "fieldctor":
+                    if (jsonName == "namespace")
+                    {
+                        return "namespaceProperty";
+                    }
+                    else if (jsonName == "continue")
+                    {
+                        return "continueProperty";
+                    }
+                    else if (jsonName == "__referencePath")
+                    {
+                        return "refProperty";
+                    }
+                    else if (jsonName == "default")
+                    {
+                        return "defaultProperty";
+                    }
+                    else if (jsonName == "operator")
+                    {
+                        return "operatorProperty";
+                    }
+                    else if (jsonName == "$schema")
+                    {
+                        return "schema";
+                    }
+                    else if (jsonName == "enum")
+                    {
+                        return "enumProperty";
+                    }
+                    else if (jsonName == "object")
+                    {
+                        return "objectProperty";
+                    }
+                    else if (jsonName == "readOnly")
+                    {
+                        return "readOnlyProperty";
+                    }
+                    else if (jsonName == "from")
+                    {
+                        return "fromProperty";
+                    }
+
+                    if (jsonName.Contains("-"))
+                    {
+                        return jsonName.ToCamelCase();
+                    }
+
+                    break;
+                case "field":
+                    return GetDotNetName(jsonName, "fieldctor").ToPascalCase();
+
             }
 
-            return jsonName;
+            return jsonName.ToCamelCase();
         }
 
         private static void GetPathExpression(RenderContext context, IList<object> arguments,
@@ -507,7 +787,7 @@ namespace KubernetesWatchGenerator
                 pathExpression = pathExpression.Substring(1);
             }
 
-            pathExpression = pathExpression.Replace("{namespace}", "{@namespace}");
+            pathExpression = pathExpression.Replace("{namespace}", "{namespaceParameter}");
             return pathExpression;
         }
 
@@ -520,6 +800,98 @@ namespace KubernetesWatchGenerator
             }
         }
 
+        private static void GetReturnType(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
+            RenderBlock fn, RenderBlock inverse)
+        {
+            var operation = arguments?.FirstOrDefault() as SwaggerOperation;
+            if (operation != null)
+            {
+                string style = null;
+                if (arguments.Count > 1)
+                {
+                    style = arguments[1] as string;
+                }
+
+                context.Write(GetReturnType(operation, style));
+            }
+        }
+
+        private static string GetReturnType(SwaggerOperation operation, string sytle)
+        {
+            SwaggerResponse response;
+
+            if (!operation.Responses.TryGetValue("200", out response))
+            {
+                operation.Responses.TryGetValue("201", out response);
+            }
+
+            string toType()
+            {
+                if (response != null)
+                {
+                    var schema = response.Schema;
+
+                    if (schema == null)
+                    {
+                        return "";
+                    }
+
+                    if (schema.Format == "file")
+                    {
+                        return "Stream";
+                    }
+
+
+                    if (schema.Reference != null)
+                    {
+                        return GetClassNameForSchemaDefinition(schema.Reference);
+                    }
+
+                    return GetDotNetType(schema.Type, "", true, schema.Format);
+                }
+
+                return "";
+            }
+
+            var t = toType();
+
+            switch (sytle)
+            {
+                case "<>":
+                    if (t != "")
+                    {
+                        return "<" + t + ">";
+                    }
+
+                    break;
+                case "void":
+                    if (t == "")
+                    {
+                        return "void";
+                    }
+
+                    break;
+                case "return":
+                    if (t != "")
+                    {
+                        return "return";
+                    }
+
+                    break;
+                case "_result.Body":
+                    if (t != "")
+                    {
+                        return "return _result.Body";
+                    }
+
+                    break;
+                default:
+                    break;
+            }
+
+            return t;
+        }
+
         private static string GetApiVersion(JsonSchema4 definition)
         {
             var groupVersionKindElements = (object[])definition.ExtensionData["x-kubernetes-group-version-kind"];
@@ -527,6 +899,141 @@ namespace KubernetesWatchGenerator
 
             return groupVersionKind["version"] as string;
         }
+
+        private static void IfKindIs(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
+           RenderBlock fn, RenderBlock inverse)
+        {
+            var parameter = arguments?.FirstOrDefault() as SwaggerParameter;
+            if (parameter != null)
+            {
+                string kind = null;
+                if (arguments.Count > 1)
+                {
+                    kind = arguments[1] as string;
+                }
+
+                if (kind == "query" && parameter.Kind == SwaggerParameterKind.Query)
+                {
+                    fn(null);
+                }
+                else if (kind == "path" && parameter.Kind == SwaggerParameterKind.Path)
+                {
+                    fn(null);
+                }
+            }
+        }
+
+        private static void AddCurly(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
+           RenderBlock fn, RenderBlock inverse)
+        {
+            var s = arguments?.FirstOrDefault() as string;
+            if (s != null)
+            {
+                context.Write("{" + s + "}");
+            }
+        }
+
+        private static void GetRequestMethod(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
+           RenderBlock fn, RenderBlock inverse)
+        {
+            var s = arguments?.FirstOrDefault() as SwaggerOperationMethod?;
+            if (s != null)
+            {
+                context.Write(s.ToString().ToUpper());
+            }
+        }
+
+        private static void IfReturnType(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
+           RenderBlock fn, RenderBlock inverse)
+        {
+            var operation = arguments?.FirstOrDefault() as SwaggerOperation;
+            if (operation != null)
+            {
+                string type = null;
+                if (arguments.Count > 1)
+                {
+                    type = arguments[1] as string;
+                }
+
+                var rt = GetReturnType(operation, "void");
+                if (type == "any" && rt != "void")
+                {
+                    fn(null);
+                }
+                else if (type == "stream" && rt == "Stream")
+                {
+                    fn(null);
+                }
+                else if (type == "obj" && rt != "void" && rt != "Stream")
+                {
+                    fn(null);
+                }
+            }
+        }
+
+        private static void EscapeDataString(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
+           RenderBlock fn, RenderBlock inverse)
+        {
+            var name = GetDotNetName(arguments[0] as string);
+            var type = arguments[1] as JsonObjectType?;
+
+            switch (type)
+            {
+                case JsonObjectType.String:
+                    context.Write($"System.Uri.EscapeDataString({name})");
+                    break;
+                default:
+                    context.Write($"System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject({name}, SerializationSettings).Trim('\"'))");
+                    break;
+            }
+        }
+
+        private static void GetModelCtorParam(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
+           RenderBlock fn, RenderBlock inverse)
+        {
+            var schema = arguments[0] as JsonSchema4;
+
+            if (schema != null)
+            {
+                context.Write(string.Join(", ", schema.Properties.Values
+                    .OrderBy(p => !p.IsRequired)
+                    .Select(p =>
+                    {
+                        string sp = $"{GetDotNetType(p)} {GetDotNetName(p.Name, "fieldctor")}";
+
+                        if (!p.IsRequired)
+                        {
+                            sp = $"{sp} = null";
+                        }
+
+                        return sp;
+                    })));
+            }
+        }
+
+        private static void IfType(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
+            RenderBlock fn, RenderBlock inverse)
+        {
+            var property = arguments?.FirstOrDefault() as JsonProperty;
+            if (property != null)
+            {
+                string type = null;
+                if (arguments.Count > 1)
+                {
+                    type = arguments[1] as string;
+                }
+
+                if (type == "object" && property.Reference != null && !property.IsArray && property.AdditionalPropertiesSchema == null)
+                {
+                    fn(null);
+                }
+                else if (type == "objectarray" && property.IsArray && property.Item?.Reference != null)
+                {
+                    fn(null);
+                }
+            }
+        }
+
 
         private static string ToPascalCase(string name)
         {
@@ -536,6 +1043,41 @@ namespace KubernetesWatchGenerator
             }
 
             return char.ToUpper(name[0]) + name.Substring(1);
+        }
+
+        public static IEnumerable<string> WordWrap(string text, int width)
+        {
+            var lines = text.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+            foreach (var line in lines)
+            {
+                var processedLine = line.Trim();
+
+                // yield empty lines as they are (probably) intensional
+                if (processedLine.Length == 0)
+                {
+                    yield return processedLine;
+                }
+
+                // feast on the line until it's gone
+                while (processedLine.Length > 0)
+                {
+                    // determine potential wrapping points
+                    var whitespacePositions = Enumerable
+                        .Range(0, processedLine.Length)
+                        .Where(i => char.IsWhiteSpace(processedLine[i]))
+                        .Concat(new[] { processedLine.Length })
+                        .Cast<int?>();
+                    var preWidthWrapAt = whitespacePositions.LastOrDefault(i => i <= width);
+                    var postWidthWrapAt = whitespacePositions.FirstOrDefault(i => i > width);
+
+                    // choose preferred wrapping point
+                    var wrapAt = preWidthWrapAt ?? postWidthWrapAt ?? processedLine.Length;
+
+                    // wrap
+                    yield return processedLine.Substring(0, wrapAt);
+                    processedLine = processedLine.Substring(wrapAt).Trim();
+                }
+            }
         }
     }
 }

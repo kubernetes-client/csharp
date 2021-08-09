@@ -18,21 +18,23 @@ namespace k8s.Authentication
             TokenFile = tokenFile;
         }
 
-        public Task<AuthenticationHeaderValue> GetAuthenticationHeaderAsync(CancellationToken cancellationToken)
+        public async Task<AuthenticationHeaderValue> GetAuthenticationHeaderAsync(CancellationToken cancellationToken)
         {
             if (TokenExpiresAt < DateTime.UtcNow)
             {
-                token = File.ReadAllText(TokenFile).Trim();
+                token = await File.ReadAllTextAsync(TokenFile, cancellationToken)
+                    .ContinueWith(r => r.Result.Trim(), cancellationToken)
+                    .ConfigureAwait(false);
                 // in fact, the token has a expiry of 10 minutes and kubelet
                 // refreshes it at 8 minutes of its lifetime. setting the expiry
                 // of 1 minute makes sure the token is reloaded regularly so
                 // that its actual expiry is after the declared expiry here,
-                // which is as suffciently true as the time of reading a token
+                // which is as sufficiently true as the time of reading a token
                 // < 10-8-1 minute.
                 TokenExpiresAt = DateTime.UtcNow.AddMinutes(1);
             }
 
-            return Task.FromResult(new AuthenticationHeaderValue("Bearer", token));
+            return new AuthenticationHeaderValue("Bearer", token);
         }
     }
 }

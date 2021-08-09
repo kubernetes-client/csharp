@@ -2,6 +2,7 @@ using System;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
+using System.IdentityModel.Tokens.Jwt;
 using Microsoft.Rest;
 using IdentityModel.OidcClient;
 using k8s.Exceptions;
@@ -13,7 +14,6 @@ namespace k8s.Authentication
         private OidcClient _oidcClient;
         private string _idToken;
         private string _refreshToken;
-        private string _accessToken;
         private DateTime _expiry;
 
         public OidcTokenProvider(string clientId, string clientSecret, string idpIssuerUrl, string idToken, string refreshToken)
@@ -21,16 +21,34 @@ namespace k8s.Authentication
             _idToken = idToken;
             _refreshToken = refreshToken;
             _oidcClient = getClient(clientId, clientSecret, idpIssuerUrl);
+            _expiry = getExpiryFromToken();
         }
 
         public async Task<AuthenticationHeaderValue> GetAuthenticationHeaderAsync(CancellationToken cancellationToken)
         {
-            if (_accessToken == null || DateTime.UtcNow.AddSeconds(30) > _expiry)
+            if (_idToken == null || DateTime.UtcNow.AddSeconds(30) > _expiry)
             {
                 await RefreshToken().ConfigureAwait(false);
             }
 
-            return new AuthenticationHeaderValue("Bearer", _accessToken);
+            return new AuthenticationHeaderValue("Bearer", _idToken);
+        }
+
+        private DateTime getExpiryFromToken()
+        {
+            int expiry;
+            var handler = new JwtSecurityTokenHandler();
+            try
+            {
+                var token = handler.ReadJwtToken(_idToken);
+                expiry = token.Payload.Exp ?? 0;
+            }
+            catch
+            {
+                expiry = 0;
+            }
+
+            return DateTimeOffset.FromUnixTimeSeconds(expiry).UtcDateTime;
         }
 
         private OidcClient getClient(string clientId, string clientSecret, string idpIssuerUrl)
@@ -49,9 +67,13 @@ namespace k8s.Authentication
         {
             try
             {
-                var result =
-                    await _oidcClient.RefreshTokenAsync(_refreshToken).ConfigureAwait(false);
-                _accessToken = result.AccessToken;
+                var result = await _oidcClient.RefreshTokenAsync(_refreshToken).ConfigureAwait(false);
+
+                if (result.IsError)
+                {
+                    throw new Exception(result.Error);
+                }
+
                 _idToken = result.IdentityToken;
                 _refreshToken = result.RefreshToken;
                 _expiry = result.AccessTokenExpiration;
