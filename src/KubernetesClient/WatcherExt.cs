@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using k8s.Enums;
 using k8s.Exceptions;
 using Microsoft.Rest;
 
@@ -46,7 +47,7 @@ namespace k8s
         /// <typeparam name="L">type of the HttpOperationResponse object</typeparam>
         /// <param name="response">the api response</param>
         /// <param name="onEvent">a callback when any event raised from api server</param>
-        /// <param name="onError">a callbak when any exception was caught during watching</param>
+        /// <param name="onError">a callback when any exception was caught during watching</param>
         /// <param name="onClosed">
         /// The action to invoke when the server closes the connection.
         /// </param>

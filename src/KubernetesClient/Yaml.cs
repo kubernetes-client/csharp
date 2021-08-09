@@ -61,24 +61,21 @@ namespace k8s
 
             public object ReadYaml(IParser parser, Type type)
             {
-                if (parser?.Current is Scalar scalar)
+                if (!(parser?.Current is Scalar scalar))
                 {
-                    try
-                    {
-                        if (string.IsNullOrEmpty(scalar.Value))
-                        {
-                            return null;
-                        }
-
-                        return Encoding.UTF8.GetBytes(scalar.Value);
-                    }
-                    finally
-                    {
-                        parser.MoveNext();
-                    }
+                    throw new InvalidOperationException(parser.Current?.ToString());
                 }
 
-                throw new InvalidOperationException(parser.Current?.ToString());
+                try
+                {
+                    return string.IsNullOrEmpty(scalar.Value)
+                        ? null
+                        : Encoding.UTF8.GetBytes(scalar.Value);
+                }
+                finally
+                {
+                    parser.MoveNext();
+                }
             }
 
             public void WriteYaml(IEmitter emitter, object value, Type type)
@@ -90,7 +87,6 @@ namespace k8s
 
         /// <summary>
         /// Load a collection of objects from a stream asynchronously
-        ///
         /// caller is responsible for closing the stream
         /// </summary>
         /// <param name="stream">
@@ -120,10 +116,8 @@ namespace k8s
         /// <returns>collection of objects</returns>
         public static async Task<List<object>> LoadAllFromFileAsync(string fileName, IDictionary<string, Type> typeMap = null)
         {
-            using (var fileStream = File.OpenRead(fileName))
-            {
-                return await LoadAllFromStreamAsync(fileStream, typeMap).ConfigureAwait(false);
-            }
+            await using var fileStream = File.OpenRead(fileName);
+            return await LoadAllFromStreamAsync(fileStream, typeMap).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -175,16 +169,13 @@ namespace k8s
 
         public static async Task<T> LoadFromFileAsync<T>(string file)
         {
-            using (var fs = File.OpenRead(file))
-            {
-                return await LoadFromStreamAsync<T>(fs).ConfigureAwait(false);
-            }
+            await using var fs = File.OpenRead(file);
+            return await LoadFromStreamAsync<T>(fs).ConfigureAwait(false);
         }
 
         public static T LoadFromString<T>(string content)
         {
-            var obj = Deserializer.Deserialize<T>(content);
-            return obj;
+            return Deserializer.Deserialize<T>(content);
         }
 
         public static string SaveToString<T>(T value)

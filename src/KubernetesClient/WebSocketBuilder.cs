@@ -1,6 +1,5 @@
 using System;
 using System.Net.WebSockets;
-using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
@@ -38,19 +37,15 @@ namespace k8s
 
         public WebSocketBuilder ExpectServerCertificate(X509Certificate2Collection serverCertificate)
         {
-            Options.RemoteCertificateValidationCallback
- = (sender, certificate, chain, sslPolicyErrors) =>
-            {
-                return Kubernetes.CertificateValidationCallBack(sender, serverCertificate, certificate, chain, sslPolicyErrors);
-            };
+            Options.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors)
+                => Kubernetes.CertificateValidationCallBack(sender, serverCertificate, certificate, chain, sslPolicyErrors);
 
             return this;
         }
 
         public WebSocketBuilder SkipServerCertificateValidation()
         {
-            Options.RemoteCertificateValidationCallback
- = (sender, certificate, chain, sslPolicyErrors) => true;
+            Options.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
 
             return this;
         }

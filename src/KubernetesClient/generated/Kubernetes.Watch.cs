@@ -7,7 +7,8 @@ using k8s.Models;
 using System; 
 using System.Collections.Generic; 
 using System.Threading; 
-using System.Threading.Tasks; 
+using System.Threading.Tasks;
+using k8s.Enums;
 
 namespace k8s
 {
