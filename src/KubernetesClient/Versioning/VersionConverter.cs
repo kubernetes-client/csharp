@@ -136,12 +136,18 @@ namespace k8s.Versioning
             });
             cfg.CreateMap<V1Subject, V1alpha1Subject>()
                 .ForMember(dest => dest.ApiVersion, opt => opt.Ignore())
+                .ForMember(dest => dest.Name, opt => opt.Ignore())
+                .ForMember(dest => dest.NamespaceProperty, opt => opt.Ignore())
                 .ReverseMap();
-            cfg.CreateMap<Rbacv1beta1Subject, V1alpha1Subject>()
+            cfg.CreateMap<V1beta1Subject, V1alpha1Subject>()
                 .ForMember(dest => dest.ApiVersion, opt => opt.Ignore())
+                .ForMember(dest => dest.Name, opt => opt.Ignore())
+                .ForMember(dest => dest.NamespaceProperty, opt => opt.Ignore())
                 .ReverseMap();
-            cfg.CreateMap<V1Subject, Rbacv1beta1Subject>()
-                .ForMember(dest => dest.ApiGroup, opt => opt.Ignore())
+            cfg.CreateMap<V1Subject, V1beta1Subject>()
+                .ForMember(dest => dest.Group, opt => opt.Ignore())
+                .ForMember(dest => dest.ServiceAccount, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore())
                 .ReverseMap();
 
             cfg.CreateMap<V1alpha1RuntimeClass, V1RuntimeClass>()
@@ -285,104 +291,6 @@ namespace k8s.Versioning
                 .ForMember(dest => dest.TargetValue, opt => opt.MapFrom(src => src.Value))
                 .ForMember(dest => dest.TargetValue, opt => opt.MapFrom(src => src.Value))
                 .ForMember(dest => dest.TargetAverageValue, opt => opt.MapFrom(src => src.AverageValue));
-            cfg.CreateMap<V1beta1CustomResourceConversion, V1WebhookConversion>()
-                .ForMember(dest => dest.ClientConfig, opt => opt.MapFrom(src => src.WebhookClientConfig))
-                .ReverseMap();
-            cfg.CreateMap<V1SubjectAccessReviewSpec, V1beta1SubjectAccessReviewSpec>()
-                .ForMember(dest => dest.Group, opt => opt.MapFrom(src => src.Groups))
-                .ReverseMap();
-            cfg.CreateMap<V1CustomResourceDefinitionSpec, V1beta1CustomResourceDefinitionSpec>()
-                .ForMember(dest => dest.AdditionalPrinterColumns, opt => opt.Ignore())
-                .ForMember(dest => dest.Subresources, opt => opt.Ignore())
-                .ForMember(dest => dest.Validation, opt => opt.Ignore())
-                .ForMember(dest => dest.Version, opt => opt.Ignore())
-                .AfterMap((from, to) =>
-                {
-                    // in v1beta1, if all versions share the same common attributes, they should be declared once at parent level
-                    if (to.Versions == null)
-                    {
-                        return;
-                    }
-
-                    if (to.Versions.Select(x => JsonConvert.SerializeObject(x.Schema)).Distinct().Count() == 1)
-                    {
-                        to.Validation = to.Versions.First().Schema;
-                        foreach (var version in to.Versions)
-                        {
-                            version.Schema = null;
-                        }
-                    }
-
-                    var allPrintColumnsInAllVersionsTheSame = to.Versions
-                        .GroupBy(x => x.Name)
-                        .Select(v => v
-                            .OrderBy(x => x.Name)
-                            .Select(x => x.AdditionalPrinterColumns)
-                            .Select(JsonConvert.SerializeObject)
-                            .Aggregate(new StringBuilder(), (sb, s) => sb.Append(s), sb => sb.ToString()))
-                        .Distinct()
-                        .Count() == 1;
-
-                    if (allPrintColumnsInAllVersionsTheSame)
-                    {
-                        to.AdditionalPrinterColumns = to.Versions[0].AdditionalPrinterColumns;
-                        foreach (var version in to.Versions)
-                        {
-                            version.AdditionalPrinterColumns = null;
-                        }
-                    }
-
-                    var allSubresourcesInAllVersionsTheSame = to.Versions
-                        .GroupBy(x => x.Name)
-                        .Select(v => v
-                            .OrderBy(x => x.Name)
-                            .Select(x => x.Subresources)
-                            .Select(JsonConvert.SerializeObject)
-                            .Aggregate(new StringBuilder(), (sb, s) => sb.Append(s), sb => sb.ToString()))
-                        .Distinct()
-                        .Count() == 1;
-
-                    if (allSubresourcesInAllVersionsTheSame)
-                    {
-                        to.Subresources = to.Versions[0].Subresources;
-                        foreach (var version in to.Versions)
-                        {
-                            version.Subresources = null;
-                        }
-                    }
-                })
-                .ReverseMap()
-                .AfterMap((from, to) =>
-                {
-                    if (from.Validation?.OpenAPIV3Schema != null)
-                    {
-                        foreach (var version in to.Versions)
-                        {
-                            version.Schema = (V1CustomResourceValidation)@from.Validation;
-                        }
-                    }
-
-                    if (from.Subresources != null)
-                    {
-                        foreach (var version in to.Versions)
-                        {
-                            version.Subresources = (V1CustomResourceSubresources)@from.Subresources;
-                        }
-                    }
-
-                    if (from.AdditionalPrinterColumns != null)
-                    {
-                        foreach (var version in to.Versions)
-                        {
-                            version.AdditionalPrinterColumns = @from.AdditionalPrinterColumns.Select(x => (V1CustomResourceColumnDefinition)x).ToList();
-                        }
-                    }
-                });
-
-            cfg.CreateMap<V1CustomResourceConversion, V1beta1CustomResourceConversion>()
-                .ForMember(dest => dest.ConversionReviewVersions, opt => opt.MapFrom(src => src.Webhook.ConversionReviewVersions))
-                .ForMember(dest => dest.WebhookClientConfig, opt => opt.MapFrom(src => src.Webhook.ClientConfig))
-                .ReverseMap();
 
             cfg.CreateMap<V1HorizontalPodAutoscalerSpec, V2beta2HorizontalPodAutoscalerSpec>()
                 .ForMember(dest => dest.Metrics, opt => opt.Ignore())
@@ -431,22 +339,11 @@ namespace k8s.Versioning
                 .ReverseMap();
 
 
-            cfg.CreateMap<V1alpha1RoleBinding, V1beta1RoleBinding>().ReverseMap();
             cfg.CreateMap<V1alpha1RoleBinding, V1RoleBinding>().ReverseMap();
-            cfg.CreateMap<V1beta1RoleBinding, V1RoleBinding>().ReverseMap();
 
-            cfg.CreateMap<V1beta1CSIDriverSpec, V1CSIDriverSpec>()
-                .ForMember(dest => dest.TokenRequests, opt => opt.Ignore());
 
-            cfg.CreateMap<V1CSIDriverSpec, V1beta1CSIDriverSpec>()
-                .ForMember(dest => dest.TokenRequests, opt => opt.Ignore());
-
-            cfg.CreateMap<V1alpha1ClusterRoleBinding, V1beta1ClusterRoleBinding>().ReverseMap();
             cfg.CreateMap<V1alpha1ClusterRoleBinding, V1ClusterRoleBinding>().ReverseMap();
-            cfg.CreateMap<V1beta1ClusterRoleBinding, V1ClusterRoleBinding>().ReverseMap();
-            cfg.CreateMap<V1alpha1ClusterRoleBindingList, V1beta1ClusterRoleBindingList>().ReverseMap();
             cfg.CreateMap<V1alpha1ClusterRoleBindingList, V1ClusterRoleBindingList>().ReverseMap();
-            cfg.CreateMap<V1beta1ClusterRoleBindingList, V1ClusterRoleBindingList>().ReverseMap();
 
             cfg.CreateMap<V1beta1Endpoint, V1Endpoint>()
                 .ForMember(dest => dest.DeprecatedTopology, opt => opt.Ignore())
