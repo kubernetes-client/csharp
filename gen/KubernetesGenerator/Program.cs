@@ -639,7 +639,6 @@ namespace KubernetesWatchGenerator
                 {
                     return GetDotNetType(schema.Type, parent.Name, parent.IsRequired, schema.Format);
                 }
-
             }
 
             return GetDotNetType(parent.Type, parent.Name, parent.IsRequired, parent.Format);
@@ -680,7 +679,6 @@ namespace KubernetesWatchGenerator
                 {
                     context.Write($" = null");
                 }
-
             }
             else if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is string)
             {
@@ -760,7 +758,6 @@ namespace KubernetesWatchGenerator
                     break;
                 case "field":
                     return GetDotNetName(jsonName, "fieldctor").ToPascalCase();
-
             }
 
             return jsonName.ToCamelCase();
