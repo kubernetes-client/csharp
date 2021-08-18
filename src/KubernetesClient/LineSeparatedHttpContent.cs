@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace k8s
 {
-    public class LineSeparatedHttpContent : HttpContent
+    internal class LineSeparatedHttpContent : HttpContent
     {
         private readonly HttpContent _originContent;
         private readonly CancellationToken _cancellationToken;
