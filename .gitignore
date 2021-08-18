@@ -13,3 +13,6 @@ bin/
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+launchSettings.json
+*.DotSettings

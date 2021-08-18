@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "KubernetesGenerator": {
-      "commandName": "Project",
-      "commandLineArgs": "x D:\\workspace\\k8scsharp\\src\\KubernetesClient\\generated"
-    }
-  }
-}
