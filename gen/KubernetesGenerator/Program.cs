@@ -4,15 +4,11 @@ using NSwag;
 using Nustache.Core;
 using System;
 using System.Collections.Generic;
-using System.Data.Common;
-using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using System.Security;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace KubernetesWatchGenerator
@@ -117,6 +113,7 @@ namespace KubernetesWatchGenerator
             Helpers.Register(nameof(GetRequestMethod), GetRequestMethod);
             Helpers.Register(nameof(EscapeDataString), EscapeDataString);
             Helpers.Register(nameof(IfReturnType), IfReturnType);
+            Helpers.Register(nameof(IfParamCotains), IfParamCotains);
             Helpers.Register(nameof(GetModelCtorParam), GetModelCtorParam);
             Helpers.Register(nameof(IfType), IfType);
 
@@ -967,6 +964,36 @@ namespace KubernetesWatchGenerator
                     fn(null);
                 }
                 else if (type == "obj" && rt != "void" && rt != "Stream")
+                {
+                    fn(null);
+                }
+            }
+        }
+
+        private static void IfParamCotains(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
+           RenderBlock fn, RenderBlock inverse)
+        {
+            var operation = arguments?.FirstOrDefault() as SwaggerOperation;
+            if (operation != null)
+            {
+                string name = null;
+                if (arguments.Count > 1)
+                {
+                    name = arguments[1] as string;
+                }
+
+                bool found = false;
+
+                foreach (var param in operation.Parameters)
+                {
+                    if (param.Name == name)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (found)
                 {
                     fn(null);
                 }

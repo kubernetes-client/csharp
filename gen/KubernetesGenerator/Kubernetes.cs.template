@@ -366,6 +366,7 @@ namespace k8s
             HttpResponseMessage _httpResponse = null;
             _httpRequest.Method = HttpMethod.{{Method}};
             _httpRequest.RequestUri = new System.Uri(_url);
+            _httpRequest.Version = HttpVersion.Version20;
             // Set Headers
 
 
@@ -403,7 +404,7 @@ namespace k8s
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await HttpClient.SendAsync(_httpRequest, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -445,6 +446,12 @@ namespace k8s
                 _result.Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false);
                 {{/IfReturnType operation "stream"}}
                 {{#IfReturnType operation "obj"}}
+                {{#IfParamCotains operation "watch"}}
+                if (watch == true)
+                {
+                    _httpResponse.Content = new LineSeparatedHttpContent(_httpResponse.Content, cancellationToken);
+                }
+                {{/IfParamCotains operation "watch"}}
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
