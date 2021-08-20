@@ -179,6 +179,8 @@ namespace KubernetesWatchGenerator
             Render.FileToFile("KubernetesExtensions.cs.template", data, Path.Combine(outputDirectory, "KubernetesExtensions.cs"));
             Render.FileToFile("Kubernetes.cs.template", data, Path.Combine(outputDirectory, "Kubernetes.cs"));
 
+            Directory.CreateDirectory(Path.Combine(outputDirectory, "Models"));
+
             foreach (var (_, def) in swaggercooked.Definitions)
             {
                 var clz = GetClassNameForSchemaDefinition(def);
@@ -539,7 +541,7 @@ namespace KubernetesWatchGenerator
         {
             if (name == "pretty" && !required)
             {
-                return "string";
+                return "bool?";
             }
 
             switch (jsonType)
@@ -976,6 +978,12 @@ namespace KubernetesWatchGenerator
         {
             var name = GetDotNetName(arguments[0] as string);
             var type = arguments[1] as JsonObjectType?;
+
+            if (name == "pretty")
+            {
+                context.Write($"{name}.Value == true ? \"true\" : \"false\"");
+                return;
+            }
 
             switch (type)
             {

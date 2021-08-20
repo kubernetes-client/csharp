@@ -5,7 +5,7 @@ namespace k8s
 {
     public static class FileUtils
     {
-        private static readonly IFileSystem realFileSystem = new FileSystem();
+        private static readonly IFileSystem RealFileSystem = new FileSystem();
         private static IFileSystem currentFileSystem = null;
 
         public static void InjectFilesystem(IFileSystem fs)
@@ -15,7 +15,7 @@ namespace k8s
 
         public static IFileSystem FileSystem()
         {
-            return currentFileSystem != null ? currentFileSystem : realFileSystem;
+            return currentFileSystem != null ? currentFileSystem : RealFileSystem;
         }
 
         public sealed class InjectedFileSystem : IDisposable
