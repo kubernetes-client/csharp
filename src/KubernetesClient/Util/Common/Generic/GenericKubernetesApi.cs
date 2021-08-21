@@ -189,7 +189,7 @@ namespace k8s.Util.Common.Generic
         public Task<T> Delete<T>(string name, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
-            return Delete<T>(name, new DeleteOptions(), cancellationToken);
+            return Delete<T>(name, new V1DeleteOptions(), cancellationToken);
         }
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace k8s.Util.Common.Generic
         public Task<T> Delete<T>(string namespaceProperty, string name, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
-            return Delete<T>(namespaceProperty, name, new DeleteOptions(), cancellationToken);
+            return Delete<T>(namespaceProperty, name, new V1DeleteOptions(), cancellationToken);
         }
 
         /// <summary>
@@ -573,7 +573,7 @@ namespace k8s.Util.Common.Generic
         /// <param name="deleteOptions">the delete options</param>
         /// <param name="cancellationToken">the token </param>
         /// <returns>the kubernetes object</returns>
-        public async Task<T> Delete<T>(string name, DeleteOptions deleteOptions, CancellationToken cancellationToken = default)
+        public async Task<T> Delete<T>(string name, V1DeleteOptions deleteOptions, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
             if (string.IsNullOrEmpty(name))
@@ -595,7 +595,7 @@ namespace k8s.Util.Common.Generic
         /// <param name="deleteOptions">the delete options</param>
         /// <param name="cancellationToken">the token </param>
         /// <returns>the kubernetes object</returns>
-        public async Task<T> Delete<T>(string namespaceProperty, string name, DeleteOptions deleteOptions, CancellationToken cancellationToken = default)
+        public async Task<T> Delete<T>(string namespaceProperty, string name, V1DeleteOptions deleteOptions, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
             if (string.IsNullOrEmpty(namespaceProperty))
