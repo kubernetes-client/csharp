@@ -26,15 +26,6 @@ namespace k8s.Util.Common.Generic
     /// </summary>
     public class GenericKubernetesApi
     {
-        internal class TweakApiHandler : DelegatingHandler
-        {
-            protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage msg, CancellationToken cancel)
-            {
-                msg.RequestUri = new Uri(msg.RequestUri, msg.RequestUri.AbsolutePath.Replace("/apis//", "/api/"));
-                return base.SendAsync(msg, cancel);
-            }
-        }
-
         private readonly string _apiGroup;
         private readonly string _apiVersion;
         private readonly string _resourcePlural;
@@ -52,15 +43,7 @@ namespace k8s.Util.Common.Generic
             _apiGroup = apiGroup ?? throw new ArgumentNullException(nameof(apiGroup));
             _apiVersion = apiVersion ?? throw new ArgumentNullException(nameof(apiVersion));
             _resourcePlural = resourcePlural ?? throw new ArgumentNullException(nameof(resourcePlural));
-
-            if (string.IsNullOrEmpty(apiGroup) && apiClient is null)
-            {
-                _client = new Kubernetes(KubernetesClientConfiguration.BuildDefaultConfig(), new DelegatingHandler[] { new TweakApiHandler() });
-            }
-            else
-            {
-                _client = apiClient ?? new Kubernetes(KubernetesClientConfiguration.BuildDefaultConfig());
-            }
+            _client = apiClient ?? new Kubernetes(KubernetesClientConfiguration.BuildDefaultConfig());
         }
 
         public TimeSpan ClientTimeout => _client.HttpClient.Timeout;
