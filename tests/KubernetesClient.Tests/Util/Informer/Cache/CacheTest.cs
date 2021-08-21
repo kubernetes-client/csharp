@@ -16,7 +16,6 @@ namespace k8s.Tests.Util.Informer.Cache
             var cache = new Cache<V1Node>();
             cache.Should().NotBeNull();
             cache.GetIndexers().ContainsKey(Caches.NamespaceIndex).Should().BeTrue();
-            // Todo: validate all defaults gor set up
         }
 
         [Fact(DisplayName = "Add cache item success")]
@@ -323,7 +322,7 @@ namespace k8s.Tests.Util.Informer.Cache
                 },
             };
             var cache = new Cache<V1Pod>();
-            var newFunc = new Func<V1Pod, string>((pod) => pod.Kind);
+            var newFunc = new Func<IKubernetesObject<V1ObjectMeta>, string>((pod) => pod.Kind);
             var defaultReturnValue = newFunc(aPod);
 
             cache.SetKeyFunc(newFunc);

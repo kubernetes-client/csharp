@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using k8s.Models;
 
-namespace k8s.Tests.Util.Informer.Cache
+namespace k8s.Tests.Util.Common
 {
     internal static class Util
     {
