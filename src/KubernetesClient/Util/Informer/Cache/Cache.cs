@@ -16,7 +16,7 @@ namespace k8s.Util.Informer.Cache
         /// <summary>
         /// keyFunc defines how to map index objects into indices
         /// </summary>
-        private Func<TApiType, string> _keyFunc;
+        private Func<IKubernetesObject<V1ObjectMeta>, string> _keyFunc;
 
         /// <summary>
         /// indexers stores index functions by their names
@@ -51,6 +51,9 @@ namespace k8s.Util.Informer.Cache
         /// learn more: https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/lock-statement</remarks>
         private readonly object _lock = new object();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Cache{TApiType}"/> class. Uses an object's namespace as the key.
+        /// </summary>
         public Cache()
           : this(Caches.NamespaceIndex, Caches.MetaNamespaceIndexFunc, Caches.DeletionHandlingMetaNamespaceKeyFunc)
         {
@@ -63,11 +66,21 @@ namespace k8s.Util.Informer.Cache
         /// <param name="indexName">the index name, an unique name representing the index</param>
         /// <param name="indexFunc">the index func by which we map multiple object to an index for querying</param>
         /// <param name="keyFunc">the key func by which we map one object to an unique key for storing</param>
-        public Cache(string indexName, Func<TApiType, List<string>> indexFunc, Func<TApiType, string> keyFunc)
+        public Cache(string indexName, Func<TApiType, List<string>> indexFunc, Func<IKubernetesObject<V1ObjectMeta>, string> keyFunc)
         {
             _indexers[indexName] = indexFunc;
             _keyFunc = keyFunc;
             _indices[indexName] = new Dictionary<string, HashSet<string>>();
+        }
+
+        public void Clear()
+        {
+            lock (_lock)
+            {
+                _items?.Clear();
+                _indices?.Clear();
+                _indexers?.Clear();
+            }
         }
 
         /// <summary>
@@ -421,9 +434,9 @@ namespace k8s.Util.Informer.Cache
             _indexers[indexName] = indexFunc;
         }
 
-        public Func<TApiType, string> KeyFunc => _keyFunc;
+        public Func<IKubernetesObject<V1ObjectMeta>, string> KeyFunc => _keyFunc;
 
-        public void SetKeyFunc(Func<TApiType, string> keyFunc)
+        public void SetKeyFunc(Func<IKubernetesObject<V1ObjectMeta>, string> keyFunc)
         {
             _keyFunc = keyFunc;
         }
