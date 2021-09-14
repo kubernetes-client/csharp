@@ -51,7 +51,5 @@ namespace k8s
                 handler.ClientCertificates.Add(cert);
             }
         }
-
-        public static DelegatingHandler CreateWatchHandler() => new WatcherDelegatingHandler();
     }
 }

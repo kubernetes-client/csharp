@@ -247,7 +247,6 @@ namespace k8s
                 }
             }
 
-            AppendDelegatingHandler<WatcherDelegatingHandler>();
             HttpClient = new HttpClient(FirstMessageHandler, false);
         }
 

@@ -30,7 +30,7 @@ namespace k8s
             {
                 var response = await responseTask.ConfigureAwait(false);
 
-                if (!(response.Response.Content is WatcherDelegatingHandler.LineSeparatedHttpContent content))
+                if (!(response.Response.Content is LineSeparatedHttpContent content))
                 {
                     throw new KubernetesClientException("not a watchable request or failed response");
                 }

@@ -8,31 +8,39 @@ using System.Threading.Tasks;
 
 namespace k8s
 {
-    /// <summary>
-    /// This HttpDelegatingHandler is to rewrite the response and return first line to autorest client
-    /// then use WatchExt to create a watch object which interact with the replaced http response to get watch works.
-    /// </summary>
-    internal class WatcherDelegatingHandler : DelegatingHandler
+    internal class LineSeparatedHttpContent : HttpContent
     {
-        protected override async Task<HttpResponseMessage> SendAsync(
-            HttpRequestMessage request,
-            CancellationToken cancellationToken)
+        private readonly HttpContent _originContent;
+        private readonly CancellationToken _cancellationToken;
+        private Stream _originStream;
+
+        public LineSeparatedHttpContent(HttpContent originContent, CancellationToken cancellationToken)
         {
-            request.Version = HttpVersion.Version20;
-            var originResponse = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+            _originContent = originContent;
+            _cancellationToken = cancellationToken;
+        }
 
-            // all watches are GETs, so we can ignore others
-            if (originResponse.IsSuccessStatusCode && request.Method == HttpMethod.Get)
-            {
-                var query = request.RequestUri.Query;
-                var index = query.IndexOf("watch=true", StringComparison.InvariantCulture);
-                if (index > 0 && (query[index - 1] == '&' || query[index - 1] == '?'))
-                {
-                    originResponse.Content = new LineSeparatedHttpContent(originResponse.Content, cancellationToken);
-                }
-            }
+        public TextReader StreamReader { get; private set; }
 
-            return originResponse;
+        protected override async Task SerializeToStreamAsync(Stream stream, TransportContext context)
+        {
+            _originStream = await _originContent.ReadAsStreamAsync().ConfigureAwait(false);
+
+            var reader = new PeekableStreamReader(new CancelableStream(_originStream, _cancellationToken));
+            StreamReader = reader;
+
+            var firstLine = await reader.PeekLineAsync().ConfigureAwait(false);
+
+            var writer = new StreamWriter(stream);
+
+            await writer.WriteAsync(firstLine).ConfigureAwait(false);
+            await writer.FlushAsync().ConfigureAwait(false);
+        }
+
+        protected override bool TryComputeLength(out long length)
+        {
+            length = 0;
+            return false;
         }
 
         internal class CancelableStream : Stream
@@ -140,42 +148,6 @@ namespace k8s
                 {
                     _cancellationTokenSource?.Dispose();
                 }
-            }
-        }
-
-        public class LineSeparatedHttpContent : HttpContent
-        {
-            private readonly HttpContent _originContent;
-            private readonly CancellationToken _cancellationToken;
-            private Stream _originStream;
-
-            public LineSeparatedHttpContent(HttpContent originContent, CancellationToken cancellationToken)
-            {
-                _originContent = originContent;
-                _cancellationToken = cancellationToken;
-            }
-
-            public TextReader StreamReader { get; private set; }
-
-            protected override async Task SerializeToStreamAsync(Stream stream, TransportContext context)
-            {
-                _originStream = await _originContent.ReadAsStreamAsync().ConfigureAwait(false);
-
-                var reader = new PeekableStreamReader(new CancelableStream(_originStream, _cancellationToken));
-                StreamReader = reader;
-
-                var firstLine = await reader.PeekLineAsync().ConfigureAwait(false);
-
-                var writer = new StreamWriter(stream);
-
-                await writer.WriteAsync(firstLine).ConfigureAwait(false);
-                await writer.FlushAsync().ConfigureAwait(false);
-            }
-
-            protected override bool TryComputeLength(out long length)
-            {
-                length = 0;
-                return false;
             }
         }
 
