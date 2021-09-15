@@ -103,25 +103,9 @@ namespace k8s.Tests.Mock
 
         public void Dispose()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            // Execute if resources have not already been disposed.
-            if (!_disposed)
-            {
-                // If the call is from Dispose, free managed resources.
-                if (disposing)
-                {
-                    _webHost.StopAsync();
-                    _webHost.WaitForShutdown();
-                    _webHost.Dispose();
-                }
-            }
-
-            _disposed = true;
+            _webHost.StopAsync();
+            _webHost.WaitForShutdown();
+            _webHost.Dispose();
         }
 
         private static string BuildWatchEventStreamLine(WatchEventType eventType)
