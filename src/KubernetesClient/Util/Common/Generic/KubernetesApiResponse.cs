@@ -26,7 +26,7 @@ namespace k8s.Util.Common.Generic
 
         public HttpStatusCode HttpStatusCode { get; }
 
-        public bool IsSuccess => (HttpStatusCode < HttpStatusCode.BadRequest); // 400
+        public bool IsSuccess => ((int)HttpStatusCode > 199 && (int)HttpStatusCode < 300); // 400
 
         /// <summary>
         /// Throws api exception kubernetes api response on failure. This is the recommended approach to
