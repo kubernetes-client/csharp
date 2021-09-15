@@ -30,7 +30,7 @@ namespace k8s.Tests.Util.Common.Generic
         [Fact(DisplayName = "Get namespaced object success")]
         public async Task GetNamespacedObject()
         {
-            using var server = new MockKubeApiServer(_outputHelper, MockKubeServerFlag.GetPod);
+            using var server = new MockKubeApiServer(_outputHelper, MockKubeServerFlags.GetPod);
             var podName = "nginx-1493591563-xb2v4";
             var genericApi = Informer.Util.BuildGenericApi(server.Uri);
 
@@ -44,7 +44,7 @@ namespace k8s.Tests.Util.Common.Generic
         [Fact(DisplayName = "List namespaced object success")]
         public async Task ListNamespacedObject()
         {
-            using var server = new MockKubeApiServer(_outputHelper, MockKubeServerFlag.ListPods);
+            using var server = new MockKubeApiServer(_outputHelper, MockKubeServerFlags.ListPods);
             var genericApi = Informer.Util.BuildGenericApi(server.Uri);
 
             var resp = await genericApi.ListAsync<V1PodList>(Namespaces.NamespaceDefault).ConfigureAwait(false);
@@ -93,7 +93,7 @@ namespace k8s.Tests.Util.Common.Generic
         public void WatchNamespacedObject()
         {
             using var cts = new CancellationTokenSource();
-            using var server = new MockKubeApiServer(_outputHelper, MockKubeServerFlag.ModifiedPod);
+            using var server = new MockKubeApiServer(_outputHelper, MockKubeServerFlags.ModifiedPod);
             var genericApi = Informer.Util.BuildGenericApi(server.Uri);
 
             using var resp = genericApi.Watch<V1Pod>(Namespaces.NamespaceDefault, (actionType, pod) => { }, exception => { }, () => { }, cts.Token);
