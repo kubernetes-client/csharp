@@ -3,8 +3,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using k8s;
 using k8s.Models;
+using k8s.Util.Common;
 using k8s.Util.Common.Generic;
-using k8s.Util.Utils;
 
 namespace GenericKubernetesApiExample
 {
@@ -45,7 +45,7 @@ namespace GenericKubernetesApiExample
         private static V1Pod GetNamespacedPod(string @namespace, string podName, CancellationToken cancellationToken)
         {
             var resp = Task.Run(
-                async () => await _genericKubernetesApi.Get<V1Pod>(@namespace, podName, cancellationToken).ConfigureAwait(false), cancellationToken);
+                async () => await _genericKubernetesApi.GetAsync<V1Pod>(@namespace, podName, cancellationToken).ConfigureAwait(false), cancellationToken);
 
             return resp.Result;
         }
@@ -53,7 +53,7 @@ namespace GenericKubernetesApiExample
         private static V1PodList ListPodsInNamespace(string @namespace, CancellationToken cancellationToken)
         {
             var resp = Task.Run(
-                async () => await _genericKubernetesApi.List<V1PodList>(@namespace, cancellationToken).ConfigureAwait(false), cancellationToken);
+                async () => await _genericKubernetesApi.ListAsync<V1PodList>(@namespace, cancellationToken).ConfigureAwait(false), cancellationToken);
 
             return resp.Result;
         }
