@@ -136,29 +136,27 @@ namespace k8s.Tests.Mock
             if (isWatch && !_serverFlags.HasFlag(MockKubeServerFlags.Throw500))
             {
                 ServerShutdown = new AsyncManualResetEvent();
-                if (_serverFlags.HasFlag(MockKubeServerFlags.AddedPod))
-                {
-                    await WriteStreamLine(httpContext, _mockAddedEventStreamLine).ConfigureAwait(false);
-                }
 
-                if (_serverFlags.HasFlag(MockKubeServerFlags.ErrorPod))
+                foreach (var serverFlag in Enum.GetValues(_serverFlags.GetType()))
                 {
-                    await WriteStreamLine(httpContext, _mockErrorStreamLine).ConfigureAwait(false);
-                }
-
-                if (_serverFlags.HasFlag(MockKubeServerFlags.DeletedPod))
-                {
-                    await WriteStreamLine(httpContext, _mockDeletedStreamLine).ConfigureAwait(false);
-                }
-
-                if (_serverFlags.HasFlag(MockKubeServerFlags.ModifiedPod))
-                {
-                    await WriteStreamLine(httpContext, _mockModifiedStreamLine).ConfigureAwait(false);
-                }
-
-                if (_serverFlags.HasFlag(MockKubeServerFlags.BadJson))
-                {
-                    await WriteStreamLine(httpContext, MockBadStreamLine).ConfigureAwait(false);
+                    switch (serverFlag)
+                    {
+                        case MockKubeServerFlags.AddedPod:
+                            await WriteStreamLine(httpContext, _mockAddedEventStreamLine).ConfigureAwait(false);
+                            break;
+                        case MockKubeServerFlags.ErrorPod:
+                            await WriteStreamLine(httpContext, _mockErrorStreamLine).ConfigureAwait(false);
+                            break;
+                        case MockKubeServerFlags.DeletedPod:
+                            await WriteStreamLine(httpContext, _mockDeletedStreamLine).ConfigureAwait(false);
+                            break;
+                        case MockKubeServerFlags.ModifiedPod:
+                            await WriteStreamLine(httpContext, _mockModifiedStreamLine).ConfigureAwait(false);
+                            break;
+                        case MockKubeServerFlags.BadJson:
+                            await WriteStreamLine(httpContext, MockBadStreamLine).ConfigureAwait(false);
+                            break;
+                    }
                 }
 
                 // keep server connection open
@@ -166,15 +164,18 @@ namespace k8s.Tests.Mock
             }
             else if (!_serverFlags.HasFlag(MockKubeServerFlags.Throw500))
             {
-                if (_serverFlags.HasFlag(MockKubeServerFlags.ListPods))
+                foreach (var serverFlag in Enum.GetValues(_serverFlags.GetType()))
                 {
-                    await WriteStreamLine(httpContext, MockPodResponse).ConfigureAwait(false);
-                }
-
-                if (_serverFlags.HasFlag(MockKubeServerFlags.GetPod))
-                {
-                    var corev1PodList = JsonConvert.DeserializeObject<V1PodList>(MockPodResponse);
-                    await WriteStreamLine(httpContext, JsonConvert.SerializeObject(corev1PodList.Items.First())).ConfigureAwait(false);
+                    switch (serverFlag)
+                    {
+                        case MockKubeServerFlags.ListPods:
+                            await WriteStreamLine(httpContext, MockPodResponse).ConfigureAwait(false);
+                            break;
+                        case MockKubeServerFlags.GetPod:
+                            var corev1PodList = JsonConvert.DeserializeObject<V1PodList>(MockPodResponse);
+                            await WriteStreamLine(httpContext, JsonConvert.SerializeObject(corev1PodList.Items.First())).ConfigureAwait(false);
+                            break;
+                    }
                 }
             }
 
