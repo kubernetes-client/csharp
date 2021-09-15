@@ -34,7 +34,7 @@ namespace k8s.Tests.Util.Common.Generic
             var podName = "nginx-1493591563-xb2v4";
             var genericApi = Informer.Util.BuildGenericApi(server.Uri);
 
-            var resp = await genericApi.Get<V1Pod>(Namespaces.NamespaceDefault, podName).ConfigureAwait(false);
+            var resp = await genericApi.GetAsync<V1Pod>(Namespaces.NamespaceDefault, podName).ConfigureAwait(false);
 
             resp.Should().NotBeNull();
             resp.Metadata.Name.Should().Be(podName);
@@ -47,7 +47,7 @@ namespace k8s.Tests.Util.Common.Generic
             using var server = new MockKubeApiServer(_outputHelper, MockKubeServerFlag.ListPods);
             var genericApi = Informer.Util.BuildGenericApi(server.Uri);
 
-            var resp = await genericApi.List<V1PodList>(Namespaces.NamespaceDefault).ConfigureAwait(false);
+            var resp = await genericApi.ListAsync<V1PodList>(Namespaces.NamespaceDefault).ConfigureAwait(false);
 
             resp.Should().NotBeNull();
             resp.Items.Should().NotBeNull();
@@ -60,7 +60,7 @@ namespace k8s.Tests.Util.Common.Generic
             var podName = "nginx-1493591563-xb2v4";
             var genericApi = Informer.Util.BuildGenericApi(server.Uri);
 
-            var resp = await genericApi.Patch<V1Pod>(Namespaces.NamespaceDefault, podName).ConfigureAwait(false);
+            var resp = await genericApi.PatchAsync<V1Pod>(Namespaces.NamespaceDefault, podName).ConfigureAwait(false);
 
             resp.Should().NotBeNull();
         }
@@ -72,7 +72,7 @@ namespace k8s.Tests.Util.Common.Generic
             var pod = Informer.Util.CreatePods(1).First();
             var genericApi = Informer.Util.BuildGenericApi(server.Uri);
 
-            var resp = await genericApi.Update(pod).ConfigureAwait(false);
+            var resp = await genericApi.UpdateAsync(pod).ConfigureAwait(false);
 
             resp.Should().NotBeNull();
         }
@@ -84,7 +84,7 @@ namespace k8s.Tests.Util.Common.Generic
             var podName = "nginx-1493591563-xb2v4";
             var genericApi = Informer.Util.BuildGenericApi(server.Uri);
 
-            var resp = await genericApi.Delete<V1Pod>(Namespaces.NamespaceDefault, podName).ConfigureAwait(false);
+            var resp = await genericApi.DeleteAsync<V1Pod>(Namespaces.NamespaceDefault, podName).ConfigureAwait(false);
 
             resp.Should().NotBeNull();
         }

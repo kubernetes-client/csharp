@@ -60,10 +60,10 @@ namespace k8s.Util.Common.Generic
         /// <param name="name">the object name </param>
         /// <param name="cancellationToken">the token </param>
         /// <returns>The object</returns>
-        public Task<T> Get<T>(string name, CancellationToken cancellationToken = default)
+        public Task<T> GetAsync<T>(string name, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
-            return Get<T>(name, new GetOptions(), cancellationToken);
+            return GetAsync<T>(name, new GetOptions(), cancellationToken);
         }
 
         /// <summary>
@@ -74,10 +74,10 @@ namespace k8s.Util.Common.Generic
         /// <param name="name"> the name</param>
         /// <param name="cancellationToken">the token </param>
         /// <returns>the kubernetes object</returns>
-        public Task<T> Get<T>(string namespaceProperty, string name, CancellationToken cancellationToken = default)
+        public Task<T> GetAsync<T>(string namespaceProperty, string name, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
-            return Get<T>(namespaceProperty, name, new GetOptions(), cancellationToken);
+            return GetAsync<T>(namespaceProperty, name, new GetOptions(), cancellationToken);
         }
 
         /// <summary>
@@ -86,10 +86,10 @@ namespace k8s.Util.Common.Generic
         /// <typeparam name="T">the object type</typeparam>
         /// <param name="cancellationToken">the token </param>
         /// <returns>the kubernetes object</returns>
-        public Task<T> List<T>(CancellationToken cancellationToken = default)
+        public Task<T> ListAsync<T>(CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ListMeta>
         {
-            return List<T>(new ListOptions(), cancellationToken);
+            return ListAsync<T>(new ListOptions(), cancellationToken);
         }
 
         /// <summary>
@@ -99,10 +99,10 @@ namespace k8s.Util.Common.Generic
         /// <param name="namespaceProperty"> the namespace</param>
         /// <param name="cancellationToken">the token </param>
         /// <returns>the kubernetes object</returns>
-        public Task<T> List<T>(string namespaceProperty, CancellationToken cancellationToken = default)
+        public Task<T> ListAsync<T>(string namespaceProperty, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ListMeta>
         {
-            return List<T>(namespaceProperty, new ListOptions(), cancellationToken);
+            return ListAsync<T>(namespaceProperty, new ListOptions(), cancellationToken);
         }
 
         /// <summary>
@@ -113,10 +113,10 @@ namespace k8s.Util.Common.Generic
         /// <param name="obj"> the object</param>
         /// <param name="cancellationToken">the token </param>
         /// <returns>the kubernetes object</returns>
-        public Task<T> Create<T>(T obj, CancellationToken cancellationToken = default)
+        public Task<T> CreateAsync<T>(T obj, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
-            return Create(obj, new CreateOptions(), cancellationToken);
+            return CreateAsync(obj, new CreateOptions(), cancellationToken);
         }
 
         /// <summary>
@@ -127,10 +127,10 @@ namespace k8s.Util.Common.Generic
         /// <param name="cancellationToken">the token </param>
         /// <typeparam name="T">the object type</typeparam>
         /// <returns>the kubernetes object</returns>
-        public Task<T> Update<T>(T obj, CancellationToken cancellationToken = default)
+        public Task<T> UpdateAsync<T>(T obj, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
-            return Update(obj, new UpdateOptions(), cancellationToken);
+            return UpdateAsync(obj, new UpdateOptions(), cancellationToken);
         }
 
         /// <summary>
@@ -141,10 +141,10 @@ namespace k8s.Util.Common.Generic
         /// <param name="cancellationToken">the token </param>
         /// <typeparam name="T">the object type</typeparam>
         /// <returns>the kubernetes object</returns>
-        public Task<T> Patch<T>(string name, object patch, CancellationToken cancellationToken = default)
+        public Task<T> PatchAsync<T>(string name, object patch, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
-            return Patch<T>(name, patch, new PatchOptions(), cancellationToken);
+            return PatchAsync<T>(name, patch, new PatchOptions(), cancellationToken);
         }
 
         /// <summary>
@@ -156,10 +156,10 @@ namespace k8s.Util.Common.Generic
         /// <param name="cancellationToken">the token </param>
         /// <typeparam name="T">the object type</typeparam>
         /// <returns>the kubernetes object</returns>
-        public Task<T> Patch<T>(string namespaceProperty, string name, object patch, CancellationToken cancellationToken = default)
+        public Task<T> PatchAsync<T>(string namespaceProperty, string name, object patch, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
-            return Patch<T>(namespaceProperty, name, patch, new PatchOptions(), cancellationToken);
+            return PatchAsync<T>(namespaceProperty, name, patch, new PatchOptions(), cancellationToken);
         }
 
         /// <summary>
@@ -169,10 +169,10 @@ namespace k8s.Util.Common.Generic
         /// <param name="cancellationToken">the token </param>
         /// <typeparam name="T">the object type</typeparam>
         /// <returns>the kubernetes object</returns>
-        public Task<T> Delete<T>(string name, CancellationToken cancellationToken = default)
+        public Task<T> DeleteAsync<T>(string name, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
-            return Delete<T>(name, new V1DeleteOptions(), cancellationToken);
+            return DeleteAsync<T>(name, new V1DeleteOptions(), cancellationToken);
         }
 
         /// <summary>
@@ -183,10 +183,10 @@ namespace k8s.Util.Common.Generic
         /// <param name="cancellationToken">the token </param>
         /// <typeparam name="T">the object type</typeparam>
         /// <returns>the kubernetes object</returns>
-        public Task<T> Delete<T>(string namespaceProperty, string name, CancellationToken cancellationToken = default)
+        public Task<T> DeleteAsync<T>(string namespaceProperty, string name, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
-            return Delete<T>(namespaceProperty, name, new V1DeleteOptions(), cancellationToken);
+            return DeleteAsync<T>(namespaceProperty, name, new V1DeleteOptions(), cancellationToken);
         }
 
         /// <summary>
@@ -231,7 +231,7 @@ namespace k8s.Util.Common.Generic
         /// <param name="getOptions">the get options</param>
         /// <param name="cancellationToken">the token </param>
         /// <returns>the kubernetes object</returns>
-        public async Task<T> Get<T>(string name, GetOptions getOptions, CancellationToken cancellationToken = default)
+        public async Task<T> GetAsync<T>(string name, GetOptions getOptions, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
             if (string.IsNullOrEmpty(name))
@@ -253,7 +253,7 @@ namespace k8s.Util.Common.Generic
         /// <param name="getOptions">the get options</param>
         /// <param name="cancellationToken">the token </param>
         /// <returns>the kubernetes object</returns>
-        public async Task<T> Get<T>(string namespaceProperty, string name, GetOptions getOptions, CancellationToken cancellationToken = default)
+        public async Task<T> GetAsync<T>(string namespaceProperty, string name, GetOptions getOptions, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
             if (string.IsNullOrEmpty(name))
@@ -278,7 +278,7 @@ namespace k8s.Util.Common.Generic
         /// <param name="listOptions">the list options</param>
         /// <param name="cancellationToken">the token </param>
         /// <returns>the kubernetes object</returns>
-        public async Task<T> List<T>(ListOptions listOptions, CancellationToken cancellationToken = default)
+        public async Task<T> ListAsync<T>(ListOptions listOptions, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ListMeta>
         {
             if (listOptions == null)
@@ -300,7 +300,7 @@ namespace k8s.Util.Common.Generic
         /// <param name="listOptions">the list options</param>
         /// <param name="cancellationToken">the token </param>
         /// <returns>the kubernetes object</returns>
-        public async Task<T> List<T>(string namespaceProperty, ListOptions listOptions, CancellationToken cancellationToken = default)
+        public async Task<T> ListAsync<T>(string namespaceProperty, ListOptions listOptions, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ListMeta>
         {
             if (listOptions == null)
@@ -328,7 +328,7 @@ namespace k8s.Util.Common.Generic
         /// <param name="createOptions">the create options</param>
         /// <param name="cancellationToken">the token </param>
         /// <returns>the kubernetes object</returns>
-        public async Task<T> Create<T>(T obj, CreateOptions createOptions, CancellationToken cancellationToken = default)
+        public async Task<T> CreateAsync<T>(T obj, CreateOptions createOptions, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
             if (obj == null)
@@ -346,7 +346,7 @@ namespace k8s.Util.Common.Generic
             var isNamespaced = !string.IsNullOrEmpty(objectMeta.NamespaceProperty);
             if (isNamespaced)
             {
-                return await Create(objectMeta.NamespaceProperty, obj, createOptions, cancellationToken).ConfigureAwait(false);
+                return await CreateAsync(objectMeta.NamespaceProperty, obj, createOptions, cancellationToken).ConfigureAwait(false);
             }
 
             var resp = await _client.CreateClusterCustomObjectWithHttpMessagesAsync(body: obj, group: _apiGroup, plural: _resourcePlural, version: _apiVersion, dryRun: createOptions.DryRun,
@@ -364,7 +364,7 @@ namespace k8s.Util.Common.Generic
         /// <param name="createOptions">the create options</param>
         /// <param name="cancellationToken">the token </param>
         /// <returns>the kubernetes object</returns>
-        public async Task<T> Create<T>(string namespaceProperty, T obj, CreateOptions createOptions, CancellationToken cancellationToken = default)
+        public async Task<T> CreateAsync<T>(string namespaceProperty, T obj, CreateOptions createOptions, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
             if (obj == null)
@@ -391,7 +391,7 @@ namespace k8s.Util.Common.Generic
         /// <param name="updateOptions">the update options</param>
         /// <param name="cancellationToken">the token </param>
         /// <returns>the kubernetes object</returns>
-        public async Task<T> Update<T>(T obj, UpdateOptions updateOptions, CancellationToken cancellationToken = default)
+        public async Task<T> UpdateAsync<T>(T obj, UpdateOptions updateOptions, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
             if (obj == null)
@@ -432,10 +432,10 @@ namespace k8s.Util.Common.Generic
         /// <param name="status"> function to extract the status from the object</param>
         /// <param name="cancellationToken">the token </param>
         /// <returns>the kubernetes object</returns>
-        public Task<T> UpdateStatus<T>(T obj, Func<T, object> status, CancellationToken cancellationToken = default)
+        public Task<T> UpdateStatusAsync<T>(T obj, Func<T, object> status, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
-            return UpdateStatus(obj, status, new UpdateOptions(), cancellationToken);
+            return UpdateStatusAsync(obj, status, new UpdateOptions(), cancellationToken);
         }
 
         /// <summary>
@@ -447,7 +447,7 @@ namespace k8s.Util.Common.Generic
         /// <param name="updateOptions">the update options</param>
         /// <param name="cancellationToken">the token </param>
         /// <returns>the kubernetes object</returns>
-        public async Task<T> UpdateStatus<T>(T obj, Func<T, object> status, UpdateOptions updateOptions, CancellationToken cancellationToken = default)
+        public async Task<T> UpdateStatusAsync<T>(T obj, Func<T, object> status, UpdateOptions updateOptions, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
             if (obj == null)
@@ -487,7 +487,7 @@ namespace k8s.Util.Common.Generic
         /// <param name="patchOptions">the patch options</param>
         /// <param name="cancellationToken">the token </param>
         /// <returns>the kubernetes object</returns>
-        public async Task<T> Patch<T>(string name, object obj, PatchOptions patchOptions, CancellationToken cancellationToken = default)
+        public async Task<T> PatchAsync<T>(string name, object obj, PatchOptions patchOptions, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
             if (obj == null)
@@ -520,7 +520,7 @@ namespace k8s.Util.Common.Generic
         /// <param name="patchOptions">the patch options</param>
         /// <param name="cancellationToken">the token </param>
         /// <returns>the kubernetes object</returns>
-        public async Task<T> Patch<T>(string namespaceProperty, string name, object obj, PatchOptions patchOptions, CancellationToken cancellationToken = default)
+        public async Task<T> PatchAsync<T>(string namespaceProperty, string name, object obj, PatchOptions patchOptions, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
             if (string.IsNullOrEmpty(namespaceProperty))
@@ -556,7 +556,7 @@ namespace k8s.Util.Common.Generic
         /// <param name="deleteOptions">the delete options</param>
         /// <param name="cancellationToken">the token </param>
         /// <returns>the kubernetes object</returns>
-        public async Task<T> Delete<T>(string name, V1DeleteOptions deleteOptions, CancellationToken cancellationToken = default)
+        public async Task<T> DeleteAsync<T>(string name, V1DeleteOptions deleteOptions, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
             if (string.IsNullOrEmpty(name))
@@ -578,7 +578,7 @@ namespace k8s.Util.Common.Generic
         /// <param name="deleteOptions">the delete options</param>
         /// <param name="cancellationToken">the token </param>
         /// <returns>the kubernetes object</returns>
-        public async Task<T> Delete<T>(string namespaceProperty, string name, V1DeleteOptions deleteOptions, CancellationToken cancellationToken = default)
+        public async Task<T> DeleteAsync<T>(string namespaceProperty, string name, V1DeleteOptions deleteOptions, CancellationToken cancellationToken = default)
             where T : class, IKubernetesObject<V1ObjectMeta>
         {
             if (string.IsNullOrEmpty(namespaceProperty))
