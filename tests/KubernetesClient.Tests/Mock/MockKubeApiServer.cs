@@ -85,7 +85,7 @@ namespace k8s.Tests.Mock
         private bool _disposed;
         private const string MockBadStreamLine = "bad json";
 
-        public MockKubeApiServer(ITestOutputHelper testOutput,  MockKubeServerFlags serverFlags)
+        public MockKubeApiServer(ITestOutputHelper testOutput, MockKubeServerFlags serverFlags)
         {
             _serverFlags = serverFlags;
             _webHost = BuildWebHost(testOutput, ShouldNext, null, null); // to avoid making ShouldNext static
