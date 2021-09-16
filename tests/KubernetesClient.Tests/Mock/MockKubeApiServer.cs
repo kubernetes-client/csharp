@@ -82,7 +82,6 @@ namespace k8s.Tests.Mock
         private readonly string _mockDeletedStreamLine = BuildWatchEventStreamLine(WatchEventType.Deleted);
         private readonly string _mockModifiedStreamLine = BuildWatchEventStreamLine(WatchEventType.Modified);
         private readonly string _mockErrorStreamLine = BuildWatchEventStreamLine(WatchEventType.Error);
-        private bool _disposed;
         private const string MockBadStreamLine = "bad json";
 
         public MockKubeApiServer(ITestOutputHelper testOutput, MockKubeServerFlags serverFlags)
