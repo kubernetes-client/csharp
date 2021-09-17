@@ -9,35 +9,28 @@ namespace k8s
 {
     public class GenericClient : IDisposable
     {
-        internal class TweakApiHandler : DelegatingHandler
-        {
-            protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage msg, CancellationToken cancel)
-            {
-                msg.RequestUri = new Uri(msg.RequestUri, msg.RequestUri.AbsolutePath.Replace("/apis//", "/api/"));
-                return base.SendAsync(msg, cancel);
-            }
-        }
-
         private readonly IKubernetes kubernetes;
         private readonly string group;
         private readonly string version;
         private readonly string plural;
 
-
+        [Obsolete]
         public GenericClient(KubernetesClientConfiguration config, string group, string version, string plural)
+            : this(new Kubernetes(config), group, version, plural)
+        {
+        }
+
+        public GenericClient(IKubernetes kubernetes, string version, string plural)
+            : this(kubernetes, "", version, plural)
+        {
+        }
+
+        public GenericClient(IKubernetes kubernetes, string group, string version, string plural)
         {
             this.group = group;
             this.version = version;
             this.plural = plural;
-
-            if (string.IsNullOrEmpty(group))
-            {
-                this.kubernetes = new Kubernetes(config, new DelegatingHandler[] { new TweakApiHandler() });
-            }
-            else
-            {
-                this.kubernetes = new Kubernetes(config);
-            }
+            this.kubernetes = kubernetes;
         }
 
         public async Task<T> ListAsync<T>(CancellationToken cancel = default(CancellationToken))
