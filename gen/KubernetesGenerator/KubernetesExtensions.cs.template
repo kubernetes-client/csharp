@@ -64,6 +64,17 @@ namespace k8s
             {{/operation.parameters}}
             CancellationToken cancellationToken = default(CancellationToken))
         {
+            {{#IfReturnType operation "stream"}}
+            var _result = await operations.{{GetMethodName operation "WithHttpMessagesAsync"}}(
+                {{#operation.parameters}}
+                {{GetDotNetName .}},
+                {{/operation.parameters}}
+                null,
+                cancellationToken);
+            _result.Request.Dispose();
+            {{GetReturnType operation "_result.Body"}};
+            {{/IfReturnType operation "stream"}}
+            {{#IfReturnType operation "obj"}}
             using (var _result = await operations.{{GetMethodName operation "WithHttpMessagesAsync"}}(
                 {{#operation.parameters}}
                 {{GetDotNetName .}},
@@ -73,6 +84,17 @@ namespace k8s
             {
                 {{GetReturnType operation "_result.Body"}};
             }
+            {{/IfReturnType operation "obj"}}
+            {{#IfReturnType operation "void"}}
+            using (var _result = await operations.{{GetMethodName operation "WithHttpMessagesAsync"}}(
+                {{#operation.parameters}}
+                {{GetDotNetName .}},
+                {{/operation.parameters}}
+                null,
+                cancellationToken).ConfigureAwait(false))
+            {
+            }
+            {{/IfReturnType operation "void"}}
         }
 
         {{/.}}
