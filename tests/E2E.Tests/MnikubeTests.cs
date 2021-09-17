@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -28,9 +29,19 @@ namespace k8s.E2E
             void Cleanup()
             {
                 var pods = client.ListNamespacedPod(namespaceParameter);
-                if (pods.Items.Any(p => p.Metadata.Name == podName))
+                while (pods.Items.Any(p => p.Metadata.Name == podName))
                 {
-                    client.DeleteNamespacedPod(podName, namespaceParameter);
+                    try
+                    {
+                        client.DeleteNamespacedPod(podName, namespaceParameter);
+                    }
+                    catch (HttpOperationException e)
+                    {
+                        if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                        {
+                            return;
+                        }
+                    }
                 }
             }
 
@@ -319,6 +330,105 @@ namespace k8s.E2E
                 }
 
                 Task.WaitAll(tasks.ToArray(), TimeSpan.FromSeconds(30));
+            }
+            finally
+            {
+                Cleanup();
+            }
+        }
+
+        [MinikubeFact]
+        public async Task LogStreamTestAsync()
+        {
+            var namespaceParameter = "default";
+            var podName = "k8scsharp-e2e-logstream-pod";
+
+            var client = CreateClient();
+
+            void Cleanup()
+            {
+                var pods = client.ListNamespacedPod(namespaceParameter);
+                while (pods.Items.Any(p => p.Metadata.Name == podName))
+                {
+                    try
+                    {
+                        client.DeleteNamespacedPod(podName, namespaceParameter);
+                    }
+                    catch (HttpOperationException e)
+                    {
+                        if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                        {
+                            return;
+                        }
+                    }
+                }
+            }
+
+            try
+            {
+                Cleanup();
+
+                client.CreateNamespacedPod(
+                    new V1Pod()
+                    {
+                        Metadata = new V1ObjectMeta { Name = podName, },
+                        Spec = new V1PodSpec
+                        {
+                            Containers = new[]
+                            {
+                                new V1Container()
+                                {
+                                    Name = "k8scsharp-e2e-logstream",
+                                    Image = "busybox",
+                                    Command = new[] { "ping" },
+                                    Args = new[] { "-i", "10",  "127.0.0.1" },
+                                },
+                            },
+                        },
+                    },
+                    namespaceParameter);
+
+                var lines = new List<string>();
+                var started = new ManualResetEvent(false);
+
+                async Task<V1Pod> Pod()
+                {
+                    var pods = client.ListNamespacedPod(namespaceParameter);
+                    var pod = pods.Items.First();
+                    while (pod.Status.Phase != "Running")
+                    {
+                        await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(false);
+                        return await Pod().ConfigureAwait(false);
+                    }
+
+                    return pod;
+                }
+
+                var pod = await Pod().ConfigureAwait(false);
+                var stream = client.ReadNamespacedPodLog(pod.Metadata.Name, pod.Metadata.NamespaceProperty, follow: true);
+                using var reader = new StreamReader(stream);
+
+                var copytask = Task.Run(() =>
+                {
+                    for (; ; )
+                    {
+                        try
+                        {
+                            lines.Add(reader.ReadLine());
+                        }
+                        finally
+                        {
+                            started.Set();
+                        }
+                    }
+                });
+
+                Assert.True(started.WaitOne(TimeSpan.FromMinutes(2)));
+                await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(false);
+                Assert.Null(copytask.Exception);
+                Assert.Equal(2, lines.Count);
+                await Task.Delay(TimeSpan.FromSeconds(11)).ConfigureAwait(false);
+                Assert.Equal(3, lines.Count);
             }
             finally
             {
