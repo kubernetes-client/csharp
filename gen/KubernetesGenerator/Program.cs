@@ -956,7 +956,7 @@ namespace KubernetesWatchGenerator
                 {
                     fn(null);
                 }
-                else if (type == "stream" && rt == "Stream")
+                else if (type.ToLower() == rt.ToLower())
                 {
                     fn(null);
                 }

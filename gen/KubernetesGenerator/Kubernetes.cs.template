@@ -466,7 +466,7 @@ namespace k8s
                     }
                     throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
-                {{/IfReturnType operation "stream"}}
+                {{/IfReturnType operation "obj"}}
             }
             {{/IfReturnType operation "any"}}
             if (_shouldTrace)
