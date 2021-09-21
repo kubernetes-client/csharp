@@ -385,14 +385,14 @@ namespace k8s
 
             // Serialize Request
             string _requestContent = null;
-            {{#operation.requestBody.isRequired}}
+            {{#IfParamCotains operation "body"}}
             if(body != null)
             {
                 _requestContent = SafeJsonConvert.SerializeObject(body, SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType = GetHeader(body);
             }
-            {{/operation.requestBody.isRequired}}
+            {{/IfParamCotains operation "body"}}
             // Set Credentials
             if (Credentials != null)
             {
