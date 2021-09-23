@@ -86,9 +86,11 @@ namespace k8s.Models
             {{GetDotNetName name "field"}}?.Validate();
             {{/IfType . "object"}}
             {{#IfType . "objectarray"}}
-            foreach(var obj in {{GetDotNetName name "field"}})
-            {
-                obj.Validate();
+            if ({{GetDotNetName name "field"}} != null){
+                foreach(var obj in {{GetDotNetName name "field"}})
+                {
+                    obj.Validate();
+                }
             }
             {{/IfType . "objectarray"}}
             {{/properties}}
