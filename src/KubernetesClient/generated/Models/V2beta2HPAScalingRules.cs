@@ -97,9 +97,11 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in Policies)
-            {
-                obj.Validate();
+            if (Policies != null){
+                foreach(var obj in Policies)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

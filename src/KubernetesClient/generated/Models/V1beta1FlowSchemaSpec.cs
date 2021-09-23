@@ -114,9 +114,11 @@ namespace k8s.Models
             }
             DistinguisherMethod?.Validate();
             PriorityLevelConfiguration?.Validate();
-            foreach(var obj in Rules)
-            {
-                obj.Validate();
+            if (Rules != null){
+                foreach(var obj in Rules)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

@@ -207,9 +207,11 @@ namespace k8s.Models
             Selector?.Validate();
             Template?.Validate();
             UpdateStrategy?.Validate();
-            foreach(var obj in VolumeClaimTemplates)
-            {
-                obj.Validate();
+            if (VolumeClaimTemplates != null){
+                foreach(var obj in VolumeClaimTemplates)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

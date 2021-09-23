@@ -260,25 +260,35 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in Conditions)
-            {
-                obj.Validate();
+            if (Conditions != null){
+                foreach(var obj in Conditions)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in ContainerStatuses)
-            {
-                obj.Validate();
+            if (ContainerStatuses != null){
+                foreach(var obj in ContainerStatuses)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in EphemeralContainerStatuses)
-            {
-                obj.Validate();
+            if (EphemeralContainerStatuses != null){
+                foreach(var obj in EphemeralContainerStatuses)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in InitContainerStatuses)
-            {
-                obj.Validate();
+            if (InitContainerStatuses != null){
+                foreach(var obj in InitContainerStatuses)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in PodIPs)
-            {
-                obj.Validate();
+            if (PodIPs != null){
+                foreach(var obj in PodIPs)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

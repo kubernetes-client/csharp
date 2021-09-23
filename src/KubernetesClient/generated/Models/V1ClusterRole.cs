@@ -115,9 +115,11 @@ namespace k8s.Models
         {
             AggregationRule?.Validate();
             Metadata?.Validate();
-            foreach(var obj in Rules)
-            {
-                obj.Validate();
+            if (Rules != null){
+                foreach(var obj in Rules)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

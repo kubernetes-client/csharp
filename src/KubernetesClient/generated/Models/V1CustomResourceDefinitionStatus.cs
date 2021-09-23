@@ -90,9 +90,11 @@ namespace k8s.Models
         public virtual void Validate()
         {
             AcceptedNames?.Validate();
-            foreach(var obj in Conditions)
-            {
-                obj.Validate();
+            if (Conditions != null){
+                foreach(var obj in Conditions)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

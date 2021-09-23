@@ -121,9 +121,11 @@ namespace k8s.Models
             }
             Metadata?.Validate();
             RoleRef?.Validate();
-            foreach(var obj in Subjects)
-            {
-                obj.Validate();
+            if (Subjects != null){
+                foreach(var obj in Subjects)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

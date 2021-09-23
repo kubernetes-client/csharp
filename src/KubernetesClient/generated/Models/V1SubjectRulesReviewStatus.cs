@@ -106,13 +106,17 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in NonResourceRules)
-            {
-                obj.Validate();
+            if (NonResourceRules != null){
+                foreach(var obj in NonResourceRules)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in ResourceRules)
-            {
-                obj.Validate();
+            if (ResourceRules != null){
+                foreach(var obj in ResourceRules)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

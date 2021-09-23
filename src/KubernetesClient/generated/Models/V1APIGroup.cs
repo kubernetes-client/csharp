@@ -136,13 +136,17 @@ namespace k8s.Models
         public virtual void Validate()
         {
             PreferredVersion?.Validate();
-            foreach(var obj in ServerAddressByClientCIDRs)
-            {
-                obj.Validate();
+            if (ServerAddressByClientCIDRs != null){
+                foreach(var obj in ServerAddressByClientCIDRs)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in Versions)
-            {
-                obj.Validate();
+            if (Versions != null){
+                foreach(var obj in Versions)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

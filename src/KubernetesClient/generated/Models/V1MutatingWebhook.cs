@@ -372,9 +372,11 @@ namespace k8s.Models
             ClientConfig?.Validate();
             NamespaceSelector?.Validate();
             ObjectSelector?.Validate();
-            foreach(var obj in Rules)
-            {
-                obj.Validate();
+            if (Rules != null){
+                foreach(var obj in Rules)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

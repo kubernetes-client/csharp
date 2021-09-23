@@ -138,14 +138,18 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in ImagePullSecrets)
-            {
-                obj.Validate();
+            if (ImagePullSecrets != null){
+                foreach(var obj in ImagePullSecrets)
+                {
+                    obj.Validate();
+                }
             }
             Metadata?.Validate();
-            foreach(var obj in Secrets)
-            {
-                obj.Validate();
+            if (Secrets != null){
+                foreach(var obj in Secrets)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

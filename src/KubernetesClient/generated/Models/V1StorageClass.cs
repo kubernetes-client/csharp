@@ -182,9 +182,11 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in AllowedTopologies)
-            {
-                obj.Validate();
+            if (AllowedTopologies != null){
+                foreach(var obj in AllowedTopologies)
+                {
+                    obj.Validate();
+                }
             }
             Metadata?.Validate();
         }

@@ -392,22 +392,30 @@ namespace k8s.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "SupplementalGroups");    
             }
-            foreach(var obj in AllowedCSIDrivers)
-            {
-                obj.Validate();
+            if (AllowedCSIDrivers != null){
+                foreach(var obj in AllowedCSIDrivers)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in AllowedFlexVolumes)
-            {
-                obj.Validate();
+            if (AllowedFlexVolumes != null){
+                foreach(var obj in AllowedFlexVolumes)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in AllowedHostPaths)
-            {
-                obj.Validate();
+            if (AllowedHostPaths != null){
+                foreach(var obj in AllowedHostPaths)
+                {
+                    obj.Validate();
+                }
             }
             FsGroup?.Validate();
-            foreach(var obj in HostPorts)
-            {
-                obj.Validate();
+            if (HostPorts != null){
+                foreach(var obj in HostPorts)
+                {
+                    obj.Validate();
+                }
             }
             RunAsGroup?.Validate();
             RunAsUser?.Validate();

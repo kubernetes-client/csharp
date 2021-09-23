@@ -219,9 +219,11 @@ namespace k8s.Models
         {
             SeLinuxOptions?.Validate();
             SeccompProfile?.Validate();
-            foreach(var obj in Sysctls)
-            {
-                obj.Validate();
+            if (Sysctls != null){
+                foreach(var obj in Sysctls)
+                {
+                    obj.Validate();
+                }
             }
             WindowsOptions?.Validate();
         }

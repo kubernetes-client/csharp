@@ -61,9 +61,11 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in ClusterRoleSelectors)
-            {
-                obj.Validate();
+            if (ClusterRoleSelectors != null){
+                foreach(var obj in ClusterRoleSelectors)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

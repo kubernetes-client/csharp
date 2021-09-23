@@ -508,9 +508,11 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in Ports)
-            {
-                obj.Validate();
+            if (Ports != null){
+                foreach(var obj in Ports)
+                {
+                    obj.Validate();
+                }
             }
             SessionAffinityConfig?.Validate();
         }

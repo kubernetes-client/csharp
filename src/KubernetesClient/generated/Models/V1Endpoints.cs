@@ -125,9 +125,11 @@ namespace k8s.Models
         public virtual void Validate()
         {
             Metadata?.Validate();
-            foreach(var obj in Subsets)
-            {
-                obj.Validate();
+            if (Subsets != null){
+                foreach(var obj in Subsets)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

@@ -59,9 +59,11 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in Paths)
-            {
-                obj.Validate();
+            if (Paths != null){
+                foreach(var obj in Paths)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

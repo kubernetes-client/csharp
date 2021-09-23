@@ -68,13 +68,17 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in MatchExpressions)
-            {
-                obj.Validate();
+            if (MatchExpressions != null){
+                foreach(var obj in MatchExpressions)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in MatchFields)
-            {
-                obj.Validate();
+            if (MatchFields != null){
+                foreach(var obj in MatchFields)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

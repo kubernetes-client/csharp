@@ -134,9 +134,11 @@ namespace k8s.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "ScaleTargetRef");    
             }
             Behavior?.Validate();
-            foreach(var obj in Metrics)
-            {
-                obj.Validate();
+            if (Metrics != null){
+                foreach(var obj in Metrics)
+                {
+                    obj.Validate();
+                }
             }
             ScaleTargetRef?.Validate();
         }

@@ -152,9 +152,11 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in AdditionalPrinterColumns)
-            {
-                obj.Validate();
+            if (AdditionalPrinterColumns != null){
+                foreach(var obj in AdditionalPrinterColumns)
+                {
+                    obj.Validate();
+                }
             }
             Schema?.Validate();
             Subresources?.Validate();

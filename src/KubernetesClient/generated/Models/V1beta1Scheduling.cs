@@ -79,9 +79,11 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in Tolerations)
-            {
-                obj.Validate();
+            if (Tolerations != null){
+                foreach(var obj in Tolerations)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

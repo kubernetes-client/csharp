@@ -58,9 +58,11 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in Ingress)
-            {
-                obj.Validate();
+            if (Ingress != null){
+                foreach(var obj in Ingress)
+                {
+                    obj.Validate();
+                }
             }
         }
     }
