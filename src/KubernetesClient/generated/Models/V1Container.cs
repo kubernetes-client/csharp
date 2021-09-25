@@ -400,31 +400,41 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in Env)
-            {
-                obj.Validate();
+            if (Env != null){
+                foreach(var obj in Env)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in EnvFrom)
-            {
-                obj.Validate();
+            if (EnvFrom != null){
+                foreach(var obj in EnvFrom)
+                {
+                    obj.Validate();
+                }
             }
             Lifecycle?.Validate();
             LivenessProbe?.Validate();
-            foreach(var obj in Ports)
-            {
-                obj.Validate();
+            if (Ports != null){
+                foreach(var obj in Ports)
+                {
+                    obj.Validate();
+                }
             }
             ReadinessProbe?.Validate();
             Resources?.Validate();
             SecurityContext?.Validate();
             StartupProbe?.Validate();
-            foreach(var obj in VolumeDevices)
-            {
-                obj.Validate();
+            if (VolumeDevices != null){
+                foreach(var obj in VolumeDevices)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in VolumeMounts)
-            {
-                obj.Validate();
+            if (VolumeMounts != null){
+                foreach(var obj in VolumeMounts)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

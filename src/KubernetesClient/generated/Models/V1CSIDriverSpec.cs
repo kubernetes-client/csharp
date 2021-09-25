@@ -290,9 +290,11 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in TokenRequests)
-            {
-                obj.Validate();
+            if (TokenRequests != null){
+                foreach(var obj in TokenRequests)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

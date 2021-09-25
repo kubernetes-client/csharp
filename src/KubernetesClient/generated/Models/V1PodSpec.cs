@@ -593,43 +593,61 @@ namespace k8s.Models
         public virtual void Validate()
         {
             Affinity?.Validate();
-            foreach(var obj in Containers)
-            {
-                obj.Validate();
+            if (Containers != null){
+                foreach(var obj in Containers)
+                {
+                    obj.Validate();
+                }
             }
             DnsConfig?.Validate();
-            foreach(var obj in EphemeralContainers)
-            {
-                obj.Validate();
+            if (EphemeralContainers != null){
+                foreach(var obj in EphemeralContainers)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in HostAliases)
-            {
-                obj.Validate();
+            if (HostAliases != null){
+                foreach(var obj in HostAliases)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in ImagePullSecrets)
-            {
-                obj.Validate();
+            if (ImagePullSecrets != null){
+                foreach(var obj in ImagePullSecrets)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in InitContainers)
-            {
-                obj.Validate();
+            if (InitContainers != null){
+                foreach(var obj in InitContainers)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in ReadinessGates)
-            {
-                obj.Validate();
+            if (ReadinessGates != null){
+                foreach(var obj in ReadinessGates)
+                {
+                    obj.Validate();
+                }
             }
             SecurityContext?.Validate();
-            foreach(var obj in Tolerations)
-            {
-                obj.Validate();
+            if (Tolerations != null){
+                foreach(var obj in Tolerations)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in TopologySpreadConstraints)
-            {
-                obj.Validate();
+            if (TopologySpreadConstraints != null){
+                foreach(var obj in TopologySpreadConstraints)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in Volumes)
-            {
-                obj.Validate();
+            if (Volumes != null){
+                foreach(var obj in Volumes)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

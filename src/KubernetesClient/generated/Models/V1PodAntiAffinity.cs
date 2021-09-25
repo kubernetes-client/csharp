@@ -94,13 +94,17 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in PreferredDuringSchedulingIgnoredDuringExecution)
-            {
-                obj.Validate();
+            if (PreferredDuringSchedulingIgnoredDuringExecution != null){
+                foreach(var obj in PreferredDuringSchedulingIgnoredDuringExecution)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in RequiredDuringSchedulingIgnoredDuringExecution)
-            {
-                obj.Validate();
+            if (RequiredDuringSchedulingIgnoredDuringExecution != null){
+                foreach(var obj in RequiredDuringSchedulingIgnoredDuringExecution)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

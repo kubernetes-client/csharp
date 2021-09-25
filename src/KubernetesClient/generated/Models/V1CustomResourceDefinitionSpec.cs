@@ -148,9 +148,11 @@ namespace k8s.Models
             }
             Conversion?.Validate();
             Names?.Validate();
-            foreach(var obj in Versions)
-            {
-                obj.Validate();
+            if (Versions != null){
+                foreach(var obj in Versions)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

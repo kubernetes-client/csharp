@@ -184,9 +184,11 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in Conditions)
-            {
-                obj.Validate();
+            if (Conditions != null){
+                foreach(var obj in Conditions)
+                {
+                    obj.Validate();
+                }
             }
             UncountedTerminatedPods?.Validate();
         }

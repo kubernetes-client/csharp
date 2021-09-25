@@ -142,13 +142,17 @@ namespace k8s.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "PodSelector");    
             }
-            foreach(var obj in Egress)
-            {
-                obj.Validate();
+            if (Egress != null){
+                foreach(var obj in Egress)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in Ingress)
-            {
-                obj.Validate();
+            if (Ingress != null){
+                foreach(var obj in Ingress)
+                {
+                    obj.Validate();
+                }
             }
             PodSelector?.Validate();
         }

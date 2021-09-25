@@ -102,9 +102,11 @@ namespace k8s.Models
         public virtual void Validate()
         {
             Metadata?.Validate();
-            foreach(var obj in Webhooks)
-            {
-                obj.Validate();
+            if (Webhooks != null){
+                foreach(var obj in Webhooks)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

@@ -113,9 +113,11 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in ServerAddressByClientCIDRs)
-            {
-                obj.Validate();
+            if (ServerAddressByClientCIDRs != null){
+                foreach(var obj in ServerAddressByClientCIDRs)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

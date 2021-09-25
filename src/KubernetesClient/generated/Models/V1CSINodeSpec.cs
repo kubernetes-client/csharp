@@ -59,9 +59,11 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in Drivers)
-            {
-                obj.Validate();
+            if (Drivers != null){
+                foreach(var obj in Drivers)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

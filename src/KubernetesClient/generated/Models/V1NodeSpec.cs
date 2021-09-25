@@ -135,9 +135,11 @@ namespace k8s.Models
         public virtual void Validate()
         {
             ConfigSource?.Validate();
-            foreach(var obj in Taints)
-            {
-                obj.Validate();
+            if (Taints != null){
+                foreach(var obj in Taints)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

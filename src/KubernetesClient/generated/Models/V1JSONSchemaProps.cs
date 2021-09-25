@@ -651,19 +651,25 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in AllOf)
-            {
-                obj.Validate();
+            if (AllOf != null){
+                foreach(var obj in AllOf)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in AnyOf)
-            {
-                obj.Validate();
+            if (AnyOf != null){
+                foreach(var obj in AnyOf)
+                {
+                    obj.Validate();
+                }
             }
             ExternalDocs?.Validate();
             Not?.Validate();
-            foreach(var obj in OneOf)
-            {
-                obj.Validate();
+            if (OneOf != null){
+                foreach(var obj in OneOf)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

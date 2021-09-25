@@ -91,17 +91,23 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in Addresses)
-            {
-                obj.Validate();
+            if (Addresses != null){
+                foreach(var obj in Addresses)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in NotReadyAddresses)
-            {
-                obj.Validate();
+            if (NotReadyAddresses != null){
+                foreach(var obj in NotReadyAddresses)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in Ports)
-            {
-                obj.Validate();
+            if (Ports != null){
+                foreach(var obj in Ports)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

@@ -104,9 +104,11 @@ namespace k8s.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Port");    
             }
-            foreach(var obj in HttpHeaders)
-            {
-                obj.Validate();
+            if (HttpHeaders != null){
+                foreach(var obj in HttpHeaders)
+                {
+                    obj.Validate();
+                }
             }
             Port?.Validate();
         }

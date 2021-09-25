@@ -100,9 +100,11 @@ namespace k8s.Models
         public virtual void Validate()
         {
             Metadata?.Validate();
-            foreach(var obj in Rules)
-            {
-                obj.Validate();
+            if (Rules != null){
+                foreach(var obj in Rules)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

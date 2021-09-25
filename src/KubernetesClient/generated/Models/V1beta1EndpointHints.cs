@@ -58,9 +58,11 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in ForZones)
-            {
-                obj.Validate();
+            if (ForZones != null){
+                foreach(var obj in ForZones)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

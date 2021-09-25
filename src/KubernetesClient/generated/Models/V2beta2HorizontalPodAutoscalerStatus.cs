@@ -115,13 +115,17 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in Conditions)
-            {
-                obj.Validate();
+            if (Conditions != null){
+                foreach(var obj in Conditions)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in CurrentMetrics)
-            {
-                obj.Validate();
+            if (CurrentMetrics != null){
+                foreach(var obj in CurrentMetrics)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

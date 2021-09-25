@@ -117,13 +117,17 @@ namespace k8s.Models
         public virtual void Validate()
         {
             DefaultBackend?.Validate();
-            foreach(var obj in Rules)
-            {
-                obj.Validate();
+            if (Rules != null){
+                foreach(var obj in Rules)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in Tls)
-            {
-                obj.Validate();
+            if (Tls != null){
+                foreach(var obj in Tls)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

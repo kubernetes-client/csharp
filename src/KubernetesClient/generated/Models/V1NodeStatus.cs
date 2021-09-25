@@ -178,24 +178,32 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in Addresses)
-            {
-                obj.Validate();
+            if (Addresses != null){
+                foreach(var obj in Addresses)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in Conditions)
-            {
-                obj.Validate();
+            if (Conditions != null){
+                foreach(var obj in Conditions)
+                {
+                    obj.Validate();
+                }
             }
             Config?.Validate();
             DaemonEndpoints?.Validate();
-            foreach(var obj in Images)
-            {
-                obj.Validate();
+            if (Images != null){
+                foreach(var obj in Images)
+                {
+                    obj.Validate();
+                }
             }
             NodeInfo?.Validate();
-            foreach(var obj in VolumesAttached)
-            {
-                obj.Validate();
+            if (VolumesAttached != null){
+                foreach(var obj in VolumesAttached)
+                {
+                    obj.Validate();
+                }
             }
         }
     }

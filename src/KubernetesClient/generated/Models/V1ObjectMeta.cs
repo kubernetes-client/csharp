@@ -399,13 +399,17 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            foreach(var obj in ManagedFields)
-            {
-                obj.Validate();
+            if (ManagedFields != null){
+                foreach(var obj in ManagedFields)
+                {
+                    obj.Validate();
+                }
             }
-            foreach(var obj in OwnerReferences)
-            {
-                obj.Validate();
+            if (OwnerReferences != null){
+                foreach(var obj in OwnerReferences)
+                {
+                    obj.Validate();
+                }
             }
         }
     }
