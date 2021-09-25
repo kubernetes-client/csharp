@@ -1,16 +1,15 @@
 namespace k8s.Util.Common
 {
-    public class Config
+    public static class Config
     {
-        public const string ServiceAccountRoot = "/var/run/secrets/kubernetes.io/serviceaccount";
-        public const string ServiceAccountCaPath = ServiceAccountRoot + "/ca.crt";
-        public const string ServiceAccountTokenPath = ServiceAccountRoot + "/token";
-        public const string ServiceAccountNamespacePath = ServiceAccountRoot + "/namespace";
-        public const string EnvKubeconfig = "KUBECONFIG";
-        public const string EnvServiceHost = "KUBERNETES_SERVICE_HOST";
-        public const string EnvServicePort = "KUBERNETES_SERVICE_PORT";
+        public static string ServiceAccountCaPath => KubernetesClientConfiguration.ServiceAccountPath + "/ca.crt";
+        public static string ServiceAccountTokenPath => KubernetesClientConfiguration.ServiceAccountPath + "/token";
+        public static string ServiceAccountNamespacePath => KubernetesClientConfiguration.ServiceAccountPath + "/namespace";
+        public static string EnvKubeconfig => "KUBECONFIG";
+        public static string EnvServiceHost => "KUBERNETES_SERVICE_HOST";
+        public static string EnvServicePort => "KUBERNETES_SERVICE_PORT";
 
         // The last resort host to try
-        public const string DefaultFallbackHost = "http://localhost:8080";
+        public static string DefaultFallbackHost => "http://localhost:8080";
     }
 }
