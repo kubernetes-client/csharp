@@ -23,16 +23,17 @@ namespace k8s.Tests.Util.Common.Generic
         public void CreateConstSuccess()
         {
             using var server = new MockKubeApiServer(_outputHelper);
-            var genericApi = Informer.Util.BuildGenericApi(server.Uri);
+            var genericApi = Helpers.BuildGenericApi(server.Uri);
             genericApi.Should().NotBeNull();
         }
 
         [Fact(DisplayName = "Get namespaced object success")]
         public async Task GetNamespacedObject()
         {
-            using var server = new MockKubeApiServer(_outputHelper, MockKubeServerFlags.GetPod);
+            var serverOptions = new MockKubeApiServerOptions(MockKubeServerFlags.GetPod);
+            using var server = new MockKubeApiServer(_outputHelper, serverOptions.ShouldNext);
             var podName = "nginx-1493591563-xb2v4";
-            var genericApi = Informer.Util.BuildGenericApi(server.Uri);
+            var genericApi = Helpers.BuildGenericApi(server.Uri);
 
             var resp = await genericApi.GetAsync<V1Pod>(Namespaces.NamespaceDefault, podName).ConfigureAwait(false);
 
@@ -44,8 +45,9 @@ namespace k8s.Tests.Util.Common.Generic
         [Fact(DisplayName = "List namespaced object success")]
         public async Task ListNamespacedObject()
         {
-            using var server = new MockKubeApiServer(_outputHelper, MockKubeServerFlags.ListPods);
-            var genericApi = Informer.Util.BuildGenericApi(server.Uri);
+            var serverOptions = new MockKubeApiServerOptions(MockKubeServerFlags.ListPods);
+            using var server = new MockKubeApiServer(_outputHelper, serverOptions.ShouldNext);
+            var genericApi = Helpers.BuildGenericApi(server.Uri);
 
             var resp = await genericApi.ListAsync<V1PodList>(Namespaces.NamespaceDefault).ConfigureAwait(false);
 
@@ -58,7 +60,7 @@ namespace k8s.Tests.Util.Common.Generic
         {
             using var server = new MockKubeApiServer(_outputHelper);
             var podName = "nginx-1493591563-xb2v4";
-            var genericApi = Informer.Util.BuildGenericApi(server.Uri);
+            var genericApi = Helpers.BuildGenericApi(server.Uri);
 
             var resp = await genericApi.PatchAsync<V1Pod>(Namespaces.NamespaceDefault, podName).ConfigureAwait(false);
 
@@ -69,8 +71,8 @@ namespace k8s.Tests.Util.Common.Generic
         public async Task UpdateObject()
         {
             using var server = new MockKubeApiServer(_outputHelper);
-            var pod = Informer.Util.CreatePods(1).First();
-            var genericApi = Informer.Util.BuildGenericApi(server.Uri);
+            var pod = Helpers.CreatePods(1).First();
+            var genericApi = Helpers.BuildGenericApi(server.Uri);
 
             var resp = await genericApi.UpdateAsync(pod).ConfigureAwait(false);
 
@@ -82,7 +84,7 @@ namespace k8s.Tests.Util.Common.Generic
         {
             using var server = new MockKubeApiServer(_outputHelper);
             var podName = "nginx-1493591563-xb2v4";
-            var genericApi = Informer.Util.BuildGenericApi(server.Uri);
+            var genericApi = Helpers.BuildGenericApi(server.Uri);
 
             var resp = await genericApi.DeleteAsync<V1Pod>(Namespaces.NamespaceDefault, podName).ConfigureAwait(false);
 
@@ -93,14 +95,15 @@ namespace k8s.Tests.Util.Common.Generic
         public void WatchNamespacedObject()
         {
             using var cts = new CancellationTokenSource();
-            using var server = new MockKubeApiServer(_outputHelper, MockKubeServerFlags.ModifiedPod);
-            var genericApi = Informer.Util.BuildGenericApi(server.Uri);
+            var serverOptions = new MockKubeApiServerOptions(MockKubeServerFlags.ModifiedPod);
+            using var server = new MockKubeApiServer(_outputHelper, serverOptions.ShouldNext);
+            var genericApi = Helpers.BuildGenericApi(server.Uri);
 
             using var resp = genericApi.Watch<V1Pod>(Namespaces.NamespaceDefault, (actionType, pod) => { }, exception => { }, () => { }, cts.Token);
 
             resp.Should().NotBeNull();
             cts.CancelAfter(1000);
-            server.ServerShutdown?.Set();
+            serverOptions.ServerShutdown?.Set();
         }
     }
 }

@@ -13,11 +13,11 @@ using Newtonsoft.Json.Converters;
 using Nito.AsyncEx;
 using Xunit.Abstractions;
 
-namespace k8s.Tests.Util.Informer
+namespace k8s.Tests.Util
 {
-    internal static class Util
+    internal static class Helpers
     {
-        internal static IEnumerable<V1Pod> CreatePods(int cnt)
+        public static IEnumerable<V1Pod> CreatePods(int cnt)
         {
             var pods = new List<V1Pod>();
             for (var i = 0; i < cnt; i++)
@@ -38,7 +38,7 @@ namespace k8s.Tests.Util.Informer
             return pods;
         }
 
-        internal static V1PodList CreatePodList(int cnt)
+        public static V1PodList CreatePodList(int cnt)
         {
             return new V1PodList()
             {
@@ -46,13 +46,13 @@ namespace k8s.Tests.Util.Informer
                 Kind = "Pod",
                 Metadata = new V1ListMeta()
                 {
-                    ResourceVersion = "1",
+                    ResourceVersion = DateTime.Now.Ticks.ToString(),
                 },
                 Items = CreatePods(cnt).ToList(),
             };
         }
 
-        internal static Kubernetes BuildApiClient(Uri hostAddress)
+        public static Kubernetes BuildApiClient(Uri hostAddress)
         {
             return new Kubernetes(new KubernetesClientConfiguration { Host = hostAddress.ToString() })
             {
@@ -63,7 +63,7 @@ namespace k8s.Tests.Util.Informer
             };
         }
 
-        internal static GenericKubernetesApi BuildGenericApi(Uri hostAddress)
+        public static GenericKubernetesApi BuildGenericApi(Uri hostAddress)
         {
             return new GenericKubernetesApi(
                 apiGroup: "pod",

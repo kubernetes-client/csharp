@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using k8s.Util.Informer.Cache;
 using k8s.Models;
+using k8s.Util.Informer.Cache;
 using Xunit;
 
 namespace k8s.Tests.Util.Informer.Cache
@@ -21,7 +21,7 @@ namespace k8s.Tests.Util.Informer.Cache
         [Fact(DisplayName = "Add cache item success")]
         private void AddCacheItemSuccess()
         {
-            var aPod = Util.CreatePods(1).First();
+            var aPod = Helpers.CreatePods(1).First();
             var cache = new Cache<V1Pod>();
 
             cache.Add(aPod);
@@ -32,7 +32,7 @@ namespace k8s.Tests.Util.Informer.Cache
         [Fact(DisplayName = "Update cache item success")]
         private void UpdateCacheItemSuccess()
         {
-            var aPod = Util.CreatePods(1).First();
+            var aPod = Helpers.CreatePods(1).First();
 
             var cache = new Cache<V1Pod>();
 
@@ -46,7 +46,7 @@ namespace k8s.Tests.Util.Informer.Cache
         [Fact(DisplayName = "Delete cache item success")]
         private void DeleteCacheItemSuccess()
         {
-            var aPod = Util.CreatePods(1).First();
+            var aPod = Helpers.CreatePods(1).First();
 
             var cache = new Cache<V1Pod>();
 
@@ -60,7 +60,7 @@ namespace k8s.Tests.Util.Informer.Cache
         [Fact(DisplayName = "Replace cache items success")]
         private void ReplaceCacheItemsSuccess()
         {
-            var pods = Util.CreatePods(3);
+            var pods = Helpers.CreatePods(3);
             var aPod = pods.First();
             var anotherPod = pods.Skip(1).First();
             var yetAnotherPod = pods.Skip(2).First();
@@ -78,7 +78,7 @@ namespace k8s.Tests.Util.Informer.Cache
         [Fact(DisplayName = "List item keys success")]
         public void ListItemKeysSuccess()
         {
-            var pods = Util.CreatePods(3);
+            var pods = Helpers.CreatePods(3);
             var aPod = pods.First();
             var anotherPod = pods.Skip(1).First();
             var cache = new Cache<V1Pod>();
@@ -95,7 +95,7 @@ namespace k8s.Tests.Util.Informer.Cache
         [Fact(DisplayName = "Get item doesn't exist")]
         public void GetItemNotExist()
         {
-            var aPod = Util.CreatePods(1).First();
+            var aPod = Helpers.CreatePods(1).First();
             var cache = new Cache<V1Pod>();
 
             var item = cache.Get(aPod);
@@ -105,7 +105,7 @@ namespace k8s.Tests.Util.Informer.Cache
         [Fact(DisplayName = "Get item success")]
         public void GetItemSuccess()
         {
-            var aPod = Util.CreatePods(1).First();
+            var aPod = Helpers.CreatePods(1).First();
             var cache = new Cache<V1Pod>();
 
             cache.Add(aPod);
@@ -116,7 +116,7 @@ namespace k8s.Tests.Util.Informer.Cache
         [Fact(DisplayName = "List items success")]
         public void ListItemSuccess()
         {
-            var pods = Util.CreatePods(3);
+            var pods = Helpers.CreatePods(3);
             var aPod = pods.First();
             var anotherPod = pods.Skip(1).First();
             var yetAnotherPod = pods.Skip(2).First();
@@ -137,7 +137,7 @@ namespace k8s.Tests.Util.Informer.Cache
         [Fact(DisplayName = "Get item by key success")]
         public void GetItemByKeySuccess()
         {
-            var pod = Util.CreatePods(1).First();
+            var pod = Helpers.CreatePods(1).First();
             var cache = new Cache<V1Pod>();
 
             cache.Add(pod);
@@ -148,7 +148,7 @@ namespace k8s.Tests.Util.Informer.Cache
         [Fact(DisplayName = "Index items no index")]
         public void IndexItemsNoIndex()
         {
-            var pod = Util.CreatePods(1).First();
+            var pod = Helpers.CreatePods(1).First();
 
             var cache = new Cache<V1Pod>();
 
@@ -160,7 +160,7 @@ namespace k8s.Tests.Util.Informer.Cache
         [Fact(DisplayName = "Index items success")]
         public void IndexItemsSuccess()
         {
-            var pod = Util.CreatePods(1).First();
+            var pod = Helpers.CreatePods(1).First();
 
             var cache = new Cache<V1Pod>();
 
@@ -190,7 +190,7 @@ namespace k8s.Tests.Util.Informer.Cache
         [Fact(DisplayName = "Get index keys success")]
         public void GetIndexKeysSuccess()
         {
-            var pod = Util.CreatePods(1).First();
+            var pod = Helpers.CreatePods(1).First();
 
             var cache = new Cache<V1Pod>();
 
@@ -220,7 +220,7 @@ namespace k8s.Tests.Util.Informer.Cache
         [Fact(DisplayName = "List by index success")]
         public void ListByIndexSuccess()
         {
-            var pod = Util.CreatePods(1).First();
+            var pod = Helpers.CreatePods(1).First();
 
             var cache = new Cache<V1Pod>();
 
