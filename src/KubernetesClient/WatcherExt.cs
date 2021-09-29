@@ -66,6 +66,15 @@ namespace k8s
             return Watch(Task.FromResult(response), onEvent, onError, onClosed);
         }
 
+        /// <summary>
+        /// create an IAsyncEnumerable from a call to api server with watch=true
+        /// see https://docs.microsoft.com/en-us/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8
+        /// </summary>
+        /// <typeparam name="T">type of the event object</typeparam>
+        /// <typeparam name="L">type of the HttpOperationResponse object</typeparam>
+        /// <param name="responseTask">the api response</param>
+        /// <param name="onError">a callbak when any exception was caught during watching</param>
+        /// <returns>IAsyncEnumerable of watch events</returns>
         public static IAsyncEnumerable<(WatchEventType, T)> WatchAsync<T, L>(
             this Task<HttpOperationResponse<L>> responseTask,
             Action<Exception> onError = null)
