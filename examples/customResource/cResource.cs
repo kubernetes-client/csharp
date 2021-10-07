@@ -1,6 +1,4 @@
 using k8s.Models;
-using System.Collections.Generic;
-using k8s;
 using Newtonsoft.Json;
 
 namespace customResource
