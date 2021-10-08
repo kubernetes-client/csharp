@@ -160,7 +160,7 @@ ${GEN_DIR}/openapi/csharp.sh generated ../csharp.settings
 | 1.4         | 1.13               | netstandard1.4;net451                 |
 | 1.3         | 1.12               | netstandard1.4;net452                 |
 
- * Starting form `2.0`, [dotnet sdk versioning](https://github.com/kubernetes-client/csharp/issues/400) adopted
+ * Starting from `2.0`, [dotnet sdk versioning](https://github.com/kubernetes-client/csharp/issues/400) adopted
  * `Kubernetes Version` here means the version sdk models and apis were generated from
  * Kubernetes api server guarantees the compatibility with `n-2` version. for exmaple, 1.19 based sdk should work with 1.21 cluster, but no guarantee works with 1.22 cluster. see also <https://kubernetes.io/releases/version-skew-policy/>
 
