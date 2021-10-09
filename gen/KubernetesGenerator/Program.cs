@@ -170,6 +170,11 @@ namespace KubernetesWatchGenerator
 
                                 return o;
                             })
+                            .Select(o =>
+                            {
+                                o.Path = o.Path.TrimStart('/');
+                                return o;
+                            })
                             .ToArray();
 
             Render.FileToFile("IKubernetes.cs.template", data, Path.Combine(outputDirectory, "IKubernetes.cs"));
