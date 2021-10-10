@@ -8,6 +8,7 @@ using System.Net.Sockets;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading;
 using k8s.Exceptions;
 using k8s.Models;
 using Microsoft.Rest;
@@ -16,6 +17,13 @@ namespace k8s
 {
     public partial class Kubernetes
     {
+        /// <summary>
+        ///     Timeout of REST calls to Kubernetes server
+        ///     Does not apply to watch related api
+        /// </summary>
+        /// <value>timeout</value>
+        public TimeSpan HttpClientTimeout { get; set; } = TimeSpan.FromSeconds(100);
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Kubernetes" /> class.
         /// </summary>
@@ -69,6 +77,7 @@ namespace k8s
             SkipTlsVerify = config.SkipTlsVerify;
             CreateHttpClient(handlers, config);
             InitializeFromConfig(config);
+            HttpClientTimeout = config.HttpClientTimeout;
         }
 
         private void ValidateConfig(KubernetesClientConfiguration config)
@@ -247,7 +256,10 @@ namespace k8s
                 }
             }
 
-            HttpClient = new HttpClient(FirstMessageHandler, false);
+            HttpClient = new HttpClient(FirstMessageHandler, false)
+            {
+                Timeout = Timeout.InfiniteTimeSpan,
+            };
         }
 
         /// <summary>

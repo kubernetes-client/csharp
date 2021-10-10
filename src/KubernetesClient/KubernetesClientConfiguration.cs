@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
@@ -79,8 +80,25 @@ namespace k8s
         /// <value>The access token.</value>
         public string AccessToken { get; set; }
 
+        /// <summary>
+        ///     Gets or sets the TokenProvider for authentication.
+        /// </summary>
+        /// <value>The access token.</value>
         public ITokenProvider TokenProvider { get; set; }
 
+        /// <summary>
+        ///     Set true to enable tcp keep alive
+        ///     You have to set https://tldp.org/HOWTO/TCP-Keepalive-HOWTO/usingkeepalive.html as well
+        /// </summary>
+        /// <value>true or false</value>
         public bool TcpKeepAlive { get; set; } = true;
+
+
+        /// <summary>
+        ///     Timeout of REST calls to Kubernetes server
+        ///     Does not apply to watch related api
+        /// </summary>
+        /// <value>timeout</value>
+        public TimeSpan HttpClientTimeout { get; set; } = TimeSpan.FromSeconds(100);
     }
 }
