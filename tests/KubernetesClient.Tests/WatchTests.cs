@@ -552,9 +552,42 @@ namespace k8s.Tests
             }
         }
 
+        [Fact]
+        public async Task EnsureTimeoutWorks()
+        {
+            using var server = new MockKubeApiServer(testOutput, async httpContext =>
+            {
+                await Task.Delay(TimeSpan.FromSeconds(120)).ConfigureAwait(false); // The default timeout is 100 seconds
+                await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse).ConfigureAwait(false);
 
+                return false;
+            });
 
-        [Fact(Skip = "https://github.com/kubernetes-client/csharp/issues/165")]
+            // raw timeout
+            await Assert.ThrowsAsync<TaskCanceledException>(async () =>
+            {
+                var client = new Kubernetes(new KubernetesClientConfiguration
+                {
+                    Host = server.Uri.ToString(),
+                    HttpClientTimeout = TimeSpan.FromSeconds(5),
+                });
+                await client.ListNamespacedPodWithHttpMessagesAsync("default").ConfigureAwait(false);
+            }).ConfigureAwait(false);
+
+            // cts
+            await Assert.ThrowsAsync<TaskCanceledException>(async () =>
+            {
+                var cts = new CancellationTokenSource();
+                cts.CancelAfter(TimeSpan.FromSeconds(5));
+                var client = new Kubernetes(new KubernetesClientConfiguration
+                {
+                    Host = server.Uri.ToString(),
+                });
+                await client.ListNamespacedPodWithHttpMessagesAsync("default", cancellationToken: cts.Token).ConfigureAwait(false);
+            }).ConfigureAwait(false);
+        }
+
+        [Fact]
         public async Task DirectWatchEventsWithTimeout()
         {
             var eventsReceived = new AsyncCountdownEvent(4);
