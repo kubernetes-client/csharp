@@ -319,6 +319,16 @@ namespace k8s
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken))
         {
+            var cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+            cts.CancelAfter(HttpClientTimeout);
+            {{#IfParamCotains operation "watch"}}
+            if (watch == true)
+            {
+                cts.CancelAfter(Timeout.InfiniteTimeSpan);
+            }
+            {{/IfParamCotains operation "watch"}}
+            cancellationToken = cts.Token;
+
             {{#operation.parameters}}
             {{#isRequired}}
             if ({{GetDotNetName name}} == null)
