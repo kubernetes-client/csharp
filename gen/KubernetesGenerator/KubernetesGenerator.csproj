@@ -1,20 +1,22 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net5</TargetFramework>
-  </PropertyGroup>
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net5</TargetFramework>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="CaseExtensions" Version="1.1.0" />
-    <PackageReference Include="NSwag.Core" Version="11.17.21" />
-    <PackageReference Include="Nustache" Version="1.16.0.8" NoWarn="NU1701" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Autofac" Version="6.3.0"/>
+        <PackageReference Include="CaseExtensions" Version="1.1.0"/>
+        <PackageReference Include="CommandLineParser" Version="2.8.0"/>
+        <PackageReference Include="NSwag.Core" Version="11.17.21"/>
+        <PackageReference Include="Nustache" Version="1.16.0.8" NoWarn="NU1701"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Update="*.template">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+    <ItemGroup>
+        <None Update="templates/*.template">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
 
 </Project>
