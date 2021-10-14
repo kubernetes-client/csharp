@@ -301,7 +301,7 @@ namespace k8s
                 {
                     webSocketBuilder.AddClientCertificate(cert);
                 }
-            ]
+            }
 
             if (Credentials != null)
                 {
