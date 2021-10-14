@@ -1,11 +1,11 @@
+using IdentityModel.OidcClient;
+using k8s.Exceptions;
+using Microsoft.Rest;
 using System;
+using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.Rest;
-using IdentityModel.OidcClient;
-using k8s.Exceptions;
 
 namespace k8s.Authentication
 {
@@ -14,7 +14,7 @@ namespace k8s.Authentication
         private OidcClient _oidcClient;
         private string _idToken;
         private string _refreshToken;
-        private DateTime _expiry;
+        private DateTimeOffset _expiry;
 
         public OidcTokenProvider(string clientId, string clientSecret, string idpIssuerUrl, string idToken, string refreshToken)
         {

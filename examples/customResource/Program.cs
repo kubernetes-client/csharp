@@ -1,9 +1,9 @@
-using System;
-using System.Collections.Generic;
 using k8s;
 using k8s.Models;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.JsonPatch;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 
 namespace customResource
@@ -12,7 +12,7 @@ namespace customResource
     {
         private static async Task Main(string[] args)
         {
-            Console.WriteLine("strating main()...");
+            Console.WriteLine("starting main()...");
 
             // creating the k8s client
             var k8SClientConfig = KubernetesClientConfiguration.BuildConfigFromConfigFile();
@@ -21,7 +21,7 @@ namespace customResource
             // creating a K8s client for the CRD
             var myCRD = Utils.MakeCRD();
             Console.WriteLine("working with CRD: {0}.{1}", myCRD.PluralName, myCRD.Group);
-            var generic = new GenericClient(k8SClientConfig, myCRD.Group, myCRD.Version, myCRD.PluralName);
+            var generic = new GenericClient(client, myCRD.Group, myCRD.Version, myCRD.PluralName);
 
             // creating a sample custom resource content
             var myCr = Utils.MakeCResource();
