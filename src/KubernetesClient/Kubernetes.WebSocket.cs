@@ -300,6 +300,14 @@ namespace k8s
                 webSocketBuilder.AddClientCertificate(this.ClientCert);
             }
 
+            if (this.HttpClientHandler != null)
+            {
+                foreach (var cert in this.HttpClientHandler.ClientCertificates.OfType<X509Certificate2>())
+                {
+                    webSocketBuilder.AddClientCertificate(cert);
+                }
+            }
+
             if (Credentials != null)
             {
                 // Copy the default (credential-related) request headers from the HttpClient to the WebSocket
