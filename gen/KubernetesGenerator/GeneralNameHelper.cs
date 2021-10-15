@@ -133,7 +133,7 @@ namespace KubernetesGenerator
                     {
                         return "continueProperty";
                     }
-                    else if (jsonName == "__referencePath")
+                    else if (jsonName == "$ref")
                     {
                         return "refProperty";
                     }

@@ -54,7 +54,7 @@ namespace KubernetesGenerator
                 {
                     PluralName = x.Path.Split("/").Last(),
                     ClassName = classNameHelper.GetClassNameForSchemaDefinition(x.Operation.Responses["200"]
-                        .ActualResponse.Schema),
+                        .ActualResponse.Schema.ActualSchema),
                 })
                 .Distinct()
                 .ToDictionary(x => x.ClassName, x => x.PluralName);

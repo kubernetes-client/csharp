@@ -50,6 +50,7 @@ namespace KubernetesGenerator
                 .Select(o =>
                 {
                     o.Path = o.Path.TrimStart('/');
+                    o.Method = char.ToUpper(o.Method[0]) + o.Method.Substring(1);
                     return o;
                 })
                 .ToArray();
