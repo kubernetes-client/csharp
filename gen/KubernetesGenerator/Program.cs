@@ -20,9 +20,9 @@ namespace KubernetesWatchGenerator
         {
             var outputDirectory = options.OutputPath;
 
-            var swaggerCooked = await SwaggerDocument.FromFileAsync(Path.Combine(outputDirectory, "swagger.json"))
+            var swaggerCooked = await OpenApiDocument.FromFileAsync(Path.Combine(outputDirectory, "swagger.json"))
                 .ConfigureAwait(false);
-            var swaggerUnprocessed = await SwaggerDocument
+            var swaggerUnprocessed = await OpenApiDocument
                 .FromFileAsync(Path.Combine(outputDirectory, "swagger.json.unprocessed"))
                 .ConfigureAwait(false);
 
@@ -45,7 +45,7 @@ namespace KubernetesWatchGenerator
                 ;
 
             builder.RegisterType<PluralHelper>()
-                .WithParameter(new TypedParameter(typeof(SwaggerDocument), swaggerUnprocessed))
+                .WithParameter(new TypedParameter(typeof(OpenApiDocument), swaggerUnprocessed))
                 .AsImplementedInterfaces()
                 ;
 

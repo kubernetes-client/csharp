@@ -29,7 +29,7 @@ namespace KubernetesGenerator
         public static void IfKindIs(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
             RenderBlock fn, RenderBlock inverse)
         {
-            var parameter = arguments?.FirstOrDefault() as SwaggerParameter;
+            var parameter = arguments?.FirstOrDefault() as OpenApiParameter;
             if (parameter != null)
             {
                 string kind = null;
@@ -38,11 +38,11 @@ namespace KubernetesGenerator
                     kind = arguments[1] as string;
                 }
 
-                if (kind == "query" && parameter.Kind == SwaggerParameterKind.Query)
+                if (kind == "query" && parameter.Kind == OpenApiParameterKind.Query)
                 {
                     fn(null);
                 }
-                else if (kind == "path" && parameter.Kind == SwaggerParameterKind.Path)
+                else if (kind == "path" && parameter.Kind == OpenApiParameterKind.Path)
                 {
                     fn(null);
                 }

@@ -7,7 +7,7 @@ namespace KubernetesGenerator
 {
     public class WatchGenerator
     {
-        public void Generate(SwaggerDocument swagger, string outputDirectory)
+        public void Generate(OpenApiDocument swagger, string outputDirectory)
         {
             // Generate the Watcher operations
             // We skip operations where the name of the class in the C# client could not be determined correctly.
