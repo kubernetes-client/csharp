@@ -301,107 +301,107 @@ namespace k8s
             }
 
             if (Credentials != null)
-                {
-                    // Copy the default (credential-related) request headers from the HttpClient to the WebSocket
-                    var message = new HttpRequestMessage();
-                    await Credentials.ProcessHttpRequestAsync(message, cancellationToken).ConfigureAwait(false);
+            {
+                // Copy the default (credential-related) request headers from the HttpClient to the WebSocket
+                var message = new HttpRequestMessage();
+                await Credentials.ProcessHttpRequestAsync(message, cancellationToken).ConfigureAwait(false);
 
-                    foreach (var header in message.Headers)
-                    {
-                        webSocketBuilder.SetRequestHeader(header.Key, string.Join(" ", header.Value));
-                    }
+                foreach (var header in message.Headers)
+                {
+                    webSocketBuilder.SetRequestHeader(header.Key, string.Join(" ", header.Value));
                 }
+            }
 
-                if (this.CaCerts != null)
+            if (this.CaCerts != null)
+            {
+                webSocketBuilder.ExpectServerCertificate(this.CaCerts);
+            }
+
+            if (this.SkipTlsVerify)
+            {
+                webSocketBuilder.SkipServerCertificateValidation();
+            }
+
+            if (webSocketSubProtocol != null)
+            {
+                webSocketBuilder.Options.AddSubProtocol(webSocketSubProtocol);
+            }
+
+            // Send Request
+            cancellationToken.ThrowIfCancellationRequested();
+
+            WebSocket webSocket = null;
+            try
+            {
+                webSocket = await webSocketBuilder.BuildAndConnectAsync(uri, CancellationToken.None)
+                    .ConfigureAwait(false);
+            }
+            catch (WebSocketException wse) when (wse.WebSocketErrorCode == WebSocketError.HeaderError ||
+                                                 (wse.InnerException is WebSocketException &&
+                                                 ((WebSocketException)wse.InnerException).WebSocketErrorCode ==
+                                                 WebSocketError.HeaderError))
+            {
+                // This usually indicates the server sent an error message, like 400 Bad Request. Unfortunately, the WebSocket client
+                // class doesn't give us a lot of information about what went wrong. So, retry the connection.
+                var uriBuilder = new UriBuilder(uri);
+                uriBuilder.Scheme = uri.Scheme == "wss" ? "https" : "http";
+
+                var response = await HttpClient.GetAsync(uriBuilder.Uri, cancellationToken).ConfigureAwait(false);
+
+                if (response.StatusCode == HttpStatusCode.SwitchingProtocols)
                 {
-                    webSocketBuilder.ExpectServerCertificate(this.CaCerts);
+                    // This should never happen - the server just allowed us to switch to WebSockets but the previous call didn't work.
+                    // Rethrow the original exception
+                    response.Dispose();
+                    throw;
                 }
-
-                if (this.SkipTlsVerify)
+                else
                 {
-                    webSocketBuilder.SkipServerCertificateValidation();
-                }
-
-                if (webSocketSubProtocol != null)
-                {
-                    webSocketBuilder.Options.AddSubProtocol(webSocketSubProtocol);
-                }
-
-                // Send Request
-                cancellationToken.ThrowIfCancellationRequested();
-
-                WebSocket webSocket = null;
-                try
-                {
-                    webSocket = await webSocketBuilder.BuildAndConnectAsync(uri, CancellationToken.None)
-                        .ConfigureAwait(false);
-                }
-                catch (WebSocketException wse) when (wse.WebSocketErrorCode == WebSocketError.HeaderError ||
-                                                     (wse.InnerException is WebSocketException &&
-                                                     ((WebSocketException)wse.InnerException).WebSocketErrorCode ==
-                                                     WebSocketError.HeaderError))
-                {
-                    // This usually indicates the server sent an error message, like 400 Bad Request. Unfortunately, the WebSocket client
-                    // class doesn't give us a lot of information about what went wrong. So, retry the connection.
-                    var uriBuilder = new UriBuilder(uri);
-                    uriBuilder.Scheme = uri.Scheme == "wss" ? "https" : "http";
-
-                    var response = await HttpClient.GetAsync(uriBuilder.Uri, cancellationToken).ConfigureAwait(false);
-
-                    if (response.StatusCode == HttpStatusCode.SwitchingProtocols)
-                    {
-                        // This should never happen - the server just allowed us to switch to WebSockets but the previous call didn't work.
-                        // Rethrow the original exception
-                        response.Dispose();
-                        throw;
-                    }
-                    else
-                    {
 #if NET5_0
                     var content = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 #else
-                        var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 #endif
-                        // Try to parse the content as a V1Status object
-                        var genericObject = SafeJsonConvert.DeserializeObject<KubernetesObject>(content);
-                        V1Status status = null;
+                    // Try to parse the content as a V1Status object
+                    var genericObject = SafeJsonConvert.DeserializeObject<KubernetesObject>(content);
+                    V1Status status = null;
 
-                        if (genericObject.ApiVersion == "v1" && genericObject.Kind == "Status")
+                    if (genericObject.ApiVersion == "v1" && genericObject.Kind == "Status")
+                    {
+                        status = SafeJsonConvert.DeserializeObject<V1Status>(content);
+                    }
+
+                    var ex =
+                        new HttpOperationException(
+                            $"The operation returned an invalid status code: {response.StatusCode}", wse)
                         {
-                            status = SafeJsonConvert.DeserializeObject<V1Status>(content);
-                        }
+                            Response = new HttpResponseMessageWrapper(response, content),
+                            Body = status != null ? (object)status : content,
+                        };
 
-                        var ex =
-                            new HttpOperationException(
-                                $"The operation returned an invalid status code: {response.StatusCode}", wse)
-                            {
-                                Response = new HttpResponseMessageWrapper(response, content),
-                                Body = status != null ? (object)status : content,
-                            };
+                    response.Dispose();
 
-                        response.Dispose();
-
-                        throw ex;
-                    }
+                    throw ex;
                 }
-                catch (Exception ex)
-                {
-                    if (shouldTrace)
-                    {
-                        ServiceClientTracing.Error(invocationId, ex);
-                    }
-
-                    throw;
-                }
-                finally
-                {
-                    if (shouldTrace)
-                    {
-                        ServiceClientTracing.Exit(invocationId, null);
-                    }
-                }
-
-                return webSocket;
             }
+            catch (Exception ex)
+            {
+                if (shouldTrace)
+                {
+                    ServiceClientTracing.Error(invocationId, ex);
+                }
+
+                throw;
+            }
+            finally
+            {
+                if (shouldTrace)
+                {
+                    ServiceClientTracing.Exit(invocationId, null);
+                }
+            }
+
+            return webSocket;
         }
     }
+}
