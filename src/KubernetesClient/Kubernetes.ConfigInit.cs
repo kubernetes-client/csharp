@@ -57,7 +57,7 @@ namespace k8s
             ValidateConfig(config);
             CaCerts = config.SslCaCerts;
             SkipTlsVerify = config.SkipTlsVerify;
-            ClientCert = GetClientCert(config);
+            ClientCert = CertUtils.GetClientCert(config);
             SetCredentials(config);
         }
 
@@ -263,19 +263,7 @@ namespace k8s
             };
         }
 
-        private X509Certificate2 GetClientCert(KubernetesClientConfiguration config)
-        {
-            if ((!string.IsNullOrWhiteSpace(config.ClientCertificateData) ||
-                 !string.IsNullOrWhiteSpace(config.ClientCertificateFilePath)) &&
-                (!string.IsNullOrWhiteSpace(config.ClientCertificateKeyData) ||
-                 !string.IsNullOrWhiteSpace(config.ClientKeyFilePath)))
-            {
-                var cert = CertUtils.GeneratePfx(config);
-                return cert;
-            }
 
-            return null;
-        }
 
         /// <summary>
         ///     Set credentials for the Client

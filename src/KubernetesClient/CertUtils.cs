@@ -122,5 +122,28 @@ namespace k8s
                 }
             }
         }
+
+        /// <summary>
+        /// Retrieves Client Certificate PFX from configuration
+        /// </summary>
+        /// <param name="config">Kubernetes Client Configuration</param>
+        /// <returns>Client certificate PFX</returns>
+        public static X509Certificate2 GetClientCert(KubernetesClientConfiguration config)
+        {
+            if (config == null)
+            {
+                throw new ArgumentNullException(nameof(config));
+            }
+
+            if ((!string.IsNullOrWhiteSpace(config.ClientCertificateData) ||
+                 !string.IsNullOrWhiteSpace(config.ClientCertificateFilePath)) &&
+                (!string.IsNullOrWhiteSpace(config.ClientCertificateKeyData) ||
+                 !string.IsNullOrWhiteSpace(config.ClientKeyFilePath)))
+            {
+                return GeneratePfx(config);
+            }
+
+            return null;
+        }
     }
 }
