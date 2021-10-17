@@ -10,7 +10,7 @@
         <PackageReference Include="CaseExtensions" Version="1.1.0" />
         <PackageReference Include="CommandLineParser" Version="2.8.0" />
         <PackageReference Include="NSwag.Core" Version="13.13.2" />
-        <PackageReference Include="Nustache" Version="1.16.0.8" NoWarn="NU1701" />
+        <PackageReference Include="Nustache" Version="1.16.0.10" NoWarn="NU1701" />
     </ItemGroup>
 
     <ItemGroup>
