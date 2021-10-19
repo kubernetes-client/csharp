@@ -19,11 +19,12 @@ namespace KubernetesGenerator
 
         public void RegisterHelper()
         {
-            Helpers.Register(nameof(IfParamCotains), IfParamCotains);
+            Helpers.Register(nameof(IfParamContains), IfParamContains);
+            Helpers.Register(nameof(IfParamDoesNotContain), IfParamDoesNotContain);
             Helpers.Register(nameof(GetModelCtorParam), GetModelCtorParam);
         }
 
-        public static void IfParamCotains(RenderContext context, IList<object> arguments,
+        public static void IfParamContains(RenderContext context, IList<object> arguments,
             IDictionary<string, object> options,
             RenderBlock fn, RenderBlock inverse)
         {
@@ -54,6 +55,36 @@ namespace KubernetesGenerator
             }
         }
 
+        public static void IfParamDoesNotContain(RenderContext context, IList<object> arguments,
+            IDictionary<string, object> options,
+            RenderBlock fn, RenderBlock inverse)
+        {
+            var operation = arguments?.FirstOrDefault() as SwaggerOperation;
+            if (operation != null)
+            {
+                string name = null;
+                if (arguments.Count > 1)
+                {
+                    name = arguments[1] as string;
+                }
+
+                var found = false;
+
+                foreach (var param in operation.Parameters)
+                {
+                    if (param.Name == name)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                {
+                    fn(null);
+                }
+            }
+        }
 
         public void GetModelCtorParam(RenderContext context, IList<object> arguments,
             IDictionary<string, object> options,

@@ -9,8 +9,6 @@ namespace k8s
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Models;
-    using Newtonsoft.Json;
-    using System.Collections;
     using System.Collections.Generic;
     using System.IO;
     using System.Net;
@@ -20,296 +18,6 @@ namespace k8s
 
     public partial class Kubernetes : ServiceClient<Kubernetes>, IKubernetes
     {
-        /// <summary>
-        /// The base URI of the service.
-        /// </summary>
-        public System.Uri BaseUri { get; set; }
-
-        /// <summary>
-        /// Gets or sets json serialization settings.
-        /// </summary>
-        public JsonSerializerSettings SerializationSettings { get; private set; }
-
-        /// <summary>
-        /// Gets or sets json deserialization settings.
-        /// </summary>
-        public JsonSerializerSettings DeserializationSettings { get; private set; }
-
-        /// <summary>
-        /// Subscription credentials which uniquely identify client subscription.
-        /// </summary>
-        public ServiceClientCredentials Credentials { get; private set; }
-
-        /// <summary>
-        /// Initializes a new instance of the Kubernetes class.
-        /// </summary>
-        /// <param name='httpClient'>
-        /// HttpClient to be used
-        /// </param>
-        /// <param name='disposeHttpClient'>
-        /// True: will dispose the provided httpClient on calling Kubernetes.Dispose(). False: will not dispose provided httpClient</param>
-        protected Kubernetes(HttpClient httpClient, bool disposeHttpClient) : base(httpClient, disposeHttpClient)
-        {
-            Initialize();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the Kubernetes class.
-        /// </summary>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        protected Kubernetes(params DelegatingHandler[] handlers) : base(handlers)
-        {
-            Initialize();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the Kubernetes class.
-        /// </summary>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        protected Kubernetes(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
-        {
-            Initialize();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the Kubernetes class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        protected Kubernetes(System.Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            BaseUri = baseUri;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the Kubernetes class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        protected Kubernetes(System.Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            BaseUri = baseUri;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the Kubernetes class.
-        /// </summary>
-        /// <param name='credentials'>
-        /// Required. Subscription credentials which uniquely identify client subscription.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public Kubernetes(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
-        {
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the Kubernetes class.
-        /// </summary>
-        /// <param name='credentials'>
-        /// Required. Subscription credentials which uniquely identify client subscription.
-        /// </param>
-        /// <param name='httpClient'>
-        /// HttpClient to be used
-        /// </param>
-        /// <param name='disposeHttpClient'>
-        /// True: will dispose the provided httpClient on calling Kubernetes.Dispose(). False: will not dispose provided httpClient</param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public Kubernetes(ServiceClientCredentials credentials, HttpClient httpClient, bool disposeHttpClient) : this(httpClient, disposeHttpClient)
-        {
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the Kubernetes class.
-        /// </summary>
-        /// <param name='credentials'>
-        /// Required. Subscription credentials which uniquely identify client subscription.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public Kubernetes(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        {
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the Kubernetes class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='credentials'>
-        /// Required. Subscription credentials which uniquely identify client subscription.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public Kubernetes(System.Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            BaseUri = baseUri;
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the Kubernetes class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='credentials'>
-        /// Required. Subscription credentials which uniquely identify client subscription.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public Kubernetes(System.Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
-        {
-            if (baseUri == null)
-            {
-                throw new System.ArgumentNullException("baseUri");
-            }
-            if (credentials == null)
-            {
-                throw new System.ArgumentNullException("credentials");
-            }
-            BaseUri = baseUri;
-            Credentials = credentials;
-            if (Credentials != null)
-            {
-                Credentials.InitializeServiceClient(this);
-            }
-        }
-
-        /// <summary>
-        /// An optional partial-method to perform custom initialization.
-        ///</summary>
-        partial void CustomInitialize();
-        /// <summary>
-        /// Initializes client properties.
-        /// </summary>
-        private void Initialize()
-        {
-            BaseUri = new System.Uri("http://localhost");
-            SerializationSettings = new JsonSerializerSettings
-            {
-                Formatting = Newtonsoft.Json.Formatting.Indented,
-                DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat,
-                DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc,
-                NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
-                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Serialize,
-                ContractResolver = new ReadOnlyJsonContractResolver(),
-                Converters = new  List<JsonConverter>
-                    {
-                        new Iso8601TimeSpanConverter()
-                    }
-            };
-            DeserializationSettings = new JsonSerializerSettings
-            {
-                DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat,
-                DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc,
-                NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
-                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Serialize,
-                ContractResolver = new ReadOnlyJsonContractResolver(),
-                Converters = new List<JsonConverter>
-                    {
-                        new Iso8601TimeSpanConverter()
-                    }
-            };
-            CustomInitialize();
-        }
-
         {{#.}}
         /// <inheritdoc/>
         public async Task<HttpOperationResponse{{GetReturnType operation "<>"}}> {{GetMethodName operation "WithHttpMessagesAsync"}}(
@@ -321,12 +29,12 @@ namespace k8s
         {
             var cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
             cts.CancelAfter(HttpClientTimeout);
-            {{#IfParamCotains operation "watch"}}
+            {{#IfParamContains operation "watch"}}
             if (watch == true)
             {
                 cts.CancelAfter(Timeout.InfiniteTimeSpan);
             }
-            {{/IfParamCotains operation "watch"}}
+            {{/IfParamContains operation "watch"}}
             cancellationToken = cts.Token;
 
             {{#operation.parameters}}
@@ -385,24 +93,21 @@ namespace k8s
             {
                 foreach(var _header in customHeaders)
                 {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
+                    _httpRequest.Headers.Remove(_header.Key);
                     _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
                 }
             }
 
             // Serialize Request
             string _requestContent = null;
-            {{#IfParamCotains operation "body"}}
+            {{#IfParamContains operation "body"}}
             if(body != null)
             {
                 _requestContent = SafeJsonConvert.SerializeObject(body, SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType = GetHeader(body);
             }
-            {{/IfParamCotains operation "body"}}
+            {{/IfParamContains operation "body"}}
             // Set Credentials
             if (Credentials != null)
             {
@@ -422,9 +127,9 @@ namespace k8s
             }
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
             if ((int)_statusCode != 200 && (int)_statusCode != 201 && (int)_statusCode != 202)
             {
+                string _responseContent = null;
                 var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 if (_httpResponse.Content != null) {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -446,40 +151,26 @@ namespace k8s
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse{{GetReturnType operation "<>"}}();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            {{#IfReturnType operation "any"}}
-            // Deserialize Response
-            if ((int)_statusCode == 200 || (int)_statusCode == 201 || (int)_statusCode == 202)
-            {
-                {{#IfReturnType operation "stream"}}
-                _result.Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false);
-                {{/IfReturnType operation "stream"}}
-                {{#IfReturnType operation "obj"}}
-                {{#IfParamCotains operation "watch"}}
-                if (watch == true)
-                {
-                    _httpResponse.Content = new LineSeparatedHttpContent(_httpResponse.Content, cancellationToken);
-                }
-                {{/IfParamCotains operation "watch"}}
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = SafeJsonConvert.DeserializeObject{{GetReturnType operation "<>"}}(_responseContent, DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-                {{/IfReturnType operation "obj"}}
-            }
-            {{/IfReturnType operation "any"}}
+            {{#IfReturnType operation "void"}}
+            HttpOperationResponse _result = new HttpOperationResponse() { Request = _httpRequest, Response =  _httpResponse };
+            {{/IfReturnType operation "void"}}
+            {{#IfReturnType operation "obj"}}
+            var _result = await CreateResultAsync{{GetReturnType operation "<>"}}(_httpRequest,
+                _httpResponse,
+                {{#IfParamContains operation "watch"}}
+                watch,
+                {{/IfParamContains operation "watch"}}
+                {{#IfParamDoesNotContain operation "watch"}}
+                false,
+                {{/IfParamDoesNotContain operation "watch"}}
+                cancellationToken);
+            {{/IfReturnType operation "obj"}}
+            {{#IfReturnType operation "stream"}}
+            var _result = new HttpOperationResponse{{GetReturnType operation "<>"}}() {
+                                Request = _httpRequest,
+                                Response = _httpResponse,
+                                Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
+            {{/IfReturnType operation "stream"}}
             if (_shouldTrace)
             {
                 ServiceClientTracing.Exit(_invocationId, _result);
