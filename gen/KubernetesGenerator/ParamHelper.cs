@@ -59,7 +59,7 @@ namespace KubernetesGenerator
             IDictionary<string, object> options,
             RenderBlock fn, RenderBlock inverse)
         {
-            var operation = arguments?.FirstOrDefault() as SwaggerOperation;
+            var operation = arguments?.FirstOrDefault() as OpenApiOperation;
             if (operation != null)
             {
                 string name = null;
